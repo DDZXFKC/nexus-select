@@ -88,10 +88,10 @@ $nexus_pc_women_img = absint(get_theme_mod('nexus_pc_women_image', 0));
     <a class="nexus-v08-button" href="<?php echo esc_url(home_url('/shop/')); ?>">EXPLORE COLLECTION</a>
   </div>
   <figure class="nexus-v08-hero__media nx-hero-slides">
-    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-season-autumn.jpg')); ?>" alt="NEXUS SELECT 季節のエディトリアル（秋）" loading="eager" fetchpriority="high">
-    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-season-winter.jpg')); ?>" alt="NEXUS SELECT 季節のエディトリアル（冬）" loading="lazy">
-    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-season-spring.jpg')); ?>" alt="NEXUS SELECT 季節のエディトリアル（春）" loading="lazy">
-    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-season-summer.jpg')); ?>" alt="NEXUS SELECT 季節のエディトリアル（夏）" loading="lazy">
+    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-autumn-1.jpg')); ?>" alt="NEXUS SELECT 秋のエディトリアル（コーヒーを手に笑う二人）" loading="eager" fetchpriority="high">
+    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-autumn-2.jpg')); ?>" alt="NEXUS SELECT 秋のエディトリアル（買い物帰りの笑顔）" loading="lazy">
+    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-autumn-3.jpg')); ?>" alt="NEXUS SELECT 秋のエディトリアル（新しいスニーカーと公園のベンチ）" loading="lazy">
+    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-autumn-4.jpg')); ?>" alt="NEXUS SELECT 秋のエディトリアル（夕方の街で笑うカップル）" loading="lazy">
   </figure>
 </section>
 
