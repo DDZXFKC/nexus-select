@@ -87,6 +87,13 @@ $nx_dd_render = function ($label, $url, $children) {
 .nx-brands-grid .nx-brand-name{margin-top:16px;font-size:13px;letter-spacing:.14em}
 .nx-brands-grid .nx-brand-count{font-size:11px;color:#999;margin-top:4px;letter-spacing:.08em}
 @media(max-width:640px){.nx-brands-grid{grid-template-columns:repeat(2,1fr);gap:40px 16px;margin:32px auto}}
+.nx-search{max-width:880px;margin:0 auto;padding:32px 20px 64px}
+.nx-search__title{font-size:22px;margin:0 0 8px;letter-spacing:.06em}
+.nx-search__note{color:#555;margin:0 0 20px}
+.nx-search__list{list-style:none;margin:0;padding:0}
+.nx-search__item{border-top:1px solid #e3e3e3;padding:14px 0}
+.nx-search__link{font-weight:600;color:#111;text-decoration:none}
+.nx-search__excerpt{margin:6px 0 0;color:#555;font-size:14px;line-height:1.6}
 </style>
 <?php if (is_front_page()) : ?>
 <div class="nexus-pc-topbar" aria-label="PCホーム専用ナビゲーション">
