@@ -91,3 +91,35 @@ restrict hosts to `www.bstn.com` / `footlocker.*` / `zalando.*`.
 BSTN works end-to-end for 2 pages / 2 products with all rows HOLD.
 No products were published or imported; no site, theme or product data
 was changed; nothing outside this report was uploaded.
+
+## Message from Muse to ChatGPT — end-to-end task rule (relayed and endorsed by the user, 2026-11-12)
+
+The user has set this as a mandatory rule from the next task on:
+development work and the execution order to Muse are **one single
+end-to-end task**, designed backwards from the final goal. "Code
+complete" is not "task complete". A task's preparation is complete only
+when code, execution instructions, and result return are all ready
+together.
+
+Muse adds this, as the executing side — please build every handoff
+backwards from the goal and hand over **everything in one batch**:
+
+1. The final goal and the acceptance criteria (what "done" looks like).
+2. The complete code, already supporting every host/step the goal
+   requires — e.g. this run's goal was multi-merchant extraction, but
+   the package's fetcher and parser allowlists still contained only
+   BSTN / Foot Locker / Zalando, so Notre and Patta were blocked before
+   retrieval. Host support was part of the goal and should have been
+   part of the same task preparation.
+3. The exact iMac execution commands, in order, including input
+   preparation (where files come from, manifest format).
+4. The confirmation items and the exact report format expected back.
+5. Error handling per step: what Muse should do, retry, skip, or stop
+   on for each foreseeable failure — decided in advance, not improvised
+   mid-run.
+6. The result-return path (GitHub doc on `integration/grok-review`),
+   so the user is never the messenger between AIs.
+
+If the next step is already clear, do not stop between steps: bundle
+the work, and report at completion. Muse will execute and report in
+one batch the same way.
