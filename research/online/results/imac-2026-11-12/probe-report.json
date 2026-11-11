@@ -1,0 +1,70 @@
+{
+ "python_env": {
+  "version": "3.9.6",
+  "platform": "macOS-15.8.2-x86_64-64bit"
+ },
+ "shops": [
+  {
+   "shop": "bstn",
+   "host": "www.bstn.com",
+   "url": "https://www.bstn.com/",
+   "dns_ip": "18.238.238.110",
+   "dns": "OK",
+   "https": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://www.bstn.com/eu_en",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 4096
+   },
+   "html_sniff": "<!DOCTYPE html><html lang=\"en-IE\"><head><meta charSet=\"utf-8\"/><title>BSTN - Your store for sneakers, premium sportswear and accessories  | BSTN Store</title><meta name=\"viewport\" content=\"width=devic",
+   "robots": {
+    "ok": true,
+    "status": 200,
+    "bytes": 1623
+   }
+  },
+  {
+   "shop": "footlocker",
+   "host": "www.footlocker.com",
+   "url": "https://www.footlocker.com/",
+   "dns_ip": "151.101.90.132",
+   "dns": "OK",
+   "https": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://www.footlocker.com/",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 4096
+   },
+   "html_sniff": "<!DOCTYPE html> <html lang=\"en\" translate=\"no\" data-build-number=\"598\"> \t<head>         <script>document.addEventListener('kpsdk-load', function () { window.KPSDK.configure([ { method: '*', domain: wi",
+   "robots": {
+    "ok": true,
+    "status": 200,
+    "bytes": 1050
+   }
+  },
+  {
+   "shop": "zalando_de",
+   "host": "www.zalando.de",
+   "url": "https://www.zalando.de/",
+   "dns_ip": "92.123.135.68",
+   "dns": "OK",
+   "https": {
+    "ok": false,
+    "status": 403,
+    "final_url": "https://www.zalando.de/",
+    "content_type": "",
+    "bytes": 4096,
+    "error": "HTTPError 403 Forbidden"
+   },
+   "html_sniff": "<!DOCTYPE html> <html class=\"rendering-engine re-main-5897 release-main-14336\" lang=\"de-DE\"> <head> <meta charset=\"utf-8\"/> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/> <meta http-equiv=\"Acc",
+   "robots": {
+    "ok": false,
+    "status": 403,
+    "bytes": 32768,
+    "error": "HTTPError 403 Forbidden"
+   }
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "steps": {
+  "sitemap_index": {
+   "status": 200,
+   "children": 41
+  },
+  "sample_urls": [
+   "https://www.bstn.com/eu_en/",
+   "https://www.bstn.com/eu_en/catalog/category/view/id/66",
+   "https://www.bstn.com/eu_en/catalog/category/view/id/67",
+   "https://www.bstn.com/eu_en/catalog/category/view/id/68",
+   "https://www.bstn.com/eu_en/men/apparel",
+   "https://www.bstn.com/eu_en/men/apparel/jerseys-team-gear",
+   "https://www.bstn.com/eu_en/men/apparel/jackets-coats",
+   "https://www.bstn.com/eu_en/men/apparel/jeans",
+   "https://www.bstn.com/eu_en/men/apparel/pants",
+   "https://www.bstn.com/eu_en/men/apparel/shirts",
+   "https://www.bstn.com/eu_en/men/apparel/shorts",
+   "https://www.bstn.com/eu_en/men/apparel/sleep-underwear",
+   "https://www.bstn.com/eu_en/men/apparel/sweats",
+   "https://www.bstn.com/eu_en/men/apparel/swimwear",
+   "https://www.bstn.com/eu_en/men/apparel/t-shirts-tops"
+  ],
+  "child_sitemap": {
+   "url": "https://media.bstn.com/sitemap/eu_en/sitemap-1-1.xml",
+   "status": 200,
+   "urls": 1920
+  },
+  "child_tried": [
+   "https://media.bstn.com/sitemap/eu_en/sitemap-1-1.xml"
+  ],
+  "product_fetch": {
+   "status": 200,
+   "final_url": "https://www.bstn.com/eu_en/p/adidas-adilette-280647-0009238",
+   "bytes": 583398,
+   "ld_json_blocks": 1,
+   "has_product_type": true
+  },
+  "parse": {
+   "rows": 13,
+   "sample": [
+    {
+     "product_id": "d901bd549bdbe910b2",
+     "shop": "www.bstn.com",
+     "brand": "Adidas",
+     "sku": "0009238",
+     "name": "ADILETTE SLIDES",
+     "color": "",
+     "size": "37 EU",
+     "price": "27.99",
+     "currency": "EUR",
+     "availability_claim": "InStock",
+     "product_url": "https://www.bstn.com/eu_en/p/adidas-adilette-280647-0009238",
+     "source_url": "https://www.bstn.com/eu_en/p/adidas-adilette-280647-0009238",
+     "observed_utc": "2026-11-11T19:58:51.058899+00:00",
+     "source_mode": "manual_html_jsonld",
+     "gate": "HOLD",
+     "hold_reasons": "COLOR_MISSING;SIZE_STOCK_REQUIRES_MANUAL_CONFIRMATION",
+     "auto_publish": "disabled"
+    },
+    {
+     "product_id": "49783adee638edeaba",
+     "shop": "www.bstn.com",
+     "brand": "Adidas",
+     "sku": "0009238",
+     "name": "ADILETTE SLIDES",
+     "color": "",
+     "size": "38 EU",
+     "price": "27.99",
+     "currency": "EUR",
+     "availability_claim": "InStock",
+     "product_url": "https://www.bstn.com/eu_en/p/adidas-adilette-280647-0009238",
+     "source_url": "https://www.bstn.com/eu_en/p/adidas-adilette-280647-0009238",
+     "observed_utc": "2026-11-11T19:58:51.059447+00:00",
+     "source_mode": "manual_html_jsonld",
+     "gate": "HOLD",
+     "hold_reasons": "COLOR_MISSING;SIZE_STOCK_REQUIRES_MANUAL_CONFIRMATION",
+     "auto_publish": "disabled"
+    },
+    {
+     "product_id": "d78944c1872107f786",
+     "shop": "www.bstn.com",
+     "brand": "Adidas",
+     "sku": "0009238",
+     "name": "ADILETTE SLIDES",
+     "color": "",
+     "size": "39 EU",
+     "price": "27.99",
+     "currency": "EUR",
+     "availability_claim": "InStock",
+     "product_url": "https://www.bstn.com/eu_en/p/adidas-adilette-280647-0009238",
+     "source_url": "https://www.bstn.com/eu_en/p/adidas-adilette-280647-0009238",
+     "observed_utc": "2026-11-11T19:58:51.059472+00:00",
+     "source_mode": "manual_html_jsonld",
+     "gate": "HOLD",
+     "hold_reasons": "COLOR_MISSING;SIZE_STOCK_REQUIRES_MANUAL_CONFIRMATION",
+     "auto_publish": "disabled"
+    }
+   ]
+  },
+  "sqlite": {
+   "db_rows": 13,
+   "gates": [
+    "HOLD"
+   ]
+  }
+ },
+ "product_url": "https://www.bstn.com/eu_en/p/adidas-adilette-280647-0009238"
+}

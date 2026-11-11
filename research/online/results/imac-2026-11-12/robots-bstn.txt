@@ -1,0 +1,50 @@
+Sitemap: https://media.bstn.com/sitemap/eu_en/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/eu_de/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/eu_it/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/eu_nl/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/eu_fr/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/eu_es/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/eu_pt/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/eu_fi/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/us_en/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/uk_en/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/ch_de/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/dk_da/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/ca_en/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/se_sv/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/pl_pl/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/cz_cs/sitemap.xml
+Sitemap: https://media.bstn.com/sitemap/no_no/sitemap.xml
+
+User-agent: *
+
+Disallow: /adyen/
+Disallow: /*/adyen/
+Disallow: /api/
+Disallow: /*/api/
+Disallow: /bstn_newsletter/
+Disallow: /*/bstn_newsletter/
+Disallow: /newsletter/
+Disallow: /*/newsletter/
+Disallow: /catalogsearch/
+Disallow: /*/catalogsearch/
+Disallow: /checkout/
+Disallow: /*/checkout/
+Disallow: /customer/
+Disallow: /*/customer/
+Disallow: /parcel-tracking/
+Disallow: /*/parcel-tracking/
+Disallow: /raffle/
+Disallow: /*/raffle/
+Disallow: /returns-
+Disallow: /*/returns-
+Disallow: /sales/
+Disallow: /*/sales/
+Disallow: /wishlist/
+Disallow: /*/wishlist/
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /

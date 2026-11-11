@@ -1,0 +1,18 @@
+iMac (macOS 15.8.2) / Python 3.9.6
+$ python3 -m unittest -v test_collector.py
+
+test_bad_json (test_collector.Tests) ... ok
+test_csv (test_collector.Tests) ... ok
+test_invalid_price (test_collector.Tests) ... ok
+test_no_auto_publish (test_collector.Tests) ... ok
+test_no_scripts (test_collector.Tests) ... ok
+test_no_size (test_collector.Tests) ... ok
+test_no_sku (test_collector.Tests) ... ok
+test_out_of_stock (test_collector.Tests) ... ok
+test_parse (test_collector.Tests) ... ok
+test_unapproved_url (test_collector.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.002s
+
+OK
