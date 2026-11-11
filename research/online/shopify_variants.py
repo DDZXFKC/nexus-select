@@ -33,12 +33,22 @@ def ld_products(scripts):
 def text(value):
  if isinstance(value,dict):return str(value.get('name') or value.get('value') or '')
  return str(value or '')
+def vendor_candidates(script):
+ """Only accept a single unambiguous vendor string from the script containing variants."""
+ matches=re.findall(r'["\\\']vendor["\\\']\\s*:\\s*["\\\']([^"\\\']+)["\\\']',script)
+ return {m.strip() for m in matches if m.strip()}
+def brand_from_variants(scripts):
+ values=set()
+ for script in scripts:
+  if not any(True for _ in arrays(script)):continue
+  values.update(vendor_candidates(script))
+ return next(iter(values)) if len(values)==1 else ''
 def parse(html,url):
  parsed_url=urlparse(url);host=parsed_url.hostname
  if parsed_url.scheme!='https' or host not in HOSTS or parsed_url.username or parsed_url.password:raise ValueError('unapproved Shopify source')
  parser=ScriptReader();parser.feed(html)
  products=list(ld_products(parser.scripts));product=products[0] if products else {}
- name=text(product.get('name'));brand=text(product.get('brand'));color=text(product.get('color'))
+ name=text(product.get('name'));brand=text(product.get('brand')) or brand_from_variants(parser.scripts);color=text(product.get('color'))
  candidates=[]
  for script in parser.scripts:
   candidates.extend(arrays(script))
