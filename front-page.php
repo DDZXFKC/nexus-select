@@ -70,6 +70,16 @@ $nexus_pc_women_img = absint(get_theme_mod('nexus_pc_women_image', 0));
 <div class="nexus-pc-home__original">
 
 
+<style>
+.nx-hero-slides{position:relative;aspect-ratio:4/5}
+.nx-hero-slides img{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:cover;opacity:0;animation:nxHeroFade 28s infinite}
+.nx-hero-slides img:first-child{opacity:1}
+.nx-hero-slides img:nth-child(2){animation-delay:7s}
+.nx-hero-slides img:nth-child(3){animation-delay:14s}
+.nx-hero-slides img:nth-child(4){animation-delay:21s}
+@keyframes nxHeroFade{0%{opacity:0}4%{opacity:1}25%{opacity:1}29%{opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.nx-hero-slides img{animation:none;opacity:0}.nx-hero-slides img:first-child{opacity:1}}
+</style>
 <section class="nexus-v08-hero">
   <div class="nexus-v08-hero__content">
     <p class="nexus-v08-hero__eyebrow">WORLDWIDE STREET SELECTION</p>
@@ -77,8 +87,11 @@ $nexus_pc_women_img = absint(get_theme_mod('nexus_pc_women_image', 0));
     <p class="nexus-v08-hero__lead">世界のストリートから、まだ出会っていない一足を。</p>
     <a class="nexus-v08-button" href="<?php echo esc_url(home_url('/shop/')); ?>">EXPLORE COLLECTION</a>
   </div>
-  <figure class="nexus-v08-hero__media">
-    <img src="<?php echo esc_url(content_url('/uploads/rollout-png/nexus-hero-aj4-clean-1024x1024.png')); ?>" alt="NEXUS SELECT featured sneaker">
+  <figure class="nexus-v08-hero__media nx-hero-slides">
+    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-season-autumn.jpg')); ?>" alt="NEXUS SELECT 季節のエディトリアル（秋）" loading="eager" fetchpriority="high">
+    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-season-winter.jpg')); ?>" alt="NEXUS SELECT 季節のエディトリアル（冬）" loading="lazy">
+    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-season-spring.jpg')); ?>" alt="NEXUS SELECT 季節のエディトリアル（春）" loading="lazy">
+    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-season-summer.jpg')); ?>" alt="NEXUS SELECT 季節のエディトリアル（夏）" loading="lazy">
   </figure>
 </section>
 
