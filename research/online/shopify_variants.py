@@ -35,7 +35,7 @@ def text(value):
  return str(value or '')
 def vendor_candidates(script):
  """Only accept a single unambiguous vendor string from the script containing variants."""
- matches=re.findall(r'["\\\']vendor["\\\']\\s*:\\s*["\\\']([^"\\\']+)["\\\']',script)
+ matches=re.findall(r'"vendor"\s*:\s*"([^"]+)"',script)
  return {m.strip() for m in matches if m.strip()}
 def brand_from_variants(scripts):
  values=set()
