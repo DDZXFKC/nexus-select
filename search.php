@@ -3,6 +3,7 @@
 <section class="nx-search">
   <h1 class="nx-search__title">検索結果</h1>
   <?php $nx_q = get_search_query(); ?>
+  <form class="nx-search__form" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"><label class="screen-reader-text" for="nx-search-input">商品を検索</label><input id="nx-search-input" name="s" type="search" placeholder="キーワードを入力" value="<?php echo esc_attr($nx_q); ?>" required><input type="hidden" name="post_type" value="product"><button type="submit">検索</button></form>
   <?php if (trim((string) $nx_q) === '') : ?>
     <p class="nx-search__note">検索キーワードを入力してください。</p>
   <?php elseif (have_posts()) : ?>

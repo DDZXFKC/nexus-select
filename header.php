@@ -89,6 +89,13 @@ $nx_dd_render = function ($label, $url, $children) {
 @media(max-width:640px){.nx-brands-grid{grid-template-columns:repeat(2,1fr);gap:40px 16px;margin:32px auto}}
 .nx-search{max-width:880px;margin:0 auto;padding:32px 20px 64px}
 .nx-search__title{font-size:22px;margin:0 0 8px;letter-spacing:.06em}
+.nx-hsearch{display:inline-flex;align-items:center;gap:2px;margin:0}
+.nx-hsearch input[type=search]{width:0;opacity:0;padding:0;border:0;background:transparent;font:inherit;transition:width .2s,opacity .2s}
+.nx-hsearch:focus-within input[type=search],.nx-hsearch:hover input[type=search]{width:110px;opacity:1;padding:2px 0;border-bottom:1px solid #111}
+.nx-hsearch button{background:none;border:0;padding:0;font:inherit;cursor:pointer;letter-spacing:.08em}
+.nx-search__form{display:flex;gap:8px;margin:0 0 14px}
+.nx-search__form input[type=search]{flex:1;padding:10px 12px;border:1px solid #ccc;font-size:16px}
+.nx-search__form button{padding:10px 18px;background:#111;color:#fff;border:0;cursor:pointer;letter-spacing:.08em}
 .nx-search__note{color:#555;margin:0 0 20px}
 .nx-search__list{list-style:none;margin:0;padding:0}
 .nx-search__item{border-top:1px solid #e3e3e3;padding:14px 0}
@@ -126,7 +133,7 @@ $nx_dd_render = function ($label, $url, $children) {
     </nav>
     <a class="nexus-v08-logo" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
     <div class="nexus-v08-header__actions">
-      <a href="<?php echo esc_url(home_url('/?s=')); ?>">SEARCH</a>
+      <form class="nx-hsearch" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"><label class="screen-reader-text" for="nx-hsearch-input">商品を検索</label><input id="nx-hsearch-input" name="s" type="search" placeholder="SEARCH" required><input type="hidden" name="post_type" value="product"><button type="submit" aria-label="検索">SEARCH ⌕</button></form>
       <a href="<?php echo esc_url(wc_get_cart_url()); ?>">BAG (<?php echo esc_html(WC()->cart ? WC()->cart->get_cart_contents_count() : 0); ?>)</a>
     </div>
   </div>
