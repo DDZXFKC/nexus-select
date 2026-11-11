@@ -13,6 +13,14 @@ class ShopifyVariantTests(unittest.TestCase):
   rows=parse(html,'https://patta.nl/products/sample')
   self.assertEqual(len(rows),2)
   self.assertEqual(rows[0]['brand'],'Patta')
+ def test_vendor_fallback(self):
+  html='<script>window.x={"vendor":"Adidas","variants":[{"sku":"A","title":"US 9","price":{"amount":"89.00","currencyCode":"USD"}}]}</script>'
+  rows=parse(html,'https://www.notre-shop.com/products/example')
+  self.assertEqual(rows[0]['brand'],'Adidas')
+ def test_ambiguous_vendor_does_not_guess(self):
+  html='<script>{"vendor":"Brand A","vendor":"Brand B","variants":[{"sku":"A","title":"9","price":89}]}</script>'
+  rows=parse(html,'https://patta.nl/products/example')
+  self.assertEqual(rows[0]['brand'],'')
  def test_reject_unknown_host(self):
   with self.assertRaises(ValueError):parse('','https://example.org/')
  def test_unrecognized_structure_fails_closed(self):
