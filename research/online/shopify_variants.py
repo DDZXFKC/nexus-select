@@ -1,5 +1,5 @@
 """Offline Shopify inline-variant extractor. No fetching, no publishing."""
-import json,re
+import json,re,hashlib
 from html.parser import HTMLParser
 from urllib.parse import urlparse
 from datetime import datetime,timezone
@@ -37,6 +37,12 @@ def vendor_candidates(script):
  """Only accept a single unambiguous vendor string from the script containing variants."""
  matches=re.findall(r'"vendor"\s*:\s*"([^"]+)"',script)
  return {m.strip() for m in matches if m.strip()}
+def title_from_variants(scripts):
+ values=set()
+ for script in scripts:
+  if not any(True for _ in arrays(script)):continue
+  values.update(m.strip() for m in re.findall(r'"(?:title|name)"\\s*:\\s*"([^"\\n]+)"',script) if m.strip())
+ return next(iter(values)) if len(values)==1 else ''
 def brand_from_variants(scripts):
  values=set()
  for script in scripts:
@@ -49,6 +55,7 @@ def parse(html,url):
  parser=ScriptReader();parser.feed(html)
  products=list(ld_products(parser.scripts));product=products[0] if products else {}
  name=text(product.get('name'));brand=text(product.get('brand')) or brand_from_variants(parser.scripts);color=text(product.get('color'))
+ if not name:name=title_from_variants(parser.scripts)
  candidates=[]
  for script in parser.scripts:
   candidates.extend(arrays(script))
@@ -69,5 +76,5 @@ def parse(html,url):
   key=(sku,size,price)
   if key in seen:continue
   seen.add(key)
-  out.append({'product_id':'','shop':host,'brand':brand,'sku':sku,'name':name,'color':color,'size':size,'price':price,'currency':currency,'availability_claim':'','product_url':url,'source_url':url,'observed_utc':datetime.now(timezone.utc).isoformat(),'source_mode':'shopify_inline_variants_unverified','gate':'HOLD','hold_reasons':'MANUFACTURER_CODE_UNVERIFIED;PRICE_UNIT_UNVERIFIED;SIZE_STOCK_UNVERIFIED;IMAGE_RIGHTS_UNVERIFIED','auto_publish':'disabled'})
+  out.append({'product_id':hashlib.sha256(('merchant-page|'+url.split('#')[0]).encode('utf-8')).hexdigest()[:18],'shop':host,'brand':brand,'sku':sku,'name':name,'color':color,'size':size,'price':price,'currency':currency,'availability_claim':'','product_url':url,'source_url':url,'observed_utc':datetime.now(timezone.utc).isoformat(),'source_mode':'shopify_inline_variants_unverified','gate':'HOLD','hold_reasons':'MANUFACTURER_CODE_UNVERIFIED;PRICE_UNIT_UNVERIFIED;SIZE_STOCK_UNVERIFIED;IMAGE_RIGHTS_UNVERIFIED','auto_publish':'disabled'})
  return out
