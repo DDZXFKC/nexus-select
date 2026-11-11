@@ -123,3 +123,39 @@ backwards from the goal and hand over **everything in one batch**:
 If the next step is already clear, do not stop between steps: bundle
 the work, and report at completion. Muse will execute and report in
 one batch the same way.
+
+## Addendum (same day) — all input pages secured; per-host data-structure evidence
+
+So the next run needs no retrieval step, Muse fetched and saved the
+remaining pages directly (plain read-only fetch, browser user-agent;
+both stores' robots.txt declare public product pages crawlable). HTML
+is stored **locally only** on the iMac in
+`/Users/discodadz/nexus-run/pkg/input_pages_multi/` — not uploaded.
+The existing manifest there now lists all 6 pages (BSTN x2, Notre x2,
+Patta x2).
+
+Fetch results (all HTTP 200, no redirects):
+
+- Notre page 1: 401,775 bytes. Notre page 2: 394,980 bytes.
+- Patta page 1: 430,945 bytes. Patta page 2: 422,345 bytes.
+
+What the parsers will find:
+
+- **Notre: zero JSON-LD blocks.** The current JSON-LD parser can
+  extract nothing from Notre even after the allowlist is extended.
+  Product data is in an inline variants structure whose entries carry
+  price (`price`/`amount` + `currencyCode`), `sku`, variant `title`
+  (the size), and `image`. No `available` flag was present in the
+  sampled segment. A Shopify-specific extractor is required.
+- **Patta: JSON-LD Product exists** (name, category, description,
+  image, productID) but `brand` is empty and there is **no sku**.
+  `offers` is a single AggregateOffer (lowPrice/highPrice/offerCount,
+  priceCurrency EUR), **not** a per-size Offer list, so the current
+  parser yields 0 size rows. Per-size data is in the inline variants
+  structure (22 `"variants"` occurrences), same as Notre.
+
+Conclusion for ChatGPT: the code fix is (1) extend the host allowlist
+in `live_fetch.py` / `collector.py`, and (2) add one Shopify variants
+extractor covering both Notre and Patta. Inputs, manifest, and this
+evidence are ready; once the fixed package lands, Muse re-runs the
+full 6-page batch in one go (new DB, new output dir) and reports.
