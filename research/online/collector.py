@@ -5,7 +5,7 @@ from datetime import datetime,timezone
 from decimal import Decimal,InvalidOperation
 from html.parser import HTMLParser
 from urllib.parse import urlparse
-ALLOWED={'www.bstn.com','bstn.com','www.footlocker.com','www.footlocker.de','www.zalando.de','www.zalando.com'}
+ALLOWED={'www.notre-shop.com','notre-shop.com','patta.nl','www.patta.nl','www.bstn.com','bstn.com','www.footlocker.com','www.footlocker.de','www.zalando.de','www.zalando.com'}
 class Scripts(HTMLParser):
  def __init__(self):super().__init__();self.active=False;self.parts=[];self.scripts=[]
  def handle_starttag(self,tag,attrs):
@@ -27,6 +27,9 @@ def scalar(x):
 def parse(html,source_url,observed=None):
  p=urlparse(source_url)
  if p.scheme!='https' or p.hostname not in ALLOWED or p.username or p.password:raise ValueError('approved HTTPS merchant URL required')
+ if p.hostname in {'www.notre-shop.com','notre-shop.com','patta.nl','www.patta.nl'}:
+  from shopify_variants import parse as parse_shopify
+  return parse_shopify(html,source_url)
  parser=Scripts();parser.feed(html);out=[];seen=set()
  for script in parser.scripts:
   try:objects=json.loads(script)
