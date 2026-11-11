@@ -39,14 +39,63 @@ $womens_url = (
     ? get_term_link($womens_term)
     : '';
 ?>
+<?php
+$nx_dd_children = function ($parent_term) {
+    if (!$parent_term || is_wp_error($parent_term)) return [];
+    $terms = get_terms(['taxonomy' => 'product_cat', 'parent' => $parent_term->term_id, 'hide_empty' => false, 'orderby' => 'term_id', 'order' => 'ASC']);
+    if (is_wp_error($terms) || !$terms) return [];
+    $items = [];
+    foreach ($terms as $t) {
+        $l = get_term_link($t);
+        if (is_wp_error($l)) continue;
+        $items[] = ['name' => $t->name, 'url' => $l, 'count' => (int) $t->count];
+    }
+    return $items;
+};
+$nx_dd_mens = $nx_dd_children($mens_term ?? null);
+$nx_dd_womens = $nx_dd_children($womens_term ?? null);
+$nx_dd_kids = $nx_dd_children($kids_term ?? null);
+$nx_dd_render = function ($label, $url, $children) {
+    if (!$url || is_wp_error($url)) return;
+    echo '<span class="nx-dd"><a href="' . esc_url($url) . '">' . esc_html($label) . '</a>';
+    echo '<span class="nx-dd__panel" role="menu">';
+    echo '<a class="nx-dd__all" href="' . esc_url($url) . '">すべて見る</a>';
+    $shown = 0;
+    foreach ($children as $c) {
+        if ($c['count'] < 1) continue;
+        echo '<a href="' . esc_url($c['url']) . '">' . esc_html($c['name']) . '<small>' . esc_html($c['count']) . '</small></a>';
+        $shown++;
+    }
+    if (!$shown) echo '<span class="nx-dd__empty">近日追加予定</span>';
+    echo '</span></span>';
+};
+?>
+<style>
+.nx-dd{position:relative;display:inline-block}
+.nx-dd__panel{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:200px;background:#fff;border:1px solid #e3e3e3;box-shadow:0 12px 32px rgba(0,0,0,.08);padding:8px 0;opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:300;text-align:left}
+.nx-dd:hover .nx-dd__panel,.nx-dd:focus-within .nx-dd__panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.nx-dd__panel a{display:block;padding:8px 20px;font-size:12px;letter-spacing:.12em;color:#111;white-space:nowrap;text-decoration:none}
+.nx-dd__panel a small{color:#999;margin-left:8px;letter-spacing:.02em}
+.nx-dd__panel a:hover{background:#f5f5f5}
+.nx-dd__panel a.nx-dd__all{border-bottom:1px solid #eee;margin-bottom:6px;padding-bottom:12px}
+.nx-dd__panel .nx-dd__empty{display:block;padding:8px 20px;font-size:12px;color:#999;letter-spacing:.12em;white-space:nowrap}
+@media(max-width:640px){.nx-dd__panel{left:0;transform:translateY(8px)}.nx-dd:hover .nx-dd__panel,.nx-dd:focus-within .nx-dd__panel{transform:translateY(0)}}
+.nx-brands-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 24px;max-width:1080px;margin:48px auto;padding:0 20px}
+.nx-brands-grid a.nx-brand-cell{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-decoration:none;color:#111;transition:opacity .2s}
+.nx-brands-grid a.nx-brand-cell:hover{opacity:.5}
+.nx-brands-grid .nx-brand-cell img{width:auto;max-width:190px;object-fit:contain}
+.nx-brands-grid .nx-brand-name{margin-top:16px;font-size:13px;letter-spacing:.14em}
+.nx-brands-grid .nx-brand-count{font-size:11px;color:#999;margin-top:4px;letter-spacing:.08em}
+@media(max-width:640px){.nx-brands-grid{grid-template-columns:repeat(2,1fr);gap:40px 16px;margin:32px auto}}
+</style>
 <?php if (is_front_page()) : ?>
 <div class="nexus-pc-topbar" aria-label="PCホーム専用ナビゲーション">
   <a class="nexus-pc-topbar__logo" href="<?php echo esc_url(home_url('/')); ?>">NEXUS SELECT</a>
   <nav class="nexus-pc-topbar__nav" aria-label="PCホームナビゲーション">
-    <?php if ($mens_url && !is_wp_error($mens_url)) : ?><a href="<?php echo esc_url($mens_url); ?>">MEN</a><?php endif; ?>
-    <?php if ($womens_url && !is_wp_error($womens_url)) : ?><a href="<?php echo esc_url($womens_url); ?>">WOMEN</a><?php endif; ?>
-    <?php if ($kids_url && !is_wp_error($kids_url)) : ?><a href="<?php echo esc_url($kids_url); ?>">KIDS</a><?php endif; ?>
-    <a href="<?php echo esc_url(home_url('/')); ?>#nexus-pc-brands">BRANDS</a>
+    <?php $nx_dd_render('MEN', $mens_url, $nx_dd_mens); ?>
+    <?php $nx_dd_render('WOMEN', $womens_url, $nx_dd_womens); ?>
+    <?php $nx_dd_render('KIDS', $kids_url, $nx_dd_kids); ?>
+    <a href="<?php echo esc_url(home_url('/brands/')); ?>">BRANDS</a>
     <a href="<?php echo esc_url(home_url('/')); ?>#nexus-pc-arrivals-title">NEW ARRIVALS</a>
     <?php if (get_post(16) && get_post_status(16)==='publish') : ?><a href="<?php echo esc_url(get_permalink(16)); ?>">ABOUT</a><?php endif; ?>
   </nav>
@@ -61,16 +110,10 @@ $womens_url = (
   <div class="nexus-v08-header__inner">
     <nav class="nexus-v08-nav nexus-v08-nav--left" aria-label="Primary">
       <a href="<?php echo esc_url(home_url('/shop/')); ?>">SHOP</a>
-      <a href="<?php echo esc_url(home_url('/')); ?>#brands">BRANDS</a>
-      <?php if ($mens_url && !is_wp_error($mens_url)) : ?>
-        <a href="<?php echo esc_url($mens_url); ?>">MEN'S</a>
-      <?php endif; ?>
-      <?php if ($womens_url && !is_wp_error($womens_url)) : ?>
-        <a href="<?php echo esc_url($womens_url); ?>">WOMEN'S</a>
-      <?php endif; ?>
-      <?php if ($kids_url && !is_wp_error($kids_url)) : ?>
-        <a href="<?php echo esc_url($kids_url); ?>">KIDS</a>
-      <?php endif; ?>
+      <a href="<?php echo esc_url(home_url('/brands/')); ?>">BRANDS</a>
+      <?php $nx_dd_render("MEN'S", $mens_url, $nx_dd_mens); ?>
+      <?php $nx_dd_render("WOMEN'S", $womens_url, $nx_dd_womens); ?>
+      <?php $nx_dd_render('KIDS', $kids_url, $nx_dd_kids); ?>
     </nav>
     <a class="nexus-v08-logo" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
     <div class="nexus-v08-header__actions">
