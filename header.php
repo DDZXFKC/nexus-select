@@ -99,6 +99,7 @@ $nx_dd_render = function ($label, $url, $children) {
 <div class="nexus-pc-topbar" aria-label="PCホーム専用ナビゲーション">
   <a class="nexus-pc-topbar__logo" href="<?php echo esc_url(home_url('/')); ?>">NEXUS SELECT</a>
   <nav class="nexus-pc-topbar__nav" aria-label="PCホームナビゲーション">
+    <a href="<?php echo esc_url(home_url('/')); ?>">HOME</a>
     <?php $nx_dd_render('MEN', $mens_url, $nx_dd_mens); ?>
     <?php $nx_dd_render('WOMEN', $womens_url, $nx_dd_womens); ?>
     <?php $nx_dd_render('KIDS', $kids_url, $nx_dd_kids); ?>
@@ -116,6 +117,7 @@ $nx_dd_render = function ($label, $url, $children) {
 <header class="nexus-v08-header">
   <div class="nexus-v08-header__inner">
     <nav class="nexus-v08-nav nexus-v08-nav--left" aria-label="Primary">
+      <a href="<?php echo esc_url(home_url('/')); ?>">HOME</a>
       <a href="<?php echo esc_url(home_url('/shop/')); ?>">SHOP</a>
       <a href="<?php echo esc_url(home_url('/brands/')); ?>">BRANDS</a>
       <?php $nx_dd_render("MEN'S", $mens_url, $nx_dd_mens); ?>
