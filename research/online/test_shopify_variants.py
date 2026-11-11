@@ -21,6 +21,18 @@ class ShopifyVariantTests(unittest.TestCase):
   html='<script>{"vendor":"Brand A","vendor":"Brand B","variants":[{"sku":"A","title":"9","price":89}]}</script>'
   rows=parse(html,'https://patta.nl/products/example')
   self.assertEqual(rows[0]['brand'],'')
+ def test_page_identity_shared_across_sizes(self):
+  html='<script>{"vendor":"Brand","variants":[{"sku":"S","title":"S","price":100},{"sku":"M","title":"M","price":100}]}</script>'
+  rows=parse(html,'https://patta.nl/products/example')
+  self.assertEqual(len(rows),2)
+  self.assertTrue(rows[0]['product_id'])
+  self.assertEqual(rows[0]['product_id'],rows[1]['product_id'])
+  self.assertEqual(rows[0]['gate'],'HOLD')
+ def test_page_identity_not_cross_merchant(self):
+  html='<script>{"vendor":"Brand","variants":[{"sku":"S","title":"S","price":100}]}</script>'
+  a=parse(html,'https://patta.nl/products/example')
+  b=parse(html,'https://www.notre-shop.com/products/example')
+  self.assertNotEqual(a[0]['product_id'],b[0]['product_id'])
  def test_reject_unknown_host(self):
   with self.assertRaises(ValueError):parse('','https://example.org/')
  def test_unrecognized_structure_fails_closed(self):
