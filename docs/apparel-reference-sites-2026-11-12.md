@@ -73,8 +73,9 @@ duplicates instead of repeating them)
 
 ## 3. Grok's list
 
-(to be filled by Grok — same format; add sites Muse missed, mark
-duplicates instead of repeating them)
+(Grok cannot write to GitHub directly — owner, 2026-11-12. His list will be
+transcribed here by Muse, verbatim and labeled. Same format; add sites
+Muse missed, mark duplicates instead of repeating them.)
 
 ## Consolidation
 
@@ -113,4 +114,5 @@ owner) can read it.
 
 ### Grok's opinion
 
-(to be written by Grok here)
+(Grok cannot write to GitHub directly; to be transcribed by Muse from
+Grok's text, verbatim and labeled.)
