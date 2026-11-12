@@ -121,6 +121,35 @@ $nx_dd_render = function ($label, $url, $children) {
   </div>
 </div>
 <?php endif; ?>
+<?php if (is_front_page()) : ?>
+<header class="nx-home-mobile-header" aria-label="モバイルホーム">
+  <details class="nx-home-menu">
+    <summary aria-label="メニュー"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></summary>
+    <nav aria-label="モバイルメニュー">
+      <a href="<?php echo esc_url(home_url('/')); ?>">HOME</a>
+      <a href="<?php echo esc_url(home_url('/shop/')); ?>">SHOP</a>
+      <?php foreach ([["MEN", $mens_url, $nx_dd_mens], ["WOMEN", $womens_url, $nx_dd_womens], ["KIDS", $kids_url, $nx_dd_kids]] as $nx_group) : ?>
+        <?php if ($nx_group[1] && !is_wp_error($nx_group[1])) : ?>
+          <a href="<?php echo esc_url($nx_group[1]); ?>"><?php echo esc_html($nx_group[0]); ?></a>
+          <?php foreach ($nx_group[2] as $nx_child) : if ($nx_child['count'] < 1) continue; ?>
+            <a class="nx-home-menu-child" href="<?php echo esc_url($nx_child['url']); ?>"><?php echo esc_html($nx_child['name']); ?></a>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      <?php endforeach; ?>
+      <a href="<?php echo esc_url(home_url('/brands/')); ?>">BRANDS</a>
+      <a href="<?php echo esc_url(function_exists('wc_get_page_permalink') ? wc_get_page_permalink('myaccount') : home_url('/my-account/')); ?>">MY ACCOUNT</a>
+    </nav>
+  </details>
+  <a class="nx-home-mobile-logo" href="<?php echo esc_url(home_url('/')); ?>">NEXUS SELECT</a>
+  <div class="nx-home-mobile-actions">
+    <details class="nx-home-search">
+      <summary aria-label="商品検索"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></summary>
+      <form role="search" action="<?php echo esc_url(home_url('/')); ?>" method="get"><label for="nx-home-search-input">商品検索</label><input id="nx-home-search-input" type="search" name="s" required><input type="hidden" name="post_type" value="product"><button type="submit">検索</button></form>
+    </details>
+    <a class="nx-home-bag" aria-label="カート" href="<?php echo esc_url(function_exists('wc_get_cart_url') ? wc_get_cart_url() : home_url('/cart/')); ?>"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z M9 9V6a3 3 0 0 1 6 0v3"/></svg><span><?php echo esc_html(function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0); ?></span></a>
+  </div>
+</header>
+<?php endif; ?>
 <header class="nexus-v08-header">
   <div class="nexus-v08-header__inner">
     <nav class="nexus-v08-nav nexus-v08-nav--left" aria-label="Primary">
