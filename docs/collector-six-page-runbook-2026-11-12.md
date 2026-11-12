@@ -29,3 +29,17 @@ Read report from GitHub; patch real HTML structure issues and repeat this test u
 
 ## Mandatory operational rule
 Development + Muse execution instructions + return format are ONE task. Grok is removed. GitHub document publication is not proof Muse has read or executed it; Muse reads the branch during its next execution window. User is not a messenger.
+
+## Follow-up after Muse's six-page test report (2026-11-12)
+
+The first report found 5 manifest rows (BSTN 1, Notre 2, Patta 2), 51 parsed variants, and 38 Shopify rows rejected for brand_missing. The current branch's shopify_variants.py now includes a conservative vendor fallback and tests for ambiguous vendors; this patch is not yet proven on the saved Notre/Patta pages. Do not claim six-page acceptance from the earlier 5-page run.
+
+**Single next execution batch (offline, read-only):**
+1. Fetch the current branch versions of research/online/shopify_variants.py, research/online/collector.py, and research/online/test_shopify_variants.py into the previously validated local package, backing up replaced files. Do not fetch merchant pages or change WordPress.
+2. Run `python3 -m py_compile collector.py shopify_variants.py merchant_to_channels.py` and `python3 -m unittest -v test_shopify_variants test_merchant_to_channels test_channel_ready_v4 test_production_pipeline`. Record exact totals and failures.
+3. Inspect both `input_pages_multi/manifest.csv` and `input_pages_multi/manifest_bstn2.csv`. Construct a NEW six-row manifest (BSTN 2, Notre 2, Patta 2) preserving original `html_file,product_url` references, deduplicated by exact page URL. Resolve relative html_file paths against the same source directory; verify all six files exist before running. Do not modify either source manifest or HTML.
+4. Execute `python3 merchant_to_channels.py --manifest <NEW_SIX_ROW_MANIFEST> --db <NEW_DB_PATH> --out <NEW_OUTPUT_DIR>` with never-before-used DB and output names. No import, publishing, or production writes.
+5. For each host, record page count, parsed size rows, accepted/rejected DB rows and rejection reasons, brand provenance (JSON-LD brand vs unique inline vendor), missing fields, channel export counts, HOLD gates and published=0. If brand_missing persists, inspect only sanitized field/key structure of the saved inline product object and variants association; do not guess a brand from shop hostname or unrelated scripts.
+6. Update `docs/collector-six-page-test-report.md` with a new clearly dated follow-up section including actual commands and results, and link the six-row manifest evidence without uploading private product URLs or raw HTML. If all six pages stage, continue to the separate evidence catalog milestone; otherwise return precise sanitized failure evidence for ChatGPT. No intermediate user handoff.
+
+**Acceptance:** six distinct saved pages present and parsed; no ungrounded brand; all valid variant rows staged or explicitly rejected with reasons; zero publish/import; every export gate HOLD. The later evidence catalog and verified stock/price/style-code checks remain separate requirements.
