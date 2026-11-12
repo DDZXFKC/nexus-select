@@ -48,10 +48,14 @@ add_action('wp', function () {
 /* PC homepage editorial images. IDs point to licensed images in Media Library. */
 add_action('customize_register', function($wp_customize) {
     $wp_customize->add_section('nexus_pc_editorial', [
-        'title' => 'NEXUS SELECT — PCホーム画像',
+        'title' => 'AFTER HOURS CLUB — PCホーム素材',
         'priority' => 35,
         'description' => '使用権を確認した画像だけを設定してください。スマホホームには影響しません。',
     ]);
+    $wp_customize->add_setting('nexus_pc_hero_video', ['default'=>0,'sanitize_callback'=>'absint']);
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'nexus_pc_hero_video', [
+        'label'=>'PCヒーロー動画 MP4', 'section'=>'nexus_pc_editorial', 'mime_type'=>'video'
+    ]));
     foreach ([
         'nexus_pc_hero_image' => 'PCヒーロー（横長・モデル写真）',
         'nexus_pc_men_image' => 'PC MENコレクション写真',
