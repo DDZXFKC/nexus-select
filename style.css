@@ -1629,3 +1629,23 @@ body.single-product
  body.home.nexus-v08 .nexus-pc-home__original ul.products li.product{width:auto!important;min-width:0;margin:0!important;float:none}
  body.home.nexus-v08 .nexus-pc-home__original ul.products::before,body.home.nexus-v08 .nexus-pc-home__original ul.products::after{display:none}
 }
+
+/* Home-only mobile header. Existing product and desktop headers unchanged. */
+.nx-home-mobile-header{display:none}
+@media(max-width:1024px){
+ body.home.nexus-v08 .nexus-v08-header{display:none}
+ body.home.nexus-v08 .nx-home-mobile-header{display:grid;grid-template-columns:minmax(88px,1fr) minmax(0,auto) minmax(88px,1fr);align-items:center;position:relative;z-index:60;min-height:64px;padding:0 8px;background:#fff;color:#111;border-bottom:1px solid #eee}
+ .nx-home-mobile-header a{color:inherit;text-decoration:none}
+ .nx-home-mobile-logo{font-size:clamp(15px,4.3vw,23px);font-weight:800;letter-spacing:-.045em;white-space:nowrap;text-align:center}
+ .nx-home-mobile-actions{display:flex;justify-content:flex-end;align-items:center}
+ .nx-home-mobile-header summary,.nx-home-bag{display:flex;align-items:center;justify-content:center;width:44px;height:44px;cursor:pointer;list-style:none;position:relative}
+ .nx-home-mobile-header summary::-webkit-details-marker{display:none}
+ .nx-home-bag span{position:absolute;right:0;top:0;font-size:10px;line-height:14px;min-width:14px;text-align:center;background:#111;color:#fff;border-radius:50%}
+ .nx-home-menu nav,.nx-home-search form{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #ddd;padding:16px;max-height:65vh;overflow:auto;box-shadow:0 12px 20px #0001}
+ .nx-home-menu nav a{display:block;padding:12px 8px;font-size:14px;border-bottom:1px solid #eee}
+ .nx-home-menu nav a.nx-home-menu-child{padding-left:24px;font-size:12px}
+ .nx-home-search form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+ .nx-home-search form label{grid-column:1/-1;font-size:13px}
+ .nx-home-search input[type=search]{min-width:0;width:100%;font-size:16px;padding:10px;border:1px solid #aaa}
+ .nx-home-search button{padding:10px 14px;background:#111;color:#fff;border:0}
+}
