@@ -33,6 +33,10 @@ class ShopifyVariantTests(unittest.TestCase):
   a=parse(html,'https://patta.nl/products/example')
   b=parse(html,'https://www.notre-shop.com/products/example')
   self.assertNotEqual(a[0]['product_id'],b[0]['product_id'])
+ def test_parent_title_not_size(self):
+  html='<script>window.x={"vendor":"Brand","title":"Actual product","variants":[{"sku":"S","title":"US 9","price":100},{"sku":"M","title":"US 10","price":100}]}</script>'
+  rows=parse(html,'https://www.notre-shop.com/products/example')
+  self.assertEqual([r['name'] for r in rows],['Actual product','Actual product'])
  def test_reject_unknown_host(self):
   with self.assertRaises(ValueError):parse('','https://example.org/')
  def test_unrecognized_structure_fails_closed(self):
