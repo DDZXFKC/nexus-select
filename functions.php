@@ -74,3 +74,14 @@ add_action('admin_init', function () {
         error_log('NEXUS SELECT: Unable to create KIDS category: ' . $result->get_error_message());
     }
 });
+
+
+/* Mobile campaign media, separate from desktop settings. */
+add_action('customize_register', function($c){
+ $c->add_section('nexus_mobile_campaign',['title'=>'NEXUS SELECT — モバイルホーム','priority'=>36]);
+ foreach(['poster'=>'動画ポスター','video'=>'キャンペーン動画 MP4','mens'=>'MEN 写真','womens'=>'WOMEN 写真','kids'=>'KIDS 写真'] as $key=>$label){
+  $id='nexus_mobile_'.$key;
+  $c->add_setting($id,['default'=>0,'sanitize_callback'=>'absint']);
+  $c->add_control(new WP_Customize_Media_Control($c,$id,['label'=>$label,'section'=>'nexus_mobile_campaign','mime_type'=>$key==='video'?'video':'image']));
+ }
+});
