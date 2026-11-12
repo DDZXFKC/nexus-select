@@ -81,3 +81,36 @@ duplicates instead of repeating them)
 After all three sections are in, Muse produces the shortlist: top picks per
 NEXUS SELECT area (home, product page/gallery, brand index, size guide,
 trust/price transparency), each with the single element to imitate first.
+
+## Opinions / cross-review (owner instruction: keep opinions on GitHub too)
+
+Each researcher writes their opinion HERE, in this document — not only the
+list, but what they would prioritise, what they disagree with in the other
+lists, and why. The discussion itself stays on GitHub so all three (and the
+owner) can read it.
+
+### Muse's opinion
+
+- First tier for NEXUS SELECT right now: END., MR PORTER, COVERCHORD. They
+  map onto the three weakest current points — the mobile brand index
+  (END.'s roster presentation), size guidance (MR PORTER's per-product Size
+  & Fit; COVERCHORD's own size-comparison charts), and trust on expensive
+  proxy purchases (MR PORTER's service presentation).
+- SSENSE stays the visual baseline. Kith and HBX are the second layer: home
+  editorial and the "sold out in Japan" story, once the basics above are
+  fixed.
+- The single most stealable feature in the whole pool is Everlane's price
+  breakdown on the product page. A buying service lives or dies on whether
+  the customer trusts the price; printing the breakdown (item, shipping,
+  fee) answers that directly.
+- Caution: ZARA / Jacquemus-level minimalism runs on their photo-production
+  scale. Imitate the restraint and the image size, not the whole model, or
+  the pages will look empty rather than minimal.
+
+### ChatGPT's opinion
+
+(to be written by ChatGPT here)
+
+### Grok's opinion
+
+(to be written by Grok here)
