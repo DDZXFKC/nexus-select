@@ -38,10 +38,18 @@ def vendor_candidates(script):
  matches=re.findall(r'"vendor"\s*:\s*"([^"]+)"',script)
  return {m.strip() for m in matches if m.strip()}
 def title_from_variants(scripts):
+ """Use only the title of a parent object containing vendor and variants."""
  values=set()
+ decoder=json.JSONDecoder()
  for script in scripts:
-  if not any(True for _ in arrays(script)):continue
-  values.update(m.strip() for m in re.findall(r'"(?:title|name)"\\s*:\\s*"([^"\\n]+)"',script) if m.strip())
+  for match in re.finditer(r'\{',script):
+   try:obj,_=decoder.raw_decode(script[match.start():])
+   except (ValueError,TypeError):continue
+   if not isinstance(obj,dict):continue
+   variants=obj.get('variants')
+   if not isinstance(variants,list) or not variants or not obj.get('vendor'):continue
+   title=obj.get('title')
+   if isinstance(title,str) and title.strip():values.add(title.strip())
  return next(iter(values)) if len(values)==1 else ''
 def brand_from_variants(scripts):
  values=set()
