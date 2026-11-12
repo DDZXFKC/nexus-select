@@ -122,7 +122,12 @@ $nx_dd_render = function ($label, $url, $children) {
 </div>
 <?php endif; ?>
 <?php if (is_front_page()) : ?>
-<header class="nx-home-mobile-header" aria-label="モバイルホーム">
+<?php
+$nx_logo_id = absint(get_theme_mod('nexus_mobile_approved_logo', 0));
+$nx_logo_url = $nx_logo_id && get_post_mime_type($nx_logo_id) === 'image/png' ? wp_get_attachment_url($nx_logo_id) : '';
+$nx_logo_overlay = $nx_logo_url && wp_get_attachment_image_url(absint(get_theme_mod('nexus_mobile_poster', 0)), 'large');
+?>
+<header class="nx-home-mobile-header<?php echo $nx_logo_overlay ? ' nx-home-mobile-header--logo-overlay' : ''; ?>" aria-label="モバイルホーム">
   <details class="nx-home-menu">
     <summary aria-label="メニュー"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></summary>
     <nav aria-label="モバイルメニュー">
@@ -140,11 +145,6 @@ $nx_dd_render = function ($label, $url, $children) {
       <a href="<?php echo esc_url(function_exists('wc_get_page_permalink') ? wc_get_page_permalink('myaccount') : home_url('/my-account/')); ?>">MY ACCOUNT</a>
     </nav>
   </details>
-  <?php
-  // Only the approved uploaded PNG is used; never substitute a generated font.
-  $nx_logo_id = absint(get_theme_mod('nexus_mobile_approved_logo', 0));
-  $nx_logo_url = $nx_logo_id && get_post_mime_type($nx_logo_id) === 'image/png' ? wp_get_attachment_url($nx_logo_id) : '';
-  ?>
   <a class="nx-home-mobile-logo<?php echo $nx_logo_url ? ' nx-home-mobile-logo--approved' : ''; ?>" href="<?php echo esc_url(home_url('/')); ?>"<?php if ($nx_logo_url) echo ' aria-label="AFTER HOURS CLUB"'; ?>><?php if ($nx_logo_url) : ?><img src="<?php echo esc_url($nx_logo_url); ?>" alt="AFTER HOURS CLUB" style="display:block;width:100%;height:auto;max-width:100%;"><?php else : ?>NEXUS SELECT<?php endif; ?></a>
   <div class="nx-home-mobile-actions">
     <details class="nx-home-search">
