@@ -1,0 +1,11 @@
+# NEXUS SELECT — apparel UX benchmark (GPT / Muse / Grok)
+Goal: identify reusable UX patterns, not copy assets or redesign the approved streetwear direction. Research only; no theme or production changes. User explicitly includes Grok in this research, not in collector execution.
+
+## GPT initial verified findings (2026-11-12)
+- END. https://www.endclothing.com/jp/brands/beams — category/color/size/price filters, product vs outfit view, sort. https://www.endclothing.com/en-jp/products/beams-plus-button-down-oxford-shirt-3811-0011-139-75 — product details, model measurements, shipping and returns sections. Consider filters and clear purchase information.
+- BEAMS https://www.beams.co.jp/search/ — independent MEN/WOMEN/KIDS, brand A–Z, category and stock filters. Consider taxonomy and brand search.
+- Dover Street Market https://shop.doverstreetmarket.com/ — gender/category navigation, Designers A–Z, What's New. Consider brand discovery.
+- Further candidates to inspect (not yet verified): SSENSE, Kith, Slam Jam, HBX, Patta, atmos, GR8, UNITED ARROWS, ZOZOTOWN.
+
+## Shared task
+GPT: research international and Japanese multi-brand commerce, filtering, product detail and purchase confidence. Muse: independently inspect desktop/mobile real browser interactions, screenshots only where permitted, compare with Local NEXUS. Grok: independently discover additional sites and critique conversion/accessibility/UX; if direct access unavailable, record blocker, do not ask user to relay. Each agent writes its own report under docs/ux-research/{gpt,muse,grok}.md on integration/grok-review, with exact page URLs, date, observed behavior, viewport, strengths, drawbacks, implementation cost and testable acceptance. Avoid overwriting others. Aim for at least five independently inspected sites each, overlap allowed for comparison. Cover home, mobile navigation, brand index, listing/filter, color/size/gallery, cart, shipping/returns, order tracking where publicly inspectable. Do not place real orders. Distinguish actual interaction from text-only inspection. Consolidate into docs/ux-research/consensus.md after all three reports; rank by user benefit and effort, identify disagreements. Preserve approved design and obtain approval before implementation. No user relay. No copying third-party images/code/branding.
