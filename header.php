@@ -72,14 +72,14 @@ $nx_dd_render = function ($label, $url, $children) {
 ?>
 <style>
 .nx-dd{position:relative;display:inline-block}
-.nx-dd__panel{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:200px;background:#fff;border:1px solid #e3e3e3;box-shadow:0 12px 32px rgba(0,0,0,.08);padding:8px 0;opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:300;text-align:left}
+.nx-dd__panel{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:200px;max-width:calc(100vw - 16px);background:#fff;border:1px solid #e3e3e3;box-shadow:0 12px 32px rgba(0,0,0,.08);padding:8px 0;opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:300;text-align:left}
 .nx-dd:hover .nx-dd__panel,.nx-dd:focus-within .nx-dd__panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 .nx-dd__panel a{display:block;padding:8px 20px;font-size:12px;letter-spacing:.12em;color:#111;white-space:nowrap;text-decoration:none}
 .nx-dd__panel a small{color:#999;margin-left:8px;letter-spacing:.02em}
 .nx-dd__panel a:hover{background:#f5f5f5}
 .nx-dd__panel a.nx-dd__all{border-bottom:1px solid #eee;margin-bottom:6px;padding-bottom:12px}
 .nx-dd__panel .nx-dd__empty{display:block;padding:8px 20px;font-size:12px;color:#999;letter-spacing:.12em;white-space:nowrap}
-@media(max-width:640px){.nx-dd__panel{left:0;transform:translateY(8px)}.nx-dd:hover .nx-dd__panel,.nx-dd:focus-within .nx-dd__panel{transform:translateY(0)}}
+@media(max-width:640px){.nx-dd__panel{left:0;transform:translateY(8px)}.nx-dd:hover .nx-dd__panel,.nx-dd:focus-within .nx-dd__panel{transform:translateY(0)}.nx-dd__panel a{white-space:normal}}
 .nx-brands-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 24px;max-width:1080px;margin:48px auto;padding:0 20px}
 .nx-brands-grid a.nx-brand-cell{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-decoration:none;color:#111;transition:opacity .2s}
 .nx-brands-grid a.nx-brand-cell:hover{opacity:.5}
@@ -104,7 +104,7 @@ $nx_dd_render = function ($label, $url, $children) {
 </style>
 <?php if (is_front_page()) : ?>
 <div class="nexus-pc-topbar" aria-label="PCホーム専用ナビゲーション">
-  <a class="nexus-pc-topbar__logo" href="<?php echo esc_url(home_url('/')); ?>">NEXUS SELECT</a>
+  <a class="nexus-pc-topbar__logo" href="<?php echo esc_url(home_url('/')); ?>" aria-label="AFTER HOURS CLUB"><img src="<?php echo esc_url(wp_get_attachment_url(18908)); ?>" alt="AFTER HOURS CLUB" style="display:block;height:26px;width:auto"></a>
   <nav class="nexus-pc-topbar__nav" aria-label="PCホームナビゲーション">
     <a href="<?php echo esc_url(home_url('/')); ?>">HOME</a>
     <?php $nx_dd_render('MEN', $mens_url, $nx_dd_mens); ?>
@@ -165,11 +165,49 @@ $nx_logo_overlay = $nx_logo_url && wp_get_attachment_image_url(absint(get_theme_
       <?php $nx_dd_render("WOMEN'S", $womens_url, $nx_dd_womens); ?>
       <?php $nx_dd_render('KIDS', $kids_url, $nx_dd_kids); ?>
     </nav>
-    <a class="nexus-v08-logo" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+    <a class="nexus-v08-logo" href="<?php echo esc_url(home_url('/')); ?>" aria-label="AFTER HOURS CLUB"><img src="<?php echo esc_url(wp_get_attachment_url(18908)); ?>" alt="AFTER HOURS CLUB" style="display:block;height:30px;width:auto;max-width:60vw"></a>
     <div class="nexus-v08-header__actions">
       <form class="nx-hsearch" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"><label class="screen-reader-text" for="nx-hsearch-input">商品を検索</label><input id="nx-hsearch-input" name="s" type="search" placeholder="SEARCH" required><input type="hidden" name="post_type" value="product"><button type="submit" aria-label="検索">SEARCH ⌕</button></form>
       <a href="<?php echo esc_url(wc_get_cart_url()); ?>">BAG (<?php echo esc_html(WC()->cart ? WC()->cart->get_cart_contents_count() : 0); ?>)</a>
     </div>
   </div>
 </header>
+<script>
+/* nx-dd-fit: keep an open dropdown panel inside the viewport (8px margins).
+   On open, measure the trigger and panel, then shift the panel's `left`
+   just enough to fit. Clears on close/resize so CSS defaults apply. */
+(function () {
+  function clamp(dd) {
+    var panel = dd.querySelector('.nx-dd__panel');
+    if (!panel) return;
+    var pw = panel.offsetWidth;
+    if (!pw) return;
+    var vw = document.documentElement.clientWidth;
+    var tr = dd.getBoundingClientRect();
+    var narrow = window.matchMedia('(max-width:640px)').matches;
+    var visual = narrow ? tr.left : (tr.left + tr.width / 2 - pw / 2);
+    var desired = Math.max(8, Math.min(visual, vw - 8 - pw));
+    if (desired === visual) { panel.style.left = ''; return; }
+    var base = narrow ? 0 : tr.width / 2;
+    panel.style.left = (base + (desired - visual)) + 'px';
+  }
+  function clear(dd) {
+    var p = dd.querySelector('.nx-dd__panel');
+    if (p) p.style.left = '';
+  }
+  function bind() {
+    var dds = document.querySelectorAll('.nx-dd');
+    Array.prototype.forEach.call(dds, function (dd) {
+      dd.addEventListener('mouseenter', function () { clamp(dd); });
+      dd.addEventListener('mouseleave', function () { clear(dd); });
+      dd.addEventListener('focusin', function () { clamp(dd); });
+      dd.addEventListener('focusout', function (e) { if (!dd.contains(e.relatedTarget)) clear(dd); });
+    });
+    window.addEventListener('resize', function () {
+      Array.prototype.forEach.call(dds, function (dd) { clear(dd); });
+    });
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bind); } else { bind(); }
+})();
+</script>
 <main class="nexus-v08-main">

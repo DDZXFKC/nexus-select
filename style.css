@@ -479,10 +479,10 @@ line-height: 1.7;
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 8px;
+    gap: 0;
   }
   .nexus-gallery a {
-    flex: 0 0 88%;
+    flex: 0 0 100%;
     scroll-snap-align: start;
   }
   .category-grid,.woocommerce ul.products {
@@ -623,10 +623,10 @@ body.single-product .nexus-product-bottom {
     flex-direction: row;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 8px;
+    gap: 0;
   }
   body.single-product .nexus-product-visual .nexus-gallery a {
-    flex: 0 0 88%;
+    flex: 0 0 100%;
     scroll-snap-align: start;
   }
   body.single-product .nexus-product-info {
@@ -1659,3 +1659,16 @@ body.single-product
  body.admin-bar.home.nexus-v08 .nx-home-mobile-header--logo-overlay{top:46px}
  @media(min-width:783px){body.admin-bar.home.nexus-v08 .nx-home-mobile-header--logo-overlay{top:32px}}
 }
+
+/* Brand logos on home (2026-11-12): replace text brand names with logo images. */
+.nexus-pc-brand-index__links a{display:inline-flex;align-items:center}
+.nx-brand-logo{height:22px;width:auto;max-width:130px;object-fit:contain}
+.nexus-v08 .nexus-v08-brand{flex-direction:column;gap:10px}
+.nexus-v08 .nexus-v08-brand .nx-brand-logo{height:28px;max-width:72%}
+.nexus-v08 .nexus-v08-brand:hover .nx-brand-logo{filter:invert(1)}
+
+/* nx-title-wrap-fix: long product titles must wrap inside loop cards (acceptance 2026-11-13) */
+.woocommerce ul.products li.product .woocommerce-loop-product__title { overflow-wrap: anywhere; }
+
+/* nx-nav-overflow-fix: closed dropdown panels (visibility:hidden, absolute) must not widen the page on narrow screens (acceptance 2026-11-13) */
+.nexus-v08-header { overflow-x: clip; }
