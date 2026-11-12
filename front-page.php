@@ -70,30 +70,46 @@ $nexus_pc_women_img = absint(get_theme_mod('nexus_pc_women_image', 0));
 <div class="nexus-pc-home__original">
 
 
-<style>
-.nx-hero-slides{position:relative;aspect-ratio:4/5}
-.nx-hero-slides img{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:cover;opacity:0;animation:nxHeroFade 28s infinite}
-.nx-hero-slides img:first-child{opacity:1}
-.nx-hero-slides img:nth-child(2){animation-delay:7s}
-.nx-hero-slides img:nth-child(3){animation-delay:14s}
-.nx-hero-slides img:nth-child(4){animation-delay:21s}
-@keyframes nxHeroFade{0%{opacity:0}4%{opacity:1}25%{opacity:1}29%{opacity:0}100%{opacity:0}}
-@media (prefers-reduced-motion:reduce){.nx-hero-slides img{animation:none;opacity:0}.nx-hero-slides img:first-child{opacity:1}}
-</style>
-<section class="nexus-v08-hero">
-  <div class="nexus-v08-hero__content">
-    <p class="nexus-v08-hero__eyebrow">WORLDWIDE STREET SELECTION</p>
-    <h1 class="nexus-v08-hero__title">BEYOND<br>BORDERS.</h1>
-    <p class="nexus-v08-hero__lead">世界のストリートから、まだ出会っていない一足を。</p>
-    <a class="nexus-v08-button" href="<?php echo esc_url(home_url('/shop/')); ?>">EXPLORE COLLECTION</a>
+<?php
+$nx_poster = absint(get_theme_mod('nexus_mobile_poster',0));
+$nx_video = absint(get_theme_mod('nexus_mobile_video',0));
+$nx_video_url = $nx_video && get_post_mime_type($nx_video)==='video/mp4' ? wp_get_attachment_url($nx_video) : '';
+$nx_poster_url = $nx_poster ? wp_get_attachment_image_url($nx_poster,'large') : '';
+?>
+<section class="nx-mobile-campaign" aria-labelledby="nx-mobile-title">
+  <div class="nx-mobile-film">
+    <?php if ($nx_poster_url): ?>
+      <img src="<?php echo esc_url($nx_poster_url); ?>" alt="NEXUS SELECT campaign" fetchpriority="high" width="720" height="1280">
+    <?php endif; ?>
+    <?php if ($nx_video_url && $nx_poster_url): ?>
+      <video muted loop playsinline preload="none" poster="<?php echo esc_url($nx_poster_url); ?>" data-src="<?php echo esc_url($nx_video_url); ?>" aria-hidden="true"></video>
+      <button type="button" class="nx-film-toggle" hidden aria-label="動画を再生">PLAY</button>
+    <?php endif; ?>
   </div>
-  <figure class="nexus-v08-hero__media nx-hero-slides">
-    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-autumn-1.jpg')); ?>" alt="NEXUS SELECT 秋のエディトリアル（コーヒーを手に笑う二人）" loading="eager" fetchpriority="high">
-    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-autumn-2.jpg')); ?>" alt="NEXUS SELECT 秋のエディトリアル（買い物帰りの笑顔）" loading="lazy">
-    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-autumn-3.jpg')); ?>" alt="NEXUS SELECT 秋のエディトリアル（新しいスニーカーと公園のベンチ）" loading="lazy">
-    <img src="<?php echo esc_url(content_url('/uploads/2026/11/nexus-hero-autumn-4.jpg')); ?>" alt="NEXUS SELECT 秋のエディトリアル（夕方の街で笑うカップル）" loading="lazy">
-  </figure>
+  <div class="nx-mobile-copy">
+    <p>BEYOND BORDERS</p>
+    <h1 id="nx-mobile-title">ENJOY FASHION.<br>ENJOY LIFE.</h1>
+    <p>好きな服で、毎日をもっと楽しく。</p>
+    <a href="<?php echo esc_url($nexus_pc_shop); ?>">SHOP NOW</a>
+  </div>
 </section>
+<script>
+(function(){
+ const root=document.querySelector('.nx-mobile-campaign'), v=root?.querySelector('video'), b=root?.querySelector('button');
+ if(!v||!b)return;
+ const mobile=matchMedia('(max-width: 1024px)'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ let visible=false, manualPause=false;
+ function sync(){b.textContent=v.paused?'PLAY':'PAUSE';b.setAttribute('aria-label',v.paused?'動画を再生':'動画を停止');}
+ function play(){if(!v.src)v.src=v.dataset.src;v.muted=true;v.play().catch(sync);}
+ function update(){b.hidden=!mobile.matches;if(!mobile.matches||!visible||document.hidden||reduced.matches||manualPause||navigator.connection?.saveData){v.pause();return;}play();}
+ b.addEventListener('click',()=>{if(v.paused){manualPause=false;play();}else{manualPause=true;v.pause();}});
+ v.addEventListener('play',sync);v.addEventListener('pause',sync);
+ v.addEventListener('error',()=>{v.style.display='none';b.hidden=true;});
+ new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;update();},{threshold:0.25}).observe(root.querySelector('.nx-mobile-film'));
+ mobile.addEventListener('change',update);reduced.addEventListener('change',update);document.addEventListener('visibilitychange',update);
+ sync();
+})();
+</script>
 
 <?php
 $nexus_new_ids = [];
@@ -142,7 +158,7 @@ if (class_exists('WooCommerce')) {
       echo do_shortcode(
           '[products ids="' .
           esc_attr(implode(',', $nexus_new_ids)) .
-          '" columns="4" orderby="post__in"]'
+          '" columns="2" orderby="post__in"]'
       );
   }
   ?>
@@ -162,6 +178,20 @@ if (class_exists('WooCommerce')) {
       );
   }
   ?>
+</section>
+
+<section class="nx-mobile-collections" aria-label="コレクション">
+<?php foreach (['mens'=>"MEN'S",'womens'=>"WOMEN'S",'kids'=>'KIDS'] as $slug=>$label):
+ $term=get_term_by('slug',$slug,'product_cat');
+ if (!$term || is_wp_error($term)) continue;
+ $url=get_term_link($term); if(is_wp_error($url))continue;
+ $image=absint(get_theme_mod('nexus_mobile_'.$slug,0));
+?>
+<a href="<?php echo esc_url($url); ?>">
+ <?php if($image) echo wp_get_attachment_image($image,'large',false,['loading'=>'lazy','alt'=>'']); ?>
+ <strong><?php echo esc_html($label); ?> COLLECTION</strong><span>SHOP NOW</span>
+</a>
+<?php endforeach; ?>
 </section>
 
 <section class="nexus-v08-section" id="brands">
