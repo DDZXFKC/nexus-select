@@ -10,3 +10,7 @@ Read mobile-home-application-report, mobile-home-sample-assets-directive, mobile
 5. Return one report docs/website-home-completion-report-2026-11-12.md with changed files, commits, asset provenance, screenshots or sanitized evidence, actual viewport/browser tests, defects fixed and blockers. Do not report completed on markup checks alone. No user relay.
 ## Later gates
 Product detail changes require explicit user approval immediately before applying; prepare review only. After home acceptance, gallery full-width selected-color-only, size guide, listing/search/brand navigation, cart regression. No production publication, product/order changes or payment changes. No collector work until website priority changes. If asset or final logo approval is indispensable, identify exact missing item; continue independent home tasks rather than blocking all work.
+
+
+## 22:48 follow-up
+正式指示書は [website-first-priority-2026-11-12.md](website-first-priority-2026-11-12.md)（0b189bec）。PC動画の1280→574→1280実表示とPHP lintはMuse報告で合格。残りは1024/1025境界、reduced motion、無効動画フォールバック、モバイル初期MP4通信、実iPhone。Safari Responsive Design Modeで実viewportを確認して境界テストを試す。参考スライド18909は公開不可。正式素材の確保・設置を最優先。Localのみ、収集開発停止、商品ページ着手前承認。本番変更禁止。
