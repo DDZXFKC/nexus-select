@@ -105,8 +105,8 @@ $nx_poster_url = $nx_poster ? wp_get_attachment_image_url($nx_poster,'large') : 
  b.addEventListener('click',()=>{if(v.paused){manualPause=false;play();}else{manualPause=true;v.pause();}});
  v.addEventListener('play',sync);v.addEventListener('pause',sync);
  v.addEventListener('error',()=>{v.style.display='none';b.hidden=true;});
- new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;update();},{threshold:0.25}).observe(root.querySelector('.nx-mobile-film'));
- mobile.addEventListener('change',update);reduced.addEventListener('change',update);document.addEventListener('visibilitychange',update);
+ if ('IntersectionObserver' in window) { new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;update();},{threshold:0.25}).observe(root.querySelector('.nx-mobile-film')); } else { b.hidden=!mobile.matches; }
+ [mobile,reduced].forEach(m=>{if(m.addEventListener)m.addEventListener('change',update);else if(m.addListener)m.addListener(update);});document.addEventListener('visibilitychange',update);
  sync();
 })();
 </script>
@@ -174,7 +174,7 @@ if (class_exists('WooCommerce')) {
       echo do_shortcode(
           '[products ids="' .
           esc_attr(implode(',', $nexus_featured_ids)) .
-          '" columns="4" orderby="post__in"]'
+          '" columns="2" orderby="post__in"]'
       );
   }
   ?>
