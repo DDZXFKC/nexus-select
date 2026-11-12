@@ -1649,3 +1649,13 @@ body.single-product
  .nx-home-search input[type=search]{min-width:0;width:100%;font-size:16px;padding:10px;border:1px solid #aaa}
  .nx-home-search button{padding:10px 14px;background:#111;color:#fff;border:0}
 }
+
+/* Approved white cutout logo: mobile homepage only. */
+@media(max-width:1024px){
+ body.home.nexus-v08 .nx-home-mobile-header:has(.nx-home-mobile-logo--approved){grid-template-columns:88px minmax(0,1fr) 88px}
+ .nx-home-mobile-logo--approved{width:min(100%,240px);justify-self:center;min-width:0}
+ body.home.nexus-v08 .nx-home-mobile-header--logo-overlay{position:absolute;top:0;left:0;right:0;background:transparent;color:#fff;border-bottom:0}
+ .nx-home-mobile-header--logo-overlay .nx-home-menu nav,.nx-home-mobile-header--logo-overlay .nx-home-search form{color:#111}
+ body.admin-bar.home.nexus-v08 .nx-home-mobile-header--logo-overlay{top:46px}
+ @media(min-width:783px){body.admin-bar.home.nexus-v08 .nx-home-mobile-header--logo-overlay{top:32px}}
+}
