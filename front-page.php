@@ -41,12 +41,12 @@ $nexus_pc_women_img = absint(get_theme_mod('nexus_pc_women_image', 0));
     let visible=false,manualPause=false,failed=false;
     function sync(){b.textContent=v.paused?'PLAY':'PAUSE';b.setAttribute('aria-label',v.paused?'動画を再生':'動画を停止');}
     function play(){if(failed||!desktop.matches)return;if(!v.getAttribute('src'))v.src=v.dataset.src;v.muted=true;v.play().catch(sync);}
-    function update(){b.hidden=!desktop.matches||failed;if(!desktop.matches||!visible||document.hidden||reduced.matches||manualPause||navigator.connection?.saveData||failed){v.pause();return;}play();}
+    function update(){b.hidden=!desktop.matches||failed;if(!desktop.matches){v.pause();v.hidden=true;return;}if(!visible||document.hidden||reduced.matches||manualPause||navigator.connection?.saveData||failed){v.pause();return;}play();}
     b.addEventListener('click',()=>{if(v.paused){manualPause=false;play();}else{manualPause=true;v.pause();}});
-    v.addEventListener('playing',()=>{v.hidden=false;sync();});
+    v.addEventListener('playing',()=>{if(!desktop.matches||document.hidden||!visible){v.pause();v.hidden=true;return;}v.hidden=false;sync();});
     v.addEventListener('pause',sync);
     v.addEventListener('error',()=>{failed=true;v.hidden=true;b.hidden=true;});
-    if('IntersectionObserver' in window)new IntersectionObserver(e=>{visible=e[0].isIntersecting;update();},{threshold:0.25}).observe(root);
+    if('IntersectionObserver' in window)new IntersectionObserver(e=>{visible=e[0].isIntersecting&&e[0].intersectionRatio>=0.25;update();},{threshold:0.25}).observe(root);else visible=true;
     [desktop,reduced].forEach(m=>{if(m.addEventListener)m.addEventListener('change',update);else m.addListener(update);});
     document.addEventListener('visibilitychange',update);update();sync();
   })();
