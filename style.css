@@ -1607,3 +1607,25 @@ body.single-product
   .nexus-pc-brand-index__links a {color:#111;font-size:clamp(16px,1.8vw,27px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase}
   .nexus-pc-brand-index__links a:hover {opacity:.55}
 }
+
+
+/* Approved mobile campaign — desktop and product pages untouched. */
+@media(max-width:1024px){
+ body.home.nexus-v08 .nx-mobile-campaign{background:#fff;color:#111;margin:0;width:100%}
+ body.home.nexus-v08 .nx-mobile-film{position:relative;aspect-ratio:9/16;overflow:hidden;background:#e6e3df}
+ body.home.nexus-v08 .nx-mobile-film img,body.home.nexus-v08 .nx-mobile-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+ body.home.nexus-v08 .nx-film-toggle{position:absolute;bottom:12px;right:12px;background:#fff;color:#111;border:0;padding:12px;min-height:44px;font-size:11px;letter-spacing:.1em}
+ body.home.nexus-v08 .nx-film-toggle[hidden]{display:none}
+ body.home.nexus-v08 .nx-mobile-copy{text-align:center;padding:32px 20px 40px}
+ body.home.nexus-v08 .nx-mobile-copy h1{font-size:clamp(26px,6.5vw,42px);line-height:1.12;font-weight:500;letter-spacing:.035em;margin:12px 0}
+ body.home.nexus-v08 .nx-mobile-copy p{font-size:13px;line-height:1.6;margin:8px 0}
+ body.home.nexus-v08 .nx-mobile-copy a{display:block;background:#111;color:#fff;padding:15px;margin:24px auto 0;max-width:360px;text-decoration:none;letter-spacing:.12em;font-size:12px}
+ body.home.nexus-v08 .nx-mobile-collections{display:grid;gap:24px;margin:24px 0}
+ body.home.nexus-v08 .nx-mobile-collections a{display:block;text-align:center;color:#111;text-decoration:none}
+ body.home.nexus-v08 .nx-mobile-collections img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+ body.home.nexus-v08 .nx-mobile-collections strong{display:block;font-size:18px;font-weight:500;margin:20px 0 8px}
+ body.home.nexus-v08 .nx-mobile-collections span{display:block;text-decoration:underline;font-size:12px;margin-bottom:20px}
+ body.home.nexus-v08 .nexus-pc-home__original ul.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ body.home.nexus-v08 .nexus-pc-home__original ul.products li.product{width:auto!important;min-width:0;margin:0!important;float:none}
+ body.home.nexus-v08 .nexus-pc-home__original ul.products::before,body.home.nexus-v08 .nexus-pc-home__original ul.products::after{display:none}
+}
