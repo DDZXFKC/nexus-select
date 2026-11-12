@@ -9,16 +9,23 @@ $nexus_pc_women = get_term_by('slug', 'womens', 'product_cat');
 $nexus_pc_men_link = $nexus_pc_men && !is_wp_error($nexus_pc_men) ? get_term_link($nexus_pc_men) : $nexus_pc_shop;
 $nexus_pc_women_link = $nexus_pc_women && !is_wp_error($nexus_pc_women) ? get_term_link($nexus_pc_women) : $nexus_pc_shop;
 $nexus_pc_hero = absint(get_theme_mod('nexus_pc_hero_image', 0));
+$nexus_pc_video = absint(get_theme_mod('nexus_pc_hero_video', 0));
+$nexus_pc_video_url = $nexus_pc_video && get_post_mime_type($nexus_pc_video)==='video/mp4' ? wp_get_attachment_url($nexus_pc_video) : '';
+$nexus_pc_poster_url = $nexus_pc_hero ? wp_get_attachment_image_url($nexus_pc_hero, 'full') : '';
 $nexus_pc_men_img = absint(get_theme_mod('nexus_pc_men_image', 0));
 $nexus_pc_women_img = absint(get_theme_mod('nexus_pc_women_image', 0));
 ?>
 <div class="nexus-pc-home" id="nexus-pc-home">
   <section class="nexus-pc-hero" aria-label="SELECTED WORLD">
     <?php if ($nexus_pc_hero) : ?>
-      <?php echo wp_get_attachment_image($nexus_pc_hero, 'full', false, ['class'=>'nexus-pc-hero__image','loading'=>'eager','fetchpriority'=>'high','alt'=>'NEXUS SELECT editorial collection']); ?>
+      <?php echo wp_get_attachment_image($nexus_pc_hero, 'full', false, ['class'=>'nexus-pc-hero__image','loading'=>'eager','fetchpriority'=>'high','alt'=>'AFTER HOURS CLUB editorial collection']); ?>
+    <?php endif; ?>
+    <?php if ($nexus_pc_video_url): ?>
+      <video class="nexus-pc-hero__image nx-pc-film" hidden muted loop playsinline preload="none" data-src="<?php echo esc_url($nexus_pc_video_url); ?>" <?php if ($nexus_pc_poster_url): ?>poster="<?php echo esc_url($nexus_pc_poster_url); ?>"<?php endif; ?> aria-hidden="true"></video>
+      <button type="button" class="nx-pc-film-toggle" hidden style="position:absolute;bottom:16px;right:16px;z-index:2;background:#fff;color:#111;padding:10px 16px;border:1px solid #111" aria-label="動画を再生">PLAY</button>
     <?php endif; ?>
     <div class="nexus-pc-hero__content">
-      <p class="nexus-pc-hero__eyebrow">NEXUS SELECT</p>
+      <p class="nexus-pc-hero__eyebrow">AFTER HOURS CLUB</p>
       <h1>SELECTED<br>WORLD</h1>
       <p class="nexus-pc-hero__sub">GLOBAL FASHION SELECT SHOP</p>
       <span class="nexus-pc-hero__rule" aria-hidden="true"></span>
@@ -26,6 +33,24 @@ $nexus_pc_women_img = absint(get_theme_mod('nexus_pc_women_image', 0));
       <a class="nexus-pc-hero__cta" href="<?php echo esc_url($nexus_pc_shop); ?>">SHOP NOW <span aria-hidden="true">→</span></a>
     </div>
   </section>
+  <script>
+  (function(){
+    const root=document.querySelector('.nexus-pc-hero'),v=root?.querySelector('.nx-pc-film'),b=root?.querySelector('.nx-pc-film-toggle');
+    if(!v||!b)return;
+    const desktop=matchMedia('(min-width: 1025px)'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
+    let visible=false,manualPause=false,failed=false;
+    function sync(){b.textContent=v.paused?'PLAY':'PAUSE';b.setAttribute('aria-label',v.paused?'動画を再生':'動画を停止');}
+    function play(){if(failed||!desktop.matches)return;if(!v.getAttribute('src'))v.src=v.dataset.src;v.muted=true;v.play().catch(sync);}
+    function update(){b.hidden=!desktop.matches||failed;if(!desktop.matches||!visible||document.hidden||reduced.matches||manualPause||navigator.connection?.saveData||failed){v.pause();return;}play();}
+    b.addEventListener('click',()=>{if(v.paused){manualPause=false;play();}else{manualPause=true;v.pause();}});
+    v.addEventListener('playing',()=>{v.hidden=false;sync();});
+    v.addEventListener('pause',sync);
+    v.addEventListener('error',()=>{failed=true;v.hidden=true;b.hidden=true;});
+    if('IntersectionObserver' in window)new IntersectionObserver(e=>{visible=e[0].isIntersecting;update();},{threshold:0.25}).observe(root);
+    [desktop,reduced].forEach(m=>{if(m.addEventListener)m.addEventListener('change',update);else m.addListener(update);});
+    document.addEventListener('visibilitychange',update);update();sync();
+  })();
+  </script>
   <div class="nexus-pc-benefits" aria-label="サービスの特徴">
     <div><span aria-hidden="true">✈</span> 海外限定アイテムをセレクト</div>
     <div><span aria-hidden="true">◇</span> 安心の購入サポート</div>
