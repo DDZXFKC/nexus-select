@@ -55,7 +55,10 @@ class NextData(HTMLParser):
 def listing_hits(raw,expected):
  p=NextData();p.feed(raw.decode('utf-8-sig'));require(p.count==1,'missing or duplicate NEXT_DATA')
  results=json.loads(''.join(p.parts))['props']['pageProps']['serverState']['initialResults']['magento2_eu_products']['results']
- require(isinstance(results,list) and len(results)==1,'ambiguous listing results')
+ require(isinstance(results,list) and len(results) in (1,3),'unexpected listing results shape')
+ require(all(isinstance(x,dict) for x in results),'invalid listing result')
+ if len(results)==3:
+  require(all(type(x.get('page')) is int and x['page']==0 for x in results[1:]),'auxiliary listing pagination changed')
  r=results[0];n=r['nbHits'];pages=r['nbPages'];size=r['hitsPerPage'];hits=r['hits']
  require(all(type(x) is int for x in (n,pages,size,r['page'])) and size==96 and 0<n<=96000 and pages==(n+size-1)//size and r['page']==expected-1 and 1<=expected<=pages,'invalid pagination')
  require(isinstance(hits,list) and len(hits)==min(size,n-(expected-1)*size),'incomplete listing page')
