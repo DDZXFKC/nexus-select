@@ -31,6 +31,24 @@ class Catalog(unittest.TestCase):
    with self.assertRaises(ValueError):process(c,'a',lambda u:b'bad',extract,1)
    self.assertEqual(c.execute('SELECT state FROM queue').fetchone()[0],'ERROR')
    self.assertEqual(c.execute('SELECT count(*) FROM observations').fetchone()[0],0)
+ def test_product_error_continues(self):
+  raw=html(parent()).encode()
+  def parser(body,url):
+   rows=extract(body,url)
+   if url==URL:
+    for row in rows:row['fields']['brand']['value']=''
+   return rows
+  with sqlite3.connect(':memory:') as c:
+   init(c);prepare(c,'a',CFG,[URL,URL+'2'])
+   process(c,'a',lambda u:raw,parser,2)
+   self.assertEqual(dict(c.execute('SELECT url,state FROM queue')),{URL:'ERROR',URL+'2':'DONE'})
+   self.assertEqual(c.execute('SELECT complete FROM runs').fetchone()[0],0)
+ def test_fetch_error_stops(self):
+  def fetch(url):raise ValueError('truncated response')
+  with sqlite3.connect(':memory:') as c:
+   init(c);prepare(c,'a',CFG,[URL,URL+'2'])
+   with self.assertRaises(ValueError):process(c,'a',fetch,extract,2)
+   self.assertEqual(dict(c.execute('SELECT url,state FROM queue')),{URL:'ERROR',URL+'2':'PENDING'})
  def test_scope_change(self):
   with sqlite3.connect(':memory:') as c:
    init(c);prepare(c,'a',CFG,[URL])
