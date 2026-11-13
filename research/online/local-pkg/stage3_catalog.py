@@ -4,6 +4,7 @@ from urllib.parse import urlsplit
 from pathlib import Path
 from datetime import datetime,timezone
 import xml.etree.ElementTree as ET
+import io
 from stage2_detail import extract as detail_extract,merge_candidates
 from shopify_variants import ScriptReader,ld_products
 from stage2_review import digest,money
@@ -19,6 +20,15 @@ def scope(url,host):
  p=urlsplit(url)
  require(p.scheme=='https' and p.netloc==host and not p.fragment and not p.query,'URL outside approved scope')
  return url
+SITEMAP_CAP=50*1024*1024
+PRODUCT_CAP=10000000
+def sitemap_scope(url,host):
+ p=urlsplit(url)
+ if host=='www.bstn.com' and p.netloc=='media.bstn.com':
+  scope(url,'media.bstn.com')
+  require(p.path.endswith('.xml') and not any(x in p.path for x in ('..','%','\\')),'invalid media sitemap path')
+  return url
+ return scope(url,host)
 def policy(cfg):
  require(cfg['host'] in ('www.bstn.com','www.notre-shop.com','patta.nl'),'unsupported host')
  require(cfg.get('enabled') is True and cfg.get('permission_reference') and cfg.get('reviewer'),'permission not recorded')
@@ -26,46 +36,86 @@ def policy(cfg):
  require(t.tzinfo is not None and 0<=(datetime.now(timezone.utc)-t).total_seconds()<=86400,'permission stale')
  require(cfg['interval_seconds']>=5 and 1<=cfg['request_budget']<=10000,'unsafe limits')
  require(cfg.get('product_path_regex') and cfg.get('sitemap_seeds'),'missing scope')
- for u in cfg['sitemap_seeds']:scope(u,cfg['host'])
+ for u in cfg['sitemap_seeds']:sitemap_scope(u,cfg['host'])
 class Fetch:
  def __init__(self,cfg):
-  policy(cfg);self.cfg=cfg;self.n=0;self.last=0;self.opener=urllib.request.build_opener(NoRedirect());self.robots=None
+  policy(cfg);self.cfg=cfg;self.n=0;self.last=0;self.opener=urllib.request.build_opener(NoRedirect());self.robots={};self.listed=set()
  def __call__(self,url):
-  scope(url,self.cfg['host'])
-  if self.robots is not None:require(self.robots.can_fetch(AGENT,url),'robots disallows URL')
+  return self.read(url,'product')
+ def sitemap(self,url):
+  return self.read(url,'sitemap')
+ def read(self,url,kind):
+  host=urlsplit(url).netloc
+  if kind=='sitemap':
+   sitemap_scope(url,self.cfg['host'])
+   require(url in self.listed,'sitemap not discovered from approved index')
+  elif kind=='robots':
+   require(host==self.cfg['host'] or (self.cfg['host']=='www.bstn.com' and host=='media.bstn.com'),'robots host outside scope')
+   scope(url,host);require(urlsplit(url).path=='/robots.txt','invalid robots path')
+  else:scope(url,self.cfg['host'])
+  if kind!='robots':
+   require(host in self.robots and self.robots[host].can_fetch(AGENT,url),'robots disallows URL')
   require(self.n<self.cfg['request_budget'],'request budget reached')
   time.sleep(max(0,self.cfg['interval_seconds']-(time.monotonic()-self.last)))
   self.n+=1;self.last=time.monotonic()
+  cap=SITEMAP_CAP if kind=='sitemap' else PRODUCT_CAP
   try:
-   with self.opener.open(urllib.request.Request(url,headers={'User-Agent':AGENT}),timeout=30) as r:
+   with self.opener.open(urllib.request.Request(url,headers={'User-Agent':AGENT,'Accept-Encoding':'identity'}),timeout=30) as r:
     require(r.status==200 and r.geturl()==url,'unexpected response')
-    raw=r.read(10000001);require(len(raw)<=10000000,'response too large')
+    require(r.headers.get('Content-Encoding','identity').lower()=='identity','unsupported encoding')
+    length=r.headers.get('Content-Length')
+    if length is not None:require(0<=int(length)<=cap,'response too large')
+    raw=r.read(cap+1);require(len(raw)<=cap,'response too large')
+    if length is not None:require(len(raw)==int(length),'truncated response')
     return raw
   except urllib.error.HTTPError as e:raise Stop('HTTP '+str(e.code)+' '+url) from e
  def init_robots(self):
-  raw=self('https://'+self.cfg['host']+'/robots.txt')
-  self.robots=urllib.robotparser.RobotFileParser();self.robots.parse(raw.decode('utf-8').splitlines())
-  delay=self.robots.crawl_delay(AGENT) or self.robots.crawl_delay('*') or 0
-  self.cfg['interval_seconds']=max(self.cfg['interval_seconds'],delay)
-  require(not self.robots.request_rate(AGENT) and not self.robots.request_rate('*'),'robots request-rate needs manual review')
+  hosts=[self.cfg['host']]
+  if self.cfg['host']=='www.bstn.com':hosts.append('media.bstn.com')
+  for host in hosts:
+   raw=self.read('https://'+host+'/robots.txt','robots')
+   lines=raw.decode('utf-8-sig').splitlines()
+   require(any(line.lower().startswith('user-agent:') for line in lines),'invalid robots response')
+   rp=urllib.robotparser.RobotFileParser();rp.parse(lines);self.robots[host]=rp
+   delay=rp.crawl_delay(AGENT) or rp.crawl_delay('*') or 0
+   self.cfg['interval_seconds']=max(self.cfg['interval_seconds'],delay)
+   require(not rp.request_rate(AGENT) and not rp.request_rate('*'),'robots request-rate needs manual review')
+   if host==self.cfg['host']:
+    self.listed.update(line.split(':',1)[1].strip() for line in lines if line.lower().startswith('sitemap:'))
+  for u in self.cfg['sitemap_seeds']:
+   if urlsplit(u).netloc=='media.bstn.com':require(u in self.listed,'media seed not listed in storefront robots')
+   self.listed.add(u)
 def sitemap(raw):
- require(b'<!DOCTYPE' not in raw.upper() and b'<!ENTITY' not in raw.upper(),'unsafe XML')
- root=ET.fromstring(raw);kind=root.tag.split('}')[-1]
- require(kind in ('sitemapindex','urlset'),'unknown sitemap format')
- urls=[]
- for node in root:
-  if node.tag.split('}')[-1] not in ('sitemap','url'):continue
-  loc=[x.text for x in node if x.tag.split('}')[-1]=='loc']
-  require(len(loc)==1 and loc[0],'invalid sitemap loc');urls.append(loc[0].strip())
+ require(len(raw)<=SITEMAP_CAP,'sitemap too large')
+ require(b'\x00' not in raw and b'<!DOCTYPE' not in raw.upper() and b'<!ENTITY' not in raw.upper(),'unsafe XML')
+ root=None;kind=None;urls=[];depth=0
+ for event,node in ET.iterparse(io.BytesIO(raw),events=('start','end')):
+  if event=='start':
+   depth+=1
+   if depth==1:
+    root=node;kind=node.tag.split('}')[-1]
+    require(kind in ('sitemapindex','urlset'),'unknown sitemap format')
+  else:
+   if depth==2:
+    expected='sitemap' if kind=='sitemapindex' else 'url'
+    require(node.tag.split('}')[-1]==expected,'unexpected sitemap entry')
+    loc=[x.text for x in node if x.tag.split('}')[-1]=='loc']
+    require(len(loc)==1 and loc[0] and loc[0].strip(),'invalid sitemap loc')
+    urls.append(loc[0].strip());require(len(urls)<=50000,'too many sitemap entries')
+    root.remove(node);node.clear()
+   depth-=1
+ require(root is not None,'empty XML')
  return kind,urls
 def discover(cfg,fetch):
  pending=list(cfg['sitemap_seeds']);seen=set();products=set();excluded=set()
  while pending:
-  u=pending.pop(0);scope(u,cfg['host'])
+  u=pending.pop(0);sitemap_scope(u,cfg['host'])
   if u in seen:continue
-  seen.add(u);kind,urls=sitemap(fetch(u))
+  seen.add(u);require(len(seen)<=1000,'too many sitemap files');kind,urls=sitemap(fetch.sitemap(u) if isinstance(fetch,Fetch) else fetch(u))
   for v in urls:
-   if kind=='sitemapindex':scope(v,cfg['host']);pending.append(v)
+   if kind=='sitemapindex':
+    sitemap_scope(v,cfg['host']);pending.append(v)
+    if isinstance(fetch,Fetch):fetch.listed.add(v)
    elif urlsplit(v).netloc==cfg['host'] and re.fullmatch(cfg['product_path_regex'],urlsplit(v).path):
     products.add(scope(v,cfg['host']))
    else:excluded.add(v)
