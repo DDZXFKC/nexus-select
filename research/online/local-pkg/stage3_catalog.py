@@ -64,12 +64,12 @@ def listing_hits(raw,expected):
  require(isinstance(hits,list) and len(hits)==min(size,n-(expected-1)*size),'incomplete listing page')
  urls=[]
  for h in hits:
-  u=h['url'];require(isinstance(u,str) and re.fullmatch(r'p/[A-Za-z0-9._~-]+',u) and '..' not in u,'invalid product hit')
+  u=h['url'];require(isinstance(u,str) and re.fullmatch(r'[pr]/[A-Za-z0-9._~-]+',u) and '..' not in u,'invalid product hit')
   urls.append('https://www.bstn.com/eu_en/'+u)
  require(len(set(urls))==len(urls),'duplicate page hits')
  return urls,n,pages
 def discover_listings(cfg,fetch):
- products=set();count=0
+ products=set();excluded=set();count=0
  for seed in cfg['listing_seeds']:
   seen=set();total=None;pages=1;page=1
   while page<=pages:
@@ -79,10 +79,13 @@ def discover_listings(cfg,fetch):
    require((n,p)==(total,pages) and not seen.intersection(urls),'listing changed during discovery')
    seen.update(urls);page+=1
   require(len(seen)==total,'listing coverage mismatch')
-  for u in seen:require(re.fullmatch(cfg['product_path_regex'],urlsplit(u).path),'product outside configured scope')
-  products.update(seen)
+  for u in seen:
+   if urlsplit(u).path.startswith('/eu_en/r/'):
+    excluded.add(u);continue
+   require(re.fullmatch(cfg['product_path_regex'],urlsplit(u).path),'product outside configured scope')
+   products.add(u)
  require(products,'no matching products')
- return sorted(products),count,0
+ return sorted(products),count,len(excluded)
 def policy(cfg):
  require(cfg['host'] in ('www.bstn.com','www.notre-shop.com','patta.nl'),'unsupported host')
  require(cfg.get('enabled') is True and cfg.get('permission_reference') and cfg.get('reviewer'),'permission not recorded')
