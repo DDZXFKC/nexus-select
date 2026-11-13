@@ -364,3 +364,37 @@ Conclusion: full-catalog discovery is feasible using only the store host — enu
 
 Addendum to §19 (2026-11-13, later): the owner re-decided option A as the final call (staged rollout, watch and see) and Muse relayed it to ChatGPT as the owner's final decision. ChatGPT again declined to implement the stop release: it understands the 403 is on media's robots.txt, not on the sitemap XML itself, but will not unconditionally permit an unverifiable other-host access control on the basis of the storefront listing alone. Its evaluation: the 5 test errors are a bs4 dependency issue (install the dependency in the isolated environment and re-verify); the category route is a viable alternative; extraction/storage/delta code is reusable as-is; staged verification starting from 5 items is adopted. So the implementable path is the category route, whose design ChatGPT is positioned to prepare. Owner's next call pending.
 Owner's note (2026-11-13): from the owner's own past scraping experience, hitting access restrictions after long scraping sessions amounted to temporary rate limits that cleared after a while, not permanent bans.
+
+## 20. BSTN category batch — execution result (2026-11-13, Muse on iMac)
+
+Code under test: 200e1e38 (scoped storefront category discovery), fixtures d395bc9a, runbook 8ea8ed86 (`docs/collector-bstn-category-runbook-2026-11-13.md`).
+Environment: new isolated directory `pkg_bstn_cat_20261113`, copied from the current package; previous DBs and logs untouched. Python 3.9.6.
+
+### Step 1 — compile and tests: PASS
+
+- `py_compile stage3_catalog.py test_stage3_bstn_listing.py`: OK.
+- Targeted: `python3 -m unittest test_stage3_bstn_listing test_stage3_catalog test_stage3_bstn` → Ran 21 tests, OK.
+- bs4 dependency: no dependency manifest exists in the package, so it was resolved inside an isolated venv in the isolated directory (`.venv-cat`, beautifulsoup4 4.15.0). No global installs or updates.
+- Full discover in the venv: Ran 158 tests, OK. The 5 earlier errors (§19, `test_pipeline.py` → `ModuleNotFoundError: bs4`) are resolved by the venv. 158 = 152 previous + 6 new listing tests.
+
+### Step 2 — terms and robots recheck (storefront host only, 2 requests): PASS
+
+- `GET https://www.bstn.com/robots.txt` → 200. `can_fetch` for agent `AHC-CatalogReview/1.0` is true for the listing seed, for seed+`page=2`, and for a sample product URL. No crawl-delay, no request-rate.
+- `GET https://www.bstn.com/eu_en/terms-and-conditions` → 200 (link taken from the saved home page). Keyword scan of the delivered document: scrap / crawler / crawling / spider / automated / robot / "data mining" = 0 hits each (the "harvest" hits are JS telemetry config, not terms text). No scraping prohibition found — consistent with §18.
+
+### Step 2 — saved-HTML validation: FAIL — stopped before any network collection run, per runbook
+
+`listing_hits()` requires exactly one entry in `props.pageProps.serverState.initialResults.magento2_eu_products.results`. Every saved actual listing page contains three entries (counts only; product data redacted):
+
+- `subcat.html` (men all-products; `categories=Men~All Products~Footwear`, `groupextra=Casual Shoes~Boots~Loafers`): results=3 → [0] nbHits 381, nbPages 4, hitsPerPage 96, page 0, hits 96; [1] nbHits 384, nbPages 4, page 0, hits 96; [2] nbHits 3447, nbPages 36, page 0, hits 96. Error: `ValueError: ambiguous listing results`.
+- `subcat_page_1.html`: same shape and counts as above.
+- `subcat_page_2.html` (page=2 requested): [0] page=1, [1] page=0, [2] page=0. Only results[0] tracks the requested page; the other two entries do not paginate.
+- Landing pages (`/eu_en/men`, `/women`, `/kids`) contain no `serverState` key at all. They are not all-products listings; noted for completeness.
+
+### Steps 3–4 — not executed
+
+No collector config was activated, no discovery or product requests were made, no `bstn-category.sqlite` was created, and nothing was published or imported.
+
+### Requested design decision (ChatGPT)
+
+`listing_hits` needs a deterministic selection rule for the three embedded result sets. The evidence points to results[0]: it is the only entry whose page index follows the requested page, and its nbHits (381) matches the filtered listing that was verified in §19. Muse made no code changes, per the two-agent division of work. After a fix, the same runbook can be re-executed from Step 2 validation.
