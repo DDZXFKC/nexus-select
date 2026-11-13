@@ -1,5 +1,6 @@
 """Offline detail evidence extraction; review only, no network."""
 import re,json,hashlib
+from decimal import Decimal, InvalidOperation
 from shopify_variants import ScriptReader,ld_products
 from urllib.parse import urlparse
 def merge_candidates(candidates):
@@ -14,7 +15,7 @@ def merge_candidates(candidates):
  if not candidates:return None
  ids={str(x['id']) for x in candidates}
  if len(ids)!=1:return None
- parent={'id':next(iter(ids))};variants={}
+ parent={'id':next(iter(ids))};variants={};prices={}
  try:
   for x in candidates:
    merge(parent,x,('vendor','title','type','handle'))
@@ -22,12 +23,36 @@ def merge_candidates(candidates):
     if not isinstance(v,dict) or not v.get('id'):raise ValueError('missing variant id')
     key=str(v['id']);target=variants.setdefault(key,{'id':key})
     merge(target,v,('sku','title'))
-    for field,keys in (('price',('amount','currencyCode')),('image',('src',))):
+    price=v.get('price')
+    if price is not None:prices.setdefault(key,[]).append(price)
+    for field,keys in (('image',('src',)),):
      obj=v.get(field)
      if obj is None:continue
      if not isinstance(obj,dict):raise ValueError('invalid '+field)
      merge(target.setdefault(field,{}),obj,keys)
- except ValueError:return None
+  for key,values in prices.items():
+   major=[];minor=[];currencies=set()
+   for value in values:
+    if type(value) is int:
+     if value<0:raise ValueError('negative minor price')
+     minor.append(Decimal(value))
+    elif isinstance(value,dict):
+     amount=value.get('amount');currency=value.get('currencyCode')
+     if type(amount) not in (int,float,str) or not isinstance(currency,str) or not re.fullmatch('[A-Z]{3}',currency):
+      raise ValueError('invalid money')
+     n=Decimal(str(amount))
+     if not n.is_finite() or n<0:raise ValueError('invalid amount')
+     major.append(n);currencies.add(currency)
+    else:raise ValueError('invalid price representation')
+   if len(currencies)!=1 or not major:raise ValueError('missing or conflicting currency')
+   currency=next(iter(currencies))
+   if minor and currency not in ('USD','EUR'):raise ValueError('unsupported minor unit')
+   if any(n!=major[0] for n in major) or any(n!=major[0]*100 for n in minor):
+    raise ValueError('price conflict')
+   # Preserve the original major-unit representation; comparison uses Decimal.
+   original=next(v for v in values if isinstance(v,dict))
+   variants[key]['price']={'amount':original['amount'],'currencyCode':currency}
+ except (ValueError,InvalidOperation,TypeError):return None
  parent['variants']=list(variants.values())
  return parent
 
