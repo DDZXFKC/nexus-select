@@ -1,6 +1,7 @@
 """Permission-gated, resumable sitemap collector. No publication or external writes."""
 import argparse,json,sqlite3,hashlib,time,re,urllib.request,urllib.error,urllib.robotparser
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit,parse_qsl,urlencode,urlunsplit
+from html.parser import HTMLParser
 from pathlib import Path
 from datetime import datetime,timezone
 import xml.etree.ElementTree as ET
@@ -29,14 +30,66 @@ def sitemap_scope(url,host):
   require(p.path.endswith('.xml') and not any(x in p.path for x in ('..','%','\\')),'invalid media sitemap path')
   return url
  return scope(url,host)
+def listing_scope(url,host):
+ p=urlsplit(url)
+ require(host=='www.bstn.com' and p.scheme=='https' and p.netloc==host and not p.fragment,'listing host outside scope')
+ require(re.fullmatch(r'/eu_en/(men|women|kids)/all-products',p.path),'listing path outside scope')
+ q=parse_qsl(p.query,keep_blank_values=True,strict_parsing=True);d=dict(q)
+ require(len(q)==len(d) and set(d)<= {'categories','page'},'listing query outside scope')
+ require(re.fullmatch(r'(Men|Women|Kids)~All Products(?:~[A-Za-z0-9 &/-]+)*',d.get('categories','')),'invalid category')
+ require(d['categories'].split('~')[0].lower()==p.path.split('/')[2],'gender mismatch')
+ require('page' not in d or re.fullmatch(r'[1-9][0-9]{0,3}',d['page']),'invalid page')
+ return url
+def listing_page(seed,n):
+ p=urlsplit(seed);q=dict(parse_qsl(p.query));q['page']=str(n)
+ return urlunsplit((p.scheme,p.netloc,p.path,urlencode(q),''))
+class NextData(HTMLParser):
+ def __init__(self):
+  super().__init__();self.active=False;self.parts=[];self.count=0
+ def handle_starttag(self,tag,attrs):
+  if tag=='script' and dict(attrs).get('id')=='__NEXT_DATA__':self.active=True;self.count+=1
+ def handle_endtag(self,tag):
+  if tag=='script':self.active=False
+ def handle_data(self,data):
+  if self.active:self.parts.append(data)
+def listing_hits(raw,expected):
+ p=NextData();p.feed(raw.decode('utf-8-sig'));require(p.count==1,'missing or duplicate NEXT_DATA')
+ results=json.loads(''.join(p.parts))['props']['pageProps']['serverState']['initialResults']['magento2_eu_products']['results']
+ require(isinstance(results,list) and len(results)==1,'ambiguous listing results')
+ r=results[0];n=r['nbHits'];pages=r['nbPages'];size=r['hitsPerPage'];hits=r['hits']
+ require(all(type(x) is int for x in (n,pages,size,r['page'])) and size==96 and 0<n<=96000 and pages==(n+size-1)//size and r['page']==expected-1 and 1<=expected<=pages,'invalid pagination')
+ require(isinstance(hits,list) and len(hits)==min(size,n-(expected-1)*size),'incomplete listing page')
+ urls=[]
+ for h in hits:
+  u=h['url'];require(isinstance(u,str) and re.fullmatch(r'p/[A-Za-z0-9._~-]+',u) and '..' not in u,'invalid product hit')
+  urls.append('https://www.bstn.com/eu_en/'+u)
+ require(len(set(urls))==len(urls),'duplicate page hits')
+ return urls,n,pages
+def discover_listings(cfg,fetch):
+ products=set();count=0
+ for seed in cfg['listing_seeds']:
+  seen=set();total=None;pages=1;page=1
+  while page<=pages:
+   u=listing_page(seed,page);listing_scope(u,cfg['host'])
+   urls,n,p=listing_hits(fetch.listing(u),page);count+=1
+   if total is None:total=n;pages=p
+   require((n,p)==(total,pages) and not seen.intersection(urls),'listing changed during discovery')
+   seen.update(urls);page+=1
+  require(len(seen)==total,'listing coverage mismatch')
+  for u in seen:require(re.fullmatch(cfg['product_path_regex'],urlsplit(u).path),'product outside configured scope')
+  products.update(seen)
+ require(products,'no matching products')
+ return sorted(products),count,0
 def policy(cfg):
  require(cfg['host'] in ('www.bstn.com','www.notre-shop.com','patta.nl'),'unsupported host')
  require(cfg.get('enabled') is True and cfg.get('permission_reference') and cfg.get('reviewer'),'permission not recorded')
  t=datetime.fromisoformat(cfg['reviewed_at'].replace('Z','+00:00'))
  require(t.tzinfo is not None and 0<=(datetime.now(timezone.utc)-t).total_seconds()<=86400,'permission stale')
  require(cfg['interval_seconds']>=5 and 1<=cfg['request_budget']<=10000,'unsafe limits')
- require(cfg.get('product_path_regex') and cfg.get('sitemap_seeds'),'missing scope')
- for u in cfg['sitemap_seeds']:sitemap_scope(u,cfg['host'])
+ require(cfg.get('product_path_regex') and bool(cfg.get('sitemap_seeds'))!=bool(cfg.get('listing_seeds')),'choose exactly one discovery mode')
+ for u in cfg.get('sitemap_seeds',[]):sitemap_scope(u,cfg['host'])
+ for u in cfg.get('listing_seeds',[]):
+  listing_scope(u,cfg['host']);require('page' not in dict(parse_qsl(urlsplit(u).query)),'seed must omit page')
 class Fetch:
  def __init__(self,cfg):
   policy(cfg);self.cfg=cfg;self.n=0;self.last=0;self.opener=urllib.request.build_opener(NoRedirect());self.robots={};self.listed=set()
@@ -44,11 +97,14 @@ class Fetch:
   return self.read(url,'product')
  def sitemap(self,url):
   return self.read(url,'sitemap')
+ def listing(self,url):
+  return self.read(url,'listing')
  def read(self,url,kind):
   host=urlsplit(url).netloc
   if kind=='sitemap':
    sitemap_scope(url,self.cfg['host'])
    require(url in self.listed,'sitemap not discovered from approved index')
+  elif kind=='listing':listing_scope(url,self.cfg['host'])
   elif kind=='robots':
    require(host==self.cfg['host'] or (self.cfg['host']=='www.bstn.com' and host=='media.bstn.com'),'robots host outside scope')
    scope(url,host);require(urlsplit(url).path=='/robots.txt','invalid robots path')
@@ -71,7 +127,7 @@ class Fetch:
   except urllib.error.HTTPError as e:raise Stop('HTTP '+str(e.code)+' '+url) from e
  def init_robots(self):
   hosts=[self.cfg['host']]
-  if self.cfg['host']=='www.bstn.com':hosts.append('media.bstn.com')
+  if self.cfg['host']=='www.bstn.com' and not self.cfg.get('listing_seeds'):hosts.append('media.bstn.com')
   for host in hosts:
    raw=self.read('https://'+host+'/robots.txt','robots')
    lines=raw.decode('utf-8-sig').splitlines()
@@ -82,7 +138,7 @@ class Fetch:
    require(not rp.request_rate(AGENT) and not rp.request_rate('*'),'robots request-rate needs manual review')
    if host==self.cfg['host']:
     self.listed.update(line.split(':',1)[1].strip() for line in lines if line.lower().startswith('sitemap:'))
-  for u in self.cfg['sitemap_seeds']:
+  for u in self.cfg.get('sitemap_seeds',[]):
    if urlsplit(u).netloc=='media.bstn.com':require(u in self.listed,'media seed not listed in storefront robots')
    self.listed.add(u)
 def sitemap(raw):
@@ -107,6 +163,7 @@ def sitemap(raw):
  require(root is not None,'empty XML')
  return kind,urls
 def discover(cfg,fetch):
+ if cfg.get('listing_seeds'):return discover_listings(cfg,fetch)
  pending=list(cfg['sitemap_seeds']);seen=set();products=set();excluded=set()
  while pending:
   u=pending.pop(0);sitemap_scope(u,cfg['host'])
@@ -156,7 +213,7 @@ def init(c):
  CREATE TABLE IF NOT EXISTS observations(id TEXT PRIMARY KEY,variant TEXT,payload TEXT);
  CREATE TABLE IF NOT EXISTS latest(run TEXT,variant TEXT,url TEXT,payload TEXT,PRIMARY KEY(run,variant));""")
 def prepare(c,run,cfg,urls):
- sig=digest([cfg['host'],cfg['product_path_regex'],cfg['sitemap_seeds'],urls])
+ sig=digest([cfg['host'],cfg['product_path_regex'],cfg.get('listing_seeds') or cfg['sitemap_seeds'],urls])
  old=c.execute('SELECT scope_hash FROM runs WHERE id=?',(run,)).fetchone()
  require(not old or old[0]==sig,'run scope changed')
  with c:
@@ -225,7 +282,7 @@ def main():
   else:
    require(not c.execute('SELECT 1 FROM runs WHERE id=?',(a.run,)).fetchone(),'run already exists')
    urls,n,excluded=discover(cfg,f);prepare(c,a.run,cfg,urls)
-   (out/'discovery.json').write_text(json.dumps(dict(urls=urls,sitemaps=n,excluded=excluded)),encoding='utf-8')
+   (out/'discovery.json').write_text(json.dumps(dict(urls=urls,sitemaps=0 if cfg.get('listing_seeds') else n,listing_pages=n if cfg.get('listing_seeds') else 0,excluded=excluded)),encoding='utf-8')
   try:process(c,a.run,f,extract,a.limit)
   finally:print(json.dumps(report(c,a.run,out)))
 if __name__=='__main__':main()
