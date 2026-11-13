@@ -1,0 +1,6 @@
+# 魔王ちゃんへの実行指示 — 新規買付先の収集検証
+オーナーから2026-11-13に調査・実行指示。既存BSTNのPython完成作業を止めず、空き時間または既存優先作業完了後に以下を順次実行する。プランA継続。
+対象: END (endclothing.com), HBX (hbx.com), size? (size.co.uk), Footpatrol (footpatrol.com), Footshop (footshop.eu), SSENSE (ssense.com), Slam Jam (slamjam.com), SNIPES (snipes.com), Queens (queens.global), JD Sports (jdsports.com), Shooos (shooos.com)。BSTN公式フィードも比較対象。
+各店について公式規約、robots、対象地域・日本配送/現地パートナー配送、商品ページ構造、公式API/フィードと利用条件を一次資料で確認。公式フィードはアフィリエイト用であり転売用利用許可とは別。参考: https://www.bstn.com/affiliates https://hbx.com/affiliates https://www.footpatrol.com/en-ie/pages/become-an-affiliate https://success.awin.com/s/article/How-can-I-access-a-Product-Feed?language=en_US
+自動取得の許可根拠が確認できた店舗のみ、既存Pythonの隔離環境で対応可否を検証。まず少数（最大5商品/店）、商品名、ブランド、品番、カラー、サイズ別価格・在庫、通貨、URL、取得時刻、証拠を保存。未対応構造はHTML構造と修正要件をChatGPTへ返す。既存の店舗別設定・停止条件を守り、禁止・403等は停止、回避しない。フィード未契約の場合は申請条件と必要な許可を報告し、無断契約・有料購入・外部送信はしない。
+成果物: 店舗ごとの判定（実収集成功/技術修正必要/許可待ち/除外）、根拠URL、取得件数、サイズ行数、欠損項目、配送条件、ログ、次の修正。GitHubに一括報告。実データはHOLD、公開・インポートなし。ユーザーを伝言役にしない。Grokのレビューも依頼するが、未確認なら明記。
