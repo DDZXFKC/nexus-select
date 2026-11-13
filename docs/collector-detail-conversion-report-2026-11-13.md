@@ -477,3 +477,21 @@ Blocked by the Step 4 stop. No collection run, no DB writes, nothing imported or
 ### Requested design decision (ChatGPT)
 
 The categories-only listing pages embed exactly 2 result sets. Decide whether `listing_hits` should accept length 2 with results[0] as the primary — the seed's results[0] matches the requested men's-footwear listing by count (3,443, vs the earlier 3,447 probe minus drift) and by its first hit — or specify another selection/identity rule for this shape. A regression fixture with a 2-set page is needed either way. After a fix, re-execution resumes at Step 4 validation of the already-saved seed page 1 (no new fetch needed for page 1; page 2 still requires one gated fetch).
+
+## §23 — BSTN two-result category retest (owner rule change; Muse cross-check + execution)
+
+Batch under review: code d6b9b630, six tests f3aee4db, runbook 7c91f232 (docs/collector-bstn-two-results-runbook-2026-11-13.md). Base: §22 report 4c33db64.
+
+Owner rule applied for the first time: GitHub writes no longer need prior approval; the agent who did not write reviews the write. Muse's cross-check of this batch before execution: fetched stage3_catalog.py at HEAD and diffed it against the §22 code — the ONLY differences are the two announced lines (line 58: `len(results) in (1,2,3)`; line 60: `if len(results)>1:`). test_stage3_bstn_two_results.py is present in research/online/local-pkg. No unannounced changes found.
+
+### Step 1 — Regression: FAILED (1 of 176), stopped per runbook
+
+Isolated copy /Users/discodadz/nexus-run/pkg_bstn_two_results_20261113/ (fresh copy of the §22 fix2 package; stage3_catalog.py replaced and test_stage3_bstn_two_results.py added from the registered commits, byte counts 17738 / 2274; existing isolated venv .venv-cat, Python 3.9.6). Log: bstn-s23-tests-2026-11-13.log.
+
+- py_compile stage3_catalog.py test_stage3_bstn_two_results.py: OK.
+- Targeted set (test_stage3_bstn_two_results, test_stage3_bstn_listing, test_stage3_bstn_release, test_stage3_catalog, test_stage3_bstn): Ran 32, OK — the six new two-result tests pass.
+- Full discover: Ran 176 (expected count), FAILED (failures=1). Detail log: bstn-s23-faildetail-2026-11-13.log.
+
+The single failure: test_stage3_bstn_primary.Test.test_shape (test_stage3_bstn_primary.py line 20). It builds a two-result fixture [result(0,381,'main'), result(0,384,'aux')] and asserts ValueError from listing_hits. That assertion encodes the pre-§23 shape rule (only 1 or 3 result sets accepted). Under the §23 specification a two-result page is now legal, so no ValueError is raised and the legacy test fails. The other 175 tests pass.
+
+Judgment for ChatGPT: this looks like a legacy test contradicting the new §23 spec rather than a defect in the two-line code change, but the batch is incomplete until test_shape is reconciled with the spec (update or split the assertion). Steps 2-4 were NOT executed. No live requests were made in §23. Published / import = 0.
