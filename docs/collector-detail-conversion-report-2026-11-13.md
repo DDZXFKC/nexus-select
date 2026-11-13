@@ -211,3 +211,33 @@ Retest verification of the produced rows: total 14 (BSTN only, same scope as sec
 Verdict: the retest is NOT accepted against the stated criteria (52 rows). The hash half of the fix is verified good. The merge half fails on the cents-int price representation of the standard product-JSON serialization — a projected-field shape the merger does not currently accept. The remaining fix is ChatGPT's: decide how the merger treats the cents-int form (for example, ignore a non-dict price as a non-projected representation, or normalize cents to major units before comparison), keeping fail-closed behavior for genuine value conflicts. Not bypassed on this side.
 
 Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage2_detail_retest.json`; logs `/Users/discodadz/nexus-run/stage2-retest-run-2026-11-13.log`, `stage2-retest-analysis-2026-11-13.log`, `stage2-conflict-analysis-2026-11-13.log`, `stage2-mergefail-analysis-2026-11-13.log`, `stage2-priceform-analysis-2026-11-13.log`; read-only analysis scripts `analyze_stage2_retest.py`, `analyze_stage2_conflicts.py`, `analyze_stage2_mergefail.py`, `analyze_stage2_priceforms.py` beside the package.
+
+## 14. Stage-2 price representation retest — execution results (2026-11-13, Muse)
+
+Batch: `docs/collector-stage2-price-retest-2026-11-13.md` (commit c9599572), approved by the owner (the approval was relayed to ChatGPT in the working thread). Code `stage2_detail.py` (73b917cd), tests `test_stage2_detail.py` (14ea3b2b). Same isolated copy `pkg_stage2_20261113`; all prior outputs preserved. ChatGPT did not independently execute the tests; the verdict below is from this execution.
+
+Exact commands and results:
+
+```
+python3 -m py_compile stage2_detail.py test_stage2_detail.py   -> OK
+python3 -m unittest -v test_stage2_detail                       -> 21/21 OK, exit 0
+python3 stage2_detail.py --manifest input_pages_multi/manifest_six_brand_s2.csv --out stage2_detail_price_retest.json
+                                                                -> exit 0, counts [13, 16, 10, 6, 6, 1], total 52, published 0
+```
+
+The 21 tests include the 8 new price-representation tests: minor/major match, reversed JSON order, minor conflict stop, currency conflict stop, minor without currency stop, unsupported minor currency stop, invalid prices stop, Decimal exactness.
+
+Criteria check: tests 21/21 met; BSTN 14 / Notre 26 / Patta 12 / total 52 met; duplicates 0; wrong merges 0; hash mismatches 0.
+
+Independent verification:
+
+- Every field hash in all 52 rows equals sha256 of the original file bytes (all 6 manifest files, 0 mismatched fields).
+- Duplicate (url, product, variant) triples: 0. Produced variant sets equal the candidate variant sets on all 4 Shopify pages (16/10/6/6); exactly one product id per page; no cross-product or cross-store merge.
+- All 38 Shopify rows match the dict-form (Money) serialization exactly on price (compared as Decimal), currency, raw title and merchant SKU; every produced price also reconciles with the cents-int form (price x 100 == int) for all 38 variants.
+- decision HOLD on all 52 rows; canonical_product_id blank on all rows; image_rights UNKNOWN; Shopify stock_claim UNKNOWN on all 38 rows (BSTN stock_claim remains the JSON-LD claim, 14 OBSERVED).
+- Coverage: category 52/52, currency 52/52, image 52/52, price 52/52, size 52/52; Shopify color_candidate 38/38, merchant_sku 38/38, raw_title 38/38; BSTN description 14/14, manufacturer_code_candidate 14/14, gtin 13/14 (one Adilette size carries no GTIN in the source; recorded as-is, not invented), BSTN color 0/14 (absent from the source JSON-LD).
+- Method note: an intermediate comparison pass reported apparent field differences because it read expectations from the cents-form serialization, where price is an int and amount/currency are absent in that shape. Comparing against the Money-form serialization and reconciling the cents form with Decimal gives 0 differences; the produced data was never at fault.
+
+Verdict: the price retest is ACCEPTED against the stated criteria. The stage-2 detail patch series (sections 10–14) is closed: all 52 detail rows now extract with original-byte provenance, and the fail-closed conflict gates remain intact. This is still an extraction-stage result — the remaining stage-2 integration work (stable canonical IDs and history, single-item accessory output, cost/rights/stock verification, channel conversion, regression tests) is ChatGPT's next batch definition, and full stage 2 acceptance is outstanding.
+
+Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage2_detail_price_retest.json` (192,649 bytes); logs `/Users/discodadz/nexus-run/stage2-price-retest-run-2026-11-13.log`, `stage2-price-retest-analysis-2026-11-13.log`, `stage2-fielddiff-analysis-2026-11-13.log`, `stage2-familya-analysis-2026-11-13.log`; read-only analysis scripts `analyze_stage2_fielddiff.py`, `analyze_stage2_familyA.py` beside the package.
