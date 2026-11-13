@@ -4,6 +4,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 HOSTS={"www.bstn.com","www.notre-shop.com","patta.nl"}
+LIVE_HOSTS={"www.bstn.com"}  # Notre and Patta: saved fixtures only under current policy.
 ALIASES={"bstn.com":"www.bstn.com","notre-shop.com":"www.notre-shop.com","www.patta.nl":"patta.nl"}
 def host(url):
     p=urlsplit(url)
@@ -51,8 +52,10 @@ def offline(manifests,db,out):
 def live(config,db,out,run,limit):
     from stage3_catalog import policy,Fetch,init,prepare,process,extract,report,scope
     cfg=json.loads(Path(config).read_text())
+    if cfg.get("host") not in LIVE_HOSTS:
+        raise ValueError("host not approved for live collection")
     policy(cfg)
-    if cfg["host"] not in HOSTS or not 1<=limit<=5 or cfg["request_budget"]>10:
+    if not 1<=limit<=5 or cfg["request_budget"]>10:
         raise ValueError("pilot scope/budget")
     if cfg.get("listing_seeds") or not cfg.get("pilot_product_urls"):
         raise ValueError("pilot requires explicit product URLs and sitemap policy")
