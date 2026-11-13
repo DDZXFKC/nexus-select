@@ -95,3 +95,44 @@ Flow: `collector.parse` → `merchant_to_channels.run` → `production_pipeline.
 - Stage-② run dir: `/Users/discodadz/nexus-run/pkg_stage2_20261113` — outputs `input_pages_multi/manifest_six_brand_s2.csv`, `nexus_six_brand_s2.sqlite`, `export_six_brand_s2/`; logs `s2_stage1.log`, `s2_stage2.log`, `audit2.log` (DB schema/coverage dump).
 - Stage-① run dir: `/Users/discodadz/nexus-run/pkg_six_20261113`. Original package preserved: `/Users/discodadz/nexus-run/pkg`.
 - Actual imports performed: 0. Actual publications: 0.
+
+## 10. Stage-2 sidecar first patch — execution results (2026-11-13, Muse)
+
+Runbook: docs/collector-stage2-sidecar-runbook-2026-11-13.md. Patch commits 416b01d5 (stage2_review.py) and 31ce0a82 (test_stage2_review.py), copied into `/Users/discodadz/nexus-run/pkg_stage2_20261113` — sha256 stage2_review.py `79d409478adabc1d3ca34712fa700c5a1eb84687d4fbbe95f089813bd6807dbe`, test_stage2_review.py `6a579de93e737479f8cc854c2655ee9c95081727b2f0604b4c10495adb2d9784` (identical to the repo snapshot). The baseline pipeline was not replaced or modified.
+
+Exact commands (package root):
+```
+python3 -m py_compile stage2_review.py test_stage2_review.py
+python3 -m unittest -v test_stage2_review
+python3 stage2_review.py --csv export_six_brand_s2/extracted_evidence.csv --manifest input_pages_multi/manifest_six_brand_s2.csv --db stage2_history_new.sqlite --out stage2_review_new
+```
+Results:
+- py_compile OK.
+- unittest **3/3 OK**, exit 0: test_identity (variant ID separates color and host; canonical_product_id stays ''; brand is not doubled in display_name), test_history (replay with a different parse timestamp does **not** create a second observation; a changed price under a new capture hash does), test_cost (explicit cost model: synthetic case cost_jpy **21850.00**, profit_jpy **5110.00** — independently recomputed and matching; missing duty or zero FX rate leaves cost/profit **blank**, never zero).
+- Sidecar run, exit 0: `{"rows": 52, "observations": 52, "replay_observations": 52, "variant_ids": 52, "capture_time": "UNKNOWN", "published": 0, "approved_for_import": false, "status": "REVIEW_ONLY"}`. All runbook expectations met: 52 input rows → 52 observations; the built-in replay pass added **zero** new observations (replay dedup works on real data); **52 distinct provisional variant IDs**; every row decision HOLD (normalize() sets decision='HOLD'); no import, no publication.
+- Coverage in the sidecar report matches §3 exactly (manufacturer_sku 0, color 0, availability_claim 14, all enrichment/cost fields 0).
+- **Source URL/hash mapping**: the sidecar keyed observations by the sha256 of each manifest file. The merged manifest's URL→file→sha256 mapping equals the stage-① acceptance baseline for all 6 pages (bstn_01 cd089d68…, notre_01 649f1195…, notre_02 c0eada52…, patta_01 94a55789…, patta_02 dd366268…, bstn_02 53484dee…), as reproduced in §1.
+- **Capture time stays UNKNOWN by design**: the sidecar deliberately excludes `observed_utc` (parse time) from the observation payload/key instead of treating it as capture evidence. This confirms the §3/§8 provenance finding rather than solving it — real capture timestamps still need a capture-side record.
+- The new source_product_id / source_variant_id are **provisional sidecar IDs**, not replacements for existing export IDs (NX-HOLD-* parents, merchant product_id values). canonical_product_id is '' for all 52 rows; no cross-merchant merge was performed.
+- This is **not** full stage-② acceptance. Remaining (per runbook): structured field extraction with per-field provenance, Shopify option mapping and price-unit evidence, verified stock, explicit accessory classification and simple-product export, canonical identity verification, cost evidence integration, channel conversion, full acceptance tests. The snippets in §11 are the input for the next patch.
+
+## 11. Sanitized structure snippets from the saved pages (for the next patch)
+
+Minimal excerpts only: field names, types, representative values (long strings truncated). No full HTML, no private data. Extracted offline from the same six saved files by a structure dumper (field inventory below; full snippet JSON is reproducible from the saved pages).
+
+### 11.1 BSTN JSON-LD (collector.py path)
+Product node keys (both pages): `@context` string, `@type` string, `name` string, `sku` string, **`mpn` string**, `category` object, `brand` object {`@type`: "Brand", `name`: string}, `image` string (URL), `description` string, `offers` array.
+- The current parser reads none of: `mpn`, `category`, `image`, `description`. The JSON-LD path could therefore supply image_urls and description for BSTN pages, and `mpn` is a manufacturer-code **candidate** (unverified — it must not be promoted without the verification rule).
+- Offer keys: `@type`, **`sku` (per-offer, size-suffixed)**, `gtin13`/`gtin12`, `price` (**JSON number**, e.g. 27.99), `priceCurrency` string, `availability` string (schema.org URL), `itemCondition`, `size` string, `url` string.
+- Adilette: 13 offers; offer skus are "0009238-4" style (product sku + size suffix) — the current parser stages the **product-level** sku (0009238) for every size and ignores the offer-level sku and GTINs.
+- Jason Markk: exactly **1 offer** — sku "0012650-1", gtin12 "810887023159", price 18.99, availability OutOfStock, size **"ONE SIZE"** in the offer itself. Confirms §6: a single-offer accessory whose only size value is the placeholder label.
+
+### 11.2 Shopify pages (shopify_variants.py path) — Notre and Patta have the same shape
+The variants-bearing parent object is a Storefront-style object. Parent keys: `id` string, `handle` string, `isCollective` null, `title` string, `type` string, `untranslatedTitle` string, `url` string, `vendor` string, `remoteShopId` null, `variants` array. **There is no `options` array in this object** — option mapping cannot come from here.
+Variant keys (identical on Notre and Patta): `id` string, `image` object {`src`: string}, `price` object {`amount`: **JSON number**, `currencyCode`: string}, `sku` string, `title` string, `untranslatedTitle` string.
+- **No `available` field exists in these variant objects** — stock is not merely unread, it is absent from this data source. Verified stock needs a different source on the page (or stays UNKNOWN).
+- Price evidence: `price.amount` is a decimal major-unit number in this object (Jordan 225.0 USD, ASICS 180.0 USD, Patta 498.0 EUR) with an explicit `currencyCode` beside it — consistent with the §3 values; the parser's PRICE_UNIT_UNVERIFIED flag can be revisited against this shape.
+- Variant `image.src` is present per variant (color-specific imagery exists in the source; the parser does not extract it).
+- Notre variant titles combine size and colorway: "6 M / Lemonade/Lemonade", "8 M / Dark Gull Grey/Black". The colorway also appears in the parent title suffix: "J Balvin Air Jordan 4 Retro Sneaker in Lemonade/Lemonade", "Novalis Gel-Teremoa II Sneaker in Dark Gull Grey/Black" — a possible colorway source for Notre (parent title after " in "), to be verified per page.
+- Patta variant titles are pure sizes ("XS", "S", …); the colorway appears only in the parent title suffix: "Patta Leather Hooded Bomber Jacket (Moonless Night)", "Patta Square Quilted Puffer Jacket (Black)".
+- Vendor values: "Jordan" (Notre), "ASICS" (Notre), "Patta" (Patta) — matching the staged brands.
