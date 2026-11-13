@@ -495,3 +495,45 @@ Isolated copy /Users/discodadz/nexus-run/pkg_bstn_two_results_20261113/ (fresh c
 The single failure: test_stage3_bstn_primary.Test.test_shape (test_stage3_bstn_primary.py line 20). It builds a two-result fixture [result(0,381,'main'), result(0,384,'aux')] and asserts ValueError from listing_hits. That assertion encodes the pre-§23 shape rule (only 1 or 3 result sets accepted). Under the §23 specification a two-result page is now legal, so no ValueError is raised and the legacy test fails. The other 175 tests pass.
 
 Judgment for ChatGPT: this looks like a legacy test contradicting the new §23 spec rather than a defect in the two-line code change, but the batch is incomplete until test_shape is reconciled with the spec (update or split the assertion). Steps 2-4 were NOT executed. No live requests were made in §23. Published / import = 0.
+
+## §24 — §23 re-execution after the correction batch (Muse execution; ChatGPT to cross-review)
+
+Correction batch under review: f613d65e (test_stage3_bstn_primary.py test_shape reconciled with the §23 two-result spec) and 713f5ae7 (runbook Step 1 expected counts 39 / 176, plus the regression-correction section). Muse cross-checked both before execution: f613d65e changes only test_shape (a 2-set page is now accepted and the primary result's values are asserted; 0-set and 4-set pages still raise ValueError); 713f5ae7 is documentation-only. No unannounced changes found.
+
+### Step 1 — Regression: PASS
+
+Isolated copy /Users/discodadz/nexus-run/pkg_bstn_two_results_20261113/ (same package as §23, with the corrected test file). Log: bstn-s23-tests2-2026-11-13.log.
+
+- py_compile (stage3_catalog.py, test_stage3_bstn_two_results.py, test_stage3_bstn_primary.py): OK.
+- Targeted set (test_stage3_bstn_two_results, test_stage3_bstn_primary, test_stage3_bstn_listing, test_stage3_bstn_release, test_stage3_catalog, test_stage3_bstn): Ran 39, OK.
+- Full discover: Ran 176, OK.
+
+### Step 2 — Saved seed re-verification: PASS, with one correction to the runbook's expected values
+
+- Saved seed page 1 sha256 6faa2c518f…: matches §22 / §23.
+- listing_hits returns 96 URLs, nbHits 3443, nbPages 36: matches the runbook.
+- Release hits: the runbook said "expect release 0", the measured value is **3**, at positions 5, 6, 37: r/adidas-badbo-1-1-lm5057-0357273, r/adidas-badbo-1-0-lc5290-0357272, r/nike-mind-001-hq4307-600-0361190. Cause: the §22 diagnostic script (diag_seed.py) counted release hits by matching '/eu_en/r/' against absolute URLs, while the hits in the saved page are relative ('r/…'), so the diagnostic undercounted. listing_hits itself is correct: r/ hits are counted toward coverage and excluded from the product queue, by design. This is a diagnostic-side miscount, not a code defect.
+
+Logs: bstn-s23-seed-2026-11-13.log; bstn-s23-reldiag-2026-11-13.log.
+
+### Step 3 — Terms/robots recheck, gated page-2 fetch, rendered-grid identity: PASS, drift recorded
+
+- robots.txt (1,623 bytes) and terms (406,859 bytes) are byte-identical to the §22 review. can_fetch is true for the seed and page 2. No crawl-delay / request-rate. Keyword counts unchanged (scrap / crawl / spider / automated / robot / data mining: all 0). Log: bstn-s23-terms-2026-11-13.log.
+- Page 2 was fetched fresh through the Fetch gate (2 requests total, robots included) and saved to bstn-seedprobe-s23-2026-11-13/seed_page_2.html: sha256 71658df7b0…, nbHits **3441** (the saved page 1 says 3443 — a −2 catalog drift, recorded), 36 pages, 96 URLs, embedded results 2 (primary page=1, auxiliary page=0) as expected. Release hits 2, at positions 18, 19 (r/nike-af1-cracked-leather-ja0248-300-0368001, r/nike-af1-cracked-leather-ja0248-001-0360403). Page 2's first URL equals saved page 1's last URL (fear-of-god lace-up runner): a one-item boundary overlap caused by the drift. Log: bstn-s23-p2fetch-2026-11-13.log.
+- Rendered grid (permitted browser, read-only extraction, 2026-11-13 18:28–18:42 JST): both pages display "3441 results", 36 pages, 96 cards each.
+  - Page 2: the rendered order matches the fresh SSR page 2 **96/96 exactly**, including the r/ hits at 18, 19 and identical first / last cards.
+  - Page 1: 94 of 96 cards match the saved SSR page 1. The differences are catalog drift: two insertions at rendered positions 4–5 (nike-ja-4-im4135-700-0360877, nike-air-max-90-sp-iv4504-201-0366776); one saved item no longer appears on page 1 or 2 (timberland-x-thisisneverthat-boat-shoe-tb0a43bgw021-0359575, saved #66); saved #96 (fear-of-god lace-up runner) shifted to page 2 #1; the r/ positions shifted 5 / 6 / 37 → 7 / 8 / 39 accordingly. The primary result's identity is confirmed; the deltas are drift, not a selection mismatch.
+
+Full URL lists: bstn-s23-lists-2026-11-13.log.
+
+### Step 4 — Discovery + limit-5 run: STOPPED by design (listing changed during discovery)
+
+- Isolated config bstn-category-s23.json: reviewed_at stamped at run time (2026-11-13T09:44:25Z), request budget 200, interval 5 s, listing_seeds = [the §23 seed], product_path_regex /eu_en/p/[^/]+.
+- Run s23-cat-first started 2026-11-13T09:44:25Z and stopped at 09:44:52Z with ValueError 'listing changed during discovery' — the discover_listings invariant (per-page (nbHits, nbPages) stability and no cross-page overlap) tripped. This is consistent with the drift documented in Step 3: the catalog changes faster than a 36-page sweep completes.
+- No product pages were processed. Nothing was imported or published (published = 0). The output directory s23-cat-first-001 was not produced; bstn-s23.sqlite contains schema only. No retry was attempted.
+
+Log: bstn-s23-step4-2026-11-13.log.
+
+### Requested design decision (ChatGPT)
+
+Discovery as specified requires a stable catalog across the whole 36-page sweep, which the live catalog does not currently provide. Please decide: (a) relax the in-run invariant so drift is recorded as warnings with dedupe instead of a hard stop, (b) shorten the sweep (fewer pages per run, resume across runs), or (c) retry at another time of day. Muse stopped here per the runbook and is waiting for the decision.
