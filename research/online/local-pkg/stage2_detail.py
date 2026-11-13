@@ -2,9 +2,40 @@
 import re,json,hashlib
 from shopify_variants import ScriptReader,ld_products
 from urllib.parse import urlparse
+def merge_candidates(candidates):
+ """Merge only identical parent IDs and compatible projected fields."""
+ def present(v):return v not in (None,'',[],{})
+ def merge(dst,src,keys):
+  for k in keys:
+   v=src.get(k)
+   if not present(v):continue
+   if present(dst.get(k)) and dst[k]!=v:raise ValueError('conflict: '+k)
+   dst[k]=v
+ if not candidates:return None
+ ids={str(x['id']) for x in candidates}
+ if len(ids)!=1:return None
+ parent={'id':next(iter(ids))};variants={}
+ try:
+  for x in candidates:
+   merge(parent,x,('vendor','title','type','handle'))
+   for v in x['variants']:
+    if not isinstance(v,dict) or not v.get('id'):raise ValueError('missing variant id')
+    key=str(v['id']);target=variants.setdefault(key,{'id':key})
+    merge(target,v,('sku','title'))
+    for field,keys in (('price',('amount','currencyCode')),('image',('src',))):
+     obj=v.get(field)
+     if obj is None:continue
+     if not isinstance(obj,dict):raise ValueError('invalid '+field)
+     merge(target.setdefault(field,{}),obj,keys)
+ except ValueError:return None
+ parent['variants']=list(variants.values())
+ return parent
+
 def extract(html,url):
- p=ScriptReader();p.feed(html); host=urlparse(url).hostname or ''
- sha=hashlib.sha256(html.encode()).hexdigest()
+ # Strings are supported for synthetic fixtures; production CLI passes bytes.
+ raw=html if isinstance(html,bytes) else html.encode('utf-8')
+ sha=hashlib.sha256(raw).hexdigest()
+ p=ScriptReader();p.feed(raw.decode('utf-8-sig')); host=urlparse(url).hostname or ''
  def field(value,path):
   return {'value':value,'path':path,'source_url':url,'html_sha256':sha,'status':'OBSERVED' if value not in (None,'',[],{}) else 'UNKNOWN'}
  def record(obj,variant,fields):
@@ -27,9 +58,9 @@ def extract(html,url):
     except ValueError:continue
     if isinstance(x,dict) and x.get('id') and x.get('vendor') and isinstance(x.get('variants'),list) and x['variants']:
      candidates[json.dumps(x,sort_keys=True)]=x
-  # Ambiguous parents fail closed rather than choosing the largest array.
-  if len(candidates)!=1:return []
-  x=next(iter(candidates.values())); title=x.get('title','')
+  x=merge_candidates(list(candidates.values()))
+  if x is None:return []
+  title=x.get('title','')
   for v in x['variants']:
    if not isinstance(v,dict):continue
    raw=v.get('title','');size=raw;color=''
@@ -53,7 +84,7 @@ if __name__=='__main__':
   for r in csv.DictReader(f):
    p=(m.parent/r['html_file']).resolve()
    if m.parent not in p.parents:raise ValueError('path outside manifest')
-   rows=extract(p.read_text(encoding='utf-8'),r['product_url'])
+   rows=extract(p.read_bytes(),r['product_url'])
    result.append({'url':r['product_url'],'rows':rows,'count':len(rows)})
  with out.open('x',encoding='utf-8') as f:json.dump(result,f,ensure_ascii=False,indent=2)
  print(json.dumps({'counts':[x['count'] for x in result],'total':sum(x['count'] for x in result),'published':0}))
