@@ -4,7 +4,8 @@ from urllib.parse import urlsplit
 from pathlib import Path
 from datetime import datetime,timezone
 import xml.etree.ElementTree as ET
-from stage2_detail import extract
+from stage2_detail import extract as detail_extract,merge_candidates
+from shopify_variants import ScriptReader,ld_products
 from stage2_review import digest,money
 from stage2_integrate import exports,require
 from stage3_verify import evaluate,validate_exports
@@ -70,6 +71,34 @@ def discover(cfg,fetch):
    else:excluded.add(v)
  require(products,'no matching products')
  return sorted(products),len(seen),len(excluded)
+def extract(raw,url):
+ rows=detail_extract(raw,url)
+ if not rows:return rows
+ p=ScriptReader();p.feed(raw.decode('utf-8-sig'))
+ host=urlsplit(url).hostname;meta={}
+ if host=='www.bstn.com':
+  for x in ld_products(p.scripts):
+   brand=x.get('brand');brand=brand.get('name') if isinstance(brand,dict) else brand
+   k=str(x.get('sku') or '');pair=(brand,x.get('name'))
+   require(k not in meta or meta[k]==pair,'metadata conflict');meta[k]=pair
+ else:
+  candidates={};decoder=json.JSONDecoder()
+  for s in p.scripts:
+   for m in re.finditer(r'\{',s):
+    try:x,_=decoder.raw_decode(s[m.start():])
+    except ValueError:continue
+    if isinstance(x,dict) and x.get('id') and x.get('vendor') and isinstance(x.get('variants'),list) and x['variants']:
+     candidates[json.dumps(x,sort_keys=True)]=x
+  x=merge_candidates(list(candidates.values()))
+  require(x is not None,'metadata ambiguity')
+  meta[str(x['id'])]=(x.get('vendor'),x.get('title'))
+ sha=hashlib.sha256(raw).hexdigest()
+ for r in rows:
+  brand,name=meta[r['source_product_id']]
+  for k,v in [('brand',brand),('name',name)]:
+   require(isinstance(v,str) and v.strip(),'missing metadata')
+   r['fields'][k]=dict(value=v,path='Product metadata' if host=='www.bstn.com' else 'parent metadata',source_url=url,html_sha256=sha,status='OBSERVED')
+ return rows
 def init(c):
  c.executescript("""CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,host TEXT,scope_hash TEXT,complete INTEGER DEFAULT 0);
  CREATE TABLE IF NOT EXISTS queue(run TEXT,url TEXT,state TEXT DEFAULT 'PENDING',error TEXT,PRIMARY KEY(run,url));
@@ -141,6 +170,8 @@ def main():
   if a.resume:
    require(c.execute('SELECT host FROM runs WHERE id=?',(a.run,)).fetchone()==(cfg['host'],),'unknown run')
    require(not c.execute("SELECT 1 FROM queue WHERE run=? AND state='ERROR'",(a.run,)).fetchone(),'error requires review')
+   urls=[x[0] for x in c.execute('SELECT url FROM queue WHERE run=? ORDER BY url',(a.run,))]
+   prepare(c,a.run,cfg,urls)
   else:
    require(not c.execute('SELECT 1 FROM runs WHERE id=?',(a.run,)).fetchone(),'run already exists')
    urls,n,excluded=discover(cfg,f);prepare(c,a.run,cfg,urls)
