@@ -241,3 +241,33 @@ Independent verification:
 Verdict: the price retest is ACCEPTED against the stated criteria. The stage-2 detail patch series (sections 10–14) is closed: all 52 detail rows now extract with original-byte provenance, and the fail-closed conflict gates remain intact. This is still an extraction-stage result — the remaining stage-2 integration work (stable canonical IDs and history, single-item accessory output, cost/rights/stock verification, channel conversion, regression tests) is ChatGPT's next batch definition, and full stage 2 acceptance is outstanding.
 
 Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage2_detail_price_retest.json` (192,649 bytes); logs `/Users/discodadz/nexus-run/stage2-price-retest-run-2026-11-13.log`, `stage2-price-retest-analysis-2026-11-13.log`, `stage2-fielddiff-analysis-2026-11-13.log`, `stage2-familya-analysis-2026-11-13.log`; read-only analysis scripts `analyze_stage2_fielddiff.py`, `analyze_stage2_familyA.py` beside the package.
+
+## 15. Stage-2 integration batch — execution results (2026-11-13, Muse)
+
+Batch: `docs/collector-stage2-integration-runbook-2026-11-13.md` (commit da2f3b81; code 289507f1, tests 7be5f47d), approved by the owner. Executed in the same isolated copy `pkg_stage2_20261113` with the accepted `stage2_detail.py` (73b917cd) and `stage2_review.py`; all prior outputs preserved. The baseline export (`export_six_brand_s2/`) and all baseline test modules were already present in the copy; nothing had to be copied in. ChatGPT did not independently execute the tests; the verdict below is from this execution.
+
+Exact commands and results:
+
+```
+python3 -m py_compile stage2_integrate.py test_stage2_integrate.py   -> OK
+python3 -m unittest -v test_shopify_variants test_verify_six_pages test_merchant_to_channels test_channel_ready_v4 test_production_pipeline test_grouping_e2e test_stage2_review test_stage2_detail test_stage2_integrate
+                                                                     -> 50/50 OK, exit 0
+python3 stage2_integrate.py --manifest input_pages_multi/manifest_six_brand_s2.csv --baseline export_six_brand_s2/extracted_evidence.csv --detail stage2_detail_price_retest.json --db stage2_integrated_new.sqlite --out stage2_integrated_new
+                                                                     -> exit 0
+{"rows": 52, "observations": 52, "replay": 52, "products": 6, "woo_rows": 57, "variable": 5, "variations": 51, "simple": 1, "buyma_rows": 6, "profit_rows": 52, "published": 0, "approved_for_import": false, "status": "REVIEW_ONLY"}
+```
+
+Criteria check: tests 50/50 (17 baseline + 3 sidecar + 21 detail + 9 integration); integrated rows 52; history 52; replay duplicates 0; product groups 6; WooCommerce 5 variable parents + 51 variations + 1 simple = 57; BUYMA 6 products; profit rows 52; publication/import 0. All met.
+
+Independent verification:
+
+- `integrated_evidence.json`: 52 rows; decision HOLD on all; canonical_product_id blank on all; observed price/currency retained per row as evidence, and every row's price/currency matches the accepted detail output (section 14) — 0 unmatched. Stock claims carried through unchanged: BSTN InStock 4 / OutOfStock 10 as schema.org claims, Shopify 38 blank (UNKNOWN). No verified availability inferred anywhere.
+- SQLite `stage2_integrated_new.sqlite`: the observations table holds the 52 history rows.
+- `id_mapping.json`: 52 legacy-to-new-SKU mappings.
+- `woocommerce_review.csv`: 57 rows; SKUs unique 57/57 with no blanks; every variation's Parent resolves to a produced parent; Regular price and Images blank on all rows; Published 0 and Visibility hidden on all rows. The single simple product is the Jason Markk kit, with no size attribute and stock 0. Variation sizes are in natural ascending order (numeric EU/US sizes ascending; apparel in XS, S, M, L, XL order).
+- `buyma_review.csv`: 6 product rows. `profit_review.csv`: 52 rows with cost_jpy blank on all rows — no verified cost inputs exist, so no cost or profit was invented; only the observed source price is carried.
+- No live fetch, no production DB / WordPress / main changes, no import.
+
+Verdict: the integration batch is ACCEPTED. Stage 2 offline integration is complete. Per the runbook, the remaining gates before any sale readiness are verified canonical identity, cost/rights/stock verification, category mapping, size guides and platform import validation; Stage 3 starts only after review of these results.
+
+Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage2_integrated_new.sqlite` (229,376 bytes) and `stage2_integrated_new/` (integrated_evidence.json, id_mapping.json, woocommerce_review.csv, buyma_review.csv, profit_review.csv, report.json); logs `/Users/discodadz/nexus-run/stage2-integrate-run-2026-11-13.log`, `stage2-integrate-analysis-2026-11-13.log`, `stage2-integrate2-analysis-2026-11-13.log`; read-only analysis scripts `analyze_stage2_integrate.py`, `analyze_stage2_integrate2.py` beside the package.
