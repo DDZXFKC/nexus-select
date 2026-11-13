@@ -1,0 +1,59 @@
+"""Offline detail evidence extraction; review only, no network."""
+import re,json,hashlib
+from shopify_variants import ScriptReader,ld_products
+from urllib.parse import urlparse
+def extract(html,url):
+ p=ScriptReader();p.feed(html); host=urlparse(url).hostname or ''
+ sha=hashlib.sha256(html.encode()).hexdigest()
+ def field(value,path):
+  return {'value':value,'path':path,'source_url':url,'html_sha256':sha,'status':'OBSERVED' if value not in (None,'',[],{}) else 'UNKNOWN'}
+ def record(obj,variant,fields):
+  return {'source_product_id':str(obj or ''),'source_variant_id':str(variant or ''),'fields':{k:field(v,path) for k,(v,path) in fields.items()},'decision':'HOLD','canonical_product_id':'','image_rights':'UNKNOWN'}
+ out=[]
+ if host in ('bstn.com','www.bstn.com'):
+  for x in ld_products(p.scripts):
+   offers=x.get('offers',[])
+   if isinstance(offers,dict):offers=[offers]
+   for o in offers:
+    if not isinstance(o,dict):continue
+    out.append(record(x.get('sku'),o.get('sku'),{
+     'manufacturer_code_candidate':(x.get('mpn'),'Product.mpn'),'category':(x.get('category'),'Product.category'),'image':(x.get('image'),'Product.image'),'description':(x.get('description'),'Product.description'),'size':(o.get('size'),'Offer.size'),'price':(o.get('price'),'Offer.price'),'currency':(o.get('priceCurrency'),'Offer.priceCurrency'),'stock_claim':(o.get('availability'),'Offer.availability'),'gtin':(o.get('gtin13') or o.get('gtin12'),'Offer.gtin13/gtin12'),'color':(x.get('color'),'Product.color')}))
+ elif host in ('notre-shop.com','www.notre-shop.com','patta.nl','www.patta.nl'):
+  candidates={}
+  decoder=json.JSONDecoder()
+  for s in p.scripts:
+   for m in re.finditer(r'\{',s):
+    try:x,_=decoder.raw_decode(s[m.start():])
+    except ValueError:continue
+    if isinstance(x,dict) and x.get('id') and x.get('vendor') and isinstance(x.get('variants'),list) and x['variants']:
+     candidates[json.dumps(x,sort_keys=True)]=x
+  # Ambiguous parents fail closed rather than choosing the largest array.
+  if len(candidates)!=1:return []
+  x=next(iter(candidates.values())); title=x.get('title','')
+  for v in x['variants']:
+   if not isinstance(v,dict):continue
+   raw=v.get('title','');size=raw;color=''
+   if 'notre-shop.com' in host and ' / ' in raw:
+    a,b=raw.split(' / ',1)
+    if title.endswith(' in '+b):size,color=a,b
+   elif 'patta.nl' in host:
+    m=re.search(r'\(([^()]+)\)$',title)
+    if m:color=m.group(1)
+   price=v.get('price');price=price if isinstance(price,dict) else {}
+   img=v.get('image');img=img if isinstance(img,dict) else {}
+   out.append(record(x['id'],v.get('id'),{'category':(x.get('type'),'parent.type'),'image':(img.get('src'),'variant.image.src'),'size':(size,'variant.title'),'raw_title':(raw,'variant.title'),'color_candidate':(color,'parent.title + variant.title'),'price':(price.get('amount'),'variant.price.amount'),'currency':(price.get('currencyCode'),'variant.price.currencyCode'),'stock_claim':(None,'not present in observed variant object'),'merchant_sku':(v.get('sku'),'variant.sku')}))
+ return out
+if __name__=='__main__':
+ import argparse,csv
+ from pathlib import Path
+ a=argparse.ArgumentParser();a.add_argument('--manifest',required=True);a.add_argument('--out',required=True);args=a.parse_args()
+ m=Path(args.manifest).resolve();out=Path(args.out)
+ result=[]
+ with m.open(encoding='utf-8-sig',newline='') as f:
+  for r in csv.DictReader(f):
+   p=(m.parent/r['html_file']).resolve()
+   if m.parent not in p.parents:raise ValueError('path outside manifest')
+   rows=extract(p.read_text(encoding='utf-8'),r['product_url'])
+   result.append({'url':r['product_url'],'rows':rows,'count':len(rows)})
+ with out.open('x',encoding='utf-8') as f:json.dump(result,f,ensure_ascii=False,indent=2)
+ print(json.dumps({'counts':[x['count'] for x in result],'total':sum(x['count'] for x in result),'published':0}))
