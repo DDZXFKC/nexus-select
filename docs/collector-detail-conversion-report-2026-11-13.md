@@ -271,3 +271,32 @@ Independent verification:
 Verdict: the integration batch is ACCEPTED. Stage 2 offline integration is complete. Per the runbook, the remaining gates before any sale readiness are verified canonical identity, cost/rights/stock verification, category mapping, size guides and platform import validation; Stage 3 starts only after review of these results.
 
 Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage2_integrated_new.sqlite` (229,376 bytes) and `stage2_integrated_new/` (integrated_evidence.json, id_mapping.json, woocommerce_review.csv, buyma_review.csv, profit_review.csv, report.json); logs `/Users/discodadz/nexus-run/stage2-integrate-run-2026-11-13.log`, `stage2-integrate-analysis-2026-11-13.log`, `stage2-integrate2-analysis-2026-11-13.log`; read-only analysis scripts `analyze_stage2_integrate.py`, `analyze_stage2_integrate2.py` beside the package.
+
+## 16. Stage-3 verification gate batch — execution results (2026-11-13, Muse)
+
+Batch: `docs/collector-stage3-verification-runbook-2026-11-13.md` (commit 74046edc; code `stage3_verify.py` 3262cffb, tests `test_stage3_verify.py` e45c8d39), approved by the owner (the approval was relayed to ChatGPT in the working thread before the batch was registered). Executed in the same isolated copy `pkg_stage2_20261113` against the accepted stage-2 integrated outputs; all prior outputs preserved. ChatGPT did not independently execute the tests; the verdict below is from this execution.
+
+This batch is an offline evidence gate, not catalog collection and not a platform import: with no evidence inputs supplied, every row must stay unverified and on HOLD, and the contradiction gates (identity conflicts, stale stock) must stop the batch rather than guess.
+
+Exact commands and results:
+
+```
+python3 -m py_compile stage3_verify.py test_stage3_verify.py   -> OK
+python3 -m unittest (all modules incl. test_stage3_verify)     -> 58/58 OK, exit 0
+python3 stage3_verify.py (no evidence inputs)                  -> exit 0
+{"woo_rows": 57, "buyma_rows": 6, "structural_validation": "PASS", "actual_import": "NOT_RUN", "rows": 52, "hold": 52, "review_complete": 0, "canonical_verified": 0, "published": 0, "approved_for_import": false}
+```
+
+Criteria check: tests 58/58 (50 prior + 8 new Stage-3 cases: cost, empty, exports, identity, rights, stale, stock, unknown); structural validation of the Woo 57-row and BUYMA 6-product exports PASS; actual import NOT_RUN; all 52 rows HOLD with 0 review-complete and 0 canonical-verified; published 0; approved_for_import false. All match the runbook's expected values.
+
+Independent verification (read-only analysis script `analyze_stage3_verify.py`):
+
+- `report.json` matches the main run output field for field.
+- `verification.json` is a list of exactly 52 rows, each with the keys canonical_product_id, cost_jpy, decision, image_rights, missing, profit_jpy, review_complete, source_variant_id, stock.
+- On all 52 rows: canonical_product_id blank, stock UNKNOWN, image_rights UNKNOWN, cost_jpy and profit_jpy blank, decision HOLD, review_complete false.
+- The `missing` list on every row names all six gates — identity, purchasable_stock, image_rights, cost, WooCommerce_validation, BUYMA_validation — so no gate was silently treated as satisfied.
+- No live fetch, no production DB / WordPress / main changes, no import, nothing published.
+
+Verdict: the verification-gate batch is ACCEPTED as an offline gate: the verifier fails closed on absent evidence and invents nothing. This does not complete Stage 3. Still outstanding per the runbook: catalog discovery, authorized collection, incremental update and resume, live evidence verification (manufacturer identity, purchasable stock within 24h, full cost inputs, image rights), and platform testing in an isolated WooCommerce staging import plus the official BUYMA procedure.
+
+Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage3_verification_empty/` (report.json 233 bytes, verification.json 23,194 bytes); logs `/Users/discodadz/nexus-run/stage3-verify-run-2026-11-13.log`, `stage3-verify-analysis-2026-11-13.log`; read-only analysis script `analyze_stage3_verify.py` beside the package.
