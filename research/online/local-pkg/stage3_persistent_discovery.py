@@ -10,7 +10,7 @@ def setup(c,cfg,cap):
     require(type(cap) is int and 1<=cap<=10000,'invalid campaign cap')
     sig=json.dumps([cfg['host'],cfg['listing_seeds'],cfg['product_path_regex'],cap],sort_keys=True)
     c.executescript("""CREATE TABLE IF NOT EXISTS campaign(sig TEXT PRIMARY KEY);
-    CREATE TABLE IF NOT EXISTS ledger(id INTEGER PRIMARY KEY, url TEXT, kind TEXT, at REAL, status TEXT);
+    CREATE TABLE IF NOT EXISTS ledger(id INTEGER PRIMARY KEY, url TEXT, kind TEXT, at REAL, status TEXT, raw BLOB, captured_at TEXT);
     CREATE TABLE IF NOT EXISTS pages(id TEXT PRIMARY KEY, seed TEXT, page INTEGER, at TEXT, sha TEXT, raw BLOB, total INTEGER, pages INTEGER, urls TEXT, releases TEXT, overlap TEXT, drift INTEGER);
     CREATE TABLE IF NOT EXISTS candidates(url TEXT PRIMARY KEY, first_seen TEXT,last_seen TEXT);
     CREATE TABLE IF NOT EXISTS sightings(capture TEXT,url TEXT,PRIMARY KEY(capture,url));
@@ -42,7 +42,7 @@ class PersistentFetch(Fetch):
         except BaseException:
             with c:c.execute("UPDATE ledger SET status='FAILED' WHERE id=?",(i,))
             raise
-        with c:c.execute("UPDATE ledger SET status='OK' WHERE id=?",(i,))
+        with c:c.execute("UPDATE ledger SET status='OK',raw=?,captured_at=? WHERE id=?",(raw,utc(),i))
         return raw
 
 def capture(c,cfg,page,raw,at):
@@ -93,7 +93,12 @@ def main():
             f.init_robots()
             for page in range(a.start,a.end+1):
                 if c.execute('SELECT 1 FROM pages WHERE seed=? AND page=?',(cfg['listing_seeds'][0],page)).fetchone():continue
-                capture(c,cfg,page,f.listing(listing_page(cfg['listing_seeds'][0],page)),utc())
+                url=listing_page(cfg['listing_seeds'][0],page)
+                saved=c.execute("SELECT raw,captured_at FROM ledger WHERE url=? AND kind='listing' AND status='OK' ORDER BY id DESC LIMIT 1",(url,)).fetchone()
+                if not saved:
+                    f.listing(url)
+                    saved=c.execute("SELECT raw,captured_at FROM ledger WHERE url=? AND kind='listing' AND status='OK' ORDER BY id DESC LIMIT 1",(url,)).fetchone()
+                capture(c,cfg,page,*saved)
             if a.detail_run:
                 old=c.execute('SELECT url,state FROM queue WHERE run=? ORDER BY url',(a.detail_run,)).fetchall()
                 require(not any(s=='ERROR' for _,s in old),'detail error requires review')
