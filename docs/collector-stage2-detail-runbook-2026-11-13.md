@@ -1,0 +1,10 @@
+# Stage 2 detail extraction execution — 2026-11-13
+Owner goal: zero remaining Reminder tasks, server contract last with owner approval. White Brush Italic logo installed; color switching complete; pink logo archive only; site-wide check conditionally accepted; final video and actual display remain. Do not reopen completed work.
+Use isolated pkg_stage2_20261113. Copy stage2_detail.py (5db087e1) and test_stage2_detail.py from current integration/grok-review. Keep existing shopify_variants.py and baseline untouched. Run:
+```
+python3 -m py_compile stage2_detail.py test_stage2_detail.py
+python3 -m unittest -v test_stage2_detail
+python3 stage2_detail.py --manifest input_pages_multi/manifest_six_brand_s2.csv --out stage2_detail_review.json
+```
+Use a new output filename if already exists. Expected synthetic tests 6/6. Compare page counts 13,16,10,6,6,1 (52 total) to baseline; reconcile per-page source IDs, raw sizes, price/currency, image, category, description, mpn candidate, stock claim. Expected coverage hypotheses: image 52, BSTN mpn and description 14 each, Shopify color candidate 38, Shopify stock UNKNOWN 38. Do not force counts: document actual missing/ambiguous fields. Verify source hashes against original bytes; current code hashes decoded text, which can differ for CRLF/BOM; report discrepancy rather than claiming match. Check unique scoped variant IDs, no extra unrelated products, no invented color, no GTIN promotion. All HOLD, no image permission inferred, no import/publication. If ambiguous parent yields zero rows, report candidate structure and do not bypass. Append exact commands, test results, coverage, reconciliation and discrepancies to docs/collector-detail-conversion-report-2026-11-13.md. No raw HTML or private data in public repo.
+This is extraction prototype acceptance only, not complete stage 2. Remaining integration: stable scoped identity/history, simple accessory export, verified cost/rights/stock, channel conversion, regression tests. No live fetch or WordPress changes. ChatGPT has not independently executed these tests.
