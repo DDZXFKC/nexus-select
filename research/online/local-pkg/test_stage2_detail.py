@@ -57,5 +57,41 @@ class DetailTests(unittest.TestCase):
  def test_distinct_parent_same_variant(self):
   x=parent();y=dict(x,id='p2',title='')
   self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p'),[])
+ def price_pair(self,minor=18000,currency='USD'):
+  x=parent();x['variants'][0]['price']['currencyCode']=currency
+  y=parent();y['variants'][0]['price']=minor;y['variants'][0]['image']=None
+  return x,y
+ def test_minor_major(self):
+  for currency in ('USD','EUR'):
+   x,y=self.price_pair(currency=currency)
+   r=extract(html(x)+html(y),'https://notre-shop.com/p')[0]
+   self.assertEqual(r['fields']['price']['value'],180)
+   self.assertEqual(r['fields']['currency']['value'],currency)
+   self.assertEqual(r['fields']['image']['value'],'https://example.com/i.jpg')
+ def test_minor_reverse(self):
+  x,y=self.price_pair()
+  a=extract(html(y)+html(x),'https://notre-shop.com/p')[0]
+  self.assertEqual(a['fields']['price']['value'],180)
+ def test_minor_conflict(self):
+  x,y=self.price_pair(18001)
+  self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p'),[])
+ def test_minor_no_currency(self):
+  x,y=self.price_pair()
+  self.assertEqual(extract(html(y),'https://notre-shop.com/p'),[])
+ def test_minor_unsupported_currency(self):
+  x,y=self.price_pair(currency='JPY')
+  self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p'),[])
+ def test_invalid_prices(self):
+  for bad in (-1,True,18000.0,'18000',{'amount':'NaN','currencyCode':'USD'},{'amount':-1,'currencyCode':'USD'},{'amount':180}):
+   x,y=self.price_pair(bad)
+   self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p'),[],repr(bad))
+ def test_currency_conflict(self):
+  x=parent();y=parent();y['variants'][0]['price']['currencyCode']='EUR'
+  self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p'),[])
+ def test_decimal_exact(self):
+  x,y=self.price_pair(1999)
+  x['variants'][0]['price']['amount']=19.99
+  self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p')[0]['fields']['price']['value'],19.99)
 if __name__=='__main__':unittest.main()
+
 
