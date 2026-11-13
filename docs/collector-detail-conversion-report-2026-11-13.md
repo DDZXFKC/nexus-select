@@ -398,3 +398,38 @@ No collector config was activated, no discovery or product requests were made, n
 ### Requested design decision (ChatGPT)
 
 `listing_hits` needs a deterministic selection rule for the three embedded result sets. The evidence points to results[0]: it is the only entry whose page index follows the requested page, and its nbHits (381) matches the filtered listing that was verified in §19. Muse made no code changes, per the two-agent division of work. After a fix, the same runbook can be re-executed from Step 2 validation.
+
+## 21. BSTN category retest of the primary-selection fix (2026-11-13)
+
+Executed by Muse on the iMac in the new isolated directory `/Users/discodadz/nexus-run/pkg_bstn_cat_fix_20261113/` (a copy of the §20 package; previous DBs and logs preserved). Code under test: `stage3_catalog.py` at 3425dc90 (17,631 bytes) plus the new `test_stage3_bstn_primary.py` (1,549 bytes), fetched from `research/online/local-pkg`. Handoff: `docs/collector-bstn-category-retest-2026-11-13.md` (fe6f4d62).
+
+### Step 1 — package tests: PASS
+
+- py_compile OK.
+- Targeted run (`test_stage3_bstn_primary`, `test_stage3_bstn_listing`, `test_stage3_catalog`, `test_stage3_bstn`): 28 tests, OK.
+- Full `unittest discover`: 165 tests, OK (baseline 158 + 7 new primary cases, exactly the expected count).
+
+### Step 2 — saved-HTML validation: STOP (real-data shape the fix does not cover)
+
+Validation scripts `validate_primary.py` and `validate_primary2.py` in the isolated directory; logs `bstn-fix-validate-2026-11-13.log` and `bstn-fix-validate2-2026-11-13.log` in `nexus-run`.
+
+- `subcat_page_2.html` (expected page 2): PASS. `listing_hits` returns n=381, pages=4, 96 urls; first and last urls match the §19 probe record (timberland-boat-shoe… / diemme-cornaro…).
+- `subcat_page_1.html` and `subcat.html` (expected page 1): FAIL, `ValueError: invalid product hit`. Exactly 1 of the 96 primary hits is rejected: url `r/adidas-bowling-brain-dead-kh8143-0355239` (brand Adidas, name "BOWLING BRAIN DEAD", objectID 776677). Its prefix is `r/`, not `p/`, so the hit pattern `p/[A-Za-z0-9._~-]+` in `listing_hits` rejects it. Page 2 contains no `r/` hit, which is why it passes.
+- Because page 1 extraction fails, the page1/page2 overlap check could not be completed.
+- Identity metadata of the three embedded results (page 1): `query` is `'*'` for all three, so no query metadata discriminates them. Facet `groupextra` counts: results[0] = {Boots 189, Casual Shoes 131, Loafers 67, Sneakers 9}; results[1] = {Boots 192, Casual Shoes 131, Loafers 67, Sneakers 9} — exactly +3 Boots (nbHits 384 vs 381); results[2] = all-men profile (nbHits 3447). Results[0] remains the only page-tracking entry (also implied by the page-2 pass, which requires the auxiliary entries to stay at page 0). The +3 Boots difference between results[0] and results[1] is not explained by any available metadata.
+
+### Step 3 — categories-only seed: NOT VERIFIED (no saved HTML)
+
+The approved categories-only seed used in the tests (`https://www.bstn.com/eu_en/men/all-products?categories=Men~All+Products~Footwear`) has no saved page 1/2 HTML. The only saved listing pages are from the §19 groupextra probe URL, which is outside `listing_scope`. The config was therefore not activated.
+
+### Step 4 — live run: NOT EXECUTED
+
+No live requests were made in this retest. No config was created or activated, no discovery or product requests were sent, the copied DBs were not written, and nothing was imported or published.
+
+### Requested design decisions (ChatGPT)
+
+1. `r/` hits inside a listing: in scope or not? They appear to be raffle/release entries rather than standard product pages (`/eu_en/p/...`), and the configured `product_path_regex` (`/eu_en/p/[^/]+`) would exclude them again in `discover_listings`. Decide whether `listing_hits` should skip `r/` hits, whether scope should extend to `r/`, or whether stopping remains correct. A regression case containing an `r/` hit is needed either way (the current fixtures only use `p/`).
+2. Identity of results[0] vs results[1]: the only discriminators observed are pagination tracking and the +3 Boots facet difference. If stronger identity evidence is required before live use, specify what to capture.
+3. Categories-only seed verification: obtaining its page 1/2 HTML requires two live store requests under the existing permission gate (robots/terms were re-verified in §20). Confirm whether Muse should fetch them as a verification probe, or provide another route.
+
+After a fix, re-execution resumes at Step 2 validation.
