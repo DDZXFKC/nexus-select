@@ -178,3 +178,36 @@ Jason Markk row: source_product_id 0012650, variant 0012650-1, manufacturer_code
 Acceptance position: the synthetic tests pass 6/6 and the BSTN extraction meets every hypothesis. The Shopify extraction produced 0 of 38 baseline rows because candidate disambiguation fails closed on duplicate serializations of a single product. Patch 2 is therefore not fully accepted; the candidate selection rule is the remaining fix (ChatGPT's side, per the division of labor). This remains prototype acceptance only — stage 2 is not complete.
 
 Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage2_detail_review.json`; logs `/Users/discodadz/nexus-run/stage2-detail-run-2026-11-13.log` and `/Users/discodadz/nexus-run/stage2-detail-analysis-2026-11-13.log`; the read-only analysis script `analyze_stage2_detail.py` is kept beside the package.
+
+## 13. Stage-2 detail retest (candidate merge + raw-byte hash) — execution results (2026-11-13, Muse)
+
+Batch: `docs/collector-stage2-detail-retest-2026-11-13.md` (commit ecaa2a7c), approved by the owner (the approval was relayed to ChatGPT in the working thread). Code `stage2_detail.py` (8006f06d), tests `test_stage2_detail.py` (f7279c94). Same isolated copy `pkg_stage2_20261113`; prior outputs and the baseline were preserved.
+
+Exact commands and results:
+
+```
+python3 -m py_compile stage2_detail.py test_stage2_detail.py   -> OK
+python3 -m unittest -v test_stage2_detail                       -> 13/13 OK, exit 0
+python3 stage2_detail.py --manifest input_pages_multi/manifest_six_brand_s2.csv --out stage2_detail_retest.json
+                                                                -> exit 0, counts [13, 0, 0, 0, 0, 1], total 14, published 0
+```
+
+The expected counts [13, 16, 10, 6, 6, 1] were NOT met: the Shopify pages still produce zero rows.
+
+What the fix achieved:
+
+- Raw-byte hashing is in effect. Every field hash in the retest output equals sha256 of the original file bytes, verified independently for all 6 manifest files; the section-12 discrepancy is closed for produced rows.
+- No value conflicts exist on the real pages. Replaying the merge inputs shows vendor/title/type/handle single-valued on all 4 Shopify pages, and no sku/title/price/image value ever conflicts across serializations.
+
+Why the merge still returns zero rows (exact replay of merge_candidates with instrumentation):
+
+- Each Shopify page carries two serialization families of the same product. Family A (the variants-JSON form) has the variant price as a dict {amount, currencyCode} and the image as a dict {src}. Family B (the standard product-JSON form) has the variant price as an int in cents and the image as null.
+- merge_candidates raises ValueError('invalid price') when a variant's price is present but not a dict, so the whole page fails closed. First failure points: notre_01 candidate 1, variant 67756848971887, price int 22500; notre_02 candidate 1, variant 53031454081135, price int 18000; patta_01 candidate 1, variant 56417358577995, price int 49800; patta_02 candidate 1, variant 56417329971531, price int 27800.
+- The two forms are value-consistent: for all 38 Shopify variants, the int price equals dict amount x 100 exactly (Notre USD, Patta EUR). No variant disagrees on price. The blocker is representation shape only, not a data conflict.
+- Candidate structure is unchanged from section 12 (2/2/3/3 candidates, all sharing the page's single product id; variant sets 16/10/6/6; no missing variant ids). Family B's image is null — absence, not a conflicting URL.
+
+Retest verification of the produced rows: total 14 (BSTN only, same scope as section 12); duplicate (url, product, variant) triples 0; decision HOLD on all rows; canonical_product_id blank on all rows; image_rights UNKNOWN; BSTN coverage unchanged (category/currency/description/image/manufacturer_code_candidate/price/size/stock_claim 14/14, gtin 13/14, color 0/14).
+
+Verdict: the retest is NOT accepted against the stated criteria (52 rows). The hash half of the fix is verified good. The merge half fails on the cents-int price representation of the standard product-JSON serialization — a projected-field shape the merger does not currently accept. The remaining fix is ChatGPT's: decide how the merger treats the cents-int form (for example, ignore a non-dict price as a non-projected representation, or normalize cents to major units before comparison), keeping fail-closed behavior for genuine value conflicts. Not bypassed on this side.
+
+Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage2_detail_retest.json`; logs `/Users/discodadz/nexus-run/stage2-retest-run-2026-11-13.log`, `stage2-retest-analysis-2026-11-13.log`, `stage2-conflict-analysis-2026-11-13.log`, `stage2-mergefail-analysis-2026-11-13.log`, `stage2-priceform-analysis-2026-11-13.log`; read-only analysis scripts `analyze_stage2_retest.py`, `analyze_stage2_conflicts.py`, `analyze_stage2_mergefail.py`, `analyze_stage2_priceforms.py` beside the package.
