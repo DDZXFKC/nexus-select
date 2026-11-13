@@ -17,7 +17,12 @@ class Test(unittest.TestCase):
  def test_wrong_primary(self):
   with self.assertRaises(ValueError):listing_hits(raw([result(0,384,'aux'),result(1,381,'main'),result(0,3447,'all')]),2)
  def test_shape(self):
-  with self.assertRaises(ValueError):listing_hits(raw([result(0,381,'main'),result(0,384,'aux')]),1)
+  main=result(0,381,'main');aux=result(0,384,'aux')
+  u,n,p=listing_hits(raw([main,aux]),1)
+  self.assertEqual((len(u),n,p),(96,381,4));self.assertTrue(all('/main-' in x for x in u))
+  for results in ([],[main,aux,aux,aux]):
+   with self.subTest(count=len(results)):
+    with self.assertRaisesRegex(ValueError,'unexpected listing results shape'):listing_hits(raw(results),1)
  def test_aux_moves(self):
   with self.assertRaises(ValueError):listing_hits(raw([result(1,381,'main'),result(1,384,'aux'),result(0,3447,'all')]),2)
 if __name__=='__main__':unittest.main()
