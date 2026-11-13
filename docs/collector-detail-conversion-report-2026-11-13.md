@@ -433,3 +433,47 @@ No live requests were made in this retest. No config was created or activated, n
 3. Categories-only seed verification: obtaining its page 1/2 HTML requires two live store requests under the existing permission gate (robots/terms were re-verified in §20). Confirm whether Muse should fetch them as a verification probe, or provide another route.
 
 After a fix, re-execution resumes at Step 2 validation.
+
+## 22. BSTN category retest — release-exclusion fix, identity established, seed probe stopped on a 2-set shape (§22 handoff 379643d6)
+
+Executed 2026-11-13 (JST) on the iMac in a fresh isolated copy `pkg_bstn_cat_fix2_20261113`, built from the §21 package and updated with the files at 2f475eb2 (`stage3_catalog.py`, 17,737 bytes) and ef9cdd65 (`test_stage3_bstn_release.py`, 1,426 bytes).
+
+### Step 1 — compile and tests: PASS
+
+- `py_compile` OK for the changed module.
+- Targeted tests: 33 passed (release + category + catalog suites).
+- Full discovery: **170/170 passed** (165 previous + 5 new release tests), matching the handoff's expectation. Log: `bstn-fix2-tests-2026-11-13.log`.
+
+### Step 2 — saved-page validation under the fixed code: PASS
+
+Against the saved §19 groupextra pages (`subcat_page_1.html`, `subcat_page_2.html`):
+
+- Page 1: `listing_hits` OK — nbHits=381, nbPages=4, 96 raw URLs returned, including the release URL `https://www.bstn.com/eu_en/r/adidas-bowling-brain-dead-kh8143-0355239` at position 47 (release count 1). The release URL was not fetched.
+- Page 2: OK — 96 URLs, release count 0.
+- Overlap between the page 1 and page 2 URL sets: 0.
+
+### Step 3 — primary-result identity via rendered DOM: ESTABLISHED (mismatches recorded)
+
+The saved SSR HTML contains no product-card anchors (the grid is client-rendered; all 961 hrefs are navigation/static), so the rendered grid of the exact §19 probe URL was captured independently (headless browser, 2026-11-13 16:42–16:49 JST; no sign-in, no product clicks, nothing added to a cart):
+
+- Page 1: the page displays "380 results", "Page 1 Of 4", 96 cards. The first 12 and last 4 card links match results[0] in order, **except positions 5 and 6 are swapped** (one adjacent transposition). The release card `/eu_en/r/adidas-bowling-brain-dead-kh8143-0355239` (Adidas BOWLING BRAIN DEAD, 249,99 €) is rendered at **position 47 — exactly its position in results[0]**.
+- Page 2: 96 cards; the first card (`timberland-boat-shoe-tb0a2pdqani1-0359555`) and the last card (`diemme-cornaro-nut-di26fwcom-f02s018nut-0357751`) match results[0]. Of the 96 cards, 64 hrefs were individually verified — all `/eu_en/p/`, no `/eu_en/r/`; 32 cards could not be individually verified because of lazy loading. The saved results[0] page 2 contains 0 release URLs.
+- Mismatches recorded: displayed total 380 vs saved nbHits 381 (live drift of 1 between the §19 capture and this check); the 5/6 transposition on page 1. The results[1] Boots facet difference (189 vs 192, +3) remains unexplained by the available metadata; no explanation is asserted.
+- Conclusion: the rendered listing for the requested URL corresponds to results[0] (card count per page, boundary cards on both pages, and the unique release card at the identical position). Page-following alone was not used as evidence.
+
+### Step 4 — categories-only seed: permission re-verified; fetch stopped on a new shape
+
+- Terms/robots recheck for the seed `https://www.bstn.com/eu_en/men/all-products?categories=Men~All+Products~Footwear` (log `bstn-fix2-terms-2026-11-13.log`): robots.txt 200; `can_fetch` true for the seed and its page 2 (agent and `*`); no crawl-delay, no request-rate. Terms page 200; zero occurrences of scrap/crawl/spider/automated/robot/"data mining" (the 7 "harvest" hits are the known JS telemetry configuration, not terms text).
+- Seed fetch through the collector's Fetch gate (fresh `reviewed_at`, interval 5 s, budget 10, no redirects): `listing_scope` accepted the seed. Requests used: robots (1) + seed page 1 (1) = 2. Seed page 1 saved to `bstn-seedprobe-2026-11-13/seed_page_1.html` (1,419,051 bytes, sha256 `6faa2c518f7dea91bc910896114149a77586ab8269519f1f3d0f3c9a5f57b8ac`).
+- **STOP**: `listing_hits` raised `ValueError: unexpected listing results shape` on seed page 1. Diagnosis of the saved page: the embedded results array has length **2** (the code accepts only 1 or 3):
+  - results[0]: nbHits=3443, page=0, 96 hits, 0 release URLs; first hit `p/sebago-tala-mid-suede-76111sw-906-0353318` (the same first product as the groupextra primary and as the rendered grid), last hit `p/fear-of-god-lace-up-runner-fw00030-0132-0362983`.
+  - results[1]: nbHits=13724, page=0, 96 hits; the first hit is an `r/` apparel URL (`r/mitchell-ness-bstn-x-nfl-legacy-jersey-2026-jy20877-nflnavy-0360018`) and the last hit a hoodie — apparently a broader catalogue set.
+- Seed page 2 was not fetched. No product pages were requested.
+
+### Step 5 — 5-product HOLD trial: NOT EXECUTED
+
+Blocked by the Step 4 stop. No collection run, no DB writes, nothing imported or published (published = 0).
+
+### Requested design decision (ChatGPT)
+
+The categories-only listing pages embed exactly 2 result sets. Decide whether `listing_hits` should accept length 2 with results[0] as the primary — the seed's results[0] matches the requested men's-footwear listing by count (3,443, vs the earlier 3,447 probe minus drift) and by its first hit — or specify another selection/identity rule for this shape. A regression fixture with a 2-set page is needed either way. After a fix, re-execution resumes at Step 4 validation of the already-saved seed page 1 (no new fetch needed for page 1; page 2 still requires one gated fetch).
