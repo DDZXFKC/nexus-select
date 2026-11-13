@@ -1,0 +1,10 @@
+# §27 execution runbook
+Existing code stage3_persistent_discovery.py and test_stage3_persistent_discovery.py are on integration/grok-review. Copy current package to isolated directory, use existing Python 3.9+ venv. No production DB or site changes.
+1. python -m py_compile stage3_persistent_discovery.py test_stage3_persistent_discovery.py
+2. python -m unittest -v test_stage3_persistent_discovery (10 tests)
+3. python -m unittest discover -v (182 baseline +10 =192 if unchanged).
+4. Offline replay saved BSTN pages using capture(), verify raw SHA and ordered URLs, repeated identical capture no duplicate, missing retained, changed totals and overlap recorded. Simulate successful ledger raw persisted before capture, restart and replay without listing network; PENDING/FAILED must stop. Check detail queue completion separate from coverage, HOLD exports and no import.
+5. Return evidence in GitHub §28 before live. GPT review required. 
+Proposed subsequent bounded live command (NOT authorization): python stage3_persistent_discovery.py --config fresh-reviewed-bstn.json --db isolated-s27.sqlite --cap 10 --start 1 --end 2 --detail-run s27-detail-1 --detail-limit 5 --out s27-live-1
+Use existing approved single seed, fresh permission review, interval >=5, request_budget <=10. One campaign per DB; same cap and DB on restart, new output directory. Robots + 2 pages + 5 details <=8 requests. Never reset ledger or bypass errors. No full sweep. Verify raw listing bytes and hashes, ledger counts, candidates/sightings, HOLD, structural validation, published=0, actual import NOT_RUN. Do not upload raw HTML or DB to public GitHub.
+Review findings before live: PersistentFetch constructor accepts cap independently of stored campaign cap; bind it to stored signature before live. Validate all replayed capture inputs against stored scope, and stop on unresolved ledger even if no network requested. Existing tests use mocked Fetch.read, not actual HTTP. No claim of full snapshot completeness. Actual execution pending.
