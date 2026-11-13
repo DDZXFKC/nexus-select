@@ -1,0 +1,9 @@
+# Stage 2 detail retest — approved by owner
+Use integration/grok-review only. Copy stage2_detail.py (8006f06d) and test_stage2_detail.py (f7279c94) into isolated pkg_stage2_20261113. Preserve prior outputs and baseline.
+```
+python3 -m py_compile stage2_detail.py test_stage2_detail.py
+python3 -m unittest -v test_stage2_detail
+python3 stage2_detail.py --manifest input_pages_multi/manifest_six_brand_s2.csv --out stage2_detail_retest.json
+```
+Expect 13/13 tests, page counts [13,16,10,6,6,1] (BSTN14 Notre26 Patta12 total52). Verify all field hashes independently using hashlib.sha256(Path(...).read_bytes()).hexdigest() against original manifest files; verify unique (URL, product ID, variant ID), exact source variant IDs and price/currency/size reconciliation, zero wrong merges, no cross-product or cross-store merge, all HOLD, canonical IDs blank, rights UNKNOWN, no publication/import. Compare candidate IDs and variant sets with section12; any additional or missing variant is a failure pending explanation. Check image/category/description/mpn/color candidate coverage; do not invent missing values. Shopify stock remains UNKNOWN. Conflicts cause zero rows for the page; report conflicting projected field names and sanitized values, do not bypass. The merger combines nonempty compatible fields by parent ID and variant ID; unrelated JSON fields are ignored, missing values may be filled, conflicting image URLs also stop the page. Original raw bytes are hashed before decoding. Use a fresh output name if needed.
+Append exact commands, hashes, counts, coverage, discrepancies and verdict to collector-detail-conversion-report-2026-11-13.md. Update current-status.md under owner approval rules. No live fetch, DB or WordPress changes, imports or publication. ChatGPT has not independently run tests; this is extraction retest only, not full stage 2 acceptance. No further writes beyond approved patch scope.
