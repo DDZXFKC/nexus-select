@@ -537,3 +537,57 @@ Log: bstn-s23-step4-2026-11-13.log.
 ### Requested design decision (ChatGPT)
 
 Discovery as specified requires a stable catalog across the whole 36-page sweep, which the live catalog does not currently provide. Please decide: (a) relax the in-run invariant so drift is recorded as warnings with dedupe instead of a hard stop, (b) shorten the sweep (fewer pages per run, resume across runs), or (c) retry at another time of day. Muse stopped here per the runbook and is waiting for the decision.
+
+## §26 — §25 bounded partial probe: execution report (Muse execution; ChatGPT to cross-review)
+
+Batch under review: code 7d153cd4 (research/online/local-pkg/stage3_listing_probe.py, new), tests 2cf38b3e (test_stage3_listing_probe.py, 6 tests), runbook 7b95d586 (docs/collector-bstn-partial-probe-runbook-2026-11-13.md). Base: §24 report 71643c1e.
+
+Muse cross-review before execution: the probe is a separate entry point that reuses stage3_catalog's Fetch / policy / listing_hits / init / prepare / process / extract / report unchanged. It bounds pages to 1–5, requires exactly one listing seed and a fresh DB (refuses an existing DB file), records per-page totals and overlaps, excludes /eu_en/r/ hits from the candidate set, and stamps catalog_complete=false, coverage=PARTIAL, trial=true onto the report. No media-host access, no automatic retries. stage3_catalog.py itself is untouched by this batch. No unannounced changes found.
+
+Correction to §24: the §23 step-4 output directory s23-cat-first-001 was in fact created (empty) before discovery stopped. §24's "was not produced" should read "created but empty — no discovery.json or report.json was written".
+
+### Step 1 — Regression: PASS
+
+Isolated copy /Users/discodadz/nexus-run/pkg_bstn_probe_20261113/ (fresh copy of the §23 package plus the two new files, byte counts 2718 / 1418; existing isolated venv .venv-cat, Python 3.9.6). Log: bstn-s25-tests-2026-11-13.log.
+
+- py_compile stage3_listing_probe.py test_stage3_listing_probe.py: OK.
+- Targeted (test_stage3_listing_probe): Ran 6, OK.
+- Full discover: Ran 182, OK. (Matches the runbook's expected 6 / 182.)
+
+### Step 2 — Terms / robots recheck: PASS (unchanged)
+
+Log: bstn-s25-terms-2026-11-13.log. robots.txt 1,623 bytes and terms 406,859 bytes — sizes identical to the §22 / §23 / §24 checks. can_fetch is true for the seed, seed page 2 and a product sample (for the agent and for *). No crawl-delay / request-rate. Keyword counts unchanged (scrap / crawler / crawling / spider / automated / robot / data mining: all 0; harvest: 7, the same JS-config context as before).
+
+### Step 3 — Probe run: PASS
+
+Config bstn-category-s25.json: reviewed_at stamped fresh at run time (2026-11-13T10:43:50Z), request budget 10, interval 5 s, the approved single categories-only seed, product_path_regex /eu_en/p/[^/]+. Command as in the runbook (stage3_listing_probe.py --config bstn-category-s25.json --db bstn-s25-trial.sqlite --run s25-trial --out s25-trial-001 --pages 2). Run window 2026-11-13T10:43:50Z → 10:44:32Z, exit 0. Requests used: 8 of the budget of 10 (robots + 2 listings + 5 products). Log: bstn-s25-run-2026-11-13.log.
+
+Discovery (s25-trial-001/discovery.json):
+
+- Page 1: total 3439, pages 36, 96 URLs, sha256 bb63e18a…, fetched 10:44:02Z.
+- Page 2: total 3439, pages 36, 96 URLs, sha256 36ecf6fa…, fetched 10:44:07Z.
+- Overlap between the two pages: 0. Totals identical across the two fetches, so drift = false within this probe. (The total itself moved 3441 → 3439 since §24 — drift between runs, recorded.)
+- Release exclusions: 5. Unique product candidates: 187 (192 raw − 5 release). coverage PARTIAL, catalog_complete false, as designed.
+
+Processing (first 5 sorted candidates; fresh DB bstn-s25-trial.sqlite):
+
+1. A Bathing Ape 1ST CAMO SLIPPERS (001hom801001myel-0358214) — 2 variants
+2. A Bathing Ape 1ST CAMO SLIPPERS (001hom801001mgrn-0358213) — 2 variants
+3. Adidas X BAPE CRAZY ENERGY (kh8660-0357161) — 13 variants
+4. Adidas ANTHONY EDWARDS 3 (kh8540-0357321) — 12 variants
+5. Adidas ANTHONY EDWARDS 3 (kj3021-0357327) — 11 variants
+
+Queue DONE 5 / 5; 40 variant observations; captures 5 rows with 5 distinct hashes; the capture hash is present on all 40 evidence rows.
+
+### Step 4 — Output verification: PASS
+
+Logs: bstn-s25-verify-2026-11-13.log, bstn-s25-verify2-2026-11-13.log.
+
+- report.json: complete = true (the five-item queue only), catalog_complete = false, coverage = PARTIAL, trial = true, published = 0, approved_for_import = false, actual_import = NOT_RUN, structural_validation = PASS, rows = 40, woo_rows = 45, buyma_rows = 5.
+- All 40 evidence rows have decision = HOLD. canonical_product_id is empty on all 40 rows (no canonical promotion).
+- Exports keep unverified values out: woo.csv (45 rows) has Regular price and Images blank on every row and Published = 0; buyma.csv (5 rows) has source_price, image_urls and buyma_sale_price_jpy blank on every row; every export row is HOLD. Prices and stock claims exist only in the evidence layer (for example €129.99 and a schema.org InStock claim) and remain UNVERIFIED.
+- missing_information on the BUYMA rows lists all eight gates unmet (verified_identity, verified_stock, image_rights, description_rights, category_mapping, cost, channel_price, import_validation), as designed.
+
+### Conclusion
+
+The bounded partial probe works end to end: partial discovery with honest PARTIAL labelling, five real products captured with per-variant evidence, everything HOLD, nothing published or imported. Per the runbook, this trial is not full-catalog acceptance; the strict full sweep remains stopped on the §24 drift problem. The next design (persistent discovery evidence, bounded multi-run coverage, safe delta semantics) is ChatGPT's side.
