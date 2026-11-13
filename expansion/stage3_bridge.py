@@ -57,8 +57,8 @@ def live(config,db,out,run,limit):
     policy(cfg)
     if not 1<=limit<=5 or cfg["request_budget"]>10:
         raise ValueError("pilot scope/budget")
-    if cfg.get("listing_seeds") or not cfg.get("pilot_product_urls"):
-        raise ValueError("pilot requires explicit product URLs and sitemap policy")
+    if cfg.get("sitemap_seeds") or not cfg.get("listing_seeds") or not cfg.get("pilot_product_urls"):
+        raise ValueError("pilot requires explicit product URLs and approved storefront listing policy")
     urls=sorted(set(cfg["pilot_product_urls"]))
     if len(urls)!=limit:raise ValueError("pilot URL count must equal limit")
     for u in urls:
