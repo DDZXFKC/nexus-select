@@ -1,0 +1,35 @@
+[
+  {
+    "host": "www.bstn.com",
+    "enabled": false,
+    "permission_reference": "",
+    "reviewer": "",
+    "reviewed_at": "",
+    "interval_seconds": 10,
+    "request_budget": 5000,
+    "product_path_regex": "",
+    "sitemap_seeds": []
+  },
+  {
+    "host": "www.notre-shop.com",
+    "enabled": false,
+    "permission_reference": "",
+    "reviewer": "",
+    "reviewed_at": "",
+    "interval_seconds": 10,
+    "request_budget": 5000,
+    "product_path_regex": "",
+    "sitemap_seeds": []
+  },
+  {
+    "host": "patta.nl",
+    "enabled": false,
+    "permission_reference": "",
+    "reviewer": "",
+    "reviewed_at": "",
+    "interval_seconds": 10,
+    "request_budget": 5000,
+    "product_path_regex": "",
+    "sitemap_seeds": []
+  }
+]
