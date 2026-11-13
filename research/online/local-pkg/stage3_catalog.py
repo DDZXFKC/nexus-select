@@ -14,6 +14,7 @@ from stage3_verify import evaluate,validate_exports
 from channel_ready_v4 import WOO,BUYMA,_write
 AGENT='AHC-CatalogReview/1.0'
 class Stop(ValueError):pass
+class ProductDataError(ValueError):pass
 class NoRedirect(urllib.request.HTTPRedirectHandler):
  def redirect_request(self,*a,**kw):raise Stop('redirect: review required')
 def utc():return datetime.now(timezone.utc).isoformat()
@@ -241,7 +242,7 @@ def process(c,run,fetch,parser,limit):
      pid=digest([host,d['source_product_id']]);vid=digest([pid,d['source_variant_id']])
      require(vid not in ids,'duplicate variant');ids.add(vid)
      r=dict(source_url=url,source_product_id=pid,source_variant_id=vid,merchant_product_id=d['source_product_id'],merchant_variant_id=d['source_variant_id'],legacy_product_id='',legacy_sku='',legacy_size='',brand=v('brand') or '',name=v('name') or '',title=v('name') or '',color=v('color') or v('color_candidate') or '',size=v('size') or '',price=str(v('price')),currency=v('currency'),stock_claim=v('stock_claim') or '',detail=d,canonical_product_id='',decision='HOLD',capture_hash=sha,capture_time=at)
-     require(r['brand'] and r['name'],'missing brand/name')
+     if not (r['brand'] and r['name']):raise ProductDataError('missing brand/name')
      payload=json.dumps(r,ensure_ascii=False,sort_keys=True)
      stable=dict(r);stable.pop('capture_time')
      c.execute('INSERT OR IGNORE INTO observations VALUES(?,?,?)',(digest(stable),vid,payload))
@@ -250,12 +251,7 @@ def process(c,run,fetch,parser,limit):
     c.execute("UPDATE queue SET state='DONE',error=NULL WHERE run=? AND url=?",(run,url))
   except Exception as e:
    with c:c.execute("UPDATE queue SET state='ERROR',error=? WHERE run=? AND url=?",(str(e)[:500],run,url))
-   if isinstance(e,(Stop,sqlite3.Error)) or isinstance(e,urllib.error.URLError):
-    raise
-   if not isinstance(e,(ValueError,KeyError,TypeError,IndexError)):
-    raise
-   if any(x in str(e) for x in ('robots disallows','request budget','outside approved scope','provenance mismatch','unsafe detail')):
-    raise
+   if not isinstance(e,ProductDataError):raise
    continue
  with c:
   c.execute("UPDATE runs SET complete=NOT EXISTS(SELECT 1 FROM queue WHERE run=? AND state!='DONE') WHERE id=?",(run,run))
