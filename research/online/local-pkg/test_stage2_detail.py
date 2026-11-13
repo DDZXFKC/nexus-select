@@ -33,4 +33,29 @@ class DetailTests(unittest.TestCase):
   for f in r['fields'].values():
    self.assertEqual(f['source_url'],'https://notre-shop.com/p')
    self.assertEqual(len(f['html_sha256']),64)
+ def test_same_parent(self):
+  x=parent();y=dict(x,extra='different')
+  self.assertEqual(len(extract(html(x)+html(y),'https://notre-shop.com/p')),1)
+ def test_missing_title(self):
+  x=parent();y=dict(x);del y['title']
+  r=extract(html(y)+html(x),'https://notre-shop.com/p')[0]
+  self.assertEqual(r['fields']['color_candidate']['value'],'Black/White')
+ def test_parent_conflict(self):
+  x=parent();y=dict(x,vendor='Other')
+  self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p'),[])
+ def test_variant_conflict(self):
+  x=parent();y=parent();y['variants'][0]['price']['amount']=181
+  self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p'),[])
+ def test_raw_hash(self):
+  import hashlib
+  raw=(html(parent())+'\r\n').encode('utf-8')
+  r=extract(raw,'https://notre-shop.com/p')[0]
+  self.assertEqual(r['fields']['size']['html_sha256'],hashlib.sha256(raw).hexdigest())
+ def test_duplicate_variant(self):
+  x=parent();x['variants'].append(dict(x['variants'][0]))
+  self.assertEqual(len(extract(html(x),'https://notre-shop.com/p')),1)
+ def test_distinct_parent_same_variant(self):
+  x=parent();y=dict(x,id='p2',title='')
+  self.assertEqual(extract(html(x)+html(y),'https://notre-shop.com/p'),[])
 if __name__=='__main__':unittest.main()
+
