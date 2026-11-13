@@ -250,7 +250,13 @@ def process(c,run,fetch,parser,limit):
     c.execute("UPDATE queue SET state='DONE',error=NULL WHERE run=? AND url=?",(run,url))
   except Exception as e:
    with c:c.execute("UPDATE queue SET state='ERROR',error=? WHERE run=? AND url=?",(str(e)[:500],run,url))
-   raise
+   if isinstance(e,(Stop,sqlite3.Error)) or isinstance(e,urllib.error.URLError):
+    raise
+   if not isinstance(e,(ValueError,KeyError,TypeError,IndexError)):
+    raise
+   if any(x in str(e) for x in ('robots disallows','request budget','outside approved scope','provenance mismatch','unsafe detail')):
+    raise
+   continue
  with c:
   c.execute("UPDATE runs SET complete=NOT EXISTS(SELECT 1 FROM queue WHERE run=? AND state!='DONE') WHERE id=?",(run,run))
 def report(c,run,out):
@@ -258,6 +264,7 @@ def report(c,run,out):
  rows=[json.loads(x[0]) for x in c.execute('SELECT payload FROM latest WHERE run=? ORDER BY variant',(run,))]
  complete=c.execute('SELECT complete FROM runs WHERE id=?',(run,)).fetchone()[0]
  result=dict(queue=counts,rows=len(rows),complete=bool(complete),published=0,approved_for_import=False)
+ (out/'partial-evidence.json').write_text(json.dumps(rows,ensure_ascii=False),encoding='utf-8')
  if complete:
   woo,buyma,profits,mapping=exports(rows)
   for b in buyma:b.setdefault('buyma_sale_price_jpy','');b.setdefault('image_urls','')
