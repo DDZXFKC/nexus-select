@@ -136,3 +136,45 @@ Variant keys (identical on Notre and Patta): `id` string, `image` object {`src`:
 - Notre variant titles combine size and colorway: "6 M / Lemonade/Lemonade", "8 M / Dark Gull Grey/Black". The colorway also appears in the parent title suffix: "J Balvin Air Jordan 4 Retro Sneaker in Lemonade/Lemonade", "Novalis Gel-Teremoa II Sneaker in Dark Gull Grey/Black" — a possible colorway source for Notre (parent title after " in "), to be verified per page.
 - Patta variant titles are pure sizes ("XS", "S", …); the colorway appears only in the parent title suffix: "Patta Leather Hooded Bomber Jacket (Moonless Night)", "Patta Square Quilted Puffer Jacket (Black)".
 - Vendor values: "Jordan" (Notre), "ASICS" (Notre), "Patta" (Patta) — matching the staged brands.
+
+## 12. Stage-2 detail patch 2 — execution results (2026-11-13, Muse)
+
+Batch: `docs/collector-stage2-detail-runbook-2026-11-13.md` (commit 5dca9de9). Code `stage2_detail.py` (5db087e1), tests `test_stage2_detail.py`. Executed in the same isolated copy `pkg_stage2_20261113`; existing `shopify_variants.py` and the baseline were not modified.
+
+Exact commands and results:
+
+```
+python3 -m py_compile stage2_detail.py test_stage2_detail.py   -> OK
+python3 -m unittest -v test_stage2_detail                       -> 6/6 OK (test_ambiguous, test_bstn, test_mismatch, test_notre, test_patta, test_provenance), exit 0
+python3 stage2_detail.py --manifest input_pages_multi/manifest_six_brand_s2.csv --out stage2_detail_review.json
+                                                                -> exit 0, counts [13, 0, 0, 0, 0, 1], total 14, published 0; output 57,404 bytes
+```
+
+Per-page reconciliation against the baseline (13, 16, 10, 6, 6, 1 = 52):
+
+- BSTN Adilette: 13 rows = baseline 13. Variant IDs use the same per-size suffix scheme (0009238-4, -15, -5, ...).
+- Notre J Balvin: 0 rows (baseline 16). Notre Novalis: 0 rows (baseline 10). Patta bomber: 0 rows (baseline 6). Patta puffer: 0 rows (baseline 6). Cause below.
+- BSTN Jason Markk: 1 row = baseline 1.
+
+Field coverage over the 14 produced rows (all BSTN): category 14/14, currency 14/14, description 14/14, image 14/14, manufacturer_code_candidate 14/14, price 14/14, size 14/14, stock_claim 14/14 (values verbatim schema.org URLs: InStock 4, OutOfStock 10), gtin 13/14 (the Adilette 45 EU offer has no gtin13/gtin12), color 0/14 (BSTN JSON-LD carries no Product.color; the field stays UNKNOWN and no color was invented).
+
+Hypotheses vs actual: image 52 -> 14 (BSTN only, because the Shopify pages produced no rows); BSTN mpn 14 -> 14 (met); BSTN description 14 -> 14 (met); Shopify color candidate 38 -> 0; Shopify stock UNKNOWN 38 -> 0 rows produced.
+
+Identity and integrity checks: (source_product_id, source_variant_id) unique 14/14; decision HOLD on every row; canonical_product_id empty on every row (GTIN is recorded as a raw field only — no GTIN promotion); image_rights UNKNOWN on every row; no product other than each page's own appears.
+
+Shopify zero rows — candidate structure (read-only analysis reapplying the module's own candidate rule): each Shopify page contains several distinct JSON serializations of the SAME product, so the candidate count is not 1 and extraction fails closed by design:
+
+- notre_01: 2 candidates, both id 15601990500463 (vendor Jordan, 16 variants); one carries the title, one has no title.
+- notre_02: 2 candidates, both id 14990230519919 (vendor ASICS, 10 variants); same pattern.
+- patta_01: 3 candidates, all id 15499861524811 (vendor Patta, 6 variants); two carry the title (the two titled dumps still differ elsewhere in the JSON), one has no title.
+- patta_02: 3 candidates, all id 15499859231051 (vendor Patta, 6 variants); same pattern.
+
+No genuinely different product was among the candidates on any page. The fail-closed stop was not bypassed, per the runbook.
+
+Hash provenance discrepancy (anticipated by the runbook): the module's html_sha256 is the sha256 of the UTF-8 decoded text (Path.read_text), not of the raw file bytes. BSTN files contain no CRLF, and there raw == text == recorded. The four Shopify files all differ between raw bytes and decoded text (CRLF counts: notre_01 1, notre_02 1, patta_01 562, patta_02 562; no BOM anywhere). No Shopify rows were produced in this run, so no mismatched hash was recorded; but any future Shopify record's html_sha256 would not equal the source file's raw-bytes sha256. Reported as a discrepancy, not a match.
+
+Jason Markk row: source_product_id 0012650, variant 0012650-1, manufacturer_code_candidate "JM3691 / 1201- OLD" (verbatim), size "ONE SIZE", 18.99 EUR, OutOfStock, gtin 810887023159 recorded as a raw field only.
+
+Acceptance position: the synthetic tests pass 6/6 and the BSTN extraction meets every hypothesis. The Shopify extraction produced 0 of 38 baseline rows because candidate disambiguation fails closed on duplicate serializations of a single product. Patch 2 is therefore not fully accepted; the candidate selection rule is the remaining fix (ChatGPT's side, per the division of labor). This remains prototype acceptance only — stage 2 is not complete.
+
+Artifacts (iMac): `/Users/discodadz/nexus-run/pkg_stage2_20261113/stage2_detail_review.json`; logs `/Users/discodadz/nexus-run/stage2-detail-run-2026-11-13.log` and `/Users/discodadz/nexus-run/stage2-detail-analysis-2026-11-13.log`; the read-only analysis script `analyze_stage2_detail.py` is kept beside the package.
