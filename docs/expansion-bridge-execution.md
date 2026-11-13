@@ -34,6 +34,14 @@
 - structural_validation：3ホストとも PASS、actual_import は NOT_RUN
 - マニフェスト URL のホスト名に関する discrepancy はなし（抽出は期待どおり）
 
-## 未実施
+## BSTN ライブパイロット（limit 1）— 2026-11-14 07:30 JST に実施、media robots の 403 で開始前に停止
 
-- BSTN ライブパイロット（limit 1）：§29 収集バッチ（resume4）の合間に、承認済み URL と許可参照を用意して別途実施する。media.bstn.com は robots 未確認のため不使用。
+§29 バッチ（resume4）完了後の合間に、引き渡し手順どおり実施した。
+
+- 事前確認として https://media.bstn.com/robots.txt へ1回だけ GET した結果、**HTTP 403**（2026-11-13 の §18 確認時と同じ。今朝 07:30 JST に実測）。
+- ブリッジの live はサイトマップ方式の設定を要求し、stage3_catalog.Fetch.init_robots はサイトマップ方式の場合に media.bstn.com の robots.txt 取得と検証を必須とする。したがって現状のパイロットは開始条件を満たせず、**設定ファイルは作成せず、商品ページへのリクエストも行わなかった**（行ったのは上記 robots 確認の1回のみ）。
+- 停止は設計どおりのフェイルクローズであり、回避はしていない。
+
+再開に必要なのは次のどちらか（設計判断は GPT 側）：
+1. media.bstn.com/robots.txt が取得可能になること（現状 403）。
+2. サイトマップを取得しないパイロット方式では media robots を必須としない設計にすること。
