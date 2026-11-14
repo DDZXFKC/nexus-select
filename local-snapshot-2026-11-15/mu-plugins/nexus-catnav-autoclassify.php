@@ -14,6 +14,9 @@
  * - Facets this plugin added itself are removed again when the rule no longer matches.
  *   Categories set by a person are never removed.
  * - Gender is also taken from a gendered leaf/group slug (mens-sneakers -> mens).
+ * - rev3: a facet that was already on the product (e.g. set by a person) is never recorded as
+ *   auto-added, so it is never removed. Meta key renamed to _nx_catnav_auto_v2 so records written
+ *   by rev2 (which could include such facets) are ignored.
  * - Products that cannot be classified are marked with _nx_catnav_needs_review (reason text).
  */
 defined('ABSPATH') || exit;
@@ -104,8 +107,10 @@ function nx_catnav_classify(array $slugs, $title, array $previous_auto = []) {
     return [
         'add' => array_values(array_unique(array_diff($add, $slugs))),
         'remove' => $remove,
-        // Remember facets added now plus earlier auto facets that are still kept.
-        'auto' => array_values(array_unique(array_merge($auto, array_diff(array_intersect($previous_auto, $slugs), $remove)))),
+        // Remember only facets this plugin actually added (not already present, e.g. set by a person)
+        // plus earlier auto facets that are still kept. A facet a person set is never recorded as auto,
+        // so it can never be removed by this plugin.
+        'auto' => array_values(array_unique(array_merge(array_diff($auto, $slugs), array_diff(array_intersect($previous_auto, $slugs), $remove)))),
         'review' => $review,
     ];
 }
@@ -116,7 +121,7 @@ function nx_catnav_autoclassify($product_id) {
     if (wp_is_post_revision($product_id) || get_post_type($product_id) !== 'product') return;
     $slugs = wp_get_post_terms($product_id, 'product_cat', ['fields' => 'slugs']);
     if (is_wp_error($slugs)) return;
-    $previous = get_post_meta($product_id, '_nx_catnav_auto', true);
+    $previous = get_post_meta($product_id, '_nx_catnav_auto_v2', true);
     $previous = is_array($previous) ? $previous : [];
     $r = nx_catnav_classify((array) $slugs, get_the_title($product_id), $previous);
 
@@ -139,8 +144,8 @@ function nx_catnav_autoclassify($product_id) {
     }
     $nx_running = false;
 
-    if ($r['auto']) update_post_meta($product_id, '_nx_catnav_auto', $r['auto']);
-    else delete_post_meta($product_id, '_nx_catnav_auto');
+    if ($r['auto']) update_post_meta($product_id, '_nx_catnav_auto_v2', $r['auto']);
+    else delete_post_meta($product_id, '_nx_catnav_auto_v2');
     if ($r['review']) update_post_meta($product_id, '_nx_catnav_needs_review', $r['review']);
     else delete_post_meta($product_id, '_nx_catnav_needs_review');
     if (($r['add'] || $r['remove']) && function_exists('wc_delete_product_transients')) wc_delete_product_transients($product_id);

@@ -42,6 +42,18 @@ try {
     $p->save();
     $s = $slugs($id);
     $check('update: auto facet removed when no longer matching', !in_array('mens-running', $s, true) && in_array('mens-sneakers', $s, true), implode(',', $s));
+
+    // A usage facet set by a person must survive a rename.
+    $p = wc_get_product($id);
+    $p->set_name('AHC QA TEMP ASICS Novablast 5');
+    $p->set_category_ids([$term('mens'), $term('mens-shoes'), $term('mens-sneakers'), $term('mens-running')]);
+    delete_post_meta($id, '_nx_catnav_auto_v2');
+    $p->save();
+    $p = wc_get_product($id);
+    $p->set_name('AHC QA TEMP Plain Sneaker');
+    $p->save();
+    $s = $slugs($id);
+    $check('manual facet kept after rename', in_array('mens-running', $s, true), implode(',', $s));
 } finally {
     wp_delete_post($id, true);
     WP_CLI::log("Temporary draft product $id deleted.");

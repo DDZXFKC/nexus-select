@@ -57,6 +57,16 @@ check('auto facet removed when rule no longer matches', $r['remove'] === ['mens-
 // a facet set by a person is never removed
 $r = nx_catnav_classify(['mens', 'mens-shoes', 'mens-sneakers', 'mens-boots'], 'Timberland Killington Trekker Low', []);
 check('manual facet kept', $r['remove'] === [], json_encode($r));
+// a facet a person set that also matches the rule is NOT recorded as auto ...
+$r = nx_catnav_classify(['mens', 'mens-shoes', 'mens-sneakers', 'mens-running'], 'ASICS Novablast 5', []);
+check('manual matching facet not recorded as auto', $r['auto'] === [] && $r['remove'] === [], json_encode($r));
+// ... so after a rename it is still not removed
+$r = nx_catnav_classify(['mens', 'mens-shoes', 'mens-sneakers', 'mens-running'], 'ASICS Plain Trainer', $r['auto']);
+check('manual facet survives rename', $r['remove'] === [], json_encode($r));
+// auto-added facet: recorded on the first run, removed after a rename
+$r1 = nx_catnav_classify(['mens', 'mens-shoes', 'mens-sneakers'], 'ASICS Novablast 5', []);
+$r2 = nx_catnav_classify(['mens', 'mens-shoes', 'mens-sneakers', 'mens-running'], 'ASICS Plain Trainer', $r1['auto']);
+check('auto facet lifecycle', $r1['auto'] === ['mens-running'] && $r2['remove'] === ['mens-running'], json_encode([$r1, $r2]));
 // never remove the last leaf
 $r = nx_catnav_classify(['mens', 'mens-shoes', 'mens-boots'], 'Some Shoe', ['mens-boots']);
 check('last leaf kept', $r['remove'] === [], json_encode($r));

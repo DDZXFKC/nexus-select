@@ -11,7 +11,7 @@
    - **実行タイミング**：`save_post_product` をやめ、WooCommerceが商品のカテゴリーを保存し終えた後に動く `woocommerce_new_product`／`woocommerce_update_product` に変更。管理画面、REST API、WP-CLI、商品発掘システムからの登録のすべてで分類されるようになる
    - **Boots**：「Timberland」というブランド名では分類しない。商品名に Boot／6-Inch／Chukka／Goadome／Field Boot／Euro Hiker などのブーツを示す語があるときだけ
    - **AF1に加えてDunkも**、用途カテゴリー（Running・Basketball・Boots）に自動で入れない
-   - **誤分類の訂正**：このプラグインが自動で付けた用途カテゴリーは、ルールに合わなくなったら自動で外す。**人が付けたカテゴリーは絶対に外さない**。最後の末端カテゴリーも外さない
+   - **誤分類の訂正**：このプラグインが自動で付けた用途カテゴリーは、ルールに合わなくなったら自動で外す。**人が付けたカテゴリーは絶対に外さない**（ルールに一致していても「自動で付けた」とは記録しない。rev3で修正）。最後の末端カテゴリーも外さない
    - **性別の判定**：`mens-sneakers` のような末端カテゴリーだけが付いていても、MEN'Sとして親カテゴリーを補完する
    - **分類できない商品**：`_nx_catnav_needs_review` に理由（`gender-missing`／`leaf-missing`）を記録する。公開は止めない（公開保留は未承認の改善案のため、今回は入れていない）
    - 第1〜第3階層すべてへの付与は維持（ヘッダーがMEN'Sなどの件数を使っているため）
@@ -31,7 +31,7 @@ cp "$MU/nexus-catnav-autoclassify.php" "$MU/nexus-catnav-redirects.php" ~/ahc-qa
 ### 2. 単体テスト（WordPress不要）
 ```bash
 cd ~/nexus-select && git pull
-php qa/php-tests/test_catnav.php      # 「OK 28 tests」と出ること
+php qa/php-tests/test_catnav.php      # 「OK 31 tests」と出ること
 ```
 
 ### 3. 反映
@@ -46,7 +46,7 @@ cp local-snapshot-2026-11-15/mu-plugins/nexus-catnav-redirects.php "$MU/"
 "$PHP" -d mysqli.default_socket="$SOCK" -d pdo_mysql.default_socket="$SOCK" \
   "$WP" eval-file ~/nexus-select/qa/php-tests/local_autoclassify_check.php --path="$SITE"
 ```
-4項目すべて PASS、最後に `Success` と出ること。
+5項目すべて PASS、最後に `Success` と出ること。
 
 ### 5. 品質検査
 ```bash
