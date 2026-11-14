@@ -1,0 +1,6 @@
+# Reports, exports and screenshots must never be committed (public repository).
+reports/
+export/*.json
+*.png
+__pycache__/
+config.json
