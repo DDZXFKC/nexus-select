@@ -64,6 +64,8 @@ def make_handler(defects: set):
             if path == "/":
                 hero_media = "<video src='/v.mp4'></video>" if "video" in defects else "<img src='/img/hero.png' alt='hero'>"
                 extra = ""
+                if "scheme" in defects:
+                    extra += f"<a href='https://127.0.0.1:{self.server.server_address[1]}/brands/'>https</a>"
                 if "broken" in defects:
                     extra += "<a href='/missing-page/'>missing</a><img src='/img/broken.png' alt='b'><a href='/r1/'>r</a><a href='/loop-a/'>loop</a>"
                 self.page("Home", f"<section class='nexus-pc-hero'>{hero_media}</section>"

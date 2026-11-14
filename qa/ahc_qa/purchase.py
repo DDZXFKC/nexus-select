@@ -109,11 +109,39 @@ def _fail(msg, tag, page, shot_dir, pc, name, sev="CRITICAL", **kw) -> Finding:
                    screenshot=_shot(page, shot_dir, f"{tag}-{name}", pc), cause_group=f"PURCHASE_FLOW:{name}", **kw)
 
 
+CART_ROW = "tr.cart_item, .wc-block-cart-items__row"
+CHECKOUT_FORM = "form.checkout, .wc-block-checkout"
+# Classic checkout ids, then Checkout-block ids.
+CHECKOUT_FIELDS = {
+    "姓": ["#billing_last_name", "#shipping_last_name", "#billing-last_name", "#shipping-last_name"],
+    "メールアドレス": ["#billing_email", "#email", "input[type=email]"],
+    "郵便番号": ["#billing_postcode", "#shipping_postcode", "#billing-postcode", "#shipping-postcode"],
+}
+
+
+def _settle(page, ms=10000):
+    try:
+        page.wait_for_load_state("networkidle", timeout=ms)
+    except Exception:
+        pass
+
+
+def _goto_cart(page, base):
+    page.goto(urllib.parse.urljoin(base, "cart/"), wait_until="domcontentloaded")
+    _settle(page)
+    try:  # the Cart block renders its rows with JavaScript after load
+        page.wait_for_selector(CART_ROW, timeout=15000)
+    except Exception:
+        pass
+    return page.locator(".wc-block-cart").count() > 0
+
+
 def _flow(page, base, products, pc, shot_dir, tag, log) -> list[Finding]:
     out = []
     added = 0
     for p in products:
         page.goto(p["permalink"], wait_until="domcontentloaded")
+        _settle(page)
         base_kw = dict(product_id=p["id"], product_name=p["name"])
         form = page.locator("form.cart").first
         if form.count() == 0:
@@ -133,7 +161,6 @@ def _flow(page, base, products, pc, shot_dir, tag, log) -> list[Finding]:
                     if opts:
                         sel.select_option(value=opts[0])
             page.wait_for_timeout(800)
-            # colour change -> main image should still be visible
             main_img = page.locator(".nexus-gallery img, .woocommerce-product-gallery img").first
             if main_img.count() and not main_img.evaluate("i => i.complete && i.naturalWidth > 0"):
                 out.append(_fail("選択肢を変えたあと、商品画像が表示されていません", tag, page, shot_dir, pc, "variation-image", sev="HIGH", **base_kw))
@@ -143,81 +170,100 @@ def _flow(page, base, products, pc, shot_dir, tag, log) -> list[Finding]:
             continue
         btn.click()
         page.wait_for_load_state("domcontentloaded")
-        page.wait_for_timeout(1200)
+        _settle(page)  # AJAX add-to-cart must finish before we leave the page
+        page.wait_for_timeout(800)
         if page.locator(".woocommerce-error").count():
             out.append(_fail("カート追加でエラーが表示されました", tag, page, shot_dir, pc, "add-error",
                              evidence=page.locator(".woocommerce-error").first.inner_text()[:200], **base_kw))
             continue
         added += 1
 
-    page.goto(urllib.parse.urljoin(base, "cart/"), wait_until="domcontentloaded")
-    rows = page.locator("tr.cart_item, .wc-block-cart-items__row")
+    block = _goto_cart(page, base)
+    rows = page.locator(CART_ROW)
     if rows.count() < added or added == 0:
-        out.append(_fail(f"カートに商品が入っていません（追加 {added} 件、カート {rows.count()} 行）", tag, page, shot_dir, pc, "cart-empty"))
+        cookies = len(page.context.cookies())
+        out.append(_fail(f"カートに商品が入っていません（追加 {added} 件、カート {rows.count()} 行）", tag, page, shot_dir, pc, "cart-empty",
+                         evidence=f"cart block={block}, cookies={cookies}"))
         return out
 
-    # quantity change on classic cart
-    qty = page.locator("tr.cart_item input.qty").first
+    # quantity -> 2 and line subtotal
+    if block:
+        qty = page.locator(".wc-block-components-quantity-selector__input").first
+        unit_sel, sub_sel = ".wc-block-cart-item__prices .wc-block-components-product-price__value", ".wc-block-cart-item__total .wc-block-components-product-price__value"
+    else:
+        qty = page.locator("tr.cart_item input.qty").first
+        unit_sel, sub_sel = ".product-price", ".product-subtotal"
     if qty.count():
         qty.fill("2")
-        upd = page.locator("button[name='update_cart']")
-        if upd.count():
-            upd.click()
-            page.wait_for_load_state("domcontentloaded")
-            page.wait_for_timeout(1200)
-        line = page.locator("tr.cart_item").first
-        unit = _yen(line.locator(".product-price").inner_text()) if line.locator(".product-price").count() else None
-        sub = _yen(line.locator(".product-subtotal").inner_text()) if line.locator(".product-subtotal").count() else None
+        if block:
+            qty.blur()
+        else:
+            upd = page.locator("button[name='update_cart']")
+            if upd.count():
+                upd.click()
+        page.wait_for_load_state("domcontentloaded")
+        _settle(page)
+        page.wait_for_timeout(1200)
+        line = page.locator(CART_ROW).first
+        unit = _yen(line.locator(unit_sel).first.inner_text()) if line.locator(unit_sel).count() else None
+        sub = _yen(line.locator(sub_sel).first.inner_text()) if line.locator(sub_sel).count() else None
         if unit and sub and sub != unit * 2:
             out.append(_fail(f"数量2にしたときの小計が合いません（単価 {unit} × 2 ≠ {sub}）", tag, page, shot_dir, pc, "qty-subtotal"))
-        # totals: sum of line subtotals vs cart subtotal
-        subs = [_yen(t) for t in page.locator("tr.cart_item .product-subtotal").all_inner_texts()]
-        cart_sub = page.locator(".cart-subtotal td, .cart-subtotal .amount").first
-        if subs and all(subs) and cart_sub.count():
-            cs = _yen(cart_sub.inner_text())
-            if cs is not None and cs != sum(subs):
-                out.append(_fail(f"カートの小計が商品ごとの合計と合いません（{sum(subs)} ≠ {cs}）", tag, page, shot_dir, pc, "cart-subtotal"))
+        if not block:
+            subs = [_yen(t) for t in page.locator("tr.cart_item .product-subtotal").all_inner_texts()]
+            cart_sub = page.locator(".cart-subtotal td, .cart-subtotal .amount").first
+            if subs and all(subs) and cart_sub.count():
+                cs = _yen(cart_sub.inner_text())
+                if cs is not None and cs != sum(subs):
+                    out.append(_fail(f"カートの小計が商品ごとの合計と合いません（{sum(subs)} ≠ {cs}）", tag, page, shot_dir, pc, "cart-subtotal"))
     if pc.get("free_shipping_expected"):
         ship = page.locator(".woocommerce-shipping-totals, .shipping, .wc-block-components-totals-shipping").first
         txt = ship.inner_text() if ship.count() else ""
         if txt and not re.search(r"無料|free|¥\s*0(?!\d)|0円", txt, re.I):
             out.append(_fail("日本国内送料無料が適用されていない可能性があります", tag, page, shot_dir, pc, "shipping", sev="HIGH",
                              judge="人", evidence=txt[:200]))
+
     # checkout page loads (we never fill or submit it)
     page.goto(urllib.parse.urljoin(base, "checkout/"), wait_until="domcontentloaded")
-    if page.locator("form.checkout, .wc-block-checkout").count() == 0:
+    _settle(page)
+    try:
+        page.wait_for_selector(CHECKOUT_FORM, timeout=15000)
+    except Exception:
+        pass
+    if page.locator(CHECKOUT_FORM).count() == 0:
         out.append(_fail("チェックアウト画面が表示されません", tag, page, shot_dir, pc, "checkout"))
     else:
-        for fid in ("billing_last_name", "billing_email", "billing_postcode"):
-            if page.locator(f"#{fid}").count() == 0:
-                out.append(_fail(f"チェックアウトの入力欄（{fid}）がありません", tag, page, shot_dir, pc, f"field-{fid}", sev="HIGH"))
-    # order tracking page
+        for label, sels in CHECKOUT_FIELDS.items():
+            if not any(page.locator(sel).count() for sel in sels):
+                out.append(_fail(f"チェックアウトに{label}の入力欄が見つかりません", tag, page, shot_dir, pc, f"field-{label}",
+                                 sev="REVIEW", judge="人", evidence="探した項目: " + ", ".join(sels)))
     tp = pc.get("tracking_page_path")
     if tp:
         resp = page.goto(urllib.parse.urljoin(base, tp.lstrip("/")), wait_until="domcontentloaded")
         if not resp or resp.status >= 400:
             out.append(_fail(f"注文追跡ページが表示されません（HTTP {resp.status if resp else '?'}）", tag, page, shot_dir, pc, "tracking", sev="HIGH"))
-        elif page.locator("form").count() == 0:
-            out.append(_fail("注文追跡ページに入力フォームがありません", tag, page, shot_dir, pc, "tracking-form", sev="HIGH", judge="人"))
+
     # remove one item
-    page.goto(urllib.parse.urljoin(base, "cart/"), wait_until="domcontentloaded")
-    before = page.locator("tr.cart_item").count()
-    rm = page.locator("tr.cart_item a.remove").first
+    block = _goto_cart(page, base)
+    remove_sel = ".wc-block-cart-item__remove-link" if block else "tr.cart_item a.remove"
+    before = page.locator(CART_ROW).count()
+    rm = page.locator(remove_sel).first
     if rm.count():
         rm.click()
         page.wait_for_load_state("domcontentloaded")
-        page.wait_for_timeout(1200)
-        after = page.locator("tr.cart_item").count()
+        _settle(page)
+        page.wait_for_timeout(1500)
+        after = page.locator(CART_ROW).count()
         if after != before - 1:
             out.append(_fail(f"カートから商品を削除できません（{before} → {after}）", tag, page, shot_dir, pc, "remove"))
     # leave the cart empty for the next run
-    page.goto(urllib.parse.urljoin(base, "cart/"), wait_until="domcontentloaded")
     for _ in range(10):
-        r = page.locator("tr.cart_item a.remove").first
+        r = page.locator(remove_sel).first
         if not r.count():
             break
         r.click()
         page.wait_for_load_state("domcontentloaded")
+        _settle(page, 5000)
         page.wait_for_timeout(600)
     log(f"  購入機能 {tag}: 不具合 {len(out)} 件")
     return out

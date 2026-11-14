@@ -111,6 +111,15 @@ class CrawlChecks(unittest.TestCase):
         bl = [f for f in fs if f.type == "BROKEN_LINK"][0]
         self.assertIn("リンク元", bl.location)
 
+    def test_template_findings_are_aggregated_and_scheme_normalised(self):
+        fs, cr = self.crawl({"residue", "scheme"})
+        res = [f for f in fs if f.type == "BRAND_RESIDUE"]
+        self.assertEqual(len(res), 1, [f.to_dict() for f in res])
+        self.assertGreater(res[0].extra["page_count"], 5)
+        self.assertIn("SCHEME_MISMATCH", types(fs))
+        self.assertNotIn("FETCH_ERROR", types(fs))
+        self.assertFalse(any(u.startswith("https://") for u in cr.pages))
+
     def test_resume(self):
         tmp = tempfile.mkdtemp()
         with MockSite(set()) as site:

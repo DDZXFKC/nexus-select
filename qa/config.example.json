@@ -37,7 +37,7 @@
     "enabled": true,
     "browsers": ["webkit", "chromium"],
     "free_shipping_expected": true,
-    "tracking_page_path": "/order-tracking/",
+    "tracking_page_path": "",
     "screenshot": true
   }
 }

@@ -38,6 +38,7 @@ TYPE_LABELS = {
     "CAT_FACET_RULE": "用途カテゴリーの誤分類の可能性",
     "CAT_COUNT_EXPECTED": "商品数が想定と違う",
     "CAT_NEEDS_REVIEW": "自動分類できなかった商品",
+    "SCHEME_MISMATCH": "http/https の混在リンク",
     "CAT_OLD_URL": "旧カテゴリーURLの転送不良",
     "CAT_CURRENT_HIGHLIGHT": "現在地のハイライト不良",
     "CAT_LIST_DUPLICATE": "商品一覧の重複表示",
@@ -83,7 +84,8 @@ class Finding:
 
     def key(self) -> str:
         """Stable identity used for baseline comparison (ignores message wording)."""
-        raw = "|".join([self.type, str(self.product_id or ""), self.page_url, self.image_url, self.location])
+        page = "" if self.extra.get("page_count") else self.page_url
+        raw = "|".join([self.type, str(self.product_id or ""), page, self.image_url, self.location])
         return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
 
     def to_dict(self) -> dict:

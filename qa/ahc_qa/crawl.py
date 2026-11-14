@@ -104,6 +104,27 @@ class PageParser(HTMLParser):
             self.text.append(data.strip())
 
 
+# Findings that come from a shared template (header/footer/title) are reported once with a page count.
+AGGREGATE_TYPES = {"BRAND_RESIDUE", "INV_EMPTY_CATEGORY_HIDDEN", "INV_NO_HEADER_DROPDOWN", "INV_NO_ALL_GROUP_LINK"}
+
+
+def aggregate(findings: list) -> list:
+    out, groups = [], {}
+    for f in findings:
+        if f.type in AGGREGATE_TYPES:
+            groups.setdefault(f.cause_group, []).append(f)
+        else:
+            out.append(f)
+    for cg, fs in groups.items():
+        pages = sorted({f.page_url for f in fs if f.page_url})
+        first = fs[0]
+        out.append(Finding(first.type, first.severity, f"{first.message}（{len(pages)}ページ）", judge=first.judge,
+                           page_url=pages[0] if pages else "", location=first.location if first.type != "BRAND_RESIDUE" else cg.split(":", 1)[1],
+                           evidence=f"{first.evidence[:120]} ／ 例: " + ", ".join(pages[:5]), cause_group=cg,
+                           extra={"pages": pages[:200], "page_count": len(pages)}))
+    return out
+
+
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         return None
@@ -180,6 +201,7 @@ class Crawler:
         self.pages: dict[str, dict] = {}
         self.inbound: dict[str, list[str]] = {}
         self.images_checked: dict[str, dict] = {}
+        self.scheme_mismatch: dict[str, list] = {}
         self._empty_cat_paths = self._empty_category_paths()
 
     def _empty_category_paths(self) -> set:
@@ -268,6 +290,12 @@ class Crawler:
         if not q and self.export:
             self.check_old_category_urls()
         self._status_findings()
+        for origin, pages in self.scheme_mismatch.items():
+            uniq = sorted(set(pages))
+            self.findings.append(Finding("SCHEME_MISMATCH", "LOW", f"サイト内リンクの一部が {origin} を指しています（巡回は {self.cfg['base_url']} に揃えて実施）",
+                                         location=origin, evidence=f"{len(uniq)}ページ。例: " + ", ".join(uniq[:3]),
+                                         cause_group="SCHEME_MISMATCH"))
+        self.findings = aggregate(self.findings)
         return self.findings
 
     def _resolve(self, base: str, href: str) -> str | None:
@@ -277,6 +305,11 @@ class Crawler:
         u = urllib.parse.urljoin(base, href)
         if not u.startswith(("http://", "https://")) or not self.f.host_ok(u):
             return None
+        want = urllib.parse.urlsplit(self.cfg["base_url"]).scheme
+        parts = urllib.parse.urlsplit(u)
+        if parts.scheme != want and (parts.hostname or "") == (urllib.parse.urlsplit(self.cfg["base_url"]).hostname or ""):
+            self.scheme_mismatch.setdefault(f"{parts.scheme}://{parts.netloc}", []).append(base)
+            u = urllib.parse.urlunsplit((want,) + tuple(parts[1:]))
         return normalize(u)
 
     # ---- per-page checks
@@ -290,7 +323,7 @@ class Crawler:
                 if r in low:
                     self.findings.append(Finding("BRAND_RESIDUE", "HIGH", f"旧ブランド名が表示されています（{where}）",
                                                  page_url=url, location=where, evidence=val[:200],
-                                                 cause_group=f"BRAND_RESIDUE:{where}:{val[:60]}"))
+                                                 cause_group=f"BRAND_RESIDUE:{where}:{r}"))
                     break
         self._invariants(url, p)
 
