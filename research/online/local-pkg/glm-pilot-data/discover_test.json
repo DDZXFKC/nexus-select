@@ -1,0 +1,3038 @@
+[
+  {
+    "id": "AHC-001",
+    "brand": "adidas",
+    "model": "Samba OG",
+    "sku": "B75806",
+    "colorway": "Cloud White / Core Black / Clear Granite",
+    "category": "sneaker",
+    "buy_source": "adidas US",
+    "buy_url": "https://www.adidas.com/us/search?q=Samba+OG",
+    "buy_price": 100,
+    "buy_currency": "USD",
+    "buy_price_jpy": 16000,
+    "fx_rate": 160.0,
+    "fx_date": "2026-11-13",
+    "overseas_stock": "取得失敗(ROBOTS_UNREADABLE)",
+    "domestic_status": "国内参照価格あり(¥5,999〜¥128,502)",
+    "selection_reason": "国内完売(過去シグナル) / 参照最高¥128,502 - 仕入¥16,000 = 想定利益¥112,502",
+    "signal_type": "SOLD_OUT_DOMESTIC",
+    "references": [
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Aurora Coffee/Sandy Pink/Cloud White\"",
+        "price_jpy": 13286,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Cloud White/Silver Metallic/Grey One\"",
+        "price_jpy": 12000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Samba OG \"Dark Brown/Clay Brown/Gum Five\"",
+        "price_jpy": 14799,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Samba OG \"Cloud White/Core Black/Clear Granite\"",
+        "price_jpy": 11899,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Cream White/Core Black/Sandstrata\"",
+        "price_jpy": 9980,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Samba OG \"Core Black/Cloud White/Gum\"",
+        "price_jpy": 11500,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Leopard/Preloved Red\"",
+        "price_jpy": 12941,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas GS Samba OG \"Cloud White/Core Black/Gum\"",
+        "price_jpy": 11549,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Samba OG \"Clear Mint Pack\"",
+        "price_jpy": 9498,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Leopard/Magic Beige\"",
+        "price_jpy": 9900,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Samba OG \"Night Navy\"",
+        "price_jpy": 14500,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Metallic Silver\"",
+        "price_jpy": 11500,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG Pony Hair \"Wonder White/Core Black\"",
+        "price_jpy": 12770,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Silver Metallic/Core Black/Gum\"",
+        "price_jpy": 8900,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Core Black/Wonder White/Silver Metallic\"",
+        "price_jpy": 5999,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Core Black/Footwear White/Gum\"",
+        "price_jpy": 12000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Women's Samba OG \"Maroon/Cream White/Gold Metallic\"",
+        "price_jpy": 11000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Samba OG \"Brown/Putty Grey/Gold Metallic\"",
+        "price_jpy": 11800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "adidas Samba OG \"Core Black/Gum\"",
+        "price_jpy": 13000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Sporty & Rich × adidas Samba OG \"Cloud White/Night Indigo/Collegiate Red\"",
+        "price_jpy": 13999,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Samba%20OG",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】 クルーネック ロゴスウェット",
+        "price_jpy": 11879,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138130766/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "STONE ISLAND★ワッペンパッチ 長袖トレーナー お早めに！",
+        "price_jpy": 39501,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138508074/",
+        "status": "出品価格",
+        "seller": "STONE ISLAND",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリーチェックリバーシブルウールケープポンチョ 40294061",
+        "price_jpy": 79900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/126070674/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "THE NORTH FACE W'S MELLOW NUPTSE JACKET (RDS) SA6D1308",
+        "price_jpy": 42000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138715908/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内発【UGG】CLASSIC ULTRA MINI PLATFORM ショートブーツ 厚底",
+        "price_jpy": 21320,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111580817/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W’S SUEDE NUPTSE ジャケット★新作・25AW★",
+        "price_jpy": 43510,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124240561/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]K'S VITAL EX ジャケット★25AW★大人もOK★",
+        "price_jpy": 17047,
+        "size": "—",
+        "url": "https://www.buyma.com/item/125290532/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MACKAGE アウトレット】異素材ミックス♪ラモーナ ジャケット",
+        "price_jpy": 56232,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111668909/",
+        "status": "出品価格",
+        "seller": "Mackage",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー MEDLEY ジップアップ 2カラー 81191491 81191481",
+        "price_jpy": 88900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/127519016/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]COMOR FLEECE ジャケット★新作・26AW★男女★",
+        "price_jpy": 19255,
+        "size": "—",
+        "url": "https://www.buyma.com/item/137127520/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【ADIDAS】エッセンシャルニットカーディガン IA4454",
+        "price_jpy": 14849,
+        "size": "—",
+        "url": "https://www.buyma.com/item/136808844/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "タトラス ダウン ジャケット ショート ヴァレナ TATRAS VARENA",
+        "price_jpy": 128502,
+        "size": "—",
+        "url": "https://www.buyma.com/item/100555561/",
+        "status": "出品価格",
+        "seller": "TATRAS",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13973,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510082/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】Disquette Heritage 厚底 ムートン スリッポン",
+        "price_jpy": 29205,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139543596/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W'S NUPTSE ON BALL ジャケット★新作★人気★",
+        "price_jpy": 26066,
+        "size": "—",
+        "url": "https://www.buyma.com/item/95996866/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13535,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510083/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー レディース 二つ折り財布 BURBERRY WALLET 80704171",
+        "price_jpy": 38549,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124530529/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内即日☆【UGG】DISQUETTE ディスケット スリッポン ムートン",
+        "price_jpy": 15617,
+        "size": "—",
+        "url": "https://www.buyma.com/item/91073124/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "adidas Originals Campus 00s Winter Low JR3732★送料込",
+        "price_jpy": 15186,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139793595/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MaxMara】テディベア ダブル ハンドル スモール バッグ",
+        "price_jpy": 99000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139709721/",
+        "status": "出品価格",
+        "seller": "Max Mara",
+        "observed_at": ""
+      }
+    ],
+    "verification_status": "検証済み(自動)",
+    "sources": [
+      "adidas US: https://www.adidas.com/us/search?q=Samba+OG",
+      "fetch failed: ROBOTS_UNREADABLE"
+    ],
+    "confirmed_at": "2026-11-14T08:03:05+00:00"
+  },
+  {
+    "id": "AHC-002",
+    "brand": "ASICS",
+    "model": "GEL-Kayano 14",
+    "sku": "1201A380",
+    "colorway": "Cream / Cocoa Powder",
+    "category": "sneaker",
+    "buy_source": "ASICS US",
+    "buy_url": "https://www.asics.com/us/en-us/search?q=GEL-Kayano+14",
+    "buy_price": 130,
+    "buy_currency": "USD",
+    "buy_price_jpy": 20800,
+    "fx_rate": 160.0,
+    "fx_date": "2026-11-13",
+    "overseas_stock": "取得失敗(HTTP_403)",
+    "domestic_status": "国内参照価格あり(¥11,879〜¥128,502)",
+    "selection_reason": "海外価格優位 / 参照最高¥128,502 - 仕入¥20,800 = 想定利益¥107,702",
+    "signal_type": "PRICE_GAP_OVERSEAS",
+    "references": [
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Cloud Grey/Clay Grey\"",
+        "price_jpy": 25800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Black/Pure Silver\"",
+        "price_jpy": 17987,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Ivory/Cream\"",
+        "price_jpy": 32184,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "asics Gel-Kayano 14 \"Piedmont Grey/Black\"",
+        "price_jpy": 21780,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"White/Graphite Grey\"",
+        "price_jpy": 18599,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"White/Sage\"",
+        "price_jpy": 21800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Black/Cream\"",
+        "price_jpy": 19504,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Cream/Cocoa Powder\"",
+        "price_jpy": 24850,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Cream/Obsidian Grey\"",
+        "price_jpy": 14800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Concrete\"",
+        "price_jpy": 20900,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"White/Ivory\"",
+        "price_jpy": 18000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Black/Coffee\"",
+        "price_jpy": 35628,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Birch/Dark Pewter\"",
+        "price_jpy": 21716,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Women's Gel-Kayano 14 \"White/Midnight\"",
+        "price_jpy": 23999,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Birch/Pure Silver\"",
+        "price_jpy": 24318,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Carrier Grey/Black\"",
+        "price_jpy": 27250,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Dolphin Grey/Pure Silver\"",
+        "price_jpy": 19800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "THOM BROWNE × Asics Gel-Kayano 14 \"White\"",
+        "price_jpy": 63000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Dried Leaf Green/Pure Silver\"",
+        "price_jpy": 25627,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Asics Gel-Kayano 14 \"Carrier Grey/Black\"",
+        "price_jpy": 28600,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=GEL-Kayano%2014",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】 クルーネック ロゴスウェット",
+        "price_jpy": 11879,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138130766/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "STONE ISLAND★ワッペンパッチ 長袖トレーナー お早めに！",
+        "price_jpy": 39501,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138508074/",
+        "status": "出品価格",
+        "seller": "STONE ISLAND",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリーチェックリバーシブルウールケープポンチョ 40294061",
+        "price_jpy": 79900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/126070674/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "THE NORTH FACE W'S MELLOW NUPTSE JACKET (RDS) SA6D1308",
+        "price_jpy": 42000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138715908/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内発【UGG】CLASSIC ULTRA MINI PLATFORM ショートブーツ 厚底",
+        "price_jpy": 21320,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111580817/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W’S SUEDE NUPTSE ジャケット★新作・25AW★",
+        "price_jpy": 43510,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124240561/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]K'S VITAL EX ジャケット★25AW★大人もOK★",
+        "price_jpy": 17047,
+        "size": "—",
+        "url": "https://www.buyma.com/item/125290532/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MACKAGE アウトレット】異素材ミックス♪ラモーナ ジャケット",
+        "price_jpy": 56232,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111668909/",
+        "status": "出品価格",
+        "seller": "Mackage",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー MEDLEY ジップアップ 2カラー 81191491 81191481",
+        "price_jpy": 88900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/127519016/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]COMOR FLEECE ジャケット★新作・26AW★男女★",
+        "price_jpy": 19255,
+        "size": "—",
+        "url": "https://www.buyma.com/item/137127520/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【ADIDAS】エッセンシャルニットカーディガン IA4454",
+        "price_jpy": 14849,
+        "size": "—",
+        "url": "https://www.buyma.com/item/136808844/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "タトラス ダウン ジャケット ショート ヴァレナ TATRAS VARENA",
+        "price_jpy": 128502,
+        "size": "—",
+        "url": "https://www.buyma.com/item/100555561/",
+        "status": "出品価格",
+        "seller": "TATRAS",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13973,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510082/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】Disquette Heritage 厚底 ムートン スリッポン",
+        "price_jpy": 29205,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139543596/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W'S NUPTSE ON BALL ジャケット★新作★人気★",
+        "price_jpy": 26066,
+        "size": "—",
+        "url": "https://www.buyma.com/item/95996866/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13535,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510083/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー レディース 二つ折り財布 BURBERRY WALLET 80704171",
+        "price_jpy": 38549,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124530529/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内即日☆【UGG】DISQUETTE ディスケット スリッポン ムートン",
+        "price_jpy": 15617,
+        "size": "—",
+        "url": "https://www.buyma.com/item/91073124/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "adidas Originals Campus 00s Winter Low JR3732★送料込",
+        "price_jpy": 15186,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139793595/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MaxMara】テディベア ダブル ハンドル スモール バッグ",
+        "price_jpy": 99000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139709721/",
+        "status": "出品価格",
+        "seller": "Max Mara",
+        "observed_at": ""
+      }
+    ],
+    "verification_status": "検証済み(自動)",
+    "sources": [
+      "ASICS US: https://www.asics.com/us/en-us/search?q=GEL-Kayano+14",
+      "fetch failed: HTTP_403"
+    ],
+    "confirmed_at": "2026-11-14T08:03:25+00:00"
+  },
+  {
+    "id": "AHC-003",
+    "brand": "HOKA",
+    "model": "Clifton 9",
+    "sku": "1127950",
+    "colorway": "US限定カラー",
+    "category": "sneaker",
+    "buy_source": "HOKA US",
+    "buy_url": "https://www.hoka.com/us/en/search?q=Clifton+9",
+    "buy_price": 145,
+    "buy_currency": "USD",
+    "buy_price_jpy": 23200,
+    "fx_rate": 160.0,
+    "fx_date": "2026-11-13",
+    "overseas_stock": "取得失敗(HTTP_406)",
+    "domestic_status": "国内参照価格あり(¥11,879〜¥128,502)",
+    "selection_reason": "限定カラー / 参照最高¥128,502 - 仕入¥23,200 = 想定利益¥105,302",
+    "signal_type": "LIMITED_COLOR",
+    "references": [
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton One 9 \"Black/Carbon Black\"",
+        "price_jpy": 28443,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton One 9 \"Frost/Cosmic Grey\"",
+        "price_jpy": 27376,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton 9 GORE-TEX \"Black/Black\" (1141470-BBLC/1141470F-BBLC)",
+        "price_jpy": 29028,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton 9 \"White\"",
+        "price_jpy": 20900,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Women's Clifton 9 \"Black\"",
+        "price_jpy": 25808,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton One 9 \"Black/White\"",
+        "price_jpy": 29508,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Supervsn Studios × Hoka Clifton One 9 \"Ice Grey\"",
+        "price_jpy": 33500,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Women's Clifton 9 \"Mint Fluorite/Snow Melt\"",
+        "price_jpy": 25808,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton One 9 \"Hoka Blue/Hoka Citrus\"",
+        "price_jpy": 29008,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton 9 \"Black\"",
+        "price_jpy": 32608,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton One 9 \"Ash Grey/Silver\"",
+        "price_jpy": 26908,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Women's Clifton 9 \"White\"",
+        "price_jpy": 34708,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Supervsn Studios × Hoka Clifton One 9 \"Mantis Green\"",
+        "price_jpy": 44908,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Women's Clifton 9 \"Frost/Rose Gold\"",
+        "price_jpy": 31908,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton 9 \"Black/Outer Orbit\"",
+        "price_jpy": 36708,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Women's Clifton 9 \"Obsidian/Quartzite\"",
+        "price_jpy": 30508,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton One 9 S \"Mineral Brown/Cast Iron\"",
+        "price_jpy": 34508,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton One 9 S \"Forest Green/Black\"",
+        "price_jpy": 31908,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Women's Clifton 9 \"Guru/Sea Ice\"",
+        "price_jpy": 27008,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Hoka Clifton 9 \"Oat Milk/Alabaster\"",
+        "price_jpy": 39808,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Clifton%209",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】 クルーネック ロゴスウェット",
+        "price_jpy": 11879,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138130766/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "STONE ISLAND★ワッペンパッチ 長袖トレーナー お早めに！",
+        "price_jpy": 39501,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138508074/",
+        "status": "出品価格",
+        "seller": "STONE ISLAND",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリーチェックリバーシブルウールケープポンチョ 40294061",
+        "price_jpy": 79900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/126070674/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "THE NORTH FACE W'S MELLOW NUPTSE JACKET (RDS) SA6D1308",
+        "price_jpy": 42000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138715908/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内発【UGG】CLASSIC ULTRA MINI PLATFORM ショートブーツ 厚底",
+        "price_jpy": 21320,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111580817/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W’S SUEDE NUPTSE ジャケット★新作・25AW★",
+        "price_jpy": 43510,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124240561/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]K'S VITAL EX ジャケット★25AW★大人もOK★",
+        "price_jpy": 17047,
+        "size": "—",
+        "url": "https://www.buyma.com/item/125290532/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MACKAGE アウトレット】異素材ミックス♪ラモーナ ジャケット",
+        "price_jpy": 56232,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111668909/",
+        "status": "出品価格",
+        "seller": "Mackage",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー MEDLEY ジップアップ 2カラー 81191491 81191481",
+        "price_jpy": 88900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/127519016/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]COMOR FLEECE ジャケット★新作・26AW★男女★",
+        "price_jpy": 19255,
+        "size": "—",
+        "url": "https://www.buyma.com/item/137127520/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【ADIDAS】エッセンシャルニットカーディガン IA4454",
+        "price_jpy": 14849,
+        "size": "—",
+        "url": "https://www.buyma.com/item/136808844/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "タトラス ダウン ジャケット ショート ヴァレナ TATRAS VARENA",
+        "price_jpy": 128502,
+        "size": "—",
+        "url": "https://www.buyma.com/item/100555561/",
+        "status": "出品価格",
+        "seller": "TATRAS",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13973,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510082/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】Disquette Heritage 厚底 ムートン スリッポン",
+        "price_jpy": 29205,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139543596/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W'S NUPTSE ON BALL ジャケット★新作★人気★",
+        "price_jpy": 26066,
+        "size": "—",
+        "url": "https://www.buyma.com/item/95996866/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13535,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510083/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー レディース 二つ折り財布 BURBERRY WALLET 80704171",
+        "price_jpy": 38549,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124530529/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内即日☆【UGG】DISQUETTE ディスケット スリッポン ムートン",
+        "price_jpy": 15617,
+        "size": "—",
+        "url": "https://www.buyma.com/item/91073124/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "adidas Originals Campus 00s Winter Low JR3732★送料込",
+        "price_jpy": 15186,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139793595/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MaxMara】テディベア ダブル ハンドル スモール バッグ",
+        "price_jpy": 99000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139709721/",
+        "status": "出品価格",
+        "seller": "Max Mara",
+        "observed_at": ""
+      }
+    ],
+    "verification_status": "検証済み(自動)",
+    "sources": [
+      "HOKA US: https://www.hoka.com/us/en/search?q=Clifton+9",
+      "fetch failed: HTTP_406"
+    ],
+    "confirmed_at": "2026-11-14T08:03:33+00:00"
+  },
+  {
+    "id": "AHC-004",
+    "brand": "Salomon",
+    "model": "XT-6 GORE-TEX",
+    "sku": "L49306800",
+    "colorway": "Black / Phantom",
+    "category": "sneaker",
+    "buy_source": "Salomon US",
+    "buy_url": "https://www.salomon.com/en-us/search?text=XT-6",
+    "buy_price": 200,
+    "buy_currency": "USD",
+    "buy_price_jpy": 32000,
+    "fx_rate": 160.0,
+    "fx_date": "2026-11-13",
+    "overseas_stock": "www.salomon.com / 在庫:不明 / JSON-LD:1件",
+    "domestic_status": "国内参照価格あり(¥11,879〜¥128,502)",
+    "selection_reason": "日本未発売 / 参照最高¥128,502 - 仕入¥32,000 = 想定利益¥96,502",
+    "signal_type": "NOT_SOLD_DOMESTIC",
+    "references": [
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Blacked Out\"",
+        "price_jpy": 34976,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Black/Footwear Silver\"",
+        "price_jpy": 27000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"White/Silver\"",
+        "price_jpy": 32999,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Sea Foam/Green Milieu\"",
+        "price_jpy": 36999,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Black/Ebony/Lunar Rock\"",
+        "price_jpy": 49700,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Concord Grape/Stormy Weather\"",
+        "price_jpy": 23800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Tradewinds/Stormy Weather\"",
+        "price_jpy": 44999,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Black/Flame Scarlet/Vanilla Ice\"",
+        "price_jpy": 32000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Black/Icy Pink/Dawn Pink\"",
+        "price_jpy": 34000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Black/Cloudburst/Dark Gull Gray\"",
+        "price_jpy": 44999,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Safari/Black\"",
+        "price_jpy": 34000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Silver Cloud/Black\"",
+        "price_jpy": 41879,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Urban Chic/Black/Lime Cream\"",
+        "price_jpy": 58314,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Silver Cloud/Urban Chic/Shadow Green\"",
+        "price_jpy": 49800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Vanilla Ice/Bog/Shadow Green\"",
+        "price_jpy": 45628,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Kelp/Wren/Safari\"",
+        "price_jpy": 35060,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Lichen/Nocturne\"",
+        "price_jpy": 59800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"North Atlantic/Black/Ftw Silver\"",
+        "price_jpy": 28000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"Almond Milk/Feather Gray/Pale Mauve\"",
+        "price_jpy": 44227,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Salomon XT-6 GORE-TEX \"White Pepper/Silver Sage/Dark Gull\"",
+        "price_jpy": 59800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=XT-6%20GORE-TEX",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】 クルーネック ロゴスウェット",
+        "price_jpy": 11879,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138130766/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "STONE ISLAND★ワッペンパッチ 長袖トレーナー お早めに！",
+        "price_jpy": 39501,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138508074/",
+        "status": "出品価格",
+        "seller": "STONE ISLAND",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリーチェックリバーシブルウールケープポンチョ 40294061",
+        "price_jpy": 79900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/126070674/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "THE NORTH FACE W'S MELLOW NUPTSE JACKET (RDS) SA6D1308",
+        "price_jpy": 42000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138715908/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内発【UGG】CLASSIC ULTRA MINI PLATFORM ショートブーツ 厚底",
+        "price_jpy": 21320,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111580817/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W’S SUEDE NUPTSE ジャケット★新作・25AW★",
+        "price_jpy": 43510,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124240561/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]K'S VITAL EX ジャケット★25AW★大人もOK★",
+        "price_jpy": 17047,
+        "size": "—",
+        "url": "https://www.buyma.com/item/125290532/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MACKAGE アウトレット】異素材ミックス♪ラモーナ ジャケット",
+        "price_jpy": 56232,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111668909/",
+        "status": "出品価格",
+        "seller": "Mackage",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー MEDLEY ジップアップ 2カラー 81191491 81191481",
+        "price_jpy": 88900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/127519016/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]COMOR FLEECE ジャケット★新作・26AW★男女★",
+        "price_jpy": 19255,
+        "size": "—",
+        "url": "https://www.buyma.com/item/137127520/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【ADIDAS】エッセンシャルニットカーディガン IA4454",
+        "price_jpy": 14849,
+        "size": "—",
+        "url": "https://www.buyma.com/item/136808844/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "タトラス ダウン ジャケット ショート ヴァレナ TATRAS VARENA",
+        "price_jpy": 128502,
+        "size": "—",
+        "url": "https://www.buyma.com/item/100555561/",
+        "status": "出品価格",
+        "seller": "TATRAS",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13973,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510082/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】Disquette Heritage 厚底 ムートン スリッポン",
+        "price_jpy": 29205,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139543596/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W'S NUPTSE ON BALL ジャケット★新作★人気★",
+        "price_jpy": 26066,
+        "size": "—",
+        "url": "https://www.buyma.com/item/95996866/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13535,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510083/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー レディース 二つ折り財布 BURBERRY WALLET 80704171",
+        "price_jpy": 38549,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124530529/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内即日☆【UGG】DISQUETTE ディスケット スリッポン ムートン",
+        "price_jpy": 15617,
+        "size": "—",
+        "url": "https://www.buyma.com/item/91073124/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "adidas Originals Campus 00s Winter Low JR3732★送料込",
+        "price_jpy": 15186,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139793595/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MaxMara】テディベア ダブル ハンドル スモール バッグ",
+        "price_jpy": 99000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139709721/",
+        "status": "出品価格",
+        "seller": "Max Mara",
+        "observed_at": ""
+      }
+    ],
+    "verification_status": "検証済み(自動)",
+    "sources": [
+      "Salomon US: https://www.salomon.com/en-us/search?text=XT-6",
+      "JSON-LD product: Search results for"
+    ],
+    "confirmed_at": "2026-11-14T08:03:34+00:00"
+  },
+  {
+    "id": "AHC-005",
+    "brand": "Converse",
+    "model": "Chuck 70 Hi",
+    "sku": "161318C",
+    "colorway": "US仕様",
+    "category": "sneaker",
+    "buy_source": "Converse US",
+    "buy_url": "https://www.converse.com/shop/shoes/chuck-70",
+    "buy_price": 90,
+    "buy_currency": "USD",
+    "buy_price_jpy": 14400,
+    "fx_rate": 160.0,
+    "fx_date": "2026-11-13",
+    "overseas_stock": "取得失敗(ROBOTS_UNREADABLE)",
+    "domestic_status": "国内参照価格あり(¥6,900〜¥128,502)",
+    "selection_reason": "限定カラー / 参照最高¥128,502 - 仕入¥14,400 = 想定利益¥114,102",
+    "signal_type": "LIMITED_COLOR",
+    "references": [
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"BLACK/WHITE\"",
+        "price_jpy": 29800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"BLACK/WHITE\"",
+        "price_jpy": 23000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Off-White × Converse Chuck Taylor All-Star 70s Hi",
+        "price_jpy": 30000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"BLACK/WHITE\"",
+        "price_jpy": 24800,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"BLACK/WHITE\"",
+        "price_jpy": 25000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 12000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 6900,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Off-White × Converse Chuck Taylor All-Star 70s Hi",
+        "price_jpy": 57000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"BLACK/WHITE\"",
+        "price_jpy": 17000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 12000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"BLACK/WHITE\"",
+        "price_jpy": 25000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 14000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 12000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Off-White × Converse Chuck Taylor All-Star 70s Hi",
+        "price_jpy": 31600,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"BLACK/WHITE\"",
+        "price_jpy": 25600,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Off-White × Converse Chuck Taylor All-Star 70s Hi",
+        "price_jpy": 46000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 18000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 18500,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 15000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "FEAR OF GOD ESSENTIALS × CONVERSE CHUCK 70 HI \"WHITE/BLACK\"",
+        "price_jpy": 20000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Chuck%2070%20Hi",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】 クルーネック ロゴスウェット",
+        "price_jpy": 11879,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138130766/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "STONE ISLAND★ワッペンパッチ 長袖トレーナー お早めに！",
+        "price_jpy": 39501,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138508074/",
+        "status": "出品価格",
+        "seller": "STONE ISLAND",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリーチェックリバーシブルウールケープポンチョ 40294061",
+        "price_jpy": 79900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/126070674/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "THE NORTH FACE W'S MELLOW NUPTSE JACKET (RDS) SA6D1308",
+        "price_jpy": 42000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138715908/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内発【UGG】CLASSIC ULTRA MINI PLATFORM ショートブーツ 厚底",
+        "price_jpy": 21320,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111580817/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W’S SUEDE NUPTSE ジャケット★新作・25AW★",
+        "price_jpy": 43510,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124240561/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]K'S VITAL EX ジャケット★25AW★大人もOK★",
+        "price_jpy": 17047,
+        "size": "—",
+        "url": "https://www.buyma.com/item/125290532/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MACKAGE アウトレット】異素材ミックス♪ラモーナ ジャケット",
+        "price_jpy": 56232,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111668909/",
+        "status": "出品価格",
+        "seller": "Mackage",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー MEDLEY ジップアップ 2カラー 81191491 81191481",
+        "price_jpy": 88900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/127519016/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]COMOR FLEECE ジャケット★新作・26AW★男女★",
+        "price_jpy": 19255,
+        "size": "—",
+        "url": "https://www.buyma.com/item/137127520/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【ADIDAS】エッセンシャルニットカーディガン IA4454",
+        "price_jpy": 14849,
+        "size": "—",
+        "url": "https://www.buyma.com/item/136808844/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "タトラス ダウン ジャケット ショート ヴァレナ TATRAS VARENA",
+        "price_jpy": 128502,
+        "size": "—",
+        "url": "https://www.buyma.com/item/100555561/",
+        "status": "出品価格",
+        "seller": "TATRAS",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13973,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510082/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】Disquette Heritage 厚底 ムートン スリッポン",
+        "price_jpy": 29205,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139543596/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W'S NUPTSE ON BALL ジャケット★新作★人気★",
+        "price_jpy": 26066,
+        "size": "—",
+        "url": "https://www.buyma.com/item/95996866/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13535,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510083/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー レディース 二つ折り財布 BURBERRY WALLET 80704171",
+        "price_jpy": 38549,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124530529/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内即日☆【UGG】DISQUETTE ディスケット スリッポン ムートン",
+        "price_jpy": 15617,
+        "size": "—",
+        "url": "https://www.buyma.com/item/91073124/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "adidas Originals Campus 00s Winter Low JR3732★送料込",
+        "price_jpy": 15186,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139793595/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MaxMara】テディベア ダブル ハンドル スモール バッグ",
+        "price_jpy": 99000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139709721/",
+        "status": "出品価格",
+        "seller": "Max Mara",
+        "observed_at": ""
+      }
+    ],
+    "verification_status": "検証済み(自動)",
+    "sources": [
+      "Converse US: https://www.converse.com/shop/shoes/chuck-70",
+      "fetch failed: ROBOTS_UNREADABLE"
+    ],
+    "confirmed_at": "2026-11-14T08:03:34+00:00"
+  },
+  {
+    "id": "AHC-006",
+    "brand": "Patagonia",
+    "model": "Lightweight Synchilla Snap-T Fleece",
+    "sku": "25555",
+    "colorway": "Oatmeal Heather",
+    "category": "apparel",
+    "buy_source": "Patagonia US",
+    "buy_url": "https://www.patagonia.com/shop/synchilla",
+    "buy_price": 74,
+    "buy_currency": "USD",
+    "buy_price_jpy": 11840,
+    "fx_rate": 160.0,
+    "fx_date": "2026-11-13",
+    "overseas_stock": "www.patagonia.com / 在庫:要ページ確認(JSON-LDなし)",
+    "domestic_status": "国内参照価格あり(¥11,879〜¥128,502)",
+    "selection_reason": "海外価格優位 / 参照最高¥128,502 - 仕入¥11,840 = 想定利益¥116,662",
+    "signal_type": "PRICE_GAP_OVERSEAS",
+    "references": [
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Flow/Sunken Blue\"",
+        "price_jpy": 20500,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Salmon Energy/Old Growth Green\"",
+        "price_jpy": 38990,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Kaleid/Black\"",
+        "price_jpy": 28470,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Synched Flight/New Navy\"",
+        "price_jpy": 42160,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Lightweight Synchilla Snap-T Pullover \"Flow/Dyno White\"",
+        "price_jpy": 48820,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Painted Lines/Shore Blue\"",
+        "price_jpy": 15000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Women's Lightweight Synchilla Snap-T Pullover \"Sunshine/Natural\"",
+        "price_jpy": null,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "価格未取得",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Women's Lightweight Synchilla Snap-T Pullover \"Soft Spirea/Dried Vanilla\"",
+        "price_jpy": null,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "価格未取得",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Women's Lightweight Synchilla Snap-T Pullover \"Mother Tree/Barnacle Blue\"",
+        "price_jpy": null,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "価格未取得",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Women's Lightweight Synchilla Snap-T Pullover \"Blue Sage\"",
+        "price_jpy": null,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "価格未取得",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Women's Lightweight Synchilla Snap-T Pullover \"Kaleido/Black\"",
+        "price_jpy": null,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "価格未取得",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Kids Lightweight Synchilla Snap-T Pullover \"Salmon Energy/Old Growth Green\"",
+        "price_jpy": null,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "価格未取得",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Kids Lightweight Synchilla Snap-T Pullover \"Mother Tree/Oar Tan\"",
+        "price_jpy": null,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "価格未取得",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Kids Lightweight Synchilla Snap-T Pullover \"Diamond Stripe/Talon Gold\"",
+        "price_jpy": null,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "価格未取得",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Painted Lines/Shore Blue\"",
+        "price_jpy": 15000,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Salmon Energy/Old Growth Green\"",
+        "price_jpy": 38990,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Kaleid/Black\"",
+        "price_jpy": 28470,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Flow/Sunken Blue\"",
+        "price_jpy": 20500,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Lightweight Synchilla Snap-T Pullover \"Flow/Dyno White\"",
+        "price_jpy": 48820,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "SNKRDUNK",
+        "product_name": "Patagonia Men's Lightweight Synchilla Snap-T Pullover \"Synched Flight/New Navy\"",
+        "price_jpy": 42160,
+        "size": "—",
+        "url": "https://snkrdunk.com/search?keywords=Lightweight%20Synchilla%20Snap-T%20Fleece",
+        "status": "取引相場(代表価格)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】 クルーネック ロゴスウェット",
+        "price_jpy": 11879,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138130766/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "STONE ISLAND★ワッペンパッチ 長袖トレーナー お早めに！",
+        "price_jpy": 39501,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138508074/",
+        "status": "出品価格",
+        "seller": "STONE ISLAND",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリーチェックリバーシブルウールケープポンチョ 40294061",
+        "price_jpy": 79900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/126070674/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "THE NORTH FACE W'S MELLOW NUPTSE JACKET (RDS) SA6D1308",
+        "price_jpy": 42000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138715908/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内発【UGG】CLASSIC ULTRA MINI PLATFORM ショートブーツ 厚底",
+        "price_jpy": 21320,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111580817/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W’S SUEDE NUPTSE ジャケット★新作・25AW★",
+        "price_jpy": 43510,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124240561/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]K'S VITAL EX ジャケット★25AW★大人もOK★",
+        "price_jpy": 17047,
+        "size": "—",
+        "url": "https://www.buyma.com/item/125290532/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MACKAGE アウトレット】異素材ミックス♪ラモーナ ジャケット",
+        "price_jpy": 56232,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111668909/",
+        "status": "出品価格",
+        "seller": "Mackage",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー MEDLEY ジップアップ 2カラー 81191491 81191481",
+        "price_jpy": 88900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/127519016/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]COMOR FLEECE ジャケット★新作・26AW★男女★",
+        "price_jpy": 19255,
+        "size": "—",
+        "url": "https://www.buyma.com/item/137127520/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【ADIDAS】エッセンシャルニットカーディガン IA4454",
+        "price_jpy": 14849,
+        "size": "—",
+        "url": "https://www.buyma.com/item/136808844/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "タトラス ダウン ジャケット ショート ヴァレナ TATRAS VARENA",
+        "price_jpy": 128502,
+        "size": "—",
+        "url": "https://www.buyma.com/item/100555561/",
+        "status": "出品価格",
+        "seller": "TATRAS",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13973,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510082/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】Disquette Heritage 厚底 ムートン スリッポン",
+        "price_jpy": 29205,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139543596/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W'S NUPTSE ON BALL ジャケット★新作★人気★",
+        "price_jpy": 26066,
+        "size": "—",
+        "url": "https://www.buyma.com/item/95996866/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13535,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510083/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー レディース 二つ折り財布 BURBERRY WALLET 80704171",
+        "price_jpy": 38549,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124530529/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内即日☆【UGG】DISQUETTE ディスケット スリッポン ムートン",
+        "price_jpy": 15617,
+        "size": "—",
+        "url": "https://www.buyma.com/item/91073124/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "adidas Originals Campus 00s Winter Low JR3732★送料込",
+        "price_jpy": 15186,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139793595/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MaxMara】テディベア ダブル ハンドル スモール バッグ",
+        "price_jpy": 99000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139709721/",
+        "status": "出品価格",
+        "seller": "Max Mara",
+        "observed_at": ""
+      }
+    ],
+    "verification_status": "検証済み(自動)",
+    "sources": [
+      "Patagonia US: https://www.patagonia.com/shop/synchilla",
+      "JSON-LD product not found; using expected price"
+    ],
+    "confirmed_at": "2026-11-14T08:03:34+00:00"
+  },
+  {
+    "id": "AHC-007",
+    "brand": "Nike x Stüssy",
+    "model": "Full Zip Washed Fleece Hoodie",
+    "sku": "",
+    "colorway": "/",
+    "category": "apparel",
+    "buy_source": "SNKRDUNK取引市場",
+    "buy_url": "https://snkrdunk.com/search?keywords=Nike+Stussy+Hoodie",
+    "buy_price": null,
+    "buy_currency": "JPY",
+    "buy_price_jpy": null,
+    "fx_rate": 1.0,
+    "fx_date": "2026-11-13",
+    "overseas_stock": "snkrdunk.com / 在庫:要ページ確認(JSON-LDなし)",
+    "domestic_status": "仕入価格未確定",
+    "selection_reason": "トレンド上昇 / 仕入価格未確定 vs 参照最高¥128,502",
+    "signal_type": "TREND_RISING",
+    "references": [
+      {
+        "site": "SNKRDUNK",
+        "product_name": "",
+        "price_jpy": null,
+        "size": "",
+        "url": "https://snkrdunk.com/search?keywords=Full%20Zip%20Washed%20Fleece%20Hoodie",
+        "status": "取扱確認なし(該当商品なし)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】 クルーネック ロゴスウェット",
+        "price_jpy": 11879,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138130766/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "STONE ISLAND★ワッペンパッチ 長袖トレーナー お早めに！",
+        "price_jpy": 39501,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138508074/",
+        "status": "出品価格",
+        "seller": "STONE ISLAND",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリーチェックリバーシブルウールケープポンチョ 40294061",
+        "price_jpy": 79900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/126070674/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "THE NORTH FACE W'S MELLOW NUPTSE JACKET (RDS) SA6D1308",
+        "price_jpy": 42000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138715908/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内発【UGG】CLASSIC ULTRA MINI PLATFORM ショートブーツ 厚底",
+        "price_jpy": 21320,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111580817/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W’S SUEDE NUPTSE ジャケット★新作・25AW★",
+        "price_jpy": 43510,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124240561/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]K'S VITAL EX ジャケット★25AW★大人もOK★",
+        "price_jpy": 17047,
+        "size": "—",
+        "url": "https://www.buyma.com/item/125290532/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MACKAGE アウトレット】異素材ミックス♪ラモーナ ジャケット",
+        "price_jpy": 56232,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111668909/",
+        "status": "出品価格",
+        "seller": "Mackage",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー MEDLEY ジップアップ 2カラー 81191491 81191481",
+        "price_jpy": 88900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/127519016/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]COMOR FLEECE ジャケット★新作・26AW★男女★",
+        "price_jpy": 19255,
+        "size": "—",
+        "url": "https://www.buyma.com/item/137127520/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【ADIDAS】エッセンシャルニットカーディガン IA4454",
+        "price_jpy": 14849,
+        "size": "—",
+        "url": "https://www.buyma.com/item/136808844/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "タトラス ダウン ジャケット ショート ヴァレナ TATRAS VARENA",
+        "price_jpy": 128502,
+        "size": "—",
+        "url": "https://www.buyma.com/item/100555561/",
+        "status": "出品価格",
+        "seller": "TATRAS",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13973,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510082/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】Disquette Heritage 厚底 ムートン スリッポン",
+        "price_jpy": 29205,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139543596/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W'S NUPTSE ON BALL ジャケット★新作★人気★",
+        "price_jpy": 26066,
+        "size": "—",
+        "url": "https://www.buyma.com/item/95996866/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13535,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510083/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー レディース 二つ折り財布 BURBERRY WALLET 80704171",
+        "price_jpy": 38549,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124530529/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内即日☆【UGG】DISQUETTE ディスケット スリッポン ムートン",
+        "price_jpy": 15617,
+        "size": "—",
+        "url": "https://www.buyma.com/item/91073124/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "adidas Originals Campus 00s Winter Low JR3732★送料込",
+        "price_jpy": 15186,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139793595/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MaxMara】テディベア ダブル ハンドル スモール バッグ",
+        "price_jpy": 99000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139709721/",
+        "status": "出品価格",
+        "seller": "Max Mara",
+        "observed_at": ""
+      }
+    ],
+    "verification_status": "要再検証",
+    "sources": [
+      "SNKRDUNK取引市場: https://snkrdunk.com/search?keywords=Nike+Stussy+Hoodie",
+      "JSON-LD product not found; using expected price"
+    ],
+    "confirmed_at": "2026-11-14T08:03:34+00:00"
+  },
+  {
+    "id": "AHC-008",
+    "brand": "Carhartt WIP x Nike",
+    "model": "FW2026 Combined Jacket",
+    "sku": "",
+    "colorway": "/",
+    "category": "apparel",
+    "buy_source": "SNKRDUNK取引市場",
+    "buy_url": "https://snkrdunk.com/search?keywords=Carhartt+Nike",
+    "buy_price": null,
+    "buy_currency": "JPY",
+    "buy_price_jpy": null,
+    "fx_rate": 1.0,
+    "fx_date": "2026-11-13",
+    "overseas_stock": "snkrdunk.com / 在庫:要ページ確認(JSON-LDなし)",
+    "domestic_status": "仕入価格未確定",
+    "selection_reason": "再生産停止 / 仕入価格未確定 vs 参照最高¥128,502",
+    "signal_type": "REPRODUCTION_STOPPED",
+    "references": [
+      {
+        "site": "SNKRDUNK",
+        "product_name": "",
+        "price_jpy": null,
+        "size": "",
+        "url": "https://snkrdunk.com/search?keywords=FW2026%20Combined%20Jacket",
+        "status": "取扱確認なし(該当商品なし)",
+        "seller": "スニーカーダンク取引市場",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】 クルーネック ロゴスウェット",
+        "price_jpy": 11879,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138130766/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "STONE ISLAND★ワッペンパッチ 長袖トレーナー お早めに！",
+        "price_jpy": 39501,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138508074/",
+        "status": "出品価格",
+        "seller": "STONE ISLAND",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリーチェックリバーシブルウールケープポンチョ 40294061",
+        "price_jpy": 79900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/126070674/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "THE NORTH FACE W'S MELLOW NUPTSE JACKET (RDS) SA6D1308",
+        "price_jpy": 42000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/138715908/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内発【UGG】CLASSIC ULTRA MINI PLATFORM ショートブーツ 厚底",
+        "price_jpy": 21320,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111580817/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W’S SUEDE NUPTSE ジャケット★新作・25AW★",
+        "price_jpy": 43510,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124240561/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]K'S VITAL EX ジャケット★25AW★大人もOK★",
+        "price_jpy": 17047,
+        "size": "—",
+        "url": "https://www.buyma.com/item/125290532/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MACKAGE アウトレット】異素材ミックス♪ラモーナ ジャケット",
+        "price_jpy": 56232,
+        "size": "—",
+        "url": "https://www.buyma.com/item/111668909/",
+        "status": "出品価格",
+        "seller": "Mackage",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー MEDLEY ジップアップ 2カラー 81191491 81191481",
+        "price_jpy": 88900,
+        "size": "—",
+        "url": "https://www.buyma.com/item/127519016/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]COMOR FLEECE ジャケット★新作・26AW★男女★",
+        "price_jpy": 19255,
+        "size": "—",
+        "url": "https://www.buyma.com/item/137127520/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【ADIDAS】エッセンシャルニットカーディガン IA4454",
+        "price_jpy": 14849,
+        "size": "—",
+        "url": "https://www.buyma.com/item/136808844/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "タトラス ダウン ジャケット ショート ヴァレナ TATRAS VARENA",
+        "price_jpy": 128502,
+        "size": "—",
+        "url": "https://www.buyma.com/item/100555561/",
+        "status": "出品価格",
+        "seller": "TATRAS",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13973,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510082/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【UGG】Disquette Heritage 厚底 ムートン スリッポン",
+        "price_jpy": 29205,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139543596/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[ノースフェイス]W'S NUPTSE ON BALL ジャケット★新作★人気★",
+        "price_jpy": 26066,
+        "size": "—",
+        "url": "https://www.buyma.com/item/95996866/",
+        "status": "出品価格",
+        "seller": "THE NORTH FACE",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "[CALVIN KLEIN] Women's Cropped Down Jacket ★大人気★",
+        "price_jpy": 13535,
+        "size": "—",
+        "url": "https://www.buyma.com/item/110510083/",
+        "status": "出品価格",
+        "seller": "Calvin Klein",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "バーバリー レディース 二つ折り財布 BURBERRY WALLET 80704171",
+        "price_jpy": 38549,
+        "size": "—",
+        "url": "https://www.buyma.com/item/124530529/",
+        "status": "出品価格",
+        "seller": "Burberry",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "国内即日☆【UGG】DISQUETTE ディスケット スリッポン ムートン",
+        "price_jpy": 15617,
+        "size": "—",
+        "url": "https://www.buyma.com/item/91073124/",
+        "status": "出品価格",
+        "seller": "UGG",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "adidas Originals Campus 00s Winter Low JR3732★送料込",
+        "price_jpy": 15186,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139793595/",
+        "status": "出品価格",
+        "seller": "adidas",
+        "observed_at": ""
+      },
+      {
+        "site": "BUYMA",
+        "product_name": "【MaxMara】テディベア ダブル ハンドル スモール バッグ",
+        "price_jpy": 99000,
+        "size": "—",
+        "url": "https://www.buyma.com/item/139709721/",
+        "status": "出品価格",
+        "seller": "Max Mara",
+        "observed_at": ""
+      }
+    ],
+    "verification_status": "要再検証",
+    "sources": [
+      "SNKRDUNK取引市場: https://snkrdunk.com/search?keywords=Carhartt+Nike",
+      "JSON-LD product not found; using expected price"
+    ],
+    "confirmed_at": "2026-11-14T08:03:35+00:00"
+  }
+]
