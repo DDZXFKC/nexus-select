@@ -35,7 +35,7 @@ def evaluate(candidate, offers, references, inputs, now):
                   buy_price=None, currency=None, market_median_jpy=None,
                   matched_sales=0, matched_asks=0, ask_median_jpy=None,
                   profit_jpy=None, missing=[], rejected_references=0,
-                  approved_for_import=False)
+                  approved_for_import=False, review_ready=False)
     missing = result["missing"]
     if target is None:
         missing.append("identity")
@@ -103,8 +103,9 @@ def run(data, now):
             results.append(evaluate(item["candidate"],item.get("offers",[]),
                                     item.get("references",[]),item.get("cost_inputs",{}),now))
         except (KeyError,ValueError,TypeError,AttributeError,InvalidOperation) as e:
-            results.append(dict(candidate_id=item.get("candidate",{}).get("candidate_id") if isinstance(item,dict) else None,
-                                decision="HOLD",error=type(e).__name__,approved_for_import=False))
+            c = item.get("candidate") if isinstance(item,dict) else None
+            results.append(dict(candidate_id=c.get("candidate_id") if isinstance(c,dict) else None,
+                                decision="HOLD",error=type(e).__name__,approved_for_import=False,review_ready=False))
     return results
 
 def main():
