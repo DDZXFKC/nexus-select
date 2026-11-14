@@ -26,6 +26,7 @@ except Exception:  # pragma: no cover
     Image = None
 
 UA = "AHC-QA/1.0 (+read-only quality inspection)"
+ALL_GROUP_LINK = re.compile(r"^ALL (?:(?:MEN'S|WOMEN'S|KIDS|MENS|WOMENS) )?(?:SHOES|CLOTHING|HEADWEAR|ACCESSORIES)(?: ITEMS)?$")
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 
 
@@ -35,6 +36,8 @@ class PageParser(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.links: list[tuple[str, str]] = []  # (href, anchor-location)
+        self.link_texts: list[str] = []  # visible text of each link, parallel to self.links
+        self._a_idx = None
         self.images: list[tuple[str, str]] = []  # (src, alt)
         self.title = ""
         self._in_title = False
@@ -61,6 +64,8 @@ class PageParser(HTMLParser):
             self._in_title = True
         if tag == "a" and a.get("href"):
             self.links.append((a["href"], " ".join(sorted(anc | classes))[:120]))
+            self.link_texts.append("")
+            self._a_idx = len(self.links) - 1
         if tag == "img":
             src = a.get("src") or a.get("data-src") or ""
             if src:
@@ -83,12 +88,16 @@ class PageParser(HTMLParser):
             self._skip -= 1
         if tag == "title":
             self._in_title = False
+        if tag == "a":
+            self._a_idx = None
         for i in range(len(self.stack) - 1, -1, -1):
             if self.stack[i][0] == tag:
                 del self.stack[i:]
                 break
 
     def handle_data(self, data):
+        if self._a_idx is not None and not self._skip:
+            self.link_texts[self._a_idx] += data
         if self._in_title:
             self.title += data
         elif not self._skip and data.strip():
@@ -256,6 +265,8 @@ class Crawler:
                 self.save_state(q)
                 log(f"  巡回 {len(self.pages)} ページ（残り {len(q)}）")
         self.save_state(q)
+        if not q and self.export:
+            self.check_old_category_urls()
         self._status_findings()
         return self.findings
 
@@ -316,6 +327,13 @@ class Crawler:
                     self.findings.append(Finding("INV_EMPTY_CATEGORY_HIDDEN", "HIGH", "商品が0件のカテゴリーへのリンクが表示されています（確定事項：空カテゴリーは非表示）",
                                                  page_url=url, location=path, evidence=where,
                                                  cause_group=f"INV_EMPTY_CATEGORY_HIDDEN:{path}"))
+        for (href, where), text in zip(p.links, p.link_texts):
+            t = re.sub(r"\s+", " ", text).strip().upper().replace("’", "'")
+            if ALL_GROUP_LINK.match(t):
+                self.findings.append(Finding("INV_NO_ALL_GROUP_LINK", "HIGH", f"「{t}」のリンクがあります（確定事項：SHOES等を押せば全商品が出るため、ALL SHOESなどの重複リンクは設けない）",
+                                             page_url=url, location=href, cause_group=f"INV_NO_ALL_GROUP_LINK:{t}"))
+        if urllib.parse.urlsplit(url).path.startswith("/product-category/"):
+            self._category_page_checks(url, p)
         if "/product/" in urllib.parse.urlsplit(url).path:
             gal = self.inv["product_gallery_class"]
             if not any(gal in e["classes"] for e in p.elements):
@@ -325,6 +343,45 @@ class Crawler:
             if sliders:
                 self.findings.append(Finding("INV_PRODUCT_VERTICAL_GALLERY", "HIGH", "商品ページにスライダー形式のギャラリーがあります（確定事項：縦スクロール）",
                                              page_url=url, location=" ".join(sorted(sliders[0]["classes"]))))
+
+    def _category_page_checks(self, url: str, p: PageParser):
+        path = urllib.parse.urlsplit(url).path.rstrip("/") + "/"
+        nav = [e for e in p.elements if e["tag"] == "a" and "nx-catnav__link" in e["classes"]]
+        if nav:
+            cur = [e for e in nav if e["attrs"].get("aria-current") == "page"]
+            ok = len(cur) == 1 and urllib.parse.urlsplit(urllib.parse.urljoin(url, cur[0]["attrs"].get("href", ""))).path.rstrip("/") + "/" == path
+            if not ok:
+                self.findings.append(Finding("CAT_CURRENT_HIGHLIGHT", "HIGH", "カテゴリーナビで、今いるカテゴリーがハイライトされていません",
+                                             page_url=url, evidence=f"aria-current の数: {len(cur)}", cause_group="CAT_CURRENT_HIGHLIGHT"))
+        ids = []
+        for e in p.elements:
+            if e["tag"] == "li" and "product" in e["classes"]:
+                pid = next((c for c in e["classes"] if re.fullmatch(r"post-\d+", c)), None)
+                if pid:
+                    ids.append(pid)
+        dups = sorted({i for i in ids if ids.count(i) > 1})
+        if dups:
+            self.findings.append(Finding("CAT_LIST_DUPLICATE", "HIGH", "商品一覧に同じ商品が2回以上表示されています",
+                                         page_url=url, evidence=", ".join(dups[:20]), cause_group="CAT_LIST_DUPLICATE"))
+
+    def check_old_category_urls(self):
+        from .category_spec import old_category_urls
+        for old, new, slug in old_category_urls(self.export, self.cfg["base_url"]):
+            if not self.f.host_ok(old):
+                continue
+            try:
+                final, status, _, _, chain = self.f.get(old)
+            except Exception as e:
+                self.findings.append(Finding("CAT_OLD_URL", "HIGH", "旧カテゴリーURLを確認できませんでした", page_url=old, location=slug, evidence=str(e)[:200]))
+                continue
+            first = chain[0][1] if chain else status
+            if normalize(final) == normalize(old) and status == 200 and normalize(new) == normalize(old):
+                continue  # not yet migrated: old URL is the current URL
+            if not (len(chain) == 1 and first == 301 and normalize(final) == normalize(new) and status == 200):
+                self.findings.append(Finding("CAT_OLD_URL", "HIGH", "旧カテゴリーURLが新しいURLへ1回の301転送になっていません",
+                                             page_url=old, location=slug,
+                                             evidence=" → ".join(f"{c[0]}({c[1]})" for c in chain) + f" → {final}({status}) / 期待: {new}",
+                                             cause_group="CAT_OLD_URL"))
 
     def _image_checks(self, page_url: str, p: PageParser):
         maxi = self.cfg["crawl"]["max_images"]

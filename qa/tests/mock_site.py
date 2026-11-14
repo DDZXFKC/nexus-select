@@ -71,6 +71,22 @@ def make_handler(defects: set):
                                   "<a href='/order-tracking/'>track</a>" + extra, sid)
             elif path == "/product-category/mens/":
                 self.page("Men", "<a href='/product/test-shoe/'>shoe</a>", sid)
+            elif path == "/product-category/mens/mens-shoes/mens-sneakers/":
+                cur = "" if "nohighlight" in defects else " aria-current='page'"
+                all_link = "<li><a class='nx-catnav__link' href='/product-category/mens/mens-shoes/'>ALL SHOES</a></li>" if "alllink" in defects else ""
+                nav = ("<details class='nx-catnav' open><nav><ul>"
+                       "<li><a class='nx-catnav__link nx-catnav__link--all' href='/product-category/mens/'>ALL MEN'S ITEMS</a></li>"
+                       "<li><a class='nx-catnav__link' href='/product-category/mens/mens-shoes/'>SHOES</a></li>" + all_link +
+                       f"<li><a class='nx-catnav__link' href='/product-category/mens/mens-shoes/mens-sneakers/'{cur}>Sneakers</a></li></ul></nav></details>")
+                items = "<li class='product type-product post-1'><a href='/product/test-shoe/'>shoe</a></li>"
+                if "dupitem" in defects:
+                    items += "<li class='product type-product post-1'><a href='/product/test-shoe/'>shoe</a></li>"
+                self.page("Sneakers", nav + f"<ul class='products'>{items}</ul>", sid)
+            elif path == "/product-category/mens/mens-sneakers/":
+                if "oldurl" in defects:
+                    self._send(302, headers={"Location": "/product-category/mens/mens-shoes/mens-sneakers/"})
+                else:
+                    self._send(301, headers={"Location": "/product-category/mens/mens-shoes/mens-sneakers/"})
             elif path.startswith("/product-category/"):
                 self.page("Category", "<p>NO ITEMS</p>", sid)
             elif path.startswith("/product/"):
@@ -166,10 +182,11 @@ class MockSite:
 def mock_export(base: str, defects=()) -> dict:
     d = set(defects)
     cats = [
-        {"id": 10, "name": "MEN'S", "slug": "mens", "parent": 0, "count": 0, "link": base + "product-category/mens/"},
+        {"id": 10, "name": "MEN'S", "slug": "mens", "parent": 0, "count": 1, "link": base + "product-category/mens/"},
         {"id": 11, "name": "WOMEN'S", "slug": "womens", "parent": 0, "count": 0, "link": base + "product-category/womens/"},
         {"id": 12, "name": "KIDS", "slug": "kids", "parent": 0, "count": 0, "link": base + "product-category/kids/"},
         {"id": 20, "name": "SHOES", "slug": "mens-shoes", "parent": 10, "count": 1, "link": base + "product-category/mens/mens-shoes/"},
+        {"id": 30, "name": "Sneakers", "slug": "mens-sneakers", "parent": 20, "count": 1, "link": base + "product-category/mens/mens-shoes/mens-sneakers/"},
         {"id": 21, "name": "CLOTHING", "slug": "womens-clothing", "parent": 11, "count": 1 if "countmismatch" not in d else 5, "link": base + "product-category/womens/womens-clothing/"},
     ]
     img = lambda i, exists=True: {"id": i, "url": base + f"img/p{i}.png", "file": f"/x/p{i}.png", "exists": exists,
@@ -177,7 +194,7 @@ def mock_export(base: str, defects=()) -> dict:
                                    "sizes": {"thumbnail": {"file": f"/x/p{i}-150.png", "exists": True, "width": 150, "height": 150}}}
     shoe = {"id": 1, "name": "Test Shoe", "slug": "test-shoe", "type": "variable", "status": "publish", "visibility": "visible",
             "sku": "SHOE-1", "price": "20000", "regular_price": "", "sale_price": "", "description_length": 100,
-            "short_description_length": 10, "category_ids": [20], "brands": ["Nike"], "attributes": {}, "image_id": 100,
+            "short_description_length": 10, "category_ids": [10, 20, 30], "brands": ["Nike"], "attributes": {}, "image_id": 100,
             "gallery_ids": [], "permalink": base + "product/test-shoe/", "stock_status": "instock", "purchasable": True,
             "variations": [{"id": 101, "status": "publish", "sku": "SHOE-1-27", "price": "20000" if "varprice" not in d else "",
                             "regular_price": "20000", "sale_price": "", "attributes": {"pa_size": "27"},
@@ -190,7 +207,7 @@ def mock_export(base: str, defects=()) -> dict:
            "attributes": {}, "image_id": 200 if "noimage" not in d else None, "gallery_ids": [],
            "permalink": base + "product/test-tee/", "stock_status": "instock", "purchasable": True, "variations": []}
     if "gendermix" in d:
-        tee["category_ids"] = [21, 20]
+        tee["category_ids"] = [21, 12]
     images = [img(100), img(200, exists="filemissing" not in d)]
     return {"exported_at": "2026-11-15T00:00:00Z",
             "site": {"blogname": "NEXUS SELECT" if "blogname" in d else "AFTER HOURS CLUB", "blogdescription": "",

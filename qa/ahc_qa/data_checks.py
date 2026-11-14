@@ -154,8 +154,9 @@ def run_data_checks(data: dict, cfg: dict) -> list[Finding]:
             out.append(Finding("CATEGORY_NONE", "HIGH", "カテゴリーが設定されていません（または未分類のみ）", **base))
         roots = {tree.root_of(c)["slug"] for c in real if tree.root_of(c)}
         groots = sorted(roots & gender_slugs)
-        if len(groots) > 1:
-            out.append(Finding("CATEGORY_GENDER_MIX", "REVIEW", "複数の性別カテゴリーに登録されています（ユニセックスなら問題なし）",
+        # Unisex items belong to both MEN'S and WOMEN'S with one product ID (spec §9): not a defect.
+        if "kids" in groots and len(groots) > 1:
+            out.append(Finding("CATEGORY_GENDER_MIX", "REVIEW", "KIDSと大人用の両方のカテゴリーに登録されています",
                                judge="人", evidence=" / ".join(tree.path(c) for c in real), location=",".join(groots), **base))
 
     for sku, owners in sku_map.items():

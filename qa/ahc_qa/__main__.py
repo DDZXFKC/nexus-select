@@ -92,6 +92,8 @@ def main(argv=None) -> int:
         from .data_checks import check_category_structure, run_data_checks
         try:
             fs.extend(run_data_checks(export, cfg))
+            from .category_spec import run_category_spec_checks
+            fs.extend(run_category_spec_checks(export, cfg))
             cat_f, created = check_category_structure(export, os.path.join(state_dir, "category_structure.json"))
             fs.extend(cat_f)
             if created:

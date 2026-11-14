@@ -100,11 +100,13 @@ class CrawlChecks(unittest.TestCase):
         self.assertGreater(len(cr.pages), 8)
 
     def test_defects_detected(self):
-        fs, _ = self.crawl({"broken", "residue", "dropdown", "video", "emptycat", "nogallery", "notitle"})
+        fs, _ = self.crawl({"broken", "residue", "dropdown", "video", "emptycat", "nogallery", "notitle",
+                            "nohighlight", "dupitem", "alllink", "oldurl"})
         got = types(fs)
         for t in ["BROKEN_LINK", "IMAGE_BROKEN", "REDIRECT_CHAIN", "REDIRECT_LOOP", "BRAND_RESIDUE",
                   "INV_NO_HEADER_DROPDOWN", "INV_PC_HERO_STATIC", "INV_EMPTY_CATEGORY_HIDDEN",
-                  "INV_PRODUCT_VERTICAL_GALLERY", "TITLE_MISSING"]:
+                  "INV_PRODUCT_VERTICAL_GALLERY", "TITLE_MISSING", "CAT_CURRENT_HIGHLIGHT",
+                  "CAT_LIST_DUPLICATE", "INV_NO_ALL_GROUP_LINK", "CAT_OLD_URL"]:
             self.assertIn(t, got, f"{t} missing; got {got}")
         bl = [f for f in fs if f.type == "BROKEN_LINK"][0]
         self.assertIn("リンク元", bl.location)
@@ -129,6 +131,58 @@ class CrawlChecks(unittest.TestCase):
         cr = Crawler(cfg, os.path.join(tmp, "s"), {})
         with self.assertRaises(ValueError):
             cr.f.get("https://example.com/")
+
+
+def spec_export(base="http://127.0.0.1:1/"):
+    from ahc_qa.category_spec import expected_terms, expected_path
+    terms = expected_terms()
+    ids = {slug: i + 1 for i, slug in enumerate(terms)}
+    cats = [{"id": ids[s], "name": s, "slug": s, "parent": ids.get(par, 0), "count": 0,
+             "link": base.rstrip("/") + expected_path(s, terms)} for s, par in terms.items()]
+    def prod(pid, name, slugs):
+        return {"id": pid, "name": name, "category_ids": [ids[x] for x in slugs], "permalink": f"{base}product/{pid}/"}
+    prods = [prod(1, "Nike Air Force 1 '07", ["mens", "mens-shoes", "mens-sneakers"]),
+             prod(2, "ASICS Novablast 5", ["mens", "mens-shoes", "mens-running", "womens", "womens-shoes", "womens-running"])]
+    return {"categories": cats, "products": prods}
+
+
+class CategorySpec(unittest.TestCase):
+    def cfg(self):
+        c = cfg_for("http://127.0.0.1:1/", tempfile.mkdtemp())
+        c["category_spec"] = {"enabled": True, "expected_counts": {"total": 2, "mens": 2, "womens": 1}}
+        return c
+
+    def test_spec_has_90_terms(self):
+        from ahc_qa.category_spec import expected_terms
+        self.assertEqual(len(expected_terms()), 90)
+
+    def test_clean(self):
+        from ahc_qa.category_spec import run_category_spec_checks
+        self.assertEqual([f.to_dict() for f in run_category_spec_checks(spec_export(), self.cfg())], [])
+
+    def test_defects(self):
+        from ahc_qa.category_spec import run_category_spec_checks
+        ex = spec_export()
+        ex["categories"] = [c for c in ex["categories"] if c["slug"] != "kids-eyewear"]           # missing term
+        bs = {c["slug"]: c for c in ex["categories"]}
+        bs["womens-jeans"]["parent"] = bs["womens-shoes"]["id"]                                       # wrong parent
+        bs["mens-boots"]["link"] = "http://127.0.0.1:1/product-category/mens/mens-boots/"             # old 2-level URL
+        ex["categories"].append({"id": 999, "name": "Sale", "slug": "sale", "parent": 0, "count": 0, "link": ""})
+        ex["products"][0]["category_ids"] = [bs["mens-sneakers"]["id"]]                               # ancestors missing
+        ex["products"].append({"id": 3, "name": "Nike Dunk Low", "permalink": "",
+                               "category_ids": [bs[x]["id"] for x in ("mens", "mens-shoes", "mens-basketball")]})  # facet rule
+        ex["products"].append({"id": 4, "name": "Tee", "permalink": "", "category_ids": [bs["womens"]["id"]]})  # leaf missing
+        got = types(run_category_spec_checks(ex, self.cfg()))
+        for t in ["CAT_SPEC_MISSING", "CAT_SPEC_PARENT", "CAT_SPEC_URL", "CAT_SPEC_EXTRA", "CAT_ANCESTOR_MISSING",
+                  "CAT_FACET_RULE", "CAT_LEAF_MISSING", "CAT_COUNT_EXPECTED"]:
+            self.assertIn(t, got)
+
+    def test_unisex_is_not_reported(self):
+        cfg = cfg_for("http://x/", tempfile.mkdtemp())
+        ex = mock_export("http://x/")
+        ex["products"][1]["category_ids"] = [21, 20]  # womens-clothing + mens-shoes
+        ex["categories"][3]["count"] = 2
+        self.assertNotIn("CATEGORY_GENDER_MIX", types(run_data_checks(ex, cfg)))
 
 
 class Baseline(unittest.TestCase):
