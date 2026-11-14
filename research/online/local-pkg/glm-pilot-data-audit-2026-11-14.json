@@ -1,0 +1,77 @@
+{
+  "status": "QUARANTINE_ONLY",
+  "source_sha256": {
+    "candidates.csv": "21bc3b6c155b7d79fe36804435a6c59ffaa27d70d5897addfd588311b41aa933",
+    "candidates.json": "73bcc8bf0d595ead76cda546f491cdd32ac08342dffb029bc10fe11d994c82e2",
+    "discover_test.json": "06fa04774efbd86194a41487ba6d4c2e33628b7c4c1e37c0e1ab65375b2db1c8"
+  },
+  "csv_json_equivalent": true,
+  "csv_candidates": 8,
+  "pilot": {
+    "candidates": 8,
+    "reference_claims": 145,
+    "reference_sites": {
+      "SNKRDUNK": 122,
+      "BUYMA": 23
+    },
+    "reference_statuses": {
+      "取引相場(代表価格)": 112,
+      "取扱確認なし(該当商品なし)": 7,
+      "価格未取得": 8,
+      "出品価格": 18
+    },
+    "priced_reference_claims": 130,
+    "missing_reference_observed_at": 145,
+    "missing_reference_size": 145,
+    "missing_reported_sku": 2,
+    "reported_verification_statuses": {
+      "検証済み(自動)": 8
+    },
+    "common_buyma_listing_keys_across_all_candidates": 0,
+    "buyma_fallback_candidate_ids": [
+      "AHC-007",
+      "AHC-008"
+    ],
+    "verified_offers": 0,
+    "verified_sales": 0,
+    "verified_profits": 0,
+    "hold": 8,
+    "review_ready": 0,
+    "approved_for_import": 0,
+    "published": 0
+  },
+  "discover_test": {
+    "candidates": 8,
+    "reference_claims": 282,
+    "reference_sites": {
+      "SNKRDUNK": 122,
+      "BUYMA": 160
+    },
+    "reference_statuses": {
+      "取引相場(代表価格)": 112,
+      "出品価格": 160,
+      "価格未取得": 8,
+      "取扱確認なし(該当商品なし)": 2
+    },
+    "priced_reference_claims": 272,
+    "missing_reference_observed_at": 282,
+    "missing_reference_size": 282,
+    "missing_reported_sku": 2,
+    "reported_verification_statuses": {
+      "検証済み(自動)": 6,
+      "要再検証": 2
+    },
+    "common_buyma_listing_keys_across_all_candidates": 20,
+    "buyma_fallback_candidate_ids": [],
+    "verified_offers": 0,
+    "verified_sales": 0,
+    "verified_profits": 0,
+    "hold": 8,
+    "review_ready": 0,
+    "approved_for_import": 0,
+    "published": 0
+  },
+  "discover_merged_into_pilot": false,
+  "live_requests": 0,
+  "published": 0
+}
