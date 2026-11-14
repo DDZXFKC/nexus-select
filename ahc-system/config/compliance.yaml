@@ -1,0 +1,84 @@
+# Compliance policy + manual verdicts.
+#
+# Manual verdicts OVERRIDE the robots.txt / ToS scan result. Use sparingly and
+# always with a written justification. Allowed values:
+#   allowed | denied | manual | unknown
+#
+# The runtime decision for an action = manual_verdict if set != unknown,
+# else the scan result. See ahc.compliance.policy.decide().
+
+defaults:
+  # When robots.txt or ToS cannot be fetched, default to "manual".
+  unreachable_action: manual
+  # Global crawl politeness - shared by every adapter.
+  rate_limit_rps: 1.0
+  request_timeout_sec: 20
+  respect_crawl_delay: true
+  # Buy automation default: OFF unless explicitly turned on per store.
+  allow_buy_automation: false
+
+# Per-store manual verdicts. All entries below default to "manual" because
+# we have not yet completed a documented ToS review for any of them. The
+# compliance module will refuse to scrape or buy for any store whose
+# effective verdict is "manual" or "denied".
+stores:
+  # Germany
+  bstn:            { scrape: manual, buy: manual, note: "Pending ToS review" }
+  asphaltgold:     { scrape: manual, buy: manual, note: "Pending ToS review" }
+  afew:            { scrape: manual, buy: manual, note: "Pending ToS review" }
+  43einhalb:       { scrape: manual, buy: manual, note: "Pending ToS review" }
+  allike:          { scrape: manual, buy: manual, note: "Pending ToS review" }
+  solebox:         { scrape: manual, buy: manual, note: "Pending ToS review" }
+  hhv:             { scrape: manual, buy: manual, note: "Pending ToS review" }
+  overkill:        { scrape: manual, buy: manual, note: "Pending ToS review" }
+
+  # USA
+  notre:           { scrape: manual, buy: manual, note: "Pending ToS review" }
+  bodega:          { scrape: manual, buy: manual, note: "Pending ToS review" }
+  concepts:        { scrape: manual, buy: manual, note: "Pending ToS review" }
+  feature:         { scrape: manual, buy: manual, note: "Pending ToS review" }
+  extrabutter:     { scrape: manual, buy: manual, note: "Pending ToS review" }
+  bait:            { scrape: manual, buy: manual, note: "Pending ToS review" }
+  kith:            { scrape: manual, buy: manual, note: "Pending ToS review" }
+  undefeated:      { scrape: manual, buy: manual, note: "Pending ToS review" }
+  sneakerpolitics: { scrape: manual, buy: manual, note: "Pending ToS review" }
+  socialstatus:    { scrape: manual, buy: manual, note: "Pending ToS review" }
+  amamaniere:      { scrape: manual, buy: manual, note: "Pending ToS review" }
+
+  # UK
+  end:             { scrape: manual, buy: manual, note: "Pending ToS review" }
+  size:            { scrape: manual, buy: manual, note: "Pending ToS review" }
+  footpatrol:      { scrape: manual, buy: manual, note: "Pending ToS review" }
+  hip:             { scrape: manual, buy: manual, note: "Pending ToS review" }
+
+  # Other
+  patta:           { scrape: manual, buy: manual, note: "Pending ToS review" }
+  sneakerdistrict: { scrape: manual, buy: manual, note: "Pending ToS review" }
+  slamjam:         { scrape: manual, buy: manual, note: "Pending ToS review" }
+  sotf:            { scrape: manual, buy: manual, note: "Pending ToS review" }
+  starcow:         { scrape: manual, buy: manual, note: "Pending ToS review" }
+  shinzoparis:     { scrape: manual, buy: manual, note: "Pending ToS review" }
+  footdistrict:    { scrape: manual, buy: manual, note: "Pending ToS review" }
+  svd:             { scrape: manual, buy: manual, note: "Pending ToS review" }
+  footshop:        { scrape: manual, buy: manual, note: "Pending ToS review" }
+  haven:           { scrape: manual, buy: manual, note: "Pending ToS review" }
+  ssense:          { scrape: manual, buy: manual, note: "Pending ToS review" }
+
+# Coupon sources - same verdict scheme.
+coupon_sources:
+  retailmenot:      { scrape: manual, note: "Has API partnership program - prefer API" }
+  couponfollow:     { scrape: manual, note: "Pending ToS review" }
+  simplycodes:      { scrape: manual, note: "Pending ToS review" }
+  wethrift:         { scrape: manual, note: "Pending ToS review" }
+  dealspotr:        { scrape: manual, note: "Pending ToS review" }
+  slickdeals:       { scrape: manual, note: "Pending ToS review" }
+  gutscheinsammler: { scrape: manual, note: "Pending ToS review" }
+  gutscheinpony:    { scrape: manual, note: "Pending ToS review" }
+  mydealz:          { scrape: manual, note: "Has RSS feed - prefer RSS" }
+  sparwelt:         { scrape: manual, note: "Pending ToS review" }
+  vouchercodes:     { scrape: manual, note: "Pending ToS review" }
+  hotukdeals:       { scrape: manual, note: "Pending ToS review" }
+  latestdeals:      { scrape: manual, note: "Pending ToS review" }
+  dealabs:          { scrape: manual, note: "Pending ToS review" }
+  coupert:          { scrape: denied,  note: "Browser extension; no public listing" }
+  honey:            { scrape: denied,  note: "Browser extension; no public listing" }

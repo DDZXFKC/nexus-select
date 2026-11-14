@@ -1,0 +1,127 @@
+# Coupon / deal aggregator sources.
+# `enabled`: software switch only. The compliance module checks each source's
+#   robots.txt + ToS at runtime; a True here will not override a denial.
+# `adapter_class`: fully qualified class implementing ahc.coupons.base.CouponSource.
+#   If omitted, AHC falls back to the generic RSS / HTML scraper for that slug.
+
+sources:
+  # ===== US =====
+  - slug: retailmenot
+    name: RetailMeNot
+    url: https://www.retailmenot.com
+    country: US
+    source_type: aggregator
+    enabled: false
+    adapter_class: ahc.coupons.sources.retailmenot.RetailMeNotSource
+
+  - slug: couponfollow
+    name: CouponFollow
+    url: https://www.couponfollow.com
+    country: US
+    source_type: aggregator
+    enabled: false
+
+  - slug: simplycodes
+    name: SimplyCodes
+    url: https://www.simplycodes.com
+    country: US
+    source_type: aggregator
+    enabled: false
+
+  - slug: wethrift
+    name: Wethrift
+    url: https://www.wethrift.com
+    country: US
+    source_type: aggregator
+    enabled: false
+
+  - slug: dealspotr
+    name: Dealspotr
+    url: https://dealspotr.com
+    country: US
+    source_type: aggregator
+    enabled: false
+
+  - slug: slickdeals
+    name: Slickdeals
+    url: https://slickdeals.net
+    country: US
+    source_type: community
+    enabled: false
+
+  # ===== Germany =====
+  - slug: gutscheinsammler
+    name: Gutscheinsammler
+    url: https://www.gutscheinsammler.de
+    country: DE
+    source_type: aggregator
+    enabled: false
+
+  - slug: gutscheinpony
+    name: Gutscheinpony
+    url: https://www.gutscheinpony.de
+    country: DE
+    source_type: aggregator
+    enabled: false
+
+  - slug: mydealz
+    name: mydealz
+    url: https://www.mydealz.de
+    country: DE
+    source_type: community
+    enabled: false
+    adapter_class: ahc.coupons.sources.mydealz.MyDealzSource
+
+  - slug: sparwelt
+    name: Sparwelt
+    url: https://www.sparwelt.de
+    country: DE
+    source_type: aggregator
+    enabled: false
+
+  # ===== UK =====
+  - slug: vouchercodes
+    name: VoucherCodes
+    url: https://www.vouchercodes.co.uk
+    country: GB
+    source_type: aggregator
+    enabled: false
+
+  - slug: hotukdeals
+    name: HotUKDeals
+    url: https://www.hotukdeals.com
+    country: GB
+    source_type: community
+    enabled: false
+
+  - slug: latestdeals
+    name: LatestDeals
+    url: https://www.latestdeals.co.uk
+    country: GB
+    source_type: community
+    enabled: false
+
+  # ===== France =====
+  - slug: dealabs
+    name: Dealabs
+    url: https://www.dealabs.com
+    country: FR
+    source_type: community
+    enabled: false
+
+  # ===== Browser-extension vendors (no public site to scrape; manual only) =====
+  - slug: coupert
+    name: Coupert
+    url: https://www.coupert.com
+    country: US
+    source_type: extension
+    enabled: false
+    notes: "Browser extension; no public listing. Manual lookup only."
+
+  - slug: honey
+    name: Honey
+    url: https://www.joinhoney.com
+    country: US
+    source_type: extension
+    enabled: false
+    notes: "Browser extension; no public listing. Manual lookup only."

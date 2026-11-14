@@ -1,0 +1,318 @@
+# Store master.
+# `ec_platform`: shopify | magento | woocommerce | generic
+# `enabled_scrape` / `enabled_buy`: software switches; the compliance module
+#   still has the final say (a True here does not override a ToS denial).
+# `adapter_class`: optional fully-qualified class overriding the platform default.
+#
+# Add a new store in three lines - no code changes required.
+
+stores:
+  # ===== Germany =====
+  - slug: bstn
+    name: BSTN
+    country: DE
+    currency: EUR
+    base_url: https://www.bstn.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: asphaltgold
+    name: Asphaltgold
+    country: DE
+    currency: EUR
+    base_url: https://www.asphaltgold.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: afew
+    name: AFEW
+    country: DE
+    currency: EUR
+    base_url: https://www.afew-store.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: 43einhalb
+    name: 43einhalb
+    country: DE
+    currency: EUR
+    base_url: https://www.43einhalb.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: allike
+    name: Allike
+    country: DE
+    currency: EUR
+    base_url: https://www.allike.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: solebox
+    name: Solebox
+    country: DE
+    currency: EUR
+    base_url: https://www.solebox.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: hhv
+    name: HHV
+    country: DE
+    currency: EUR
+    base_url: https://www.hhv.de
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: overkill
+    name: Overkill
+    country: DE
+    currency: EUR
+    base_url: https://www.overkillshop.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  # ===== USA =====
+  - slug: notre
+    name: Notre
+    country: US
+    currency: USD
+    base_url: https://www.notre-shop.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: bodega
+    name: Bodega
+    country: US
+    currency: USD
+    base_url: https://shop.bdgast.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: concepts
+    name: Concepts
+    country: US
+    currency: USD
+    base_url: https://cncpts.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: feature
+    name: Feature
+    country: US
+    currency: USD
+    base_url: https://www.featuresneakerboutique.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: extrabutter
+    name: Extra Butter
+    country: US
+    currency: USD
+    base_url: https://www.extrabutterny.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: bait
+    name: BAIT
+    country: US
+    currency: USD
+    base_url: https://www.baitsneakers.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: kith
+    name: KITH
+    country: US
+    currency: USD
+    base_url: https://kith.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: undefeated
+    name: Undefeated
+    country: US
+    currency: USD
+    base_url: https://undefeated.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: sneakerpolitics
+    name: Sneaker Politics
+    country: US
+    currency: USD
+    base_url: https://sneakerpolitics.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: socialstatus
+    name: Social Status
+    country: US
+    currency: USD
+    base_url: https://socialstatuspgh.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: amamaniere
+    name: A Ma Maniére
+    country: US
+    currency: USD
+    base_url: https://www.amamaniere.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  # ===== UK =====
+  - slug: end
+    name: END.
+    country: GB
+    currency: GBP
+    base_url: https://www.endclothing.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: size
+    name: size?
+    country: GB
+    currency: GBP
+    base_url: https://www.size.co.uk
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: footpatrol
+    name: Footpatrol
+    country: GB
+    currency: GBP
+    base_url: https://www.footpatrol.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: hip
+    name: HIP
+    country: GB
+    currency: GBP
+    base_url: https://www.hipstore.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  # ===== Other =====
+  - slug: patta
+    name: Patta
+    country: NL
+    currency: EUR
+    base_url: https://www.patta.nl
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: sneakerdistrict
+    name: Sneaker District
+    country: NL
+    currency: EUR
+    base_url: https://www.sneakerdistrict.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: slamjam
+    name: Slam Jam
+    country: IT
+    currency: EUR
+    base_url: https://www.slamjam.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: sotf
+    name: SOTF
+    country: FR
+    currency: EUR
+    base_url: https://sotf.fr
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: starcow
+    name: Starcow
+    country: FR
+    currency: EUR
+    base_url: https://www.starcowparis.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: shinzoparis
+    name: Shinzo Paris
+    country: FR
+    currency: EUR
+    base_url: https://shinzoparis.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: footdistrict
+    name: Footdistrict
+    country: ES
+    currency: EUR
+    base_url: https://www.footdistrict.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: svd
+    name: SVD
+    country: ES
+    currency: EUR
+    base_url: https://www.svd.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: footshop
+    name: Footshop
+    country: CZ
+    currency: EUR
+    base_url: https://www.footshop.eu
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: haven
+    name: HAVEN
+    country: CA
+    currency: CAD
+    base_url: https://www.havenshop.com
+    ec_platform: shopify
+    enabled_scrape: false
+    enabled_buy: false
+
+  - slug: ssense
+    name: SSENSE
+    country: CA
+    currency: CAD
+    base_url: https://www.ssense.com
+    ec_platform: magento
+    enabled_scrape: false
+    enabled_buy: false

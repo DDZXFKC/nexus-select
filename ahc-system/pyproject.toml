@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ahc-system"
+version = "0.1.0"
+description = "AFTER HOURS CLUB — coupon collection & auto-buying system"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "AHC System" }]
+
+dependencies = [
+  # Web / scraping
+  "requests>=2.31",
+  "beautifulsoup4>=4.12",
+  "lxml>=5.0",
+  "playwright>=1.42",
+  # DB
+  "SQLAlchemy>=2.0",
+  # Config / env
+  "pydantic>=2.5",
+  "pydantic-settings>=2.1",
+  "PyYAML>=6.0",
+  # Email
+  # (imaplib is stdlib; we only add a parser helper)
+  "mail-parser>=3.15",
+  # CLI
+  "click>=8.1",
+  # Utils
+  "python-dateutil>=2.8",
+  "tenacity>=8.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.23",
+  "pytest-cov>=4.1",
+  "respx>=0.20",     # mock requests
+  "freezegun>=1.4",
+]
+supabase = ["supabase>=2.0"]
+postgres = ["psycopg2-binary>=2.9"]
+mysql = ["PyMySQL>=1.1"]
+
+[project.scripts]
+ahc = "ahc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+asyncio_mode = "auto"
+addopts = "-ra -q --strict-markers"
+markers = [
+  "integration: requires network or external services (deselect with '-m \"not integration\"')",
+  "livebuy: performs real cart operations (never run without explicit approval)",
+]
+
+[tool.coverage.run]
+source = ["src/ahc"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "raise NotImplementedError",
+  "if TYPE_CHECKING:",
+]
