@@ -37,6 +37,7 @@ TYPE_LABELS = {
     "CAT_LEAF_MISSING": "末端カテゴリーの付け忘れ",
     "CAT_FACET_RULE": "用途カテゴリーの誤分類の可能性",
     "CAT_COUNT_EXPECTED": "商品数が想定と違う",
+    "CAT_NEEDS_REVIEW": "自動分類できなかった商品",
     "CAT_OLD_URL": "旧カテゴリーURLの転送不良",
     "CAT_CURRENT_HIGHLIGHT": "現在地のハイライト不良",
     "CAT_LIST_DUPLICATE": "商品一覧の重複表示",

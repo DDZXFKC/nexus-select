@@ -117,6 +117,7 @@ foreach ($ids as $pid) {
         'stock_status' => $p->get_stock_status(),
         'purchasable' => $p->is_purchasable(),
         'variations' => $variations,
+        'catnav_needs_review' => (string) get_post_meta($pid, '_nx_catnav_needs_review', true),
     ];
 }
 

@@ -34,6 +34,8 @@ LEAVES = {
 # Use-based leaves must not be assigned to these models without evidence (spec §11).
 FACET_LEAVES = {"running", "basketball"}
 FACET_EXCLUDE = re.compile(r"Air Force|AF1|\bDunk\b", re.I)
+# Same boot words as nexus-catnav-autoclassify.php: a brand name alone never makes a boot.
+BOOT_WORDS = re.compile(r"\bBoots?\b|6[- ]?Inch|\bChukka\b|Goadome|Field Boot|Euro Hiker|\bBotas?\b|ブーツ", re.I)
 
 
 def expected_terms() -> dict[str, str]:
@@ -112,6 +114,15 @@ def run_category_spec_checks(data: dict, cfg: dict) -> list[Finding]:
             if key in FACET_LEAVES and FACET_EXCLUDE.search(name):
                 out.append(Finding("CAT_FACET_RULE", "HIGH", f"根拠なく{LEAVES[key][1]}に分類されている可能性があります（AF1・Dunkなどは用途カテゴリーに入れない）",
                                    location=s, evidence=name, cause_group=f"CAT_FACET_RULE:{key}", **base))
+
+            if key == "boots" and not BOOT_WORDS.search(name):
+                out.append(Finding("CAT_FACET_RULE", "REVIEW", "Bootsに分類されていますが、商品名にブーツを示す語がありません（ブランド名だけで分類された可能性）",
+                                   judge="人", location=s, evidence=name, cause_group="CAT_FACET_RULE:boots-no-word", **base))
+        reason = p.get("catnav_needs_review") or ""
+        if reason:
+            label = {"gender-missing": "性別カテゴリーがない", "leaf-missing": "末端カテゴリーがない"}.get(reason, reason)
+            out.append(Finding("CAT_NEEDS_REVIEW", "REVIEW", f"自動分類できなかった商品です（{label}）", judge="人",
+                               location=reason, cause_group=f"CAT_NEEDS_REVIEW:{reason}", **base))
 
     # 4. expected counts (spec §13: 197 / 149 / 48 maintained). Published parent products.
     exp = spec_cfg.get("expected_counts") or {}
