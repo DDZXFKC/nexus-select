@@ -125,7 +125,7 @@ foreach ($nx_hero_slide_defs as $nx_def) {
       <?php endforeach; ?>
       </div>
     <?php elseif ($nx_poster_url): ?>
-      <img src="<?php echo esc_url($nx_poster_url); ?>" alt="NEXUS SELECT campaign" fetchpriority="high" width="720" height="1280">
+      <img src="<?php echo esc_url($nx_poster_url); ?>" alt="AFTER HOURS CLUB campaign" fetchpriority="high" width="720" height="1280">
     <?php endif; ?>
   </div>
   <div class="nx-mobile-copy">
