@@ -268,6 +268,10 @@ class PurchaseFlow(unittest.TestCase):
         self.assertIn("小計", msgs)
         self.assertIn("送料", msgs)
 
+    def test_wrong_item_in_cart(self):
+        fs = self.flow({"wrongitem"})
+        self.assertTrue(any("カートの中身" in f.message for f in fs), [f.message for f in fs])
+
     def test_add_disabled(self):
         fs = self.flow({"addbroken"})
         self.assertTrue(any("ADD TO BAG" in f.message for f in fs), [f.message for f in fs])

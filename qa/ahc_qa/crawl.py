@@ -292,7 +292,7 @@ class Crawler:
         self._status_findings()
         for origin, pages in self.scheme_mismatch.items():
             uniq = sorted(set(pages))
-            self.findings.append(Finding("SCHEME_MISMATCH", "LOW", f"サイト内リンクの一部が {origin} を指しています（巡回は {self.cfg['base_url']} に揃えて実施）",
+            self.findings.append(Finding("SCHEME_MISMATCH", "LOW", f"サイト内リンクの一部が {origin} を指しています" + ("（Localのため巡回は " + self.cfg['base_url'] + " に揃えて実施）" if origin.split(":")[0] != urllib.parse.urlsplit(self.cfg['base_url']).scheme and urllib.parse.urlsplit(self.cfg['base_url']).hostname.endswith((".local", ".localhost", ".test", "127.0.0.1", "localhost")) else ""),
                                          location=origin, evidence=f"{len(uniq)}ページ。例: " + ", ".join(uniq[:3]),
                                          cause_group="SCHEME_MISMATCH"))
         self.findings = aggregate(self.findings)
@@ -305,11 +305,17 @@ class Crawler:
         u = urllib.parse.urljoin(base, href)
         if not u.startswith(("http://", "https://")) or not self.f.host_ok(u):
             return None
-        want = urllib.parse.urlsplit(self.cfg["base_url"]).scheme
+        base_parts = urllib.parse.urlsplit(self.cfg["base_url"])
+        want = base_parts.scheme
         parts = urllib.parse.urlsplit(u)
-        if parts.scheme != want and (parts.hostname or "") == (urllib.parse.urlsplit(self.cfg["base_url"]).hostname or ""):
+        # Local only: a self-signed https certificate is an environment issue, so crawl it as http.
+        # On production the original URL is crawled as-is so a broken https link is still caught.
+        local = (base_parts.hostname or "").endswith((".local", ".localhost", ".test")) or base_parts.hostname in ("localhost", "127.0.0.1")
+        if local and parts.scheme != want and (parts.hostname or "") == (base_parts.hostname or ""):
             self.scheme_mismatch.setdefault(f"{parts.scheme}://{parts.netloc}", []).append(base)
             u = urllib.parse.urlunsplit((want,) + tuple(parts[1:]))
+        elif not local and parts.scheme != want and (parts.hostname or "") == (base_parts.hostname or ""):
+            self.scheme_mismatch.setdefault(f"{parts.scheme}://{parts.netloc}", []).append(base)
         return normalize(u)
 
     # ---- per-page checks

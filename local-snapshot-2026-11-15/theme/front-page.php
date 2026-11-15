@@ -272,6 +272,8 @@ if (class_exists('WooCommerce')) {
 <?php foreach (['mens'=>"MEN'S",'womens'=>"WOMEN'S",'kids'=>'KIDS'] as $slug=>$label):
  $term=get_term_by('slug',$slug,'product_cat');
  if (!$term || is_wp_error($term)) continue;
+ // Empty category is hidden (owner rule); the card appears automatically once a product is published.
+ if (!nexus_term_has_products($term)) continue;
  $url=get_term_link($term); if(is_wp_error($url))continue;
  $image=absint(get_theme_mod('nexus_mobile_'.$slug,0));
 ?>

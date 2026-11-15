@@ -114,7 +114,7 @@ def make_handler(defects: set):
                     unit = prices[pid]
                     sub = unit * n + (1 if "badtotal" in defects else 0)
                     total += sub
-                    rows += (f"<tr class='cart_item'><td><a class='remove' href='/cart/?remove_item={pid}'>×</a></td>"
+                    rows += (f"<tr class='cart_item'><td><a class='remove' data-product_id='{("9" if "wrongitem" in defects else pid)}' href='/cart/?remove_item={pid}'>×</a></td>"
                              f"<td class='product-price'>¥{unit:,}</td><td><input class='qty' name='qty_{pid}' value='{n}'></td>"
                              f"<td class='product-subtotal'>¥{sub:,}</td></tr>")
                 ship = "送料 ¥1,000" if "shipping" in defects else "送料無料"

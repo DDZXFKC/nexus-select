@@ -89,3 +89,21 @@ add_action('customize_register', function($c){
   $c->add_control(new WP_Customize_Media_Control($c,$id,['label'=>$label,'section'=>'nexus_mobile_campaign','mime_type'=>$key==='video'?'video':'image']));
  }
 });
+
+/**
+ * True when the product category or any of its descendants has published products.
+ * Used to hide empty categories (e.g. KIDS) from navigation and cards; the category itself is kept.
+ */
+if (!function_exists('nexus_term_has_products')) {
+    function nexus_term_has_products($term) {
+        if (!$term || is_wp_error($term)) return false;
+        if ((int) $term->count > 0) return true;
+        $children = get_term_children((int) $term->term_id, 'product_cat');
+        if (is_wp_error($children)) return false;
+        foreach ($children as $cid) {
+            $t = get_term((int) $cid, 'product_cat');
+            if ($t && !is_wp_error($t) && (int) $t->count > 0) return true;
+        }
+        return false;
+    }
+}

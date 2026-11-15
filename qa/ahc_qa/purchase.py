@@ -186,6 +186,18 @@ def _flow(page, base, products, pc, shot_dir, tag, log) -> list[Finding]:
                          evidence=f"cart block={block}, cookies={cookies}"))
         return out
 
+    # the right products are in the cart (classic cart exposes product ids on the remove links)
+    ids_in_cart = {int(x) for x in page.locator("a.remove[data-product_id]").evaluate_all("as => as.map(a => a.dataset.product_id)") if str(x).isdigit()}
+    expected = {p["id"] for p in products}
+    if ids_in_cart and not expected <= ids_in_cart:
+        out.append(_fail(f"カートの中身が追加した商品と違います（追加 {sorted(expected)} / カート {sorted(ids_in_cart)}）", tag, page, shot_dir, pc, "cart-identity"))
+    elif not ids_in_cart:
+        text = page.locator(CART_ROW).all_inner_texts()
+        missing = [p["name"] for p in products if not any(p["name"][:20].lower() in t.lower() for t in text)]
+        if missing:
+            out.append(_fail("カートに追加した商品名が見当たりません", tag, page, shot_dir, pc, "cart-identity", sev="REVIEW", judge="人",
+                             evidence=", ".join(missing)[:200]))
+
     # quantity -> 2 and line subtotal
     if block:
         qty = page.locator(".wc-block-components-quantity-selector__input").first

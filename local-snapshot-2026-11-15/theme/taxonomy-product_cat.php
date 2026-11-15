@@ -101,7 +101,8 @@ get_header('shop');
       <nav class="nx-catnav__nav" aria-label="<?php echo esc_attr($nx_root->name); ?> categories">
         <?php
         $nx_root_link = get_term_link($nx_root);
-        if (!is_wp_error($nx_root_link)) {
+        // Empty root (e.g. KIDS before its first product): no link to it in the tree. Direct access still shows NO ITEMS.
+        if (!is_wp_error($nx_root_link) && !empty($nx_visible[(int) $nx_root->term_id])) {
             $nx_all_label = 'ALL ' . $nx_root->name . ' ITEMS';
             if ($nx_root->slug === 'kids') $nx_all_label = 'ALL KIDS ITEMS';
             echo '<ul class="nx-catnav__list nx-catnav__list--depth-0"><li class="nx-catnav__item' . ($nx_current_id === (int) $nx_root->term_id ? ' is-current' : '') . '"><a class="nx-catnav__link nx-catnav__link--all" href="' . esc_url($nx_root_link) . '"' . ($nx_current_id === (int) $nx_root->term_id ? ' aria-current="page"' : '') . '>' . esc_html($nx_all_label) . '</a></li></ul>';
