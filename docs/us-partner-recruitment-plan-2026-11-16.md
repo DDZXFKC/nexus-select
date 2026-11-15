@@ -8,8 +8,8 @@
 | 項目 | 内容 |
 |---|---|
 | 報酬 | **1箱10ドル**（1ドル158円で約1,580円）、月末締め・毎月払い |
-| 見せ方 | **内職**として出す。1箱の単価ではなく、**時給換算（100ドル以上）**を前面に出す |
-| 波の説明 | 件数は月によって変わることを一言書く。最低保証で安心させる |
+| 見せ方 | **内職**として出す。1箱の単価ではなく、**時給換算（100ドル以上）**を前面に出す。募集文は最小限にし、詳細は採用が決まってから伝える |
+| 波の説明 | 件数は月によって変わることは、顔合わせで伝える（募集文には書かない）。最低保証とセットで説明する |
 | 最低保証 | 最初の3か月だけ、件数が少ない月も**月50ドル** |
 | 立て替え | なし（商品代金はこちらが直接支払う） |
 | 作業時間の目安 | 慣れれば1箱5分ほど（オーナーの実績：1時間に20箱は余裕） |
@@ -28,52 +28,46 @@
 
 連絡先は、オーナーのメールアドレス（または専用の受付アドレス）。**公開リポジトリには書かない。**
 
-## 3. 募集文
+## 3. 募集文（出すのは最小限）
+
+募集の段階では、「何をする仕事か」「いくらか」「どこか」「連絡先」だけを出す。
+仕事の細かい流れ・件数の見込み・最低保証・支払い条件は、**3-2の「採用が決まってから説明すること」**に分ける。
 
 ### 日本語版（ライトハウス・Facebookグループ）
 
 > **【ポートランド周辺】時給換算100ドル以上｜自宅でできる荷物の発送の内職**
 >
-> 届いた荷物を確認して、梱包して発送するだけの、在宅の内職です。空いた時間に、自分のペースでできます。
+> ご自宅に届く荷物を確認して、梱包して発送するお仕事です。
+> 1箱10ドル。慣れれば1箱5分ほどです。
+> 空いた時間に、自分のペースでできます。
 >
-> **お仕事の流れ**
-> 1. ご自宅に届いた商品を開けて、写真を数枚撮って送る
-> 2. 梱包して、こちらで用意するラベルを貼る
-> 3. 集荷に出す（郵便局へ行く必要はありません）
->
-> 慣れれば1箱5分ほど。10箱でも1時間かかりません（時給にすると100ドル以上）。
->
-> **報酬**
-> - 1箱10ドル、月末締めで毎月お支払い
-> - 今後は月20〜30件の見込み（月200〜300ドル程度）
-> - 1時間あたりの単価は高めですが、件数は月によって変わります（立ち上げ期は少なめ、最初の3か月は最低50ドル保証）
-> - 商品代金の立て替えはありません
->
-> 保管なし・通勤なし・ノルマなし。主婦の方、学生の方、副収入がほしい方に向いています。
 > 興味のある方は、お住まいのエリアと一言を [連絡先] までどうぞ。
 
 ### 英語版（Craigslist Portland の gigs 欄）
 
 > **Side gig from home – pack & ship parcels, $10/box (~$100+/hr)**
 >
-> Simple at-home side job. Do it in your spare time, at your own pace.
+> Receive parcels at home, check them, and ship them out.
+> $10 per box. About 5 minutes per box once you get the hang of it.
+> Work in your spare time, at your own pace.
+> Japanese speakers welcome.
 >
-> **How it works:**
-> 1. Open the package that arrives at your home and send us a few photos
-> 2. Repack it and attach the label we provide
-> 3. Hand it to carrier pickup (no post office trips)
->
-> Takes about 5 minutes per box once you get the hang of it — 10 boxes in under an hour (over $100/hour equivalent).
->
-> **Pay:**
-> - $10 per box, paid monthly
-> - About 20–30 boxes/month as we grow ($200–300/month)
-> - High pay per hour of work, but volume varies month to month (lighter at launch; $50/month minimum for the first 3 months)
-> - You never pay for anything. We buy all items directly.
->
-> No storage, no commute, no quotas. Great for stay-at-home parents, students, or anyone wanting extra income.
-> Japanese speakers welcome (we communicate in English or Japanese).
 > Interested? Email your general area and a short note: [contact]
+
+### 3-2. 採用が決まってから説明すること（顔合わせ・条件メールで伝える）
+
+- 仕事の詳しい流れ（開封 → 写真での報告 → 梱包 → こちらが用意するラベル → 集荷）
+- 返品の対応と、追跡番号の報告
+- 件数の見込み（今後は月20〜30件）と、件数には月ごとの波があること
+- 最初の3か月は、件数が少ない月も最低50ドルを保証すること
+- 支払い（月末締め、毎月払い、受け取り方法）
+- 商品代金の立て替えはないこと
+- 保管は基本不要であること
+- 連絡は基本的に文字（メール・チャット）で行うこと
+- 作業手順書（5章）を渡すこと
+- 最初の1箱はテストとして、作業を記録してもらうこと
+
+件数の波と最低保証は、相手が引き受けると決める前の**顔合わせの時点**で伝える。始めてから「思っていたより少ない」と辞められるのを防ぐため。
 
 ## 4. 応募から開始までの流れ
 
@@ -87,7 +81,7 @@
 
 1. あいさつと自己紹介（日本でスニーカー・アパレルを販売していること）
 2. 仕事の流れ（受け取り → 写真 → 梱包 → ラベル → 集荷）
-3. 報酬（1箱10ドル、毎月払い、最初の3か月は最低50ドル、件数には波がある）
+3. 報酬と条件（3-2の内容：1箱10ドル、毎月払い、件数の見込みと波、最初の3か月は最低50ドル）
 4. 連絡は基本的にメール・チャットの文字で行うこと
 5. テストの1箱から始めること、次の連絡の予定
 6. 相手からの質問（答えにくいものは「あとで文字で返す」でよい）
