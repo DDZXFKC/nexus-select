@@ -73,6 +73,13 @@ def make_handler(defects: set):
                                   "<a href='/order-tracking/'>track</a>" + extra, sid)
             elif path == "/product-category/mens/":
                 self.page("Men", "<a href='/product/test-shoe/'>shoe</a>", sid)
+            elif path == "/product-category/mens/mens-shoes/mens-sneakers/page/2/":
+                nav = ("<details class='nx-catnav' open><nav><ul><li><a class='nx-catnav__link' "
+                       "href='/product-category/mens/mens-shoes/mens-sneakers/' aria-current='page'>Sneakers</a></li></ul></nav></details>")
+                self.page("Sneakers p2", nav + "<ul class='products'></ul>", sid)
+            elif path == "/product-category/kids/kids-shoes/":
+                nav = "<details class='nx-catnav' open><nav><ul></ul></nav></details>"
+                self.page("Kids shoes", nav + "<p class='nx-archive__empty'>NO ITEMS</p>", sid)
             elif path == "/product-category/mens/mens-shoes/mens-sneakers/":
                 cur = "" if "nohighlight" in defects else " aria-current='page'"
                 all_link = "<li><a class='nx-catnav__link' href='/product-category/mens/mens-shoes/'>ALL SHOES</a></li>" if "alllink" in defects else ""
@@ -83,7 +90,7 @@ def make_handler(defects: set):
                 items = "<li class='product type-product post-1'><a href='/product/test-shoe/'>shoe</a></li>"
                 if "dupitem" in defects:
                     items += "<li class='product type-product post-1'><a href='/product/test-shoe/'>shoe</a></li>"
-                self.page("Sneakers", nav + f"<ul class='products'>{items}</ul>", sid)
+                self.page("Sneakers", nav + f"<ul class='products'>{items}</ul><a href='/product-category/mens/mens-shoes/mens-sneakers/page/2/'>2</a>", sid)
             elif path == "/product-category/mens/mens-sneakers/":
                 if "oldurl" in defects:
                     self._send(302, headers={"Location": "/product-category/mens/mens-shoes/mens-sneakers/"})

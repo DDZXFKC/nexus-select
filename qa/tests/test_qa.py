@@ -13,7 +13,7 @@ import unittest
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from ahc_qa.__main__ import guard_report_dir, load_config  # noqa: E402
-from ahc_qa.crawl import Crawler  # noqa: E402
+from ahc_qa.crawl import Crawler, normalize  # noqa: E402
 from ahc_qa.data_checks import check_category_structure, run_data_checks  # noqa: E402
 from ahc_qa.findings import Finding, FindingSet, compare_with_baseline, write_reports  # noqa: E402
 from ahc_qa.purchase import host_is_safe, pick_test_products, run_purchase_checks  # noqa: E402
@@ -110,6 +110,18 @@ class CrawlChecks(unittest.TestCase):
             self.assertIn(t, got, f"{t} missing; got {got}")
         bl = [f for f in fs if f.type == "BROKEN_LINK"][0]
         self.assertIn("リンク元", bl.location)
+
+    def test_highlight_ok_on_paged_and_empty_pages(self):
+        tmp = tempfile.mkdtemp()
+        with MockSite(set()) as site:
+            cfg = cfg_for(site.base, tmp)
+            ex = mock_export(site.base)
+            ex["categories"].append({"id": 40, "name": "SHOES", "slug": "kids-shoes", "parent": 12, "count": 0,
+                                     "link": site.base + "product-category/kids/kids-shoes/"})
+            cr = Crawler(cfg, os.path.join(tmp, "state"), ex)
+            fs = cr.run(resume=False, log=lambda *_: None)
+        self.assertIn(normalize(site.base + "product-category/mens/mens-shoes/mens-sneakers/page/2/"), cr.pages)
+        self.assertNotIn("CAT_CURRENT_HIGHLIGHT", types(fs), [f.to_dict() for f in fs])
 
     def test_template_findings_are_aggregated_and_scheme_normalised(self):
         fs, cr = self.crawl({"residue", "scheme"})

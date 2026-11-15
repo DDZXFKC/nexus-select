@@ -35,6 +35,7 @@ python3 -m playwright install webkit chromium
 ```
 
 `config.json` はリポジトリの外に置いてください。
+**config.json には変えたい項目だけを書くのがおすすめです**（例：`{"base_url": "...", "allowed_hosts": [...]}`）。書かなかった項目は `config.example.json` の最新の既定値が使われます。全体をコピーすると、既定値の更新（例：注文追跡ページの検査を既定でオフにした変更）が反映されません。
 
 ### 1. 商品データを書き出す（WP-CLI、読み取りのみ）
 

@@ -384,9 +384,12 @@ class Crawler:
                                              page_url=url, location=" ".join(sorted(sliders[0]["classes"]))))
 
     def _category_page_checks(self, url: str, p: PageParser):
-        path = urllib.parse.urlsplit(url).path.rstrip("/") + "/"
+        # /page/N/ belongs to the same category; the nav links to the category's first page.
+        path = re.sub(r"/page/\d+/?$", "/", urllib.parse.urlsplit(url).path).rstrip("/") + "/"
         nav = [e for e in p.elements if e["tag"] == "a" and "nx-catnav__link" in e["classes"]]
-        if nav:
+        # An empty category (NO ITEMS, reached directly) is hidden from the nav by rule, so it cannot be highlighted.
+        empty = any("nx-archive__empty" in e["classes"] for e in p.elements)
+        if nav and not empty:
             cur = [e for e in nav if e["attrs"].get("aria-current") == "page"]
             ok = len(cur) == 1 and urllib.parse.urlsplit(urllib.parse.urljoin(url, cur[0]["attrs"].get("href", ""))).path.rstrip("/") + "/" == path
             if not ok:
