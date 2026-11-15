@@ -1,0 +1,416 @@
+[
+  {
+    "candidate_id": "AHC-001",
+    "brand": "adidas",
+    "offer_id": "B75806|fetch_failed",
+    "identity": {
+      "brand": "adidas",
+      "style_code": "B75806",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "UNKNOWN",
+    "purchase_price_jpy": null,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=UNKNOWN(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "貨幣不明",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-001",
+    "brand": "adidas",
+    "offer_id": "B75806|estimated",
+    "identity": {
+      "brand": "adidas",
+      "style_code": "B75806",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "ESTIMATED",
+    "purchase_price_jpy": 16000,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=ESTIMATED(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-002",
+    "brand": "ASICS",
+    "offer_id": "1201A380|fetch_failed",
+    "identity": {
+      "brand": "ASICS",
+      "style_code": "1201A380",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "UNKNOWN",
+    "purchase_price_jpy": null,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=UNKNOWN(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "貨幣不明",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-002",
+    "brand": "ASICS",
+    "offer_id": "1201A380|estimated",
+    "identity": {
+      "brand": "ASICS",
+      "style_code": "1201A380",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "ESTIMATED",
+    "purchase_price_jpy": 20800,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=ESTIMATED(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-003",
+    "brand": "HOKA",
+    "offer_id": "1127950|fetch_failed",
+    "identity": {
+      "brand": "HOKA",
+      "style_code": "1127950",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "UNKNOWN",
+    "purchase_price_jpy": null,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=UNKNOWN(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "貨幣不明",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-003",
+    "brand": "HOKA",
+    "offer_id": "1127950|estimated",
+    "identity": {
+      "brand": "HOKA",
+      "style_code": "1127950",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "ESTIMATED",
+    "purchase_price_jpy": 23200,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=ESTIMATED(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-004",
+    "brand": "Salomon",
+    "offer_id": "L49306800|fetch_failed",
+    "identity": {
+      "brand": "Salomon",
+      "style_code": "L49306800",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "UNKNOWN",
+    "purchase_price_jpy": null,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=UNKNOWN(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "貨幣不明",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-004",
+    "brand": "Salomon",
+    "offer_id": "L49306800|estimated",
+    "identity": {
+      "brand": "Salomon",
+      "style_code": "L49306800",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "ESTIMATED",
+    "purchase_price_jpy": 32000,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=ESTIMATED(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-005",
+    "brand": "Converse",
+    "offer_id": "161318C|fetch_failed",
+    "identity": {
+      "brand": "Converse",
+      "style_code": "161318C",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "UNKNOWN",
+    "purchase_price_jpy": null,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=UNKNOWN(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "貨幣不明",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-005",
+    "brand": "Converse",
+    "offer_id": "161318C|estimated",
+    "identity": {
+      "brand": "Converse",
+      "style_code": "161318C",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "ESTIMATED",
+    "purchase_price_jpy": 14400,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=ESTIMATED(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-006",
+    "brand": "Patagonia",
+    "offer_id": "25555|no_jsonld",
+    "identity": {
+      "brand": "Patagonia",
+      "style_code": "25555",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "UNKNOWN",
+    "purchase_price_jpy": null,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=UNKNOWN(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "貨幣不明",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-006",
+    "brand": "Patagonia",
+    "offer_id": "25555|estimated",
+    "identity": {
+      "brand": "Patagonia",
+      "style_code": "25555",
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "ESTIMATED",
+    "purchase_price_jpy": 11840,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=ESTIMATED(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-007",
+    "brand": "Nike x Stüssy",
+    "offer_id": "AHC-007|no_jsonld",
+    "identity": {
+      "brand": "Nike x Stüssy",
+      "style_code": null,
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "UNKNOWN",
+    "purchase_price_jpy": null,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=UNKNOWN(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "貨幣不明",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  },
+  {
+    "candidate_id": "AHC-008",
+    "brand": "Carhartt WIP x Nike",
+    "offer_id": "AHC-008|no_jsonld",
+    "identity": {
+      "brand": "Carhartt WIP x Nike",
+      "style_code": null,
+      "color_code": null,
+      "size_system": null,
+      "size": null,
+      "condition": null
+    },
+    "purchase_observation": "UNKNOWN",
+    "purchase_price_jpy": null,
+    "reference_price_jpy": null,
+    "expected_profit_jpy": null,
+    "review_ready": false,
+    "decision": "HOLD",
+    "approved_for_import": false,
+    "review_reasons": [
+      "IDENTITY不完全",
+      "仕入観測=UNKNOWN(OBSERVED必須)",
+      "seller_verified=false",
+      "在庫=None(IN_STOCK必須)",
+      "stock_verified=false",
+      "貨幣不明",
+      "参照価格不在(候補保存・検証価格ではない)",
+      "仕入観測≠OBSERVED→利益null(想定価格で利益確定禁止・第4章)"
+    ]
+  }
+]
