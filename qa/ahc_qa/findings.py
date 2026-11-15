@@ -125,8 +125,28 @@ class FindingSet:
         return c
 
 
-def compare_with_baseline(fs: FindingSet, baseline_path: str) -> dict:
-    """Mark each finding 既存/新規 and list resolved keys. Returns summary."""
+PURCHASE_TYPES = {"PURCHASE_FLOW", "PURCHASE_SKIPPED"}
+DATA_PREFIXES = ("CAT_SPEC_", "CAT_ANCESTOR", "CAT_LEAF", "CAT_FACET", "CAT_COUNT_EXPECTED", "CAT_NEEDS_REVIEW", "CATEGORY_",
+                 "PRICE_", "VARIATION_", "VARIABLE_", "NAME_", "BRAND_MISSING", "DESCRIPTION_", "IMAGE_NOT_SET",
+                 "IMAGE_FILE_MISSING", "IMAGE_SIZE_FILE_MISSING", "SKU_", "INV_CATEGORY_STRUCTURE")
+
+
+def section_of(d: dict) -> str:
+    """Which check (data / crawl / purchase) produced a finding."""
+    t = d["type"]
+    if t in PURCHASE_TYPES:
+        return "purchase"
+    if t.startswith(DATA_PREFIXES) or (t in ("BRAND_RESIDUE", "INV_PC_HERO_STATIC") and not d.get("page_url") and "設定" in (d.get("location") or "") + (d.get("message") or "")):
+        return "data"
+    return "crawl"
+
+
+def compare_with_baseline(fs: FindingSet, baseline_path: str, checks_run: list | None = None) -> dict:
+    """Mark each finding 既存/新規 and list resolved keys. Returns summary.
+
+    Only findings of the checks that actually ran can be "resolved": a purchase-only run must not
+    report the crawl findings of the baseline as solved.
+    """
     if not os.path.exists(baseline_path):
         for f in fs.items:
             f.origin = "初回"
@@ -145,7 +165,8 @@ def compare_with_baseline(fs: FindingSet, baseline_path: str) -> dict:
         else:
             f.origin = "新規"
             new += 1
-    resolved = [b for k, b in base_keys.items() if k not in cur_keys]
+    ran = set(checks_run or ["data", "crawl", "purchase"])
+    resolved = [b for k, b in base_keys.items() if k not in cur_keys and section_of(b) in ran]
     return {"baseline": baseline_path, "new": new, "existing": existing, "resolved": resolved}
 
 

@@ -133,11 +133,14 @@ def main(argv=None) -> int:
         log(f"purchase 検査 完了（{timings['purchase']}秒）")
 
     baseline_path = os.path.join(state_dir, "baseline.json")
-    diff = compare_with_baseline(fs, baseline_path)
+    diff = compare_with_baseline(fs, baseline_path, checks)
     meta = {"version": __version__, "base_url": cfg["base_url"], "checks": checks, "started_at": started,
             "finished_at": now_iso(), "timings_seconds": timings, "run_id": run_id}
     paths = write_reports(fs, run_dir, meta, diff)
-    if args.set_baseline or diff["baseline"] is None:
+    full_run = set(checks) == set(ALL_CHECKS)
+    if args.set_baseline and not full_run:
+        log("--set-baseline は全検査（data,crawl,purchase）を実行したときだけ使えます。今回は基準を保存しませんでした")
+    elif args.set_baseline or (diff["baseline"] is None and full_run):
         shutil.copyfile(paths["json"], baseline_path)
         log("今回の結果を基準（state/baseline.json）として保存しました")
     latest = os.path.join(root, "latest")

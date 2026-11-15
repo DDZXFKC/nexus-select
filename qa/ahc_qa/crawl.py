@@ -266,7 +266,8 @@ class Crawler:
                     parser = PageParser()
                     parser.feed(body.decode("utf-8", "replace"))
                     rec["title"] = parser.title.strip()
-                    self._page_checks(url, parser)
+                    # judge the page at the URL it was actually served from (after redirects)
+                    self._page_checks(normalize(final), parser)
                     for href, where in parser.links:
                         nxt = self._resolve(final, href)
                         if not nxt:

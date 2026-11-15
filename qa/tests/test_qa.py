@@ -132,6 +132,11 @@ class CrawlChecks(unittest.TestCase):
         self.assertNotIn("FETCH_ERROR", types(fs))
         self.assertFalse(any(u.startswith("https://") for u in cr.pages))
 
+    def test_redirected_page_is_judged_at_final_url(self):
+        fs, cr = self.crawl({"oldlink"})
+        self.assertIn(normalize(cr.cfg["base_url"] + "product-category/mens/mens-sneakers/"), cr.pages)
+        self.assertNotIn("CAT_CURRENT_HIGHLIGHT", types(fs), [f.to_dict() for f in fs])
+
     def test_resume(self):
         tmp = tempfile.mkdtemp()
         with MockSite(set()) as site:
@@ -223,6 +228,18 @@ class Baseline(unittest.TestCase):
         out = write_reports(b, os.path.join(tmp, "r2"), {"base_url": "x", "checks": []}, diff)
         with open(out["html"], encoding="utf-8") as fh:
             self.assertIn("新規", fh.read())
+
+
+    def test_partial_run_does_not_resolve_other_sections(self):
+        tmp = tempfile.mkdtemp()
+        a = FindingSet()
+        a.add(Finding("BROKEN_LINK", "HIGH", "x", page_url="http://x/a/"))
+        a.add(Finding("PURCHASE_FLOW", "CRITICAL", "x", location="webkit/PC"))
+        a.add(Finding("PRICE_MISSING", "CRITICAL", "x", product_id=1))
+        p = write_reports(a, tmp, {"base_url": "x", "checks": []}, compare_with_baseline(a, os.path.join(tmp, "none.json")))
+        b = FindingSet()  # purchase-only run with no findings
+        diff = compare_with_baseline(b, p["json"], ["purchase"])
+        self.assertEqual([r["type"] for r in diff["resolved"]], ["PURCHASE_FLOW"])
 
 
 class Safety(unittest.TestCase):
