@@ -110,6 +110,12 @@ def _fail(msg, tag, page, shot_dir, pc, name, sev="CRITICAL", **kw) -> Finding:
 
 
 CART_ROW = "tr.cart_item, .wc-block-cart-items__row"
+BLOCK_CART = ".wp-block-woocommerce-cart, .wc-block-cart"
+# Rows of the Cart block that have finished loading (skeleton rows have no product name yet).
+BLOCK_ROW_LOADED = ".wc-block-cart-items__row .wc-block-components-product-name"
+BLOCK_EMPTY = ".wp-block-woocommerce-empty-cart-block, .wc-block-cart__empty-cart__title"
+ERROR_NOTICE = ".woocommerce-error, .wc-block-components-notice-banner.is-error"
+SUCCESS_NOTICE = ".woocommerce-message, .wc-block-components-notice-banner.is-success"
 CHECKOUT_FORM = "form.checkout, .wc-block-checkout"
 # Classic checkout ids, then Checkout-block ids.
 CHECKOUT_FIELDS = {
@@ -129,15 +135,21 @@ def _settle(page, ms=10000):
 def _goto_cart(page, base):
     page.goto(urllib.parse.urljoin(base, "cart/"), wait_until="domcontentloaded")
     _settle(page)
-    try:  # the Cart block renders its rows with JavaScript after load
-        page.wait_for_selector(CART_ROW, timeout=15000)
+    block = page.locator(BLOCK_CART).count() > 0
+    try:
+        if block:
+            # The Cart block first shows skeleton rows, then the real items (or the empty-cart message).
+            page.wait_for_selector(f"{BLOCK_ROW_LOADED}, {BLOCK_EMPTY}", timeout=20000)
+        else:
+            page.wait_for_selector(CART_ROW, timeout=15000)
     except Exception:
         pass
-    return page.locator(".wc-block-cart").count() > 0
+    return block
 
 
 def _flow(page, base, products, pc, shot_dir, tag, log) -> list[Finding]:
     out = []
+    notes: list[str] = []
     added = 0
     for p in products:
         page.goto(p["permalink"], wait_until="domcontentloaded")
@@ -160,30 +172,46 @@ def _flow(page, base, products, pc, shot_dir, tag, log) -> list[Finding]:
                     opts = sel.locator("option").evaluate_all("os => os.map(o => o.value).filter(Boolean)")
                     if opts:
                         sel.select_option(value=opts[0])
-            page.wait_for_timeout(800)
+            # WooCommerce's variation script must pick the variation before ADD TO BAG works;
+            # clicking earlier only shows "please select options" (slower browsers hit this).
+            try:
+                page.wait_for_function(
+                    "() => { const v = document.querySelector('form.variations_form input[name=variation_id]');"
+                    " return v && v.value && v.value !== '0'; }", timeout=10000)
+            except Exception:
+                out.append(_fail("選択肢を選んでも、商品のバリエーションが確定しません", tag, page, shot_dir, pc, "variation-not-set", sev="HIGH", **base_kw))
+                continue
+            page.wait_for_timeout(300)
             main_img = page.locator(".nexus-gallery img, .woocommerce-product-gallery img").first
             if main_img.count() and not main_img.evaluate("i => i.complete && i.naturalWidth > 0"):
                 out.append(_fail("選択肢を変えたあと、商品画像が表示されていません", tag, page, shot_dir, pc, "variation-image", sev="HIGH", **base_kw))
         btn = page.locator("form.cart button[type=submit]:not([disabled]), form.cart .single_add_to_cart_button").first
-        if btn.count() == 0 or btn.is_disabled():
+        if btn.count() and "disabled" in (btn.get_attribute("class") or "").split():
+            try:  # WooCommerce marks the button with a "disabled" class until a variation is ready
+                page.wait_for_function("b => !b.classList.contains('disabled')", arg=btn.element_handle(), timeout=10000)
+            except Exception:
+                pass
+        if btn.count() == 0 or btn.is_disabled() or "disabled" in (btn.get_attribute("class") or "").split():
             out.append(_fail("ADD TO BAG ボタンが押せない状態です", tag, page, shot_dir, pc, "add-disabled", **base_kw))
             continue
         btn.click()
         page.wait_for_load_state("domcontentloaded")
         _settle(page)  # AJAX add-to-cart must finish before we leave the page
         page.wait_for_timeout(800)
-        if page.locator(".woocommerce-error").count():
+        if page.locator(ERROR_NOTICE).count():
             out.append(_fail("カート追加でエラーが表示されました", tag, page, shot_dir, pc, "add-error",
-                             evidence=page.locator(".woocommerce-error").first.inner_text()[:200], **base_kw))
+                             evidence=page.locator(ERROR_NOTICE).first.inner_text()[:200], **base_kw))
             continue
+        if page.locator(SUCCESS_NOTICE).count() == 0:
+            notes.append(f"{p['id']}: 追加完了の表示なし")
         added += 1
 
     block = _goto_cart(page, base)
-    rows = page.locator(CART_ROW)
+    rows = page.locator(BLOCK_ROW_LOADED if block else CART_ROW)
     if rows.count() < added or added == 0:
         cookies = len(page.context.cookies())
         out.append(_fail(f"カートに商品が入っていません（追加 {added} 件、カート {rows.count()} 行）", tag, page, shot_dir, pc, "cart-empty",
-                         evidence=f"cart block={block}, cookies={cookies}"))
+                         evidence=f"cart block={block}, cookies={cookies}; " + "; ".join(notes)))
         return out
 
     # the right products are in the cart (classic cart exposes product ids on the remove links)
@@ -192,7 +220,7 @@ def _flow(page, base, products, pc, shot_dir, tag, log) -> list[Finding]:
     if ids_in_cart and not expected <= ids_in_cart:
         out.append(_fail(f"カートの中身が追加した商品と違います（追加 {sorted(expected)} / カート {sorted(ids_in_cart)}）", tag, page, shot_dir, pc, "cart-identity"))
     elif not ids_in_cart:
-        text = page.locator(CART_ROW).all_inner_texts()
+        text = page.locator(BLOCK_ROW_LOADED if block else CART_ROW).all_inner_texts()
         missing = [p["name"] for p in products if not any(p["name"][:20].lower() in t.lower() for t in text)]
         if missing:
             out.append(_fail("カートに追加した商品名が見当たりません", tag, page, shot_dir, pc, "cart-identity", sev="REVIEW", judge="人",

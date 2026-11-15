@@ -102,9 +102,13 @@ def make_handler(defects: set):
                 slug = path.split("/")[2]
                 gallery = "" if "nogallery" in defects and slug == "test-tee" else "<div class='woocommerce-product-gallery nexus-gallery'><img src='/img/p.png' alt='p'></div>"
                 if slug == "test-shoe":
-                    form = ("<form class='cart variations_form' method='post' action='/add/'>"
-                            "<select name='attribute_pa_size'><option value=''>選択</option><option value='27'>27</option></select>"
-                            "<input type='hidden' name='pid' value='1'><button type='submit' class='single_add_to_cart_button'>ADD TO BAG</button></form>")
+                    # Like WooCommerce: the button stays "disabled" (class) and variation_id empty until the
+                    # variation script reacts to the selection, here after a delay.
+                    form = ("<form class='cart variations_form' method='post' action='/add/' onsubmit=\"return this.variation_id.value!==''\">"
+                            "<select name='attribute_pa_size' onchange=\"var f=this.form;setTimeout(function(){f.variation_id.value='101';"
+                            "f.querySelector('button').classList.remove('disabled')},1500)\"><option value=''>選択</option><option value='27'>27</option></select>"
+                            "<input type='hidden' name='variation_id' value=''>"
+                            "<input type='hidden' name='pid' value='1'><button type='submit' class='single_add_to_cart_button disabled'>ADD TO BAG</button></form>")
                 else:
                     dis = " disabled" if "addbroken" in defects else ""
                     form = ("<form class='cart' method='post' action='/add/'><input type='hidden' name='pid' value='2'>"
@@ -120,8 +124,9 @@ def make_handler(defects: set):
                 for pid, n in cart.items():
                     unit = prices[pid]
                     sub = unit * n + (1 if "badtotal" in defects else 0)
+                    shown_pid = "9" if "wrongitem" in defects else pid
                     total += sub
-                    rows += (f"<tr class='cart_item'><td><a class='remove' data-product_id='{("9" if "wrongitem" in defects else pid)}' href='/cart/?remove_item={pid}'>×</a></td>"
+                    rows += (f"<tr class='cart_item'><td><a class='remove' data-product_id='{shown_pid}' href='/cart/?remove_item={pid}'>×</a></td>"
                              f"<td class='product-price'>¥{unit:,}</td><td><input class='qty' name='qty_{pid}' value='{n}'></td>"
                              f"<td class='product-subtotal'>¥{sub:,}</td></tr>")
                 ship = "送料 ¥1,000" if "shipping" in defects else "送料無料"
