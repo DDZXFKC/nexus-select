@@ -995,7 +995,7 @@ C-1997,COMMON,*,university gold,University Gold,ユニバーシティゴール�
 C-1998,COMMON,*,univertsity red,Univertsity Red,,red,,DRAFT,UNKNOWN,,レッド,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
 C-1999,COMMON,*,univetrsity red,Univetrsity Red,,red,,DRAFT,UNKNOWN,,レッド,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
 C-2000,COMMON,*,urban lilac,Urban Lilac,,purple,,DRAFT,UNKNOWN,,パープル,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
-C-2001,COMMON,*,urban orange,Urban Orange,,orange,,DRAFT,UNKNOWN,,オレンジ,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
+C-2661,COMMON,*,urban orange,Urban Orange,,orange,,DRAFT,UNKNOWN,,オレンジ,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後／2026-11-19 既存BRAND行C-2001（NIKE concord）との重複のため再採番,TRUE
 C-2002,COMMON,*,urgent red,Urgent Red,,red,,DRAFT,UNKNOWN,,レッド,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
 C-2003,COMMON,*,utility black,Utility Black,,black,,DRAFT,UNKNOWN,,ブラック,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
 C-2004,COMMON,*,vanilla,Vanilla,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
@@ -1067,77 +1067,77 @@ C-2069,COMMON,*,yellow sizzle,Yellow Sizzle,,yellow,,DRAFT,UNKNOWN,,イエロー
 C-2070,COMMON,*,yellow strike,Yellow Strike,,yellow,,DRAFT,UNKNOWN,,イエロー,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
 C-2071,COMMON,*,yellow zest,Yellow Zest,,yellow,,DRAFT,UNKNOWN,,イエロー,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
 C-2072,COMMON,*,zebra marmallow white,Zebra Marmallow White,,white,,DRAFT,UNKNOWN,,ホワイト,,CONTAINED_BASIC_WORD,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後,TRUE
-C-2002,BRAND,ADIDAS,alumina,Alumina,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2003,BRAND,ADIDAS,arctic night,Arctic Night,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2004,BRAND,ADIDAS,aurora coffee,Aurora Coffee,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2005,BRAND,ADIDAS,aurora ink,Aurora Ink,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2006,BRAND,ADIDAS,aurora ivory,Aurora Ivory,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2007,BRAND,ADIDAS,aurora ivy,Aurora Ivy,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2008,BRAND,ADIDAS,aurora plum,Aurora Plum,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2009,BRAND,ADIDAS,aurura ivy,Aurura Ivy,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2010,BRAND,ADIDAS,better sarlet,Better Sarlet,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2011,BRAND,ADIDAS,better scarlet,Better Scarlet,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2012,BRAND,ADIDAS,blanch cargo,Blanch Cargo,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2013,BRAND,ADIDAS,bliss,Bliss,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2014,BRAND,ADIDAS,bright royal,Bright Royal,ブライトロイヤル,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2015,BRAND,ADIDAS,bronze strata,Bronze Strata,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2016,BRAND,ADIDAS,cardboard,Cardboard,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2017,BRAND,ADIDAS,cardon,Cardon,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2018,BRAND,ADIDAS,chalk pearl,Chalk Pearl,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2019,BRAND,ADIDAS,charcoal night,Charcoal Night,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2020,BRAND,ADIDAS,clear granite,Clear Granite,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2021,BRAND,ADIDAS,clear sky,Clear Sky,クリアスカイ,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2022,BRAND,ADIDAS,collegiate gren,Collegiate Gren,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2023,BRAND,ADIDAS,core balck,Core Balck,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2024,BRAND,ADIDAS,crystal linen,Crystal Linen,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2025,BRAND,ADIDAS,crystal sand,Crystal Sand,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2026,BRAND,ADIDAS,crystal sky,Crystal Sky,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2027,BRAND,ADIDAS,dark marine,Dark Marine,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2028,BRAND,ADIDAS,dusty ink,Dusty Ink,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2029,BRAND,ADIDAS,earth strat,Earth Strat,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2030,BRAND,ADIDAS,earth strata,Earth Strata,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2031,BRAND,ADIDAS,ecru tint,Ecru Tint,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2032,BRAND,ADIDAS,flash aqua,Flash Aqua,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2033,BRAND,ADIDAS,flash lime,Flash Lime,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2034,BRAND,ADIDAS,frozen lemon,Frozen Lemon,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2035,BRAND,ADIDAS,frozen turbo,Frozen Turbo,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2036,BRAND,ADIDAS,ice lavendor,Ice Lavendor,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2037,BRAND,ADIDAS,ice tangerine,Ice Tangerine,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2038,BRAND,ADIDAS,iron metallic,Iron Metallic,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2039,BRAND,ADIDAS,light denim,Light Denim,ライトデニム,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2040,BRAND,ADIDAS,lime burst,Lime Burst,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2041,BRAND,ADIDAS,lucid aquamarine,Lucid Aquamarine,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2042,BRAND,ADIDAS,lucid lemon,Lucid Lemon,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2043,BRAND,ADIDAS,medium vintage denim,Medium Vintage Denim,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2044,BRAND,ADIDAS,mesa,Mesa,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2045,BRAND,ADIDAS,mystery petrol,Mystery Petrol,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2046,BRAND,ADIDAS,night indigo,Night Indigo,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2047,BRAND,ADIDAS,noble ink,Noble Ink,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2048,BRAND,ADIDAS,none,None,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2049,BRAND,ADIDAS,off,Off,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2050,BRAND,ADIDAS,onix,Onix,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2051,BRAND,ADIDAS,orchid fusion,Orchid Fusion,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2052,BRAND,ADIDAS,powder plum,Powder Plum,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2053,BRAND,ADIDAS,preloved fig,Preloved Fig,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2054,BRAND,ADIDAS,preloved ink,Preloved Ink,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2055,BRAND,ADIDAS,preloved lime,Preloved Lime,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2056,BRAND,ADIDAS,pure ruby,Pure Ruby,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2057,BRAND,ADIDAS,pure sulfur,Pure Sulfur,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2058,BRAND,ADIDAS,pure teal,Pure Teal,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2059,BRAND,ADIDAS,sand strata,Sand Strata,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2060,BRAND,ADIDAS,shadow fig,Shadow Fig,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2061,BRAND,ADIDAS,solar lemon,Solar Lemon,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2062,BRAND,ADIDAS,solar turbo,Solar Turbo,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2063,BRAND,ADIDAS,st tropic bloom,St Tropic Bloom,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2064,BRAND,ADIDAS,supplier colour,Supplier Colour,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2065,BRAND,ADIDAS,talc,Talc,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2066,BRAND,ADIDAS,tech emerald,Tech Emerald,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2067,BRAND,ADIDAS,warm sandstone,Warm Sandstone,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2068,BRAND,ADIDAS,warm vanilla,Warm Vanilla,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2069,BRAND,ADIDAS,wondeer mauve,Wondeer Mauve,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2070,BRAND,ADIDAS,wonder clay,Wonder Clay,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2071,BRAND,ADIDAS,wonder mauve,Wonder Mauve,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
-C-2072,BRAND,ADIDAS,wonder quartz,Wonder Quartz,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
+C-2590,BRAND,ADIDAS,alumina,Alumina,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2591,BRAND,ADIDAS,arctic night,Arctic Night,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2592,BRAND,ADIDAS,aurora coffee,Aurora Coffee,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2593,BRAND,ADIDAS,aurora ink,Aurora Ink,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2594,BRAND,ADIDAS,aurora ivory,Aurora Ivory,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2595,BRAND,ADIDAS,aurora ivy,Aurora Ivy,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2596,BRAND,ADIDAS,aurora plum,Aurora Plum,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2597,BRAND,ADIDAS,aurura ivy,Aurura Ivy,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2598,BRAND,ADIDAS,better sarlet,Better Sarlet,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2599,BRAND,ADIDAS,better scarlet,Better Scarlet,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2600,BRAND,ADIDAS,blanch cargo,Blanch Cargo,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2601,BRAND,ADIDAS,bliss,Bliss,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2602,BRAND,ADIDAS,bright royal,Bright Royal,ブライトロイヤル,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2603,BRAND,ADIDAS,bronze strata,Bronze Strata,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2604,BRAND,ADIDAS,cardboard,Cardboard,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2605,BRAND,ADIDAS,cardon,Cardon,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2606,BRAND,ADIDAS,chalk pearl,Chalk Pearl,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2607,BRAND,ADIDAS,charcoal night,Charcoal Night,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2608,BRAND,ADIDAS,clear granite,Clear Granite,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2609,BRAND,ADIDAS,clear sky,Clear Sky,クリアスカイ,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2610,BRAND,ADIDAS,collegiate gren,Collegiate Gren,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2611,BRAND,ADIDAS,core balck,Core Balck,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2612,BRAND,ADIDAS,crystal linen,Crystal Linen,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2613,BRAND,ADIDAS,crystal sand,Crystal Sand,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2614,BRAND,ADIDAS,crystal sky,Crystal Sky,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2615,BRAND,ADIDAS,dark marine,Dark Marine,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2616,BRAND,ADIDAS,dusty ink,Dusty Ink,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2617,BRAND,ADIDAS,earth strat,Earth Strat,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2618,BRAND,ADIDAS,earth strata,Earth Strata,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2619,BRAND,ADIDAS,ecru tint,Ecru Tint,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2620,BRAND,ADIDAS,flash aqua,Flash Aqua,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2621,BRAND,ADIDAS,flash lime,Flash Lime,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2622,BRAND,ADIDAS,frozen lemon,Frozen Lemon,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2623,BRAND,ADIDAS,frozen turbo,Frozen Turbo,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2624,BRAND,ADIDAS,ice lavendor,Ice Lavendor,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2625,BRAND,ADIDAS,ice tangerine,Ice Tangerine,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2626,BRAND,ADIDAS,iron metallic,Iron Metallic,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2627,BRAND,ADIDAS,light denim,Light Denim,ライトデニム,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2628,BRAND,ADIDAS,lime burst,Lime Burst,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2629,BRAND,ADIDAS,lucid aquamarine,Lucid Aquamarine,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2630,BRAND,ADIDAS,lucid lemon,Lucid Lemon,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2631,BRAND,ADIDAS,medium vintage denim,Medium Vintage Denim,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2632,BRAND,ADIDAS,mesa,Mesa,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2633,BRAND,ADIDAS,mystery petrol,Mystery Petrol,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2634,BRAND,ADIDAS,night indigo,Night Indigo,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2635,BRAND,ADIDAS,noble ink,Noble Ink,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2636,BRAND,ADIDAS,none,None,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2637,BRAND,ADIDAS,off,Off,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2638,BRAND,ADIDAS,onix,Onix,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2639,BRAND,ADIDAS,orchid fusion,Orchid Fusion,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2640,BRAND,ADIDAS,powder plum,Powder Plum,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2641,BRAND,ADIDAS,preloved fig,Preloved Fig,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2642,BRAND,ADIDAS,preloved ink,Preloved Ink,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2643,BRAND,ADIDAS,preloved lime,Preloved Lime,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2644,BRAND,ADIDAS,pure ruby,Pure Ruby,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2645,BRAND,ADIDAS,pure sulfur,Pure Sulfur,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2646,BRAND,ADIDAS,pure teal,Pure Teal,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2647,BRAND,ADIDAS,sand strata,Sand Strata,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2648,BRAND,ADIDAS,shadow fig,Shadow Fig,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2649,BRAND,ADIDAS,solar lemon,Solar Lemon,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2650,BRAND,ADIDAS,solar turbo,Solar Turbo,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2651,BRAND,ADIDAS,st tropic bloom,St Tropic Bloom,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2652,BRAND,ADIDAS,supplier colour,Supplier Colour,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2653,BRAND,ADIDAS,talc,Talc,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2654,BRAND,ADIDAS,tech emerald,Tech Emerald,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2655,BRAND,ADIDAS,warm sandstone,Warm Sandstone,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2656,BRAND,ADIDAS,warm vanilla,Warm Vanilla,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2657,BRAND,ADIDAS,wondeer mauve,Wondeer Mauve,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2658,BRAND,ADIDAS,wonder clay,Wonder Clay,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2659,BRAND,ADIDAS,wonder mauve,Wonder Mauve,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
+C-2660,BRAND,ADIDAS,wonder quartz,Wonder Quartz,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）／2026-11-19 GPT検収で判明したcolor_id重複（COMMON採番との衝突）のため再採番,TRUE
 C-2073,BRAND,ADIDAS,wonder sage,Wonder Sage,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
 C-2074,BRAND,ADIDAS,wonder taupe,Wonder Taupe,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
 C-2075,BRAND,ADIDAS,zero metalic,Zero Metalic,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド ADIDAS のみ）,TRUE
