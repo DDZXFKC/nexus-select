@@ -118,79 +118,138 @@ class CouponBridgeTest(unittest.TestCase):
 
 
 class AssessCampaignsTest(unittest.TestCase):
-    def test_dedup_syndication(self):
+    def test_dedup_syndication_and_independent(self):
         discoveries = [
             {"campaign": "C1", "source_url": URL, "observed_at": "2026-11-15T10:00:00+00:00", "origin_group": "grp1"},
-            {"campaign": "C1", "source_url": URL2, "observed_at": "2026-11-15T10:00:00+00:00", "origin_group": "grp1"},
+            {"campaign": "C1", "source_url": URL2, "observed_at": "2026-11-15T10:00:00+00:00", "origin_group": "grp1"}, # 同一グループ
+            {"campaign": "C2", "source_url": URL, "observed_at": "2026-11-15T10:00:00+00:00", "origin_group": "grp2"},
+            {"campaign": "C2", "source_url": URL2, "observed_at": "2026-11-15T10:00:00+00:00", "origin_group": "grp3"}, # 別グループ
         ]
-        assessed = assess_campaigns(discoveries)
-        self.assertEqual(assessed[0]["roots_count"], 1)
-        self.assertEqual(assessed[0]["campaign_confidence"], "DISCOVERED")
+        assessed = assess_campaigns(discoveries, now="2026-11-17T00:00:00+00:00")
+        c1 = [a for a in assessed if a["campaign"] == "C1"][0]
+        c2 = [a for a in assessed if a["campaign"] == "C2"][0]
+        self.assertEqual(c1["roots_count"], 1)
+        self.assertEqual(c2["roots_count"], 2)
 
-    def test_independent_sources(self):
+    def test_future_observation_excluded(self):
         discoveries = [
-            {"campaign": "C1", "source_url": URL, "observed_at": "2026-11-15T10:00:00+00:00", "origin_group": "grp1"},
-            {"campaign": "C1", "source_url": URL2, "observed_at": "2026-11-15T10:00:00+00:00", "origin_group": "grp2"},
+            {"campaign": "C1", "source_url": URL, "observed_at": "2026-11-18T10:00:00+00:00"},
         ]
-        assessed = assess_campaigns(discoveries)
-        self.assertEqual(assessed[0]["roots_count"], 2)
+        assessed = assess_campaigns(discoveries, now="2026-11-17T00:00:00+00:00")
+        self.assertEqual(len(assessed), 0)
 
-    def test_conflict_and_negation(self):
+    def test_promising_indep_success(self):
         discoveries = [
-            {"campaign": "C1", "source_url": URL, "observed_at": "2026-11-15T10:00:00+00:00", "conditions_conflict": True},
-            {"campaign": "C2", "source_url": URL, "observed_at": "2026-11-15T10:00:00+00:00", "negation_evidence": True},
+            {"campaign": "C1", "source_url": URL, "observed_at": NOW, "origin_group": "g1", "success_evidence": True},
+            {"campaign": "C1", "source_url": URL2, "observed_at": NOW, "origin_group": "g2", "success_evidence": True},
         ]
-        assessed = assess_campaigns(discoveries)
-        self.assertEqual([a["campaign_confidence"] for a in assessed], ["CONFLICT", "LIKELY_INVALID"])
+        assessed = assess_campaigns(discoveries, now=LATER)
+        self.assertEqual(assessed[0]["campaign_confidence"], "PROMISING")
+
+    def test_promising_after_failure(self):
+        discoveries = [
+            {"campaign": "C1", "source_url": URL, "observed_at": NOW, "origin_group": "g1", "negation_evidence": True},
+            {"campaign": "C1", "source_url": URL2, "observed_at": LATER, "origin_group": "g2", "success_evidence": True},
+        ]
+        assessed = assess_campaigns(discoveries, now=LATER)
+        self.assertEqual(assessed[0]["campaign_confidence"], "PROMISING")
+
+    def test_official_expired_priority(self):
+        discoveries = [
+            {"campaign": "C1", "source_url": URL, "observed_at": NOW, "origin_group": "g1", "success_evidence": True},
+            {"campaign": "C1", "source_url": URL2, "observed_at": LATER, "origin_group": "g2", "evidence_type": "OFFICIAL", "official_status": "EXPIRED"},
+        ]
+        assessed = assess_campaigns(discoveries, now=LATER)
+        self.assertEqual(assessed[0]["campaign_confidence"], "EXPIRED")
 
 
 class EvaluateEligibilityTest(unittest.TestCase):
     def setUp(self):
-        self.scope = {"destination": "US-OR", "base_minor": 10000}
+        self.scope = {"destination": "US-OR", "base_minor": 10000, "currency": "USD"}
         self.facts = {"brand": "Nike", "category": "Shoes", "on_sale": False, "is_first_order": True}
-
-    def test_brand_excluded(self):
-        conditions = {"excluded_brands": ["Nike"]}
-        res = evaluate_eligibility("C1", self.scope, self.facts, conditions)
-        self.assertEqual(res["eligibility"], "EXCLUDED")
-
-    def test_min_spend_not_met(self):
-        conditions = {"min_spend_minor": 20000}
-        res = evaluate_eligibility("C1", self.scope, self.facts, conditions)
-        self.assertEqual(res["eligibility"], "EXCLUDED")
 
     def test_full_match(self):
         conditions = {"eligible_brands": ["Nike"], "eligible_categories": ["Shoes"]}
         res = evaluate_eligibility("C1", self.scope, self.facts, conditions)
         self.assertEqual(res["eligibility"], "MATCH")
 
+    def test_unknown_brand(self):
+        conditions = {"eligible_brands": ["Nike"]}
+        res = evaluate_eligibility("C1", self.scope, {"brand": None}, conditions)
+        self.assertEqual(res["eligibility"], "UNKNOWN")
+
+    def test_null_excluded_brands(self):
+        conditions = {"excluded_brands": None}
+        res = evaluate_eligibility("C1", self.scope, self.facts, conditions)
+        self.assertEqual(res["eligibility"], "MATCH")
+
+    def test_excluded_brand(self):
+        conditions = {"excluded_brands": ["Nike"]}
+        res = evaluate_eligibility("C1", self.scope, self.facts, conditions)
+        self.assertEqual(res["eligibility"], "EXCLUDED")
+
+    def test_first_order_false_excluded(self):
+        conditions = {"first_order_only": True}
+        res = evaluate_eligibility("C1", self.scope, {"is_first_order": False}, conditions)
+        self.assertEqual(res["eligibility"], "EXCLUDED")
+
+    def test_first_order_null_unknown(self):
+        conditions = {"first_order_only": True}
+        res = evaluate_eligibility("C1", self.scope, {"is_first_order": None}, conditions)
+        self.assertEqual(res["eligibility"], "UNKNOWN")
+
+    def test_min_spend_currency_mismatch(self):
+        conditions = {"min_spend_major": 50, "min_spend_currency": "EUR"}
+        res = evaluate_eligibility("C1", self.scope, self.facts, conditions)
+        self.assertEqual(res["eligibility"], "UNKNOWN")
+        self.assertIn("CURRENCY_MISMATCH", res["reasons"])
+
 
 class RankCandidatesTest(unittest.TestCase):
     def setUp(self):
         self.scope = context(shop_code='sp', variant_id='v1', currency='USD', destination='US-OR',
                              account_scope='a1', quantity=1, base_minor=10000, basket_key='b1')
+        self.assessed = [{"campaign": "C1", "campaign_confidence": "DISCOVERED", "conditions": {}}]
+        self.evaluated = [{"campaign": "C1", "eligibility": "MATCH", "reasons": []}]
 
     def test_no_leak_effective_minor(self):
-        assessed = [{"campaign": "C1", "campaign_confidence": "DISCOVERED", "conditions": [{}]}]
-        evaluated = [{"campaign": "C1", "eligibility": "MATCH", "reasons": []}]
-        ranked = rank_candidates(assessed, evaluated, [], scope=self.scope, now=NOW, max_age_seconds=600)
+        ranked = rank_candidates(self.assessed, self.evaluated, [], [], scope=self.scope, now=NOW, max_age_seconds=600)
         self.assertNotIn("effective_minor", ranked[0])
         self.assertNotIn("sale_approved", ranked[0])
 
     def test_scope_isolation_in_ranking(self):
-        assessed = [{"campaign": "C1", "campaign_confidence": "DISCOVERED", "conditions": [{}]}]
-        evaluated = [{"campaign": "C1", "eligibility": "MATCH", "reasons": []}]
         other_scope = dict(self.scope, variant_id='v2')
         checks = [{"scope": other_scope, "campaign": "C1", "checked_at": NOW, "expires_at": EXPIRY, "status": "APPLICABLE"}]
-        ranked = rank_candidates(assessed, evaluated, checks, scope=self.scope, now=NOW, max_age_seconds=600)
+        ranked = rank_candidates(self.assessed, self.evaluated, checks, [], scope=self.scope, now=NOW, max_age_seconds=600)
         self.assertEqual(ranked[0]["check_status"], "NOT_CHECKED")
 
     def test_expired_check_is_stale(self):
-        assessed = [{"campaign": "C1", "campaign_confidence": "DISCOVERED", "conditions": [{}]}]
-        evaluated = [{"campaign": "C1", "eligibility": "MATCH", "reasons": []}]
         checks = [{"scope": self.scope, "campaign": "C1", "checked_at": NOW, "expires_at": NOW, "status": "APPLICABLE"}]
-        ranked = rank_candidates(assessed, evaluated, checks, scope=self.scope, now=LATER, max_age_seconds=600)
+        ranked = rank_candidates(self.assessed, self.evaluated, checks, [], scope=self.scope, now=LATER, max_age_seconds=600)
         self.assertEqual(ranked[0]["check_status"], "STALE")
+
+    def test_conflicting_same_time_diff_amount(self):
+        checks = [
+            {"scope": self.scope, "campaign": "C1", "checked_at": NOW, "expires_at": EXPIRY, "status": "APPLICABLE", "post_minor": 7000},
+            {"scope": self.scope, "campaign": "C1", "checked_at": NOW, "expires_at": EXPIRY, "status": "APPLICABLE", "post_minor": 6000}
+        ]
+        ranked = rank_candidates(self.assessed, self.evaluated, checks, [], scope=self.scope, now=LATER, max_age_seconds=600)
+        self.assertEqual(ranked[0]["check_status"], "UNKNOWN")
+
+    def test_check_only_candidate(self):
+        checks = [{"scope": self.scope, "campaign": "C2", "checked_at": NOW, "expires_at": EXPIRY, "status": "APPLICABLE"}]
+        ranked = rank_candidates([], [], checks, [], scope=self.scope, now=LATER, max_age_seconds=600)
+        self.assertEqual(len(ranked), 1)
+        self.assertEqual(ranked[0]["campaign"], "C2")
+        self.assertEqual(ranked[0]["check_status"], "APPLICABLE")
+
+    def test_expired_isolated(self):
+        assessed = [{"campaign": "C1", "campaign_confidence": "EXPIRED", "conditions": {}}]
+        evaluated = [{"campaign": "C2", "eligibility": "MATCH", "reasons": []}]
+        assessed.append({"campaign": "C2", "campaign_confidence": "DISCOVERED", "conditions": {}})
+        ranked = rank_candidates(assessed, evaluated, [], [], scope=self.scope, now=NOW, max_age_seconds=600)
+        self.assertEqual(ranked[0]["campaign"], "C2") # EXPIREDは隔離され下位へ
+        self.assertEqual(ranked[1]["campaign"], "C1")
 
 
 class ListCandidatesIntegrationTest(unittest.TestCase):
@@ -205,7 +264,9 @@ class ListCandidatesIntegrationTest(unittest.TestCase):
         self.facts = {"brand": "Nike", "category": "Shoes", "on_sale": False, "is_first_order": True}
 
     def test_full_flow_ranking(self):
-        self.book.record_discovery(shop_code='sp', campaign='C1', source_url=URL, observed_at=NOW, conditions={"eligible_brands": ["Nike"]})
+        # 規約完全性の証明
+        conditions = {"eligible_brands": ["Nike"], "eligible_categories": ["Shoes"]}
+        self.book.record_discovery(shop_code='sp', campaign='C1', source_url=URL, observed_at=NOW, conditions=conditions)
         self.book.record_check(scope=self.scope, campaign='C1', source_url=URL, checked_at=NOW, expires_at=EXPIRY,
                                status='APPLICABLE', post_minor=8000, conditions_confirmed=True, usage_available=True, evidence_ref='ev1')
         candidates = self.book.list_candidates(self.scope, now=LATER, max_age_seconds=600, product_facts=self.facts)
