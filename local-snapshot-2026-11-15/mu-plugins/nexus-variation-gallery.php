@@ -61,6 +61,27 @@ add_action('wp_footer', function () {
             if (count($imgs) > 1) $colormap = ['attr' => 'attribute_' . $cattr, 'images' => $imgs];
         }
     }
+    /*
+     * Swatch thumbnails per color value (owner-approved 2026-11-19): the
+     * theme's color swatch shows the variation image of that color.
+     * Output even when the product has a single color.
+     */
+    $thumbs = null;
+    if ($product && $product->is_type('variable')) {
+        $tattr = null;
+        foreach ($product->get_variation_attributes() as $ak => $av) {
+            if (stripos($ak, 'color') !== false) { $tattr = $ak; break; }
+        }
+        if ($tattr) {
+            $timgs = [];
+            foreach ($product->get_available_variations() as $tv) {
+                $val = $tv['attributes']['attribute_' . $tattr] ?? '';
+                $src = $tv['image']['gallery_thumbnail_src'] ?? ($tv['image']['thumb_src'] ?? '');
+                if ($val !== '' && $src && !isset($timgs[$val])) $timgs[$val] = esc_url_raw($src);
+            }
+            if ($timgs) $thumbs = ['attr' => 'attribute_' . $tattr, 'images' => $timgs];
+        }
+    }
     $details = null;
     $cattr2 = null;
     if ($product && $product->is_type('variable')) {
@@ -78,6 +99,7 @@ add_action('wp_footer', function () {
 <script>
 window.NEXUS_VAR_MAP = <?php echo $map ? wp_json_encode($map) : 'null'; ?>;
 window.NEXUS_COLOR_MAP = <?php echo $colormap ? wp_json_encode($colormap) : 'null'; ?>;
+window.NEXUS_COLOR_THUMBS = <?php echo $thumbs ? wp_json_encode($thumbs) : 'null'; ?>;
 window.NEXUS_COLOR_DETAILS = <?php echo $details ? wp_json_encode($details) : 'null'; ?>;
 window.NEXUS_COLOR_ATTR = <?php echo $cattr2 ? wp_json_encode($cattr2) : 'null'; ?>;
 (function () {

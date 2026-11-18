@@ -205,6 +205,31 @@ document.addEventListener('DOMContentLoaded', () => {
     return select.name === 'attribute_pa_size';
   }
 
+  /*
+   * Size sort key (owner-approved 2026-11-19, docs/variation-ui-investigation-claude-2026-11-19.md).
+   * Kids C sizes, then Y sizes, then plain numbers (adult US), each ascending.
+   * Apparel letter sizes XXS..4XL in their natural order.
+   * If any label cannot be parsed, the original WooCommerce order is kept.
+   */
+  const LETTER_SIZES = ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', 'XXXL', '3XL', '4XL'];
+
+  function sizeSortKey(text) {
+    const label = String(text).trim().toUpperCase();
+    const kids = label.match(/^(?:US\s*)?(\d+(?:\.\d+)?)\s*([CY])$/);
+    if (kids) {
+      return [kids[2] === 'C' ? 0 : 1, Number(kids[1])];
+    }
+    const plain = label.match(/^(?:US\s*)?(\d+(?:\.\d+)?)$/);
+    if (plain) {
+      return [2, Number(plain[1])];
+    }
+    const letter = LETTER_SIZES.indexOf(label);
+    if (letter !== -1) {
+      return [3, letter];
+    }
+    return null;
+  }
+
   function getOptions(select) {
     const options = Array.from(select.options)
       .filter(option => option.value !== '');
@@ -213,20 +238,19 @@ document.addEventListener('DOMContentLoaded', () => {
       return options;
     }
 
-    const parseSize = option => {
-      const match = option.textContent.trim()
-        .match(/^(?:US\s*)?(\d+(?:\.\d+)?)$/i);
-
-      return match ? Number(match[1]) : null;
-    };
+    const keys = new Map(
+      options.map(option => [option, sizeSortKey(option.textContent)])
+    );
 
     if (
       options.length > 1 &&
-      options.every(option => parseSize(option) !== null)
+      options.every(option => keys.get(option) !== null)
     ) {
-      return options.sort(
-        (a, b) => parseSize(a) - parseSize(b)
-      );
+      return options.sort((a, b) => {
+        const ka = keys.get(a);
+        const kb = keys.get(b);
+        return ka[0] - kb[0] || ka[1] - kb[1];
+      });
     }
 
     return options;
@@ -248,9 +272,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const visual = document.createElement('span');
       visual.className = 'nexus-swatch__color';
       visual.setAttribute('aria-hidden', 'true');
-      visual.style.background = colorBackground(
-        swatchColors(label)
-      );
+      /*
+       * Owner decision 2026-11-19: the swatch is the product image of that
+       * color, cropped to the circle. Thumbnails come from the
+       * nexus-variation-gallery mu-plugin (window.NEXUS_COLOR_THUMBS).
+       * Without a thumbnail, fall back to the existing color-name palette.
+       */
+      const thumbs = window.NEXUS_COLOR_THUMBS;
+      const thumb = thumbs && thumbs.attr === select.name &&
+        thumbs.images && thumbs.images[option.value];
+
+      if (thumb) {
+        visual.classList.add('nexus-swatch__color--image');
+        visual.style.backgroundImage = 'url("' + String(thumb).replace(/"/g, '%22') + '")';
+      } else {
+        visual.style.background = colorBackground(
+          swatchColors(label)
+        );
+      }
 
       button.appendChild(visual);
 
@@ -331,6 +370,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttons = Array.from(
       wrapper.querySelectorAll('.nexus-swatch')
     );
+
+    /*
+     * Color names are not printed inside the swatches, so show the
+     * selected color's name next to the attribute label (mobile has no
+     * tooltip). Owner-approved 2026-11-19.
+     */
+    if (isColorAttribute(select)) {
+      const row = select.closest('tr');
+      const labelCell = row && row.querySelector('th.label, td.label');
+      if (labelCell) {
+        let name = labelCell.querySelector('.nexus-selected-value');
+        if (!name) {
+          name = document.createElement('span');
+          name.className = 'nexus-selected-value';
+          name.setAttribute('aria-live', 'polite');
+          labelCell.appendChild(name);
+        }
+        const chosen = options.find(item => item.value === select.value);
+        name.textContent = chosen ? chosen.textContent.trim() : '';
+      }
+    }
 
     /*
      * Rebuild only when WooCommerce changes the option set.

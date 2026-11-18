@@ -1717,3 +1717,28 @@ body.single-product
   .nx-catnav__title{cursor:pointer}
   .nx-archive__heading{font-size:17px;margin-bottom:16px}
 }
+
+/* ==========================================================
+   Variation UI (owner-approved 2026-11-19)
+   - Color swatch shows the product image of that color, cropped
+     to the existing circle. Size/shape of the circle unchanged.
+   - Selected color name next to the attribute label.
+   ========================================================== */
+
+body.single-product .nexus-swatch__color--image {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+body.single-product .variations .nexus-selected-value {
+  margin-left: 8px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+body.single-product .variations .nexus-selected-value:empty {
+  display: none;
+}
