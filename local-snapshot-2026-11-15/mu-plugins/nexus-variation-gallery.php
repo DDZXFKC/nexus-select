@@ -64,7 +64,12 @@ add_action('wp_footer', function () {
     /*
      * Swatch thumbnails per color value (owner-approved 2026-11-19): the
      * theme's color swatch shows the variation image of that color.
-     * Output even when the product has a single color.
+     * Only a variation's OWN image is used (get_image_id('edit') does not
+     * fall back to the parent image), so a color without its own image
+     * never borrows another color's photo. If one image is shared by two
+     * different colors, it is not trusted for either. Reads child
+     * variation objects directly instead of another
+     * get_available_variations() pass (GPT audit c2d058d, items 1 and 5).
      */
     $thumbs = null;
     if ($product && $product->is_type('variable')) {
@@ -73,11 +78,24 @@ add_action('wp_footer', function () {
             if (stripos($ak, 'color') !== false) { $tattr = $ak; break; }
         }
         if ($tattr) {
+            $by_color = [];   // color value => image id
+            $by_image = [];   // image id => set of color values
+            foreach ($product->get_children() as $child_id) {
+                $v = wc_get_product($child_id);
+                if (!$v || !$v->is_type('variation')) continue;
+                // Same value the variation form uses (term slug for pa_ attributes).
+                $attrs = $v->get_attributes();
+                $val = isset($attrs[$tattr]) ? (string) $attrs[$tattr] : '';
+                $img = (int) $v->get_image_id('edit');
+                if ($val === '' || !$img) continue;
+                if (!isset($by_color[$val])) $by_color[$val] = $img;
+                $by_image[$img][$val] = true;
+            }
             $timgs = [];
-            foreach ($product->get_available_variations() as $tv) {
-                $val = $tv['attributes']['attribute_' . $tattr] ?? '';
-                $src = $tv['image']['gallery_thumbnail_src'] ?? ($tv['image']['thumb_src'] ?? '');
-                if ($val !== '' && $src && !isset($timgs[$val])) $timgs[$val] = esc_url_raw($src);
+            foreach ($by_color as $val => $img) {
+                if (count($by_image[$img]) > 1) continue;
+                $src = wp_get_attachment_image_src($img, 'woocommerce_gallery_thumbnail');
+                if ($src && !empty($src[0])) $timgs[$val] = esc_url_raw($src[0]);
             }
             if ($timgs) $thumbs = ['attr' => 'attribute_' . $tattr, 'images' => $timgs];
         }
