@@ -1,0 +1,756 @@
+product_id,brand,department,model,age_group,size_system,size_original,cm,source_url,verified
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,5.5,22.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,6.5,23.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,7.5,24.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,8.5,25.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,9.5,26.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8836724392142,UGG,Women,Zora Ballet Flat,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7699755532494,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7699755532494,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7699755532494,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7699755532494,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7699755532494,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7699755532494,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7699755532494,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7699755532494,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560255182,UGG,Kids,Lowmel Mule,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8824560255182,UGG,Kids,Lowmel Mule,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8824560255182,UGG,Kids,Lowmel Mule,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8824560255182,UGG,Kids,Lowmel Mule,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7641384091854,UGG,Women,Lowmel,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7641384091854,UGG,Women,Lowmel,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7641384091854,UGG,Women,Lowmel,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7641384091854,UGG,Women,Lowmel,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7641384091854,UGG,Women,Lowmel,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7641384091854,UGG,Women,Lowmel,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7641384091854,UGG,Women,Lowmel,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7641384091854,UGG,Women,Lowmel,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7617663697102,UGG,Women,Tasman Maxi Curly Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7617663697102,UGG,Women,Tasman Maxi Curly Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7617663697102,UGG,Women,Tasman Maxi Curly Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7617663697102,UGG,Women,Tasman Maxi Curly Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7617663697102,UGG,Women,Tasman Maxi Curly Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7617663697102,UGG,Women,Tasman Maxi Curly Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7617663697102,UGG,Women,Tasman Maxi Curly Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7617663697102,UGG,Women,Tasman Maxi Curly Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603091374286,UGG,Men,Tasman II Slipper,ADULT,US_MEN,16,34,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7251598934222,UGG,Kids,Tasman Slipper,TODDLER,US_KIDS_C,11C,18,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7251598934222,UGG,Kids,Tasman Slipper,TODDLER,US_KIDS_C,12C,19,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7251598934222,UGG,Kids,Tasman Slipper,KIDS,US_KIDS_C,13C,20,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7251598934222,UGG,Kids,Tasman Slipper,KIDS,US_KIDS_Y,1Y,21,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7251598934222,UGG,Kids,Tasman Slipper,KIDS,US_KIDS_Y,2Y,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7251598934222,UGG,Kids,Tasman Slipper,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7251598934222,UGG,Kids,Tasman Slipper,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7251598934222,UGG,Kids,Tasman Slipper,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7251598934222,UGG,Kids,Tasman Slipper,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7622892159182,UGG,Kids,Lowmel,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7622892159182,UGG,Kids,Lowmel,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7622892159182,UGG,Kids,Lowmel,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7622892159182,UGG,Kids,Lowmel,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235918030,UGG,Men,Lowmel,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604671021262,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604671021262,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604671021262,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604671021262,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604671021262,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604671021262,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604671021262,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604671021262,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602833391822,UGG,Men,Tasman II Slipper,ADULT,US_MEN,16,34,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509942173902,UGG,Kids,Lowmel Chestnut,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509942173902,UGG,Kids,Lowmel Chestnut,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509942173902,UGG,Kids,Lowmel Chestnut,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509942173902,UGG,Kids,Lowmel Chestnut,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509343207630,UGG,Women,Lowmel Sand,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509343207630,UGG,Women,Lowmel Sand,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509343207630,UGG,Women,Lowmel Sand,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509343207630,UGG,Women,Lowmel Sand,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509343207630,UGG,Women,Lowmel Sand,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509343207630,UGG,Women,Lowmel Sand,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509343207630,UGG,Women,Lowmel Sand,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509343207630,UGG,Women,Lowmel Sand,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805905102,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805905102,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805905102,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805905102,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805905102,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805905102,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805905102,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805905102,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8824560386254,UGG,Men,Tasman Western Slipper,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805970638,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805970638,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805970638,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805970638,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805970638,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805970638,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805970638,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805970638,UGG,Women,Tasman Western Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835806036174,UGG,Kids,Ultra Mini Bailey Bow,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835806036174,UGG,Kids,Ultra Mini Bailey Bow,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835806036174,UGG,Kids,Ultra Mini Bailey Bow,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835806036174,UGG,Kids,Ultra Mini Bailey Bow,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835806068942,UGG,Kids,Ultra Mini Bailey Bow,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835806068942,UGG,Kids,Ultra Mini Bailey Bow,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835806068942,UGG,Kids,Ultra Mini Bailey Bow,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835806068942,UGG,Kids,Ultra Mini Bailey Bow,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835805675726,UGG,Women,Lowmel Mule,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805675726,UGG,Women,Lowmel Mule,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805675726,UGG,Women,Lowmel Mule,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805675726,UGG,Women,Lowmel Mule,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805675726,UGG,Women,Lowmel Mule,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805675726,UGG,Women,Lowmel Mule,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805675726,UGG,Women,Lowmel Mule,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835805675726,UGG,Women,Lowmel Mule,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602841583822,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602841583822,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602841583822,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602841583822,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602841583822,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602841583822,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602841583822,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7602841583822,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,5,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,6,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7604670791886,UGG,Men,Tasman Baxter Slipper,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7250993348814,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,6C,13,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993348814,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,7C,14,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993348814,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,8C,15,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993348814,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,9C,16,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993348814,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,10C,17,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993348814,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,11C,18,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993348814,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,12C,19,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203124430,UGG,Kids,Lowmel,TODDLER,US_KIDS_C,5C,12.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203124430,UGG,Kids,Lowmel,TODDLER,US_KIDS_C,6C,13,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203124430,UGG,Kids,Lowmel,TODDLER,US_KIDS_C,7C,14,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203124430,UGG,Kids,Lowmel,TODDLER,US_KIDS_C,8C,15,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203124430,UGG,Kids,Lowmel,TODDLER,US_KIDS_C,9C,16,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203124430,UGG,Kids,Lowmel,TODDLER,US_KIDS_C,10C,17,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203124430,UGG,Kids,Lowmel,TODDLER,US_KIDS_C,11C,18,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203124430,UGG,Kids,Lowmel,TODDLER,US_KIDS_C,12C,19,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7603105398990,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603105398990,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603105398990,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603105398990,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603105398990,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603105398990,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603105398990,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603105398990,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203091662,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203091662,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203091662,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203091662,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203091662,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203091662,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203091662,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8835159097550,UGG,Kids,Neumel II,KIDS,US_KIDS_C,13C,20,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835159097550,UGG,Kids,Neumel II,KIDS,US_KIDS_Y,1Y,21,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835159097550,UGG,Kids,Neumel II,KIDS,US_KIDS_Y,2Y,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835159097550,UGG,Kids,Neumel II,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835159097550,UGG,Kids,Neumel II,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835159097550,UGG,Kids,Neumel II,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8835159097550,UGG,Kids,Neumel II,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8839761985742,UGG,Kids,Tazz Shiny Dots Slipper,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8839761985742,UGG,Kids,Tazz Shiny Dots Slipper,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8839761985742,UGG,Kids,Tazz Shiny Dots Slipper,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8839761985742,UGG,Kids,Tazz Shiny Dots Slipper,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7640716771534,UGG,Men,Golden Coast Clog II,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235360974,UGG,Men,Lowmel,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500542410958,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500542410958,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500542410958,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500542410958,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500542410958,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500542410958,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500542410958,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500542410958,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236442318,UGG,Women,Tazzelle,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236442318,UGG,Women,Tazzelle,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236442318,UGG,Women,Tazzelle,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236442318,UGG,Women,Tazzelle,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236442318,UGG,Women,Tazzelle,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236442318,UGG,Women,Tazzelle,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236442318,UGG,Women,Tazzelle,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236442318,UGG,Women,Tazzelle,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509345206478,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509345206478,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509345206478,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509345206478,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8853203386574,UGG,Women,Classic Ultra Mini Western,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203386574,UGG,Women,Classic Ultra Mini Western,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203386574,UGG,Women,Classic Ultra Mini Western,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203386574,UGG,Women,Classic Ultra Mini Western,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203386574,UGG,Women,Classic Ultra Mini Western,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203386574,UGG,Women,Classic Ultra Mini Western,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203386574,UGG,Women,Classic Ultra Mini Western,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+8853203386574,UGG,Women,Classic Ultra Mini Western,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7655114211534,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7655114211534,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7655114211534,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7655114211534,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7655114211534,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7655114211534,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7655114211534,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7655114211534,UGG,Women,Tasman II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7656353595598,UGG,Kids,Tasman II Slipper,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353595598,UGG,Kids,Tasman II Slipper,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353595598,UGG,Kids,Tasman II Slipper,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353595598,UGG,Kids,Tasman II Slipper,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7262069850318,UGG,Kids,Tazz Slipper,KIDS,US_KIDS_C,13C,20,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7262069850318,UGG,Kids,Tazz Slipper,KIDS,US_KIDS_Y,1Y,21,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7262069850318,UGG,Kids,Tazz Slipper,KIDS,US_KIDS_Y,2Y,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7262069850318,UGG,Kids,Tazz Slipper,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7262069850318,UGG,Kids,Tazz Slipper,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7262069850318,UGG,Kids,Tazz Slipper,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7262069850318,UGG,Kids,Tazz Slipper,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7318845194446,UGG,Women,Classic II Short,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7318845194446,UGG,Women,Classic II Short,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7318845194446,UGG,Women,Classic II Short,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7318845194446,UGG,Women,Classic II Short,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7318845194446,UGG,Women,Classic II Short,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6824415559886,UGG,Women,Classic Ultra Mini Boot,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6824415559886,UGG,Women,Classic Ultra Mini Boot,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6824415559886,UGG,Women,Classic Ultra Mini Boot,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6824415559886,UGG,Women,Classic Ultra Mini Boot,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6824415559886,UGG,Women,Classic Ultra Mini Boot,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6824415559886,UGG,Women,Classic Ultra Mini Boot,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6824415559886,UGG,Women,Classic Ultra Mini Boot,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6824415559886,UGG,Women,Classic Ultra Mini Boot,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7610113884366,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,5C,12.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7610113884366,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,6C,13,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7610113884366,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,7C,14,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7610113884366,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,8C,15,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7610113884366,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,9C,16,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7610113884366,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,10C,17,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7610113884366,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,11C,18,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7610113884366,UGG,Kids,Tasman II Slipper,TODDLER,US_KIDS_C,12C,19,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993447118,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993447118,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993447118,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993447118,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7644156887246,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7644156887246,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7644156887246,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7644156887246,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7644156887246,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7644156887246,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7644156887246,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7644156887246,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7656353923278,UGG,Kids,Tasman Mule Slipper,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353923278,UGG,Kids,Tasman Mule Slipper,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353923278,UGG,Kids,Tasman Mule Slipper,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353923278,UGG,Kids,Tasman Mule Slipper,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7627236212942,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236212942,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236212942,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236212942,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236212942,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236212942,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627236212942,UGG,Women,Mini Bailey Bow II,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235066062,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235066062,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235066062,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235066062,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235066062,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235066062,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235066062,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7627235066062,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6813511483598,UGG,Women,Classic Mini II Ankle,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6813511483598,UGG,Women,Classic Mini II Ankle,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6813511483598,UGG,Women,Classic Mini II Ankle,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6813511483598,UGG,Women,Classic Mini II Ankle,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6813511483598,UGG,Women,Classic Mini II Ankle,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7656353693902,UGG,Kids,Tazz Slipper,INFANT,US_KIDS_C,2C,9.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353693902,UGG,Kids,Tazz Slipper,INFANT,US_KIDS_C,3C,10.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353693902,UGG,Kids,Tazz Slipper,TODDLER,US_KIDS_C,4C,11.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353693902,UGG,Kids,Tazz Slipper,TODDLER,US_KIDS_C,5C,12.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7656353693902,UGG,Kids,Tazz Slipper,TODDLER,US_KIDS_C,6C,13,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509330133198,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509330133198,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509330133198,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509330133198,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509330133198,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509330133198,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509330133198,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509330133198,UGG,Women,Scuffette II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509288648910,UGG,Women,Classic Mini II,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509288648910,UGG,Women,Classic Mini II,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509288648910,UGG,Women,Classic Mini II,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509288648910,UGG,Women,Classic Mini II,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509288648910,UGG,Women,Classic Mini II,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509288648910,UGG,Women,Classic Mini II,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509288648910,UGG,Women,Classic Mini II,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509288648910,UGG,Women,Classic Mini II,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7608812241102,UGG,Women,Classic Micro,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7608812241102,UGG,Women,Classic Micro,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7608812241102,UGG,Women,Classic Micro,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7608812241102,UGG,Women,Classic Micro,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7608812241102,UGG,Women,Classic Micro,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7608812241102,UGG,Women,Classic Micro,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7608812241102,UGG,Women,Classic Micro,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7608812241102,UGG,Women,Classic Micro,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622415188174,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622415188174,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622415188174,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622415188174,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622415188174,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622415188174,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622415188174,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622415188174,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7622892585166,UGG,Kids,Classic Micro,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7622892585166,UGG,Kids,Classic Micro,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7622892585166,UGG,Kids,Classic Micro,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7622892585166,UGG,Kids,Classic Micro,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7607124295886,UGG,Women,Classic Micro,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7607124295886,UGG,Women,Classic Micro,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7607124295886,UGG,Women,Classic Micro,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7607124295886,UGG,Women,Classic Micro,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7607124295886,UGG,Women,Classic Micro,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7607124295886,UGG,Women,Classic Micro,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7607124295886,UGG,Women,Classic Micro,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7607124295886,UGG,Women,Classic Micro,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603107070158,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603107070158,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603107070158,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603107070158,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603107070158,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603107070158,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603107070158,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7603107070158,UGG,Women,Tazz II Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7494906478798,UGG,Kids,Tasman II,TODDLER,US_KIDS_C,6C,13,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7494906478798,UGG,Kids,Tasman II,TODDLER,US_KIDS_C,7C,14,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7494906478798,UGG,Kids,Tasman II,TODDLER,US_KIDS_C,8C,15,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7494906478798,UGG,Kids,Tasman II,TODDLER,US_KIDS_C,9C,16,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7494906478798,UGG,Kids,Tasman II,TODDLER,US_KIDS_C,10C,17,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7494906478798,UGG,Kids,Tasman II,TODDLER,US_KIDS_C,11C,18,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7494906478798,UGG,Kids,Tasman II,TODDLER,US_KIDS_C,12C,19,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509331542222,UGG,Women,Classic Short II,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509331542222,UGG,Women,Classic Short II,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509331542222,UGG,Women,Classic Short II,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509331542222,UGG,Women,Classic Short II,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509331542222,UGG,Women,Classic Short II,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509331542222,UGG,Women,Classic Short II,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509331542222,UGG,Women,Classic Short II,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509331542222,UGG,Women,Classic Short II,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,5,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,6,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270546112718,UGG,Men,Shoe Palace Exclusive Tasman Painted Hills,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509975892174,UGG,Women,Classic Tall II,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509975892174,UGG,Women,Classic Tall II,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509975892174,UGG,Women,Classic Tall II,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509975892174,UGG,Women,Classic Tall II,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500543000782,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500543000782,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500543000782,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500543000782,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500543000782,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500543000782,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500543000782,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7500543000782,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509323251918,UGG,Kids,Tasman Slipper,INFANT,US_KIDS_C,1C,8.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509323251918,UGG,Kids,Tasman Slipper,INFANT,US_KIDS_C,2C,9.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509323251918,UGG,Kids,Tasman Slipper,TODDLER,US_KIDS_C,4C,11.5,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509314502862,UGG,Kids,Classic Ultra Mini Platform,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509314502862,UGG,Kids,Classic Ultra Mini Platform,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509314502862,UGG,Kids,Classic Ultra Mini Platform,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509314502862,UGG,Kids,Classic Ultra Mini Platform,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509313421518,UGG,Kids,Classic Ultra Mini Platform,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509313421518,UGG,Kids,Classic Ultra Mini Platform,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509313421518,UGG,Kids,Classic Ultra Mini Platform,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509313421518,UGG,Kids,Classic Ultra Mini Platform,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7509329576142,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509329576142,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509329576142,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509329576142,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509329576142,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509329576142,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509329576142,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7509329576142,UGG,Women,Disquette Slipper,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270551847118,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270551847118,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270551847118,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270551847118,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270551847118,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270551847118,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270551847118,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7270551847118,UGG,Women,Classic Ultra Mini Platform,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7285458895054,UGG,Women,Tazz,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7285458895054,UGG,Women,Tazz,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7285458895054,UGG,Women,Tazz,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7285458895054,UGG,Women,Tazz,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7285458895054,UGG,Women,Tazz,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7285458895054,UGG,Women,Tazz,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7285458895054,UGG,Women,Tazz,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7285458895054,UGG,Women,Tazz,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7250993610958,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993610958,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993610958,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7250993610958,UGG,Kids,Classic Ultra Mini,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7252685258958,UGG,Women,Classic Mini II,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7252685258958,UGG,Women,Classic Mini II,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7252685258958,UGG,Women,Classic Mini II,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7252685258958,UGG,Women,Classic Mini II,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7252685258958,UGG,Women,Classic Mini II,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7252685258958,UGG,Women,Classic Mini II,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7252685258958,UGG,Women,Classic Mini II,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7252685258958,UGG,Women,Classic Mini II,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7249640849614,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7249640849614,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7249640849614,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7249640849614,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7249640849614,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7249640849614,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7249640849614,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7249640849614,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6812771680462,UGG,Kids,Classic Mini II Ankle,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+6812771680462,UGG,Kids,Classic Mini II Ankle,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+6812771680462,UGG,Kids,Classic Mini II Ankle,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+6812771680462,UGG,Kids,Classic Mini II Ankle,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+4631411785774,UGG,Kids,Classic Bailey Bow 2,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+4631411785774,UGG,Kids,Classic Bailey Bow 2,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+4631411785774,UGG,Kids,Classic Bailey Bow 2,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+4631411785774,UGG,Kids,Classic Bailey Bow 2,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7159484350670,UGG,Kids,Neumel,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7159484350670,UGG,Kids,Neumel,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7159484350670,UGG,Kids,Neumel,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7159484350670,UGG,Kids,Neumel,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,5,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,6,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,7,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,14,32,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,15,33,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061016871118,UGG,Men,Tasman Slipper,ADULT,US_MEN,16,34,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061027881166,UGG,Men,Neumel Boots,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061027881166,UGG,Men,Neumel Boots,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061027881166,UGG,Men,Neumel Boots,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061027881166,UGG,Men,Neumel Boots,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+7061027881166,UGG,Men,Neumel Boots,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6806700523726,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,5,22,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6806700523726,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6806700523726,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6806700523726,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6806700523726,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6806700523726,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6806700523726,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,11,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6806700523726,UGG,Women,Classic Ultra Mini,ADULT,US_WOMEN,12,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6816092487886,UGG,Men,Neumel Suede Boot,ADULT,US_MEN,8,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6816092487886,UGG,Men,Neumel Suede Boot,ADULT,US_MEN,9,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6816092487886,UGG,Men,Neumel Suede Boot,ADULT,US_MEN,10,28,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6816092487886,UGG,Men,Neumel Suede Boot,ADULT,US_MEN,11,29,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6816092487886,UGG,Men,Neumel Suede Boot,ADULT,US_MEN,12,30,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6816092487886,UGG,Men,Neumel Suede Boot,ADULT,US_MEN,13,31,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6812752576718,UGG,Women,Classic Mini II,ADULT,US_WOMEN,6,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6812752576718,UGG,Women,Classic Mini II,ADULT,US_WOMEN,7,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6812752576718,UGG,Women,Classic Mini II,ADULT,US_WOMEN,8,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6812752576718,UGG,Women,Classic Mini II,ADULT,US_WOMEN,9,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+6812752576718,UGG,Women,Classic Mini II,ADULT,US_WOMEN,10,27,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,true
+4632956534830,UGG,Kids,Classic II,KIDS,US_KIDS_Y,3Y,23,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+4632956534830,UGG,Kids,Classic II,KIDS,US_KIDS_Y,4Y,24,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+4632956534830,UGG,Kids,Classic II,KIDS,US_KIDS_Y,5Y,25,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+4632956534830,UGG,Kids,Classic II,KIDS,US_KIDS_Y,6Y,26,https://www.belk.com/size-charts/size-chart-ugg-koolaburra.html,false
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,7,25,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,7.5,25.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,8,26,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,8.5,26.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,9,27,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,9.5,27.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,10,28,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,10.5,28.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,11,29,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,11.5,29.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,12,30,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,12.5,30.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,13,31,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+8813225672910,HOKA,Men,Clifton 11,ADULT,US_MEN,14,32,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,5,22,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,5.5,22.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,6,23,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,6.5,23.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,7,24,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,7.5,24.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,8,25,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,8.5,25.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,9,26,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,9.5,26.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,10,27,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,10.5,27.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719430357198,HOKA,Women,Clifton 11,ADULT,US_WOMEN,11,28,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,7,25,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,7.5,25.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,8,26,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,8.5,26.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,9,27,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,9.5,27.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,10,28,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,10.5,28.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,11,29,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,11.5,29.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,12,30,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,12.5,30.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,13,31,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719429963982,HOKA,Men,Clifton 11,ADULT,US_MEN,14,32,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,7,25,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,7.5,25.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,8,26,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,8.5,26.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,9,27,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,9.5,27.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,10,28,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,10.5,28.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,11,29,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,11.5,29.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,12,30,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,12.5,30.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,13,31,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7716945723598,HOKA,Men,Clifton 11,ADULT,US_MEN,14,32,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,true
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,5,22,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,5.5,22.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,6,23,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,6.5,23.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,7,24,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,7.5,24.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,8,25,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,8.5,25.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,9,26,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,9.5,26.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,10,27,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,10.5,27.5,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+7719431635150,HOKA,Women,Clifton 11,ADULT,US_WOMEN,11,28,https://cl.hoka.com/p/hoka-clifton-11-mujer-mineral-blue-overcast/,false
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+8849922621646,VANS,Men,Premium Old Skool 36 Pearlized,ADULT,US_MEN,14,32,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+8855517855950,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+8845462929614,VANS,Men,Premium Old Skool 36 Flame,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+8835257958606,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+8842168074446,VANS,Men,Premium Old Skool 36,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+8855807000782,VANS,Men,Premium Old Skool 36 Rivets,ADULT,US_MEN,14,32,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+7721487892686,VANS,Men,Premium Old Skool 36 Woodland Camo Green,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+8798793826510,VANS,Men,Premium Old Skool 36 Bandana Black,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+7716200317134,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+7716199235790,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,14,32,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+8796638675150,VANS,Men,Premium Old Skool 36 Souvenir,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,6.5,24.5,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,7,25,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,7.5,25.5,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,8,26,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,8.5,26.5,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,9,27,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,9.5,27.5,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,10,28,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,10.5,28.5,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,11,29,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,11.5,29.5,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,12,30,https://www.vans.com/en-us/help/size-charts,true
+7706357956814,VANS,Men,Premium Old Skool 36 Paint Splatter,ADULT,US_MEN,13,31,https://www.vans.com/en-us/help/size-charts,true
