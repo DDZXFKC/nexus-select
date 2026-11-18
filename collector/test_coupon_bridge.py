@@ -10,6 +10,8 @@ LATER = '2026-11-17T09:05:00+09:00'
 EXPIRY = '2026-11-17T10:00:00+09:00'
 URL = 'https://example.com/promotion'
 URL2 = 'https://other.com/promotion'
+FACTS = dict(brand='Nike', category='Shoes', on_sale=False, is_first_order=True)
+RULES = dict(eligible_brands=['Nike'], eligible_categories=['Shoes'], sale_exclusion=False, first_order_only=False, ship_region='US-OR', min_spend_minor=0, min_spend_currency='USD')
 
 
 class CouponBridgeTest(unittest.TestCase):
@@ -29,10 +31,13 @@ class CouponBridgeTest(unittest.TestCase):
                       post_minor=7000, conditions_confirmed=True, usage_available=True,
                       evidence_ref='fixture-1')
         kwargs.update(changes)
+        if kwargs['status'] == 'APPLICABLE':
+            self.book.record_discovery(shop_code='sp', campaign=kwargs['campaign'], source_url=URL,
+                                       observed_at=NOW, conditions=RULES, evidence_type='OFFICIAL', official_status='ACTIVE')
         return self.book.record_check(**kwargs)
 
     def select(self, scope=None, now=LATER, max_age=600):
-        return self.book.select(scope or self.scope, now=now, max_age_seconds=max_age)
+        return self.book.select(scope or self.scope, now=now, max_age_seconds=max_age, product_facts=FACTS)
 
     def test_discovery_only(self):
         self.book.record_discovery(shop_code='sp', campaign='FLASH', source_url=URL,
@@ -142,7 +147,7 @@ class AssessCampaignsTest(unittest.TestCase):
             {"campaign": "C1", "observed_at": NOW, "origin_group": "g2", "success_evidence": True, "success_at": NOW},
         ]
         assessed = assess_campaigns(discoveries, now=LATER)
-        self.assertEqual(assessed[0]["campaign_confidence"], "PROMISING")
+        self.assertEqual(assessed[0]["campaign_confidence"], "DISCOVERED") # no validated recency/terms policy
 
     def test_promising_after_failure(self):
         discoveries = [
@@ -281,7 +286,7 @@ class RankCandidatesTest(unittest.TestCase):
         ranked = rank_candidates([], [], checks, [], scope=self.scope, now=LATER, max_age_seconds=600)
         self.assertEqual(len(ranked), 1)
         self.assertEqual(ranked[0]["campaign"], "C2")
-        self.assertEqual(ranked[0]["check_status"], "APPLICABLE")
+        self.assertEqual(ranked[0]["check_status"], "UNKNOWN") # missing verified price, evidence and rules
 
     def test_expired_isolated(self):
         assessed = [
