@@ -70,3 +70,21 @@
 - オーナーの記憶にある「税金が安かった」課税注文は、今回確認できた範囲（2020年の注文41件＋PayPal 2件）には存在しなかった。別の時期・別のアカウントの注文であれば、追加で調べる余地はある。
 - GPT検収での指摘（2026-11-18）：これは2020年の購入実績であり、現在も同じ税条件が適用されるとは限らない。原価計算への反映は「2020年の現地売上税＝実績 $0.00」「現在の現地売上税＝配送先・商品別に確認」として分けて扱う。現在の条件は、Shoe Palace のサイトで $110 超の商品をカートに入れて税額表示を確認する実測を別途実施する。
 - 訂正履歴：初版の一覧表は40件のみの掲載で、注文 #100696558（Subtotal $159.99／Tax $0.00／Total $151.99）の掲載が漏れていた。GPTの指摘を受けて照合し、表へ追記した。全41件 Tax $0.00 の結論は変わらない。
+
+## 現在の税条件の実測（2026-11-18 22:40〜22:43 JST、サイト実測）
+
+GPTの指摘を受け、Shoe Palace のサイト（shoepalace.com）で現在の税額を実測した。
+
+- 商品：New Balance 9060 Mens Lifestyle Shoes (Triple Black)、$160.00、サイズ8、数量1点
+- 商品URL：https://www.shoepalace.com/products/newbalance-u9060bpm-9060-mens-lifestyle-shoes-triple-black
+- 配送先：323 Nostrand Ave, Brooklyn, NY 11216（ZIP 11216、2020年の注文と同じ住所）
+- カート画面：Tax / Estimated tax の行はなく、「Excluding taxes and shipping」と表示。小計 $160.00、合計 $160.00。
+- チェックアウト画面：配送先を入力しサイトの住所候補を承認した時点で、Order summary に税額が表示された。
+  - 小計（Subtotal）：$160.00
+  - 送料（Shipping）：FREE（Flat Rate）
+  - 税金（Estimated taxes）：$14.20
+  - 合計（Total）：USD $174.20
+  - 税金欄の注記：「The final tax and total will be confirmed by email or text after you place your order.」
+- 購入・支払い情報の入力・注文確定は一切行っていない。氏名・メール・電話も入力していない。
+
+結論：現在の Shoe Palace では、Brooklyn, NY 11216 への配送で売上税がかかる（$160 の商品で $14.20、約8.875%）。2020年の実績（全41件 Tax $0.00）とは異なるため、原価計算では「2020年の現地売上税＝実績 $0.00」と「現在の現地売上税＝配送先・商品別に実測」を分けて扱う。現在の税額を一律ゼロに設定しない。
