@@ -94,7 +94,7 @@ add_action('wp_footer', function () {
             $timgs = [];
             foreach ($by_color as $val => $img) {
                 if (count($by_image[$img]) > 1) continue;
-                $src = wp_get_attachment_image_src($img, 'woocommerce_gallery_thumbnail');
+                $src = wp_get_attachment_image_src($img, 'woocommerce_thumbnail');
                 if ($src && !empty($src[0])) $timgs[$val] = esc_url_raw($src[0]);
             }
             if ($timgs) $thumbs = ['attr' => 'attribute_' . $tattr, 'images' => $timgs];

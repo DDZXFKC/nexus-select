@@ -256,6 +256,75 @@ document.addEventListener('DOMContentLoaded', () => {
     return options;
   }
 
+  /*
+   * Tight crop for image swatches (owner feedback 2026-11-19: the product
+   * looked small with a large white margin). Finds the product's bounding
+   * box on the white background and zooms so the product fills the
+   * existing circle. Circle size/shape unchanged. If the image cannot be
+   * read (e.g. cross-origin), a fixed zoom is used instead.
+   */
+  const SWATCH_FILL = 0.92;
+
+  function productBox(img) {
+    const size = 80;
+    const canvas = document.createElement('canvas');
+    const ratio = img.naturalWidth / img.naturalHeight || 1;
+    canvas.width = ratio >= 1 ? size : Math.round(size * ratio);
+    canvas.height = ratio >= 1 ? Math.round(size / ratio) : size;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    let x0 = canvas.width, y0 = canvas.height, x1 = -1, y1 = -1;
+    for (let y = 0; y < canvas.height; y++) {
+      for (let x = 0; x < canvas.width; x++) {
+        const i = (y * canvas.width + x) * 4;
+        const alpha = data[i + 3];
+        const light = Math.min(data[i], data[i + 1], data[i + 2]);
+        if (alpha > 16 && light < 235) {
+          if (x < x0) x0 = x;
+          if (y < y0) y0 = y;
+          if (x > x1) x1 = x;
+          if (y > y1) y1 = y;
+        }
+      }
+    }
+    if (x1 < x0 || y1 < y0) return null;
+    return {
+      x: x0 / canvas.width, y: y0 / canvas.height,
+      w: (x1 - x0 + 1) / canvas.width, h: (y1 - y0 + 1) / canvas.height,
+      ratio
+    };
+  }
+
+  function applyBox(visual, box) {
+    const size = visual.clientWidth || 36;
+    const width = (SWATCH_FILL * size) / Math.max(box.w, box.h / box.ratio);
+    const height = width / box.ratio;
+    const left = size / 2 - (box.x + box.w / 2) * width;
+    const top = size / 2 - (box.y + box.h / 2) * height;
+    visual.style.backgroundSize = width.toFixed(1) + 'px ' + height.toFixed(1) + 'px';
+    visual.style.backgroundPosition = left.toFixed(1) + 'px ' + top.toFixed(1) + 'px';
+  }
+
+  function fitSwatchImage(visual, url) {
+    const img = new Image();
+    img.decoding = 'async';
+    img.onload = () => {
+      let box = null;
+      try {
+        box = productBox(img);
+      } catch (e) {
+        box = null;
+      }
+      if (box) {
+        applyBox(visual, box);
+      } else {
+        visual.classList.add('nexus-swatch__color--zoom');
+      }
+    };
+    img.src = url;
+  }
+
   function createButton(select, option) {
     const button = document.createElement('button');
     const label = option.textContent.trim();
@@ -285,6 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (thumb) {
         visual.classList.add('nexus-swatch__color--image');
         visual.style.backgroundImage = 'url("' + String(thumb).replace(/"/g, '%22') + '")';
+        fitSwatchImage(visual, String(thumb));
       } else {
         visual.style.background = colorBackground(
           swatchColors(label)

@@ -1742,3 +1742,9 @@ body.single-product .variations .nexus-selected-value {
 body.single-product .variations .nexus-selected-value:empty {
   display: none;
 }
+
+/* Fallback when the product box cannot be measured (owner feedback 2026-11-19) */
+body.single-product .nexus-swatch__color--image.nexus-swatch__color--zoom {
+  background-size: 170%;
+  background-position: center 60%;
+}
