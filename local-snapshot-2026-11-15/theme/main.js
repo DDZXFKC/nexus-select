@@ -257,13 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /*
-   * Tight crop for image swatches (owner feedback 2026-11-19: the product
-   * looked small with a large white margin). Finds the product's bounding
-   * box on the white background and zooms so the product fills the
-   * existing circle. Circle size/shape unchanged. If the image cannot be
-   * read (e.g. cross-origin), a fixed zoom is used instead.
+   * Center crop for image swatches (owner, 2026-11-19 06:32: "cut out the
+   * middle of the product image", not the whole photo in the circle).
+   * Finds the product's bounding box on the white background, then zooms
+   * so the circle shows only the middle part of the product (about half
+   * of its width/height), centered on the product. Circle size/shape
+   * unchanged. If the image cannot be read, a fixed center zoom is used.
    */
-  const SWATCH_FILL = 0.92;
+  const SWATCH_PORTION = 0.5;
 
   function productBox(img) {
     const size = 80;
@@ -298,7 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function applyBox(visual, box) {
     const size = visual.clientWidth || 36;
-    const width = (SWATCH_FILL * size) / Math.max(box.w, box.h / box.ratio);
+    // The circle covers SWATCH_PORTION of the product's smaller side,
+    // so the swatch is filled by the product's middle (no white margin).
+    const width = size / (SWATCH_PORTION * Math.min(box.w, box.h / box.ratio));
     const height = width / box.ratio;
     const left = size / 2 - (box.x + box.w / 2) * width;
     const top = size / 2 - (box.y + box.h / 2) * height;
