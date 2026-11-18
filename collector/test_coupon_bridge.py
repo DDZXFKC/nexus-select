@@ -17,7 +17,7 @@ class CouponBridgeTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.path = Path(self.temp.name) / 'collection.db'
-        self.book = CouponBridge(self.path)
+        self.book = CouponBridge(self.path, allowed_shops={'sp'})
         self.book.initialize()
         self.scope = context(shop_code='sp', variant_id='v1', currency='USD',
                              destination='US-OR', account_scope='a1', quantity=1,
@@ -46,7 +46,7 @@ class CouponBridgeTest(unittest.TestCase):
 
     def test_idempotence_and_reopen(self):
         self.assertEqual(self.check(), self.check())
-        self.book = CouponBridge(self.path)
+        self.book = CouponBridge(self.path, allowed_shops={'sp'})
         self.assertEqual(self.select()['effective_minor'], 7000)
         with sqlite3.connect(self.path) as db:
             self.assertEqual(db.execute('SELECT COUNT(*) FROM ahc_coupon_checks_v1').fetchone()[0], 1)
@@ -302,7 +302,7 @@ class ListCandidatesIntegrationTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.path = Path(self.temp.name) / 'collection.db'
-        self.book = CouponBridge(self.path)
+        self.book = CouponBridge(self.path, allowed_shops={'sp'})
         self.book.initialize()
         self.scope = context(shop_code='sp', variant_id='v1', currency='USD', destination='US-OR',
                              account_scope='a1', quantity=1, base_minor=10000, basket_key='b1')
@@ -327,6 +327,47 @@ class ListCandidatesIntegrationTest(unittest.TestCase):
         self.assertEqual(candidates[0]['campaign'], 'C1')
         self.assertEqual(candidates[0]['eligibility'], 'MATCH')
         self.assertEqual(candidates[0]['check_status'], 'APPLICABLE')
+
+
+class EntryGateTest(unittest.TestCase):
+    """L0/L1 entry gate: non-target shops never reach DB."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.path = Path(self.temp.name) / 'collection.db'
+
+    def test_out_of_scope_shop_not_saved(self):
+        book = CouponBridge(self.path, allowed_shops={'sp', 'bstn'})
+        book.initialize()
+        with self.assertRaises(ValueError) as cm:
+            book.record_discovery(
+                shop_code='unknown-shop', campaign='X', source_url=URL,
+                observed_at=NOW, conditions={'percent': 10})
+        self.assertIn('not in allowed registry', str(cm.exception))
+        with sqlite3.connect(self.path) as db:
+            self.assertEqual(db.execute('SELECT COUNT(*) FROM ahc_coupon_observations_v1').fetchone()[0], 0)
+
+    def test_allowed_shop_still_saved(self):
+        book = CouponBridge(self.path, allowed_shops={'sp', 'bstn'})
+        book.initialize()
+        key = book.record_discovery(
+            shop_code='sp', campaign='FLASH', source_url=URL,
+            observed_at=NOW, conditions={'percent': 30})
+        self.assertTrue(key)
+        with sqlite3.connect(self.path) as db:
+            self.assertEqual(db.execute('SELECT COUNT(*) FROM ahc_coupon_observations_v1').fetchone()[0], 1)
+
+    def test_empty_registry_rejects_all(self):
+        book = CouponBridge(self.path, allowed_shops=None)  # or []
+        book.initialize()
+        with self.assertRaises(ValueError) as cm:
+            book.record_discovery(
+                shop_code='sp', campaign='FLASH', source_url=URL,
+                observed_at=NOW, conditions={'percent': 30})
+        self.assertIn('not in allowed registry', str(cm.exception))
+        with sqlite3.connect(self.path) as db:
+            self.assertEqual(db.execute('SELECT COUNT(*) FROM ahc_coupon_observations_v1').fetchone()[0], 0)
 
 
 if __name__ == '__main__':

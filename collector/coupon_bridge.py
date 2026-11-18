@@ -423,10 +423,23 @@ def rank_candidates(assessed, evaluated, checks, discoveries, *, scope, now, max
 
 
 class CouponBridge:
-    def __init__(self, db_path):
+    def __init__(self, db_path, allowed_shops=None):
+        """allowed_shops: iterable of shop_code. Empty/None = reject all (no allow-all fallback)."""
         self.path = Path(db_path).expanduser()
         if not self.path.parent.is_dir():
             raise ValueError("existing collection DB directory required")
+        if allowed_shops is None:
+            self._allowed_shops = frozenset()
+        else:
+            self._allowed_shops = frozenset(
+                str(s).strip() for s in allowed_shops if s is not None and str(s).strip()
+            )
+
+    def _assert_allowed_shop(self, shop_code):
+        code = _required(shop_code, "shop_code")
+        if code not in self._allowed_shops:
+            raise ValueError(f"shop_code not in allowed registry: {code}")
+        return code
 
     @contextmanager
     def _connection(self):
@@ -463,6 +476,7 @@ class CouponBridge:
                          official_status=None, conditions_conflict=False, negation_evidence=False,
                          success_evidence=False, evidence_type=None):
         """A discovery is evidence only, never a verified discount."""
+        shop_code = self._assert_allowed_shop(shop_code)
         if not isinstance(conditions, dict):
             raise ValueError("conditions must be an object")
         row = dict(shop_code=_required(shop_code, "shop_code"),
