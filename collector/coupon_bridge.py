@@ -135,7 +135,8 @@ def assess_campaigns(discoveries, *, now):
         fail_dt = _get_dt(d.get("failure_at")) or obs_dt
         
         if d.get("negation_evidence"):
-            g["negations"].append({"time": fail_dt, "reason": d.get("negation_reason")})
+            # originも保存して独立性判定に使用
+            g["negations"].append({"time": fail_dt, "reason": d.get("negation_reason"), "origin": origin})
         if d.get("success_evidence"):
             g["successes"].append({"time": succ_dt, "origin": origin})
 
@@ -147,6 +148,8 @@ def assess_campaigns(discoveries, *, now):
         latest_neg = max([n["time"] for n in data["negations"]], default=datetime.min.replace(tzinfo=timezone.utc))
         has_recent_success = any(s["time"] > latest_neg for s in data["successes"])
         has_2_indep_success = len({s["origin"] for s in data["successes"] if s["origin"]}) >= 2
+        # 独立した（originが明確で異なる）失敗証拠が2件以上の場合のみ無効候補とする
+        has_2_indep_negations = len({n["origin"] for n in data["negations"] if n["origin"]}) >= 2
         
         if data["official_status"] == "EXPIRED":
             status = "EXPIRED"
@@ -156,7 +159,7 @@ def assess_campaigns(discoveries, *, now):
             status = "CONFLICT"
         elif has_2_indep_success or (data["official_status"] == "ACTIVE" and data["successes"]) or has_recent_success:
             status = "PROMISING"
-        elif data["negations"] and not has_recent_success:
+        elif has_2_indep_negations and not has_recent_success:
             status = "LIKELY_INVALID"
             
         latest = data["latest_official_obs"] or data["latest_obs"]
@@ -168,6 +171,8 @@ def assess_campaigns(discoveries, *, now):
             "conditions": data["latest_conditions"]
         })
     return results
+
+
 def evaluate_eligibility(campaign, scope, product_facts, conditions):
     """B-axis: Evaluate eligibility against rules without leaking check results."""
     if not conditions:
@@ -181,7 +186,11 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
 
     # 明示除外優先
     excluded_brands = conditions.get("excluded_brands")
-    if not _is_unspecified(excluded_brands):
+    if _is_unspecified(excluded_brands):
+        # キーが存在するが値がNone/False/空の場合は未知としてMATCHを防ぐ
+        if "excluded_brands" in conditions:
+            all_match = False; reasons.append("UNIMPLEMENTED:excluded_brands")
+    else:
         if product_facts.get("brand") is None:
             all_match = False; reasons.append("BRAND_UNKNOWN")
         elif product_facts.get("brand") in excluded_brands:
