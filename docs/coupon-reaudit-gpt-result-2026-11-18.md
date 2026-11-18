@@ -1,0 +1,15 @@
+# AHC クーポン再監査 GPT 2026-11-18
+対象 aa585188 / docs/coupon-fix-report-2026-11-18.md / 設計3c6e3fc8 / 前回cef433f2。REQUEST_CHANGES。24件合格はMuse報告。GPTはコード・テストを静的照合。独立再実行を試みたが作業環境のDNS制約でraw GitHub取得不可。以下は静的に追跡した反例であり実行済みと称さない。
+## 合格・改善
+list_candidatesのcontext_id索引と完全scope一致、UTCでの実測期限境界、未来check除外、既存select/record_checkの処理維持、候補出力の価格漏出防止。明示origin_groupの重複排除は部分合格。B/Cの関数分離は改善。維持する。
+## P0/P1 残修正（まとめて実装）
+1. A軸の目的未達: assess_campaignsにnow/market/versionがなくPROMISINGが存在しない。公式有効条件と対象条件の一致又は独立した最近の同条件成功2件でPROMISING、取得日を成功日にしない。単一negation_evidence=TrueだけでLIKELY_INVALIDとするのは誤り。最近の独立した失敗、失敗理由/範囲、後続成功を評価。公式失効の証拠を優先し矛盾履歴を残す。valid_until/valid_fromを実時刻と比較、日付精度・TZ不明はUNKNOWN相当の確認待ち。未来観測除外。コード再利用をshop/market/code/period/versionで分離。現行はcampaign文字列だけで集約し古い失効が新施策にも残る。
+2. B軸誤判定: evaluate_eligibilityは非空conditionsなら既定MATCH。例 conditions={'eligible_brands':['Nike']} で他条件欠落でもMATCH。test_full_matchとtest_full_flow_rankingはこの誤仕様を固定。明示された全条件と完全性根拠が揃う場合だけMATCH。明示除外が最優先、不明商品属性ならUNKNOWN（現行は対象リストにNoneがないのでEXCLUDED）、初回限定かつ既存客が確定ならEXCLUDED、初回か不明ならUNKNOWN。nullのexcluded_brandsでTypeErrorになる（None in None）。region文字列へのinは部分一致になるため型付き正規化・明示地域照合。min_spend_major/min_spend_currencyをrecord_rawが保存するが評価器はmin_spend_minorのみ参照、通貨不一致や単位換算を検証。規約全条件（設計§1）を実装し未知/非該当/明示制限なしを区別。RawCouponの既定False/空配列を未知に戻す。未対応条件があればMATCH禁止。
+3. P0 最初のconditions採用禁止: list_candidatesはa.conditions[0]だけ参照。同じoriginの後続訂正もrootsに最初だけ保存される。公式の最新有効規約を根拠付きで解決し、重大矛盾未解消ならCONFLICT/UNKNOWN（明示された有効除外はEXCLUDED）。順序入替でも同じ結果、古い情報と訂正を履歴として保持。
+4. P0 C軸とselect不一致: rank_candidatesの同時刻矛盾はstatus差のみ検出。実測2件ともAPPLICABLEでpost_minor=7000/6000の場合、selectは拒否するが候補はAPPLICABLE。expiry差も同様。現行select同様、最新時刻の異なる証拠が複数ならUNKNOWN（同一ID重複のみ除去）。新観測後の再確認を実装、例 check NOW、discovery LATER、now LATER → C=STALEでなければならない。観測の未来時刻は除外する。チェックだけあり観測なしの場合も根拠付き候補を保持（現状mergedに存在せず消える）。正規化と証拠判定を共通の純粋関数へ切り出すか同等の保守判定をテストで保証。selectの安全性を弱めない。Cは過去の実測状態でありA/Bによる現在の有効性とは別表示。
+5. P0 順位: EXPIRED/RETIRED/EXCLUDEDは先に確認対象から隔離（履歴には残す）。現行sortはeligibility先頭なのでEXPIRED+MATCHがDISCOVERED+UNKNOWNより上位になる。CONFLICTは解消待ち、LIKELY_INVALIDは低優先。PROMISING優先、権威・成功鮮度・独立性・否定証拠・期限・節約見込/検証コストを使う。根拠/鮮度/矛盾/試算がrankで失われるため保持。確認対象フラグと除外理由を明示、価格反映禁止維持。
+6. provenance: fallback _id(d)は観測時刻が変わるだけでroots_count増加、独立不明を数えない。origin_group/report_id/raw_refの単純orは共有report_idでも異origin_groupなら重複。同一元のリンク関係を明示し重複排除。保存にsource_id, source_published_at, source_verified_at, success_at/failure_at, fetched_at, evidence_type, claim_scope, date precision/TZ, counts/期間, provenance, permission等を追加。official_status既定ACTIVEは未確認を意味するnullへ。検証された公式証拠のみ失効判断。SQLite既存互換、別正本なし。
+## 追加テスト指示（前回の全受入項目も維持）
+既存14件は価格ゲートのテストで、test_conflicting_same_time/test_future_check_not_used/test_expiry_boundary/test_stalenessを候補判定の証拠として転用不可。候補用に独立テスト追加。上記1〜6の各反例をテスト化。特に 10転載/同一report別origin/出所不明再取得、公式又は独立最近成功PROMISING、古い失敗→新成功、公式失効と期限境界、未来観測、コード再利用、未知条件とnull、未知brandと明示除外、初回falseとnull、raw最低額と通貨、規約順序逆転、同一root後続訂正、同時刻同status別金額/期限、新規観測STALE、未来check、scope8項目全て、checkのみ候補、期限切れ順位、根拠保持。正常系は規約完全性を証明するfixtureへ修正。全項目の実行ログと設計対応表を提出。前回§6(2)の下流統合（商品/売れ筋一致、確定注文価格不変など）未証明は別工程で明示。
+## 引継ぎ
+GLMは上記を一括修正し、Museは全テストと追加反例を実行。件数ではなく受入条件で評価。部分修正を完成扱いしない。GPTの再監査前にソース有効化、ライブ取得、カート操作、購入、価格反映は禁止。既存収集・サイト作業は並行継続。
