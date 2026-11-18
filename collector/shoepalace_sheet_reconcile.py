@@ -4,7 +4,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
-from shoepalace_repair import repair, load_reference, load_cm_reference
+from shoepalace_repair import repair, load_reference, load_cm_reference, load_color_reference
 
 def encode(value):
     if value is None:
@@ -23,7 +23,7 @@ def reconcile(headers, existing, products, variants, product_col, variant_col=No
     grouped = {}
     for v in variants:
         grouped.setdefault(v["product_id"], []).append(v)
-    fields = ["sp_source_url", "sp_color_name", "sp_color_name_status", "sp_color_tags",
+    fields = ["sp_source_url", "sp_color_name", "sp_color_name_status", "sp_color_evidence", "sp_color_tags",
               "sp_coupon_tag_codes", "sp_coupon_tag_status",
               "sp_description_ja", "sp_description_ja_status",
               "sp_variant_details"]
@@ -48,6 +48,7 @@ def reconcile(headers, existing, products, variants, product_col, variant_col=No
             continue
         updates = {"sp_source_url": p["source_url"], "sp_color_name": p["color_name"],
                    "sp_color_name_status": p["color_name_status"],
+                   "sp_color_evidence": p["color_evidence"],
                    "sp_color_tags": p["color_tags"], "sp_coupon_tag_codes": p["coupon_tag_codes"],
                    "sp_coupon_tag_status": p["coupon_tag_status"],
                    "sp_description_ja": p["description_ja"],
@@ -91,7 +92,7 @@ def reconcile_woo(headers, existing, products, variants):
         sheet_skus[sku] = sheet_skus.get(sku, 0) + 1
     parent_rows = {row["SKU"] for row in existing
                    if row["Type"] == "variable" and sheet_skus[row["SKU"].strip()] == 1}
-    fields = ["sp_product_id", "sp_variant_id", "sp_source_url", "sp_color_name", "sp_color_name_status",
+    fields = ["sp_product_id", "sp_variant_id", "sp_source_url", "sp_color_name", "sp_color_name_status", "sp_color_evidence",
               "sp_color_tags", "sp_coupon_tag_codes", "sp_coupon_tag_status",
               "sp_description_ja", "sp_description_ja_status", "sp_size_original",
               "sp_cm", "sp_cm_status", "sp_cm_source_url", "sp_cm_model", "sp_cm_age_group", "sp_cm_size_system", "sp_compare_at_price_minor", "sp_regular_price_minor",
@@ -128,6 +129,7 @@ def reconcile_woo(headers, existing, products, variants):
         updates = dict(sp_product_id=pid, sp_variant_id=vid,
                        sp_source_url=p["source_url"], sp_color_name=p["color_name"],
                        sp_color_name_status=p["color_name_status"],
+                       sp_color_evidence=p["color_evidence"],
                        sp_color_tags=p["color_tags"], sp_coupon_tag_codes=p["coupon_tag_codes"],
                        sp_coupon_tag_status=p["coupon_tag_status"],
                        sp_description_ja=p["description_ja"],
@@ -182,6 +184,7 @@ def main():
     parser.add_argument("--raw", required=True, nargs="+", type=Path)
     parser.add_argument("--cm-reference", type=Path)
     parser.add_argument("--ja-reference", type=Path)
+    parser.add_argument("--color-reference", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     raw = []
@@ -189,7 +192,8 @@ def main():
         raw.extend(json.loads(path.read_text(encoding="utf-8"))["products"])
     products, variants, repair_issues, summary = repair(
         raw, load_cm_reference(args.cm_reference),
-        load_reference(args.ja_reference, ["product_id","description_ja"]))
+        load_reference(args.ja_reference, ["product_id","description_ja"]),
+        load_color_reference(args.color_reference))
     headers, old = read_sheet(args.sheet)
     if args.woo_prep:
         if args.variant_id_column:
