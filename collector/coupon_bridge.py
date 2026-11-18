@@ -72,6 +72,109 @@ def context(*, shop_code, variant_id, currency, destination, account_scope,
                 basket_key=_required(basket_key, "basket_key"))
 
 
+def assess_campaigns(discoveries):
+    """Normalize and group discovery evidence, returning campaign confidence.
+    
+    Aggregates sources by hostname to treat syndications or identical sources 
+    as a single root evidence. Confidence is based on distinct source count.
+    """
+    grouped = {}
+    for d in discoveries:
+        campaign = d.get("campaign")
+        source = d.get("source_url")
+        if not campaign or not source:
+            continue
+        host = urlsplit(source).hostname or source
+        if campaign not in grouped:
+            grouped[campaign] = {"sources": set(), "latest": ""}
+        grouped[campaign]["sources"].add(host)
+        if d.get("observed_at", "") > grouped[campaign]["latest"]:
+            grouped[campaign]["latest"] = d.get("observed_at")
+
+    results = []
+    for campaign, data in grouped.items():
+        sources_count = len(data["sources"])
+        if sources_count >= 2:
+            conf = "HIGH"
+        elif sources_count == 1:
+            conf = "MEDIUM"
+        else:
+            conf = "LOW"
+        results.append({
+            "campaign": campaign,
+            "campaign_confidence": conf,
+            "sources": sorted(list(data["sources"])),
+            "latest_observed_at": data["latest"]
+        })
+    return results
+
+
+def evaluate_eligibility(checks):
+    """Evaluate eligibility based on authorized cart checks."""
+    grouped = {}
+    for c in checks:
+        campaign = c.get("campaign")
+        status = c.get("status")
+        checked_at = c.get("checked_at")
+        if not campaign or not status or not checked_at:
+            continue
+        if campaign not in grouped or checked_at > grouped[campaign]["checked_at"]:
+            grouped[campaign] = {
+                "status": status,
+                "checked_at": checked_at
+            }
+    results = []
+    for campaign, data in grouped.items():
+        status = data["status"]
+        if status == "APPLICABLE":
+            elig = "CONFIRMED"
+        elif status == "NOT_APPLICABLE":
+            elig = "REJECTED"
+        else:
+            elig = "UNKNOWN"
+        results.append({
+            "campaign": campaign,
+            "eligibility": elig,
+            "check_status": status,
+            "latest_checked_at": data["checked_at"]
+        })
+    return results
+
+
+def rank_candidates(assessed, evaluated):
+    """Rank candidates across three axes without leaking pricing side effects."""
+    merged = {}
+    for a in assessed:
+        merged[a["campaign"]] = {
+            "campaign": a["campaign"],
+            "campaign_confidence": a.get("campaign_confidence", "LOW"),
+            "eligibility": "UNTESTED",
+            "check_status": "UNTESTED"
+        }
+    for e in evaluated:
+        if e["campaign"] in merged:
+            merged[e["campaign"]]["eligibility"] = e["eligibility"]
+            merged[e["campaign"]]["check_status"] = e["check_status"]
+        else:
+            merged[e["campaign"]] = {
+                "campaign": e["campaign"],
+                "campaign_confidence": "LOW",
+                "eligibility": e["eligibility"],
+                "check_status": e["check_status"]
+            }
+    
+    conf_order = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
+    elig_order = {"CONFIRMED": 0, "UNKNOWN": 1, "UNTESTED": 2, "REJECTED": 3}
+    
+    candidates = list(merged.values())
+    candidates.sort(key=lambda x: (
+        elig_order.get(x["eligibility"], 9),
+        conf_order.get(x["campaign_confidence"], 9),
+        x["campaign"]
+    ))
+    return candidates
+
+
 class CouponBridge:
     def __init__(self, db_path):
         self.path = Path(db_path).expanduser()
@@ -217,3 +320,18 @@ class CouponBridge:
         return dict(status="APPLICABLE", normal_minor=base, effective_minor=amount,
                     campaign=campaign, check_id=key, checked_at=check["checked_at"],
                     expires_at=check["expires_at"], sale_approved=False)
+
+    def list_candidates(self, shop_code):
+        """Return ranked coupon candidates for a shop, recomputed from saved observations."""
+        with self._connection() as db:
+            obs_rows = db.execute("SELECT payload FROM ahc_coupon_observations_v1 WHERE shop_code=?", (shop_code,)).fetchall()
+            chk_rows = db.execute("SELECT payload FROM ahc_coupon_checks_v1").fetchall()
+        
+        discoveries = [json.loads(r["payload"]) for r in obs_rows]
+        checks = []
+        for r in chk_rows:
+            p = json.loads(r["payload"])
+            if p.get("scope", {}).get("shop_code") == shop_code:
+                checks.append(p)
+                
+        return rank_candidates(assess_campaigns(discoveries), evaluate_eligibility(checks))

@@ -3,12 +3,13 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from coupon_bridge import CouponBridge, context
+from coupon_bridge import CouponBridge, context, assess_campaigns, evaluate_eligibility, rank_candidates
 
 NOW = '2026-11-17T09:00:00+09:00'
 LATER = '2026-11-17T09:05:00+09:00'
 EXPIRY = '2026-11-17T10:00:00+09:00'
 URL = 'https://example.com/promotion'
+URL2 = 'https://other.com/promotion'
 
 
 class CouponBridgeTest(unittest.TestCase):
@@ -114,6 +115,65 @@ class CouponBridgeTest(unittest.TestCase):
         self.check()
         with sqlite3.connect(self.path) as db:
             self.assertEqual(db.execute('SELECT id FROM products').fetchone()[0], 42)
+
+
+class CouponCandidateTest(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.path = Path(self.temp.name) / 'collection.db'
+        self.book = CouponBridge(self.path)
+        self.book.initialize()
+        self.scope = context(shop_code='sp', variant_id='v1', currency='USD',
+                             destination='US-OR', account_scope='a1', quantity=1,
+                             base_minor=10000, basket_key='basket1')
+
+    def test_assess_campaigns_grouping(self):
+        discoveries = [
+            {"campaign": "FLASH", "source_url": URL, "observed_at": "2026-11-15T10:00:00+00:00", "conditions": {}},
+            {"campaign": "FLASH", "source_url": URL2, "observed_at": "2026-11-16T10:00:00+00:00", "conditions": {}},
+            {"campaign": "WELCOME", "source_url": URL, "observed_at": "2026-11-15T10:00:00+00:00", "conditions": {}},
+        ]
+        assessed = assess_campaigns(discoveries)
+        flash = [c for c in assessed if c["campaign"] == "FLASH"][0]
+        self.assertEqual(flash["campaign_confidence"], "HIGH")
+        self.assertEqual(len(flash["sources"]), 2)
+        welcome = [c for c in assessed if c["campaign"] == "WELCOME"][0]
+        self.assertEqual(welcome["campaign_confidence"], "MEDIUM")
+
+    def test_evaluate_eligibility(self):
+        checks = [
+            {"campaign": "FLASH", "status": "APPLICABLE", "checked_at": "2026-11-17T09:00:00+00:00", "scope": {}},
+            {"campaign": "OLD", "status": "NOT_APPLICABLE", "checked_at": "2026-11-16T09:00:00+00:00", "scope": {}},
+        ]
+        evaluated = evaluate_eligibility(checks)
+        flash = [c for c in evaluated if c["campaign"] == "FLASH"][0]
+        self.assertEqual(flash["eligibility"], "CONFIRMED")
+        self.assertEqual(flash["check_status"], "APPLICABLE")
+
+    def test_rank_candidates_isolation(self):
+        assessed = [{"campaign": "FLASH", "campaign_confidence": "HIGH"}]
+        evaluated = [{"campaign": "FLASH", "eligibility": "CONFIRMED", "check_status": "APPLICABLE"}]
+        ranked = rank_candidates(assessed, evaluated)
+        self.assertEqual(len(ranked), 1)
+        self.assertEqual(ranked[0]["eligibility"], "CONFIRMED")
+        # 候補出力に effective_minor や sale_approved が混入されていないことを確認
+        self.assertNotIn("effective_minor", ranked[0])
+        self.assertNotIn("sale_approved", ranked[0])
+
+    def test_list_candidates_recompute(self):
+        self.book.record_discovery(shop_code='sp', campaign='FLASH', source_url=URL, observed_at=NOW, conditions={})
+        self.book.record_discovery(shop_code='sp', campaign='FLASH', source_url=URL2, observed_at=NOW, conditions={})
+        self.book.record_check(scope=self.scope, campaign='FLASH', source_url=URL, checked_at=NOW, expires_at=EXPIRY,
+                               status='APPLICABLE', post_minor=7000, conditions_confirmed=True, usage_available=True, evidence_ref='ev1')
+        
+        candidates = self.book.list_candidates('sp')
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]['campaign'], 'FLASH')
+        self.assertEqual(candidates[0]['campaign_confidence'], 'HIGH')
+        self.assertEqual(candidates[0]['eligibility'], 'CONFIRMED')
+        self.assertNotIn('effective_minor', candidates[0])
+        self.assertNotIn('sale_approved', candidates[0])
 
 
 if __name__ == '__main__':
