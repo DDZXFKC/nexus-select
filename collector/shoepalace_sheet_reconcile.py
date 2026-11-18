@@ -23,7 +23,7 @@ def reconcile(headers, existing, products, variants, product_col, variant_col=No
     grouped = {}
     for v in variants:
         grouped.setdefault(v["product_id"], []).append(v)
-    fields = ["sp_source_url", "sp_color_name", "sp_color_tags",
+    fields = ["sp_source_url", "sp_color_name", "sp_color_name_status", "sp_color_tags",
               "sp_coupon_tag_codes", "sp_coupon_tag_status",
               "sp_description_ja", "sp_description_ja_status",
               "sp_variant_details"]
@@ -47,6 +47,7 @@ def reconcile(headers, existing, products, variants, product_col, variant_col=No
             output.append(new)
             continue
         updates = {"sp_source_url": p["source_url"], "sp_color_name": p["color_name"],
+                   "sp_color_name_status": p["color_name_status"],
                    "sp_color_tags": p["color_tags"], "sp_coupon_tag_codes": p["coupon_tag_codes"],
                    "sp_coupon_tag_status": p["coupon_tag_status"],
                    "sp_description_ja": p["description_ja"],
@@ -90,7 +91,7 @@ def reconcile_woo(headers, existing, products, variants):
         sheet_skus[sku] = sheet_skus.get(sku, 0) + 1
     parent_rows = {row["SKU"] for row in existing
                    if row["Type"] == "variable" and sheet_skus[row["SKU"].strip()] == 1}
-    fields = ["sp_product_id", "sp_variant_id", "sp_source_url", "sp_color_name",
+    fields = ["sp_product_id", "sp_variant_id", "sp_source_url", "sp_color_name", "sp_color_name_status",
               "sp_color_tags", "sp_coupon_tag_codes", "sp_coupon_tag_status",
               "sp_description_ja", "sp_description_ja_status", "sp_size_original",
               "sp_cm", "sp_cm_status", "sp_compare_at_price_minor", "sp_regular_price_minor",
@@ -126,6 +127,7 @@ def reconcile_woo(headers, existing, products, variants):
         matched.add((pid, vid))
         updates = dict(sp_product_id=pid, sp_variant_id=vid,
                        sp_source_url=p["source_url"], sp_color_name=p["color_name"],
+                       sp_color_name_status=p["color_name_status"],
                        sp_color_tags=p["color_tags"], sp_coupon_tag_codes=p["coupon_tag_codes"],
                        sp_coupon_tag_status=p["coupon_tag_status"],
                        sp_description_ja=p["description_ja"],
