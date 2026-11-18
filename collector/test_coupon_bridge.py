@@ -310,7 +310,15 @@ class ListCandidatesIntegrationTest(unittest.TestCase):
 
     def test_full_flow_ranking(self):
         # 規約完全性の証明
-        conditions = {"eligible_brands": ["Nike"], "eligible_categories": ["Shoes"], "sale_exclusion": False}
+        conditions = {
+            "eligible_brands": ["Nike"],
+            "eligible_categories": ["Shoes"],
+            "sale_exclusion": False,
+            "first_order_only": False,
+            "ship_region": "US-OR",
+            "min_spend_major": 100,
+            "min_spend_currency": "USD",
+        }
         self.book.record_discovery(shop_code='sp', campaign='C1', source_url=URL, observed_at=NOW, conditions=conditions)
         self.book.record_check(scope=self.scope, campaign='C1', source_url=URL, checked_at=NOW, expires_at=EXPIRY,
                                status='APPLICABLE', post_minor=8000, conditions_confirmed=True, usage_available=True, evidence_ref='ev1')

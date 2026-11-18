@@ -182,7 +182,9 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
     all_match = True
     
     def _is_unspecified(val):
-        return val is None or val is False or (isinstance(val, list) and not val)
+        # None / 空リストは未指定。
+        # 明示的な False は「制限なし」として指定済みと扱う。
+        return val is None or (isinstance(val, list) and not val)
 
     # 完全性チェック：全次元が明示されているか（False等の明示的无制限も含む）
     dims_present = {
