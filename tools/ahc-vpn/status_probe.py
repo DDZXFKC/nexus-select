@@ -1,76 +1,91 @@
 #!/usr/bin/env python3
 import subprocess
-import os
-import sys
+import re
+import datetime
+import math
 
-def parse_route_output(output):
-    for line in output.splitlines():
-        if "interface:" in line:
-            return line.split("interface:")[1].strip()
-    return None
+def _now_iso():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
-def get_default_route_iface():
+def list_utun_interfaces(deadline):
+    interfaces = []
+    err = None
     try:
-        res = subprocess.run(["/sbin/route", "-n", "get", "default"], capture_output=True, text=True, timeout=5)
+        res = subprocess.run(["/sbin/ifconfig", "-l"], capture_output=True, text=True, timeout=max(0.1, deadline))
         if res.returncode != 0:
-            return None, "route command failed"
-        return parse_route_output(res.stdout), None
+            err = "ifconfig -l failed"
+        elif not res.stdout.strip():
+            err = "ifconfig -l empty stdout"
+        else:
+            for iface in res.stdout.split():
+                if re.match(r"^utun\d+$", iface):
+                    interfaces.append(iface)
+    except subprocess.TimeoutExpired:
+        err = "ifconfig timeout"
+    except Exception as e:
+        err = str(e)
+    return interfaces, err
+
+def get_default_route_iface(deadline):
+    try:
+        res = subprocess.run(["/sbin/route", "-n", "get", "default"], capture_output=True, text=True, timeout=max(0.1, deadline))
+        if res.returncode != 0:
+            return None, "route failed"
+        ifaces = []
+        for line in res.stdout.splitlines():
+            if "interface:" in line:
+                val = line.split("interface:")[1].strip()
+                if val: ifaces.append(val)
+        if len(ifaces) == 0: return None, "route interface missing"
+        if len(ifaces) > 1: return None, "route multiple interfaces"
+        return ifaces[0], None
     except Exception as e:
         return None, str(e)
 
-def get_active_utun_interfaces():
-    try:
-        res = subprocess.run(["/sbin/ifconfig", "-l"], capture_output=True, text=True, timeout=5)
-        if res.returncode != 0:
-            return [], "ifconfig -l failed"
-        interfaces = res.stdout.split()
-        return [iface for iface in interfaces if iface.startswith("utun")], None
-    except Exception as e:
-        return [], str(e)
+def parse_status(stdout):
+    for line in stdout.splitlines():
+        if "status:" in line:
+            val = line.split("status:")[1].strip().lower()
+            if val == "active": return "active", None
+            if val == "inactive": return "inactive", None
+            return "unknown", f"unrecognized status: {val}"
+    return "unknown", "status line missing"
 
-def get_iface_status(iface):
-    try:
-        res = subprocess.run(["/sbin/ifconfig", iface], capture_output=True, text=True, timeout=5)
-        if res.returncode != 0:
-            return "unknown", "ifconfig failed"
-        if "status: active" in res.stdout:
-            return "active", None
-        elif "status: inactive" in res.stdout:
-            return "inactive", None
-        return "unknown", None
-    except Exception as e:
-        return "unknown", str(e)
-
-def probe_status():
-    # 監査指示により、プロファイル別状態は常にUNKNOWNで確定しない
-    profiles = {"DE": "UNKNOWN", "US": "UNKNOWN"}
-    verified = False
+def probe_status(time_budget=10.0):
+    start = datetime.datetime.now()
     errors = []
-    tunnel_observation = {
-        "default_route_iface": None,
-        "utun_interfaces": []
-    }
+    profiles = {"DE": "UNKNOWN", "US": "UNKNOWN"}
 
-    iface, err = get_default_route_iface()
-    if err:
-        errors.append(f"route: {err}")
-    else:
-        tunnel_observation["default_route_iface"] = iface
+    def remaining():
+        return max(0.0, time_budget - (datetime.datetime.now() - start).total_seconds())
 
-    utuns, u_err = get_active_utun_interfaces()
-    if u_err:
-        errors.append(f"ifconfig -l: {u_err}")
-    else:
-        tunnel_observation["utun_interfaces"] = []
-        for ut in utuns:
-            status, s_err = get_iface_status(ut)
-            if s_err:
-                errors.append(f"ifconfig {ut}: {s_err}")
-            tunnel_observation["utun_interfaces"].append({"name": ut, "status": status})
+    route_iface, r_err = get_default_route_iface(remaining())
+    if r_err: errors.append(f"route: {r_err}")
+
+    utuns, u_err = list_utun_interfaces(remaining())
+    if u_err: errors.append(f"utun_list: {u_err}")
+
+    utun_states = []
+    for ut in utuns:
+        if remaining() <= 0: errors.append("budget_exhausted"); break
+        try:
+            res = subprocess.run(["/sbin/ifconfig", ut], capture_output=True, text=True, timeout=remaining())
+            st, s_err = parse_status(res.stdout)
+            if s_err: errors.append(f"{ut}: {s_err}")
+            utun_states.append({"name": ut, "status": st})
+        except Exception as e:
+            errors.append(f"{ut}: {str(e)}")
+            utun_states.append({"name": ut, "status": "unknown"})
 
     return {
         "profiles": profiles,
-        "verified": verified,
-        "tunnel_observation": tunnel_observation,
+        "unmanaged_vpn": "UNKNOWN",
+        "source": "local_probe",
+        "observed_at": _now_iso(),
+        "completeness": "PARTIAL" if errors else "FULL",
+        "tunnel_observation": {
+            "default_route_iface": route_iface,
+            "utun_interfaces": utun_states
+        },
         "errors": errors
     }

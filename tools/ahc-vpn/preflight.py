@@ -10,31 +10,33 @@ from status_probe import probe_status
 def run_preflight():
     result = {
         "shortcuts_registered": False,
-        "diagnostic_ready": False,
-        "profile_status_verified": False,
+        "diagnostic_executable": False,
+        "diagnostic_completed": False,
+        "diagnostic_partial": False,
+        "profile_status_verified": False, # 常にfalse
         "recovery_ready": False, # 常にfalse
         "mutation_ready": False, # 常にfalse
         "probe_data": None,
         "errors": []
     }
 
-    try:
-        sc_ok, sc_err = verify_shortcuts()
-        if sc_ok:
-            result["shortcuts_registered"] = True
-            result["diagnostic_ready"] = True
-        else:
-            result["errors"].append(f"Shortcuts verification failed: {sc_err}")
+    sc_ok, sc_err = verify_shortcuts()
+    if sc_ok:
+        result["shortcuts_registered"] = True
+        result["diagnostic_executable"] = True
+    else:
+        result["errors"].append(f"shortcuts: {sc_err}")
+        return result
 
+    try:
         probe = probe_status()
         result["probe_data"] = probe
-
         if not probe.get("errors"):
-            # エラーなく観測できた場合のみtrue（状態がUNKNOWNでも）
-            result["profile_status_verified"] = True
-
+            result["diagnostic_completed"] = True
+        else:
+            result["diagnostic_partial"] = True
     except Exception as e:
-        result["errors"].append(f"Preflight exception: {str(e)}")
+        result["errors"].append(f"probe_exception: {str(e)}")
 
     return result
 
