@@ -21,3 +21,13 @@ Museの実行順「まず1商品を2表→丸窓まで通す」の丸窓部分�
 
 ## 補足（Museの見本 0619648 を読んで）
 - 丸窓は受け取った色コードをそのまま塗る。承認前の下書き（hex_status=DRAFT）を店頭に出さないよう、シート→Wooの書き込み側で「APPROVED_APPROX の色コードだけを hex に入れ、それ以外は null」にする前提とした（null の色を含む商品は未確認表示になる）。下書きの色でも見せたい場合は、この書き込み側の条件を変えれば足り、テーマ側の変更は要らない。
+
+## データ連携の準備（GPT c51beee「Claudeはデータ連携の準備を並行」）
+- tools/ahc_color_components_to_woo.php を追加（WP-CLIで実行、Localのみ、既定はドライラン、--apply で書き込み）。
+- 入力：2表から書き出したCSV（構成色1つにつき1行）
+  - 列：shop_code,supplier_product_id,supplier_color_key,position,token_original,display_hex,hex_status
+- Wooの商品は親SKU「SP-<supplier_product_id>」で探す。見つからない・色の値が1つに決まらない商品は書かずに報告（推測しない）。
+- 色コードは hex_status=APPROVED_APPROX のものだけ書く。下書き（DRAFT）・不明は null → 店頭では未確認表示。
+- 書くのは商品メタ _ahc_color_components だけ。価格・在庫・SKU・画像・カテゴリーは触らない。
+- 今は Shoe Palace の1商品1色（supplier_color_key=single）だけを対象にした。複数色を1商品に持つ店は、その店の番が来た時に対応する。
+- 実行はGPT検収後、Museが Local で：まずドライランの結果（書く予定の内容と件数）を登録し、確認後に --apply。
