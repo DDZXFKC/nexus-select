@@ -1744,3 +1744,9 @@ body.single-product .variations .nexus-selected-value:empty {
 }
 
 /* (center-zoom fallback removed 2026-11-19: fallback is now the color-name circle) */
+
+/* Color components not yet confirmed (GPT design 70ee059): neutral, not a color */
+body.single-product .nexus-swatch__color--unconfirmed {
+  background: #fff;
+  border: 1px dashed #9a9a9a;
+}

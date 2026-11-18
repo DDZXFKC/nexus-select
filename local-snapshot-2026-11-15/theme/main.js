@@ -197,6 +197,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return `conic-gradient(from -90deg, ${stops.join(', ')})`;
   }
 
+  /* Equal vertical stripes, left to right (1 = 100%, 2 = 50/50, 3 = thirds). */
+  function stripeBackground(hexes) {
+    if (hexes.length === 1) return hexes[0];
+    const step = 100 / hexes.length;
+    const stops = hexes.map((hex, i) =>
+      `${hex} ${(i * step).toFixed(4)}% ${((i + 1) * step).toFixed(4)}%`);
+    return `linear-gradient(90deg, ${stops.join(', ')})`;
+  }
+
   function isColorAttribute(select) {
     return select.name === 'attribute_pa_color';
   }
@@ -409,7 +418,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const thumb = thumbs && thumbs.attr === select.name &&
         thumbs.images && thumbs.images[option.value];
 
-      if (thumb) {
+      /*
+       * Data-driven swatch (GPT design 70ee059, owner-approved): when the
+       * product carries color components, the circle is split into equal
+       * vertical stripes, left to right, using the first min(3, n)
+       * components' display colors. Products with component data use ONLY
+       * this method (no photo crop mixed in). If any of the first min(3, n)
+       * colors is not yet resolved, a neutral "unconfirmed" circle is shown;
+       * unknown colors are never painted gray or guessed.
+       */
+      const comps = window.NEXUS_COLOR_COMPONENTS;
+      const usesComponents = comps && comps.attr === select.name && comps.colors;
+
+      if (usesComponents) {
+        const list = comps.colors[option.value];
+        const shown = Array.isArray(list) ? list.slice(0, 3) : [];
+        const hexes = shown.map(c => c && /^#[0-9A-Fa-f]{6}$/.test(c.hex || '') ? c.hex : null);
+        if (shown.length && hexes.every(Boolean)) {
+          visual.style.background = stripeBackground(hexes);
+        } else {
+          visual.classList.add('nexus-swatch__color--unconfirmed');
+        }
+      } else if (thumb) {
         // The image is shown only after its background-free window is
         // measured, so the uncropped photo (white background) never flashes.
         fitSwatchImage(visual, String(thumb), label);
