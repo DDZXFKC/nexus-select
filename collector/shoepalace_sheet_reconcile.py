@@ -4,7 +4,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
-from shoepalace_repair import repair, load_reference
+from shoepalace_repair import repair, load_reference, load_cm_reference
 
 def encode(value):
     if value is None:
@@ -94,7 +94,7 @@ def reconcile_woo(headers, existing, products, variants):
     fields = ["sp_product_id", "sp_variant_id", "sp_source_url", "sp_color_name", "sp_color_name_status",
               "sp_color_tags", "sp_coupon_tag_codes", "sp_coupon_tag_status",
               "sp_description_ja", "sp_description_ja_status", "sp_size_original",
-              "sp_cm", "sp_cm_status", "sp_compare_at_price_minor", "sp_regular_price_minor",
+              "sp_cm", "sp_cm_status", "sp_cm_source_url", "sp_cm_model", "sp_cm_age_group", "sp_cm_size_system", "sp_compare_at_price_minor", "sp_regular_price_minor",
               "sp_price_minor", "sp_currency"]
     output, changes, issues, matched = [], [], [], set()
     for index, old in enumerate(existing, 2):
@@ -134,7 +134,9 @@ def reconcile_woo(headers, existing, products, variants):
                        sp_description_ja_status=p["description_ja_status"])
         if v:
             updates.update(sp_size_original=v["size_original"], sp_cm=v["cm"],
-                           sp_cm_status=v["cm_status"], sp_compare_at_price_minor=v["compare_at_price_minor"],
+                           sp_cm_status=v["cm_status"], sp_cm_source_url=v["cm_source_url"],
+                           sp_cm_model=v["cm_model"], sp_cm_age_group=v["cm_age_group"],
+                           sp_cm_size_system=v["cm_size_system"], sp_compare_at_price_minor=v["compare_at_price_minor"],
                            sp_regular_price_minor=v["regular_price_minor"], sp_price_minor=v["price_minor"],
                            sp_currency=v["currency"])
         for field, value in updates.items():
@@ -186,7 +188,7 @@ def main():
     for path in args.raw:
         raw.extend(json.loads(path.read_text(encoding="utf-8"))["products"])
     products, variants, repair_issues, summary = repair(
-        raw, load_reference(args.cm_reference, ["brand","department","size_original","cm"]),
+        raw, load_cm_reference(args.cm_reference),
         load_reference(args.ja_reference, ["product_id","description_ja"]))
     headers, old = read_sheet(args.sheet)
     if args.woo_prep:
