@@ -214,7 +214,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const LETTER_SIZES = ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', 'XXXL', '3XL', '4XL'];
 
   function sizeSortKey(text) {
-    const label = String(text).trim().toUpperCase();
+    // Kids labels carry the JP length, e.g. "10.5C (17.5cm)" (owner rule
+    // 2026-11-16: US + cm). Ignore a trailing "(...cm)" when sorting.
+    const label = String(text).trim().toUpperCase()
+      .replace(/\s*[(（][^()（）]*CM\s*[)）]\s*$/, '');
     const kids = label.match(/^(?:US\s*)?(\d+(?:\.\d+)?)\s*([CY])$/);
     if (kids) {
       return [kids[2] === 'C' ? 0 : 1, Number(kids[1])];
