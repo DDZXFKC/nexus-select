@@ -10,7 +10,7 @@
       <div>
         <h3>SHOP</h3>
         <a href="<?php echo esc_url(home_url('/shop/')); ?>">すべての商品</a>
-        <a href="<?php echo esc_url(home_url('/')); ?>#brands">ブランド</a>
+        <a href="<?php echo esc_url(home_url('/brands/')); ?>">ブランド</a>
         <?php
         $nexus_request_page = get_post(16);
 

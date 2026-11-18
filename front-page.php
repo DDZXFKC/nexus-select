@@ -104,7 +104,7 @@ $nx_poster_url = $nx_poster ? wp_get_attachment_image_url($nx_poster,'large') : 
 <section class="nx-mobile-campaign" aria-labelledby="nx-mobile-title">
   <div class="nx-mobile-film">
     <?php if ($nx_poster_url): ?>
-      <img src="<?php echo esc_url($nx_poster_url); ?>" alt="NEXUS SELECT campaign" fetchpriority="high" width="720" height="1280">
+      <img src="<?php echo esc_url($nx_poster_url); ?>" alt="AFTER HOURS CLUB campaign" fetchpriority="high" width="720" height="1280">
     <?php endif; ?>
     <?php if ($nx_video_url && $nx_poster_url): ?>
       <video muted loop playsinline preload="none" poster="<?php echo esc_url($nx_poster_url); ?>" data-src="<?php echo esc_url($nx_video_url); ?>" aria-hidden="true"></video>
