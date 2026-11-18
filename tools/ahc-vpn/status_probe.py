@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 import subprocess
-import ipaddress
 import os
-
-# 実IPを公開リポジトリにハードコードしない（環境変数から取得）
-EXPECTED_IPS = {
-    "DE": os.environ.get("AHC_VPN_DE_IP"),
-    "US": os.environ.get("AHC_VPN_US_IP")
-}
+import sys
 
 def parse_route_output(output):
     for line in output.splitlines():
@@ -34,92 +28,49 @@ def get_active_utun_interfaces():
     except Exception as e:
         return [], str(e)
 
-def is_iface_active(iface):
+def get_iface_status(iface):
     try:
         res = subprocess.run(["/sbin/ifconfig", iface], capture_output=True, text=True, timeout=5)
         if res.returncode != 0:
-            return False, "ifconfig failed"
-        return "status: active" in res.stdout, None
+            return "unknown", "ifconfig failed"
+        if "status: active" in res.stdout:
+            return "active", None
+        elif "status: inactive" in res.stdout:
+            return "inactive", None
+        return "unknown", None
     except Exception as e:
-        return False, str(e)
-
-def get_exit_ip(iface):
-    try:
-        res = subprocess.run(["/usr/bin/curl", "--interface", iface, "-s", "https://api.ipify.org"], capture_output=True, text=True, timeout=10)
-        if res.returncode != 0 or not res.stdout:
-            return None, "curl failed or empty response"
-        ip_str = res.stdout.strip()
-        ipaddress.ip_address(ip_str) # 例外を発生させることでIPフォーマットを検証
-        return ip_str, None
-    except Exception as e:
-        return None, str(e)
+        return "unknown", str(e)
 
 def probe_status():
-    evidence = []
-    errors = []
+    # 監査指示により、プロファイル別状態は常にUNKNOWNで確定しない
     profiles = {"DE": "UNKNOWN", "US": "UNKNOWN"}
-    unmanaged_vpn = "UNKNOWN"
-    exit_country = "UNKNOWN"
     verified = False
-    network_reachable = False
+    errors = []
+    tunnel_observation = {
+        "default_route_iface": None,
+        "utun_interfaces": []
+    }
 
     iface, err = get_default_route_iface()
     if err:
         errors.append(f"route: {err}")
     else:
-        evidence.append(f"Default route interface: {iface}")
-        if iface and iface.startswith("utun"):
-            active, a_err = is_iface_active(iface)
-            if a_err:
-                errors.append(f"ifconfig active check: {a_err}")
-            elif active:
-                unmanaged_vpn = "CONNECTED"
-                evidence.append(f"Interface {iface} is active.")
+        tunnel_observation["default_route_iface"] = iface
 
-                # 外部IP確認（補助検証）
-                ip, ip_err = get_exit_ip(iface)
-                if ip_err:
-                    errors.append(f"curl: {ip_err}")
-                    network_reachable = False
-                else:
-                    network_reachable = True
-                    evidence.append(f"Exit IP via {iface}: {ip}")
-
-                    # 期待値と照合してプロファイルを確定
-                    for p, expected_ip in EXPECTED_IPS.items():
-                        if expected_ip and ip == expected_ip:
-                            profiles[p] = "CONNECTED"
-                            verified = True
-                            # exit_country 等の追加判定があればここで実施
-                            break
-            else:
-                evidence.append(f"Interface {iface} is inactive.")
-                unmanaged_vpn = "DISCONNECTED"
-                profiles["DE"] = "DISCONNECTED"
-                profiles["US"] = "DISCONNECTED"
-                verified = True
-        else:
-            # デフォルトルートが utun ではない場合（en0等）
-            evidence.append("Default route is not utun.")
-            utuns, u_err = get_active_utun_interfaces()
-            if u_err:
-                errors.append(f"ifconfig -l: {u_err}")
-            elif not utuns:
-                # utunが1つも存在しなければ、完全に未接続と断定
-                unmanaged_vpn = "DISCONNECTED"
-                profiles["DE"] = "DISCONNECTED"
-                profiles["US"] = "DISCONNECTED"
-                verified = True
-            else:
-                evidence.append(f"utun interfaces exist: {utuns}. Possible split tunnel.")
-                # スプリットトンネル等の可能性があるため UNKNOWN を維持
+    utuns, u_err = get_active_utun_interfaces()
+    if u_err:
+        errors.append(f"ifconfig -l: {u_err}")
+    else:
+        tunnel_observation["utun_interfaces"] = []
+        for ut in utuns:
+            status, s_err = get_iface_status(ut)
+            if s_err:
+                errors.append(f"ifconfig {ut}: {s_err}")
+            tunnel_observation["utun_interfaces"].append({"name": ut, "status": status})
 
     return {
         "profiles": profiles,
-        "unmanaged_vpn": unmanaged_vpn,
-        "exit_country": exit_country,
-        "network_reachable": network_reachable,
-        "evidence": evidence,
-        "errors": errors,
-        "verified": verified
+        "verified": verified,
+        "tunnel_observation": tunnel_observation,
+        "errors": errors
     }
