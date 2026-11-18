@@ -99,10 +99,11 @@ def assess_campaigns(discoveries, *, now):
             grouped[campaign] = {
                 "roots": {}, "latest_official_obs": None, "latest_obs": datetime.min.replace(tzinfo=timezone.utc),
                 "conditions_conflict": False, "official_status": None,
-                "negations": [], "successes": [], "latest_conditions": {}
+                "negations": [], "successes": [], "latest_conditions": {}, "official_rows": [], "third_party_rows": []
             }
         g = grouped[campaign]
         
+        g["official_rows" if is_official else "third_party_rows"].append((obs_dt, d))
         # 公式優先で latest_conditions 更新
         if is_official:
             if g["latest_official_obs"] is None or obs_dt > g["latest_official_obs"]:
@@ -131,23 +132,30 @@ def assess_campaigns(discoveries, *, now):
                 return dt.astimezone(timezone.utc)
             except: return None
             
-        succ_dt = _get_dt(d.get("success_at")) or obs_dt
+        succ_dt = _get_dt(d.get("success_at"))
         fail_dt = _get_dt(d.get("failure_at")) or obs_dt
         
         if d.get("negation_evidence"):
             # originも保存して独立性判定に使用
             g["negations"].append({"time": fail_dt, "reason": d.get("negation_reason"), "origin": origin})
-        if d.get("success_evidence"):
+        if d.get("success_evidence") and succ_dt is not None and succ_dt <= obs_dt:
             g["successes"].append({"time": succ_dt, "origin": origin})
 
     results = []
     for campaign, data in grouped.items():
         status = "DISCOVERED"
         roots_count = len(data["roots"])
+        authority = data["official_rows"] or data["third_party_rows"]
+        latest_at = max(t for t, _ in authority)
+        latest_rows = [d for t, d in authority if t == latest_at]
+        signatures = {_json([d.get("conditions", {}), d.get("official_status") if data["official_rows"] else None]) for d in latest_rows}
+        data["conditions_conflict"] |= len(signatures) != 1
+        data["latest_conditions"] = latest_rows[0].get("conditions", {}) if len(signatures) == 1 else {}
+        data["official_status"] = latest_rows[0].get("official_status") if data["official_rows"] and len(signatures) == 1 else None
         
         latest_neg = max([n["time"] for n in data["negations"]], default=datetime.min.replace(tzinfo=timezone.utc))
         has_recent_success = any(s["time"] > latest_neg for s in data["successes"])
-        has_2_indep_success = len({s["origin"] for s in data["successes"] if s["origin"]}) >= 2
+        has_2_indep_success = False  # no validated recency policy yet
         # 独立した（originが明確で異なる）失敗証拠が2件以上の場合のみ無効候補とする
         has_2_indep_negations = len({n["origin"] for n in data["negations"] if n["origin"]}) >= 2
         
@@ -157,12 +165,12 @@ def assess_campaigns(discoveries, *, now):
             status = "RETIRED"
         elif data["conditions_conflict"]:
             status = "CONFLICT"
-        elif has_2_indep_success or (data["official_status"] == "ACTIVE" and data["successes"]):
+        elif has_2_indep_success or (data["official_status"] == "ACTIVE" and has_recent_success):
             status = "PROMISING"
         elif has_2_indep_negations and not has_recent_success:
             status = "LIKELY_INVALID"
             
-        latest = data["latest_official_obs"] or data["latest_obs"]
+        latest = latest_at
         results.append({
             "campaign": campaign,
             "campaign_confidence": status,
@@ -173,7 +181,7 @@ def assess_campaigns(discoveries, *, now):
     return results
 
 
-def evaluate_eligibility(campaign, scope, product_facts, conditions):
+def evaluate_eligibility(campaign, scope, product_facts, conditions, *, now=None):
     """B-axis: Evaluate eligibility against rules without leaking check results."""
     if not conditions:
         return {"campaign": campaign, "eligibility": "UNKNOWN", "reasons": ["NO_CONDITIONS"]}
@@ -186,6 +194,30 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
         # 明示的な False は「制限なし」として指定済みと扱う。
         return val is None or (isinstance(val, list) and not val)
 
+    for field in ("valid_from", "valid_until"):
+        if field not in conditions:
+            continue
+        try:
+            boundary, current = _time(conditions[field]), _time(now)
+        except (ValueError, TypeError):
+            all_match = False
+            reasons.append("PERIOD_UNKNOWN:" + field)
+            continue
+        if (field == "valid_from" and current < boundary) or (field == "valid_until" and current >= boundary):
+            return {"campaign": campaign, "eligibility": "EXCLUDED", "reasons": ["OUTSIDE_VALID_PERIOD"]}
+    conditions = dict(conditions)
+    for field in ("eligible_brands", "excluded_brands", "eligible_categories"):
+        value = conditions.get(field)
+        if value is not None and (not isinstance(value, list) or any(not isinstance(v, str) or not v.strip() for v in value)):
+            all_match = False
+            reasons.append("INVALID:" + field)
+            conditions[field] = None
+    for field in ("sale_exclusion", "first_order_only"):
+        value = conditions.get(field)
+        if value is not None and type(value) is not bool:
+            all_match = False
+            reasons.append("INVALID:" + field)
+            conditions[field] = None
     # 完全性チェック：全次元が明示されているか（False等の明示的无制限も含む）
     dims_present = {
         "brand": not _is_unspecified(conditions.get("excluded_brands")) or not _is_unspecified(conditions.get("eligible_brands")),
@@ -257,7 +289,7 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
     min_spend_minor = conditions.get("min_spend_minor")
     
     if not _is_unspecified(min_spend_minor):
-        if not isinstance(min_spend_minor, int) or min_spend_minor < 0:
+        if type(min_spend_minor) is not int or min_spend_minor < 0:
             all_match = False; reasons.append("MIN_SPEND_INVALID")
         elif scope.get("currency") != min_spend_curr:
             all_match = False; reasons.append("CURRENCY_MISMATCH")
@@ -266,7 +298,7 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
     elif not _is_unspecified(min_spend_major) and not _is_unspecified(min_spend_curr):
         try:
             major_dec = Decimal(str(min_spend_major))
-            if major_dec < 0:
+            if not major_dec.is_finite() or major_dec < 0:
                 all_match = False; reasons.append("MIN_SPEND_INVALID")
             elif scope.get("currency") != min_spend_curr:
                 all_match = False; reasons.append("CURRENCY_MISMATCH")
@@ -294,6 +326,20 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
         return {"campaign": campaign, "eligibility": "MATCH", "reasons": ["ALL_RULES_MATCHED"]}
         
     return {"campaign": campaign, "eligibility": "UNKNOWN", "reasons": reasons}
+
+
+def _valid_applied_check(check, scope):
+    try:
+        return (check.get("status") == "APPLICABLE"
+                and context(**check["scope"]) == scope
+                and check.get("conditions_confirmed") is True
+                and check.get("usage_available") is True
+                and _minor(check.get("post_minor"), "post_minor") < scope["base_minor"]
+                and bool(_required(check.get("evidence_ref"), "evidence_ref"))
+                and bool(_url(check.get("source_url")))
+                and _time(check["expires_at"]) > _time(check["checked_at"]))
+    except (ValueError, TypeError, KeyError):
+        return False
 
 
 def rank_candidates(assessed, evaluated, checks, discoveries, *, scope, now, max_age_seconds):
@@ -390,7 +436,9 @@ def rank_candidates(assessed, evaluated, checks, discoveries, *, scope, now, max
                 status = "STALE"
             elif obs_latest.get(campaign, datetime.min.replace(tzinfo=timezone.utc)) > top_chk_dt:
                 status = "STALE"
-            elif status == "APPLICABLE" and (is_unknown_expiry or not c_data.get("conditions_confirmed") or not c_data.get("usage_available")):
+            elif status == "APPLICABLE" and (is_unknown_expiry or not _valid_applied_check(c_data, scope)
+                    or merged[campaign]["eligibility"] != "MATCH"
+                    or merged[campaign]["campaign_confidence"] in {"EXPIRED", "RETIRED", "CONFLICT", "LIKELY_INVALID"}):
                 status = "UNKNOWN" # 安全契約: 期限・条件確認・利用可能度が揃っていないAPPLICABLEはUNKNOWNへ
         else:
             # 同時刻に複数の異なる証拠がある場合は矛盾としてUNKNOWN
@@ -431,9 +479,9 @@ class CouponBridge:
         if allowed_shops is None:
             self._allowed_shops = frozenset()
         else:
-            self._allowed_shops = frozenset(
-                str(s).strip() for s in allowed_shops if s is not None and str(s).strip()
-            )
+            if isinstance(allowed_shops, (str, bytes, dict)):
+                raise ValueError("allowed_shops must be a collection of shop codes")
+            self._allowed_shops = frozenset(_required(s, "allowed shop") for s in allowed_shops)
 
     def _assert_allowed_shop(self, shop_code):
         code = _required(shop_code, "shop_code")
@@ -522,6 +570,7 @@ class CouponBridge:
         supply a discounted subtotal. No code guessing, cart creation or payment.
         """
         scope = context(**scope)
+        self._assert_allowed_shop(scope["shop_code"])
         checked = _time(checked_at)
         expires = _time(expires_at) if expires_at is not None else None
         if status not in {"APPLICABLE", "NOT_APPLICABLE", "UNKNOWN"}:
@@ -547,20 +596,26 @@ class CouponBridge:
                        (key, _id(scope), row["campaign"], checked, _json(row)))
         return key
 
-    def select(self, scope, *, now, max_age_seconds):
+    def select(self, scope, *, now, max_age_seconds, product_facts=None):
         """Return price evidence for the exact context; never approve sale.
 
         Later failures supersede earlier successes. Conflicting same-time checks
         fail closed. Newer discovery evidence triggers re-check. No stacking.
         """
         scope = context(**scope)
+        base = scope["base_minor"]
+        if scope["shop_code"] not in self._allowed_shops:
+            return dict(status="NO_VERIFIED_DISCOUNT", normal_minor=base, effective_minor=base, campaign=None, check_id=None, sale_approved=False)
         now = _time(now)
         max_age = _minor(max_age_seconds, "max_age_seconds", True)
         cutoff = (datetime.fromisoformat(now) - timedelta(seconds=max_age)).isoformat(timespec="microseconds")
         with self._connection() as db:
             rows = db.execute("SELECT id, campaign, checked_at, payload FROM ahc_coupon_checks_v1 WHERE context_id=? AND checked_at<=? ORDER BY checked_at DESC, id", (_id(scope), now)).fetchall()
-            observations = db.execute("SELECT campaign, MAX(observed_at) AS latest FROM ahc_coupon_observations_v1 WHERE shop_code=? AND observed_at<=? GROUP BY campaign", (scope["shop_code"], now)).fetchall()
-        latest = {r["campaign"]: r["latest"] for r in observations}
+            observations = db.execute("SELECT campaign, observed_at, payload FROM ahc_coupon_observations_v1 WHERE shop_code=? AND observed_at<=?", (scope["shop_code"], now)).fetchall()
+        latest = {}
+        for r in observations:
+            latest[r["campaign"]] = max(latest.get(r["campaign"], ""), r["observed_at"])
+        assessed = {a["campaign"]: a for a in assess_campaigns([json.loads(r["payload"]) for r in observations], now=now)}
         groups = {}
         for r in rows:
             group = groups.setdefault(r["campaign"], [])
@@ -572,9 +627,15 @@ class CouponBridge:
                 continue
             r = group[0]
             check = json.loads(r["payload"])
-            if (check["status"] != "APPLICABLE" or r["checked_at"] < cutoff
-                    or check["expires_at"] <= now
+            if (not _valid_applied_check(check, scope) or r["checked_at"] < cutoff
+                    or _time(check["expires_at"]) <= now
                     or latest.get(campaign, "") > r["checked_at"]):
+                continue
+            a = assessed.get(campaign)
+            if a is None or a["campaign_confidence"] in {"EXPIRED", "RETIRED", "CONFLICT", "LIKELY_INVALID"}:
+                continue
+            if evaluate_eligibility(campaign, scope, product_facts or {},
+                                    a["conditions"], now=now)["eligibility"] != "MATCH":
                 continue
             eligible.append((check["post_minor"], campaign, r["id"], check))
         base = scope["base_minor"]
@@ -590,6 +651,8 @@ class CouponBridge:
     def list_candidates(self, scope, *, now, max_age_seconds, product_facts):
         """Return ranked coupon candidates for a scope, recomputed from saved observations."""
         scope = context(**scope)
+        if scope["shop_code"] not in self._allowed_shops:
+            return []
         scope_id = _id(scope)
         now_t = _time(now)
         with self._connection() as db:
@@ -605,6 +668,6 @@ class CouponBridge:
         
         evaluated = []
         for a in assessed:
-            evaluated.append(evaluate_eligibility(a["campaign"], scope, product_facts, a.get("conditions", {})))
+            evaluated.append(evaluate_eligibility(a["campaign"], scope, product_facts, a.get("conditions", {}), now=now_t))
                 
         return rank_candidates(assessed, evaluated, checks, discoveries, scope=scope, now=now_t, max_age_seconds=max_age_seconds)
