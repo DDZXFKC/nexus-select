@@ -1,87 +1,125 @@
 #!/usr/bin/env python3
 import subprocess
-import re
-from typing import Optional
+import ipaddress
+import os
 
-# 期待される出口IP（オーナー指定値）
+# 実IPを公開リポジトリにハードコードしない（環境変数から取得）
 EXPECTED_IPS = {
-    "DE": "187.40.57.138",
-    "US": "2.56.191.90"
+    "DE": os.environ.get("AHC_VPN_DE_IP"),
+    "US": os.environ.get("AHC_VPN_US_IP")
 }
 
-def get_default_gateway_interface() -> Optional[str]:
-    """デフォルトルートのインターフェースを取得する"""
+def parse_route_output(output):
+    for line in output.splitlines():
+        if "interface:" in line:
+            return line.split("interface:")[1].strip()
+    return None
+
+def get_default_route_iface():
     try:
-        result = subprocess.run(
-            ["/sbin/netstat", "-rn"],
-            capture_output=True, text=True, timeout=5
-        )
-        # default 行を探す
-        for line in result.stdout.splitlines():
-            if line.startswith("default"):
-                parts = line.split()
-                if len(parts) >= 6:
-                    return parts[5]  # インターフェース名
-        return None
-    except Exception:
-        return None
+        res = subprocess.run(["/sbin/route", "-n", "get", "default"], capture_output=True, text=True, timeout=5)
+        if res.returncode != 0:
+            return None, "route command failed"
+        return parse_route_output(res.stdout), None
+    except Exception as e:
+        return None, str(e)
 
-def get_interface_ip(interface: str, timeout: int = 10) -> Optional[str]:
-    """指定インターフェースを経由した出口IPを取得する"""
+def get_active_utun_interfaces():
     try:
-        result = subprocess.run(
-            ["/usr/bin/curl", "--interface", interface, "-s", "https://api.ipify.org"],
-            capture_output=True, text=True, timeout=timeout
-        )
-        ip = result.stdout.strip()
-        # 簡易的なIPフォーマット検証
-        if re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", ip):
-            return ip
-        return None
-    except Exception:
-        return None
+        res = subprocess.run(["/sbin/ifconfig", "-l"], capture_output=True, text=True, timeout=5)
+        if res.returncode != 0:
+            return [], "ifconfig -l failed"
+        interfaces = res.stdout.split()
+        return [iface for iface in interfaces if iface.startswith("utun")], None
+    except Exception as e:
+        return [], str(e)
 
-def get_active_utun_interfaces() -> list:
-    """アクティブなutunインターフェースのリストを取得する"""
+def is_iface_active(iface):
     try:
-        result = subprocess.run(
-            ["/sbin/ifconfig", "-l"],
-            capture_output=True, text=True, timeout=5
-        )
-        interfaces = result.stdout.split()
-        return [iface for iface in interfaces if iface.startswith("utun")]
-    except Exception:
-        return []
+        res = subprocess.run(["/sbin/ifconfig", iface], capture_output=True, text=True, timeout=5)
+        if res.returncode != 0:
+            return False, "ifconfig failed"
+        return "status: active" in res.stdout, None
+    except Exception as e:
+        return False, str(e)
 
-def probe_status() -> str:
-    """
-    複合判定でVPN接続状態を返す。
-    戻り値: DE_CONNECTED / US_CONNECTED / DISCONNECTED / UNKNOWN
-    """
-    # 1. デフォルトゲートウェイの確認
-    default_iface = get_default_gateway_interface()
-    active_utuns = get_active_utun_interfaces()
+def get_exit_ip(iface):
+    try:
+        res = subprocess.run(["/usr/bin/curl", "--interface", iface, "-s", "https://api.ipify.org"], capture_output=True, text=True, timeout=10)
+        if res.returncode != 0 or not res.stdout:
+            return None, "curl failed or empty response"
+        ip_str = res.stdout.strip()
+        ipaddress.ip_address(ip_str) # 例外を発生させることでIPフォーマットを検証
+        return ip_str, None
+    except Exception as e:
+        return None, str(e)
 
-    if not active_utuns:
-        return "DISCONNECTED"
+def probe_status():
+    evidence = []
+    errors = []
+    profiles = {"DE": "UNKNOWN", "US": "UNKNOWN"}
+    unmanaged_vpn = "UNKNOWN"
+    exit_country = "UNKNOWN"
+    verified = False
+    network_reachable = False
 
-    # 確認すべきインターフェース（デフォルトルートがutunなら優先）
-    target_ifaces = []
-    if default_iface and default_iface.startswith("utun"):
-        target_ifaces.append(default_iface)
+    iface, err = get_default_route_iface()
+    if err:
+        errors.append(f"route: {err}")
+    else:
+        evidence.append(f"Default route interface: {iface}")
+        if iface and iface.startswith("utun"):
+            active, a_err = is_iface_active(iface)
+            if a_err:
+                errors.append(f"ifconfig active check: {a_err}")
+            elif active:
+                unmanaged_vpn = "CONNECTED"
+                evidence.append(f"Interface {iface} is active.")
 
-    # その他のutunも追加
-    for utun in active_utuns:
-        if utun not in target_ifaces:
-            target_ifaces.append(utun)
+                # 外部IP確認（補助検証）
+                ip, ip_err = get_exit_ip(iface)
+                if ip_err:
+                    errors.append(f"curl: {ip_err}")
+                    network_reachable = False
+                else:
+                    network_reachable = True
+                    evidence.append(f"Exit IP via {iface}: {ip}")
 
-    # 2. 各utunインターフェース経由の出口IPを確認
-    for iface in target_ifaces:
-        ip = get_interface_ip(iface)
-        if ip:
-            for target, expected_ip in EXPECTED_IPS.items():
-                if ip == expected_ip:
-                    return f"{target}_CONNECTED"
+                    # 期待値と照合してプロファイルを確定
+                    for p, expected_ip in EXPECTED_IPS.items():
+                        if expected_ip and ip == expected_ip:
+                            profiles[p] = "CONNECTED"
+                            verified = True
+                            # exit_country 等の追加判定があればここで実施
+                            break
+            else:
+                evidence.append(f"Interface {iface} is inactive.")
+                unmanaged_vpn = "DISCONNECTED"
+                profiles["DE"] = "DISCONNECTED"
+                profiles["US"] = "DISCONNECTED"
+                verified = True
+        else:
+            # デフォルトルートが utun ではない場合（en0等）
+            evidence.append("Default route is not utun.")
+            utuns, u_err = get_active_utun_interfaces()
+            if u_err:
+                errors.append(f"ifconfig -l: {u_err}")
+            elif not utuns:
+                # utunが1つも存在しなければ、完全に未接続と断定
+                unmanaged_vpn = "DISCONNECTED"
+                profiles["DE"] = "DISCONNECTED"
+                profiles["US"] = "DISCONNECTED"
+                verified = True
+            else:
+                evidence.append(f"utun interfaces exist: {utuns}. Possible split tunnel.")
+                # スプリットトンネル等の可能性があるため UNKNOWN を維持
 
-    # utunは存在するが期待するIPが取得できない場合は不明
-    return "UNKNOWN"
+    return {
+        "profiles": profiles,
+        "unmanaged_vpn": unmanaged_vpn,
+        "exit_country": exit_country,
+        "network_reachable": network_reachable,
+        "evidence": evidence,
+        "errors": errors,
+        "verified": verified
+    }

@@ -1,89 +1,81 @@
 #!/usr/bin/env python3
 import subprocess
-import json
-from typing import Dict, Any
+import os
+import sys
 
-# 期待されるショートカット名
-EXPECTED_SHORTCUTS = [
-    "AHC DE Connect",
-    "AHC DE Disconnect",
-    "AHC US Connect",
-    "AHC US Disconnect"
-]
+# 同一ディレクトリ基準でモジュールを読み込む
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from status_probe import probe_status
 
-def list_shortcuts() -> list:
-    """登録されているショートカットのリストを取得する"""
+ALLOWED_TARGETS = ["DE", "US"]
+EXPECTED_SHORTCUTS = [f"AHC {t} Connect" for t in ALLOWED_TARGETS] + [f"AHC {t} Disconnect" for t in ALLOWED_TARGETS]
+
+def list_shortcuts():
     try:
-        result = subprocess.run(
-            ["/usr/bin/shortcuts", "list"],
-            capture_output=True, text=True, timeout=10
-        )
-        if result.returncode != 0:
-            return []
-        return result.stdout.splitlines()
+        res = subprocess.run(["/usr/bin/shortcuts", "list"], capture_output=True, text=True, timeout=10)
+        if res.returncode == 0:
+            return res.stdout.splitlines(), None
+        return [], f"shortcuts list failed: {res.stderr}"
     except subprocess.TimeoutExpired:
-        return []
-    except Exception:
-        return []
-
-def verify_shortcuts() -> bool:
-    """必須ショートカットがすべて登録されているか確認する"""
-    registered = list_shortcuts()
-    return all(sc in registered for sc in EXPECTED_SHORTCUTS)
-
-def run_shortcut(name: str, timeout: int = 30) -> Dict[str, Any]:
-    """
-    ショートカットを実行する。
-    タイムアウト時は終了コードで成功判定せず、status_probeで実状態を確認する。
-    """
-    try:
-        subprocess.run(
-            ["/usr/bin/shortcuts", "run", name],
-            capture_output=True, text=True, timeout=timeout
-        )
-        return {"executed": True, "timeout": False}
-    except subprocess.TimeoutExpired:
-        # タイムアウトしてもバックグラウンドで接続処理が続いている可能性がある
-        return {"executed": False, "timeout": True}
+        return [], "shortcuts list timeout"
     except Exception as e:
-        return {"executed": False, "timeout": False, "error": str(e)}
+        return [], str(e)
 
-def connect(target: str = "DE") -> Dict[str, Any]:
-    """指定ターゲット(DE/US)のVPN接続ショートカットを実行する"""
-    from status_probe import probe_status
+def verify_shortcuts():
+    registered, err = list_shortcuts()
+    if err:
+        return False, err
+    missing = [sc for sc in EXPECTED_SHORTCUTS if sc not in registered]
+    if missing:
+        return False, f"Missing shortcuts: {missing}"
+    return True, None
 
-    name = f"AHC {target.upper()} Connect"
-    exec_result = run_shortcut(name)
+def run_shortcut(name, timeout=30):
+    """実行結果を4種に区別し、終了コードだけで成功判定しない"""
+    try:
+        res = subprocess.run(["/usr/bin/shortcuts", "run", name], capture_output=True, text=True, timeout=timeout)
+        if res.returncode == 0:
+            return "COMPLETED", res.stdout.strip()
+        else:
+            return "COMMAND_ERROR", res.stderr.strip()
+    except subprocess.TimeoutExpired:
+        return "TIMEOUT", None
+    except Exception as e:
+        return "EXECUTION_ERROR", str(e)
 
-    # 実行後の状態を確認
-    current_status = probe_status()
-    expected_status = f"{target.upper()}_CONNECTED"
+def connect(target):
+    if target not in ALLOWED_TARGETS:
+        return {"success": False, "error": "Invalid target"}
 
-    if current_status == expected_status:
-        return {"success": True, "status": current_status}
-    else:
-        # 状態が一致しない場合は次の操作を禁止するため失敗を返す
-        return {
-            "success": False,
-            "status": current_status,
-            "message": f"Connection mismatch: expected {expected_status}, got {current_status}"
-        }
+    name = f"AHC {target} Connect"
+    exec_status, exec_msg = run_shortcut(name)
 
-def disconnect(target: str = "DE") -> Dict[str, Any]:
-    """指定ターゲット(DE/US)のVPN切断ショートカットを実行する"""
-    from status_probe import probe_status
+    # 独自のポーリングはせず、現在の状態を1回取得するだけ
+    current_probe = probe_status()
+    actual_state = current_probe["profiles"].get(target, "UNKNOWN")
 
-    name = f"AHC {target.upper()} Disconnect"
-    exec_result = run_shortcut(name)
+    return {
+        "exec_result": exec_status,
+        "exec_msg": exec_msg,
+        "observed_state": actual_state,
+        "probe_data": current_probe,
+        "success": (exec_status == "COMPLETED" and actual_state == "CONNECTED")
+    }
 
-    # 実行後の状態を確認
-    current_status = probe_status()
+def disconnect(target):
+    if target not in ALLOWED_TARGETS:
+        return {"success": False, "error": "Invalid target"}
 
-    if current_status == "DISCONNECTED":
-        return {"success": True, "status": current_status}
-    else:
-        return {
-            "success": False,
-            "status": current_status,
-            "message": f"Disconnection failed or still connected: {current_status}"
-        }
+    name = f"AHC {target} Disconnect"
+    exec_status, exec_msg = run_shortcut(name)
+
+    current_probe = probe_status()
+    actual_state = current_probe["profiles"].get(target, "UNKNOWN")
+
+    return {
+        "exec_result": exec_status,
+        "exec_msg": exec_msg,
+        "observed_state": actual_state,
+        "probe_data": current_probe,
+        "success": (exec_status == "COMPLETED" and actual_state == "DISCONNECTED")
+    }
