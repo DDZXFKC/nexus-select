@@ -54,12 +54,7 @@ def _id(value):
 
 def context(*, shop_code, variant_id, currency, destination, account_scope,
             quantity, base_minor, basket_key):
-    """Exact quote scope. account_scope/basket_key are opaque, non-secret IDs.
-
-    base_minor is the current merchandise subtotal, including quantity and
-    any already-applied public sale price, but before the coupon being tested.
-    basket_key identifies the entire basket/pricing context, not just a SKU.
-    """
+    """Exact quote scope. account_scope/basket_key are opaque, non-secret IDs."""
     currency = _required(currency, "currency").upper()
     if currency not in {"USD", "EUR", "GBP", "JPY"}:
         raise ValueError("unsupported currency")
@@ -73,102 +68,208 @@ def context(*, shop_code, variant_id, currency, destination, account_scope,
 
 
 def assess_campaigns(discoveries):
-    """Normalize and group discovery evidence, returning campaign confidence.
+    """A-axis: Assess campaign confidence based on evidence provenance.
     
-    Aggregates sources by hostname to treat syndications or identical sources 
-    as a single root evidence. Confidence is based on distinct source count.
+    Groups by origin/report IDs to deduplicate syndications.
     """
     grouped = {}
     for d in discoveries:
         campaign = d.get("campaign")
-        source = d.get("source_url")
-        if not campaign or not source:
+        if not campaign:
             continue
-        host = urlsplit(source).hostname or source
+        origin = d.get("origin_group") or d.get("report_id") or d.get("raw_ref") or _id(d)
+        
         if campaign not in grouped:
-            grouped[campaign] = {"sources": set(), "latest": ""}
-        grouped[campaign]["sources"].add(host)
-        if d.get("observed_at", "") > grouped[campaign]["latest"]:
-            grouped[campaign]["latest"] = d.get("observed_at")
-
-    results = []
-    for campaign, data in grouped.items():
-        sources_count = len(data["sources"])
-        if sources_count >= 2:
-            conf = "HIGH"
-        elif sources_count == 1:
-            conf = "MEDIUM"
-        else:
-            conf = "LOW"
-        results.append({
-            "campaign": campaign,
-            "campaign_confidence": conf,
-            "sources": sorted(list(data["sources"])),
-            "latest_observed_at": data["latest"]
-        })
-    return results
-
-
-def evaluate_eligibility(checks):
-    """Evaluate eligibility based on authorized cart checks."""
-    grouped = {}
-    for c in checks:
-        campaign = c.get("campaign")
-        status = c.get("status")
-        checked_at = c.get("checked_at")
-        if not campaign or not status or not checked_at:
-            continue
-        if campaign not in grouped or checked_at > grouped[campaign]["checked_at"]:
             grouped[campaign] = {
-                "status": status,
-                "checked_at": checked_at
+                "roots": {},
+                "latest_observed_at": "",
+                "conditions_conflict": False,
+                "official_status": "ACTIVE",
+                "negation": None
             }
+        g = grouped[campaign]
+        if origin not in g["roots"]:
+            g["roots"][origin] = d
+        if d.get("observed_at", "") > g["latest_observed_at"]:
+            g["latest_observed_at"] = d.get("observed_at")
+        if d.get("conditions_conflict"):
+            g["conditions_conflict"] = True
+        if d.get("official_status") in ("EXPIRED", "RETIRED"):
+            g["official_status"] = d.get("official_status")
+        if d.get("negation_evidence"):
+            if not g["negation"] or d.get("observed_at", "") > g["negation"].get("observed_at", ""):
+                g["negation"] = d
+
     results = []
     for campaign, data in grouped.items():
-        status = data["status"]
-        if status == "APPLICABLE":
-            elig = "CONFIRMED"
-        elif status == "NOT_APPLICABLE":
-            elig = "REJECTED"
-        else:
-            elig = "UNKNOWN"
+        status = "DISCOVERED"
+        if data["conditions_conflict"]:
+            status = "CONFLICT"
+        elif data["official_status"] == "EXPIRED":
+            status = "EXPIRED"
+        elif data["official_status"] == "RETIRED":
+            status = "RETIRED"
+        elif data["negation"]:
+            status = "LIKELY_INVALID"
+        
         results.append({
             "campaign": campaign,
-            "eligibility": elig,
-            "check_status": status,
-            "latest_checked_at": data["checked_at"]
+            "campaign_confidence": status,
+            "roots_count": len(data["roots"]),
+            "latest_observed_at": data["latest_observed_at"],
+            "conditions": [root.get("conditions", {}) for root in data["roots"].values()]
         })
     return results
 
 
-def rank_candidates(assessed, evaluated):
+def evaluate_eligibility(campaign, scope, product_facts, conditions):
+    """B-axis: Evaluate eligibility against rules without leaking check results."""
+    if not conditions:
+        return {"campaign": campaign, "eligibility": "UNKNOWN", "reasons": ["NO_CONDITIONS"]}
+    
+    reasons = []
+    elig = "MATCH"
+    
+    # 明示除外優先
+    excluded_brands = conditions.get("excluded_brands", [])
+    if excluded_brands is False: excluded_brands = []
+    if product_facts.get("brand") in excluded_brands:
+        return {"campaign": campaign, "eligibility": "EXCLUDED", "reasons": ["BRAND_EXCLUDED"]}
+    
+    eligible_brands = conditions.get("eligible_brands", [])
+    if eligible_brands is False: eligible_brands = []
+    if eligible_brands and product_facts.get("brand") not in eligible_brands:
+        elig = "EXCLUDED"
+        reasons.append("BRAND_NOT_ELIGIBLE")
+        
+    eligible_categories = conditions.get("eligible_categories", [])
+    if eligible_categories is False: eligible_categories = []
+    if eligible_categories and product_facts.get("category") not in eligible_categories:
+        elig = "EXCLUDED"
+        reasons.append("CATEGORY_NOT_ELIGIBLE")
+
+    if conditions.get("sale_exclusion") and product_facts.get("on_sale"):
+        elig = "EXCLUDED"
+        reasons.append("SALE_EXCLUDED")
+        
+    if conditions.get("first_order_only") and not product_facts.get("is_first_order"):
+        elig = "UNKNOWN"
+        reasons.append("REQUIRES_FIRST_ORDER")
+        
+    ship_region = conditions.get("ship_region")
+    if ship_region and scope.get("destination") not in ship_region:
+        elig = "EXCLUDED"
+        reasons.append("REGION_EXCLUDED")
+        
+    min_spend_minor = conditions.get("min_spend_minor")
+    if min_spend_minor and scope.get("base_minor") < min_spend_minor:
+        elig = "EXCLUDED"
+        reasons.append("MIN_SPEND_NOT_MET")
+
+    if elig == "MATCH":
+        reasons.append("ALL_RULES_MATCHED")
+        
+    return {"campaign": campaign, "eligibility": elig, "reasons": reasons}
+
+
+def rank_candidates(assessed, evaluated, checks, *, scope, now, max_age_seconds):
     """Rank candidates across three axes without leaking pricing side effects."""
+    now_str = _time(now)
+    now_dt = datetime.fromisoformat(now_str)
+    max_age = _minor(max_age_seconds, "max_age_seconds", True)
+    cutoff_dt = now_dt - timedelta(seconds=max_age)
+    scope_id = _id(scope)
+    
+    c_axis = {}
+    for c in checks:
+        if _id(c.get("scope", {})) != scope_id:
+            continue
+        campaign = c.get("campaign")
+        checked_at = c.get("checked_at")
+        if not campaign or not checked_at:
+            continue
+            
+        # 未来記録無視および時刻の正規化
+        try:
+            chk_dt = datetime.fromisoformat(str(checked_at).replace("Z", "+00:00"))
+            if chk_dt.utcoffset() is None:
+                continue # タイムゾーン不明は無視
+            chk_dt = chk_dt.astimezone(timezone.utc)
+        except Exception:
+            continue
+            
+        if chk_dt > now_dt:
+            continue
+            
+        if campaign not in c_axis or chk_dt > c_axis[campaign]["chk_dt"]:
+            c_axis[campaign] = {
+                "status": c.get("status"),
+                "chk_dt": chk_dt,
+                "expires_at": c.get("expires_at")
+            }
+        elif chk_dt == c_axis[campaign]["chk_dt"]:
+            if c.get("status") != c_axis[campaign]["status"]:
+                c_axis[campaign]["status"] = "UNKNOWN" # 同時刻矛盾
+
     merged = {}
     for a in assessed:
         merged[a["campaign"]] = {
             "campaign": a["campaign"],
-            "campaign_confidence": a.get("campaign_confidence", "LOW"),
-            "eligibility": "UNTESTED",
-            "check_status": "UNTESTED"
+            "campaign_confidence": a.get("campaign_confidence", "DISCOVERED"),
+            "eligibility": "UNKNOWN",
+            "check_status": "NOT_CHECKED",
+            "reasons": []
         }
     for e in evaluated:
         if e["campaign"] in merged:
             merged[e["campaign"]]["eligibility"] = e["eligibility"]
-            merged[e["campaign"]]["check_status"] = e["check_status"]
+            merged[e["campaign"]]["reasons"] = e.get("reasons", [])
         else:
             merged[e["campaign"]] = {
                 "campaign": e["campaign"],
-                "campaign_confidence": "LOW",
+                "campaign_confidence": "DISCOVERED",
                 "eligibility": e["eligibility"],
-                "check_status": e["check_status"]
+                "check_status": "NOT_CHECKED",
+                "reasons": e.get("reasons", [])
             }
-    
-    conf_order = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
-    elig_order = {"CONFIRMED": 0, "UNKNOWN": 1, "UNTESTED": 2, "REJECTED": 3}
-    
+            
+    for campaign, c_data in c_axis.items():
+        if campaign in merged:
+            status = c_data["status"]
+            expires_at_raw = c_data.get("expires_at")
+            
+            # 期限の評価
+            is_expired = False
+            if expires_at_raw is not None:
+                try:
+                    exp_dt = datetime.fromisoformat(str(expires_at_raw).replace("Z", "+00:00"))
+                    if exp_dt.utcoffset() is None:
+                        status = "UNKNOWN"
+                    elif exp_dt.astimezone(timezone.utc) <= now_dt:
+                        is_expired = True
+                except Exception:
+                    status = "UNKNOWN"
+            else:
+                # APPLICABLEの場合はexpires_atが必須だが、純粋関数としては防御的にUNKNOWN
+                if status == "APPLICABLE":
+                    status = "UNKNOWN"
+            
+            if is_expired:
+                status = "STALE"
+            elif c_data["chk_dt"] < cutoff_dt:
+                status = "STALE"
+                
+            merged[campaign]["check_status"] = status
+            merged[campaign]["latest_checked_at"] = c_data["chk_dt"].isoformat(timespec="microseconds")
+
     candidates = list(merged.values())
+    conf_order = {"DISCOVERED": 0, "CONFLICT": 1, "LIKELY_INVALID": 2, "EXPIRED": 3, "RETIRED": 4}
+    elig_order = {"MATCH": 0, "UNKNOWN": 1, "EXCLUDED": 2}
+    check_order = {"APPLICABLE": 0, "UNKNOWN": 1, "NOT_CHECKED": 2, "STALE": 3, "NOT_APPLICABLE": 4}
+    
     candidates.sort(key=lambda x: (
         elig_order.get(x["eligibility"], 9),
+        check_order.get(x["check_status"], 9),
         conf_order.get(x["campaign_confidence"], 9),
         x["campaign"]
     ))
@@ -212,14 +313,17 @@ class CouponBridge:
             """)
 
     def record_discovery(self, *, shop_code, campaign, source_url, observed_at,
-                         conditions):
+                         conditions, origin_group=None, report_id=None, raw_ref=None,
+                         official_status="ACTIVE", conditions_conflict=False, negation_evidence=False):
         """A discovery is evidence only, never a verified discount."""
         if not isinstance(conditions, dict):
             raise ValueError("conditions must be an object")
         row = dict(shop_code=_required(shop_code, "shop_code"),
                    campaign=_required(campaign, "campaign"),
                    source_url=_url(source_url), observed_at=_time(observed_at),
-                   conditions=conditions)
+                   conditions=conditions, origin_group=origin_group, report_id=report_id,
+                   raw_ref=raw_ref, official_status=official_status,
+                   conditions_conflict=conditions_conflict, negation_evidence=negation_evidence)
         key = _id(row)
         with self._connection() as db:
             db.execute("INSERT OR IGNORE INTO ahc_coupon_observations_v1 VALUES (?,?,?,?,?)",
@@ -227,11 +331,7 @@ class CouponBridge:
         return key
 
     def record_raw(self, raw, *, observed_at):
-        """Reuse existing ahc.coupons.base.RawCoupon adapter output.
-
-        Do not infer store from an aggregator title or treat defaults as facts.
-        Storeless/non-code deals require a separate review, not a guessed store.
-        """
+        """Reuse existing ahc.coupons.base.RawCoupon adapter output."""
         if not raw.store_slug or not raw.code:
             raise ValueError("unresolved store/campaign; manual review required")
         data = {name: getattr(raw, name, None) for name in (
@@ -250,11 +350,7 @@ class CouponBridge:
     def record_check(self, *, scope, campaign, source_url, checked_at, expires_at,
                      status, post_minor=None, conditions_confirmed=False,
                      usage_available=False, evidence_ref):
-        """Persist an authorized, exact-context cart observation or failure.
-
-        Only APPLICABLE with confirmed conditions, usage and known expiry can
-        supply a discounted subtotal. No code guessing, cart creation or payment.
-        """
+        """Persist an authorized, exact-context cart observation or failure."""
         scope = context(**scope)
         checked = _time(checked_at)
         expires = _time(expires_at) if expires_at is not None else None
@@ -282,11 +378,7 @@ class CouponBridge:
         return key
 
     def select(self, scope, *, now, max_age_seconds):
-        """Return price evidence for the exact context; never approve sale.
-
-        Later failures supersede earlier successes. Conflicting same-time checks
-        fail closed. Newer discovery evidence triggers re-check. No stacking.
-        """
+        """Return price evidence for the exact context; never approve sale."""
         scope = context(**scope)
         now = _time(now)
         max_age = _minor(max_age_seconds, "max_age_seconds", True)
@@ -321,17 +413,25 @@ class CouponBridge:
                     campaign=campaign, check_id=key, checked_at=check["checked_at"],
                     expires_at=check["expires_at"], sale_approved=False)
 
-    def list_candidates(self, shop_code):
-        """Return ranked coupon candidates for a shop, recomputed from saved observations."""
+    def list_candidates(self, scope, *, now, max_age_seconds, product_facts):
+        """Return ranked coupon candidates for a scope, recomputed from saved observations."""
+        scope = context(**scope)
+        scope_id = _id(scope)
+        now = _time(now)
         with self._connection() as db:
-            obs_rows = db.execute("SELECT payload FROM ahc_coupon_observations_v1 WHERE shop_code=?", (shop_code,)).fetchall()
-            chk_rows = db.execute("SELECT payload FROM ahc_coupon_checks_v1").fetchall()
+            obs_rows = db.execute("SELECT payload FROM ahc_coupon_observations_v1 WHERE shop_code=?", (scope["shop_code"],)).fetchall()
+            chk_rows = db.execute("SELECT payload FROM ahc_coupon_checks_v1 WHERE context_id=?", (scope_id,)).fetchall()
         
         discoveries = [json.loads(r["payload"]) for r in obs_rows]
-        checks = []
-        for r in chk_rows:
-            p = json.loads(r["payload"])
-            if p.get("scope", {}).get("shop_code") == shop_code:
-                checks.append(p)
+        checks = [json.loads(r["payload"]) for r in chk_rows]
+        
+        assessed = assess_campaigns(discoveries)
+        
+        evaluated = []
+        for a in assessed:
+            # 複数のconditionsがある場合は最初のものを代表として評価（設計上の単純化）
+            conditions = a["conditions"][0] if a["conditions"] else {}
+            evaluated.append(evaluate_eligibility(a["campaign"], scope, product_facts, conditions))
                 
-        return rank_candidates(assess_campaigns(discoveries), evaluate_eligibility(checks))
+        return rank_candidates(assessed, evaluated, checks, scope=scope, now=now, max_age_seconds=max_age_seconds)
+
