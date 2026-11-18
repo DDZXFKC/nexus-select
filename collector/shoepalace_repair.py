@@ -35,6 +35,34 @@ def load_reference(path, fields):
             result[k] = value
     return result
 
+def load_cm_reference(path):
+    """Exact product-level verified JP/CM evidence; legacy rows kept separate."""
+    if not path:
+        return {}
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        fields = set(reader.fieldnames or [])
+        if "product_id" not in fields:
+            return load_reference(path, ["brand", "department", "size_original", "cm"])
+        required = {"product_id", "size_original", "cm", "brand", "department",
+                    "model", "age_group", "size_system", "source_url", "verified"}
+        if not required.issubset(fields):
+            raise ValueError("Incomplete scoped cm reference headers")
+        result = {}
+        for row in reader:
+            if key(row["verified"]) != "true":
+                continue
+            if not all(row[n].strip() for n in required):
+                raise ValueError("Incomplete verified cm evidence")
+            if not row["source_url"].startswith("https://"):
+                raise ValueError("Missing HTTPS evidence URL")
+            k = (key(row["product_id"]), key(row["size_original"]))
+            entry = dict(row)
+            if k in result and result[k] != entry:
+                raise ValueError(f"Conflicting product size evidence: {k}")
+            result[k] = entry
+        return result
+
 def money(value):
     if value is None or value == "":
         return None
@@ -78,7 +106,7 @@ def repair(products, cm=None, ja=None):
         color_status = "TAG_SUPPORTED" if match else "UNKNOWN"
         # A single terminal bracket (optionally followed by the known shipping suffix)
         # is a candidate, not verified color evidence. Do not strip it from the title.
-        if not match and len(candidates) == 1 and color_tags:
+        if not match and len(candidates) == 1:
             candidate = candidates[0]
             suffix = title[candidate.end():].strip().casefold()
             value = candidate.group(1).strip()
@@ -120,7 +148,14 @@ def repair(products, cm=None, ja=None):
             variant_ids.add(vid)
             size = size_value(p, v)
             ck = (brand_key(p.get("vendor")), key(department), key(size))
-            val = cm.get(ck) if footwear and all(ck) else None
+            # Exact product ID scopes model/age/size-system evidence; no generic
+            # fallback for HOKA or UGG, where model/age differences are known.
+            alpha_size = key(size) in {"xs", "s", "m", "l", "xl", "xxl", "os", "one size"}
+            applicable = footwear and not alpha_size
+            scoped = cm.get((key(pid), key(size))) if applicable and size else None
+            if scoped is not None and (brand_key(scoped["brand"]) != ck[0] or key(scoped["department"]) != ck[1]):
+                raise ValueError(f"CM evidence product metadata mismatch: {pid}")
+            val = scoped["cm"] if scoped else (cm.get(ck) if applicable and all(ck) and ck[0] not in {"hoka", "ugg"} else None)
             if val is not None:
                 try:
                     d = Decimal(val)
@@ -128,14 +163,20 @@ def repair(products, cm=None, ja=None):
                         raise ValueError("Invalid cm")
                 except InvalidOperation as e:
                     raise ValueError("Invalid cm reference") from e
-            if footwear and (size is None or val is None):
+            if applicable and (size is None or val is None):
                 issues.append([pid, vid, "cm_reference_missing"])
+            if footwear and alpha_size:
+                issues.append([pid, vid, "footwear_alpha_size_review"])
             current, compare = money(v.get("price")), money(v.get("compare_at_price"))
             if current is None:
                 issues.append([pid, vid, "price_missing"])
             variants.append({"shop_code": SHOP, "product_id": pid, "variant_id": vid,
                              "sku": v.get("sku"), "size_original": size, "cm": val,
-                             "cm_status": ("MATCHED" if val is not None else "MISSING") if footwear else "NOT_APPLICABLE",
+                             "cm_status": ("MATCHED" if val is not None else "MISSING") if applicable else ("SIZE_SYSTEM_REVIEW" if footwear else "NOT_APPLICABLE"),
+                             "cm_source_url": scoped["source_url"] if scoped else None,
+                             "cm_model": scoped["model"] if scoped else None,
+                             "cm_age_group": scoped["age_group"] if scoped else None,
+                             "cm_size_system": scoped["size_system"] if scoped else None,
                              "currency": "USD", "price_minor": current,
                              "compare_at_price_minor": compare,
                              "regular_price_minor": compare if compare is not None and compare > 0 and current is not None and compare >= current else None,
@@ -171,7 +212,7 @@ def main():
     products = []
     for path in args.raw:
         products.extend(json.loads(path.read_text(encoding="utf-8"))["products"])
-    result = repair(products, load_reference(args.cm_reference, ["brand","department","size_original","cm"]),
+    result = repair(products, load_cm_reference(args.cm_reference),
                     load_reference(args.ja_reference, ["product_id","description_ja"]))
     rows, variants, issues, stats = result
     args.output.mkdir(parents=True, exist_ok=False)
