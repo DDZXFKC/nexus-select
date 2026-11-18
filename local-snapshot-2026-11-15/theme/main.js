@@ -257,70 +257,110 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /*
-   * Center crop for image swatches (owner, 2026-11-19 06:32: "cut out the
-   * middle of the product image", not the whole photo in the circle).
-   * Finds the product's bounding box on the white background, then zooms
-   * so the circle shows only the middle part of the product (about half
-   * of its width/height), centered on the product. Circle size/shape
-   * unchanged. If the image cannot be read, a fixed center zoom is used.
+   * Image swatch window (owner decision 2026-11-19, docs/variation-ui-swatch-decision-maou-2026-11-19.md):
+   * the circle must be filled ONLY by the product's colors, never by the
+   * photo's white background. Fully automatic for every product.
+   *  1. Background = near-white/transparent pixels connected to the image
+   *     edge (flood fill), so white parts INSIDE a white shoe still count
+   *     as product.
+   *  2. Find the largest square made only of product pixels (preferring
+   *     squares near the product's center) and zoom so the circle sits
+   *     inside that square. A circle inside an all-product square never
+   *     shows background.
+   *  3. If no usable square is found, keep a fixed center zoom (fallback).
+   * Circle size/shape unchanged.
    */
-  const SWATCH_PORTION = 0.5;
+  const SWATCH_SAMPLE = 120;     // analysis resolution (px, longer side)
+  const SWATCH_MIN_SIDE = 0.06;  // smallest acceptable square (share of width)
+  const SWATCH_INSET = 0.9;      // circle diameter vs square side (edge safety)
 
-  function productBox(img) {
-    const size = 80;
-    const canvas = document.createElement('canvas');
+  function productWindow(img) {
     const ratio = img.naturalWidth / img.naturalHeight || 1;
-    canvas.width = ratio >= 1 ? size : Math.round(size * ratio);
-    canvas.height = ratio >= 1 ? Math.round(size / ratio) : size;
+    const w = ratio >= 1 ? SWATCH_SAMPLE : Math.max(1, Math.round(SWATCH_SAMPLE * ratio));
+    const h = ratio >= 1 ? Math.max(1, Math.round(SWATCH_SAMPLE / ratio)) : SWATCH_SAMPLE;
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-    let x0 = canvas.width, y0 = canvas.height, x1 = -1, y1 = -1;
-    for (let y = 0; y < canvas.height; y++) {
-      for (let x = 0; x < canvas.width; x++) {
-        const i = (y * canvas.width + x) * 4;
-        const alpha = data[i + 3];
-        const light = Math.min(data[i], data[i + 1], data[i + 2]);
-        if (alpha > 16 && light < 235) {
-          if (x < x0) x0 = x;
-          if (y < y0) y0 = y;
-          if (x > x1) x1 = x;
-          if (y > y1) y1 = y;
+    ctx.drawImage(img, 0, 0, w, h);
+    const data = ctx.getImageData(0, 0, w, h).data;
+
+    const isLight = i => data[i * 4 + 3] <= 16 ||
+      Math.min(data[i * 4], data[i * 4 + 1], data[i * 4 + 2]) >= 235;
+
+    // 1. Flood-fill background from the border.
+    const background = new Uint8Array(w * h);
+    const queue = [];
+    const push = i => {
+      if (!background[i] && isLight(i)) {
+        background[i] = 1;
+        queue.push(i);
+      }
+    };
+    for (let x = 0; x < w; x++) { push(x); push((h - 1) * w + x); }
+    for (let y = 0; y < h; y++) { push(y * w); push(y * w + w - 1); }
+    while (queue.length) {
+      const i = queue.pop();
+      const x = i % w;
+      const y = (i - x) / w;
+      if (x > 0) push(i - 1);
+      if (x < w - 1) push(i + 1);
+      if (y > 0) push(i - w);
+      if (y < h - 1) push(i + w);
+    }
+
+    // Product center (for tie-breaking).
+    let sx = 0, sy = 0, n = 0;
+    for (let i = 0; i < w * h; i++) {
+      if (!background[i]) { sx += i % w; sy += Math.floor(i / w); n++; }
+    }
+    if (!n) return null;
+    const cx = sx / n, cy = sy / n;
+
+    // 2. Largest all-product square (dynamic programming).
+    const side = new Uint16Array(w * h);
+    let best = 0, bx = 0, by = 0, bestDist = Infinity;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const i = y * w + x;
+        if (background[i]) continue;
+        const s = (x && y) ? 1 + Math.min(side[i - 1], side[i - w], side[i - w - 1]) : 1;
+        side[i] = s;
+        const mx = x - s / 2 + 0.5, my = y - s / 2 + 0.5;
+        const dist = (mx - cx) ** 2 + (my - cy) ** 2;
+        if (s > best || (s === best && dist < bestDist)) {
+          best = s; bx = x - s + 1; by = y - s + 1; bestDist = dist;
         }
       }
     }
-    if (x1 < x0 || y1 < y0) return null;
-    return {
-      x: x0 / canvas.width, y: y0 / canvas.height,
-      w: (x1 - x0 + 1) / canvas.width, h: (y1 - y0 + 1) / canvas.height,
-      ratio
-    };
+    if (best < SWATCH_MIN_SIDE * w) return null;
+    return { x: bx / w, y: by / h, side: best / w, ratio };
   }
 
-  function applyBox(visual, box) {
+  function applyWindow(visual, win) {
     const size = visual.clientWidth || 36;
-    // The circle covers SWATCH_PORTION of the product's smaller side,
-    // so the swatch is filled by the product's middle (no white margin).
-    const width = size / (SWATCH_PORTION * Math.min(box.w, box.h / box.ratio));
-    const height = width / box.ratio;
-    const left = size / 2 - (box.x + box.w / 2) * width;
-    const top = size / 2 - (box.y + box.h / 2) * height;
+    // Displayed image width so that the square spans size / SWATCH_INSET.
+    const width = size / (SWATCH_INSET * win.side);
+    const height = width / win.ratio;
+    const centerX = (win.x + win.side / 2) * width;
+    const centerY = win.y * height + (win.side * width) / 2;
     visual.style.backgroundSize = width.toFixed(1) + 'px ' + height.toFixed(1) + 'px';
-    visual.style.backgroundPosition = left.toFixed(1) + 'px ' + top.toFixed(1) + 'px';
+    visual.style.backgroundPosition =
+      (size / 2 - centerX).toFixed(1) + 'px ' + (size / 2 - centerY).toFixed(1) + 'px';
   }
 
   function fitSwatchImage(visual, url) {
     const img = new Image();
     img.decoding = 'async';
     img.onload = () => {
-      let box = null;
+      let win = null;
       try {
-        box = productBox(img);
+        win = productWindow(img);
       } catch (e) {
-        box = null;
+        win = null;
       }
-      if (box) {
-        applyBox(visual, box);
+      if (win) {
+        applyWindow(visual, win);
       } else {
         visual.classList.add('nexus-swatch__color--zoom');
       }
