@@ -21,7 +21,8 @@
  *   shop_code,supplier_product_id,supplier_color_key,position,token_original,display_hex,hex_status
  *
  * Run:
- *   wp eval-file tools/ahc_color_components_to_woo.php <csv> [--apply] --path="<Local site>/app/public"
+ *   wp eval-file tools/ahc_color_components_to_woo.php <csv> [--apply] [--only-confirmed] --path="<Local site>/app/public"
+ *   --only-confirmed: skip products whose first 3 colors are not all approved (they keep the current swatch).
  */
 if (!defined('ABSPATH')) exit(1);
 $host = wp_parse_url(home_url(), PHP_URL_HOST);
@@ -31,7 +32,7 @@ if (!preg_match('/(\.local|\.localhost|\.test)$|^localhost$/', (string) $host)) 
 $args = isset($args) && is_array($args) ? $args : [];
 $csv = null; $apply = false;
 foreach ($args as $a) {
-    if ($a === '--apply') $apply = true; elseif ($csv === null) $csv = $a;
+    if ($a === '--apply') $apply = true; elseif ($a === '--only-confirmed') continue; elseif ($csv === null) $csv = $a;
 }
 if (!$csv || !is_readable($csv)) WP_CLI::error('CSV path required and must be readable.');
 
@@ -59,7 +60,8 @@ while (($row = fgetcsv($fh)) !== false) {
 }
 fclose($fh);
 
-$stats = ['written' => 0, 'unchanged' => 0, 'would_write' => 0, 'not_found' => 0, 'color_value_unclear' => 0, 'bad_group' => 0];
+$stats = ['written' => 0, 'unchanged' => 0, 'would_write' => 0, 'not_found' => 0, 'color_value_unclear' => 0, 'bad_group' => 0, 'shown_fully_colored' => 0, 'shown_unconfirmed' => 0];
+$only_confirmed = in_array('--only-confirmed', $args, true);
 foreach ($groups as $pid => $comps) {
     if (!empty($comps['__bad'])) { $stats['bad_group']++; continue; }
     ksort($comps);
@@ -76,6 +78,12 @@ foreach ($groups as $pid => $comps) {
     $value = $values[0];
     // pa_ attributes: the variation form uses the term slug.
     if (taxonomy_exists('pa_color') && ($t = get_term_by('name', $value, 'pa_color'))) $value = $t->slug;
+    $first = array_slice(array_values($comps), 0, 3);
+    $full = $first && !in_array(null, array_column($first, 'hex'), true);
+    $stats[$full ? 'shown_fully_colored' : 'shown_unconfirmed']++;
+    // --only-confirmed: write only products whose first min(3, n) colors are all approved,
+    // so no storefront swatch falls back to the "unconfirmed" circle.
+    if ($only_confirmed && !$full) continue;
     $json = wp_json_encode([$value => array_values($comps)]);
     $old = (string) get_post_meta($post_id, '_ahc_color_components', true);
     if ($old === $json) { $stats['unchanged']++; continue; }
