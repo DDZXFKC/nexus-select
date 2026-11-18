@@ -13,6 +13,10 @@ SHOP = "shoe-palace"
 def key(value):
     return str(value or "").strip().casefold()
 
+def brand_key(value):
+    k = key(value)
+    return {"new_balance": "newbalance", "new balance": "newbalance"}.get(k, k)
+
 def load_reference(path, fields):
     if not path:
         return {}
@@ -22,7 +26,7 @@ def load_reference(path, fields):
         if not set(fields).issubset(reader.fieldnames or []):
             raise ValueError(f"Missing reference fields: {fields}")
         for row in reader:
-            k = tuple(key(row[n]) for n in fields[:-1])
+            k = tuple(brand_key(row[n]) if n == "brand" else key(row[n]) for n in fields[:-1])
             value = row[fields[-1]].strip()
             if not all(k) or not value:
                 raise ValueError("Incomplete reference row")
@@ -64,9 +68,12 @@ def repair(products, cm=None, ja=None):
         if not isinstance(tags, list):
             raise ValueError("Expected Shopify tag list")
         title = p.get("title", "")
-        match = re.search(r"\(([^()]*)\)\s*$", title)
-        color = match.group(1).strip() if match else None
         color_tags = [t[6:] for t in tags if t.startswith("Color_")]
+        matches = [m for m in re.finditer(r"\(([^()]*)\)", title)
+                   if any(re.search(r"(?<!\w)" + re.escape(t) + r"(?!\w)", m.group(1), re.I) for t in color_tags)]
+        match = matches[0] if len(matches) == 1 else None
+        color = match.group(1).strip() if match else None
+        footwear = any(key(t) in {"category_footwear", "footwear", "product_shoes", "shoes"} for t in tags)
         departments = [t[11:] for t in tags if t.startswith("Department_")]
         department = departments[0] if len(departments) == 1 else None
         codes = sorted({t[5:] for t in tags if t.startswith("Code_") and t[5:]})
@@ -79,7 +86,7 @@ def repair(products, cm=None, ja=None):
         stock = True if any(s is True for s in states) else (False if states and all(s is False for s in states) else None)
         translation = ja.get((key(pid),))
         rows.append({"shop_code": SHOP, "product_id": pid, "title_original": title,
-                     "title_without_color": title[:match.start()].rstrip() if match else title,
+                     "title_without_color": (title[:match.start()] + title[match.end():]).strip() if match else title,
                      "color_name": color, "color_tags": color_tags, "brand": p.get("vendor"),
                      "department": department, "source_url": url,
                      "coupon_tag_codes": codes, "coupon_tag_status": "TAGGED_UNVERIFIED" if codes else "NOT_TAGGED",
@@ -96,8 +103,8 @@ def repair(products, cm=None, ja=None):
                 raise ValueError(f"Duplicate variant {vid}")
             variant_ids.add(vid)
             size = size_value(p, v)
-            ck = (key(p.get("vendor")), key(department), key(size))
-            val = cm.get(ck) if all(ck) else None
+            ck = (brand_key(p.get("vendor")), key(department), key(size))
+            val = cm.get(ck) if footwear and all(ck) else None
             if val is not None:
                 try:
                     d = Decimal(val)
@@ -105,13 +112,14 @@ def repair(products, cm=None, ja=None):
                         raise ValueError("Invalid cm")
                 except InvalidOperation as e:
                     raise ValueError("Invalid cm reference") from e
-            if size is None or val is None:
+            if footwear and (size is None or val is None):
                 issues.append([pid, vid, "cm_reference_missing"])
             current, compare = money(v.get("price")), money(v.get("compare_at_price"))
             if current is None:
                 issues.append([pid, vid, "price_missing"])
             variants.append({"shop_code": SHOP, "product_id": pid, "variant_id": vid,
                              "sku": v.get("sku"), "size_original": size, "cm": val,
+                             "cm_status": ("MATCHED" if val is not None else "MISSING") if footwear else "NOT_APPLICABLE",
                              "currency": "USD", "price_minor": current,
                              "compare_at_price_minor": compare,
                              "regular_price_minor": compare if compare is not None and compare > 0 and current is not None and compare >= current else None,
