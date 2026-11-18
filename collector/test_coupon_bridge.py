@@ -150,7 +150,7 @@ class AssessCampaignsTest(unittest.TestCase):
             {"campaign": "C1", "observed_at": LATER, "origin_group": "g2", "success_evidence": True, "success_at": LATER},
         ]
         assessed = assess_campaigns(discoveries, now=LATER)
-        self.assertEqual(assessed[0]["campaign_confidence"], "PROMISING")
+        self.assertEqual(assessed[0]["campaign_confidence"], "DISCOVERED")
 
     def test_official_expired_priority(self):
         discoveries = [
@@ -180,11 +180,18 @@ class EvaluateEligibilityTest(unittest.TestCase):
         self.facts = {"brand": "Nike", "category": "Shoes", "on_sale": False, "is_first_order": True}
 
     def test_full_match(self):
-        # 規約完全性を証明するfixture
-        conditions = {"eligible_brands": ["Nike"], "eligible_categories": ["Shoes"], "sale_exclusion": False}
+        # 規約完全性を証明するfixture（全次元カバー）
+        conditions = {
+            "eligible_brands": ["Nike"],
+            "eligible_categories": ["Shoes"],
+            "sale_exclusion": False,
+            "first_order_only": False,
+            "ship_region": "US-OR",
+            "min_spend_major": 100,
+            "min_spend_currency": "USD"
+        }
         res = evaluate_eligibility("C1", self.scope, self.facts, conditions)
         self.assertEqual(res["eligibility"], "MATCH")
-
     def test_unknown_brand(self):
         conditions = {"eligible_brands": ["Nike"]}
         res = evaluate_eligibility("C1", self.scope, {"brand": None}, conditions)
@@ -219,11 +226,11 @@ class EvaluateEligibilityTest(unittest.TestCase):
         self.assertIn("CURRENCY_MISMATCH", res["reasons"])
 
     def test_min_spend_amount_correct_usd(self):
-        # USD 100 -> 10000 minor
+        # GPT基準「一部の条件次元だけでは完全性がないためUNKNOWN」
         conditions = {"min_spend_major": 100, "min_spend_currency": "USD"}
         res = evaluate_eligibility("C1", self.scope, self.facts, conditions)
-        self.assertEqual(res["eligibility"], "MATCH")
-
+        self.assertEqual(res["eligibility"], "UNKNOWN")
+        self.assertIn("INCOMPLETE_RULES", res["reasons"])
     def test_min_spend_amount_not_met_usd(self):
         # USD 200 -> 20000 minor
         conditions = {"min_spend_major": 200, "min_spend_currency": "USD"}
@@ -270,7 +277,7 @@ class RankCandidatesTest(unittest.TestCase):
         self.assertEqual(ranked[0]["check_status"], "UNKNOWN")
 
     def test_check_only_candidate(self):
-        checks = [{"scope": self.scope, "campaign": "C2", "checked_at": NOW, "expires_at": EXPIRY, "status": "APPLICABLE"}]
+        checks = [{"scope": self.scope, "campaign": "C2", "checked_at": NOW, "expires_at": EXPIRY, "status": "APPLICABLE", "conditions_confirmed": True, "usage_available": True}]
         ranked = rank_candidates([], [], checks, [], scope=self.scope, now=LATER, max_age_seconds=600)
         self.assertEqual(len(ranked), 1)
         self.assertEqual(ranked[0]["campaign"], "C2")

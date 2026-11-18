@@ -157,7 +157,7 @@ def assess_campaigns(discoveries, *, now):
             status = "RETIRED"
         elif data["conditions_conflict"]:
             status = "CONFLICT"
-        elif has_2_indep_success or (data["official_status"] == "ACTIVE" and data["successes"]) or has_recent_success:
+        elif has_2_indep_success or (data["official_status"] == "ACTIVE" and data["successes"]):
             status = "PROMISING"
         elif has_2_indep_negations and not has_recent_success:
             status = "LIKELY_INVALID"
@@ -184,10 +184,22 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
     def _is_unspecified(val):
         return val is None or val is False or (isinstance(val, list) and not val)
 
+    # 完全性チェック：全次元が明示されているか（False等の明示的无制限も含む）
+    dims_present = {
+        "brand": not _is_unspecified(conditions.get("excluded_brands")) or not _is_unspecified(conditions.get("eligible_brands")),
+        "category": not _is_unspecified(conditions.get("eligible_categories")),
+        "sale": not _is_unspecified(conditions.get("sale_exclusion")),
+        "first_order": not _is_unspecified(conditions.get("first_order_only")),
+        "region": not _is_unspecified(conditions.get("ship_region")),
+        "min_spend": not _is_unspecified(conditions.get("min_spend_minor")) or (not _is_unspecified(conditions.get("min_spend_major")) and not _is_unspecified(conditions.get("min_spend_currency")))
+    }
+    if not all(dims_present.values()):
+        all_match = False
+        reasons.append("INCOMPLETE_RULES")
+
     # 明示除外優先
     excluded_brands = conditions.get("excluded_brands")
     if _is_unspecified(excluded_brands):
-        # キーが存在するが値がNone/False/空の場合は未知としてMATCHを防ぐ
         if "excluded_brands" in conditions:
             all_match = False; reasons.append("UNIMPLEMENTED:excluded_brands")
     else:
@@ -217,7 +229,7 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
         elif sale_excl and product_facts.get("on_sale"):
             return {"campaign": campaign, "eligibility": "EXCLUDED", "reasons": ["SALE_EXCLUDED"]}
         elif sale_excl is False:
-            pass # 明示無制限はMATCH候補
+            pass
             
     first_order = conditions.get("first_order_only")
     if not _is_unspecified(first_order):
@@ -232,7 +244,6 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
         if dest is None:
             all_match = False; reasons.append("REGION_UNKNOWN")
         else:
-            # 部分一致を防ぐため型付き完全一致
             if isinstance(ship_region, list):
                 if dest not in ship_region:
                     return {"campaign": campaign, "eligibility": "EXCLUDED", "reasons": ["REGION_EXCLUDED"]}
@@ -244,30 +255,34 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
     min_spend_minor = conditions.get("min_spend_minor")
     
     if not _is_unspecified(min_spend_minor):
-        if scope.get("base_minor", 0) < min_spend_minor:
+        if not isinstance(min_spend_minor, int) or min_spend_minor < 0:
+            all_match = False; reasons.append("MIN_SPEND_INVALID")
+        elif scope.get("currency") != min_spend_curr:
+            all_match = False; reasons.append("CURRENCY_MISMATCH")
+        elif scope.get("base_minor", 0) < min_spend_minor:
             return {"campaign": campaign, "eligibility": "EXCLUDED", "reasons": ["MIN_SPEND_NOT_MET"]}
     elif not _is_unspecified(min_spend_major) and not _is_unspecified(min_spend_curr):
-        if scope.get("currency") != min_spend_curr:
-            all_match = False; reasons.append("CURRENCY_MISMATCH")
-        else:
-            # 通貨のminor exponentで正確に換算
-            exp = {"USD": 2, "EUR": 2, "GBP": 2, "JPY": 0}.get(min_spend_curr, None)
-            if exp is None:
-                all_match = False; reasons.append("UNSUPPORTED_CURRENCY")
+        try:
+            major_dec = Decimal(str(min_spend_major))
+            if major_dec < 0:
+                all_match = False; reasons.append("MIN_SPEND_INVALID")
+            elif scope.get("currency") != min_spend_curr:
+                all_match = False; reasons.append("CURRENCY_MISMATCH")
             else:
-                try:
-                    major_dec = Decimal(str(min_spend_major))
+                exp = {"USD": 2, "EUR": 2, "GBP": 2, "JPY": 0}.get(min_spend_curr, None)
+                if exp is None:
+                    all_match = False; reasons.append("UNSUPPORTED_CURRENCY")
+                else:
                     calculated_minor = int((major_dec * (10 ** exp)).to_integral_value(rounding=ROUND_HALF_UP))
                     if scope.get("base_minor", 0) < calculated_minor:
                         return {"campaign": campaign, "eligibility": "EXCLUDED", "reasons": ["MIN_SPEND_NOT_MET"]}
-                except Exception:
-                    all_match = False; reasons.append("MIN_SPEND_INVALID")
+        except Exception:
+            all_match = False; reasons.append("MIN_SPEND_INVALID")
 
-    # 未対応条件があればMATCH不可（数量/新作/併用/回数等は今回は未対応のためUNKNOWNへ）
     unsupported = [k for k in conditions.keys() if k not in (
         "excluded_brands", "eligible_brands", "eligible_categories", "sale_exclusion",
         "first_order_only", "ship_region", "min_spend_major", "min_spend_currency", "min_spend_minor",
-        "valid_from", "valid_until" # valid系はA軸で評価
+        "valid_from", "valid_until"
     )]
     if unsupported:
         all_match = False
@@ -277,6 +292,8 @@ def evaluate_eligibility(campaign, scope, product_facts, conditions):
         return {"campaign": campaign, "eligibility": "MATCH", "reasons": ["ALL_RULES_MATCHED"]}
         
     return {"campaign": campaign, "eligibility": "UNKNOWN", "reasons": reasons}
+
+
 def rank_candidates(assessed, evaluated, checks, discoveries, *, scope, now, max_age_seconds):
     """Rank candidates across three axes without leaking pricing side effects."""
     now_dt = datetime.fromisoformat(_time(now))
@@ -352,17 +369,27 @@ def rank_candidates(assessed, evaluated, checks, discoveries, *, scope, now, max
             status = c_data.get("status", "UNKNOWN")
             expires_at_raw = c_data.get("expires_at")
             is_expired = False
+            is_unknown_expiry = False
+            
             if expires_at_raw:
                 try:
                     exp_dt = datetime.fromisoformat(str(expires_at_raw).replace("Z", "+00:00"))
-                    if exp_dt.utcoffset() is not None:
-                        is_expired = exp_dt.astimezone(timezone.utc) <= now_dt
-                except: pass
+                    if exp_dt.utcoffset() is None:
+                        is_unknown_expiry = True
+                    elif exp_dt.astimezone(timezone.utc) <= now_dt:
+                        is_expired = True
+                except:
+                    is_unknown_expiry = True
+            else:
+                # expires_at が欠落している場合
+                is_unknown_expiry = True
             
             if is_expired or top_chk_dt < cutoff_dt:
                 status = "STALE"
             elif obs_latest.get(campaign, datetime.min.replace(tzinfo=timezone.utc)) > top_chk_dt:
                 status = "STALE"
+            elif status == "APPLICABLE" and (is_unknown_expiry or not c_data.get("conditions_confirmed") or not c_data.get("usage_available")):
+                status = "UNKNOWN" # 安全契約: 期限・条件確認・利用可能度が揃っていないAPPLICABLEはUNKNOWNへ
         else:
             # 同時刻に複数の異なる証拠がある場合は矛盾としてUNKNOWN
             status = "UNKNOWN"
@@ -390,6 +417,7 @@ def rank_candidates(assessed, evaluated, checks, discoveries, *, scope, now, max
     isolated.sort(key=lambda x: x["campaign"])
     
     return active + isolated
+
 
 
 class CouponBridge:
