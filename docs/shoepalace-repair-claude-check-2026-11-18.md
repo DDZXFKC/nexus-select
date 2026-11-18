@@ -12,3 +12,7 @@
 
 ## Claude担当として次に受け取るもの
 - reconcile後のCSV（sp_列つき）を、サイト取り込み（カテゴリー対応・cm表示・属性）の入力として読む。段階3（出品）に進む時に、Claudeが取り込み側の対応を出す。
+
+## 追記（22:45、全店実行の指示 b8de6ff を受けて）
+- 靴の判定は今もタグだけ（shoepalace_repair.py 138行）。163件ではUGG・HOKA・Vansのタグがそろっていたので問題なかったが、全店11,777件はブランド・カテゴリーが広い。
+- 全店実行の記録項目に「product_type別の cm_status 件数（特に NOT_APPLICABLE）」を1表追加してほしい。靴らしい product_type（RUNNING、LIFESTYLE、BASKETBALL、BOOTS、SANDALS、SKATE、SLIDES 等）に NOT_APPLICABLE が出たら、その商品のタグを見て判定条件に足すかを決める。コードの変更は結果を見てからでよい。
