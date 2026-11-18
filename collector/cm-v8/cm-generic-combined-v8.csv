@@ -1,0 +1,885 @@
+brand,department,size_original,cm,source_url,size_system,source_note
+ADIDAS,Men,10,28,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,10.5,28.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,11,29,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,11.5,29.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,12,30,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,12.5,30.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,13,31,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,13.5,31.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,14,32,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,14.5,32.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,4,22,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,4.5,22.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,5,23,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,5.5,23.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,6,24,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,6.5,24.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,7,25,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,7.5,25.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,8,26,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,8.5,26.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,9,27,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Men,9.5,27.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_MEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,10,27,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,10.5,27.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,11,28,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,11.5,28.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,12,29,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,12.5,29.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,13,30,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,13.5,30.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,14,31,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,14.5,31.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,15,32,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,15.5,32.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,5,22,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,5.5,22.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,6,23,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,6.5,23.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,7,24,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,7.5,24.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,8,25,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,8.5,25.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,9,26,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ADIDAS,Women,9.5,26.5,https://www.adidas.com/us/help/size_charts/men-shoes/,US_WOMEN,adidas公式サイズチャート（adidas.com）
+ASICS,Men,10,28,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,10.5,28.25,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,11,28.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,11.5,29,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,12,29.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,12.5,30,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,13,30.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,13.5,30.75,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,14,31,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,14.5,31.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,15,32,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,4,22.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,4.5,23,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,5,23.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,5.5,24,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,6,24.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,6.5,25,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,7,25.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,7.5,25.75,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,8,26,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,8.5,26.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,9,27,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Men,9.5,27.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_MEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,10,26.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,10.5,27,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,11,27.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,11.5,28,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,12,28.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,12.5,28.75,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,13,29,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,4,21.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,4.5,22,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,5,22.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,5.5,22.75,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,6,23,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,6.5,23.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,7,24,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,7.5,24.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,8,25,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,8.5,25.5,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,9,25.75,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+ASICS,Women,9.5,26,https://www.asics.com/sg/en-sg/customer-service/size-fit-guide/size-fit-guide.html,US_WOMEN,ASICS公式サイズガイド（asics.com）
+CHAMPION,Men,10,28,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,10.5,28.5,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,11,29,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,11.5,29.5,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,12,30,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,13,31,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,14,32,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,7.5,25.5,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,8,26,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,8.5,26.5,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,9,27,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CHAMPION,Men,9.5,27.5,https://www.champion.com/pages/mens-shoe-size-guide,US_MEN,Champion公式（champion.com、CM列）
+CROCS,Kids,10C,17.5,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,11C,18,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,12C,18.5,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,13C,19,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,1Y,19.5,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,2Y,20,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,3Y,21,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,4C,12,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,4Y,22,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,5C,13,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,5Y,23,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,6C,14,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,6Y,24,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,7C,15,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,8C,15.5,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Kids,9C,16.5,https://crocs.com.ph/pages/size-chart-ph,US_KIDS,Crocs公式サイズチャート（crocs.com、JP列。C11-C13/JはLEGO公式ショップのCrocsガイドでも同値を確認）
+CROCS,Men,10,28,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,11,29,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,12,30,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,13,31,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,14,32,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,15,33,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,16,34,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,17,35,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,2,20,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,3,21,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,4,22,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,5,23,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,6,24,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,7,25,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,8,26,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Men,9,27,https://crocs.com.ph/pages/size-chart-ph,US_MEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,10,26,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,11,27,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,12,28,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,13,29,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,4,20,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,5,21,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,6,22,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,7,23,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,8,24,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+CROCS,Women,9,25,https://crocs.com.ph/pages/size-chart-ph,US_WOMEN,Crocs公式サイズチャート（crocs.com、JP列）
+DC SHOES,Men,10,28,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,10.5,28.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,11,29,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,11.5,29.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,12,30,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,12.5,30.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,13,31,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,14,32,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,15,33,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,16,34,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,17,35,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,18,36,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,3,21.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,3.5,21.75,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,4,22,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,4.5,22.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,5,23,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,5.5,23.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,6,24,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,6.5,24.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,7,25,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,7.5,25.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,8,26,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,8.5,26.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,9,27,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DC SHOES,Men,9.5,27.5,https://www.dcshoes.com/pages/shoe-size-guide,US_MEN,DC Shoes公式サイズガイド（dcshoes.com、CM列）
+DR. MARTENS,Men,10,28,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,10.5,28.5,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,11,29,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,12,30,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,13,31,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,4,22,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,5,23,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,6,24,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,7,25,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,7.5,25.5,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,8,26,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Men,9,27,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_MEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,10,27,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,11,28,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,11.5,28.5,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,12,29,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,13,30,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,14,31,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,5,22,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,6,23,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,7,24,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,8,25,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,8.5,25.5,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+DR. MARTENS,Women,9,26,https://www.drmartens.com/ca/en_CA/shoe-size-guide,US_WOMEN,Dr. Martens公式（drmartens.com カナダ、JPN列）
+HOKA,Men,10,28,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,10.5,28.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,11,29,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,11.5,29.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,12,30,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,12.5,30.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,13,31,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,13.5,31.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,14,32,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,7,25,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,7.5,25.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,8,26,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,8.5,26.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,9,27,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+HOKA,Men,9.5,27.5,https://cl.hoka.com/p/hoka-clifton-11-hombre-frost-black/,US_MEN,HOKA公式（cl.hoka.com 商品ページ内ガイド、CM（Japón）列）
+JORDAN,Kids,1.5Y,20.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,10.5C,16.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,10C,16,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,11.5C,17.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,11C,17,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,12.5C,18.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,12C,18,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,13.5C,19.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,13C,19,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,1C,7,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,1Y,20,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,2.5Y,21.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,2C,8,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,2Y,21,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,3.5Y,22.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,3C,9,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,3Y,22,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,4.5Y,23.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,4C,10,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,4Y,23,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,5.5Y,24,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,5C,11,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,5Y,23.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,6.5Y,24.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,6C,12,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,6Y,24,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,7C,13,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,7Y,25,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,8C,14,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Kids,9C,15,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（Jordanキッズ商品のJP表記とも一致を確認）
+JORDAN,Men,10,28,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,10.5,28.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,11,29,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,11.5,29.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,12,30,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,12.5,30.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,13,31,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,13.5,31.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,14,32,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,14.5,32.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,15,33,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,15.5,33.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,16,34,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,16.5,34.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,17,35,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,17.5,35.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,18,36,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,18.5,36.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,19,37,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,19.5,37.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,20,38,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,20.5,38.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,21,39,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,21.5,39.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,22,40,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,3.5,22.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,4,23,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,4.5,23.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,5,23.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,5.5,24,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,6,24,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,6.5,24.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,7,25,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,7.5,25.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,8,26,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,8.5,26.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,9,27,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Men,9.5,27.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,10,27,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,10.5,27.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,11,28,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,11.5,28.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,12,29,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,12.5,29.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,13,30,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,13.5,30.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,14,31,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,14.5,31.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,15,32,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,15.5,32.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,16,33,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,16.5,33.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,17,34,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,17.5,34.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,18,35,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,18.5,35.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,19,36,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,19.5,36.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,20,37,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,20.5,37.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,21,38,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,21.5,38.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,22,39,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,22.5,39.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,3.5,21,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,4,21,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,4.5,21.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,5,22,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,5.5,22.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,6,23,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,6.5,23.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,7,24,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,7.5,24.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,8,25,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,8.5,25.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,9,26,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+JORDAN,Women,9.5,26.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（Jordan）
+NEWBALANCE,Kids,1.5Y,20.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,10.5C,17,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,10C,16.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,11.5C,18,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,11C,17.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,12C,18.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,13.5C,19.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,13C,19,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,1Y,20,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,2Y,21,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,3.5C,11,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,3.5Y,22,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,3Y,21.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,4.5C,12,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,4.5Y,23,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,4C,11.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,4Y,22.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,5.5C,13,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,5.5Y,24,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,5C,12.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,5Y,23.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,6.5C,13.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,6.5Y,24.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,7.5C,14.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,7C,14,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,7Y,25,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,8.5C,15.5,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,8C,15,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Kids,9C,16,https://outlet.newbalance.jp/guide-sizechart.html,US_KIDS,ニューバランスジャパン公式（outlet.newbalance.jp/guide-sizechart.html）
+NEWBALANCE,Men,10,28,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,10.5,28.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,11,29,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,11.5,29.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,12,30,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,12.5,30.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,13,31,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,13.5,31.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,14,32,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,15,33,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,16,34,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,17,35,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,18,36,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,19,37,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,20,38,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,4,22,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,4.5,22.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,5,23,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,5.5,23.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,6,24,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,6.5,24.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,7,25,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,7.5,25.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,8,26,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,8.5,26.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,9,27,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Men,9.5,27.5,https://www.newbalance.com/size-guide.html,US_MEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,10,27,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,10.5,27.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,11,28,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,11.5,28.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,12,29,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,12.5,29.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,13,30,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,13.5,30.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,14,31,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,15,32,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,16,32.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,4,21,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,4.5,21.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,5,22,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,5.5,22.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,6,23,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,6.5,23.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,7,24,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,7.5,24.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,8,25,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,8.5,25.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,9,26,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NEWBALANCE,Women,9.5,26.5,https://www.newbalance.com/size-guide.html,US_WOMEN,New Balance公式（日本公式チャートで補完）
+NIKE,Kids,1.5Y,20.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,10.5C,16.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,10C,16,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,11.5C,17.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,11C,17,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,12.5C,18.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,12C,18,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,13.5C,19.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,13C,19,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,1C,7,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,1Y,20,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,2.5Y,21.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,2C,8,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,2Y,21,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,3.5Y,22.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,3C,9,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,3Y,22,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,4.5Y,23.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,4C,10,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,4Y,23,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,5.5Y,24,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,5C,11,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,5Y,23.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,6.5Y,24.5,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,6C,12,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,6Y,24,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,7C,13,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,7Y,25,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,8C,14,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Kids,9C,15,https://www.nike.com/size-fit/kids-footwear,US_KIDS,Nike公式キッズ表（nike.com/size-fit/kids-footwear）
+NIKE,Men,10,28,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,10.5,28.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,11,29,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,11.5,29.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,12,30,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,12.5,30.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,13,31,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,13.5,31.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,14,32,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,14.5,32.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,15,33,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,15.5,33.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,16,34,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,16.5,34.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,17,35,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,17.5,35.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,18,36,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,18.5,36.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,19,37,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,19.5,37.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,20,38,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,20.5,38.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,21,39,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,21.5,39.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,22,40,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,3.5,22.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,4,23,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,4.5,23.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,5,23.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,5.5,24,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,6,24,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,6.5,24.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,7,25,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,7.5,25.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,8,26,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,8.5,26.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,9,27,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Men,9.5,27.5,https://www.nike.com/size-fit/mens-footwear,US_MEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,10,27,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,10.5,27.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,11,28,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,11.5,28.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,12,29,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,12.5,29.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,13,30,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,13.5,30.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,14,31,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,14.5,31.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,15,32,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,15.5,32.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,16,33,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,16.5,33.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,17,34,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,17.5,34.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,18,35,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,18.5,35.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,19,36,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,19.5,36.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,20,37,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,20.5,37.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,21,38,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,21.5,38.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,22,39,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,22.5,39.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,3.5,21,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,4,21,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,4.5,21.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,5,22,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,5.5,22.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,6,23,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,6.5,23.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,7,24,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,7.5,24.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,8,25,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,8.5,25.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,9,26,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+NIKE,Women,9.5,26.5,https://www.nike.com/size-fit/womens-footwear,US_WOMEN,Nike公式サイズ表（nike.com/size-fit）
+ON RUNNING,Men,10,28,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,10.5,28.5,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,11,29,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,11.5,29.5,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,12,30,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,12.5,30.5,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,13,31,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,13.5,31.5,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,14,32,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,15,33,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,7,25,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,7.5,25.5,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,8,26,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,8.5,26.5,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,9,27,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Men,9.5,27.5,https://customer-service.on-running.com/ja-jp/size_guide,US_MEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,10,27,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,10.5,27.5,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,11,28,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,12,29,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,5,22,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,5.5,22.5,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,6,23,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,6.5,23.5,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,7,24,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,7.5,24.5,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,8,25,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,8.5,25.5,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,9,26,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+ON RUNNING,Women,9.5,26.5,https://customer-service.on-running.com/ja-jp/size_guide,US_WOMEN,On公式サイズガイド（on.com）
+PUMA,Kids,1.5Y,19.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,10.5C,16.8,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,10C,16.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,11.5C,17.3,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,11C,17,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,12.5C,18,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,12C,17.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,13.5C,18.8,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,13C,18.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,1Y,19,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,2.5Y,20.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,2Y,20,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,3.5Y,21.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,3Y,21,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,4.5Y,22.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,4Y,22,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,5.5Y,23.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,5Y,23,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,6.5Y,24.5,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,6Y,24,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Kids,7Y,25,https://vn.puma.com/vn/en/size-guide.html,US_KIDS,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,10,28,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,10.5,28.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,11,29,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,11.5,29.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,12,30,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,12.5,30.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,13,31,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,14,32,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,4,22,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,4.5,22.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,5,23,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,5.5,23.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,6,24,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,6.5,24.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,7,25,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,7.5,25.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,8,26,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,8.5,26.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,9,27,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Men,9.5,27.5,https://vn.puma.com/vn/en/size-guide.html,US_MEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,10,26.5,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,10.5,27,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,11,27.5,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,5.5,22,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,6,22.5,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,6.5,23,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,7,23.5,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,7.5,24,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,8,24.5,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,8.5,25,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,9,25.5,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+PUMA,Women,9.5,26,https://vn.puma.com/vn/en/size-guide.html,US_WOMEN,PUMA公式サイズガイド（vn.puma.com、JPN/CM列）
+SALOMON,Men,10,28,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,10.5,28.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,11,29,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,11.5,29.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,12,30,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,12.5,30.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,13,31,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,13.5,31.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,14,32,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,14.5,32.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,15,33,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,4,22,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,4.5,22.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,5,23,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,5.5,23.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,6,24,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,6.5,24.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,7,25,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,7.5,25.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,8,26,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,8.5,26.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,9,27,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Men,9.5,27.5,https://my.salomon.com/pages/men-size-guide,US_MEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,10,27,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,10.5,27.5,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,11,28,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,11.5,28.5,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,12,29,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,12.5,29.5,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,13,30,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,5,22,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,5.5,22.5,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,6,23,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,6.5,23.5,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,7,24,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,7.5,24.5,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,8,25,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,8.5,25.5,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,9,26,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SALOMON,Women,9.5,26.5,https://www.salomon.com/en-us/sizingchart?gender=women&category=footwear-women,US_WOMEN,Salomon公式サイズチャート（salomon.com、JP列）
+SAUCONY,Kids,1.5Y,20.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,10.5C,16.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,10C,16,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,11.5C,17.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,11C,17,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,12.5C,18.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,12C,18,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,13.5C,19.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,13C,19,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,1Y,20,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,2.5Y,21.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,2Y,21,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,3.5Y,22.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,3Y,22,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,4.5C,12.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,4.5Y,23.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,4C,12,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,4Y,23,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,5.5C,13.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,5.5Y,24.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,5C,13,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,5Y,24,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,6.5C,14,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,6.5Y,25.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,6C,14,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,6Y,25,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,7.5C,14.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,7C,14.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,7Y,26,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,8.5C,15,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,8C,15,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,9.5C,15.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Kids,9C,15.5,https://www.saucony.com/en/guide-kdz-2.0/62547K.html?dwvar_62547K_color=SY226A01,US_KIDS,Saucony公式キッズ表（saucony.com 商品ページ）
+SAUCONY,Men,10,28,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,10.5,28.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,11,29,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,11.5,29.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,12,30,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,12.5,30.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,13,31,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,4.5,22.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,5,23,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,5.5,23.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,6,24,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,6.5,24.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,7,25,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,7.5,25.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,8,26,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,8.5,26.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,9,27,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Men,9.5,27.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_MEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,10,26.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,10.5,27,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,11,27.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,5,21.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,5.5,22,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,6,22.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,6.5,23,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,7,23.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,7.5,24,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,8,24.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,8.5,25,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,9,25.5,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+SAUCONY,Women,9.5,26,https://www.saucony.com/en/content?caid=universal-sizechart&rst=size+chart%5C,US_WOMEN,Saucony公式サイズチャート（saucony.com、JPN列）
+TIMBERLAND,Kids,0C,8,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,1.5Y,20.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,10.5C,17,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,10C,16.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,11.5C,18,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,11C,17.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,12.5C,18.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,12C,18.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,13.5C,19.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,13C,19,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,1C,9,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,1Y,20,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,2.5C,10,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,2.5Y,21,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,2C,9.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,2Y,20.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,3.5C,11,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,3.5Y,22,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,3C,10.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,3Y,21.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,4.5C,12,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,4.5Y,22.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,4C,12,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,4Y,22.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,5.5C,13,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,5.5Y,23.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,5C,12.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,5Y,23,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,6.5C,14,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,6.5Y,24.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,6C,13.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,6Y,24,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,7.5C,14.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,7C,14,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,7Y,25,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,8.5C,15.5,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,8C,15,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,9.5C,16,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Kids,9C,16,https://www.timberland.co.jp/size-chart.html,US_KIDS,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,10,28,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,10.5,28.5,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,11,29,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,11.5,29.5,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,12,30,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,12.5,30.5,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,13,31,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,14,32,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,15,33,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,5,23.5,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,5.5,24,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,6,24,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,6.5,24.5,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,7,25,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,7.5,25.5,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,8,26,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,8.5,26.5,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,9,27,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+TIMBERLAND,Men,9.5,27.5,https://www.timberland.co.jp/size-chart.html,US_MEN,ティンバーランド日本公式（timberland.co.jp）
+UNDER ARMOUR,Kids,1.5Y,20.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,10.5C,16.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,10C,16,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,11.5C,17.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,11C,17,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,12.5C,18.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,12C,18,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,13C,19,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,1Y,20,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,2.5Y,21.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,2C,8,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,2Y,21,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,3.5Y,22.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,3C,9,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,3Y,22,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,4C,10,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,4Y,23,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,5C,11,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,5Y,23.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,6.5Y,24.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,6C,12,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,6Y,24,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,7.5Y,25.5,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,7C,13,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,7Y,25,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,8C,14,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,8Y,26,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Kids,9C,15,https://www.underarmour.co.jp/info/CSfCustomerSupportContents.jsp?file=size-fit-guide-boys-footwear,US_KIDS,アンダーアーマー日本公式ボーイズ表（underarmour.co.jp、K表記をCへ正規化）
+UNDER ARMOUR,Men,10,28,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,10.5,28.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,11,29,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,11.5,29.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,12,30,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,12.5,30.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,13,31,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,13.5,31.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,14,32,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,14.5,32.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,15,33,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,15.5,33.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,16,34,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,7,25,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,7.5,25.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,8,26,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,8.5,26.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,9,27,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+UNDER ARMOUR,Men,9.5,27.5,https://www.underarmour.co.jp/pages/size-fit-guide-mens-footwear,US_MEN,アンダーアーマー日本公式（underarmour.co.jp）
+VANS,Kids,10.5C,16.5,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,11.5C,17.5,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,11C,17,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,12.5C,18.5,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,12C,18,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,13.5C,19.5,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,13C,19,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,1Y,20,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,2Y,21,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,3.5Y,21.5,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,3Y,22,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,4.5Y,22.5,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,4Y,22,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,5.5Y,23.5,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,5Y,23,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,6.5Y,24.5,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,6Y,24,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Kids,7Y,25,https://www.vans.com/en-us/help/size-charts,US_KIDS,Vans公式キッズ表（vans.com）
+VANS,Men,10,28,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,10.5,28.5,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,11,29,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,11.5,29.5,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,12,30,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,13,31,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,14,32,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,15,33,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,16,34,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,6.5,24.5,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,7,25,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,7.5,25.5,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,8,26,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,8.5,26.5,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,9,27,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Men,9.5,27.5,https://www.vans.com/en-us/help/size-charts,US_MEN,Vans公式サイズチャート（vans.com）
+VANS,Women,10,26.5,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,10.5,27,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,11,27.5,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,11.5,28,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,5,21.5,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,5.5,22,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,6,22.5,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,6.5,23,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,7,23.5,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,7.5,24,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,8,24.5,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,8.5,25,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,9,25.5,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Women,9.5,26,https://www.vans.com/en-us/help/size-charts,US_WOMEN,Vans公式サイズチャート（vans.com）
+VANS,Men,4,22,https://www.vans.co.jp/size-chart.html,US_MEN,https://www.vans.co.jp/size-chart.html
+VANS,Men,4.5,22.5,https://www.vans.co.jp/size-chart.html,US_MEN,https://www.vans.co.jp/size-chart.html
+VANS,Men,5,23,https://www.vans.co.jp/size-chart.html,US_MEN,https://www.vans.co.jp/size-chart.html
+VANS,Men,5.5,23.5,https://www.vans.co.jp/size-chart.html,US_MEN,https://www.vans.co.jp/size-chart.html
+VANS,Men,6,24,https://www.vans.co.jp/size-chart.html,US_MEN,https://www.vans.co.jp/size-chart.html
+VANS,Men,12.5,30.5,https://www.vans.co.jp/size-chart.html,US_MEN,https://www.vans.co.jp/size-chart.html
+VANS,Women,12,28.5,https://www.vans.co.jp/size-chart.html,US_WOMEN,https://www.vans.co.jp/size-chart.html
+TEVA,Men,7,25,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,7.5,25.5,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,8,26,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,8.5,26.5,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,9,27,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,9.5,27.5,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,10,28,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,10.5,28.5,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,11,29,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,11.5,29.5,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Men,12,30,https://jp.teva.com/sizing-information.html,US_MEN,https://jp.teva.com/sizing-information.html
+TEVA,Women,5,22,https://jp.teva.com/sizing-information.html,US_WOMEN,https://jp.teva.com/sizing-information.html
+TEVA,Women,5.5,22.5,https://jp.teva.com/sizing-information.html,US_WOMEN,https://jp.teva.com/sizing-information.html
+TEVA,Women,6,23,https://jp.teva.com/sizing-information.html,US_WOMEN,https://jp.teva.com/sizing-information.html
+TEVA,Women,6.5,23.5,https://jp.teva.com/sizing-information.html,US_WOMEN,https://jp.teva.com/sizing-information.html
+TEVA,Women,7,24,https://jp.teva.com/sizing-information.html,US_WOMEN,https://jp.teva.com/sizing-information.html
+TEVA,Women,7.5,24.5,https://jp.teva.com/sizing-information.html,US_WOMEN,https://jp.teva.com/sizing-information.html
+TEVA,Women,8,25,https://jp.teva.com/sizing-information.html,US_WOMEN,https://jp.teva.com/sizing-information.html
+UGG,Kids,4C,11.5,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,5C,12,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,6C,13,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,7C,14,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,8C,15,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,9C,16,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,10C,17,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,11C,18,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,12C,19,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,13C,19.5,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,1Y,20,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,2Y,21,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,3Y,22,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,3.5Y,22.2,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,4Y,23,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,4.5Y,23.2,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,5Y,23.5,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,5.5Y,24,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,6Y,24.5,https://www.ugg.com/sizing-information.html,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,6.5Y,25,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
+UGG,Kids,7Y,25.5,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf,US_KIDS,https://www.ugg.com/on/demandware.static/-/Sites-UGG-US-Library/default/dwf764bc52/documents/UGG-Inches-kids-shoe-measurement-guide-v1.pdf
