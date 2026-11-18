@@ -69,9 +69,23 @@ def repair(products, cm=None, ja=None):
             raise ValueError("Expected Shopify tag list")
         title = p.get("title", "")
         color_tags = [t[6:] for t in tags if t.startswith("Color_")]
-        matches = [m for m in re.finditer(r"\(([^()]*)\)", title)
+        # A specific colorway name need not contain the broad Color_ taxonomy.
+        # Preserve the title evidence separately; never use a generic tag as the colorway.
+        candidates = [m for m in re.finditer(r"\(([^()]*)\)", title) if m.group(1).strip()]
+        matches = [m for m in candidates
                    if any(re.search(r"(?<!\w)" + re.escape(t) + r"(?!\w)", m.group(1), re.I) for t in color_tags)]
         match = matches[0] if len(matches) == 1 else None
+        color_status = "TAG_SUPPORTED" if match else "UNKNOWN"
+        # A single terminal bracket (optionally followed by the known shipping suffix)
+        # is a candidate, not verified color evidence. Do not strip it from the title.
+        if not match and len(candidates) == 1 and color_tags:
+            candidate = candidates[0]
+            suffix = title[candidate.end():].strip().casefold()
+            value = candidate.group(1).strip()
+            noncolor = re.search(r"^(?:\d+(?:\.\d+)?\s*(?:cm|mm|oz|ml|pack)?|\d+[- ]?pack|wide|narrow|standard|regular|limited edition|online only|unisex|mens|womens|kids|gs|ps|td|2e|4e)$", value, re.I)
+            if suffix in {"", "free shipping"} and not noncolor:
+                match = candidate
+                color_status = "TITLE_CANDIDATE"
         color = match.group(1).strip() if match else None
         footwear = any(key(t) in {"category_footwear", "footwear", "product_shoes", "shoes"} for t in tags)
         departments = [t[11:] for t in tags if t.startswith("Department_")]
@@ -86,8 +100,8 @@ def repair(products, cm=None, ja=None):
         stock = True if any(s is True for s in states) else (False if states and all(s is False for s in states) else None)
         translation = ja.get((key(pid),))
         rows.append({"shop_code": SHOP, "product_id": pid, "title_original": title,
-                     "title_without_color": (title[:match.start()] + title[match.end():]).strip() if match else title,
-                     "color_name": color, "color_tags": color_tags, "brand": p.get("vendor"),
+                     "title_without_color": (title[:match.start()] + title[match.end():]).strip() if match and color_status == "TAG_SUPPORTED" else title,
+                     "color_name": color, "color_name_status": color_status, "color_tags": color_tags, "brand": p.get("vendor"),
                      "department": department, "source_url": url,
                      "coupon_tag_codes": codes, "coupon_tag_status": "TAGGED_UNVERIFIED" if codes else "NOT_TAGGED",
                      "description_en_html": p.get("body_html"), "description_ja": translation,
@@ -95,6 +109,8 @@ def repair(products, cm=None, ja=None):
                      "in_stock": stock, "images": p.get("images"), "raw_product": p})
         if not color:
             issues.append([pid, "", "color_name_unknown"])
+        elif color_status == "TITLE_CANDIDATE":
+            issues.append([pid, "", "color_name_needs_review"])
         if not translation:
             issues.append([pid, "", "japanese_description_pending"])
         for v in vs:
