@@ -63,6 +63,26 @@ def load_cm_reference(path):
             result[k] = entry
         return result
 
+def load_color_reference(path):
+    if not path:
+        return {}
+    result = {}
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        required = {"product_id", "color_name", "source_url", "evidence", "status"}
+        if not required.issubset(reader.fieldnames or []):
+            raise ValueError("Incomplete color reference")
+        for row in reader:
+            if not all(row[k].strip() for k in required):
+                raise ValueError("Incomplete color evidence")
+            if row["status"] not in {"CONFIRMED_BY_TITLE_RULE", "HOLD_CONTRADICTION"}:
+                raise ValueError("Unsupported color reference status")
+            pid = row["product_id"].strip()
+            if pid in result and result[pid] != row:
+                raise ValueError("Conflicting color reference: " + pid)
+            result[pid] = row
+    return result
+
 def money(value):
     if value is None or value == "":
         return None
@@ -80,8 +100,8 @@ def size_value(p, v):
         return None
     return v.get("option" + str(opts[0]["position"]))
 
-def repair(products, cm=None, ja=None):
-    cm, ja = cm or {}, ja or {}
+def repair(products, cm=None, ja=None, color_reference=None):
+    cm, ja, color_reference = cm or {}, ja or {}, color_reference or {}
     rows, variants, issues = [], [], []
     seen = {}
     variant_ids = set()
@@ -123,13 +143,20 @@ def repair(products, cm=None, ja=None):
         if not handle:
             issues.append([pid, "", "missing_handle"])
         url = "https://www.shoepalace.com/products/" + quote(handle, safe="-") if handle else None
+        color_evidence = color_reference.get(pid)
+        if color_evidence:
+            if (color_evidence["color_name"] != color or color_evidence["source_url"] != url
+                    or color_status != "TITLE_CANDIDATE"):
+                raise ValueError(f"Color reference does not match raw evidence: {pid}")
+            color_status = color_evidence["status"]
         vs = p.get("variants") or []
         states = [v.get("available") for v in vs]
         stock = True if any(s is True for s in states) else (False if states and all(s is False for s in states) else None)
         translation = ja.get((key(pid),))
         rows.append({"shop_code": SHOP, "product_id": pid, "title_original": title,
                      "title_without_color": (title[:match.start()] + title[match.end():]).strip() if match and color_status == "TAG_SUPPORTED" else title,
-                     "color_name": color, "color_name_status": color_status, "color_tags": color_tags, "brand": p.get("vendor"),
+                     "color_name": color, "color_name_status": color_status,
+                     "color_evidence": color_evidence["evidence"] if color_evidence else None, "color_tags": color_tags, "brand": p.get("vendor"),
                      "department": department, "source_url": url,
                      "coupon_tag_codes": codes, "coupon_tag_status": "TAGGED_UNVERIFIED" if codes else "NOT_TAGGED",
                      "description_en_html": p.get("body_html"), "description_ja": translation,
@@ -137,7 +164,7 @@ def repair(products, cm=None, ja=None):
                      "in_stock": stock, "images": p.get("images"), "raw_product": p})
         if not color:
             issues.append([pid, "", "color_name_unknown"])
-        elif color_status == "TITLE_CANDIDATE":
+        elif color_status in {"TITLE_CANDIDATE", "HOLD_CONTRADICTION"}:
             issues.append([pid, "", "color_name_needs_review"])
         if not translation:
             issues.append([pid, "", "japanese_description_pending"])
@@ -206,6 +233,7 @@ def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument("--raw", nargs="+", required=True, type=Path)
     a.add_argument("--cm-reference", type=Path, help="CSV: brand,department,size_original,cm")
+    a.add_argument("--color-reference", type=Path)
     a.add_argument("--ja-reference", type=Path, help="CSV: product_id,description_ja")
     a.add_argument("--output", required=True, type=Path)
     args = a.parse_args()
@@ -213,7 +241,8 @@ def main():
     for path in args.raw:
         products.extend(json.loads(path.read_text(encoding="utf-8"))["products"])
     result = repair(products, load_cm_reference(args.cm_reference),
-                    load_reference(args.ja_reference, ["product_id","description_ja"]))
+                    load_reference(args.ja_reference, ["product_id","description_ja"]),
+                    load_color_reference(args.color_reference))
     rows, variants, issues, stats = result
     args.output.mkdir(parents=True, exist_ok=False)
     (args.output / "repaired.json").write_text(json.dumps({"products": rows, "variants": variants, "issues": issues, "summary": stats, "input_files": [str(p) for p in args.raw]}, ensure_ascii=False, indent=2), encoding="utf-8")
