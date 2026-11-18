@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (size / 2 - centerX).toFixed(1) + 'px ' + (size / 2 - centerY).toFixed(1) + 'px';
   }
 
-  function fitSwatchImage(visual, url) {
+  function fitSwatchImage(visual, url, label) {
     const img = new Image();
     img.decoding = 'async';
     img.onload = () => {
@@ -360,10 +360,22 @@ document.addEventListener('DOMContentLoaded', () => {
         win = null;
       }
       if (win) {
+        visual.classList.add('nexus-swatch__color--image');
+        visual.style.backgroundImage = 'url("' + url.replace(/"/g, '%22') + '")';
         applyWindow(visual, win);
       } else {
-        visual.classList.add('nexus-swatch__color--zoom');
+        /*
+         * No background-free window could be found (or the image could not
+         * be read). A center zoom cannot guarantee "no white background"
+         * (GPT acceptance def2cb9), so fall back to the color-name circle.
+         */
+        visual.classList.remove('nexus-swatch__color--image');
+        visual.style.backgroundImage = '';
+        visual.style.background = colorBackground(swatchColors(label));
       }
+    };
+    img.onerror = () => {
+      visual.style.background = colorBackground(swatchColors(label));
     };
     img.src = url;
   }
@@ -395,9 +407,9 @@ document.addEventListener('DOMContentLoaded', () => {
         thumbs.images && thumbs.images[option.value];
 
       if (thumb) {
-        visual.classList.add('nexus-swatch__color--image');
-        visual.style.backgroundImage = 'url("' + String(thumb).replace(/"/g, '%22') + '")';
-        fitSwatchImage(visual, String(thumb));
+        // The image is shown only after its background-free window is
+        // measured, so the uncropped photo (white background) never flashes.
+        fitSwatchImage(visual, String(thumb), label);
       } else {
         visual.style.background = colorBackground(
           swatchColors(label)

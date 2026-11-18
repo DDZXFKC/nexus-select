@@ -1743,8 +1743,4 @@ body.single-product .variations .nexus-selected-value:empty {
   display: none;
 }
 
-/* Fallback center crop when the product box cannot be measured (owner, 2026-11-19) */
-body.single-product .nexus-swatch__color--image.nexus-swatch__color--zoom {
-  background-size: 300%;
-  background-position: center;
-}
+/* (center-zoom fallback removed 2026-11-19: fallback is now the color-name circle) */
