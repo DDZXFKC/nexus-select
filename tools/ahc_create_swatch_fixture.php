@@ -9,10 +9,12 @@
  *     status draft, catalog visibility hidden, meta _ahc_fixture=1 and _ahc_fixture_run=<run_id>
  *     on parent and variations. Purchase is refused by mu-plugins/ahc-fixture-guard.php.
  *   Every planned SKU (parent and children) is checked for collisions and CSV duplicates first.
- *   A run manifest (manifest=<new file>) records each created post id as it is saved, so a
- *   failed run can be cleaned up with "remove" using the same manifest.
- * remove: deletes only the posts listed in manifest=<file> whose parent/child markers, run id,
- *   FX-SP- SKU, parent id and draft status all match. Dry run unless "apply".
+ *   The run manifest (manifest=<new file>, created exclusively) lists the run id and every PLANNED
+ *   SKU before anything is saved; markers (_ahc_fixture, _ahc_fixture_run) are set on each object
+ *   BEFORE save(), so an interrupted run never leaves an unmarked post.
+ * remove: finds every post carrying this run's marker, checks each one (fixture marker, run id,
+ *   planned FX-SP- SKU, parent id, parent draft) and deletes children then parents, verifying each
+ *   deletion. Idempotent: an interrupted remove can simply be run again. Dry run unless "apply".
  *
  * Run (plain key=value args; WP-CLI 2.12 does not pass --options to eval-file):
  *   wp eval-file tools/ahc_create_swatch_fixture.php create fixtures=<csv> template=SP-<id> manifest=<new file> site=<host> [apply] --path=...
@@ -38,44 +40,59 @@ $sku_taken = function ($sku) {
          WHERE m.meta_key = '_sku' AND m.meta_value = %s AND p.post_status <> 'trash'", $sku)) > 0;
 };
 
-// ------------------------------------------------------------------ remove
+// ------------------------------------------------------------------ remove (discover by run id, idempotent)
 if ($o['cmd'] === 'remove') {
     $man = json_decode((string) @file_get_contents($o['manifest']), true);
-    if (!is_array($man) || ($man['format'] ?? '') !== 'ahc-fixture-manifest-v1' || ($man['site'] ?? '') !== $host || !is_array($man['parents'] ?? null)) {
-        WP_CLI::error('Manifest invalid or for another site.');
+    $run = is_array($man) ? (string) ($man['run_id'] ?? '') : '';
+    if (!is_array($man) || ($man['format'] ?? '') !== 'ahc-fixture-manifest-v2' || ($man['site'] ?? '') !== $host
+        || !preg_match('/^fx-\d{14}-[A-Za-z0-9]{6}$/', $run) || !is_array($man['planned'] ?? null)) {
+        WP_CLI::error('Manifest invalid, empty run id, or for another site.');
     }
-    $run = (string) $man['run_id'];
-    $bad = []; $plan = [];
-    foreach ($man['parents'] as $pe) {
-        $id = (int) ($pe['id'] ?? 0);
-        $p = $id ? wc_get_product($id) : null;
-        if (!$p) { $bad[] = "parent $id missing (already removed?)"; continue; }
-        if ($p->get_sku() !== $pe['sku'] || strpos($p->get_sku(), 'FX-SP-') !== 0 || $p->get_status() !== 'draft'
-            || get_post_meta($id, '_ahc_fixture', true) !== '1' || get_post_meta($id, '_ahc_fixture_run', true) !== $run) {
-            $bad[] = "parent $id {$pe['sku']}: marker/SKU/run/status mismatch"; continue;
+    $parent_skus = []; $child_skus = [];
+    foreach ($man['planned'] as $pl) {
+        $ps = (string) ($pl['sku'] ?? '');
+        if (!preg_match('/^FX-SP-\d+$/', $ps) || isset($parent_skus[$ps])) WP_CLI::error("Manifest: bad or duplicate planned SKU $ps");
+        $parent_skus[$ps] = true;
+        foreach ((array) ($pl['child_skus'] ?? []) as $cs) {
+            if (strpos((string) $cs, $ps . '-') !== 0 || isset($child_skus[$cs])) WP_CLI::error("Manifest: bad or duplicate child SKU $cs");
+            $child_skus[$cs] = $ps;
         }
-        $kids = array_map('intval', $p->get_children());
-        $listed = array_map('intval', $pe['children'] ?? []);
-        sort($kids); sort($listed);
-        if ($kids !== $listed) { $bad[] = "parent $id: children differ from manifest"; continue; }
-        foreach ($kids as $vid) {
-            $v = wc_get_product($vid);
-            if (!$v || $v->get_parent_id() !== $id || strpos($v->get_sku(), $pe['sku'] . '-') !== 0
-                || get_post_meta($vid, '_ahc_fixture', true) !== '1' || get_post_meta($vid, '_ahc_fixture_run', true) !== $run) {
-                $bad[] = "child $vid of $id: marker/SKU/parent mismatch"; continue 2;
+    }
+    $found = get_posts(['post_type' => ['product', 'product_variation'], 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids',
+        'meta_query' => [['key' => '_ahc_fixture_run', 'value' => $run]]]);
+    $bad = []; $parents = []; $children = [];
+    foreach ($found as $id) {
+        $p = wc_get_product($id);
+        if (!$p) { $bad[] = "$id: not a product"; continue; }
+        if (get_post_meta($id, '_ahc_fixture', true) !== '1') { $bad[] = "$id: missing fixture marker"; continue; }
+        $sku = $p->get_sku();
+        if (isset($parent_skus[$sku])) {
+            if ($p->get_parent_id() !== 0 || $p->get_status() !== 'draft') { $bad[] = "$id $sku: parent not a draft top-level product"; continue; }
+            foreach ($p->get_children() as $vid) {
+                if (get_post_meta($vid, '_ahc_fixture_run', true) !== $run) $bad[] = "$id $sku: has a child $vid that is not from this run";
             }
+            $parents[$id] = $sku;
+        } elseif (isset($child_skus[$sku])) {
+            $children[$id] = $sku;
+        } elseif ($sku === '') {
+            $children[$id] = '(no SKU: interrupted save)';   // marked with this run before save, so it is ours
+        } else {
+            $bad[] = "$id: SKU $sku is not planned in this manifest";
         }
-        $plan[$id] = [$pe['sku'], $kids];
     }
-    if ($bad) { foreach ($bad as $b) WP_CLI::warning($b); WP_CLI::error(count($bad) . ' check error(s). Nothing was removed.'); }
-    foreach ($plan as $id => [$sku, $kids]) WP_CLI::log(($o['apply'] ? 'REMOVE ' : 'WOULD REMOVE ') . "$sku id=$id children=" . count($kids));
-    if (!$o['apply']) { WP_CLI::log('DRY RUN remove parents=' . count($plan)); return; }
-    foreach ($plan as $id => [$sku, $kids]) {
-        foreach ($kids as $vid) wp_delete_post($vid, true);
+    foreach ($children as $id => $sku) {
+        $par = wc_get_product($id)->get_parent_id();
+        if ($par && !isset($parents[$par]) && get_post($par)) $bad[] = "child $id: parent $par is not a fixture of this run";
+    }
+    if ($bad) { foreach ($bad as $x) WP_CLI::warning($x); WP_CLI::error(count($bad) . ' check error(s). Nothing was removed.'); }
+    foreach ($children as $id => $sku) WP_CLI::log(($o['apply'] ? 'REMOVE ' : 'WOULD REMOVE ') . "child $id $sku");
+    foreach ($parents as $id => $sku) WP_CLI::log(($o['apply'] ? 'REMOVE ' : 'WOULD REMOVE ') . "parent $id $sku");
+    if (!$o['apply']) { WP_CLI::log('DRY RUN remove parents=' . count($parents) . ' children=' . count($children) . " run=$run"); return; }
+    foreach (array_merge(array_keys($children), array_keys($parents)) as $id) {
         wp_delete_post($id, true);
-        if (get_post($id)) WP_CLI::error("Delete of $id did not take effect; stopped.");
+        if (get_post($id)) WP_CLI::error("Delete of $id did not take effect; stopped. Re-run the same remove to continue.");
     }
-    WP_CLI::log('REMOVED parents=' . count($plan) . " run=$run");
+    WP_CLI::log('REMOVED parents=' . count($parents) . ' children=' . count($children) . " run=$run");
     return;
 }
 
@@ -114,17 +131,28 @@ if (!$o['apply']) {
     return;
 }
 
-$run = 'fx-' . gmdate('YmdHis') . '-' . wp_generate_password(6, false);
-$man = ['format' => 'ahc-fixture-manifest-v1', 'site' => $host, 'run_id' => $run, 'template' => $o['template'], 'parents' => []];
-$save_manifest = function () use (&$man, $o) {
+$run = 'fx-' . gmdate('YmdHis') . '-' . wp_generate_password(6, false, false);
+$planned = [];
+foreach ($rows as [$pid, $colorway, $sku]) {
+    $planned[] = ['supplier_product_id' => $pid, 'sku' => $sku,
+        'child_skus' => array_map(function ($n) use ($sku) { return "$sku-$n"; }, range(1, count($tkids)))];
+}
+$man = ['format' => 'ahc-fixture-manifest-v2', 'site' => $host, 'run_id' => $run, 'template' => $o['template'],
+    'planned' => $planned, 'created' => []];
+$json = wp_json_encode($man, JSON_UNESCAPED_UNICODE);
+$mh = @fopen($o['manifest'], 'x');   // exclusive: never reuse or overwrite a manifest
+if (!$mh || fwrite($mh, $json) !== strlen($json) || !fflush($mh)) WP_CLI::error('Could not create the manifest exclusively. Nothing was created.');
+fclose($mh);
+if (file_get_contents($o['manifest']) !== $json) WP_CLI::error('Manifest readback failed. Nothing was created.');
+$save_manifest = function () use (&$man, $o, $run) {
     $json = wp_json_encode($man, JSON_UNESCAPED_UNICODE);
-    if (file_put_contents($o['manifest'] . '.tmp', $json) !== strlen($json) || !rename($o['manifest'] . '.tmp', $o['manifest'])) {
-        WP_CLI::error('Could not write the run manifest; stop and clean up with remove.');
+    $tmp = $o['manifest'] . '.' . $run . '.tmp';
+    if (file_put_contents($tmp, $json) !== strlen($json) || !rename($tmp, $o['manifest'])) {
+        throw new Exception('could not update the manifest');
     }
 };
-$save_manifest();   // exists before the first post is created
 try {
-    foreach ($rows as [$pid, $colorway, $sku]) {
+    foreach ($rows as $ri => [$pid, $colorway, $sku]) {
         $p = new WC_Product_Variable();
         $p->set_name("[FIXTURE] $base ($colorway)");
         $p->set_status('draft');
@@ -134,13 +162,14 @@ try {
         $attrs = [];
         foreach ($tpl->get_attributes('edit') as $k => $at) $attrs[$k] = clone $at;
         $p->set_attributes($attrs);
+        // Markers are part of the same save: an interrupted run never leaves an unmarked post.
+        $p->update_meta_data('_ahc_fixture', '1');
+        $p->update_meta_data('_ahc_fixture_run', $run);
+        $p->update_meta_data('_ahc_fixture_note', 'SYNTHETIC test fixture; prices/sizes/images copied from ' . $o['template'] . ', not supplier data');
         $new_id = $p->save();
         if (!$new_id) throw new Exception("save failed for $sku");
-        update_post_meta($new_id, '_ahc_fixture', '1');
-        update_post_meta($new_id, '_ahc_fixture_run', $run);
-        update_post_meta($new_id, '_ahc_fixture_note', 'SYNTHETIC test fixture; prices/sizes/images copied from ' . $o['template'] . ', not supplier data');
-        $man['parents'][] = ['id' => $new_id, 'sku' => $sku, 'supplier_product_id' => $pid, 'children' => []];
-        $pi = count($man['parents']) - 1;
+        $man['created'][] = ['id' => $new_id, 'sku' => $sku, 'children' => []];
+        $ci = count($man['created']) - 1;
         $save_manifest();
         $n = 0;
         foreach ($tkids as $vid) {
@@ -155,23 +184,25 @@ try {
             $v->set_stock_status($tv->get_stock_status('edit'));
             $v->set_image_id($tv->get_image_id('edit'));
             $v->set_sku($sku . '-' . (++$n));
+            $v->update_meta_data('_ahc_fixture', '1');
+            $v->update_meta_data('_ahc_fixture_run', $run);
             $vid_new = $v->save();
             if (!$vid_new) throw new Exception("variation save failed for $sku-$n");
-            update_post_meta($vid_new, '_ahc_fixture', '1');
-            update_post_meta($vid_new, '_ahc_fixture_run', $run);
-            $man['parents'][$pi]['children'][] = $vid_new;
+            $man['created'][$ci]['children'][] = $vid_new;
             $save_manifest();
         }
         WC_Product_Variable::sync($new_id);
-        // Read back.
         $chk = wc_get_product($new_id);
         if (!$chk || $chk->get_sku() !== $sku || $chk->get_status() !== 'draft' || count($chk->get_children()) !== count($tkids)
-            || get_post_meta($new_id, '_ahc_fixture', true) !== '1') {
+            || get_post_meta($new_id, '_ahc_fixture', true) !== '1' || get_post_meta($new_id, '_ahc_fixture_run', true) !== $run) {
             throw new Exception("readback failed for $sku");
+        }
+        foreach ($chk->get_children() as $vid) {
+            if (get_post_meta($vid, '_ahc_fixture', true) !== '1' || get_post_meta($vid, '_ahc_fixture_run', true) !== $run) throw new Exception("child marker readback failed for $sku");
         }
         WP_CLI::log("CREATED  $sku  id=$new_id  variations=$n  (draft, hidden, purchase refused)");
     }
 } catch (Throwable $e) {
-    WP_CLI::error('Create failed: ' . $e->getMessage() . '. Clean up with: remove manifest=' . $o['manifest'] . ' site=' . $host . ' apply');
+    WP_CLI::error('Create failed: ' . $e->getMessage() . '. Check what to clean up with (dry run): remove manifest=' . $o['manifest'] . ' site=' . $host);
 }
 WP_CLI::log("DONE fixtures=" . count($rows) . " run=$run manifest=" . $o['manifest']);

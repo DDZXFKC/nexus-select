@@ -36,18 +36,35 @@ check('stop: child SKU collision', strpos(runf(['create', "fixtures=$tmp/col.csv
 file_put_contents("$tmp/real.csv", $H . "1,A\n");
 check('stop: real SP SKU exists', strpos(runf(['create', "fixtures=$tmp/real.csv", 'template=SP-1', "manifest=$tmp/m3.json", 'site=ahc.local']), 'ERR') === 0);
 check('stop: wrong site', strpos(runf(['create', "fixtures=$tmp/ok.csv", 'template=SP-1', "manifest=$tmp/m4.json", 'site=prod.com']), 'ERR') === 0);
-// remove
-$POSTS = [200 => ['sku' => 'FX-SP-5', 'status' => 'draft', 'kids' => [201]], 201 => ['sku' => 'FX-SP-5-1', 'parent' => 200], 300 => ['sku' => 'FX-SP-6', 'status' => 'draft', 'kids' => [301]], 301 => ['sku' => 'FX-SP-6-1', 'parent' => 300]];
-$META = [200 => ['_ahc_fixture' => '1', '_ahc_fixture_run' => 'r1'], 201 => ['_ahc_fixture' => '1', '_ahc_fixture_run' => 'r1'], 300 => ['_ahc_fixture' => '1', '_ahc_fixture_run' => 'r1'], 301 => ['_ahc_fixture' => '1', '_ahc_fixture_run' => 'r1']];
-$man = ['format' => 'ahc-fixture-manifest-v1', 'site' => 'ahc.local', 'run_id' => 'r1', 'parents' => [['id' => 200, 'sku' => 'FX-SP-5', 'children' => [201]], ['id' => 300, 'sku' => 'FX-SP-6', 'children' => [301]]]];
+// remove (v2: discover by run id; GPT 7f00676)
+function get_posts($q) { global $META; $run = $q['meta_query'][0]['value'];
+  return array_keys(array_filter($META, function ($m) use ($run) { return ($m['_ahc_fixture_run'] ?? '') === $run; })); }
+$RUN = 'fx-20261119070000-abc123';
+$reset = function () use ($RUN) { global $POSTS, $META, $DELETED; $DELETED = [];
+  $POSTS = [200 => ['sku' => 'FX-SP-5', 'status' => 'draft', 'kids' => [201]], 201 => ['sku' => 'FX-SP-5-1', 'parent' => 200],
+            300 => ['sku' => 'FX-SP-6', 'status' => 'draft', 'kids' => [301]], 301 => ['sku' => 'FX-SP-6-1', 'parent' => 300]];
+  $META = []; foreach ([200, 201, 300, 301] as $i) $META[$i] = ['_ahc_fixture' => '1', '_ahc_fixture_run' => $RUN]; };
+$man = ['format' => 'ahc-fixture-manifest-v2', 'site' => 'ahc.local', 'run_id' => $RUN, 'planned' => [
+  ['supplier_product_id' => '5', 'sku' => 'FX-SP-5', 'child_skus' => ['FX-SP-5-1']], ['supplier_product_id' => '6', 'sku' => 'FX-SP-6', 'child_skus' => ['FX-SP-6-1']]], 'created' => []];
 file_put_contents("$tmp/man.json", json_encode($man));
-check('remove dry run deletes nothing', runf(['remove', "manifest=$tmp/man.json", 'site=ahc.local']) === 'OK' && $DELETED === []);
-$META[301]['_ahc_fixture_run'] = 'other';
-check('remove refuses on marker/run mismatch (nothing deleted)', strpos(runf(['remove', "manifest=$tmp/man.json", 'site=ahc.local', 'apply']), 'ERR') === 0 && $DELETED === []);
-$META[301]['_ahc_fixture_run'] = 'r1'; $POSTS[300]['status'] = 'publish';
-check('remove refuses non-draft', strpos(runf(['remove', "manifest=$tmp/man.json", 'site=ahc.local', 'apply']), 'ERR') === 0 && $DELETED === []);
-$POSTS[300]['status'] = 'draft';
-check('remove apply deletes only manifest posts', runf(['remove', "manifest=$tmp/man.json", 'site=ahc.local', 'apply']) === 'OK' && $DELETED === [201, 200, 301, 300]);
+$rm = function ($apply = false) use ($tmp) { return runf(array_merge(['remove', "manifest=$tmp/man.json", 'site=ahc.local'], $apply ? ['apply'] : [])); };
+$reset();
+check('remove dry run deletes nothing', $rm() === 'OK' && $DELETED === []);
+check('remove finds posts not recorded in manifest "created" (orphans after interruption)', $rm(true) === 'OK' && $DELETED === [201, 301, 200, 300]);
+$reset(); $META[301]['_ahc_fixture'] = '';
+check('remove refuses a run-marked post without fixture marker (nothing deleted)', strpos($rm(true), 'ERR') === 0 && $DELETED === []);
+$reset(); $POSTS[300]['status'] = 'publish';
+check('remove refuses non-draft parent', strpos($rm(true), 'ERR') === 0 && $DELETED === []);
+$reset(); $POSTS[300]['kids'] = [301, 999]; $POSTS[999] = ['sku' => 'SP-3-1', 'parent' => 300];
+check('remove refuses parent with a foreign child', strpos($rm(true), 'ERR') === 0 && $DELETED === []);
+$reset(); unset($POSTS[200], $POSTS[201], $META[200], $META[201]);
+check('remove resumes after partial delete', $rm(true) === 'OK' && $DELETED === [301, 300]);
+$bad = $man; $bad['run_id'] = ''; file_put_contents("$tmp/man.json", json_encode($bad));
+check('remove refuses empty run id', strpos($rm(), 'ERR') === 0);
+$bad = $man; $bad['planned'][1]['sku'] = 'FX-SP-5'; file_put_contents("$tmp/man.json", json_encode($bad));
+check('remove refuses duplicate planned SKU', strpos($rm(), 'ERR') === 0);
+file_put_contents("$tmp/mexists.json", 'x');
+check('create refuses an existing manifest', strpos(runf(['create', "fixtures=$tmp/ok.csv", 'template=SP-1', "manifest=$tmp/mexists.json", 'site=ahc.local', 'apply']), 'ERR') === 0);
 // guard plugin
 $FILTERS = []; function add_filter($h, $f, $p = 10, $n = 1) { global $FILTERS; $FILTERS[$h] = $f; } function add_action($h, $f) {}
 function wc_add_notice($m, $t) {}

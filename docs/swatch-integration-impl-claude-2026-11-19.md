@@ -46,6 +46,14 @@
 - 書き込みツールは FX-SP-<id> を mapping で明示した場合のみ、下書きかつ `_ahc_fixture=1` を条件に受け付ける（39ffb24 のまま）。
 - テスト：qa/php-tests/fixture_tool_stub_test.php 13件合格（重複・衝突・dry-run・remove の不一致拒否・購入拒否）。
 
+## GPT検収 7f00676 への修正（16:20、fixtureツールのみ）
+- 中断で孤児が残る問題：親・子とも `_ahc_fixture` と `_ahc_fixture_run` を save() の前に設定（同じ保存に含まれる）。manifest には保存前に予定SKU（親と子すべて）と run_id を記録。
+- manifest：初回は排他作成（既存なら停止）・読み戻し確認、更新は run 固有の tmp から置き換え。
+- remove：manifest の記録ではなく run_id のマーカーで投稿を探し、予定SKU・fixtureマーカー・親子関係・親が下書きであることを全件確認してから、子→親の順に1件ずつ削除結果を確認。途中で止まっても同じ remove を再実行すれば続きから消せる。run_id 空・予定SKU重複は拒否。
+- 作成失敗時の案内は remove の dry-run（apply なし）に変更。
+- テスト：変更部分のみ追加（remove 9件、孤児回収・部分削除からの再開・異物の子の拒否など）。fixture_tool_stub_test.php 全18件合格。
+- mapping：FX 9件のみ承認（同じエクスポートの pid と manifest の FX-SP SKU を照合）。実商品158件は仮 mapping での dry-run のみ、apply しない。
+
 ## 反映するファイルの最新版（6d791c7 時点、c1e14f3 の比較表は旧版）
 | ファイル | サイズ | md5 先頭12桁 |
 |---|---|---|
@@ -67,7 +75,7 @@ Local の SP 158点は全て公開中・下書き0（c1e14f3）なので、初�
 8. apply：上に `apply backup=<新しいファイル>`。APPLIED の readback_mismatch=0・other_fields_changed=0 を確認。もう一度 apply（別のbackup名）して unchanged だけになること（差分0）を確認。
 9. 画面確認：各商品で丸窓（縦縞／中立）・原文・サイズ選択・価格・在庫・画像、PC幅とスマホ幅、コンソールエラーなし。スクショを証拠に。
 10. rollback の確認：`wp eval-file tools/ahc_color_components_to_woo.php rollback=<backup> site=<host> --path=…` で元に戻り、もう一度同じコマンドが OK（冪等）。確認後に再度 apply。
-11. 158点（公開含む）は dry-run のみ（`allow_published=1` を付けた dry-run）。結果をGPT検収へ。一括 apply は検収後。fixture は検証後 `remove manifest=<作成時のファイル> site=<host>`（dry-run）→ `apply` で削除。
+11. 158点（公開含む）は仮 mapping で dry-run のみ（`allow_published=1` を付けた dry-run、apply しない。GPT 7f00676）。結果をGPT検収へ。一括 apply は検収後。fixture は検証後 `remove manifest=<作成時のファイル> site=<host>`（dry-run）→ `apply` で削除。
 
 ## 未対応（GPT判断待ち・範囲外）
 - HOLD と構成なしは、Local の158点に該当商品が無い可能性がある（手順4で判明）。無ければ 84e54b3 §4 の下書き fixture 取り込みが要る（実SKU重複禁止）。その取り込みは別途。
