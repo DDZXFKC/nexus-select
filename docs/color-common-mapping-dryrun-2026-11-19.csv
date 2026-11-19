@@ -1,0 +1,4 @@
+token_normalized,old_id,old_scope,new_id,old_hex,old_hex_status,target_hex,target_hex_status,refs,products,status
+phantom,C-2662,BRAND/NEWBALANCE,C-0007,,UNKNOWN,#E7E2D9,APPROVED_APPROX,4,4,OK
+phantom,C-2663,BRAND/JORDAN,C-0007,,UNKNOWN,#E7E2D9,APPROVED_APPROX,29,29,OK
+phantom,C-2664,BRAND/SALOMON,C-0007,,UNKNOWN,#E7E2D9,APPROVED_APPROX,2,2,OK
