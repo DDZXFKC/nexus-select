@@ -45,3 +45,11 @@ GLM 52db1c1 の Claude 担当 C-1。Claude は Local に接続できないため
     53d2d7c24e5aafc5528f27fae64940e2  theme/woocommerce.php
     ea209dee80893b6f7036e834e5609ad5  theme/woocommerce/single-product.php
     93ce671fa4260b3bf46004a7c852c1ff  theme/woocommerce/single-product/product-image.php
+
+## 5. E1 照合結果（魔王ちゃん ca3f7bd）を受けて（2026-11-20 05:05）
+- 21ファイル中17一致。header.php は一致（11-18 の乖離は解消済み）。
+- theme/main.js・mu-plugins/ahc-fixture-guard.php：Local が1つ前の版（4b736d99・8d1252a4）。差分は 1acd58c の2点（構成色なしの行を出さない／Store API の購入拒否）だけで、正本の方が新しい。統合作業は不要。次にテーマを Local へ反映するときに正本の2ファイルを入れればよい（SP158 の表示は変わらない）。
+- theme/front-page.php：差分はモバイルのヒーロー画像だけ。正本＝5枚（18930/18932/18933/18934縦/18935）、Local＝縦3枚（18943/18944/18945）。Local の3枚に変えた決定の記録は GitHub に見当たらない。どちらが現行かは GLM（必要ならオーナー）が確定するまで、どちらも上書きしない（E5 と合わせて判断を依頼）。
+- mu-plugins/local-by-flywheel-live-link-helper.php：Local に無い。Local（開発ツール）用の補助で、販売・公開には関係しない。正本から外すかは公開準備のときに決める。
+- E4 の実体（ca3f7bd §）：チェックアウトで「利用可能な支払い方法がありません」となり注文できなかった。決済方法がすべて無効だったため。魔王ちゃんが Local のみ代引を有効化して確認済み。公開時に使う決済方法の有効化はオーナー承認・決済審査待ちで、コード修正ではない。
+- 結論：Claude がコードで直す公開阻害は現時点で0件。残りは判断待ち（E2 消費税、E5 と front-page のホーム画像）と承認・実機待ち（E3、E4）。
