@@ -59,8 +59,16 @@ def norm_brand(value):
 
 
 # ---------------------------------------------------------------- master
+def is_active(row):
+    return (row.get("active") or "TRUE").strip().upper() in ("TRUE", "1", "YES")
+
+
 class Master:
-    """Validated color master. Raises on bad ids, duplicate ids, duplicate scope keys."""
+    """Validated color master. Raises on bad ids, duplicate ids, duplicate scope keys.
+
+    Inactive rows (merged/retired) stay in by_id so old references are reported as
+    INACTIVE_MASTER_ROW, but they are excluded from by_key: lookup never assigns them and
+    they may share a scope key with the active row that replaced them."""
 
     def __init__(self, rows):
         self.by_id, self.by_key = {}, {}
@@ -73,9 +81,11 @@ class Master:
             key = self.key(r.get("scope_type"), r.get("scope_key"), r.get("token_normalized"))
             if not key[2]:
                 raise DataError(f"empty token for {cid}")
+            self.by_id[cid] = r
+            if not is_active(r):
+                continue
             if key in self.by_key:
                 raise DataError(f"duplicate scope key: {key} ({self.by_key[key]['color_id']}, {cid})")
-            self.by_id[cid] = r
             self.by_key[key] = r
 
     @staticmethod
@@ -114,7 +124,7 @@ def ref_problem(comp, master, brand, pkey):
     m = master.by_id.get(cid)
     if m is None:
         return "ID_NOT_IN_MASTER"
-    if (m.get("active") or "TRUE").strip().upper() not in ("TRUE", "1", "YES"):
+    if not is_active(m):
         return "INACTIVE_MASTER_ROW"
     if norm(m.get("token_normalized")) != norm(comp.get("token_original")):
         return "TOKEN_MISMATCH"

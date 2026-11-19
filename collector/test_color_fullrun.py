@@ -141,6 +141,28 @@ class MasterValidation(unittest.TestCase):
             cf.Master([m("C-1", "phantom", scope="BRAND", key="NIKE"), m("C-2", "Phantom", scope="BRAND", key="nike")])
 
 
+class InactiveRows(unittest.TestCase):
+    """Common-ization (965d6d3): merged rows are deactivated, not deleted."""
+    MERGED = [m("C-7", "phantom", "#E7E2D9", "APPROVED_APPROX"),
+              dict(m("C-20", "phantom", scope="BRAND", key="NEW BALANCE"), active="FALSE"),
+              dict(m("C-21", "phantom"), active="FALSE")]
+
+    def test_inactive_may_share_key(self):
+        cf.Master(self.MERGED)  # inactive COMMON duplicate must not raise
+
+    def test_lookup_skips_inactive_brand_row(self):
+        self.assertEqual(cf.Master(self.MERGED).lookup("Phantom", "New Balance")["color_id"], "C-7")
+
+    def test_old_reference_still_flagged(self):
+        r = prod("p1", ["Phantom"], ["C-20"], brand="NEW BALANCE")
+        out, _, _, _ = cf.recompute(self.MERGED, [r])
+        self.assertEqual(out[0]["swatch_status"], "HOLD")
+
+    def test_active_duplicates_still_raise(self):
+        with self.assertRaises(cf.DataError):
+            cf.Master([m("C-1", "phantom"), m("C-2", "Phantom")])
+
+
 class Generate(unittest.TestCase):
     def setUp(self):
         self.raw = {"100": {"id": 100, "handle": "air-max-sea-salt-black", "tags": ["Color_Black", "Color_White"]},
