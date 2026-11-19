@@ -1,0 +1,1633 @@
+token_original,token_normalized,color_id,family_internal,family_status,display_hex,hex_status,product_count,in_stock_count
+Multicolor,multicolor,C-1625,,UNKNOWN,,UNKNOWN,58,53
+Varsity Red,varsity red,C-2013,red,DRAFT,,UNKNOWN,104,52
+Silver Metallic,silver metallic,C-1891,silver,DRAFT,,UNKNOWN,61,49
+Metallic Gold,metallic gold,C-1002,gold,DRAFT,#C6A34A,DRAFT,105,48
+Gym Red,gym red,C-1423,red,DRAFT,,UNKNOWN,94,47
+Wolf Grey,wolf grey,C-2058,grey,DRAFT,,UNKNOWN,93,43
+Cream White,cream white,C-1231,white,DRAFT,,UNKNOWN,50,39
+Cool Grey,cool grey,C-1213,grey,DRAFT,,UNKNOWN,62,38
+Midnight Navy,midnight navy,C-1001,blue,DRAFT,#172B4D,DRAFT,73,36
+University Blue,university blue,C-1996,blue,DRAFT,,UNKNOWN,56,36
+Fire Red,fire red,C-1324,red,DRAFT,,UNKNOWN,80,35
+Dark Smoke Grey,dark smoke grey,C-1259,grey,DRAFT,,UNKNOWN,44,34
+Light Orewood Brown,light orewood brown,C-1527,brown,DRAFT,,UNKNOWN,55,33
+Khaki,khaki,C-1480,khaki,CONFIRMED,#B4A482,DRAFT,92,31
+Gold Metallic,gold metallic,C-1371,gold,DRAFT,,UNKNOWN,34,29
+Light Smoke Grey,light smoke grey,C-1536,grey,DRAFT,#B7B8B8,DRAFT,43,29
+Smoke Grey,smoke grey,C-1902,grey,DRAFT,,UNKNOWN,46,28
+Vast Grey,vast grey,C-2016,grey,DRAFT,,UNKNOWN,40,26
+Neutral Grey,neutral grey,C-1644,grey,DRAFT,,UNKNOWN,56,25
+Pink Rise,pink rise,C-1746,pink,DRAFT,,UNKNOWN,25,24
+Pure Platinum,pure platinum,C-1788,,UNKNOWN,#D5D8D9,DRAFT,36,24
+Multi,multi,C-1622,,UNKNOWN,,UNKNOWN,66,23
+Chalk,chalk,C-1157,,UNKNOWN,,UNKNOWN,25,22
+Iron Grey,iron grey,C-1472,grey,DRAFT,,UNKNOWN,38,22
+Pearl Pink,pearl pink,C-1712,pink,DRAFT,,UNKNOWN,29,22
+Puma Black,puma black,C-1782,black,DRAFT,,UNKNOWN,42,21
+Sea Salt,sea salt,C-2284,,UNKNOWN,,UNKNOWN,35,21
+Game Royal,game royal,C-1352,,UNKNOWN,,UNKNOWN,37,20
+Olive,olive,C-1671,olive,CONFIRMED,#73784B,DRAFT,43,20
+Team Red,team red,C-1964,red,DRAFT,,UNKNOWN,26,20
+Volt,volt,C-2034,,UNKNOWN,#C8ED36,DRAFT,32,20
+Medium Olive,medium olive,C-1574,olive,DRAFT,,UNKNOWN,32,19
+Core White,core white,C-1220,white,DRAFT,,UNKNOWN,22,18
+Pure Silver,pure silver,C-1790,silver,DRAFT,,UNKNOWN,24,18
+Utility Black,utility black,C-2003,black,DRAFT,,UNKNOWN,20,18
+Grey Fog,grey fog,C-1396,grey,DRAFT,,UNKNOWN,17,17
+Sand,sand,C-1846,,UNKNOWN,,UNKNOWN,30,17
+Dark Grey Heather,dark grey heather,C-1249,grey,DRAFT,,UNKNOWN,18,16
+Hyper Pink,hyper pink,C-1448,pink,DRAFT,,UNKNOWN,30,16
+Light Graphite,light graphite,C-1518,,UNKNOWN,,UNKNOWN,25,16
+Cave Stone,cave stone,C-1152,,UNKNOWN,,UNKNOWN,28,15
+Cement Grey,cement grey,C-1156,grey,DRAFT,,UNKNOWN,38,15
+Chalk White,chalk white,C-1158,white,DRAFT,,UNKNOWN,16,15
+Light Crimson,light crimson,C-1516,,UNKNOWN,,UNKNOWN,23,15
+Metallic Dark Grey,metallic dark grey,C-1581,grey,DRAFT,,UNKNOWN,15,15
+Taupe,taupe,C-1953,,UNKNOWN,,UNKNOWN,30,15
+Collegiate Green,collegiate green,C-1203,green,DRAFT,,UNKNOWN,23,14
+Infrared 23,infrared 23,C-1468,,UNKNOWN,#EF354B,DRAFT,17,14
+Safety Orange,safety orange,C-1840,orange,DRAFT,,UNKNOWN,21,14
+True Red,true red,C-1987,red,DRAFT,,UNKNOWN,21,14
+Night Indigo,night indigo,C-2634,,UNKNOWN,,UNKNOWN,19,14
+College Grey,college grey,C-1199,grey,DRAFT,,UNKNOWN,19,13
+Dark Grey,dark grey,C-1248,grey,DRAFT,,UNKNOWN,25,13
+Olive Grey,olive grey,C-1675,grey,DRAFT,,UNKNOWN,13,13
+Palomino,palomino,C-1696,,UNKNOWN,#A67C52,DRAFT,15,13
+University Gold,university gold,C-1997,gold,DRAFT,,UNKNOWN,18,13
+Wonder White,wonder white,C-2062,white,DRAFT,,UNKNOWN,22,13
+Earth Strata,earth strata,C-2618,,UNKNOWN,,UNKNOWN,15,13
+Baroque Brown,baroque brown,C-1055,brown,DRAFT,,UNKNOWN,20,12
+Bright Crimson,bright crimson,C-1114,,UNKNOWN,,UNKNOWN,31,12
+Light Blue,light blue,C-1510,blue,DRAFT,,UNKNOWN,19,12
+Light Bone,light bone,C-1512,,UNKNOWN,,UNKNOWN,31,12
+Light British Tan,light british tan,C-1513,tan,DRAFT,,UNKNOWN,15,12
+Linen,linen,C-1546,,UNKNOWN,,UNKNOWN,15,12
+Maroon,maroon,C-1561,maroon,CONFIRMED,#713642,DRAFT,23,12
+Medium Soft Pink,medium soft pink,C-1576,pink,DRAFT,,UNKNOWN,24,12
+Multi-Color,multi-color,C-1624,,UNKNOWN,,UNKNOWN,15,12
+Carbon,carbon,C-1145,,UNKNOWN,#35393B,DRAFT,12,11
+College Navy,college navy,C-1200,blue,DRAFT,,UNKNOWN,16,11
+Footwear White,footwear white,C-1340,white,DRAFT,,UNKNOWN,12,11
+Magic Beige,magic beige,C-1556,beige,DRAFT,,UNKNOWN,11,11
+Multi Color,multi color,C-1623,,UNKNOWN,,UNKNOWN,34,11
+Pearl,pearl,C-1710,,UNKNOWN,,UNKNOWN,15,11
+Playful Pink,playful pink,C-1765,pink,DRAFT,,UNKNOWN,16,11
+Sesame,sesame,C-1871,,UNKNOWN,,UNKNOWN,25,11
+Tan,tan,C-1951,tan,CONFIRMED,#C49A6C,DRAFT,22,11
+Teal,teal,C-1957,,UNKNOWN,#287F82,DRAFT,26,11
+True Blue,true blue,C-1986,blue,DRAFT,,UNKNOWN,12,11
+Raincloud,raincloud,C-2280,,UNKNOWN,,UNKNOWN,11,11
+Enigma Stone,enigma stone,C-1305,,UNKNOWN,,UNKNOWN,12,10
+Hydrangeas,hydrangeas,C-1443,,UNKNOWN,,UNKNOWN,13,10
+Royal Blue,royal blue,C-1831,blue,DRAFT,,UNKNOWN,16,10
+Sanddrift,sanddrift,C-1848,,UNKNOWN,,UNKNOWN,23,10
+Wheat,wheat,C-2048,,UNKNOWN,#D4B17A,DRAFT,18,10
+Alabaster,alabaster,C-1011,,UNKNOWN,,UNKNOWN,12,9
+Clear Pink,clear pink,C-1185,pink,DRAFT,,UNKNOWN,10,9
+Deep Royal Blue,deep royal blue,C-1269,blue,DRAFT,,UNKNOWN,21,9
+Flax,flax,C-1330,,UNKNOWN,,UNKNOWN,15,9
+Gum Medium Brown,gum medium brown,C-1419,brown,DRAFT,,UNKNOWN,12,9
+Light Grey,light grey,C-1521,grey,DRAFT,,UNKNOWN,11,9
+Matte Silver,matte silver,C-1566,silver,DRAFT,,UNKNOWN,12,9
+Midnight,midnight,C-1595,,UNKNOWN,#20283D,DRAFT,9,9
+Stadium Green,stadium green,C-1924,green,DRAFT,,UNKNOWN,10,9
+Tour Yellow,tour yellow,C-1980,yellow,DRAFT,,UNKNOWN,13,9
+Aurora Coffee,aurora coffee,C-2592,,UNKNOWN,,UNKNOWN,9,9
+Warm Vanilla,warm vanilla,C-2656,,UNKNOWN,,UNKNOWN,9,9
+Aura,aura,C-2161,,UNKNOWN,,UNKNOWN,10,9
+Gridiron,gridiron,C-2354,,UNKNOWN,,UNKNOWN,11,9
+Barely Volt,barely volt,C-1054,,UNKNOWN,,UNKNOWN,10,8
+Cargo Khaki,cargo khaki,C-1147,khaki,DRAFT,,UNKNOWN,8,8
+Dark Brown,dark brown,C-1243,brown,DRAFT,,UNKNOWN,12,8
+Grey One,grey one,C-1401,grey,DRAFT,,UNKNOWN,10,8
+Hydrogen Blue,hydrogen blue,C-1444,blue,DRAFT,,UNKNOWN,11,8
+Laser Fuchsia,laser fuchsia,C-1492,,UNKNOWN,,UNKNOWN,14,8
+Lucid Pink,lucid pink,C-1551,pink,DRAFT,,UNKNOWN,10,8
+Muslin,muslin,C-1628,,UNKNOWN,,UNKNOWN,18,8
+Old Royal,old royal,C-1670,,UNKNOWN,#31549A,DRAFT,9,8
+Particle Rose,particle rose,C-1704,,UNKNOWN,,UNKNOWN,12,8
+Pinksicle,pinksicle,C-1758,,UNKNOWN,,UNKNOWN,11,8
+Pure Ruby,pure ruby,C-2644,,UNKNOWN,,UNKNOWN,9,8
+China Rose,china rose,C-2171,,UNKNOWN,,UNKNOWN,8,8
+Tattoo,tattoo,C-2427,,UNKNOWN,,UNKNOWN,8,8
+Glacier,glacier,C-2458,,UNKNOWN,,UNKNOWN,10,8
+Burgundy Crush,burgundy crush,C-1133,burgundy,DRAFT,,UNKNOWN,9,7
+Cacao Wow,cacao wow,C-1138,,UNKNOWN,,UNKNOWN,13,7
+Dark Green,dark green,C-1247,green,DRAFT,,UNKNOWN,16,7
+Egret,egret,C-1298,,UNKNOWN,,UNKNOWN,7,7
+Flint Grey,flint grey,C-1333,grey,DRAFT,,UNKNOWN,9,7
+Gorge Green,gorge green,C-1374,green,DRAFT,,UNKNOWN,9,7
+Green Strike,green strike,C-1393,green,DRAFT,,UNKNOWN,13,7
+Grey Three,grey three,C-1407,grey,DRAFT,,UNKNOWN,8,7
+Grey Two,grey two,C-1408,grey,DRAFT,,UNKNOWN,7,7
+Gum Light Brown,gum light brown,C-1417,brown,DRAFT,,UNKNOWN,18,7
+Harbor Grey,harbor grey,C-1427,grey,DRAFT,,UNKNOWN,7,7
+Light Khaki,light khaki,C-1523,khaki,DRAFT,,UNKNOWN,9,7
+Mushroom,mushroom,C-1626,,UNKNOWN,,UNKNOWN,9,7
+Pink Bloom,pink bloom,C-1728,pink,DRAFT,,UNKNOWN,7,7
+Pink Gaze,pink gaze,C-1736,pink,DRAFT,,UNKNOWN,7,7
+Pink Glow,pink glow,C-1738,pink,DRAFT,,UNKNOWN,12,7
+Sequoia,sequoia,C-1870,,UNKNOWN,,UNKNOWN,10,7
+Shadow Brown,shadow brown,C-1873,brown,DRAFT,,UNKNOWN,7,7
+Varsity Maize,varsity maize,C-2010,,UNKNOWN,,UNKNOWN,13,7
+Vintage White,vintage white,C-2024,white,DRAFT,,UNKNOWN,7,7
+Supplier Colour,supplier colour,C-2652,,UNKNOWN,,UNKNOWN,8,7
+Wonder Mauve,wonder mauve,C-2659,,UNKNOWN,,UNKNOWN,7,7
+Platinum Tint,platinum tint,C-2408,,UNKNOWN,,UNKNOWN,15,7
+Cinder,cinder,C-2451,,UNKNOWN,,UNKNOWN,8,7
+Dew,dew,C-2453,,UNKNOWN,,UNKNOWN,8,7
+Ice,ice,C-2464,,UNKNOWN,,UNKNOWN,13,7
+Blue Chill,blue chill,C-1091,blue,DRAFT,,UNKNOWN,9,6
+Castlerock,castlerock,C-1151,,UNKNOWN,,UNKNOWN,9,6
+Court Purple,court purple,C-1225,purple,DRAFT,,UNKNOWN,10,6
+Cream II,cream ii,C-1229,cream,DRAFT,,UNKNOWN,6,6
+Eclipse,eclipse,C-1296,,UNKNOWN,,UNKNOWN,13,6
+Football Grey,football grey,C-1338,grey,DRAFT,,UNKNOWN,12,6
+Glacier Blue,glacier blue,C-1358,blue,DRAFT,,UNKNOWN,15,6
+Hemp,hemp,C-1432,,UNKNOWN,,UNKNOWN,17,6
+Illusion Green,illusion green,C-1461,green,DRAFT,,UNKNOWN,6,6
+Medium Grey,medium grey,C-1573,grey,DRAFT,,UNKNOWN,14,6
+Neon Yellow,neon yellow,C-1640,yellow,DRAFT,,UNKNOWN,8,6
+Pearl White,pearl white,C-1713,white,DRAFT,,UNKNOWN,9,6
+Picante Red,picante red,C-1723,red,DRAFT,,UNKNOWN,11,6
+Pine Green,pine green,C-1725,green,DRAFT,,UNKNOWN,15,6
+Psychic Blue,psychic blue,C-1781,blue,DRAFT,,UNKNOWN,12,6
+Reflect Silver,reflect silver,C-1817,silver,DRAFT,,UNKNOWN,10,6
+Silt Red,silt red,C-1884,red,DRAFT,,UNKNOWN,12,6
+Slate Grey,slate grey,C-1899,grey,DRAFT,,UNKNOWN,11,6
+Speed Yellow,speed yellow,C-1919,yellow,DRAFT,,UNKNOWN,7,6
+Team Gold,team gold,C-1961,gold,DRAFT,,UNKNOWN,10,6
+Tough Red,tough red,C-1978,red,DRAFT,,UNKNOWN,6,6
+Varsity Royal,varsity royal,C-2014,,UNKNOWN,,UNKNOWN,8,6
+Velvet Brown,velvet brown,C-2017,brown,DRAFT,,UNKNOWN,8,6
+Violet,violet,C-2025,purple,DRAFT,,UNKNOWN,9,6
+Work Blue,work blue,C-2064,blue,DRAFT,,UNKNOWN,6,6
+Yellow Ochre,yellow ochre,C-2067,yellow,DRAFT,,UNKNOWN,16,6
+Aurora Ivy,aurora ivy,C-2595,,UNKNOWN,,UNKNOWN,6,6
+Bright Mango,bright mango,C-2163,,UNKNOWN,,UNKNOWN,7,6
+Bleached Lilac,bleached lilac,C-1085,purple,DRAFT,,UNKNOWN,6,5
+Clear,clear,C-1182,,UNKNOWN,,UNKNOWN,7,5
+Electric Green,electric green,C-1300,green,DRAFT,,UNKNOWN,12,5
+Elemental Pink,elemental pink,C-1302,pink,DRAFT,,UNKNOWN,11,5
+Fauna Brown,fauna brown,C-1312,brown,DRAFT,,UNKNOWN,5,5
+Fir,fir,C-1322,,UNKNOWN,#365747,DRAFT,9,5
+Footwear Silver,footwear silver,C-1339,silver,DRAFT,,UNKNOWN,12,5
+Graphite Grey,graphite grey,C-1380,grey,DRAFT,,UNKNOWN,6,5
+Grey Heather,grey heather,C-1398,grey,DRAFT,,UNKNOWN,5,5
+Grey Mist,grey mist,C-1400,grey,DRAFT,,UNKNOWN,5,5
+Half Blue,half blue,C-1424,blue,DRAFT,,UNKNOWN,7,5
+Heather,heather,C-1430,,UNKNOWN,,UNKNOWN,6,5
+Hyper Royal,hyper royal,C-1450,,UNKNOWN,#2458BC,DRAFT,11,5
+Jade Horizon,jade horizon,C-1476,,UNKNOWN,,UNKNOWN,8,5
+Light Pink,light pink,C-1529,pink,DRAFT,,UNKNOWN,12,5
+Lucid Orange,lucid orange,C-1550,orange,DRAFT,,UNKNOWN,6,5
+Malachite,malachite,C-1558,,UNKNOWN,,UNKNOWN,11,5
+Medium Ash,medium ash,C-1571,,UNKNOWN,,UNKNOWN,11,5
+Metallic,metallic,C-1580,,UNKNOWN,,UNKNOWN,7,5
+Neutral,neutral,C-1643,,UNKNOWN,,UNKNOWN,15,5
+Neutral Olive,neutral olive,C-1645,olive,DRAFT,,UNKNOWN,7,5
+Pink Blast,pink blast,C-1727,pink,DRAFT,,UNKNOWN,6,5
+Pink Cloud,pink cloud,C-1730,pink,DRAFT,,UNKNOWN,5,5
+Rust Pink,rust pink,C-1838,pink,DRAFT,,UNKNOWN,7,5
+Sandy Pink,sandy pink,C-1851,pink,DRAFT,,UNKNOWN,6,5
+Scream Green,scream green,C-1854,green,DRAFT,,UNKNOWN,5,5
+Sea Glass,sea glass,C-1856,,UNKNOWN,,UNKNOWN,7,5
+Solar Red,solar red,C-1911,red,DRAFT,,UNKNOWN,7,5
+Stealth,stealth,C-1927,,UNKNOWN,,UNKNOWN,5,5
+Tech Grey,tech grey,C-1969,grey,DRAFT,,UNKNOWN,8,5
+Track Red,track red,C-1982,red,DRAFT,,UNKNOWN,6,5
+Triple Black,triple black,C-1983,black,DRAFT,,UNKNOWN,6,5
+Truffle Salt,truffle salt,C-1989,,UNKNOWN,,UNKNOWN,5,5
+Turquoise,turquoise,C-1993,,UNKNOWN,,UNKNOWN,5,5
+Voltage Green,voltage green,C-2036,green,DRAFT,,UNKNOWN,5,5
+Yellow Pulse,yellow pulse,C-2068,yellow,DRAFT,,UNKNOWN,5,5
+Alumina,alumina,C-2590,,UNKNOWN,,UNKNOWN,6,5
+Jade Aura,jade aura,C-2192,,UNKNOWN,,UNKNOWN,5,5
+Arid Stone,arid stone,C-2245,,UNKNOWN,,UNKNOWN,9,5
+Light Army,light army,C-2365,,UNKNOWN,,UNKNOWN,5,5
+Light Iron Ore,light iron ore,C-2371,,UNKNOWN,,UNKNOWN,8,5
+Birch,birch,C-1061,,UNKNOWN,#D8C7A8,DRAFT,5,4
+Black Coffee,black coffee,C-1066,black,DRAFT,,UNKNOWN,5,4
+Blue Tint,blue tint,C-1102,blue,DRAFT,,UNKNOWN,8,4
+Bold Berry,bold berry,C-1108,,UNKNOWN,#842C55,DRAFT,4,4
+Bright Concord,bright concord,C-1113,,UNKNOWN,,UNKNOWN,8,4
+Cobalt Bliss,cobalt bliss,C-1193,,UNKNOWN,,UNKNOWN,13,4
+Dark Blue,dark blue,C-1241,blue,DRAFT,,UNKNOWN,5,4
+Dark Blue Grey,dark blue grey,C-1242,grey,DRAFT,,UNKNOWN,4,4
+Desert Camo,desert camo,C-1275,,UNKNOWN,,UNKNOWN,4,4
+Emerald Green,emerald green,C-1303,green,DRAFT,,UNKNOWN,4,4
+Fire Pink,fire pink,C-1323,pink,DRAFT,,UNKNOWN,8,4
+Grain,grain,C-1376,,UNKNOWN,,UNKNOWN,5,4
+Green Abyss,green abyss,C-1384,green,DRAFT,,UNKNOWN,4,4
+Hyper Jade,hyper jade,C-1446,,UNKNOWN,,UNKNOWN,9,4
+Hyper Orange,hyper orange,C-1447,orange,DRAFT,,UNKNOWN,4,4
+Ice Blue,ice blue,C-1453,blue,DRAFT,,UNKNOWN,4,4
+Icey Blue,icey blue,C-1458,blue,DRAFT,,UNKNOWN,4,4
+Imperial Purple,imperial purple,C-1463,purple,DRAFT,,UNKNOWN,4,4
+Legend Blue,legend blue,C-1497,blue,DRAFT,,UNKNOWN,17,4
+Light Photo Blue,light photo blue,C-1528,blue,DRAFT,,UNKNOWN,7,4
+Light Silver,light silver,C-1534,silver,DRAFT,,UNKNOWN,9,4
+Lucid Red,lucid red,C-1553,red,DRAFT,,UNKNOWN,6,4
+Lucky Green,lucky green,C-1554,green,DRAFT,,UNKNOWN,4,4
+Mink Brown,mink brown,C-1602,brown,DRAFT,,UNKNOWN,4,4
+Navy Blue,navy blue,C-1637,blue,DRAFT,,UNKNOWN,14,4
+Neptune Grey,neptune grey,C-1642,grey,DRAFT,,UNKNOWN,4,4
+Oatmeal,oatmeal,C-1660,,UNKNOWN,#D9CCB4,DRAFT,6,4
+Oil Grey,oil grey,C-1668,grey,DRAFT,,UNKNOWN,7,4
+Particle Grey,particle grey,C-1701,grey,DRAFT,,UNKNOWN,6,4
+Pearl Grey,pearl grey,C-1711,grey,DRAFT,,UNKNOWN,14,4
+Puma Silver,puma silver,C-1784,silver,DRAFT,,UNKNOWN,8,4
+Puma White,puma white,C-1785,white,DRAFT,,UNKNOWN,11,4
+Rose Gold,rose gold,C-1828,gold,DRAFT,,UNKNOWN,6,4
+Seafoam,seafoam,C-1858,,UNKNOWN,,UNKNOWN,9,4
+Shadow Grey,shadow grey,C-1876,grey,DRAFT,,UNKNOWN,6,4
+Shadow Red,shadow red,C-1878,red,DRAFT,,UNKNOWN,6,4
+Silver Lilac,silver lilac,C-1889,purple,DRAFT,,UNKNOWN,5,4
+Sport Red,sport red,C-1922,red,DRAFT,,UNKNOWN,5,4
+Stone,stone,C-1935,,UNKNOWN,,UNKNOWN,6,4
+Stone Khaki,stone khaki,C-1937,khaki,DRAFT,,UNKNOWN,4,4
+Surf Blue,surf blue,C-1947,blue,DRAFT,,UNKNOWN,4,4
+Thunder Blue,thunder blue,C-1972,blue,DRAFT,,UNKNOWN,6,4
+Total Black,total black,C-1976,black,DRAFT,,UNKNOWN,4,4
+Washed Grey,washed grey,C-2046,grey,DRAFT,,UNKNOWN,4,4
+Wonder Beige,wonder beige,C-2059,beige,DRAFT,,UNKNOWN,4,4
+Iron Metallic,iron metallic,C-2626,,UNKNOWN,,UNKNOWN,5,4
+Wonder Quartz,wonder quartz,C-2660,,UNKNOWN,,UNKNOWN,6,4
+Glow N The Dark,glow n the dark,C-2187,,UNKNOWN,,UNKNOWN,4,4
+Iced Carmine,iced carmine,C-2189,,UNKNOWN,,UNKNOWN,5,4
+Iris Whisper,iris whisper,C-2191,,UNKNOWN,,UNKNOWN,7,4
+Starfish,starfish,C-2220,,UNKNOWN,,UNKNOWN,16,4
+Reflection,reflection,C-2281,,UNKNOWN,,UNKNOWN,6,4
+Rosewood,rosewood,C-2283,,UNKNOWN,,UNKNOWN,4,4
+Timberwolf,timberwolf,C-2292,,UNKNOWN,,UNKNOWN,6,4
+Light Magenta,light magenta,C-2373,,UNKNOWN,,UNKNOWN,4,4
+Metallic Platinum,metallic platinum,C-2386,,UNKNOWN,,UNKNOWN,5,4
+Volt Ice,volt ice,C-2434,,UNKNOWN,,UNKNOWN,4,4
+Alloy,alloy,C-2442,,UNKNOWN,,UNKNOWN,5,4
+Fog,fog,C-2456,,UNKNOWN,,UNKNOWN,7,4
+Salt,salt,C-2476,,UNKNOWN,,UNKNOWN,4,4
+Vanilla Ice,vanilla ice,C-2553,,UNKNOWN,,UNKNOWN,10,4
+Arctic Green,arctic green,C-1027,green,DRAFT,,UNKNOWN,3,3
+Barely Grape,barely grape,C-1051,,UNKNOWN,,UNKNOWN,5,3
+Blue Bird,blue bird,C-1089,blue,DRAFT,,UNKNOWN,4,3
+Blue Oyster,blue oyster,C-1100,blue,DRAFT,,UNKNOWN,3,3
+Bone,bone,C-1112,,UNKNOWN,,UNKNOWN,7,3
+Canyon Rust,canyon rust,C-1144,,UNKNOWN,,UNKNOWN,4,3
+Champagne,champagne,C-1160,,UNKNOWN,,UNKNOWN,3,3
+Charcoal,charcoal,C-1162,,UNKNOWN,,UNKNOWN,5,3
+Chestnut Brown,chestnut brown,C-1170,brown,DRAFT,,UNKNOWN,4,3
+Chile Red,chile red,C-1171,red,DRAFT,,UNKNOWN,13,3
+Clay Canyon,clay canyon,C-1179,,UNKNOWN,#B66E51,DRAFT,3,3
+Cocoa Powder,cocoa powder,C-1195,,UNKNOWN,#705042,DRAFT,3,3
+Collegiate Burgundy,collegiate burgundy,C-1201,burgundy,DRAFT,,UNKNOWN,6,3
+Court Green,court green,C-1224,green,DRAFT,,UNKNOWN,4,3
+Crystal White,crystal white,C-1235,white,DRAFT,,UNKNOWN,4,3
+Dark Concord,dark concord,C-1246,,UNKNOWN,#44316C,DRAFT,3,3
+Dark Powder Blue,dark powder blue,C-1254,blue,DRAFT,,UNKNOWN,6,3
+Daybreak,daybreak,C-1264,,UNKNOWN,,UNKNOWN,4,3
+Denim,denim,C-1271,,UNKNOWN,#476A8C,DRAFT,5,3
+Denim Turquoise,denim turquoise,C-1272,,UNKNOWN,,UNKNOWN,4,3
+Desert Dust,desert dust,C-1276,,UNKNOWN,,UNKNOWN,4,3
+Desert Pink,desert pink,C-1280,pink,DRAFT,,UNKNOWN,3,3
+Eggshell,eggshell,C-1297,,UNKNOWN,,UNKNOWN,3,3
+Faded Black,faded black,C-1308,black,DRAFT,,UNKNOWN,3,3
+Field Silver,field silver,C-1317,silver,DRAFT,,UNKNOWN,3,3
+Flat Pewter,flat pewter,C-1328,,UNKNOWN,,UNKNOWN,8,3
+Flat Silver,flat silver,C-1329,silver,DRAFT,,UNKNOWN,5,3
+Flint,flint,C-1332,,UNKNOWN,,UNKNOWN,3,3
+Fossil,fossil,C-1343,,UNKNOWN,,UNKNOWN,8,3
+French Blue,french blue,C-1346,blue,DRAFT,,UNKNOWN,7,3
+Frost,frost,C-1348,,UNKNOWN,,UNKNOWN,11,3
+Ghost,ghost,C-1354,,UNKNOWN,,UNKNOWN,3,3
+Grey Matter,grey matter,C-1399,grey,DRAFT,,UNKNOWN,6,3
+Guava Ice,guava ice,C-1410,,UNKNOWN,,UNKNOWN,5,3
+Gum 3,gum 3,C-1412,gum,DRAFT,,UNKNOWN,3,3
+Hot Lava,hot lava,C-1440,,UNKNOWN,,UNKNOWN,4,3
+Ice Lavender,ice lavender,C-1455,purple,DRAFT,,UNKNOWN,3,3
+Ice Silver,ice silver,C-1456,silver,DRAFT,,UNKNOWN,3,3
+Indigo Denim,indigo denim,C-1466,,UNKNOWN,,UNKNOWN,5,3
+Kelly Green,kelly green,C-1479,green,DRAFT,,UNKNOWN,4,3
+Light Black,light black,C-1509,black,DRAFT,,UNKNOWN,3,3
+light Current Blue,light current blue,C-1517,blue,DRAFT,,UNKNOWN,3,3
+Lucid Blue,lucid blue,C-1549,blue,DRAFT,,UNKNOWN,3,3
+Mauve,mauve,C-1567,,UNKNOWN,,UNKNOWN,10,3
+Metallic Gold Grain,metallic gold grain,C-1582,gold,DRAFT,,UNKNOWN,3,3
+Metallic Red Bronze,metallic red bronze,C-1588,red,DRAFT,,UNKNOWN,4,3
+Mint,mint,C-1603,green,DRAFT,,UNKNOWN,13,3
+Moonlight,moonlight,C-1617,,UNKNOWN,,UNKNOWN,3,3
+Parachute Beige,parachute beige,C-1698,beige,DRAFT,,UNKNOWN,5,3
+Pink Milk,pink milk,C-1743,pink,DRAFT,,UNKNOWN,3,3
+Pink Smoke,pink smoke,C-1749,pink,DRAFT,,UNKNOWN,3,3
+Pink Spell,pink spell,C-1751,pink,DRAFT,,UNKNOWN,5,3
+Power Red,power red,C-1770,red,DRAFT,,UNKNOWN,3,3
+Preloved Brown,preloved brown,C-1774,brown,DRAFT,,UNKNOWN,5,3
+Puma Red,puma red,C-1783,red,DRAFT,,UNKNOWN,7,3
+Putty Grey,putty grey,C-1797,grey,DRAFT,,UNKNOWN,5,3
+Rose Cream,rose cream,C-1827,cream,DRAFT,,UNKNOWN,4,3
+Royal,royal,C-1830,,UNKNOWN,,UNKNOWN,4,3
+Shock Yellow,shock yellow,C-1880,yellow,DRAFT,,UNKNOWN,3,3
+Sierra Red,sierra red,C-1883,red,DRAFT,,UNKNOWN,3,3
+Smokey Blue,smokey blue,C-1903,blue,DRAFT,,UNKNOWN,3,3
+Solar Orange,solar orange,C-1910,orange,DRAFT,,UNKNOWN,7,3
+Steel Green,steel green,C-1930,green,DRAFT,,UNKNOWN,3,3
+Sundial,sundial,C-1946,,UNKNOWN,,UNKNOWN,7,3
+Tech Grey Metallic,tech grey metallic,C-1970,grey,DRAFT,,UNKNOWN,3,3
+Total Orange,total orange,C-1977,orange,DRAFT,,UNKNOWN,10,3
+Vintage Coral,vintage coral,C-2021,,UNKNOWN,,UNKNOWN,6,3
+Violet Mist,violet mist,C-2030,purple,DRAFT,,UNKNOWN,3,3
+Vivid Red,vivid red,C-2033,red,DRAFT,,UNKNOWN,3,3
+Warm White,warm white,C-2041,white,DRAFT,,UNKNOWN,5,3
+Clear Granite,clear granite,C-2608,,UNKNOWN,,UNKNOWN,4,3
+None,none,C-2636,,UNKNOWN,,UNKNOWN,3,3
+Sand Strata,sand strata,C-2647,,UNKNOWN,,UNKNOWN,3,3
+Bubble Ice,bubble ice,C-2125,,UNKNOWN,,UNKNOWN,3,3
+Oat Milk,oat milk,C-2144,,UNKNOWN,,UNKNOWN,6,3
+Cinnabar,cinnabar,C-2172,,UNKNOWN,,UNKNOWN,3,3
+Dark Cinder,dark cinder,C-2175,,UNKNOWN,,UNKNOWN,3,3
+Dark Shadow,dark shadow,C-2178,,UNKNOWN,,UNKNOWN,5,3
+Dark Sulfur,dark sulfur,C-2179,,UNKNOWN,,UNKNOWN,4,3
+Fierce Pruple,fierce pruple,C-2185,,UNKNOWN,,UNKNOWN,3,3
+Lime Blast,lime blast,C-2204,,UNKNOWN,,UNKNOWN,3,3
+Sweet Beet,sweet beet,C-2223,,UNKNOWN,,UNKNOWN,3,3
+Birch Heather,birch heather,C-2307,,UNKNOWN,,UNKNOWN,4,3
+Bright Citrus,bright citrus,C-2312,,UNKNOWN,,UNKNOWN,3,3
+Dark Hazel,dark hazel,C-2325,,UNKNOWN,,UNKNOWN,3,3
+Lightening,lightening,C-2376,,UNKNOWN,,UNKNOWN,3,3
+Peony,peony,C-2406,,UNKNOWN,,UNKNOWN,3,3
+Soft Pearl,soft pearl,C-2419,,UNKNOWN,,UNKNOWN,7,3
+Taupe Haze,taupe haze,C-2429,,UNKNOWN,,UNKNOWN,3,3
+Team Crimson,team crimson,C-2430,,UNKNOWN,,UNKNOWN,3,3
+Papaya,papaya,C-2513,,UNKNOWN,,UNKNOWN,8,3
+Rainy Day,rainy day,C-2547,,UNKNOWN,,UNKNOWN,3,3
+Rose Quartz,rose quartz,C-2565,,UNKNOWN,,UNKNOWN,4,3
+Burnt Cedar,burnt cedar,C-2569,,UNKNOWN,,UNKNOWN,3,3
+KPop Demon Hunters Rumi,kpop demon hunters rumi,C-2582,,UNKNOWN,,UNKNOWN,3,3
+Light Armory Blue,light armory blue,C-1004,blue,DRAFT,#A8C3E0,DRAFT,7,2
+Acid Orange,acid orange,C-1005,orange,DRAFT,,UNKNOWN,3,2
+Active Pink,active pink,C-1008,pink,DRAFT,,UNKNOWN,2,2
+Arctic Orange,arctic orange,C-1028,orange,DRAFT,,UNKNOWN,2,2
+Armory Blue,armory blue,C-1030,blue,DRAFT,,UNKNOWN,4,2
+Armory Navy,armory navy,C-1031,blue,DRAFT,,UNKNOWN,6,2
+Asics Blue,asics blue,C-1035,blue,DRAFT,,UNKNOWN,3,2
+Atomic Orange,atomic orange,C-1041,orange,DRAFT,,UNKNOWN,2,2
+Atomic Red,atomic red,C-1043,red,DRAFT,,UNKNOWN,2,2
+Back,back,C-1048,,UNKNOWN,,UNKNOWN,2,2
+Baltic Blue,baltic blue,C-1049,blue,DRAFT,,UNKNOWN,6,2
+Biege,biege,C-1060,,UNKNOWN,,UNKNOWN,3,2
+Bisque,bisque,C-1062,,UNKNOWN,,UNKNOWN,3,2
+Black Metallic,black metallic,C-1073,black,DRAFT,,UNKNOWN,2,2
+Black Muslin,black muslin,C-1074,black,DRAFT,,UNKNOWN,3,2
+Bold Gold,bold gold,C-1110,gold,DRAFT,,UNKNOWN,2,2
+Brilliant Orange,brilliant orange,C-1122,orange,DRAFT,,UNKNOWN,4,2
+Brown Desert,brown desert,C-1125,brown,DRAFT,,UNKNOWN,2,2
+Brown Kelp,brown kelp,C-1126,brown,DRAFT,,UNKNOWN,2,2
+Buff Gold,buff gold,C-1130,gold,DRAFT,,UNKNOWN,2,2
+Burgundy Ash,burgundy ash,C-1132,burgundy,DRAFT,,UNKNOWN,5,2
+Camo Green,camo green,C-1139,green,DRAFT,,UNKNOWN,5,2
+Cardboard Brown,cardboard brown,C-1146,brown,DRAFT,,UNKNOWN,2,2
+Checkerboard Black,checkerboard black,C-1167,black,DRAFT,,UNKNOWN,3,2
+Chocolate Brown,chocolate brown,C-1173,brown,DRAFT,,UNKNOWN,2,2
+Chrome Grey,chrome grey,C-1175,grey,DRAFT,,UNKNOWN,6,2
+Cinnamon,cinnamon,C-1177,,UNKNOWN,#A96543,DRAFT,2,2
+Classic Green,classic green,C-1178,green,DRAFT,,UNKNOWN,4,2
+Clay Orange,clay orange,C-1181,orange,DRAFT,,UNKNOWN,2,2
+Cloud Grey,cloud grey,C-1187,grey,DRAFT,,UNKNOWN,3,2
+Coastal Blue,coastal blue,C-1192,blue,DRAFT,,UNKNOWN,2,2
+Concrete,concrete,C-1210,,UNKNOWN,,UNKNOWN,3,2
+Dark Cherry,dark cherry,C-1245,,UNKNOWN,,UNKNOWN,11,2
+Dark Obsidian,dark obsidian,C-1251,,UNKNOWN,,UNKNOWN,5,2
+Dark Raisin,dark raisin,C-1255,,UNKNOWN,,UNKNOWN,4,2
+Dark Team Red,dark team red,C-1261,red,DRAFT,,UNKNOWN,6,2
+Deep royal,deep royal,C-1268,,UNKNOWN,#214BA0,DRAFT,6,2
+Demitasse Brown,demitasse brown,C-1270,brown,DRAFT,,UNKNOWN,2,2
+Desert,desert,C-1273,,UNKNOWN,,UNKNOWN,4,2
+Desert Berry,desert berry,C-1274,,UNKNOWN,,UNKNOWN,3,2
+Desert Ochre,desert ochre,C-1278,,UNKNOWN,#B47738,DRAFT,2,2
+Desert Orange,desert orange,C-1279,orange,DRAFT,,UNKNOWN,2,2
+Dodgers Classic Blue,dodgers classic blue,C-1284,blue,DRAFT,,UNKNOWN,2,2
+Dried Leaf Green,dried leaf green,C-1287,green,DRAFT,,UNKNOWN,3,2
+Driftwood,driftwood,C-1288,,UNKNOWN,,UNKNOWN,2,2
+Equipment Green,equipment green,C-1306,green,DRAFT,,UNKNOWN,2,2
+Feather Grey,feather grey,C-1315,grey,DRAFT,,UNKNOWN,2,2
+Field Purple,field purple,C-1316,purple,DRAFT,,UNKNOWN,3,2
+Fierce Purple,fierce purple,C-1319,purple,DRAFT,,UNKNOWN,4,2
+Galactic Grey,galactic grey,C-1351,grey,DRAFT,,UNKNOWN,3,2
+Grape Ice,grape ice,C-1379,,UNKNOWN,,UNKNOWN,6,2
+Green Glow,green glow,C-1386,green,DRAFT,,UNKNOWN,12,2
+Grey Four,grey four,C-1397,grey,DRAFT,,UNKNOWN,2,2
+Gum Dark Brown,gum dark brown,C-1415,brown,DRAFT,,UNKNOWN,3,2
+Gum Yellow,gum yellow,C-1420,yellow,DRAFT,,UNKNOWN,3,2
+Hi-Res Yellow,hi-res yellow,C-1436,yellow,DRAFT,,UNKNOWN,2,2
+Hot Pink,hot pink,C-1441,pink,DRAFT,,UNKNOWN,6,2
+Hyper Crimson,hyper crimson,C-1445,,UNKNOWN,#D51C45,DRAFT,3,2
+Hyper Purple,hyper purple,C-1449,purple,DRAFT,,UNKNOWN,2,2
+Iron,iron,C-1471,,UNKNOWN,,UNKNOWN,3,2
+Khaki Three,khaki three,C-1485,khaki,DRAFT,,UNKNOWN,2,2
+Kinetic Green,kinetic green,C-1487,green,DRAFT,,UNKNOWN,3,2
+Kona Brown,kona brown,C-1488,brown,DRAFT,,UNKNOWN,2,2
+Lavender Glow,lavender glow,C-1496,purple,DRAFT,,UNKNOWN,2,2
+Legend Pink,legend pink,C-1502,pink,DRAFT,,UNKNOWN,9,2
+Light Lemon Twist,light lemon twist,C-1524,,UNKNOWN,#F2EF9D,DRAFT,7,2
+Light Lucid Green,light lucid green,C-1525,green,DRAFT,,UNKNOWN,2,2
+Light Olive,light olive,C-1526,olive,DRAFT,,UNKNOWN,4,2
+Light Purple,light purple,C-1530,purple,DRAFT,,UNKNOWN,2,2
+Light Sapphire,light sapphire,C-1533,,UNKNOWN,#80A7D8,DRAFT,2,2
+Light Violet,light violet,C-1538,purple,DRAFT,,UNKNOWN,2,2
+Lucid Ray Blue,lucid ray blue,C-1552,blue,DRAFT,,UNKNOWN,2,2
+Magnet,magnet,C-1557,,UNKNOWN,,UNKNOWN,4,2
+Marshmallow White,marshmallow white,C-1562,white,DRAFT,,UNKNOWN,3,2
+Mesa Orange,mesa orange,C-1579,orange,DRAFT,,UNKNOWN,2,2
+Military Blue,military blue,C-1598,blue,DRAFT,,UNKNOWN,3,2
+Natural,natural,C-1633,,UNKNOWN,,UNKNOWN,6,2
+NB Navy,nb navy,C-1638,blue,DRAFT,,UNKNOWN,2,2
+Night Navy,night navy,C-1651,blue,DRAFT,,UNKNOWN,2,2
+Noble Red,noble red,C-1655,red,DRAFT,,UNKNOWN,3,2
+Off-Noir,off-noir,C-1666,,UNKNOWN,,UNKNOWN,2,2
+Olive Strata,olive strata,C-1677,olive,DRAFT,,UNKNOWN,2,2
+Orbit Grey,orbit grey,C-1686,grey,DRAFT,,UNKNOWN,2,2
+Oxidized Green,oxidized green,C-1691,green,DRAFT,,UNKNOWN,5,2
+Oyster Grey,oyster grey,C-1692,grey,DRAFT,,UNKNOWN,2,2
+Pale Pink,pale pink,C-1695,pink,DRAFT,,UNKNOWN,2,2
+Papaya Orange,papaya orange,C-1697,orange,DRAFT,,UNKNOWN,2,2
+Particle Pink,particle pink,C-1703,pink,DRAFT,,UNKNOWN,9,2
+Peach,peach,C-1707,,UNKNOWN,,UNKNOWN,2,2
+Pink Eraser,pink eraser,C-1733,pink,DRAFT,,UNKNOWN,2,2
+Pink Opal,pink opal,C-1744,pink,DRAFT,,UNKNOWN,2,2
+Pink Salt,pink salt,C-1748,pink,DRAFT,,UNKNOWN,3,2
+Pink Spark,pink spark,C-1750,pink,DRAFT,,UNKNOWN,2,2
+Pink Sugar,pink sugar,C-1752,pink,DRAFT,,UNKNOWN,2,2
+Platinum Violet,platinum violet,C-1764,purple,DRAFT,,UNKNOWN,9,2
+Prime Red,prime red,C-1778,red,DRAFT,,UNKNOWN,3,2
+Pure Gold,pure gold,C-1786,gold,DRAFT,,UNKNOWN,2,2
+Pure Orange,pure orange,C-1787,orange,DRAFT,,UNKNOWN,2,2
+Racer Blue,racer blue,C-1798,blue,DRAFT,,UNKNOWN,6,2
+Racing Red,racing red,C-1801,red,DRAFT,,UNKNOWN,2,2
+Real Green,real green,C-1805,green,DRAFT,,UNKNOWN,2,2
+Red Dahlia,red dahlia,C-1808,red,DRAFT,,UNKNOWN,2,2
+Red Stardust,red stardust,C-1815,red,DRAFT,,UNKNOWN,5,2
+Reflective Silver,reflective silver,C-1818,silver,DRAFT,,UNKNOWN,3,2
+Regal Pink,regal pink,C-1820,pink,DRAFT,,UNKNOWN,3,2
+Regency Purple,regency purple,C-1822,purple,DRAFT,,UNKNOWN,2,2
+Rush Blue,rush blue,C-1835,blue,DRAFT,,UNKNOWN,2,2
+Sage,sage,C-1842,,UNKNOWN,,UNKNOWN,4,2
+Semi Pink Spark,semi pink spark,C-1866,pink,DRAFT,,UNKNOWN,4,2
+Slate Blue,slate blue,C-1898,blue,DRAFT,,UNKNOWN,4,2
+Solar Blue,solar blue,C-1907,blue,DRAFT,,UNKNOWN,2,2
+Solar Yellow,solar yellow,C-1912,yellow,DRAFT,,UNKNOWN,2,2
+Speed Red,speed red,C-1918,red,DRAFT,,UNKNOWN,3,2
+Squadron Blue,squadron blue,C-1923,blue,DRAFT,,UNKNOWN,2,2
+Steel,steel,C-1929,,UNKNOWN,,UNKNOWN,3,2
+Stellar Grey,stellar grey,C-1933,grey,DRAFT,,UNKNOWN,3,2
+Sweet Pink,sweet pink,C-1948,pink,DRAFT,,UNKNOWN,2,2
+Team Victory Red,team victory red,C-1966,red,DRAFT,,UNKNOWN,2,2
+Theory Oil Green,theory oil green,C-1971,green,DRAFT,,UNKNOWN,2,2
+Thunder Brown,thunder brown,C-1973,brown,DRAFT,,UNKNOWN,2,2
+True Black Denim,true black denim,C-1985,black,DRAFT,,UNKNOWN,2,2
+Vanilla,vanilla,C-2004,,UNKNOWN,,UNKNOWN,4,2
+Vapor Gray,vapor gray,C-2005,grey,DRAFT,,UNKNOWN,3,2
+Vapor Green,vapor green,C-2006,green,DRAFT,,UNKNOWN,8,2
+Varsity Blue,varsity blue,C-2008,blue,DRAFT,,UNKNOWN,2,2
+Varsity Navy,varsity navy,C-2011,blue,DRAFT,,UNKNOWN,2,2
+Vasity Red,vasity red,C-2015,red,DRAFT,,UNKNOWN,4,2
+Vintage Lilac,vintage lilac,C-2023,purple,DRAFT,,UNKNOWN,2,2
+Vivid Purple,vivid purple,C-2032,purple,DRAFT,,UNKNOWN,4,2
+Volt Tint,volt tint,C-2035,,UNKNOWN,,UNKNOWN,7,2
+White Dune,white dune,C-2051,white,DRAFT,,UNKNOWN,2,2
+Woodland Camo Green,woodland camo green,C-2063,green,DRAFT,,UNKNOWN,2,2
+Cardboard,cardboard,C-2604,,UNKNOWN,,UNKNOWN,2,2
+Clear Sky,clear sky,C-2609,,UNKNOWN,,UNKNOWN,4,2
+Flash Aqua,flash aqua,C-2620,,UNKNOWN,,UNKNOWN,2,2
+Light Denim,light denim,C-2627,,UNKNOWN,,UNKNOWN,2,2
+Medium Vintage Denim,medium vintage denim,C-2631,,UNKNOWN,,UNKNOWN,2,2
+Onix,onix,C-2638,,UNKNOWN,,UNKNOWN,2,2
+Powder Plum,powder plum,C-2640,,UNKNOWN,,UNKNOWN,2,2
+Preloved Ink,preloved ink,C-2642,,UNKNOWN,,UNKNOWN,2,2
+Solar Turbo,solar turbo,C-2650,,UNKNOWN,,UNKNOWN,2,2
+Wonder Sage,wonder sage,C-2073,,UNKNOWN,,UNKNOWN,2,2
+Dragon Fruit,dragon fruit,C-2084,,UNKNOWN,,UNKNOWN,2,2
+Cheetah,cheetah,C-2113,,UNKNOWN,,UNKNOWN,2,2
+Fossilized,fossilized,C-2117,,UNKNOWN,,UNKNOWN,2,2
+Milk Chocolate,milk chocolate,C-2128,,UNKNOWN,,UNKNOWN,2,2
+Carnation,carnation,C-2134,,UNKNOWN,,UNKNOWN,2,2
+Classic Mauve,classic mauve,C-2135,,UNKNOWN,,UNKNOWN,2,2
+Stardust,stardust,C-2152,,UNKNOWN,,UNKNOWN,4,2
+Laser Fushia,laser fushia,C-2194,,UNKNOWN,,UNKNOWN,2,2
+Light Aqua,light aqua,C-2199,,UNKNOWN,,UNKNOWN,2,2
+Light Wild Mango,light wild mango,C-2203,,UNKNOWN,,UNKNOWN,2,2
+New Emerald,new emerald,C-2209,,UNKNOWN,,UNKNOWN,6,2
+Night Stadium,night stadium,C-2211,,UNKNOWN,,UNKNOWN,2,2
+Swan,swan,C-2222,,UNKNOWN,,UNKNOWN,2,2
+Total Crimson,total crimson,C-2225,,UNKNOWN,,UNKNOWN,3,2
+Liquorice,liquorice,C-2230,,UNKNOWN,,UNKNOWN,2,2
+Angora,angora,C-2244,,UNKNOWN,,UNKNOWN,5,2
+Castle Rock,castle rock,C-2251,,UNKNOWN,,UNKNOWN,4,2
+Cortado,cortado,C-2252,,UNKNOWN,,UNKNOWN,2,2
+Dark Olivine,dark olivine,C-2257,,UNKNOWN,,UNKNOWN,6,2
+Pumpernickel,pumpernickel,C-2278,,UNKNOWN,,UNKNOWN,2,2
+Timber Wolf,timber wolf,C-2291,,UNKNOWN,,UNKNOWN,3,2
+Turtledove,turtledove,C-2294,,UNKNOWN,,UNKNOWN,2,2
+Vintage Indigo,vintage indigo,C-2296,,UNKNOWN,,UNKNOWN,2,2
+Amarillo,amarillo,C-2299,,UNKNOWN,,UNKNOWN,3,2
+Ashen Slate,ashen slate,C-2303,,UNKNOWN,,UNKNOWN,3,2
+Bleached Turquoise,bleached turquoise,C-2308,,UNKNOWN,,UNKNOWN,2,2
+Filbert,filbert,C-2339,,UNKNOWN,,UNKNOWN,2,2
+Fire,fire,C-2342,,UNKNOWN,,UNKNOWN,2,2
+Fresh Water,fresh water,C-2345,,UNKNOWN,,UNKNOWN,3,2
+Fuchsia Glow,fuchsia glow,C-2348,,UNKNOWN,,UNKNOWN,2,2
+Mystic Dates,mystic dates,C-2394,,UNKNOWN,,UNKNOWN,2,2
+Oasis Teal,oasis teal,C-2399,,UNKNOWN,,UNKNOWN,2,2
+Off-White,off-white,C-2403,,UNKNOWN,,UNKNOWN,2,2
+Polar,polar,C-2410,,UNKNOWN,,UNKNOWN,3,2
+Tatto Silt,tatto silt,C-2426,,UNKNOWN,,UNKNOWN,2,2
+Nolita,nolita,C-2439,,UNKNOWN,,UNKNOWN,2,2
+Biscuit,biscuit,C-2447,,UNKNOWN,,UNKNOWN,2,2
+Heron,heron,C-2463,,UNKNOWN,,UNKNOWN,2,2
+Iceberg,iceberg,C-2465,,UNKNOWN,,UNKNOWN,2,2
+Lily,lily,C-2466,,UNKNOWN,,UNKNOWN,2,2
+Oyster,oyster,C-2470,,UNKNOWN,,UNKNOWN,2,2
+Quiet Shade,quiet shade,C-2471,,UNKNOWN,,UNKNOWN,2,2
+Rock,rock,C-2473,,UNKNOWN,,UNKNOWN,3,2
+Sphinx,sphinx,C-2480,,UNKNOWN,,UNKNOWN,2,2
+Suft The Web,suft the web,C-2481,,UNKNOWN,,UNKNOWN,2,2
+Thorn,thorn,C-2484,,UNKNOWN,,UNKNOWN,2,2
+Wolf,wolf,C-2488,,UNKNOWN,,UNKNOWN,2,2
+Frosted Ivory,frosted ivory,C-2503,,UNKNOWN,,UNKNOWN,4,2
+Almond Milk,almond milk,C-2524,,UNKNOWN,,UNKNOWN,6,2
+Cosmic Sky,cosmic sky,C-2529,,UNKNOWN,,UNKNOWN,2,2
+Lunar Rock,lunar rock,C-2541,,UNKNOWN,,UNKNOWN,2,2
+Sand Heather,sand heather,C-2574,,UNKNOWN,,UNKNOWN,2,2
+Sierra Taupe,sierra taupe,C-2575,,UNKNOWN,,UNKNOWN,2,2
+Timberwolf Taupe,timberwolf taupe,C-2577,,UNKNOWN,,UNKNOWN,2,2
+KPop Demon Hunters Derpy,kpop demon hunters derpy,C-2580,,UNKNOWN,,UNKNOWN,2,2
+KPop Demon Hunters Mira,kpop demon hunters mira,C-2581,,UNKNOWN,,UNKNOWN,2,2
+KPop Demon Hunters Zoey,kpop demon hunters zoey,C-2583,,UNKNOWN,,UNKNOWN,2,2
+Acid Red,acid red,C-1006,red,DRAFT,,UNKNOWN,2,1
+Action Green,action green,C-1007,green,DRAFT,,UNKNOWN,1,1
+Aero Pink,aero pink,C-1009,pink,DRAFT,,UNKNOWN,1,1
+Ale Brown,ale brown,C-1012,brown,DRAFT,,UNKNOWN,1,1
+All Black,all black,C-1013,black,DRAFT,,UNKNOWN,4,1
+All White,all white,C-1014,white,DRAFT,,UNKNOWN,2,1
+Almost Yellow,almost yellow,C-1015,yellow,DRAFT,,UNKNOWN,2,1
+Aluminum,aluminum,C-1017,,UNKNOWN,,UNKNOWN,3,1
+Antique Silver,antique silver,C-1021,silver,DRAFT,,UNKNOWN,1,1
+Apple Green,apple green,C-1022,green,DRAFT,,UNKNOWN,2,1
+Aqua Blue,aqua blue,C-1023,blue,DRAFT,,UNKNOWN,5,1
+Archaeo Brown,archaeo brown,C-1025,brown,DRAFT,,UNKNOWN,6,1
+Archive Green,archive green,C-1026,green,DRAFT,,UNKNOWN,2,1
+Arctic Pink,arctic pink,C-1029,pink,DRAFT,,UNKNOWN,1,1
+Armoury Navy,armoury navy,C-1032,blue,DRAFT,,UNKNOWN,2,1
+Army Olive,army olive,C-1033,olive,DRAFT,,UNKNOWN,4,1
+Ash Grey,ash grey,C-1034,grey,DRAFT,,UNKNOWN,2,1
+Asphalt Grey,asphalt grey,C-1036,grey,DRAFT,,UNKNOWN,1,1
+Atiba Black,atiba black,C-1038,black,DRAFT,,UNKNOWN,1,1
+Atmosphere,atmosphere,C-1039,,UNKNOWN,,UNKNOWN,3,1
+Atomic Pink,atomic pink,C-1042,pink,DRAFT,,UNKNOWN,2,1
+Aurora Black,aurora black,C-1044,black,DRAFT,,UNKNOWN,1,1
+Aurora Blue,aurora blue,C-1045,blue,DRAFT,,UNKNOWN,1,1
+Baby Blue,baby blue,C-1047,blue,DRAFT,,UNKNOWN,1,1
+Barely Blue,barely blue,C-1050,blue,DRAFT,,UNKNOWN,2,1
+Barely Green,barely green,C-1052,green,DRAFT,,UNKNOWN,4,1
+Base Grey,base grey,C-1056,grey,DRAFT,,UNKNOWN,1,1
+Basic Grey,basic grey,C-1057,grey,DRAFT,,UNKNOWN,1,1
+Best Grey,best grey,C-1058,grey,DRAFT,,UNKNOWN,1,1
+Black 2.0,black 2.0,C-1063,black,DRAFT,,UNKNOWN,1,1
+Black Cement,black cement,C-1065,black,DRAFT,,UNKNOWN,3,1
+Black Core,black core,C-1067,black,DRAFT,,UNKNOWN,1,1
+Black Dragon,black dragon,C-1069,black,DRAFT,,UNKNOWN,1,1
+Black Heather,black heather,C-1070,black,DRAFT,,UNKNOWN,1,1
+Black Night,black night,C-1075,black,DRAFT,,UNKNOWN,1,1
+Black Reflection,black reflection,C-1078,black,DRAFT,,UNKNOWN,1,1
+Black Spruce,black spruce,C-1079,black,DRAFT,,UNKNOWN,1,1
+Black Twine,black twine,C-1081,black,DRAFT,,UNKNOWN,1,1
+Black Wolf,black wolf,C-1084,black,DRAFT,,UNKNOWN,1,1
+Bliss Lilac,bliss lilac,C-1086,purple,DRAFT,,UNKNOWN,1,1
+Bliss Pink,bliss pink,C-1087,pink,DRAFT,,UNKNOWN,1,1
+Blue Burst,blue burst,C-1090,blue,DRAFT,,UNKNOWN,1,1
+Blue Crystal,blue crystal,C-1092,blue,DRAFT,,UNKNOWN,1,1
+Blue Denim,blue denim,C-1093,blue,DRAFT,,UNKNOWN,1,1
+Blue Grey,blue grey,C-1097,grey,DRAFT,,UNKNOWN,12,1
+Blue Lightening,blue lightening,C-1099,blue,DRAFT,,UNKNOWN,1,1
+Blue Teal,blue teal,C-1101,blue,DRAFT,,UNKNOWN,1,1
+Blue Viod,blue viod,C-1103,blue,DRAFT,,UNKNOWN,1,1
+Blue Void,blue void,C-1105,blue,DRAFT,,UNKNOWN,6,1
+Blush Pink,blush pink,C-1107,pink,DRAFT,,UNKNOWN,1,1
+Bright Green,bright green,C-1115,green,DRAFT,,UNKNOWN,1,1
+Bright Lavender,bright lavender,C-1116,purple,DRAFT,,UNKNOWN,2,1
+Bright Mango Yellow,bright mango yellow,C-1117,yellow,DRAFT,,UNKNOWN,2,1
+Bright Orange,bright orange,C-1118,orange,DRAFT,,UNKNOWN,1,1
+Brilliant Blue,brilliant blue,C-1121,blue,DRAFT,,UNKNOWN,1,1
+Brown Storm,brown storm,C-1127,brown,DRAFT,,UNKNOWN,1,1
+Buck Brown,buck brown,C-1129,brown,DRAFT,,UNKNOWN,2,1
+Burnt Olive,burnt olive,C-1135,olive,DRAFT,,UNKNOWN,1,1
+C;loud White,c;loud white,C-1137,white,DRAFT,,UNKNOWN,1,1
+Campfire Orange,campfire orange,C-1140,orange,DRAFT,,UNKNOWN,1,1
+Cannon,cannon,C-1141,,UNKNOWN,,UNKNOWN,2,1
+Canyon Gold,canyon gold,C-1142,gold,DRAFT,,UNKNOWN,1,1
+Canyon Purple,canyon purple,C-1143,purple,DRAFT,,UNKNOWN,1,1
+Carrier Grey,carrier grey,C-1148,grey,DRAFT,,UNKNOWN,1,1
+Cashew Brown,cashew brown,C-1149,brown,DRAFT,,UNKNOWN,1,1
+Cedar Brown,cedar brown,C-1153,brown,DRAFT,,UNKNOWN,1,1
+Celestine Blue,celestine blue,C-1155,blue,DRAFT,,UNKNOWN,1,1
+Challenge Red,challenge red,C-1159,red,DRAFT,,UNKNOWN,2,1
+Charcoal Grey,charcoal grey,C-1163,grey,DRAFT,,UNKNOWN,2,1
+Charm Black,charm black,C-1164,black,DRAFT,,UNKNOWN,2,1
+Charms Black,charms black,C-1165,black,DRAFT,,UNKNOWN,1,1
+Checkerboard Red,checkerboard red,C-1168,red,DRAFT,,UNKNOWN,1,1
+Chlorine Blue,chlorine blue,C-1172,blue,DRAFT,,UNKNOWN,2,1
+Chrome Yellow,chrome yellow,C-1176,yellow,DRAFT,,UNKNOWN,1,1
+Clear Blue,clear blue,C-1183,blue,DRAFT,,UNKNOWN,1,1
+Cloud Black,cloud black,C-1186,black,DRAFT,,UNKNOWN,1,1
+Club Gold,club gold,C-1189,gold,DRAFT,,UNKNOWN,1,1
+Cobalt Blue,cobalt blue,C-1194,blue,DRAFT,,UNKNOWN,1,1
+Collegiate Gold,collegiate gold,C-1202,gold,DRAFT,,UNKNOWN,1,1
+Collegiate Navy,collegiate navy,C-1204,blue,DRAFT,,UNKNOWN,2,1
+Collegiate Orange,collegiate orange,C-1205,orange,DRAFT,,UNKNOWN,3,1
+Collegiate Purple,collegiate purple,C-1206,purple,DRAFT,,UNKNOWN,1,1
+Collegiate Red,collegiate red,C-1207,red,DRAFT,,UNKNOWN,1,1
+Comet Blue,comet blue,C-1208,blue,DRAFT,,UNKNOWN,1,1
+Comet Red,comet red,C-1209,red,DRAFT,,UNKNOWN,2,1
+Cool Dark Gray,cool dark gray,C-1212,grey,DRAFT,,UNKNOWN,1,1
+Cool Light Grey,cool light grey,C-1214,grey,DRAFT,,UNKNOWN,1,1
+Coral Pink,coral pink,C-1217,pink,DRAFT,,UNKNOWN,3,1
+Cosmic Clay,cosmic clay,C-1221,,UNKNOWN,,UNKNOWN,5,1
+Court Blue,court blue,C-1223,blue,DRAFT,,UNKNOWN,2,1
+Cpre Black,cpre black,C-1226,black,DRAFT,,UNKNOWN,1,1
+Crew Orange,crew orange,C-1232,orange,DRAFT,,UNKNOWN,1,1
+Crew Yellow,crew yellow,C-1233,yellow,DRAFT,,UNKNOWN,1,1
+Crimson Tint,crimson tint,C-1234,,UNKNOWN,,UNKNOWN,3,1
+Current Blue,current blue,C-1236,blue,DRAFT,,UNKNOWN,1,1
+Cyber Cool Grey,cyber cool grey,C-1237,grey,DRAFT,,UNKNOWN,1,1
+Daring Red,daring red,C-1238,red,DRAFT,,UNKNOWN,2,1
+Dark Beige,dark beige,C-1240,beige,DRAFT,,UNKNOWN,1,1
+Dark Charcoal,dark charcoal,C-1244,,UNKNOWN,,UNKNOWN,4,1
+Dark Gum,dark gum,C-1250,gum,DRAFT,,UNKNOWN,1,1
+Dark Pink,dark pink,C-1252,pink,DRAFT,,UNKNOWN,1,1
+Dark Pony,dark pony,C-1253,,UNKNOWN,,UNKNOWN,7,1
+Dark Silver,dark silver,C-1257,silver,DRAFT,,UNKNOWN,1,1
+Dawn Pink,dawn pink,C-1263,pink,DRAFT,,UNKNOWN,1,1
+Deep Maroon,deep maroon,C-1266,maroon,DRAFT,,UNKNOWN,1,1
+Desert Khaki,desert khaki,C-1277,khaki,DRAFT,,UNKNOWN,1,1
+Dodger Blue,dodger blue,C-1283,blue,DRAFT,,UNKNOWN,2,1
+Dove Grey,dove grey,C-1285,grey,DRAFT,,UNKNOWN,1,1
+Dusky Brown,dusky brown,C-1291,brown,DRAFT,,UNKNOWN,1,1
+Dusty Amethyst,dusty amethyst,C-1292,,UNKNOWN,,UNKNOWN,5,1
+Earth Brown,earth brown,C-1293,brown,DRAFT,,UNKNOWN,1,1
+Easy Pink,easy pink,C-1294,pink,DRAFT,,UNKNOWN,2,1
+Energy Green,energy green,C-1304,green,DRAFT,,UNKNOWN,1,1
+Espresso Brown,espresso brown,C-1307,brown,DRAFT,,UNKNOWN,2,1
+Faded Navy,faded navy,C-1309,blue,DRAFT,,UNKNOWN,1,1
+Fierce Red,fierce red,C-1320,red,DRAFT,,UNKNOWN,1,1
+Fiery Red,fiery red,C-1321,red,DRAFT,,UNKNOWN,1,1
+Flash Crimson,flash crimson,C-1325,,UNKNOWN,#D91F3D,DRAFT,2,1
+Flight Silver,flight silver,C-1331,silver,DRAFT,,UNKNOWN,1,1
+Floral Rivets Black,floral rivets black,C-1334,black,DRAFT,,UNKNOWN,1,1
+Foam Green,foam green,C-1335,green,DRAFT,,UNKNOWN,1,1
+Foam White,foam white,C-1336,white,DRAFT,,UNKNOWN,1,1
+Focus Olive,focus olive,C-1337,olive,DRAFT,,UNKNOWN,2,1
+For All Time Red,for all time red,C-1341,red,DRAFT,,UNKNOWN,1,1
+Forest Green,forest green,C-1342,green,DRAFT,,UNKNOWN,2,1
+Fountain Blue,fountain blue,C-1344,blue,DRAFT,,UNKNOWN,2,1
+Fox Brown,fox brown,C-1345,brown,DRAFT,,UNKNOWN,1,1
+Fresh Mint,fresh mint,C-1347,green,DRAFT,,UNKNOWN,1,1
+Fuchsia,fuchsia,C-1349,,UNKNOWN,,UNKNOWN,2,1
+Fusion Red,fusion red,C-1350,red,DRAFT,,UNKNOWN,3,1
+Gamma Blue,gamma blue,C-1353,blue,DRAFT,,UNKNOWN,10,1
+Ghost Grey,ghost grey,C-1356,grey,DRAFT,,UNKNOWN,1,1
+Glacier Grey,glacier grey,C-1359,grey,DRAFT,,UNKNOWN,1,1
+Global Red,global red,C-1361,red,DRAFT,,UNKNOWN,1,1
+Glory Grey,glory grey,C-1362,grey,DRAFT,,UNKNOWN,1,1
+Glow Green,glow green,C-1364,green,DRAFT,,UNKNOWN,2,1
+Gold Chrome,gold chrome,C-1367,gold,DRAFT,,UNKNOWN,1,1
+Gold Leaf,gold leaf,C-1369,gold,DRAFT,,UNKNOWN,1,1
+Gold Mat,gold mat,C-1370,gold,DRAFT,,UNKNOWN,1,1
+Golden Beige,golden beige,C-1373,beige,DRAFT,,UNKNOWN,1,1
+Gradient Blue,gradient blue,C-1375,blue,DRAFT,,UNKNOWN,1,1
+Grand Purple,grand purple,C-1377,purple,DRAFT,,UNKNOWN,2,1
+Gray Taupe,gray taupe,C-1382,grey,DRAFT,,UNKNOWN,1,1
+Green Milieu,green milieu,C-1389,green,DRAFT,,UNKNOWN,1,1
+Green Noise,green noise,C-1390,green,DRAFT,,UNKNOWN,1,1
+Grey Alumina,grey alumina,C-1395,grey,DRAFT,,UNKNOWN,1,1
+Grey Platinum Tint,grey platinum tint,C-1402,grey,DRAFT,,UNKNOWN,1,1
+Grey Stonewar,grey stonewar,C-1404,grey,DRAFT,,UNKNOWN,1,1
+Grey Strata,grey strata,C-1405,grey,DRAFT,,UNKNOWN,1,1
+Grey Taupe,grey taupe,C-1406,grey,DRAFT,,UNKNOWN,1,1
+Gridiron Sail,gridiron sail,C-1409,sail,DRAFT,,UNKNOWN,1,1
+Gum 5,gum 5,C-1413,gum,DRAFT,,UNKNOWN,1,1
+Gum Dark,gum dark,C-1414,gum,DRAFT,,UNKNOWN,1,1
+Gum Four,gum four,C-1416,gum,DRAFT,,UNKNOWN,1,1
+Gym Blue,gym blue,C-1421,blue,DRAFT,,UNKNOWN,1,1
+Gym Green,gym green,C-1422,green,DRAFT,,UNKNOWN,1,1
+Halo Mint,halo mint,C-1426,green,DRAFT,,UNKNOWN,1,1
+Hazy Orange,hazy orange,C-1429,orange,DRAFT,,UNKNOWN,1,1
+Heather Dark Grey,heather dark grey,C-1431,grey,DRAFT,,UNKNOWN,1,1
+Heritage Red,heritage red,C-1433,red,DRAFT,,UNKNOWN,1,1
+Hi-Res Blue,hi-res blue,C-1434,blue,DRAFT,,UNKNOWN,1,1
+Hi-Res Red,hi-res red,C-1435,red,DRAFT,,UNKNOWN,1,1
+Honey,honey,C-1438,,UNKNOWN,,UNKNOWN,2,1
+Honey Beige,honey beige,C-1439,beige,DRAFT,,UNKNOWN,1,1
+Hot Punch,hot punch,C-1442,,UNKNOWN,,UNKNOWN,4,1
+Ice Gold Metallic,ice gold metallic,C-1454,gold,DRAFT,,UNKNOWN,1,1
+Ice White,ice white,C-1457,white,DRAFT,,UNKNOWN,1,1
+Igloo,igloo,C-1460,,UNKNOWN,,UNKNOWN,4,1
+Impact Yellow,impact yellow,C-1462,yellow,DRAFT,,UNKNOWN,1,1
+Indigo,indigo,C-1464,,UNKNOWN,,UNKNOWN,3,1
+Indigo Blue,indigo blue,C-1465,blue,DRAFT,,UNKNOWN,1,1
+Industrial Blue,industrial blue,C-1467,blue,DRAFT,,UNKNOWN,14,1
+International Blue,international blue,C-1469,blue,DRAFT,,UNKNOWN,1,1
+Iridescent,iridescent,C-1470,,UNKNOWN,,UNKNOWN,2,1
+Jasper Green,jasper green,C-1477,green,DRAFT,,UNKNOWN,1,1
+Jet Black,jet black,C-1478,black,DRAFT,,UNKNOWN,1,1
+Khaki Green,khaki green,C-1482,green,DRAFT,,UNKNOWN,2,1
+Khaki Six,khaki six,C-1484,khaki,DRAFT,,UNKNOWN,1,1
+Khaki Twine,khaki twine,C-1486,khaki,DRAFT,,UNKNOWN,1,1
+KPop Demon Hunters Blue,kpop demon hunters blue,C-1489,blue,DRAFT,,UNKNOWN,1,1
+Lake Blue,lake blue,C-1490,blue,DRAFT,,UNKNOWN,1,1
+Laser Orange,laser orange,C-1493,orange,DRAFT,,UNKNOWN,3,1
+Lavender,lavender,C-1495,purple,DRAFT,,UNKNOWN,2,1
+Legend Light Brown,legend light brown,C-1500,brown,DRAFT,,UNKNOWN,9,1
+Legion Green,legion green,C-1503,green,DRAFT,,UNKNOWN,1,1
+Lemon Spark,lemon spark,C-1504,,UNKNOWN,#F4E45B,DRAFT,1,1
+Light Amory Blue,light amory blue,C-1505,blue,DRAFT,,UNKNOWN,1,1
+Light Armoury Blue,light armoury blue,C-1507,blue,DRAFT,,UNKNOWN,1,1
+Light Beige,light beige,C-1508,beige,DRAFT,,UNKNOWN,1,1
+Light Blue Mel,light blue mel,C-1511,blue,DRAFT,,UNKNOWN,1,1
+Light Brown,light brown,C-1514,brown,DRAFT,,UNKNOWN,3,1
+Light Chocolate,light chocolate,C-1515,,UNKNOWN,,UNKNOWN,3,1
+Light Green,light green,C-1519,green,DRAFT,,UNKNOWN,1,1
+Light Grey Heather,light grey heather,C-1522,grey,DRAFT,,UNKNOWN,1,1
+Light Sand,light sand,C-1532,,UNKNOWN,,UNKNOWN,2,1
+Light Silver Metallic,light silver metallic,C-1535,silver,DRAFT,,UNKNOWN,3,1
+Light Violet Ore,light violet ore,C-1539,purple,DRAFT,,UNKNOWN,2,1
+Lilac,lilac,C-1541,purple,DRAFT,,UNKNOWN,2,1
+Lilac Ash,lilac ash,C-1542,purple,DRAFT,,UNKNOWN,2,1
+Marine Blue,marine blue,C-1559,blue,DRAFT,,UNKNOWN,1,1
+Matte Gold,matte gold,C-1565,gold,DRAFT,,UNKNOWN,1,1
+Max Orange,max orange,C-1568,orange,DRAFT,,UNKNOWN,1,1
+Medium,medium,C-1570,,UNKNOWN,,UNKNOWN,2,1
+Medtallic Gold,medtallic gold,C-1577,gold,DRAFT,,UNKNOWN,1,1
+Medusa Green Anora,medusa green anora,C-1578,green,DRAFT,,UNKNOWN,1,1
+Metallic Grey,metallic grey,C-1583,grey,DRAFT,,UNKNOWN,1,1
+Metallic Pink,metallic pink,C-1585,pink,DRAFT,,UNKNOWN,1,1
+Metallic Rose Gold,metallic rose gold,C-1589,gold,DRAFT,,UNKNOWN,2,1
+Metallic Summit White,metallic summit white,C-1591,white,DRAFT,,UNKNOWN,1,1
+Metasllic Silver,metasllic silver,C-1593,silver,DRAFT,,UNKNOWN,1,1
+Mica Blue,mica blue,C-1594,blue,DRAFT,,UNKNOWN,1,1
+Mint Faom,mint faom,C-1605,green,DRAFT,,UNKNOWN,1,1
+Mint Flash,mint flash,C-1606,green,DRAFT,,UNKNOWN,1,1
+Mint Foam,mint foam,C-1608,green,DRAFT,,UNKNOWN,7,1
+Misty Pink,misty pink,C-1611,pink,DRAFT,,UNKNOWN,1,1
+Mod Grey,mod grey,C-1612,grey,DRAFT,,UNKNOWN,1,1
+Monochrome Black,monochrome black,C-1615,black,DRAFT,,UNKNOWN,1,1
+Mosaic Green,mosaic green,C-1619,green,DRAFT,,UNKNOWN,1,1
+Moss,moss,C-1620,,UNKNOWN,#667A4A,DRAFT,1,1
+Mosswood Brown,mosswood brown,C-1621,brown,DRAFT,,UNKNOWN,1,1
+Mushroom Brown,mushroom brown,C-1627,brown,DRAFT,,UNKNOWN,1,1
+Mystic Navy,mystic navy,C-1631,blue,DRAFT,,UNKNOWN,5,1
+Neo Pink,neo pink,C-1639,pink,DRAFT,,UNKNOWN,1,1
+Neptune Green,neptune green,C-1641,green,DRAFT,,UNKNOWN,2,1
+New Balance White,new balance white,C-1646,white,DRAFT,,UNKNOWN,1,1
+Night Brown,night brown,C-1648,brown,DRAFT,,UNKNOWN,1,1
+Night Grey,night grey,C-1649,grey,DRAFT,,UNKNOWN,1,1
+Night Red,night red,C-1652,red,DRAFT,,UNKNOWN,1,1
+Nike True Blue,nike true blue,C-1653,blue,DRAFT,,UNKNOWN,1,1
+Noble Maroon,noble maroon,C-1654,maroon,DRAFT,,UNKNOWN,1,1
+Nuetral Grey,nuetral grey,C-1656,grey,DRAFT,,UNKNOWN,2,1
+Oat,oat,C-1658,,UNKNOWN,,UNKNOWN,3,1
+Obsidian Grey,obsidian grey,C-1662,grey,DRAFT,,UNKNOWN,2,1
+Of White,of white,C-1663,white,DRAFT,,UNKNOWN,1,1
+Oil Green,oil green,C-1667,green,DRAFT,,UNKNOWN,2,1
+Old Rose,old rose,C-1669,,UNKNOWN,#B9828B,DRAFT,1,1
+Olive Aura,olive aura,C-1672,olive,DRAFT,,UNKNOWN,3,1
+Olive Flak,olive flak,C-1673,olive,DRAFT,,UNKNOWN,1,1
+Olive Green,olive green,C-1674,green,DRAFT,,UNKNOWN,2,1
+Opti Yellow,opti yellow,C-1679,yellow,DRAFT,,UNKNOWN,1,1
+Optical White,optical white,C-1680,white,DRAFT,,UNKNOWN,1,1
+Orange Tint,orange tint,C-1683,orange,DRAFT,,UNKNOWN,1,1
+Oxford Blue,oxford blue,C-1689,blue,DRAFT,,UNKNOWN,1,1
+Oyster White,oyster white,C-1693,white,DRAFT,,UNKNOWN,1,1
+Parisian Night Blue,parisian night blue,C-1699,blue,DRAFT,,UNKNOWN,1,1
+Particle Grey-White-Gym Red,particle grey-white-gym red,C-1702,red,DRAFT,,UNKNOWN,1,1
+Pear,pear,C-1709,,UNKNOWN,,UNKNOWN,4,1
+Pearlized Marshmallow White,pearlized marshmallow white,C-1715,white,DRAFT,,UNKNOWN,1,1
+Pearlized Yacht Club Green,pearlized yacht club green,C-1717,green,DRAFT,,UNKNOWN,1,1
+Phantom Sail,phantom sail,C-1720,sail,DRAFT,,UNKNOWN,1,1
+Photo Blue,photo blue,C-1721,blue,DRAFT,,UNKNOWN,6,1
+Piedmont Grey,piedmont grey,C-1724,grey,DRAFT,,UNKNOWN,2,1
+Pink clay,pink clay,C-1729,pink,DRAFT,,UNKNOWN,1,1
+Pink Diamond,pink diamond,C-1732,pink,DRAFT,,UNKNOWN,1,1
+Pink Ice,pink ice,C-1741,pink,DRAFT,,UNKNOWN,1,1
+Pink Rose,pink rose,C-1747,pink,DRAFT,,UNKNOWN,1,1
+Pink Velvet,pink velvet,C-1755,pink,DRAFT,,UNKNOWN,1,1
+Pink Yarrow,pink yarrow,C-1757,pink,DRAFT,,UNKNOWN,1,1
+Pitch Gray,pitch gray,C-1760,grey,DRAFT,,UNKNOWN,1,1
+Platinum,platinum,C-1762,,UNKNOWN,#D3D3CF,DRAFT,2,1
+Powder Purple,powder purple,C-1769,purple,DRAFT,,UNKNOWN,1,1
+Practicle Grey,practicle grey,C-1771,grey,DRAFT,,UNKNOWN,1,1
+Prairie Tan,prairie tan,C-1772,tan,DRAFT,,UNKNOWN,1,1
+Preloved Green,preloved green,C-1775,green,DRAFT,,UNKNOWN,2,1
+Premium Brown,premium brown,C-1777,brown,DRAFT,,UNKNOWN,1,1
+Purple Burst,purple burst,C-1792,purple,DRAFT,,UNKNOWN,1,1
+Purple Rush,purple rush,C-1794,purple,DRAFT,,UNKNOWN,1,1
+Purple Smoke,purple smoke,C-1795,purple,DRAFT,,UNKNOWN,2,1
+Purple Stardust,purple stardust,C-1796,purple,DRAFT,,UNKNOWN,1,1
+Racer Pink,racer pink,C-1799,pink,DRAFT,,UNKNOWN,3,1
+Rainy Lake,rainy lake,C-1802,,UNKNOWN,#6E9CB2,DRAFT,1,1
+Raspberry Red,raspberry red,C-1803,red,DRAFT,,UNKNOWN,1,1
+Red Clay,red clay,C-1806,red,DRAFT,,UNKNOWN,1,1
+Red Flash,red flash,C-1809,red,DRAFT,,UNKNOWN,1,1
+Red Metallic,red metallic,C-1810,red,DRAFT,,UNKNOWN,1,1
+Red Plum,red plum,C-1812,red,DRAFT,,UNKNOWN,1,1
+River Rock Grey,river rock grey,C-1824,grey,DRAFT,,UNKNOWN,1,1
+Rose,rose,C-1826,,UNKNOWN,,UNKNOWN,3,1
+Ruby,ruby,C-1832,,UNKNOWN,,UNKNOWN,3,1
+Ruby Red,ruby red,C-1833,red,DRAFT,,UNKNOWN,1,1
+Rush Pink,rush pink,C-1836,pink,DRAFT,,UNKNOWN,1,1
+Rush Red,rush red,C-1837,red,DRAFT,,UNKNOWN,2,1
+Saddle Brown,saddle brown,C-1839,brown,DRAFT,,UNKNOWN,1,1
+Salsa Red,salsa red,C-1845,red,DRAFT,,UNKNOWN,1,1
+Sanded Purple,sanded purple,C-1849,purple,DRAFT,,UNKNOWN,1,1
+Screaming Green,screaming green,C-1855,green,DRAFT,,UNKNOWN,2,1
+Sea Salt Pink,sea salt pink,C-1857,pink,DRAFT,,UNKNOWN,1,1
+Semi Blue Burst,semi blue burst,C-1860,blue,DRAFT,,UNKNOWN,1,1
+Semi Court Green,semi court green,C-1861,green,DRAFT,,UNKNOWN,2,1
+Semi Impact Orange,semi impact orange,C-1863,orange,DRAFT,,UNKNOWN,1,1
+Semi Lucid Blue,semi lucid blue,C-1864,blue,DRAFT,,UNKNOWN,2,1
+Semi Pink,semi pink,C-1865,pink,DRAFT,,UNKNOWN,1,1
+Semi Screaming Green,semi screaming green,C-1867,green,DRAFT,,UNKNOWN,1,1
+Semi Solar Green,semi solar green,C-1868,green,DRAFT,,UNKNOWN,1,1
+Semi Solar Orange,semi solar orange,C-1869,orange,DRAFT,,UNKNOWN,1,1
+Shadow Blue,shadow blue,C-1872,blue,DRAFT,,UNKNOWN,1,1
+Shadow Gray,shadow gray,C-1874,grey,DRAFT,,UNKNOWN,1,1
+Shadow Olive,shadow olive,C-1877,olive,DRAFT,,UNKNOWN,2,1
+Sharkskin,sharkskin,C-1879,,UNKNOWN,,UNKNOWN,2,1
+Shown: Dark Grey Heather,shown: dark grey heather,C-1882,grey,DRAFT,,UNKNOWN,1,1
+Silt Red Tattoo,silt red tattoo,C-1885,red,DRAFT,,UNKNOWN,1,1
+Silver Cloud,silver cloud,C-1887,silver,DRAFT,,UNKNOWN,1,1
+Silver Metalic,silver metalic,C-1890,silver,DRAFT,,UNKNOWN,1,1
+Silver Pebble,silver pebble,C-1893,silver,DRAFT,,UNKNOWN,1,1
+Silver Sage,silver sage,C-1894,silver,DRAFT,,UNKNOWN,1,1
+Simple Brown,simple brown,C-1895,brown,DRAFT,,UNKNOWN,1,1
+Siren Red,siren red,C-1896,red,DRAFT,,UNKNOWN,2,1
+Sky Blue,sky blue,C-1897,blue,DRAFT,,UNKNOWN,2,1
+Soft Blue,soft blue,C-1904,blue,DRAFT,,UNKNOWN,1,1
+Soft Yellow,soft yellow,C-1906,yellow,DRAFT,,UNKNOWN,2,1
+Solar Gold,solar gold,C-1908,gold,DRAFT,,UNKNOWN,1,1
+Solar Green,solar green,C-1909,green,DRAFT,,UNKNOWN,1,1
+sonic Yellow,sonic yellow,C-1913,yellow,DRAFT,,UNKNOWN,2,1
+Steel Grey,steel grey,C-1931,grey,DRAFT,,UNKNOWN,2,1
+Steeple Grey,steeple grey,C-1932,grey,DRAFT,,UNKNOWN,1,1
+Still Blue,still blue,C-1934,blue,DRAFT,,UNKNOWN,1,1
+Stone Grey,stone grey,C-1936,grey,DRAFT,,UNKNOWN,2,1
+Stone Pink,stone pink,C-1938,pink,DRAFT,,UNKNOWN,1,1
+Summit White-Wolf Grey,summit white-wolf grey,C-1944,grey,DRAFT,,UNKNOWN,1,1
+SZA Black,sza black,C-1949,black,DRAFT,,UNKNOWN,1,1
+Tai Chi Yellow,tai chi yellow,C-1950,yellow,DRAFT,,UNKNOWN,1,1
+Taro Purple,taro purple,C-1952,purple,DRAFT,,UNKNOWN,1,1
+Taxi,taxi,C-1956,,UNKNOWN,,UNKNOWN,4,1
+Team Anthracite,team anthracite,C-1958,anthracite,DRAFT,,UNKNOWN,1,1
+Team Collegiate Red,team collegiate red,C-1960,red,DRAFT,,UNKNOWN,1,1
+Team Navy Blue 2,team navy blue 2,C-1962,blue,DRAFT,,UNKNOWN,1,1
+Team Violet,team violet,C-1967,purple,DRAFT,,UNKNOWN,1,1
+Tech Green,tech green,C-1968,green,DRAFT,,UNKNOWN,2,1
+TNF Black,tnf black,C-1975,black,DRAFT,,UNKNOWN,2,1
+Tought Red,tought red,C-1979,red,DRAFT,,UNKNOWN,1,1
+Trace Brown,trace brown,C-1981,brown,DRAFT,,UNKNOWN,2,1
+Triple White,triple white,C-1984,white,DRAFT,,UNKNOWN,1,1
+True White,true white,C-1988,white,DRAFT,,UNKNOWN,1,1
+Truffle Salt Pink Salt,truffle salt pink salt,C-1990,pink,DRAFT,,UNKNOWN,1,1
+Turbo Green,turbo green,C-1992,green,DRAFT,,UNKNOWN,2,1
+Turquoise Blue,turquoise blue,C-1994,blue,DRAFT,,UNKNOWN,1,1
+Univertsity Red,univertsity red,C-1998,red,DRAFT,,UNKNOWN,1,1
+Urban Lilac,urban lilac,C-2000,purple,DRAFT,,UNKNOWN,1,1
+Urban Orange,urban orange,C-2661,orange,DRAFT,,UNKNOWN,1,1
+Varisty Red,varisty red,C-2007,red,DRAFT,,UNKNOWN,2,1
+Varsity Purple,varsity purple,C-2012,purple,DRAFT,,UNKNOWN,1,1
+Vintage Blue Denim,vintage blue denim,C-2020,blue,DRAFT,,UNKNOWN,1,1
+Vintage Green,vintage green,C-2022,green,DRAFT,,UNKNOWN,12,1
+Violet Crush,violet crush,C-2026,purple,DRAFT,,UNKNOWN,1,1
+Violet Dust,violet dust,C-2027,purple,DRAFT,,UNKNOWN,1,1
+Violet Fusion,violet fusion,C-2029,purple,DRAFT,,UNKNOWN,1,1
+Viotech,viotech,C-2031,,UNKNOWN,,UNKNOWN,4,1
+Voltage Yellow,voltage yellow,C-2037,yellow,DRAFT,,UNKNOWN,1,1
+Wakame Black,wakame black,C-2038,black,DRAFT,,UNKNOWN,1,1
+Walnut,walnut,C-2039,,UNKNOWN,,UNKNOWN,2,1
+Washed Blue,washed blue,C-2043,blue,DRAFT,,UNKNOWN,1,1
+Washed Burgundy,washed burgundy,C-2044,burgundy,DRAFT,,UNKNOWN,2,1
+Washed Coral,washed coral,C-2045,,UNKNOWN,,UNKNOWN,3,1
+Washed Pink,washed pink,C-2047,pink,DRAFT,,UNKNOWN,1,1
+Whisp Of Pink,whisp of pink,C-2049,pink,DRAFT,,UNKNOWN,1,1
+White Cloud,white cloud,C-2050,white,DRAFT,,UNKNOWN,1,1
+White Reflective Silver,white reflective silver,C-2054,silver,DRAFT,,UNKNOWN,1,1
+Wings Jordan Red,wings jordan red,C-2056,red,DRAFT,,UNKNOWN,1,1
+Wolf Gray,wolf gray,C-2057,grey,DRAFT,,UNKNOWN,1,1
+Wonder Silver,wonder silver,C-2061,silver,DRAFT,,UNKNOWN,1,1
+Worn Blue,worn blue,C-2065,blue,DRAFT,,UNKNOWN,5,1
+Worn Blue Denim,worn blue denim,C-2066,blue,DRAFT,,UNKNOWN,1,1
+Yellow Zest,yellow zest,C-2071,yellow,DRAFT,,UNKNOWN,1,1
+Zebra Marmallow White,zebra marmallow white,C-2072,white,DRAFT,,UNKNOWN,1,1
+Aurora Ink,aurora ink,C-2593,,UNKNOWN,,UNKNOWN,1,1
+Aurora Ivory,aurora ivory,C-2594,,UNKNOWN,,UNKNOWN,1,1
+Aurora Plum,aurora plum,C-2596,,UNKNOWN,,UNKNOWN,1,1
+Aurura Ivy,aurura ivy,C-2597,,UNKNOWN,,UNKNOWN,1,1
+Better Sarlet,better sarlet,C-2598,,UNKNOWN,,UNKNOWN,1,1
+Blanch Cargo,blanch cargo,C-2600,,UNKNOWN,,UNKNOWN,1,1
+Bliss,bliss,C-2601,,UNKNOWN,,UNKNOWN,1,1
+Bright Royal,bright royal,C-2602,,UNKNOWN,,UNKNOWN,1,1
+Cardon,cardon,C-2605,,UNKNOWN,,UNKNOWN,1,1
+Charcoal Night,charcoal night,C-2607,,UNKNOWN,,UNKNOWN,1,1
+Collegiate Gren,collegiate gren,C-2610,,UNKNOWN,,UNKNOWN,1,1
+Core Balck,core balck,C-2611,,UNKNOWN,,UNKNOWN,1,1
+Crystal Linen,crystal linen,C-2612,,UNKNOWN,,UNKNOWN,1,1
+Crystal Sand,crystal sand,C-2613,,UNKNOWN,,UNKNOWN,1,1
+Crystal Sky,crystal sky,C-2614,,UNKNOWN,,UNKNOWN,2,1
+Dark Marine,dark marine,C-2615,,UNKNOWN,,UNKNOWN,1,1
+Dusty Ink,dusty ink,C-2616,,UNKNOWN,,UNKNOWN,2,1
+Earth Strat,earth strat,C-2617,,UNKNOWN,,UNKNOWN,1,1
+Flash Lime,flash lime,C-2621,,UNKNOWN,,UNKNOWN,1,1
+Frozen Lemon,frozen lemon,C-2622,,UNKNOWN,,UNKNOWN,1,1
+Frozen Turbo,frozen turbo,C-2623,,UNKNOWN,,UNKNOWN,1,1
+Ice Lavendor,ice lavendor,C-2624,,UNKNOWN,,UNKNOWN,1,1
+Ice Tangerine,ice tangerine,C-2625,,UNKNOWN,,UNKNOWN,1,1
+Lime Burst,lime burst,C-2628,,UNKNOWN,,UNKNOWN,1,1
+Lucid Aquamarine,lucid aquamarine,C-2629,,UNKNOWN,,UNKNOWN,1,1
+Lucid Lemon,lucid lemon,C-2630,,UNKNOWN,,UNKNOWN,1,1
+Mesa,mesa,C-2632,,UNKNOWN,,UNKNOWN,1,1
+Mystery Petrol,mystery petrol,C-2633,,UNKNOWN,,UNKNOWN,1,1
+Orchid Fusion,orchid fusion,C-2639,,UNKNOWN,,UNKNOWN,1,1
+Preloved Fig,preloved fig,C-2641,,UNKNOWN,,UNKNOWN,1,1
+Pure Sulfur,pure sulfur,C-2645,,UNKNOWN,,UNKNOWN,1,1
+Solar Lemon,solar lemon,C-2649,,UNKNOWN,,UNKNOWN,1,1
+St Tropic Bloom,st tropic bloom,C-2651,,UNKNOWN,,UNKNOWN,1,1
+Talc,talc,C-2653,,UNKNOWN,,UNKNOWN,1,1
+Tech Emerald,tech emerald,C-2654,,UNKNOWN,,UNKNOWN,1,1
+Wondeer Mauve,wondeer mauve,C-2657,,UNKNOWN,,UNKNOWN,1,1
+Wonder Clay,wonder clay,C-2658,,UNKNOWN,,UNKNOWN,1,1
+Zero Metallic,zero metallic,C-2076,,UNKNOWN,,UNKNOWN,2,1
+Concrete Barely Rose,concrete barely rose,C-2082,,UNKNOWN,,UNKNOWN,1,1
+Coneflower,coneflower,C-2083,,UNKNOWN,,UNKNOWN,1,1
+Forest Night,forest night,C-2085,,UNKNOWN,,UNKNOWN,1,1
+Metropolis,metropolis,C-2088,,UNKNOWN,,UNKNOWN,1,1
+Peppermint,peppermint,C-2090,,UNKNOWN,,UNKNOWN,1,1
+Pond,pond,C-2091,,UNKNOWN,,UNKNOWN,1,1
+Port Royal,port royal,C-2092,,UNKNOWN,,UNKNOWN,1,1
+Putty,putty,C-2093,,UNKNOWN,,UNKNOWN,1,1
+Raspberry,raspberry,C-2094,,UNKNOWN,,UNKNOWN,1,1
+Restful Teal,restful teal,C-2095,,UNKNOWN,,UNKNOWN,1,1
+Rusted Rock,rusted rock,C-2096,,UNKNOWN,,UNKNOWN,1,1
+Storm Cloud,storm cloud,C-2099,,UNKNOWN,,UNKNOWN,1,1
+Sun Coral,sun coral,C-2100,,UNKNOWN,,UNKNOWN,1,1
+Terracotta,terracotta,C-2101,,UNKNOWN,,UNKNOWN,1,1
+Umeboshi,umeboshi,C-2102,,UNKNOWN,,UNKNOWN,1,1
+Verdigris,verdigris,C-2103,,UNKNOWN,,UNKNOWN,1,1
+Light Rose,light rose,C-2105,,UNKNOWN,,UNKNOWN,1,1
+Mocha,mocha,C-2106,,UNKNOWN,,UNKNOWN,1,1
+Camo,camo,C-2108,,UNKNOWN,,UNKNOWN,1,1
+Berry,berry,C-2109,,UNKNOWN,,UNKNOWN,1,1
+Berry Shady,berry shady,C-2110,,UNKNOWN,,UNKNOWN,1,1
+Camouflage,camouflage,C-2111,,UNKNOWN,,UNKNOWN,1,1
+Canyon Dusk,canyon dusk,C-2112,,UNKNOWN,,UNKNOWN,1,1
+Clean Slate,clean slate,C-2114,,UNKNOWN,,UNKNOWN,1,1
+Flamingo Fade,flamingo fade,C-2116,,UNKNOWN,,UNKNOWN,1,1
+Hail Clay,hail clay,C-2119,,UNKNOWN,,UNKNOWN,2,1
+Hot Tea,hot tea,C-2120,,UNKNOWN,,UNKNOWN,1,1
+Ink,ink,C-2121,,UNKNOWN,,UNKNOWN,1,1
+Open Sky,open sky,C-2123,,UNKNOWN,,UNKNOWN,1,1
+Espresso,espresso,C-2127,,UNKNOWN,,UNKNOWN,1,1
+Moon Burst,moon burst,C-2129,,UNKNOWN,,UNKNOWN,1,1
+Sepia,sepia,C-2130,,UNKNOWN,,UNKNOWN,1,1
+Shade,shade,C-2132,,UNKNOWN,,UNKNOWN,1,1
+Crabapple,crabapple,C-2136,,UNKNOWN,,UNKNOWN,1,1
+Date Sugar,date sugar,C-2137,,UNKNOWN,,UNKNOWN,1,1
+Date Syrup,date syrup,C-2138,,UNKNOWN,,UNKNOWN,1,1
+Deep Mauve,deep mauve,C-2139,,UNKNOWN,,UNKNOWN,1,1
+Electric Aqua,electric aqua,C-2141,,UNKNOWN,,UNKNOWN,1,1
+Kiwi,kiwi,C-2142,,UNKNOWN,,UNKNOWN,1,1
+Neon Dragonfruit,neon dragonfruit,C-2143,,UNKNOWN,,UNKNOWN,1,1
+Pepper,pepper,C-2146,,UNKNOWN,,UNKNOWN,1,1
+Quartzite,quartzite,C-2147,,UNKNOWN,,UNKNOWN,1,1
+Rose Latte,rose latte,C-2148,,UNKNOWN,,UNKNOWN,1,1
+Sour Lemon,sour lemon,C-2150,,UNKNOWN,,UNKNOWN,1,1
+Squid Ink,squid ink,C-2151,,UNKNOWN,,UNKNOWN,1,1
+Stucco,stucco,C-2154,,UNKNOWN,,UNKNOWN,2,1
+Animal Illusion,animal illusion,C-2157,,UNKNOWN,,UNKNOWN,1,1
+Aquatone,aquatone,C-2159,,UNKNOWN,,UNKNOWN,2,1
+Canvas,canvas,C-2165,,UNKNOWN,,UNKNOWN,1,1
+Chalk Sapphire,chalk sapphire,C-2168,,UNKNOWN,,UNKNOWN,1,1
+Chambray,chambray,C-2169,,UNKNOWN,,UNKNOWN,1,1
+Copa,copa,C-2174,,UNKNOWN,,UNKNOWN,1,1
+Dark Sulphur,dark sulphur,C-2180,,UNKNOWN,,UNKNOWN,1,1
+Dusty Cactus,dusty cactus,C-2181,,UNKNOWN,,UNKNOWN,1,1
+Fiberglass,fiberglass,C-2184,,UNKNOWN,,UNKNOWN,1,1
+Infrared,infrared,C-2190,,UNKNOWN,,UNKNOWN,1,1
+Lemonade,lemonade,C-2198,,UNKNOWN,,UNKNOWN,1,1
+Light Grape,light grape,C-2201,,UNKNOWN,,UNKNOWN,1,1
+Newsprint,newsprint,C-2210,,UNKNOWN,,UNKNOWN,1,1
+Pin,pin,C-2213,,UNKNOWN,,UNKNOWN,1,1
+Pinik Foam,pinik foam,C-2214,,UNKNOWN,,UNKNOWN,1,1
+Rush Coral,rush coral,C-2216,,UNKNOWN,,UNKNOWN,1,1
+Rust,rust,C-2217,,UNKNOWN,,UNKNOWN,1,1
+Spruce Fog,spruce fog,C-2218,,UNKNOWN,,UNKNOWN,1,1
+Squadron,squadron,C-2219,,UNKNOWN,,UNKNOWN,1,1
+Wild Grape,wild grape,C-2228,,UNKNOWN,,UNKNOWN,1,1
+Mutlicolor,mutlicolor,C-2231,,UNKNOWN,,UNKNOWN,1,1
+Camoflauge,camoflauge,C-2232,,UNKNOWN,,UNKNOWN,1,1
+Magenta,magenta,C-2233,,UNKNOWN,,UNKNOWN,1,1
+Washed Sand,washed sand,C-2234,,UNKNOWN,,UNKNOWN,1,1
+Whte,whte,C-2236,,UNKNOWN,,UNKNOWN,2,1
+Carolina,carolina,C-2239,,UNKNOWN,,UNKNOWN,1,1
+Torquoise,torquoise,C-2243,,UNKNOWN,,UNKNOWN,1,1
+Bayberry,bayberry,C-2247,,UNKNOWN,,UNKNOWN,1,1
+Casterock,casterock,C-2250,,UNKNOWN,,UNKNOWN,1,1
+Cyber Jade,cyber jade,C-2253,,UNKNOWN,,UNKNOWN,1,1
+Dark Camo,dark camo,C-2254,,UNKNOWN,,UNKNOWN,1,1
+Dark Night,dark night,C-2256,,UNKNOWN,,UNKNOWN,1,1
+Electric Indigo,electric indigo,C-2260,,UNKNOWN,,UNKNOWN,1,1
+Frosted Glass,frosted glass,C-2261,,UNKNOWN,,UNKNOWN,3,1
+Garter Snake,garter snake,C-2262,,UNKNOWN,,UNKNOWN,1,1
+Ice Wine,ice wine,C-2263,,UNKNOWN,,UNKNOWN,2,1
+Incense,incense,C-2264,,UNKNOWN,,UNKNOWN,3,1
+Licorice,licorice,C-2265,,UNKNOWN,,UNKNOWN,2,1
+Lone Star,lone star,C-2267,,UNKNOWN,,UNKNOWN,1,1
+Magnet Fade,magnet fade,C-2268,,UNKNOWN,,UNKNOWN,1,1
+Mono Cortado,mono cortado,C-2270,,UNKNOWN,,UNKNOWN,1,1
+Moonbeam,moonbeam,C-2271,,UNKNOWN,,UNKNOWN,4,1
+New Balance 103,new balance 103,C-2273,,UNKNOWN,,UNKNOWN,1,1
+Nimbus Cloud,nimbus cloud,C-2275,,UNKNOWN,,UNKNOWN,2,1
+Rose Sugar,rose sugar,C-2282,,UNKNOWN,,UNKNOWN,2,1
+Shipyard,shipyard,C-2285,,UNKNOWN,,UNKNOWN,1,1
+Stoneare,stoneare,C-2287,,UNKNOWN,,UNKNOWN,1,1
+Stoneware,stoneware,C-2288,,UNKNOWN,,UNKNOWN,1,1
+Taro,taro,C-2290,,UNKNOWN,,UNKNOWN,1,1
+Tornado,tornado,C-2293,,UNKNOWN,,UNKNOWN,1,1
+Wakame,wakame,C-2297,,UNKNOWN,,UNKNOWN,1,1
+Artisan Teal,artisan teal,C-2302,,UNKNOWN,,UNKNOWN,2,1
+Blur,blur,C-2309,,UNKNOWN,,UNKNOWN,1,1
+Bordeaux,bordeaux,C-2310,,UNKNOWN,,UNKNOWN,1,1
+Bright Ceramic,bright ceramic,C-2311,,UNKNOWN,,UNKNOWN,6,1
+Butler Jimmy,butler jimmy,C-2316,,UNKNOWN,,UNKNOWN,1,1
+Cucumber Calm,cucumber calm,C-2322,,UNKNOWN,,UNKNOWN,1,1
+Dark Driftwood,dark driftwood,C-2324,,UNKNOWN,,UNKNOWN,2,1
+Dark Pewter,dark pewter,C-2326,,UNKNOWN,,UNKNOWN,2,1
+Deer Forest,deer forest,C-2330,,UNKNOWN,,UNKNOWN,1,1
+Diffused Taupe,diffused taupe,C-2333,,UNKNOWN,,UNKNOWN,2,1
+Doncic Luka,doncic luka,C-2335,,UNKNOWN,,UNKNOWN,1,1
+Dusted Clay,dusted clay,C-2336,,UNKNOWN,,UNKNOWN,1,1
+Emerald Rise,emerald rise,C-2337,,UNKNOWN,,UNKNOWN,1,1
+Energy,energy,C-2338,,UNKNOWN,,UNKNOWN,1,1
+Fir Alabaster,fir alabaster,C-2340,,UNKNOWN,,UNKNOWN,1,1
+Freshwater,freshwater,C-2346,,UNKNOWN,,UNKNOWN,2,1
+Fuchsia Blast,fuchsia blast,C-2347,,UNKNOWN,,UNKNOWN,1,1
+Golden Hops,golden hops,C-2351,,UNKNOWN,,UNKNOWN,1,1
+Granite,granite,C-2353,,UNKNOWN,,UNKNOWN,1,1
+Hot Curry,hot curry,C-2355,,UNKNOWN,,UNKNOWN,1,1
+Hot Fuchsia,hot fuchsia,C-2356,,UNKNOWN,,UNKNOWN,2,1
+Hot Punck,hot punck,C-2357,,UNKNOWN,,UNKNOWN,1,1
+Hyper Turquoise,hyper turquoise,C-2358,,UNKNOWN,,UNKNOWN,1,1
+James Lebron 23,james lebron 23,C-2360,,UNKNOWN,,UNKNOWN,1,1
+Lapis,lapis,C-2361,,UNKNOWN,,UNKNOWN,1,1
+Lemon Venom,lemon venom,C-2363,,UNKNOWN,,UNKNOWN,2,1
+Light,light,C-2364,,UNKNOWN,,UNKNOWN,1,1
+Light Bordeaux,light bordeaux,C-2366,,UNKNOWN,,UNKNOWN,1,1
+Light Boulder,light boulder,C-2367,,UNKNOWN,,UNKNOWN,1,1
+Light Carnation,light carnation,C-2369,,UNKNOWN,,UNKNOWN,1,1
+Light Charcoal,light charcoal,C-2370,,UNKNOWN,,UNKNOWN,1,1
+Light Pumice,light pumice,C-2374,,UNKNOWN,,UNKNOWN,1,1
+Light Stone,light stone,C-2375,,UNKNOWN,,UNKNOWN,1,1
+Lightning,lightning,C-2377,,UNKNOWN,,UNKNOWN,1,1
+Magic Ember,magic ember,C-2380,,UNKNOWN,,UNKNOWN,3,1
+Metallic Copper,metallic copper,C-2382,,UNKNOWN,,UNKNOWN,5,1
+Metallic Hematite,metallic hematite,C-2383,,UNKNOWN,,UNKNOWN,1,1
+Metallic Pewter,metallic pewter,C-2384,,UNKNOWN,,UNKNOWN,2,1
+Metallic PLatinm,metallic platinm,C-2385,,UNKNOWN,,UNKNOWN,1,1
+Metallic Platinum Tattoo,metallic platinum tattoo,C-2387,,UNKNOWN,,UNKNOWN,1,1
+Metallic Summit,metallic summit,C-2388,,UNKNOWN,,UNKNOWN,1,1
+Moon Particle,moon particle,C-2390,,UNKNOWN,,UNKNOWN,1,1
+Multi-Color-Sail-Game Royal,multi-color-sail-game royal,C-2391,,UNKNOWN,,UNKNOWN,1,1
+Multi-Colour,multi-colour,C-2392,,UNKNOWN,,UNKNOWN,1,1
+Muticolor,muticolor,C-2393,,UNKNOWN,,UNKNOWN,1,1
+Nurgundy Crush,nurgundy crush,C-2398,,UNKNOWN,,UNKNOWN,1,1
+Ochre,ochre,C-2402,,UNKNOWN,,UNKNOWN,1,1
+Pencil Point,pencil point,C-2405,,UNKNOWN,,UNKNOWN,1,1
+Ridgerock,ridgerock,C-2414,,UNKNOWN,,UNKNOWN,1,1
+Sapphire,sapphire,C-2417,,UNKNOWN,,UNKNOWN,1,1
+Smokey Mauve,smokey mauve,C-2418,,UNKNOWN,,UNKNOWN,5,1
+Steam,steam,C-2421,,UNKNOWN,,UNKNOWN,2,1
+Sundown,sundown,C-2423,,UNKNOWN,,UNKNOWN,1,1
+Sunset,sunset,C-2424,,UNKNOWN,,UNKNOWN,1,1
+Tattoo Silt,tattoo silt,C-2428,,UNKNOWN,,UNKNOWN,1,1
+Thunderstorm,thunderstorm,C-2431,,UNKNOWN,,UNKNOWN,1,1
+Zest,zest,C-2436,,UNKNOWN,,UNKNOWN,1,1
+New York,new york,C-2438,,UNKNOWN,,UNKNOWN,1,1
+Pristine,pristine,C-2440,,UNKNOWN,,UNKNOWN,1,1
+Ash,ash,C-2445,,UNKNOWN,,UNKNOWN,1,1
+Bark,bark,C-2446,,UNKNOWN,,UNKNOWN,1,1
+Blonde,blonde,C-2448,,UNKNOWN,,UNKNOWN,2,1
+Bloom,bloom,C-2449,,UNKNOWN,,UNKNOWN,1,1
+Bubblegum,bubblegum,C-2450,,UNKNOWN,,UNKNOWN,1,1
+Foxglove,foxglove,C-2457,,UNKNOWN,,UNKNOWN,1,1
+Gobi,gobi,C-2459,,UNKNOWN,,UNKNOWN,1,1
+Grove,grove,C-2462,,UNKNOWN,,UNKNOWN,1,1
+Marsh,marsh,C-2467,,UNKNOWN,,UNKNOWN,1,1
+Robin,robin,C-2472,,UNKNOWN,,UNKNOWN,1,1
+Sakura,sakura,C-2475,,UNKNOWN,,UNKNOWN,1,1
+Shell,shell,C-2478,,UNKNOWN,,UNKNOWN,1,1
+Soba,soba,C-2479,,UNKNOWN,,UNKNOWN,1,1
+Truffle,truffle,C-2485,,UNKNOWN,,UNKNOWN,1,1
+Tundra,tundra,C-2486,,UNKNOWN,,UNKNOWN,1,1
+Zodiac,zodiac,C-2489,,UNKNOWN,,UNKNOWN,1,1
+Bown,bown,C-2490,,UNKNOWN,,UNKNOWN,1,1
+All Over Print,all over print,C-2491,,UNKNOWN,,UNKNOWN,1,1
+Alpine Snow,alpine snow,C-2492,,UNKNOWN,,UNKNOWN,1,1
+AOP,aop,C-2493,,UNKNOWN,,UNKNOWN,3,1
+Chocolate,chocolate,C-2496,,UNKNOWN,,UNKNOWN,1,1
+Chocolate Fondue,chocolate fondue,C-2498,,UNKNOWN,,UNKNOWN,1,1
+Grape,grape,C-2505,,UNKNOWN,,UNKNOWN,1,1
+Haute Coffee,haute coffee,C-2506,,UNKNOWN,,UNKNOWN,4,1
+Jasmine Flower,jasmine flower,C-2509,,UNKNOWN,,UNKNOWN,1,1
+Mauved Out,mauved out,C-2511,,UNKNOWN,,UNKNOWN,1,1
+Nasturtium,nasturtium,C-2512,,UNKNOWN,,UNKNOWN,1,1
+Ravish,ravish,C-2516,,UNKNOWN,,UNKNOWN,2,1
+Ruby Shimmer,ruby shimmer,C-2518,,UNKNOWN,,UNKNOWN,1,1
+Sugared Almond,sugared almond,C-2519,,UNKNOWN,,UNKNOWN,1,1
+Sun Struck,sun struck,C-2520,,UNKNOWN,,UNKNOWN,3,1
+Totally Taupe,totally taupe,C-2521,,UNKNOWN,,UNKNOWN,1,1
+Wine,wine,C-2523,,UNKNOWN,,UNKNOWN,1,1
+Bitter Chocolate,bitter chocolate,C-2526,,UNKNOWN,,UNKNOWN,1,1
+Burro,burro,C-2527,,UNKNOWN,,UNKNOWN,1,1
+Cloudburst,cloudburst,C-2528,,UNKNOWN,,UNKNOWN,2,1
+Eucalyptus,eucalyptus,C-2532,,UNKNOWN,,UNKNOWN,1,1
+Excalibur,excalibur,C-2533,,UNKNOWN,,UNKNOWN,1,1
+French Roast,french roast,C-2536,,UNKNOWN,,UNKNOWN,1,1
+Hollyhock,hollyhock,C-2538,,UNKNOWN,,UNKNOWN,2,1
+Nine Iron,nine iron,C-2544,,UNKNOWN,,UNKNOWN,1,1
+Paloma,paloma,C-2545,,UNKNOWN,,UNKNOWN,1,1
+Plum Perfect,plum perfect,C-2546,,UNKNOWN,,UNKNOWN,3,1
+Safari,safari,C-2548,,UNKNOWN,,UNKNOWN,1,1
+Tawny Port,tawny port,C-2552,,UNKNOWN,,UNKNOWN,1,1
+Canary,canary,C-2555,,UNKNOWN,,UNKNOWN,1,1
+Fair Aqua,fair aqua,C-2558,,UNKNOWN,,UNKNOWN,1,1
+Fern,fern,C-2559,,UNKNOWN,,UNKNOWN,1,1
+Vizigold,vizigold,C-2563,,UNKNOWN,,UNKNOWN,1,1
+Peach Rose,peach rose,C-2564,,UNKNOWN,,UNKNOWN,1,1
+Mustard Seed,mustard seed,C-2572,,UNKNOWN,,UNKNOWN,1,1
+Stream,stream,C-2576,,UNKNOWN,,UNKNOWN,2,1
+Archive Marshmallow,archive marshmallow,C-2578,,UNKNOWN,,UNKNOWN,1,1
+Cow Marshmallow,cow marshmallow,C-2579,,UNKNOWN,,UNKNOWN,1,1
+Marshmallow,marshmallow,C-2584,,UNKNOWN,,UNKNOWN,2,1
+Sepia Rose,sepia rose,C-2586,,UNKNOWN,,UNKNOWN,1,1
+SZA Fish Print,sza fish print,C-2587,,UNKNOWN,,UNKNOWN,1,1
+Kaki,kaki,C-2588,,UNKNOWN,,UNKNOWN,1,1
+Sable,sable,C-2589,,UNKNOWN,,UNKNOWN,1,1
+Hyper Blue,hyper blue,C-1003,blue,DRAFT,#2E6FDB,DRAFT,2,0
+Concord,concord,C-2001,purple,DRAFT,#44316C,DRAFT,2,0
+Airy Blue,airy blue,C-1010,blue,DRAFT,,UNKNOWN,1,0
+Alpine Green,alpine green,C-1016,green,DRAFT,,UNKNOWN,1,0
+Aluminum Blue,aluminum blue,C-1018,blue,DRAFT,,UNKNOWN,2,0
+Anthracite Volt,anthracite volt,C-1020,anthracite,DRAFT,,UNKNOWN,1,0
+Aquarius Blue,aquarius blue,C-1024,blue,DRAFT,,UNKNOWN,1,0
+Aster Pink,aster pink,C-1037,pink,DRAFT,,UNKNOWN,2,0
+Atmosphere Grey,atmosphere grey,C-1040,grey,DRAFT,,UNKNOWN,1,0
+Aurora Green,aurora green,C-1046,green,DRAFT,,UNKNOWN,2,0
+Barely Rose,barely rose,C-1053,,UNKNOWN,,UNKNOWN,2,0
+Beyond Pink,beyond pink,C-1059,pink,DRAFT,,UNKNOWN,1,0
+Black Anthracite,black anthracite,C-1064,anthracite,DRAFT,,UNKNOWN,1,0
+Black Denim,black denim,C-1068,black,DRAFT,,UNKNOWN,1,0
+Black Hemp,black hemp,C-1071,black,DRAFT,,UNKNOWN,2,0
+Black Hyper Jade,black hyper jade,C-1072,black,DRAFT,,UNKNOWN,1,0
+Black Nubuck,black nubuck,C-1076,black,DRAFT,,UNKNOWN,2,0
+Black Raspberry,black raspberry,C-1077,black,DRAFT,,UNKNOWN,4,0
+Black Taxi,black taxi,C-1080,black,DRAFT,,UNKNOWN,1,0
+Black Varsity,black varsity,C-1082,black,DRAFT,,UNKNOWN,1,0
+Black Virginia,black virginia,C-1083,black,DRAFT,,UNKNOWN,1,0
+Blue Beyond,blue beyond,C-1088,blue,DRAFT,,UNKNOWN,3,0
+Blue Fade,blue fade,C-1094,blue,DRAFT,,UNKNOWN,1,0
+Blue Fusion,blue fusion,C-1095,blue,DRAFT,,UNKNOWN,1,0
+Blue Gaze,blue gaze,C-1096,blue,DRAFT,,UNKNOWN,1,0
+Blue Hero,blue hero,C-1098,blue,DRAFT,,UNKNOWN,1,0
+Blue Violet,blue violet,C-1104,purple,DRAFT,,UNKNOWN,1,0
+Blush,blush,C-1106,,UNKNOWN,#E8B8B4,DRAFT,1,0
+Bold Blue,bold blue,C-1109,blue,DRAFT,,UNKNOWN,1,0
+Bold Green,bold green,C-1111,green,DRAFT,,UNKNOWN,2,0
+Bright Pink,bright pink,C-1119,pink,DRAFT,,UNKNOWN,1,0
+Brighton Grey,brighton grey,C-1120,grey,DRAFT,,UNKNOWN,1,0
+British Tan,british tan,C-1123,tan,DRAFT,,UNKNOWN,5,0
+Brown Sugar,brown sugar,C-1128,brown,DRAFT,,UNKNOWN,1,0
+Burgundy,burgundy,C-1131,burgundy,CONFIRMED,#6B2535,DRAFT,9,0
+Burgundy Red,burgundy red,C-1134,red,DRAFT,,UNKNOWN,1,0
+Burnt Sunrise,burnt sunrise,C-1136,,UNKNOWN,,UNKNOWN,3,0
+Cashmere,cashmere,C-1150,,UNKNOWN,#C9B79D,DRAFT,1,0
+Celestial Gold,celestial gold,C-1154,gold,DRAFT,,UNKNOWN,1,0
+Champion Red,champion red,C-1161,red,DRAFT,,UNKNOWN,1,0
+Charred Grey,charred grey,C-1166,grey,DRAFT,,UNKNOWN,1,0
+Cherry Red,cherry red,C-1169,red,DRAFT,,UNKNOWN,1,0
+Clay Grey,clay grey,C-1180,grey,DRAFT,,UNKNOWN,2,0
+Clear Mint,clear mint,C-1184,green,DRAFT,,UNKNOWN,1,0
+Club Purple,club purple,C-1190,purple,DRAFT,,UNKNOWN,1,0
+Coal Brown,coal brown,C-1191,brown,DRAFT,,UNKNOWN,1,0
+Coffee Brown,coffee brown,C-1197,brown,DRAFT,,UNKNOWN,1,0
+College Blue,college blue,C-1198,blue,DRAFT,,UNKNOWN,1,0
+Cool Blue,cool blue,C-1211,blue,DRAFT,,UNKNOWN,1,0
+Cool Mid Gray,cool mid gray,C-1215,grey,DRAFT,,UNKNOWN,1,0
+Cool Mid Grey,cool mid grey,C-1216,grey,DRAFT,,UNKNOWN,1,0
+Core Grey,core grey,C-1219,grey,DRAFT,,UNKNOWN,1,0
+Cosmic Grey,cosmic grey,C-1222,grey,DRAFT,,UNKNOWN,2,0
+Cream Clay,cream clay,C-1228,cream,DRAFT,,UNKNOWN,1,0
+Cream Kumquat,cream kumquat,C-1230,cream,DRAFT,,UNKNOWN,1,0
+Dark Alpine Green,dark alpine green,C-1239,green,DRAFT,,UNKNOWN,1,0
+Dark Red,dark red,C-1256,red,DRAFT,,UNKNOWN,3,0
+Dark Silver Metallic,dark silver metallic,C-1258,silver,DRAFT,,UNKNOWN,1,0
+Dark Teal Blue,dark teal blue,C-1260,blue,DRAFT,,UNKNOWN,1,0
+Dawn Blue,dawn blue,C-1262,blue,DRAFT,,UNKNOWN,1,0
+Deep Brown,deep brown,C-1265,brown,DRAFT,,UNKNOWN,1,0
+Deep Navy,deep navy,C-1267,blue,DRAFT,,UNKNOWN,1,0
+Diffused Blue,diffused blue,C-1281,blue,DRAFT,,UNKNOWN,4,0
+Difused Blue,difused blue,C-1282,blue,DRAFT,,UNKNOWN,1,0
+Dragon Red,dragon red,C-1286,red,DRAFT,,UNKNOWN,2,0
+Drizzle Grey,drizzle grey,C-1289,grey,DRAFT,,UNKNOWN,2,0
+Dune Red,dune red,C-1290,red,DRAFT,,UNKNOWN,3,0
+Echo Pink,echo pink,C-1295,pink,DRAFT,,UNKNOWN,1,0
+Egret White,egret white,C-1299,white,DRAFT,,UNKNOWN,1,0
+Electro Orange,electro orange,C-1301,orange,DRAFT,,UNKNOWN,2,0
+Faded Purple,faded purple,C-1310,purple,DRAFT,,UNKNOWN,1,0
+Faded Yellow,faded yellow,C-1311,yellow,DRAFT,,UNKNOWN,1,0
+Fawn,fawn,C-1313,,UNKNOWN,#BDA17D,DRAFT,1,0
+Feather Gray,feather gray,C-1314,grey,DRAFT,,UNKNOWN,1,0
+Fierce Pink,fierce pink,C-1318,pink,DRAFT,,UNKNOWN,2,0
+Flat Dark Gray,flat dark gray,C-1326,grey,DRAFT,,UNKNOWN,1,0
+Flat Mid Gray,flat mid gray,C-1327,grey,DRAFT,,UNKNOWN,1,0
+Ghost Green,ghost green,C-1355,green,DRAFT,,UNKNOWN,1,0
+Glacial Gray,glacial gray,C-1357,grey,DRAFT,,UNKNOWN,2,0
+Global Blue,global blue,C-1360,blue,DRAFT,,UNKNOWN,2,0
+Glory Pink,glory pink,C-1363,pink,DRAFT,,UNKNOWN,1,0
+Glowing Pink,glowing pink,C-1365,pink,DRAFT,,UNKNOWN,1,0
+Gold Grain,gold grain,C-1368,gold,DRAFT,,UNKNOWN,1,0
+Gold Row,gold row,C-1372,gold,DRAFT,,UNKNOWN,2,0
+Granite Grey,granite grey,C-1378,grey,DRAFT,,UNKNOWN,1,0
+Green Gecko,green gecko,C-1385,green,DRAFT,,UNKNOWN,2,0
+Green Haze,green haze,C-1387,green,DRAFT,,UNKNOWN,1,0
+Green Lux,green lux,C-1388,green,DRAFT,,UNKNOWN,5,0
+Green Shock,green shock,C-1391,green,DRAFT,,UNKNOWN,2,0
+Green Spark,green spark,C-1392,green,DRAFT,,UNKNOWN,2,0
+Grey Six,grey six,C-1403,grey,DRAFT,,UNKNOWN,1,0
+Gum Medium,gum medium,C-1418,gum,DRAFT,,UNKNOWN,1,0
+Halo Blue,halo blue,C-1425,blue,DRAFT,,UNKNOWN,1,0
+Hazy Green,hazy green,C-1428,green,DRAFT,,UNKNOWN,1,0
+Hibiscus Pink,hibiscus pink,C-1437,pink,DRAFT,,UNKNOWN,1,0
+Hyper Violet,hyper violet,C-1451,purple,DRAFT,,UNKNOWN,3,0
+Hyperlink Blue,hyperlink blue,C-1452,blue,DRAFT,,UNKNOWN,1,0
+Icy Pink,icy pink,C-1459,pink,DRAFT,,UNKNOWN,1,0
+Ironstone,ironstone,C-1473,,UNKNOWN,,UNKNOWN,3,0
+Italy Blue,italy blue,C-1474,blue,DRAFT,,UNKNOWN,1,0
+Khaki Brown,khaki brown,C-1481,brown,DRAFT,,UNKNOWN,1,0
+Khaki Phantom,khaki phantom,C-1483,khaki,DRAFT,,UNKNOWN,1,0
+Laser Blue,laser blue,C-1491,blue,DRAFT,,UNKNOWN,1,0
+Latte Cream,latte cream,C-1494,cream,DRAFT,,UNKNOWN,1,0
+Legend Brown,legend brown,C-1498,brown,DRAFT,,UNKNOWN,3,0
+Legend Dark Brown,legend dark brown,C-1499,brown,DRAFT,,UNKNOWN,1,0
+Legend Medium Brown,legend medium brown,C-1501,brown,DRAFT,,UNKNOWN,3,0
+Light Arctic Grey,light arctic grey,C-1506,grey,DRAFT,,UNKNOWN,1,0
+Light Green Spark,light green spark,C-1520,green,DRAFT,,UNKNOWN,1,0
+Light Sail,light sail,C-1531,sail,DRAFT,,UNKNOWN,1,0
+Light Soft Pink,light soft pink,C-1537,pink,DRAFT,,UNKNOWN,4,0
+Light Zen Grey,light zen grey,C-1540,grey,DRAFT,,UNKNOWN,1,0
+Lilac Glow,lilac glow,C-1543,purple,DRAFT,,UNKNOWN,2,0
+Lime Green,lime green,C-1544,green,DRAFT,,UNKNOWN,1,0
+Lined Brown,lined brown,C-1545,brown,DRAFT,,UNKNOWN,1,0
+Lotus Pink,lotus pink,C-1547,pink,DRAFT,,UNKNOWN,1,0
+LT Armory Blue,lt armory blue,C-1548,blue,DRAFT,,UNKNOWN,1,0
+Luminous Green,luminous green,C-1555,green,DRAFT,,UNKNOWN,2,0
+Maritime Blue,maritime blue,C-1560,blue,DRAFT,,UNKNOWN,1,0
+Masi Blue,masi blue,C-1563,blue,DRAFT,,UNKNOWN,2,0
+Matallic Silver,matallic silver,C-1564,silver,DRAFT,,UNKNOWN,1,0
+Med Brown,med brown,C-1569,brown,DRAFT,,UNKNOWN,1,0
+Medium Brown,medium brown,C-1572,brown,DRAFT,,UNKNOWN,2,0
+Medium Pink,medium pink,C-1575,pink,DRAFT,,UNKNOWN,1,0
+Metallic Navy,metallic navy,C-1584,blue,DRAFT,,UNKNOWN,1,0
+Metallic Purple,metallic purple,C-1586,purple,DRAFT,,UNKNOWN,1,0
+Metallic Red,metallic red,C-1587,red,DRAFT,,UNKNOWN,1,0
+Metallic Yellow,metallic yellow,C-1592,yellow,DRAFT,,UNKNOWN,1,0
+Midnight Blue,midnight blue,C-1596,blue,DRAFT,,UNKNOWN,1,0
+Midwest Gold,midwest gold,C-1597,gold,DRAFT,,UNKNOWN,2,0
+Milk Violet,milk violet,C-1599,purple,DRAFT,,UNKNOWN,1,0
+Mineral,mineral,C-1600,,UNKNOWN,,UNKNOWN,2,0
+Mineral Green,mineral green,C-1601,green,DRAFT,,UNKNOWN,2,0
+Mint Candy,mint candy,C-1604,green,DRAFT,,UNKNOWN,1,0
+Mint Fluorite,mint fluorite,C-1607,green,DRAFT,,UNKNOWN,1,0
+Mint Green,mint green,C-1609,green,DRAFT,,UNKNOWN,2,0
+Mint Tint,mint tint,C-1610,green,DRAFT,,UNKNOWN,1,0
+Mojave Brown,mojave brown,C-1613,brown,DRAFT,,UNKNOWN,2,0
+Monarch Burgundy,monarch burgundy,C-1614,burgundy,DRAFT,,UNKNOWN,1,0
+Moon,moon,C-1616,,UNKNOWN,,UNKNOWN,3,0
+Moonrock,moonrock,C-1618,,UNKNOWN,,UNKNOWN,3,0
+Mustard Yellow,mustard yellow,C-1629,yellow,DRAFT,,UNKNOWN,1,0
+Mystic Green,mystic green,C-1630,green,DRAFT,,UNKNOWN,2,0
+Mystic Red,mystic red,C-1632,red,DRAFT,,UNKNOWN,1,0
+Natural Mint,natural mint,C-1634,green,DRAFT,,UNKNOWN,1,0
+Natural White,natural white,C-1635,white,DRAFT,,UNKNOWN,1,0
+New Green,new green,C-1647,green,DRAFT,,UNKNOWN,1,0
+Night Maroon,night maroon,C-1650,maroon,DRAFT,,UNKNOWN,1,0
+Nuetral Olive,nuetral olive,C-1657,olive,DRAFT,,UNKNOWN,1,0
+Oat Beige,oat beige,C-1659,beige,DRAFT,,UNKNOWN,1,0
+Olive Night,olive night,C-1676,olive,DRAFT,,UNKNOWN,1,0
+Opal Blue,opal blue,C-1678,blue,DRAFT,,UNKNOWN,1,0
+Orange Glo,orange glo,C-1682,orange,DRAFT,,UNKNOWN,1,0
+Orb Pink,orb pink,C-1684,pink,DRAFT,,UNKNOWN,1,0
+Orbit Green,orbit green,C-1685,green,DRAFT,,UNKNOWN,1,0
+Orewood Brown,orewood brown,C-1687,brown,DRAFT,,UNKNOWN,4,0
+Outdoor Green,outdoor green,C-1688,green,DRAFT,,UNKNOWN,1,0
+Oxford Tan,oxford tan,C-1690,tan,DRAFT,,UNKNOWN,1,0
+Particle Beige,particle beige,C-1700,beige,DRAFT,,UNKNOWN,1,0
+Particloe Pink,particloe pink,C-1705,pink,DRAFT,,UNKNOWN,1,0
+Peaceful Blue,peaceful blue,C-1706,blue,DRAFT,,UNKNOWN,2,0
+Peach Cream,peach cream,C-1708,cream,DRAFT,,UNKNOWN,1,0
+Pearlized Black,pearlized black,C-1714,black,DRAFT,,UNKNOWN,1,0
+Pearlized Racing Red,pearlized racing red,C-1716,red,DRAFT,,UNKNOWN,2,0
+Pelé Yellow,pelé yellow,C-1718,yellow,DRAFT,,UNKNOWN,1,0
+Pewter Grey,pewter grey,C-1719,grey,DRAFT,,UNKNOWN,1,0
+Pink Crush,pink crush,C-1731,pink,DRAFT,,UNKNOWN,2,0
+Pink Fire,pink fire,C-1734,pink,DRAFT,,UNKNOWN,1,0
+Pink Glaze,pink glaze,C-1737,pink,DRAFT,,UNKNOWN,2,0
+Pink Granite,pink granite,C-1739,pink,DRAFT,,UNKNOWN,1,0
+Pink Haze,pink haze,C-1740,pink,DRAFT,,UNKNOWN,1,0
+Pink Mesa,pink mesa,C-1742,pink,DRAFT,,UNKNOWN,1,0
+Pink Oxford,pink oxford,C-1745,pink,DRAFT,,UNKNOWN,3,0
+Pink Taffy,pink taffy,C-1753,pink,DRAFT,,UNKNOWN,2,0
+Pink Tint,pink tint,C-1754,pink,DRAFT,,UNKNOWN,1,0
+Pink Wash,pink wash,C-1756,pink,DRAFT,,UNKNOWN,3,0
+Pitch Blue,pitch blue,C-1759,blue,DRAFT,,UNKNOWN,1,0
+Pitch Green,pitch green,C-1761,green,DRAFT,,UNKNOWN,1,0
+Platinum Grey,platinum grey,C-1763,grey,DRAFT,,UNKNOWN,1,0
+Polar Blue,polar blue,C-1766,blue,DRAFT,,UNKNOWN,1,0
+Port Royale Red,port royale red,C-1767,red,DRAFT,,UNKNOWN,1,0
+Powder Blue,powder blue,C-1768,blue,DRAFT,,UNKNOWN,3,0
+Preloved Blue,preloved blue,C-1773,blue,DRAFT,,UNKNOWN,1,0
+Preloved Red,preloved red,C-1776,red,DRAFT,,UNKNOWN,2,0
+Pro Green,pro green,C-1779,green,DRAFT,,UNKNOWN,3,0
+Pro Purple,pro purple,C-1780,purple,DRAFT,,UNKNOWN,1,0
+Pure Purple,pure purple,C-1789,purple,DRAFT,,UNKNOWN,1,0
+Purple Dynasty,purple dynasty,C-1793,purple,DRAFT,,UNKNOWN,1,0
+Racing Blue,racing blue,C-1800,blue,DRAFT,,UNKNOWN,1,0
+Rattan,rattan,C-1804,,UNKNOWN,,UNKNOWN,3,0
+Red Crush,red crush,C-1807,red,DRAFT,,UNKNOWN,1,0
+Red Orange,red orange,C-1811,orange,DRAFT,,UNKNOWN,1,0
+Red Sail,red sail,C-1813,sail,DRAFT,,UNKNOWN,1,0
+Red Sepia,red sepia,C-1814,red,DRAFT,,UNKNOWN,1,0
+Red Tattoo,red tattoo,C-1816,red,DRAFT,,UNKNOWN,1,0
+Regal Blue,regal blue,C-1819,blue,DRAFT,,UNKNOWN,2,0
+Regal Purple,regal purple,C-1821,purple,DRAFT,,UNKNOWN,2,0
+Rickie Orange,rickie orange,C-1823,orange,DRAFT,,UNKNOWN,2,0
+Rocky Tan,rocky tan,C-1825,tan,DRAFT,,UNKNOWN,1,0
+Rough Green,rough green,C-1829,green,DRAFT,,UNKNOWN,3,0
+Rugged Orange,rugged orange,C-1834,orange,DRAFT,,UNKNOWN,3,0
+Safety Yellow,safety yellow,C-1841,yellow,DRAFT,,UNKNOWN,2,0
+Sage Green,sage green,C-1843,green,DRAFT,,UNKNOWN,2,0
+Sand Drift,sand drift,C-1847,,UNKNOWN,,UNKNOWN,2,0
+Sandstone,sandstone,C-1850,,UNKNOWN,,UNKNOWN,4,0
+Satellite Grey,satellite grey,C-1852,grey,DRAFT,,UNKNOWN,1,0
+Saturn Gold,saturn gold,C-1853,gold,DRAFT,,UNKNOWN,1,0
+Seal Brown,seal brown,C-1859,brown,DRAFT,,UNKNOWN,1,0
+Semi Green Spark,semi green spark,C-1862,green,DRAFT,,UNKNOWN,1,0
+Shadow Green,shadow green,C-1875,green,DRAFT,,UNKNOWN,1,0
+Shocking Orange,shocking orange,C-1881,orange,DRAFT,,UNKNOWN,1,0
+Silver Green,silver green,C-1888,green,DRAFT,,UNKNOWN,2,0
+Silver Mist,silver mist,C-1892,silver,DRAFT,,UNKNOWN,2,0
+Slime Green,slime green,C-1900,green,DRAFT,,UNKNOWN,1,0
+Slitt Red,slitt red,C-1901,red,DRAFT,,UNKNOWN,1,0
+Soft Pink,soft pink,C-1905,pink,DRAFT,,UNKNOWN,3,0
+Souvenir Faded Black,souvenir faded black,C-1914,black,DRAFT,,UNKNOWN,1,0
+Souvenir Navy Blue,souvenir navy blue,C-1915,blue,DRAFT,,UNKNOWN,1,0
+Souvenir Oatmeal Beige,souvenir oatmeal beige,C-1916,beige,DRAFT,,UNKNOWN,1,0
+Space Purple,space purple,C-1917,purple,DRAFT,,UNKNOWN,1,0
+Sport Blue,sport blue,C-1920,blue,DRAFT,,UNKNOWN,2,0
+Sport Gold,sport gold,C-1921,gold,DRAFT,,UNKNOWN,1,0
+Star Blue,star blue,C-1925,blue,DRAFT,,UNKNOWN,1,0
+Stardust Lilac,stardust lilac,C-1926,purple,DRAFT,,UNKNOWN,1,0
+Stealth White,stealth white,C-1928,white,DRAFT,,UNKNOWN,1,0
+Storm Blue,storm blue,C-1939,blue,DRAFT,,UNKNOWN,1,0
+Stucco White,stucco white,C-1940,white,DRAFT,,UNKNOWN,1,0
+Suadron Blue,suadron blue,C-1941,blue,DRAFT,,UNKNOWN,1,0
+Summit Grey,summit grey,C-1942,grey,DRAFT,,UNKNOWN,1,0
+Sunblush Orange,sunblush orange,C-1945,orange,DRAFT,,UNKNOWN,1,0
+Taupe Brown,taupe brown,C-1954,brown,DRAFT,,UNKNOWN,1,0
+Taupe Grey,taupe grey,C-1955,grey,DRAFT,,UNKNOWN,2,0
+Team Coll Burgundy 2,team coll burgundy 2,C-1959,burgundy,DRAFT,,UNKNOWN,2,0
+Team Orange,team orange,C-1963,orange,DRAFT,,UNKNOWN,1,0
+Team Royal,team royal,C-1965,,UNKNOWN,,UNKNOWN,3,0
+Tint Oil Green,tint oil green,C-1974,green,DRAFT,,UNKNOWN,2,0
+Tumbled Rigid Blue,tumbled rigid blue,C-1991,blue,DRAFT,,UNKNOWN,1,0
+Undyed White,undyed white,C-1995,white,DRAFT,,UNKNOWN,4,0
+Univetrsity Red,univetrsity red,C-1999,red,DRAFT,,UNKNOWN,1,0
+Urgent Red,urgent red,C-2002,red,DRAFT,,UNKNOWN,1,0
+Varsity Gum,varsity gum,C-2009,gum,DRAFT,,UNKNOWN,1,0
+Venetian Blue,venetian blue,C-2018,blue,DRAFT,,UNKNOWN,1,0
+Venom Pink,venom pink,C-2019,pink,DRAFT,,UNKNOWN,1,0
+Violet Frost,violet frost,C-2028,purple,DRAFT,,UNKNOWN,3,0
+Warm Beige,warm beige,C-2040,beige,DRAFT,,UNKNOWN,1,0
+Washed Black,washed black,C-2042,black,DRAFT,,UNKNOWN,6,0
+White Glow,white glow,C-2052,white,DRAFT,,UNKNOWN,1,0
+White Onyx,white onyx,C-2053,white,DRAFT,,UNKNOWN,1,0
+White Swan,white swan,C-2055,white,DRAFT,,UNKNOWN,1,0
+Wonder Blue,wonder blue,C-2060,blue,DRAFT,,UNKNOWN,1,0
+Yellow Sizzle,yellow sizzle,C-2069,yellow,DRAFT,,UNKNOWN,1,0
+Yellow Strike,yellow strike,C-2070,yellow,DRAFT,,UNKNOWN,1,0
+Arctic Night,arctic night,C-2591,,UNKNOWN,,UNKNOWN,1,0
+Bronze Strata,bronze strata,C-2603,,UNKNOWN,,UNKNOWN,2,0
+Chalk Pearl,chalk pearl,C-2606,,UNKNOWN,,UNKNOWN,1,0
+Ecru Tint,ecru tint,C-2619,,UNKNOWN,,UNKNOWN,1,0
+Noble Ink,noble ink,C-2635,,UNKNOWN,,UNKNOWN,1,0
+Off,off,C-2637,,UNKNOWN,,UNKNOWN,1,0
+Preloved Lime,preloved lime,C-2643,,UNKNOWN,,UNKNOWN,1,0
+Pure Teal,pure teal,C-2646,,UNKNOWN,,UNKNOWN,1,0
+Shadow Fig,shadow fig,C-2648,,UNKNOWN,,UNKNOWN,1,0
+Warm Sandstone,warm sandstone,C-2655,,UNKNOWN,,UNKNOWN,1,0
+Wonder Taupe,wonder taupe,C-2074,,UNKNOWN,,UNKNOWN,2,0
+Zero Metalic,zero metalic,C-2075,,UNKNOWN,,UNKNOWN,1,0
+Kai Mentality,kai mentality,C-2077,,UNKNOWN,,UNKNOWN,1,0
+Ocean Eye,ocean eye,C-2078,,UNKNOWN,,UNKNOWN,1,0
+Yang,yang,C-2079,,UNKNOWN,,UNKNOWN,1,0
+Arctic Sky,arctic sky,C-2080,,UNKNOWN,,UNKNOWN,1,0
+Bluebell,bluebell,C-2081,,UNKNOWN,,UNKNOWN,1,0
+Kale,kale,C-2086,,UNKNOWN,,UNKNOWN,1,0
+Menthol,menthol,C-2087,,UNKNOWN,,UNKNOWN,1,0
+Pale Oak,pale oak,C-2089,,UNKNOWN,,UNKNOWN,1,0
+Simply Taupe,simply taupe,C-2097,,UNKNOWN,,UNKNOWN,1,0
+Stone Wash,stone wash,C-2098,,UNKNOWN,,UNKNOWN,1,0
+Corduroy Stone Coin,corduroy stone coin,C-2104,,UNKNOWN,,UNKNOWN,1,0
+Narrow,narrow,C-2107,,UNKNOWN,,UNKNOWN,1,0
+Deep Bordeaux,deep bordeaux,C-2115,,UNKNOWN,,UNKNOWN,1,0
+Grape Fizz,grape fizz,C-2118,,UNKNOWN,,UNKNOWN,1,0
+Natural Ivory,natural ivory,C-2122,,UNKNOWN,,UNKNOWN,1,0
+Banana,banana,C-2124,,UNKNOWN,,UNKNOWN,1,0
+Dreamscape,dreamscape,C-2126,,UNKNOWN,,UNKNOWN,2,0
+Copper,copper,C-2131,,UNKNOWN,,UNKNOWN,1,0
+Beech Wood,beech wood,C-2133,,UNKNOWN,,UNKNOWN,1,0
+Dried Rose,dried rose,C-2140,,UNKNOWN,,UNKNOWN,1,0
+Outer Orbit,outer orbit,C-2145,,UNKNOWN,,UNKNOWN,1,0
+Snow Melt,snow melt,C-2149,,UNKNOWN,,UNKNOWN,1,0
+Starlight Glow,starlight glow,C-2153,,UNKNOWN,,UNKNOWN,1,0
+Tomato,tomato,C-2155,,UNKNOWN,,UNKNOWN,1,0
+Vermillion,vermillion,C-2156,,UNKNOWN,,UNKNOWN,1,0
+Aegean Storm,aegean storm,C-2158,,UNKNOWN,,UNKNOWN,2,0
+Arctic Punch,arctic punch,C-2160,,UNKNOWN,,UNKNOWN,2,0
+Bleached Coral,bleached coral,C-2162,,UNKNOWN,,UNKNOWN,2,0
+Camellia,camellia,C-2164,,UNKNOWN,,UNKNOWN,1,0
+Carbon Heather,carbon heather,C-2166,,UNKNOWN,,UNKNOWN,1,0
+Cardinal,cardinal,C-2167,,UNKNOWN,,UNKNOWN,1,0
+Cherry,cherry,C-2170,,UNKNOWN,,UNKNOWN,1,0
+Coast,coast,C-2173,,UNKNOWN,,UNKNOWN,1,0
+Dark Mocha,dark mocha,C-2176,,UNKNOWN,,UNKNOWN,2,0
+Dark Powder,dark powder,C-2177,,UNKNOWN,,UNKNOWN,1,0
+Dusty Peach,dusty peach,C-2182,,UNKNOWN,,UNKNOWN,1,0
+Earth,earth,C-2183,,UNKNOWN,,UNKNOWN,1,0
+Geode Teal,geode teal,C-2186,,UNKNOWN,,UNKNOWN,1,0
+Golden Harvest,golden harvest,C-2188,,UNKNOWN,,UNKNOWN,1,0
+Jade Smoke,jade smoke,C-2193,,UNKNOWN,,UNKNOWN,4,0
+Lava Glow,lava glow,C-2195,,UNKNOWN,,UNKNOWN,3,0
+Legend Coffee,legend coffee,C-2196,,UNKNOWN,,UNKNOWN,2,0
+Legend Sand,legend sand,C-2197,,UNKNOWN,,UNKNOWN,2,0
+Light Dew,light dew,C-2200,,UNKNOWN,,UNKNOWN,2,0
+Light Madder Root,light madder root,C-2202,,UNKNOWN,,UNKNOWN,3,0
+Lobster,lobster,C-2205,,UNKNOWN,,UNKNOWN,1,0
+Lobster Dune,lobster dune,C-2206,,UNKNOWN,,UNKNOWN,2,0
+Maize,maize,C-2207,,UNKNOWN,,UNKNOWN,1,0
+Mutli Color,mutli color,C-2208,,UNKNOWN,,UNKNOWN,1,0
+Noir,noir,C-2212,,UNKNOWN,,UNKNOWN,2,0
+Redstone,redstone,C-2215,,UNKNOWN,,UNKNOWN,1,0
+Sunset Pulse,sunset pulse,C-2221,,UNKNOWN,,UNKNOWN,2,0
+Terra Blush,terra blush,C-2224,,UNKNOWN,,UNKNOWN,1,0
+True,true,C-2226,,UNKNOWN,,UNKNOWN,1,0
+Vapor,vapor,C-2227,,UNKNOWN,,UNKNOWN,1,0
+Crystal,crystal,C-2229,,UNKNOWN,,UNKNOWN,2,0
+Aqua,aqua,C-2235,,UNKNOWN,,UNKNOWN,1,0
+Bronze,bronze,C-2237,,UNKNOWN,,UNKNOWN,1,0
+Camel,camel,C-2238,,UNKNOWN,,UNKNOWN,1,0
+Pine,pine,C-2240,,UNKNOWN,,UNKNOWN,15,0
+Stone Neutral,stone neutral,C-2241,,UNKNOWN,,UNKNOWN,2,0
+Toasted Peanut,toasted peanut,C-2242,,UNKNOWN,,UNKNOWN,1,0
+Astro Dust,astro dust,C-2246,,UNKNOWN,,UNKNOWN,1,0
+Calcium,calcium,C-2248,,UNKNOWN,,UNKNOWN,2,0
+Calm Taupe,calm taupe,C-2249,,UNKNOWN,,UNKNOWN,1,0
+Dark Mushroom,dark mushroom,C-2255,,UNKNOWN,,UNKNOWN,1,0
+Dusk Shower,dusk shower,C-2258,,UNKNOWN,,UNKNOWN,1,0
+Earth Shadow,earth shadow,C-2259,,UNKNOWN,,UNKNOWN,1,0
+Lime Leaf,lime leaf,C-2266,,UNKNOWN,,UNKNOWN,1,0
+Melon Water,melon water,C-2269,,UNKNOWN,,UNKNOWN,1,0
+Natural Indigo,natural indigo,C-2272,,UNKNOWN,,UNKNOWN,1,0
+New Spruce,new spruce,C-2274,,UNKNOWN,,UNKNOWN,2,0
+Olivine,olivine,C-2276,,UNKNOWN,,UNKNOWN,1,0
+Parchment,parchment,C-2277,,UNKNOWN,,UNKNOWN,1,0
+Rain Cloud,rain cloud,C-2279,,UNKNOWN,,UNKNOWN,1,0
+Steel Lead,steel lead,C-2286,,UNKNOWN,,UNKNOWN,1,0
+Summer Fog,summer fog,C-2289,,UNKNOWN,,UNKNOWN,1,0
+Vachetta,vachetta,C-2295,,UNKNOWN,,UNKNOWN,1,0
+Adobe,adobe,C-2298,,UNKNOWN,,UNKNOWN,1,0
+Amethyst Tint,amethyst tint,C-2300,,UNKNOWN,,UNKNOWN,1,0
+Apricot Agate,apricot agate,C-2301,,UNKNOWN,,UNKNOWN,2,0
+Atomic Teal,atomic teal,C-2304,,UNKNOWN,,UNKNOWN,1,0
+Beach,beach,C-2305,,UNKNOWN,,UNKNOWN,3,0
+Bicoastal,bicoastal,C-2306,,UNKNOWN,,UNKNOWN,5,0
+Bright Mandarin,bright mandarin,C-2313,,UNKNOWN,,UNKNOWN,1,0
+Bronzine,bronzine,C-2314,,UNKNOWN,,UNKNOWN,2,0
+Bryant Kobe 8,bryant kobe 8,C-2315,,UNKNOWN,,UNKNOWN,1,0
+Caocao Wow,caocao wow,C-2317,,UNKNOWN,,UNKNOWN,1,0
+Citron Tint,citron tint,C-2318,,UNKNOWN,,UNKNOWN,2,0
+Cobalt Tint,cobalt tint,C-2319,,UNKNOWN,,UNKNOWN,1,0
+Cobblestone,cobblestone,C-2320,,UNKNOWN,,UNKNOWN,2,0
+Copper Moon,copper moon,C-2321,,UNKNOWN,,UNKNOWN,1,0
+Dark Beetroot,dark beetroot,C-2323,,UNKNOWN,,UNKNOWN,1,0
+Dark Russet,dark russet,C-2327,,UNKNOWN,,UNKNOWN,1,0
+Dark Team,dark team,C-2328,,UNKNOWN,,UNKNOWN,1,0
+Deep Jungle,deep jungle,C-2329,,UNKNOWN,,UNKNOWN,2,0
+Desert Sand,desert sand,C-2331,,UNKNOWN,,UNKNOWN,1,0
+Dessert Ochre,dessert ochre,C-2332,,UNKNOWN,,UNKNOWN,1,0
+Doll,doll,C-2334,,UNKNOWN,,UNKNOWN,1,0
+Fir Light,fir light,C-2341,,UNKNOWN,,UNKNOWN,1,0
+Flamingo,flamingo,C-2343,,UNKNOWN,,UNKNOWN,1,0
+Fossil Stone,fossil stone,C-2344,,UNKNOWN,,UNKNOWN,1,0
+Gauva Ice,gauva ice,C-2349,,UNKNOWN,,UNKNOWN,1,0
+Glacier Ice,glacier ice,C-2350,,UNKNOWN,,UNKNOWN,1,0
+Golden Tussah,golden tussah,C-2352,,UNKNOWN,,UNKNOWN,1,0
+Iron Ore,iron ore,C-2359,,UNKNOWN,,UNKNOWN,1,0
+Lemon Twist,lemon twist,C-2362,,UNKNOWN,,UNKNOWN,4,0
+Light Carbon,light carbon,C-2368,,UNKNOWN,,UNKNOWN,1,0
+Light Liquid Lime,light liquid lime,C-2372,,UNKNOWN,,UNKNOWN,2,0
+Lime Ice,lime ice,C-2378,,UNKNOWN,,UNKNOWN,2,0
+Limestone,limestone,C-2379,,UNKNOWN,,UNKNOWN,1,0
+Medium Curry,medium curry,C-2381,,UNKNOWN,,UNKNOWN,1,0
+Mink,mink,C-2389,,UNKNOWN,,UNKNOWN,1,0
+Mystic Teal,mystic teal,C-2395,,UNKNOWN,,UNKNOWN,1,0
+Neon Royal,neon royal,C-2396,,UNKNOWN,,UNKNOWN,2,0
+Neutral Indigo,neutral indigo,C-2397,,UNKNOWN,,UNKNOWN,1,0
+Obsidian Cyber,obsidian cyber,C-2400,,UNKNOWN,,UNKNOWN,1,0
+Obsidian Pale,obsidian pale,C-2401,,UNKNOWN,,UNKNOWN,1,0
+Pacific Moss,pacific moss,C-2404,,UNKNOWN,,UNKNOWN,2,0
+Pimento,pimento,C-2407,,UNKNOWN,,UNKNOWN,1,0
+Plum Eclipse,plum eclipse,C-2409,,UNKNOWN,,UNKNOWN,1,0
+Pomegranate,pomegranate,C-2411,,UNKNOWN,,UNKNOWN,2,0
+Pure Platnium,pure platnium,C-2412,,UNKNOWN,,UNKNOWN,1,0
+Redwood,redwood,C-2413,,UNKNOWN,,UNKNOWN,1,0
+Rose Whisper,rose whisper,C-2415,,UNKNOWN,,UNKNOWN,2,0
+Saill,saill,C-2416,,UNKNOWN,,UNKNOWN,1,0
+Sport Fuchsia,sport fuchsia,C-2420,,UNKNOWN,,UNKNOWN,1,0
+Stone Mauve,stone mauve,C-2422,,UNKNOWN,,UNKNOWN,1,0
+Tart,tart,C-2425,,UNKNOWN,,UNKNOWN,1,0
+Turbo,turbo,C-2432,,UNKNOWN,,UNKNOWN,1,0
+Volt Glow,volt glow,C-2433,,UNKNOWN,,UNKNOWN,1,0
+World Indigo,world indigo,C-2435,,UNKNOWN,,UNKNOWN,1,0
+Pollen,pollen,C-2437,,UNKNOWN,,UNKNOWN,1,0
+Acacia,acacia,C-2441,,UNKNOWN,,UNKNOWN,2,0
+Almond,almond,C-2443,,UNKNOWN,,UNKNOWN,1,0
+Artic,artic,C-2444,,UNKNOWN,,UNKNOWN,1,0
+Clove,clove,C-2452,,UNKNOWN,,UNKNOWN,1,0
+Fade,fade,C-2454,,UNKNOWN,,UNKNOWN,2,0
+Flame,flame,C-2455,,UNKNOWN,,UNKNOWN,2,0
+Grenadine,grenadine,C-2460,,UNKNOWN,,UNKNOWN,1,0
+Grizzly,grizzly,C-2461,,UNKNOWN,,UNKNOWN,2,0
+Mulberry,mulberry,C-2468,,UNKNOWN,,UNKNOWN,2,0
+Orchid,orchid,C-2469,,UNKNOWN,,UNKNOWN,1,0
+Rosebrown,rosebrown,C-2474,,UNKNOWN,,UNKNOWN,1,0
+Seashell,seashell,C-2477,,UNKNOWN,,UNKNOWN,1,0
+Surf,surf,C-2482,,UNKNOWN,,UNKNOWN,1,0
+Tangerine,tangerine,C-2483,,UNKNOWN,,UNKNOWN,1,0
+Undyed,undyed,C-2487,,UNKNOWN,,UNKNOWN,2,0
+Aquatic,aquatic,C-2494,,UNKNOWN,,UNKNOWN,1,0
+Caramel Latte,caramel latte,C-2495,,UNKNOWN,,UNKNOWN,1,0
+Chocolate Chip,chocolate chip,C-2497,,UNKNOWN,,UNKNOWN,1,0
+Dark Amethyst,dark amethyst,C-2499,,UNKNOWN,,UNKNOWN,2,0
+Dark Chocolate,dark chocolate,C-2500,,UNKNOWN,,UNKNOWN,1,0
+Dark Myrtle,dark myrtle,C-2501,,UNKNOWN,,UNKNOWN,1,0
+Flat Bronze,flat bronze,C-2502,,UNKNOWN,,UNKNOWN,1,0
+Gradient,gradient,C-2504,,UNKNOWN,,UNKNOWN,1,0
+Ice Coffee,ice coffee,C-2507,,UNKNOWN,,UNKNOWN,1,0
+Iris,iris,C-2508,,UNKNOWN,,UNKNOWN,1,0
+Magic Rose,magic rose,C-2510,,UNKNOWN,,UNKNOWN,2,0
+Pumpkin Pie,pumpkin pie,C-2514,,UNKNOWN,,UNKNOWN,1,0
+Pure Magenta,pure magenta,C-2515,,UNKNOWN,,UNKNOWN,1,0
+Rosso Corsa,rosso corsa,C-2517,,UNKNOWN,,UNKNOWN,6,0
+Vine,vine,C-2522,,UNKNOWN,,UNKNOWN,1,0
+Asphalt,asphalt,C-2525,,UNKNOWN,,UNKNOWN,4,0
+Ebony,ebony,C-2530,,UNKNOWN,,UNKNOWN,1,0
+Eden,eden,C-2531,,UNKNOWN,,UNKNOWN,1,0
+Fairy Tale,fairy tale,C-2534,,UNKNOWN,,UNKNOWN,2,0
+Flame Scarlet,flame scarlet,C-2535,,UNKNOWN,,UNKNOWN,1,0
+Hazelnut,hazelnut,C-2537,,UNKNOWN,,UNKNOWN,1,0
+Iced Aqua,iced aqua,C-2539,,UNKNOWN,,UNKNOWN,1,0
+Lunar Eock,lunar eock,C-2540,,UNKNOWN,,UNKNOWN,1,0
+Mahogany Rose,mahogany rose,C-2542,,UNKNOWN,,UNKNOWN,2,0
+Metal,metal,C-2543,,UNKNOWN,,UNKNOWN,3,0
+Sedona Sage,sedona sage,C-2549,,UNKNOWN,,UNKNOWN,1,0
+Shortbread,shortbread,C-2550,,UNKNOWN,,UNKNOWN,1,0
+Tapioca,tapioca,C-2551,,UNKNOWN,,UNKNOWN,1,0
+Warm Apricot,warm apricot,C-2554,,UNKNOWN,,UNKNOWN,1,0
+Coral,coral,C-2556,,UNKNOWN,,UNKNOWN,2,0
+Doe,doe,C-2557,,UNKNOWN,,UNKNOWN,1,0
+Lemon Chrome,lemon chrome,C-2560,,UNKNOWN,,UNKNOWN,1,0
+Microchip,microchip,C-2561,,UNKNOWN,,UNKNOWN,1,0
+Mud,mud,C-2562,,UNKNOWN,,UNKNOWN,1,0
+Almond Butter,almond butter,C-2566,,UNKNOWN,,UNKNOWN,2,0
+Nubuck,nubuck,C-2567,,UNKNOWN,,UNKNOWN,1,0
+Rust Nubuck,rust nubuck,C-2568,,UNKNOWN,,UNKNOWN,1,0
+Chesnut,chesnut,C-2570,,UNKNOWN,,UNKNOWN,2,0
+Rock Rose,rock rose,C-2573,,UNKNOWN,,UNKNOWN,1,0
+Mulit,mulit,C-2585,,UNKNOWN,,UNKNOWN,1,0
