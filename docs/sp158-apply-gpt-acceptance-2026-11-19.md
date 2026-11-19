@@ -1,0 +1,3 @@
+# GPT検収 SP158 Local apply
+対象 docs/sp158-apply-result-maou-2026-11-19.md @93df9b78。Local反映の報告範囲 PASS、158件を再applyしない。Stage H 4親16子 teardown inventory byte一致、Stage I pilot3+155、316指定meta追加のみ、readback0、再dryrun158 unchanged、619商品/13注文不変を報告で確認。GPTは実機・画像・生ログ・sheetを独立取得していない。
+残差：直接POSTはアプリ層フック呼び出しでHTTP POST/wc-ajax/Store API実リクエスト未実施。前承認の条件を完全に満たしたとは扱わない。fixture guardのHTTP経路は隔離環境で最小ケースを検証し、cart/order差分0・teardown確認。サイズ切替はSKU・価格在庫注記の報告のみで画像切替証拠なし、実商品スマホはUNKNOWN1件のみ、HOLD実商品・CONFIRMEDスマホ・サイズ変更時の画像価格在庫を既存証拠で確認、不足のみ回帰QA。Stage I全inventory対象外差分0、正本sheet/manifest hash再照合、pilot backupと本backup双方のrollback可能性、単一writer、テーマhashについて証拠が報告にない場合は既存ログで補完。316行追加は対象親子meta範囲の証拠。異常なしなら現行Local反映維持、rollbackや全件再実行不要。重大不整合発見時のみ停止・修正/rollback判断。公開・本番・他店舗/merged移行は未承認。新機能を増やさずエラー解消優先、独立作業継続。
