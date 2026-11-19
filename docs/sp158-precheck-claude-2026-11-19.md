@@ -26,3 +26,9 @@
 
 ## 4. fixture remove の安全策
 - 空SKU・親不一致・trash・型違いの安全策は 0e57d34 で実装済み。fixture 再作成・削除は 0e57d34 以降の tools/ahc_create_swatch_fixture.php を使う。
+
+## 5. 93df9b7（SP158 apply 報告）を読んで確認したい1点（19:35）
+- Stage H-4（21457 構成色なし）で「『カラー』ラベルの横に丸もテキストも何も表示されなかった」とある。1acd58c の main.js（md5 03599394…）なら、構成色なしでは「カラー」ラベルを含むブロック自体を出さない。旧 main.js（4b736d99…）なら「カラー」ラベル＋点線の丸が出る。どちらとも合わない。
+- 確認してほしいこと（読み取りのみ）：Stage H 実施時の Local theme/main.js と mu-plugins/ahc-fixture-guard.php の md5。見えた「カラー」が `.nexus-single-color__label` か、それ以外（商品の追加情報タブ等）か。
+- 1acd58c 未反映なら：main.js（03599394…）と ahc-fixture-guard.php（ad863005…）を反映し、GPT ead85dc の残差（HTTP POST / wc-ajax / Store API の実リクエスト）を隔離 fixture で確認する際に一緒に見る。158件は構成色なし0件なので、apply 済みの表示には影響しない（再 apply 不要）。
+- HTTP 経路の確認コマンドは本書 §2 のとおり。
