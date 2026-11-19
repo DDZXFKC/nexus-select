@@ -8,7 +8,7 @@
  *   { "<pa_color value of that product>": [ {"name": "...", "hex": "#RRGGBB" | null}, ... ] }
  *
  * Rules
- * - Local sites only (.local/.localhost/.test/localhost). Shoe Palace only (shop_code shoe-palace).
+ * - Local sites only (.local/.localhost/.test/localhost). Shoe Palace only (shop_code SP as in the sheet; legacy shoe-palace also accepted).
  * - Dry run by default. Writes only with --apply.
  * - Woo product is found by its parent SKU "SP-<supplier_product_id>" (existing Shoe Palace prep format).
  *   Products not found, or with no / several color values, are skipped and reported (never guessed).
@@ -19,6 +19,8 @@
  *
  * CSV columns (header required):
  *   shop_code,supplier_product_id,supplier_color_key,position,token_original,display_hex,hex_status
+ * Make this CSV from the sheet with collector/color_woo_export.py (it blanks hex for HOLD/UNKNOWN
+ * products and stops if the sheet's swatch_status differs from the recompute).
  *
  * Run:
  *   wp eval-file tools/ahc_color_components_to_woo.php <csv> [--apply] [--only-confirmed] --path="<Local site>/app/public"
@@ -47,7 +49,7 @@ $errors = 0;
 while (($row = fgetcsv($fh)) !== false) {
     if (count($row) === 1 && trim((string) $row[0]) === '') continue;
     $shop = trim($row[$idx['shop_code']]);
-    if ($shop !== 'shoe-palace') { $errors++; WP_CLI::warning("skip non-Shoe Palace row: $shop"); continue; }
+    if ($shop !== 'SP' && $shop !== 'shoe-palace') { $errors++; WP_CLI::warning("skip non-Shoe Palace row: $shop"); continue; }
     $pid = trim($row[$idx['supplier_product_id']]);
     $key = trim($row[$idx['supplier_color_key']]);
     $pos = (int) $row[$idx['position']];
