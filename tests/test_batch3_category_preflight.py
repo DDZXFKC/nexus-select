@@ -98,5 +98,38 @@ class CategoryPreflightTests(unittest.TestCase):
         self.assertIn("missing_category_evidence", rows[0]["reason"])
 
 
+    def test_actual_sp_lowercase_columns_and_sellable_gate(self):
+        self.pool_rows = [
+            {"sku": "SP-" + str(i), "brand": "Vans", "name": "Old Skool Mens Shoes",
+             "verdict": "販売可能" if i != 2 else "販売不可"}
+            for i in range(163)]
+        self.selected = [{"sku": "SP-" + str(i)} for i in range(10)]
+        self.config["category_overrides_by_sku"] = {}
+        self.config["brand_dept_defaults"] = []
+        self.config["product_metadata_by_sku"] = {
+            "SP-" + str(i): {"department": "Men", "department_evidence_ref": "verified-source:" + str(i),
+                            "verified_on": "2026-11-20"} for i in range(163)}
+        self.config["category_dictionary"] = [{
+            "brand": "Vans", "department": "Men", "source_product_type": "old skool mens shoes",
+            "category_id": "3323", "evidence_ref": "synthetic:category", "verified_on": "2026-11-20"}]
+        # Synthetic category master 3323 is boots; name contains only shoes, no type contradiction.
+        csvwrite(self.pool, ["sku", "brand", "name", "verdict"], self.pool_rows)
+        csvwrite(self.selection, ["sku"], self.selected)
+        csvwrite(self.master, ["category_id", "product_type"], self.categories)
+        self.pool_hash = hashlib.sha256(self.pool.read_bytes()).hexdigest()
+        self.rules.write_text(json.dumps(self.config), encoding="utf-8")
+        rows, receipt = p.run(self.pool, self.selection, self.master, self.rules, self.pool_hash)
+        self.assertEqual(receipt["pool_count"], 163)
+        self.assertEqual(receipt["pool_sellable_count"], 162)
+        self.assertEqual(receipt["hold_count"], 1)
+        self.assertIn("pool_not_sellable", rows[2]["reason"])
+
+    def test_missing_department_evidence_holds(self):
+        self.pool_rows[0]["department"] = ""
+        rows, receipt = self.result()
+        self.assertEqual(receipt["hold_count"], 1)
+        self.assertIn("department_unverified", rows[0]["reason"])
+
+
 if __name__ == "__main__":
     unittest.main()
