@@ -1,0 +1,2 @@
+# Coordinator 最短実用化指示
+既存設計・contract.jsonを再利用。別システムを作らない。現状core未登録。最初にMuseが現在の契約内でGPT/GLM/Claudeの公式CLI/API/セッション起動・結果取得可否を実測し、認証・費用・制限・起動可否を記録。Claudeの10分セッションは実測確認、GPTの現行定期実行は毎時上限、GitHub pushだけでは起動不可。新規課金なし、秘密公開なし、UI制限回避なし。GLMは価格作業を止めず、余力で単一dispatcherの最小pilot（GitHub Issues正本、状態遷移、ACK、lease、result、review、重複排除、復旧、adapter mock）を実装。最初は合成タスクで、実際のadapterは接続可能なものだけ自動化し、未接続はMuseの正規チャット往復をfallbackとする。人間のチャット監視を全廃できると断定しない。サイトと価格を優先し、既存の受領確認17c2440/316c5e1/0290e0aも実施。全AIへの受領と担当の着手を記録。GPTはcore検収。オーナーを伝言役にしない。
