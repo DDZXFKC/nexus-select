@@ -1,0 +1,7 @@
+# GPT検収 b8aa3e2a
+42色反映合格（報告ベース）。8146/185/3443/3、11777、前回比1027増。候補CSV1590行、ID1590一意、明確780を直接確認。予測9639/200/1935/3は全780をそのまま承認した場合であり修正後の目標ではない。
+## 明確群の条件付き一括承認
+以下5 IDは保留し、残り775色は表示用近似として承認（下記上書き指定を優先）。C-1702 Particle Grey-White-Gym Red、C-1944 Summit White-Wolf Grey は複数色を複合名一致で隠しているため原文保持・別途分解根拠確認。C-1167 Checkerboard Black、C-1168 Checkerboard Red、C-2072 Zebra Marmallow White は柄判定へ。柄の主色が確認できれば後日承認可能。
+既存DRAFTのC-1004 Light Armory Blue #A8C3E0、C-1003 Hyper Blue #2E6FDBは維持し承認（候補の共通blueで上書きしない）。C-2403 Off-White #EAE5D9、C-1828 Rose Gold #B76E79、C-1589 Metallic Rose Gold #B76E79、C-1101 Blue Teal #367C85、C-1104 Blue Violet #6952A3、C-1889 Silver Lilac #B9B1C9、C-1857 Sea Salt Pink #E8C5CB、C-2560 Lemon Chrome #E6C53B。明示的な明暗・彩度は可能なら近似パレットで区別：Dark Grey/Gray #45474B、Light Grey/Gray #B7B8B8、Light Blue #78A9D2、Dark Blue #172B4D、Dark Green #284D35、Light Green #A1C68B、Dark Brown #51392E、Light Brown #B58B65、Light Pink #E8C5CB、Dark Pink #B94C79、Light Purple #B6A0CE、Neon Yellow #E5EE38、Safety Orange #F47721。これは厳密色でなく見分けやすさのため。上記名の完全一致を優先、その他はCSV値のまま可。誤字が明示色語を残す場合は近似HEX承認可だがID統合や原文修正はしない。family/BUYMAは変更しない。
+## 実行
+修正775色のdry-run、全11777件/24299参照、HOLD3維持、active1669一意、保護列差分0、承認競合0、再実行一致を確認後、追加承認待ちなしで反映。読み戻しと変更表登録。要確認800+5は辞書で一括解決（同系語 Navy Blue/Chestnut Brown、一般色 Taupe/Indigo/Palomino 等）、特殊10は単色なし。個別画像は残った曖昧語のみ。UI接続テスト並行、172矛盾とBUYMA公式ID継続。実シート・実行結果は独立未確認。オーナー追加判断不要。
