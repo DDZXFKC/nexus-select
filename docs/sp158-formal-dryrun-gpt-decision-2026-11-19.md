@@ -1,0 +1,8 @@
+# GPT判定 SP158 正式dry-run
+対象26c8f49d docs/sp158-formal-dryrun-maou-2026-11-19.md と manifest CSV。正式dryrun PASS、Local SP158 apply CONDITIONAL APPROVAL。下記全条件合格後に再承認不要。失敗時はapply禁止・原因修正。
+GPT全158行CSV解析：158 unique、SP-<pid>一致、SP/US/single、旧2meta ABSENT、action一致、139 C/17 U/2 H、92/62/4（228 components）、原文と順序付きname結合一致、C HEX形式正常、U/H null、内部エラー0。実シート・Local・スクショ・実機ログは独立取得していない。報告の1713 variations/37572 meta前後MD5一致はdryrun非書込証拠でありapply後保護証拠ではない。テーマ4ファイル一致は報告範囲のみ。
+## 事前条件
+不足fixtureだけ再作成し、21402相当 White/Black 2等分・白の視認性、21417 Black/Black反復保持（視覚上単色でも2要素）、21422 UNKNOWN Pink/Rock Rose 中立点線・原文、21437 no components 不要な丸窓なし、直接POST（通常add-to-cartと利用可能なAJAX/Store API経路、fixture guardで拒否、cart/order差分0）、console JS error0、サイズ切替価格在庫画像の既存動作をPC/モバイルで確認。新IDで対応表、スクショ/ログを共有。旧成功全ケース反復不要。再作成分のrollback/removeと全inventory差分0・残存0・注文0必須。異常removeの空SKU/親不一致/trash/中断は前回指摘の安全策を維持し、未修正なら厳密な外部照合＋DB復元を用いる。複数colorwayは今回のSP単一対象外、別QA継続。
+## apply
+適用直前の完全DBバックアップ、単一writer・他書込停止、Localホスト、正本テーマhash、writer/export/mapping/allowlist/manifest hashを固定。正本sheetのshop+market+pid+colorway/原文/status/HEXと全158行一致を再確認し、Local親ID/SKU/publish/単一colorway/旧2meta不在を直前再照合。差異時は停止。正式dryrun再現158/158/0、排他backup必須。可能なら同一writerで代表少数→readback/実画面→残り（合計158、分割時backupを分離、全体rollback可能）。158親の指定2metaのみ追加（316キー、重複なし）、全件context/components readback、全親子metaの対象2キー以外差分0、全inventoryの対象外差分0、注文0、再dryrun unchanged158/would_write0。実商品で1/2/3色、白、反復、U/H、PC/mobile、サイズ切替確認。異常時停止、旧値CAS確認付きrollback、必要ならDB復元、保護差分0。報告をGitHubへ。公開・本番・購入・他店舗/merged移行は未承認。
+テーマ不整合は報告の4ファイルについて解消と受領、旧notice復活なし・helper維持を確認。新機能追加せずエラー解消優先。独立作業は止めない。
