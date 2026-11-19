@@ -21,21 +21,25 @@
   "transitions": {
     "QUEUED": [
       "READY",
-      "BLOCKED"
+      "BLOCKED",
+      "CANCELLED"
     ],
     "READY": [
       "CLAIMED",
       "BLOCKED",
-      "WAIT_OWNER"
+      "WAIT_OWNER",
+      "CANCELLED"
     ],
     "CLAIMED": [
       "RUNNING",
-      "BLOCKED"
+      "BLOCKED",
+      "READY"
     ],
     "RUNNING": [
       "REVIEW_READY",
       "BLOCKED",
-      "WAIT_OWNER"
+      "WAIT_OWNER",
+      "READY"
     ],
     "REVIEW_READY": [
       "DONE",
@@ -45,7 +49,8 @@
       "READY"
     ],
     "BLOCKED": [
-      "READY"
+      "READY",
+      "CANCELLED"
     ],
     "WAIT_OWNER": [
       "READY",
@@ -90,5 +95,31 @@
     "muse_only_sheet_local_writer",
     "no_secrets_in_public_repo"
   ],
-  "pilot_only": true
+  "pilot_only": true,
+  "transition_guards": {
+    "CLAIMED->READY": "dispatcher_only_expired_lease_fenced_no_unresolved_side_effect",
+    "RUNNING->READY": "dispatcher_only_expired_lease_fenced_no_unresolved_side_effect",
+    "*->CANCELLED": "dispatcher_only_authorized_cancel_no_unresolved_side_effect"
+  },
+  "agent_timing": {
+    "gpt": {
+      "mode": "scheduled_or_session",
+      "lease_seconds": 1800
+    },
+    "claude": {
+      "mode": "session",
+      "lease_seconds": 1800
+    },
+    "glm": {
+      "mode": "unverified"
+    },
+    "muse": {
+      "mode": "unverified"
+    }
+  },
+  "identity": {
+    "github_shared_account_not_actor_proof": true,
+    "require_separate_verified_agent_credentials": true,
+    "unverified_actor_pilot_only": true
+  }
 }
