@@ -75,7 +75,7 @@ check('remove refuses duplicate planned SKU', strpos($rm(), 'ERR') === 0);
 file_put_contents("$tmp/mexists.json", 'x');
 check('create refuses an existing manifest', strpos(runf(['create', "fixtures=$tmp/ok.csv", 'template=SP-1', "manifest=$tmp/mexists.json", 'site=ahc.local', 'apply']), 'ERR') === 0);
 // guard plugin
-$FILTERS = []; function add_filter($h, $f, $p = 10, $n = 1) { global $FILTERS; $FILTERS[$h] = $f; } function add_action($h, $f) {}
+$FILTERS = []; function add_filter($h, $f, $p = 10, $n = 1) { global $FILTERS; $FILTERS[$h] = $f; } $ACTIONS = []; function add_action($h, $f, $p = 10, $n = 1) { global $ACTIONS; $ACTIONS[$h] = $f; }
 function wc_add_notice($m, $t) {}
 $META = [500 => ['_ahc_fixture' => '1']]; $POSTS = [500 => ['sku' => 'FX-SP-9'], 501 => ['sku' => 'FX-SP-9-1', 'parent' => 500], 600 => ['sku' => 'SP-3']];
 include __DIR__ . '/../../local-snapshot-2026-11-15/mu-plugins/ahc-fixture-guard.php';
@@ -83,4 +83,8 @@ check('guard: fixture parent not purchasable', $FILTERS['woocommerce_is_purchasa
 check('guard: fixture variation not purchasable', $FILTERS['woocommerce_variation_is_purchasable'](true, new P(501)) === false);
 check('guard: real product unaffected', $FILTERS['woocommerce_is_purchasable'](true, new P(600)) === true);
 check('guard: add to cart refused', $FILTERS['woocommerce_add_to_cart_validation'](true, 500, 1, 501) === false);
+$thrown = false; try { $ACTIONS['woocommerce_store_api_validate_add_to_cart'](new P(501)); } catch (Exception $e) { $thrown = true; }
+check('guard: Store API add-item refused for fixture variation', $thrown);
+$thrown = false; try { $ACTIONS['woocommerce_store_api_validate_add_to_cart'](new P(600)); } catch (Exception $e) { $thrown = true; }
+check('guard: Store API real product unaffected', !$thrown);
 exit($fail ? 1 : 0);

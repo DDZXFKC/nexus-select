@@ -658,9 +658,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const singleData = window.NEXUS_COLOR_COMPONENTS &&
     window.NEXUS_COLOR_COMPONENTS.single;
 
-  if (singleData && forms.length) {
+  const singleItems = singleData && Array.isArray(singleData.items) ?
+    singleData.items : [];
+
+  /*
+   * No color components (explicit empty list): nothing is known about the
+   * color, so no circle and no empty "color" row is shown (GPT 458ba6b).
+   */
+  if (singleData && singleItems.length && forms.length) {
     const table = forms[0].querySelector('table.variations');
-    const items = Array.isArray(singleData.items) ? singleData.items : [];
+    const items = singleItems;
     const shown = items.slice(0, 3);
     const hexes = shown.map(c =>
       c && /^#[0-9A-Fa-f]{6}$/.test(c.hex || '') ? c.hex : null);

@@ -33,6 +33,15 @@ add_filter('woocommerce_add_to_cart_validation', function ($ok, $product_id, $qt
     return $ok;
 }, 99, 4);
 
+// Store API (block cart / REST add-item): is_purchasable above already refuses; this makes it explicit.
+add_action('woocommerce_store_api_validate_add_to_cart', function ($product) {
+    if (ahc_is_fixture_product($product)) {
+        $ex = '\\Automattic\\WooCommerce\\StoreApi\\Exceptions\\RouteException';
+        if (class_exists($ex)) throw new $ex('ahc_fixture_not_purchasable', 'This is a test fixture and cannot be purchased.', 400);
+        throw new Exception('This is a test fixture and cannot be purchased.');
+    }
+}, 99, 1);
+
 // Belt and braces: drop any fixture line that is already in a cart.
 add_action('woocommerce_check_cart_items', function () {
     if (!WC()->cart) return;
