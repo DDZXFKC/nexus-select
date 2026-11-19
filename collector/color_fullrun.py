@@ -41,7 +41,9 @@ SPECIAL = {"multi", "multicolor", "multi color", "multi-color", "nocolor", "no c
            "assorted", "clear", "transparent", "none", "unknown"}
 APPROVED = "APPROVED_APPROX"
 DERIVED = ["swatch_hex_1", "swatch_hex_2", "swatch_hex_3", "swatch_status",
-           "search_families_json", "search_families_candidates_json"]
+           "search_families_json", "search_families_candidates_json", "search_families_conflict_json"]
+# Output-only diagnostics (never written back, never in changes.csv).
+DIAGNOSTIC = ["diag_swatch_reason"]
 
 
 class DataError(ValueError):
@@ -112,6 +114,8 @@ def ref_problem(comp, master, brand, pkey):
     m = master.by_id.get(cid)
     if m is None:
         return "ID_NOT_IN_MASTER"
+    if (m.get("active") or "TRUE").strip().upper() not in ("TRUE", "1", "YES"):
+        return "INACTIVE_MASTER_ROW"
     if norm(m.get("token_normalized")) != norm(comp.get("token_original")):
         return "TOKEN_MISMATCH"
     st, sk, _ = Master.key(m.get("scope_type"), m.get("scope_key"), m.get("token_normalized"))
@@ -134,11 +138,21 @@ def swatch(row, master):
         raise DataError(f"component order broken: {row.get('supplier_product_id')} {positions}")
     brand, pkey = row.get("brand_id", ""), product_key(row)
     issues = [(c["position"], p) for c in comps if (p := ref_problem(c, master, brand, pkey))]
+    # Row consistency: component_count and the original colorway must match the components.
+    original = [t.strip() for t in (row.get("colorway_original") or "").split("/") if t.strip()]
+    if [norm(t) for t in original] != [norm(c.get("token_original")) for c in comps]:
+        issues.append((0, "COLORWAY_COMPONENTS_MISMATCH"))
+    if (row.get("component_count") or str(len(comps))) != str(len(comps)):
+        issues.append((0, "COMPONENT_COUNT_MISMATCH"))
     shown = comps[:3]
     hexes, reasons = [], []
     hold = row.get("colorway_status") == "HOLD_CONTRADICTION"
     if hold:
         reasons.append("HOLD_CONTRADICTION")
+    row_issues = [p for pos, p in issues if pos == 0]
+    if row_issues:
+        hold = True
+        reasons.extend(row_issues)
     unknown = not comps
     if unknown:
         reasons.append("NO_COMPONENTS")
@@ -151,14 +165,14 @@ def swatch(row, master):
             reasons.append(f"SLOT{c['position']}:{problem}")
             hexes.append("")
             continue
-        if norm(m.get("token_normalized")) in SPECIAL:
-            unknown = True
-            reasons.append(f"SLOT{c['position']}:SPECIAL")
-            hexes.append("")
-            continue
         if (m.get("hex_status") or "").strip() == "CONFLICT":
             hold = True
             reasons.append(f"SLOT{c['position']}:HEX_CONFLICT")
+            hexes.append("")
+            continue
+        if norm(m.get("token_normalized")) in SPECIAL:
+            unknown = True
+            reasons.append(f"SLOT{c['position']}:SPECIAL")
             hexes.append("")
             continue
         hx = (m.get("display_hex") or "").strip()
@@ -178,8 +192,8 @@ def swatch(row, master):
 
 
 def families(row, master):
-    """Search families: confirmed set and candidate set kept apart (all components)."""
-    confirmed, candidates = [], []
+    """Search families: confirmed / candidate / conflict kept apart (all components)."""
+    confirmed, candidates, conflict = [], [], []
     for c in json.loads(row.get("components_json") or "[]"):
         m = master.by_id.get(c.get("color_id"))
         if not m or ref_problem(c, master, row.get("brand_id", ""), product_key(row)):
@@ -187,10 +201,12 @@ def families(row, master):
         fam = (m.get("family_internal") or "").strip()
         if not fam:
             continue
-        target = confirmed if m.get("family_status") == "CONFIRMED" else candidates
+        fs = m.get("family_status")
+        target = confirmed if fs == "CONFIRMED" else conflict if fs == "CONFLICT" else candidates
         if fam not in target:
             target.append(fam)
-    return confirmed, [f for f in candidates if f not in confirmed]
+    return (confirmed, [f for f in candidates if f not in confirmed],
+            [f for f in conflict if f not in confirmed])
 
 
 # ---------------------------------------------------------------- recompute
@@ -207,13 +223,14 @@ def recompute(master_rows, product_rows):
             raise DataError(f"duplicate product row: {key}")
         seen.add(key)
         status, hexes, reasons, issues = swatch(row, master)
-        conf, cand = families(row, master)
+        conf, cand, confl = families(row, master)
         new = dict(row)
         new.update({"swatch_hex_1": hexes[0], "swatch_hex_2": hexes[1], "swatch_hex_3": hexes[2],
                     "swatch_status": status,
                     "search_families_json": json.dumps(conf, ensure_ascii=False),
                     "search_families_candidates_json": json.dumps(cand, ensure_ascii=False),
-                    "swatch_reason": ";".join(reasons)})
+                    "search_families_conflict_json": json.dumps(confl, ensure_ascii=False),
+                    "diag_swatch_reason": ";".join(reasons)})
         for col in DERIVED:
             if (row.get(col) or "") != (new.get(col) or ""):
                 changes.append({"supplier_product_id": pid, "column": col,
@@ -257,8 +274,13 @@ def title_rule_ok(title, candidate, handle, tag_families, token_families):
     return True
 
 
-def generate(products, raw_by_id, master_rows, existing_keys, observed_at):
-    """Candidates for products not in the sheet. New master rows are COMMON only."""
+def generate(products, raw_by_id, master_rows, existing_keys, observed_at, shop_code, market):
+    """Candidates for products not in the sheet. New master rows are COMMON only.
+    shop_code/market are explicit (no default store); every product in products.csv must
+    belong to that store. Only supplier_color_key 'single' (1 product id = 1 color) is
+    supported; stores with several colors per product id need their own key contract."""
+    if not shop_code or not market:
+        raise DataError("shop_code and market are required")
     master = Master(master_rows)
     next_id = master.next_id()
     new_master, rows = [], []
@@ -269,14 +291,17 @@ def generate(products, raw_by_id, master_rows, existing_keys, observed_at):
     if dup:
         raise DataError(f"duplicate product ids in products.csv: {dup[:5]}")
     for p in products:
-        pid = p["product_id"]
+        pid = p.get("product_id", "")
+        if not pid:
+            raise DataError("product row without product_id")
         if pid not in raw_by_id:
             raise DataError(f"raw missing for product {pid}")
         if str(raw_by_id[pid].get("id")) != pid:
             raise DataError(f"raw id mismatch for {pid}")
     for p in products:
         pid, brand = p["product_id"], p.get("brand", "")
-        if f"SP|US|{pid}|single" in existing_keys:
+        pkey = f"{shop_code}|{market}|{pid}|single"
+        if pkey in existing_keys:
             continue
         raw = raw_by_id[pid]
         tags = raw.get("tags") or []
@@ -284,7 +309,7 @@ def generate(products, raw_by_id, master_rows, existing_keys, observed_at):
         toks = [(o.strip(), norm(o)) for o in cw.split("/") if o.strip()] if cw else []
         comps = []
         for o, n in toks:
-            m = master.lookup(n, brand)
+            m = master.lookup(n, brand, pkey)
             if m is None:
                 m = {"color_id": f"C-{next_id}", "scope_type": "COMMON", "scope_key": "*",
                      "token_normalized": n, "token_original": o, "family_internal": "",
@@ -300,13 +325,13 @@ def generate(products, raw_by_id, master_rows, existing_keys, observed_at):
         status = p.get("color_name_status", "")
         if status == "TITLE_CANDIDATE":
             tag_fams = {t[6:].casefold() for t in tags if t.startswith("Color_")}
-            tok_fams = [(master.lookup(n, brand) or {}).get("family_internal", "") for _, n in toks]
+            tok_fams = [(master.lookup(n, brand, pkey) or {}).get("family_internal", "") for _, n in toks]
             status = ("CONFIRMED_BY_TITLE_RULE"
                       if title_rule_ok(p.get("title_original"), cw, raw.get("handle"), tag_fams, tok_fams)
                       else "TITLE_CANDIDATE")
         elif not cw:
             status = "UNKNOWN"
-        row = {"shop_code": "SP", "market": "US", "supplier_product_id": pid,
+        row = {"shop_code": shop_code, "market": market, "supplier_product_id": pid,
                "supplier_color_key": "single", "brand_id": brand,
                "colorway_original": cw, "colorway_status": status,
                "components_json": json.dumps(comps, ensure_ascii=False),
@@ -314,19 +339,45 @@ def generate(products, raw_by_id, master_rows, existing_keys, observed_at):
                "store_color_tags_json": json.dumps([t for t in tags if t.startswith("Color_")]),
                "store_main_color_tags_json": json.dumps([t for t in tags if t.startswith("MAIN_COLOR_")]),
                "observed_at": observed_at}
+        row["component_count"] = str(len(comps))
         st, hexes, reasons, _ = swatch(row, master)
-        conf, cand = families(row, master)
-        # A single main family only when every component resolved to a family.
-        fams = [(master.by_id[c["color_id"]].get("family_internal") or "") for c in comps]
+        conf, cand, confl = families(row, master)
+        # A single main family only when every component resolved to one family;
+        # CONFIRMED only when every component's family_status is CONFIRMED.
+        cms = [master.by_id[c["color_id"]] for c in comps]
+        fams = [(x.get("family_internal") or "") for x in cms]
+        single = bool(fams) and all(fams) and len(set(fams)) == 1
+        main_status = ("" if not single else "CONFIRMED" if all(x.get("family_status") == "CONFIRMED" for x in cms)
+                       else "DRAFT")
         row.update({"swatch_hex_1": hexes[0], "swatch_hex_2": hexes[1], "swatch_hex_3": hexes[2],
-                    "swatch_status": st, "swatch_reason": ";".join(reasons),
+                    "swatch_status": st, "diag_swatch_reason": ";".join(reasons),
                     "search_families_json": json.dumps(conf, ensure_ascii=False),
                     "search_families_candidates_json": json.dumps(cand, ensure_ascii=False),
-                    "main_family_internal": fams[0] if fams and all(fams) and len(set(fams)) == 1 else ""})
+                    "search_families_conflict_json": json.dumps(confl, ensure_ascii=False),
+                    "main_family_internal": fams[0] if single else "",
+                    "main_family_status": main_status})
         rows.append(row)
     stats = [{"color_id": cid, "distinct_products": len(v), "distinct_in_stock": len(token_instock[cid])}
              for cid, v in sorted(token_products.items())]
     return rows, new_master, stats
+
+
+def load_raw(pages):
+    """Raw contract: every product needs a non-empty id. The same id twice with IDENTICAL
+    content (page overlap) is accepted and counted; different content stops the run."""
+    raw_by_id, dups = {}, 0
+    for page in pages:
+        for p in page.get("products", []):
+            pid = str(p.get("id") or "").strip()
+            if not pid:
+                raise DataError("raw product without id")
+            if pid in raw_by_id:
+                if raw_by_id[pid] != p:
+                    raise DataError(f"conflicting raw records for {pid}")
+                dups += 1
+                continue
+            raw_by_id[pid] = p
+    return raw_by_id, dups
 
 
 # ---------------------------------------------------------------- io
@@ -369,6 +420,8 @@ def main(argv=None):
     g.add_argument("--v8-products", required=True)
     g.add_argument("--raw-dir", required=True, type=Path)
     g.add_argument("--observed-at", help="raw batch time; default = raw dir name YYYYMMDD_HHMMSS")
+    g.add_argument("--shop-code", required=True)
+    g.add_argument("--market", required=True)
     g.add_argument("--output", required=True, type=Path)
     a = ap.parse_args(argv)
     a.output.mkdir(parents=True, exist_ok=False)
@@ -381,20 +434,15 @@ def main(argv=None):
             raise DataError("rerun mismatch")
         out, changes, integrity, counts = first
         fields = list(products[0].keys()) if products else []
-        fields += [c for c in DERIVED + ["swatch_reason"] if c not in fields]
+        fields += [c for c in DERIVED + DIAGNOSTIC if c not in fields]
         write_csv(a.output / "product_color_recomputed.csv", out, fields)
         write_csv(a.output / "changes.csv", changes, ["supplier_product_id", "column", "before", "after"])
         write_csv(a.output / "integrity_issues.csv", integrity, ["supplier_product_id", "position", "problem"])
         summary = {"products": len(out), "changes": len(changes), "integrity_issues": len(integrity),
                    "hash": digest(out), "rerun_match": True, "counts": counts}
     else:
-        raw_by_id = {}
-        for fn in sorted(a.raw_dir.glob("page_*.json")):
-            for p in json.loads(fn.read_text(encoding="utf-8")).get("products", []):
-                pid = str(p.get("id"))
-                if pid in raw_by_id and raw_by_id[pid] != p:
-                    raise DataError(f"conflicting raw records for {pid}")
-                raw_by_id[pid] = p
+        raw_by_id, raw_dups = load_raw([json.loads(fn.read_text(encoding="utf-8"))
+                                        for fn in sorted(a.raw_dir.glob("page_*.json"))])
         observed = a.observed_at
         if not observed:
             m = re.fullmatch(r"(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})", a.raw_dir.name)
@@ -403,8 +451,10 @@ def main(argv=None):
             observed = "{}-{}-{}T{}:{}:{}".format(*m.groups())
         existing = {product_key(r) for r in read_table(a.sheet_products)}
         products = read_table(a.v8_products)
-        rows, new_master, stats = generate(products, raw_by_id, master_rows, existing, observed)
-        rows2, new_master2, _ = generate(products, raw_by_id, master_rows, existing, observed)
+        rows, new_master, stats = generate(products, raw_by_id, master_rows, existing, observed,
+                                           a.shop_code, a.market)
+        rows2, new_master2, _ = generate(products, raw_by_id, master_rows, existing, observed,
+                                         a.shop_code, a.market)
         if digest(rows) != digest(rows2) or digest(new_master) != digest(new_master2):
             raise DataError("rerun mismatch")
         write_csv(a.output / "product_color_new.csv", rows)
@@ -412,6 +462,7 @@ def main(argv=None):
         write_csv(a.output / "color_id_distinct_counts.csv", stats,
                   ["color_id", "distinct_products", "distinct_in_stock"])
         summary = {"new_products": len(rows), "new_master": len(new_master), "hash": digest(rows),
+                   "raw_identical_duplicates": raw_dups,
                    "rerun_match": True, "observed_at": observed,
                    "counts": dict(Counter(f"swatch_status:{r['swatch_status']}" for r in rows))}
     (a.output / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1) + "\n")

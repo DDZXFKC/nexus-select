@@ -46,3 +46,19 @@
 1. 現行シートの2タブ（バックアップ済みのもの）を CSV か JSON で用意し、recompute を実行。
 2. 結果の swatch_status を、魔王ちゃんの dry-run（4217／2857／4700／3）と商品ID単位で突き合わせ、違う商品があれば changes.csv・integrity_issues.csv と一緒にGitHubへ。違いが出た場合はどちらが正しいかをClaudeが確認する。
 3. 承認10色の反映・Multi空欄化は、この突き合わせが一致してから（b5c5027 の反映順序どおり）。
+
+## 5. 修正2（GPT監査 8b166ed／99ab4f9 への対応、2026-11-19）
+| 指摘 | 対応 |
+|---|---|
+| 1. Multi かつ HEX CONFLICT が UNKNOWN になる | 同じ枠では HEX CONFLICT を先に見る（HOLD優先）。テスト追加。 |
+| 2. generate が PRODUCT 行を見ていない | 構成色の照合・タイトル判定とも、その商品のキー（shop|market|商品ID|single）を渡して PRODUCT→BRAND→COMMON の順に照合。同名3行のテスト追加。（移行期間だけの動き。共通IDへの統合後は COMMON だけになる） |
+| 3. raw の重複ID | 契約を明示：同じIDが「全く同じ内容」で2回出る（ページの重なり）は許容して件数を summary の raw_identical_duplicates に記録。内容が違えば停止。IDが空・欠落も停止。テスト追加。 |
+| 4. swatch_reason の上書き | 出力専用の診断列 diag_swatch_reason に変更。シートの既存列（swatch_reason 等）は書き換えず、changes.csv にも出さない。テスト追加。 |
+| 5. SP/US 固定・主色の確定扱い | generate は --shop-code / --market を必須にした（既定値なし）。対応するのは1商品ID=1色（single）の店だけと明記。主色は1系統に揃った時だけ付け、全構成色の family_status が CONFIRMED の時だけ main_family_status=CONFIRMED、それ以外は DRAFT。 |
+| 追加：active 検査 | マスター行の active が TRUE でない色を参照していたら HOLD（INACTIVE_MASTER_ROW）。 |
+| 追加：component_count・原文の整合 | colorway_original を「/」で分けた並びと構成色の並びが違う、または component_count が違う商品は HOLD にし、integrity_issues.csv に出す。 |
+| 追加：候補familyの CONFLICT 分離 | 検索用の系統を「確定／候補／矛盾」の3列に分けた（search_families_conflict_json を追加）。 |
+
+- テストは 33→43件、全件合格。
+- 注意：search_families_conflict_json は新しい列なので、recompute の changes.csv に全商品分の「空→値」が出る。シートに列を追加して書き込むかは GPT の判断で、現行シートには無条件に書き戻さない（8b166ed の指示どおり）。
+- Museへ：テスト再実行と、現行バックアップでの recompute 回帰比較（swatch_status は前回の書き込み結果 6,407／667／4,700／3 と一致する想定。違えば理由を記録）。

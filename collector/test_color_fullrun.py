@@ -23,7 +23,11 @@ MASTER = [
     m("C-6", "photon dust", "", "UNKNOWN"),
     m("C-7", "phantom", "#E7E2D9", "DRAFT", scope="BRAND", key="NIKE"),
     m("C-8", "volt", "#C8ED36", "CONFLICT", fam="yellow", fam_status="DRAFT"),
+    m("C-9", "multicolor", "#123456", "CONFLICT"),
+    m("C-10", "old navy", "#172B4D", "APPROVED_APPROX", fam="blue", fam_status="CONFIRMED"),
+    m("C-11", "sand", "#D8C6A6", "DRAFT", fam="beige", fam_status="CONFLICT"),
 ]
+MASTER[9]["active"] = "FALSE"
 
 
 def prod(pid, tokens, ids, brand="NIKE", status="TAG_SUPPORTED", swatch=""):
@@ -149,35 +153,35 @@ class Generate(unittest.TestCase):
 
     def test_new_token_common_stable_id_and_existing_brand_row_not_reused(self):
         prods = [self.p("100", "Sea Salt/Black"), self.p("101", "Phantom", brand="JORDAN")]
-        rows, new, _ = cf.generate(prods, self.raw, MASTER, set(), "2026-11-18T04:53:14")
-        self.assertEqual([r["color_id"] for r in new], ["C-9", "C-10"])
+        rows, new, _ = cf.generate(prods, self.raw, MASTER, set(), "2026-11-18T04:53:14", "SP", "US")
+        self.assertEqual([r["color_id"] for r in new], ["C-12", "C-13"])
         self.assertTrue(all(r["scope_type"] == "COMMON" for r in new))
         self.assertEqual(new[1]["token_normalized"], "phantom")  # JORDAN does not borrow NIKE's row
-        rows2, new2, _ = cf.generate(prods, self.raw, MASTER, set(), "2026-11-18T04:53:14")
+        rows2, new2, _ = cf.generate(prods, self.raw, MASTER, set(), "2026-11-18T04:53:14", "SP", "US")
         self.assertEqual(rows, rows2)
         self.assertEqual(new, new2)
 
     def test_existing_ids_never_renumbered(self):
-        _, new, _ = cf.generate([self.p("100", "Black/White")], self.raw, MASTER, set(), "x")
+        _, new, _ = cf.generate([self.p("100", "Black/White")], self.raw, MASTER, set(), "x", "SP", "US")
         self.assertEqual(new, [])
 
     def test_distinct_counts(self):
-        _, _, stats = cf.generate([self.p("100", "Black/Black/White")], self.raw, MASTER, set(), "x")
+        _, _, stats = cf.generate([self.p("100", "Black/Black/White")], self.raw, MASTER, set(), "x", "SP", "US")
         self.assertEqual({s["color_id"]: s["distinct_products"] for s in stats}, {"C-1": 1, "C-2": 1})
 
     def test_existing_sheet_rows_skipped(self):
-        rows, _, _ = cf.generate([self.p("100", "Black")], self.raw, MASTER, {"SP|US|100|single"}, "x")
+        rows, _, _ = cf.generate([self.p("100", "Black")], self.raw, MASTER, {"SP|US|100|single"}, "x", "SP", "US")
         self.assertEqual(rows, [])
 
     def test_raw_missing_rejected(self):
         with self.assertRaises(cf.DataError):
-            cf.generate([self.p("999", "Black")], self.raw, MASTER, set(), "x")
+            cf.generate([self.p("999", "Black")], self.raw, MASTER, set(), "x", "SP", "US")
 
     def test_raw_id_mismatch_rejected(self):
         raw = dict(self.raw)
         raw["100"] = {"id": 555}
         with self.assertRaises(cf.DataError):
-            cf.generate([self.p("100", "Black")], raw, MASTER, set(), "x")
+            cf.generate([self.p("100", "Black")], raw, MASTER, set(), "x", "SP", "US")
 
     def test_title_rule_conditions(self):
         ok = cf.title_rule_ok("Air Max Mens (Sea Salt/Black) Free Shipping", "Sea Salt/Black",
@@ -190,12 +194,83 @@ class Generate(unittest.TestCase):
 
     def test_title_candidate_not_promoted_without_evidence(self):
         rows, _, _ = cf.generate([self.p("102", "2 Pack", status="TITLE_CANDIDATE", title="Cap (2 Pack)")],
-                                 self.raw, MASTER, set(), "x")
+                                 self.raw, MASTER, set(), "x", "SP", "US")
         self.assertEqual(rows[0]["colorway_status"], "TITLE_CANDIDATE")
 
     def test_sole_family_requires_all_components_resolved(self):
-        rows, _, _ = cf.generate([self.p("100", "Black/Sea Salt")], self.raw, MASTER, set(), "x")
+        rows, _, _ = cf.generate([self.p("100", "Black/Sea Salt")], self.raw, MASTER, set(), "x", "SP", "US")
         self.assertEqual(rows[0]["main_family_internal"], "")
+
+
+class AuditRound2(unittest.TestCase):
+    """GPT audit 8b166ed / 99ab4f9."""
+
+    def test_conflict_beats_special_in_same_slot(self):
+        self.assertEqual(status_of(prod("30", ["Multicolor"], ["C-9"]))[0], "HOLD")
+
+    def test_inactive_master_row_is_hold(self):
+        self.assertEqual(status_of(prod("31", ["Old Navy"], ["C-10"]))[0], "HOLD")
+
+    def test_colorway_text_must_match_components(self):
+        row = prod("32", ["Black", "White"], ["C-1", "C-2"])
+        row["colorway_original"] = "Black/Red"
+        out, _, integrity, _ = cf.recompute(MASTER, [row])
+        self.assertEqual(out[0]["swatch_status"], "HOLD")
+        self.assertIn({"supplier_product_id": "32", "position": 0, "problem": "COLORWAY_COMPONENTS_MISMATCH"}, integrity)
+
+    def test_component_count_must_match(self):
+        row = prod("33", ["Black"], ["C-1"])
+        row["component_count"] = "2"
+        self.assertEqual(status_of(row)[0], "HOLD")
+
+    def test_diagnostic_not_written_back(self):
+        row = prod("34", ["Black"], ["C-1"], swatch="CONFIRMED")
+        row["swatch_reason"] = "manual note"
+        out, changes, _, _ = cf.recompute(MASTER, [row])
+        self.assertEqual(out[0]["swatch_reason"], "manual note")
+        self.assertFalse([c for c in changes if c["column"] in ("swatch_reason", "diag_swatch_reason")])
+
+    def test_conflict_family_separated(self):
+        _, row = status_of(prod("35", ["Black", "Sand"], ["C-1", "C-11"]))
+        self.assertEqual(json.loads(row["search_families_json"]), ["black"])
+        self.assertEqual(json.loads(row["search_families_candidates_json"]), [])
+        self.assertEqual(json.loads(row["search_families_conflict_json"]), ["beige"])
+
+    def test_product_scope_wins_over_brand_and_common(self):
+        master = [m("C-1", "black", "#171717", "APPROVED_APPROX", fam="black", fam_status="CONFIRMED"),
+                  m("C-2", "black", "#000000", "DRAFT", scope="BRAND", key="NIKE"),
+                  m("C-3", "black", "#111111", "DRAFT", scope="PRODUCT", key="SP|US|100|single")]
+        raw = {"100": {"id": 100, "tags": []}, "101": {"id": 101, "tags": []}, "102": {"id": 102, "tags": []}}
+        prods = [{"product_id": "100", "brand": "NIKE", "color_name": "Black", "in_stock": "True"},
+                 {"product_id": "101", "brand": "NIKE", "color_name": "Black", "in_stock": "True"},
+                 {"product_id": "102", "brand": "VANS", "color_name": "Black", "in_stock": "True"}]
+        rows, new, _ = cf.generate(prods, raw, master, set(), "x", "SP", "US")
+        ids = [json.loads(r["components_json"])[0]["color_id"] for r in rows]
+        self.assertEqual(ids, ["C-3", "C-2", "C-1"])
+        self.assertEqual(new, [])
+
+    def test_main_family_status(self):
+        raw = {"1": {"id": 1, "tags": []}, "2": {"id": 2, "tags": []}}
+        prods = [{"product_id": "1", "brand": "NIKE", "color_name": "Black/Black", "in_stock": "True"},
+                 {"product_id": "2", "brand": "NIKE", "color_name": "Volt", "in_stock": "True"}]
+        rows, _, _ = cf.generate(prods, raw, MASTER, set(), "x", "SP", "US")
+        self.assertEqual((rows[0]["main_family_internal"], rows[0]["main_family_status"]), ("black", "CONFIRMED"))
+        self.assertEqual((rows[1]["main_family_internal"], rows[1]["main_family_status"]), ("yellow", "DRAFT"))
+
+    def test_generate_requires_store(self):
+        with self.assertRaises(cf.DataError):
+            cf.generate([], {}, MASTER, set(), "x", "", "US")
+
+    def test_raw_contract(self):
+        page = {"products": [{"id": 1, "t": "a"}, {"id": 1, "t": "a"}]}
+        raw, dups = cf.load_raw([page])
+        self.assertEqual((list(raw), dups), (["1"], 1))
+        with self.assertRaises(cf.DataError):
+            cf.load_raw([{"products": [{"id": 1, "t": "a"}, {"id": 1, "t": "b"}]}])
+        with self.assertRaises(cf.DataError):
+            cf.load_raw([{"products": [{"id": "", "t": "a"}]}])
+        with self.assertRaises(cf.DataError):
+            cf.generate([{"product_id": "", "brand": "", "color_name": ""}], {}, MASTER, set(), "x", "SP", "US")
 
 
 if __name__ == "__main__":
