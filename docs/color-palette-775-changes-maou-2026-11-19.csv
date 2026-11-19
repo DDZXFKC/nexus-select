@@ -1,0 +1,776 @@
+color_id,token,old_hex,new_hex,basis
+C-1581,Metallic Dark Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1203,Collegiate Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1840,Safety Orange,,#F47721,GPT指定の明暗区別上書き（ec8e23a）
+C-1987,True Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1199,College Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1248,Dark Grey,,#45474B,GPT指定の明暗区別上書き（ec8e23a）
+C-1997,University Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-2062,Wonder White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1055,Baroque Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1510,Light Blue,,#78A9D2,GPT指定の明暗区別上書き（ec8e23a）
+C-1576,Medium Soft Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1200,College Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1340,Footwear White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1556,Magic Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1765,Playful Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1986,True Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1831,Royal Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1269,Deep Royal Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1521,Light Grey,,#B7B8B8,GPT指定の明暗区別上書き（ec8e23a）
+C-1566,Matte Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1924,Stadium Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1980,Tour Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1054,Barely Volt,,#C8ED36,候補CSV値（明示色語「volt」1件）
+C-1147,Cargo Khaki,,#B4A482,候補CSV値（明示色語「khaki」1件）
+C-1243,Dark Brown,,#51392E,GPT指定の明暗区別上書き（ec8e23a）
+C-1401,Grey One,,#999999,候補CSV値（明示色語「grey」1件）
+C-1444,Hydrogen Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1551,Lucid Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1247,Dark Green,,#284D35,GPT指定の明暗区別上書き（ec8e23a）
+C-1333,Flint Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1374,Gorge Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1393,Green Strike,,#40734C,候補CSV値（明示色語「green」1件）
+C-1407,Grey Three,,#999999,候補CSV値（明示色語「grey」1件）
+C-1408,Grey Two,,#999999,候補CSV値（明示色語「grey」1件）
+C-1427,Harbor Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1523,Light Khaki,,#B4A482,候補CSV値（明示色語「khaki」1件）
+C-1728,Pink Bloom,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1736,Pink Gaze,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1738,Pink Glow,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1873,Shadow Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-2024,Vintage White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1091,Blue Chill,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1225,Court Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1229,Cream II,,#F1E8D4,候補CSV値（明示色語「cream」1件）
+C-1338,Football Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1358,Glacier Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1461,Illusion Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1573,Medium Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1640,Neon Yellow,,#E5EE38,GPT指定の明暗区別上書き（ec8e23a）
+C-1713,Pearl White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1723,Picante Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1725,Pine Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1781,Psychic Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1817,Reflect Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1884,Silt Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1899,Slate Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1919,Speed Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1961,Team Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1978,Tough Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-2017,Velvet Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-2064,Work Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-2067,Yellow Ochre,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1300,Electric Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1302,Elemental Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1312,Fauna Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1339,Footwear Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1380,Graphite Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1398,Grey Heather,,#999999,候補CSV値（明示色語「grey」1件）
+C-1400,Grey Mist,,#999999,候補CSV値（明示色語「grey」1件）
+C-1424,Half Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1529,Light Pink,,#E8C5CB,GPT指定の明暗区別上書き（ec8e23a）
+C-1550,Lucid Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1645,Neutral Olive,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1727,Pink Blast,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1730,Pink Cloud,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1838,Rust Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1851,Sandy Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1854,Scream Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1911,Solar Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1969,Tech Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1982,Track Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1983,Triple Black,,#171717,候補CSV値（明示色語「black」1件）
+C-2036,Voltage Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-2068,Yellow Pulse,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1066,Black Coffee,,#171717,候補CSV値（明示色語「black」1件）
+C-1102,Blue Tint,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1241,Dark Blue,,#172B4D,GPT指定の明暗区別上書き（ec8e23a）
+C-1303,Emerald Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1323,Fire Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1384,Green Abyss,,#40734C,候補CSV値（明示色語「green」1件）
+C-1447,Hyper Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1453,Ice Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1458,Icey Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1463,Imperial Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1497,Legend Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1528,Light Photo Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1534,Light Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1553,Lucid Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1554,Lucky Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1602,Mink Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1642,Neptune Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1668,Oil Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1701,Particle Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1711,Pearl Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1784,Puma Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1785,Puma White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1828,Rose Gold,,#B76E79,GPT指定の個別上書き（ec8e23a）
+C-1876,Shadow Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1878,Shadow Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1889,Silver Lilac,,#B9B1C9,GPT指定の個別上書き（ec8e23a）
+C-1922,Sport Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1937,Stone Khaki,,#B4A482,候補CSV値（明示色語「khaki」1件）
+C-1947,Surf Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1972,Thunder Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1976,Total Black,,#171717,候補CSV値（明示色語「black」1件）
+C-2046,Washed Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-2059,Wonder Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-2434,Volt Ice,,#C8ED36,候補CSV値（明示色語「volt」1件）
+C-1027,Arctic Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1089,Blue Bird,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1100,Blue Oyster,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1171,Chile Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1224,Court Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1235,Crystal White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1254,Dark Powder Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1280,Desert Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1308,Faded Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1317,Field Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1329,Flat Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1346,French Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1399,Grey Matter,,#999999,候補CSV値（明示色語「grey」1件）
+C-1412,Gum 3,,#B98753,候補CSV値（明示色語「gum」1件）
+C-1456,Ice Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1479,Kelly Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1509,Light Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1517,light Current Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1549,Lucid Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1582,Metallic Gold Grain,,#C6A34A,候補CSV値（承認済み複合名「metallic gold」を含む）
+C-1588,Metallic Red Bronze,,#C62828,候補CSV値（明示色語「red」1件）
+C-1698,Parachute Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1743,Pink Milk,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1749,Pink Smoke,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1751,Pink Spell,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1770,Power Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1774,Preloved Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1783,Puma Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1797,Putty Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1827,Rose Cream,,#F1E8D4,候補CSV値（明示色語「cream」1件）
+C-1880,Shock Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1883,Sierra Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1903,Smokey Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1910,Solar Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1930,Steel Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1970,Tech Grey Metallic,,#999999,候補CSV値（明示色語「grey」1件）
+C-1977,Total Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-2033,Vivid Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-2041,Warm White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-2647,Sand Strata,,#CDBB9C,候補CSV値（明示色語「sand」1件）
+C-1004,Light Armory Blue,#A8C3E0,#A8C3E0,GPT指定の個別上書き（ec8e23a）
+C-1005,Acid Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1008,Active Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1028,Arctic Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1030,Armory Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1031,Armory Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1035,Asics Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1041,Atomic Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1043,Atomic Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1049,Baltic Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1073,Black Metallic,,#171717,候補CSV値（明示色語「black」1件）
+C-1074,Black Muslin,,#171717,候補CSV値（明示色語「black」1件）
+C-1110,Bold Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1122,Brilliant Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1125,Brown Desert,,#795548,候補CSV値（明示色語「brown」1件）
+C-1126,Brown Kelp,,#795548,候補CSV値（明示色語「brown」1件）
+C-1130,Buff Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1146,Cardboard Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1173,Chocolate Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1178,Classic Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1181,Clay Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1187,Cloud Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1192,Coastal Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1251,Dark Obsidian,,#252B42,候補CSV値（明示色語「obsidian」1件）
+C-1261,Dark Team Red,,#922B38,候補CSV値（承認済み複合名「team red」を含む）
+C-1270,Demitasse Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1279,Desert Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1284,Dodgers Classic Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1287,Dried Leaf Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1306,Equipment Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1315,Feather Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1316,Field Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1319,Fierce Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1351,Galactic Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1386,Green Glow,,#40734C,候補CSV値（明示色語「green」1件）
+C-1397,Grey Four,,#999999,候補CSV値（明示色語「grey」1件）
+C-1436,Hi-Res Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1441,Hot Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1449,Hyper Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1485,Khaki Three,,#B4A482,候補CSV値（明示色語「khaki」1件）
+C-1487,Kinetic Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1488,Kona Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1502,Legend Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1525,Light Lucid Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1526,Light Olive,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1530,Light Purple,,#B6A0CE,GPT指定の明暗区別上書き（ec8e23a）
+C-1552,Lucid Ray Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1562,Marshmallow White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1579,Mesa Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1598,Military Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1638,NB Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1651,Night Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1655,Noble Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1677,Olive Strata,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1686,Orbit Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1691,Oxidized Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1692,Oyster Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1695,Pale Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1697,Papaya Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1703,Particle Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1733,Pink Eraser,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1744,Pink Opal,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1748,Pink Salt,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1750,Pink Spark,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1752,Pink Sugar,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1778,Prime Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1786,Pure Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1787,Pure Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1798,Racer Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1801,Racing Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1805,Real Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1808,Red Dahlia,,#C62828,候補CSV値（明示色語「red」1件）
+C-1815,Red Stardust,,#C62828,候補CSV値（明示色語「red」1件）
+C-1818,Reflective Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1820,Regal Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1822,Regency Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1835,Rush Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1866,Semi Pink Spark,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1898,Slate Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1907,Solar Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1912,Solar Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1918,Speed Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1923,Squadron Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1933,Stellar Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1948,Sweet Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1966,Team Victory Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1971,Theory Oil Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1973,Thunder Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-2005,Vapor Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-2006,Vapor Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-2008,Varsity Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-2011,Varsity Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-2015,Vasity Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-2032,Vivid Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-2035,Volt Tint,,#C8ED36,候補CSV値（明示色語「volt」1件）
+C-2051,White Dune,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-2403,Off-White,,#EAE5D9,GPT指定の個別上書き（ec8e23a）
+C-2503,Frosted Ivory,,#F3EBDD,候補CSV値（明示色語「ivory」1件）
+C-2574,Sand Heather,,#CDBB9C,候補CSV値（明示色語「sand」1件）
+C-1006,Acid Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1007,Action Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1009,Aero Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1012,Ale Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1013,All Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1014,All White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1015,Almost Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1021,Antique Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1022,Apple Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1023,Aqua Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1025,Archaeo Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1026,Archive Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1029,Arctic Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1032,Armoury Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1033,Army Olive,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1034,Ash Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1036,Asphalt Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1038,Atiba Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1042,Atomic Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1044,Aurora Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1045,Aurora Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1047,Baby Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1050,Barely Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1052,Barely Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1056,Base Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1057,Basic Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1058,Best Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1063,Black 2.0,,#171717,候補CSV値（明示色語「black」1件）
+C-1065,Black Cement,,#171717,候補CSV値（明示色語「black」1件）
+C-1067,Black Core,,#171717,候補CSV値（明示色語「black」1件）
+C-1069,Black Dragon,,#171717,候補CSV値（明示色語「black」1件）
+C-1070,Black Heather,,#171717,候補CSV値（明示色語「black」1件）
+C-1075,Black Night,,#171717,候補CSV値（明示色語「black」1件）
+C-1078,Black Reflection,,#171717,候補CSV値（明示色語「black」1件）
+C-1079,Black Spruce,,#171717,候補CSV値（明示色語「black」1件）
+C-1081,Black Twine,,#171717,候補CSV値（明示色語「black」1件）
+C-1084,Black Wolf,,#171717,候補CSV値（明示色語「black」1件）
+C-1087,Bliss Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1090,Blue Burst,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1092,Blue Crystal,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1099,Blue Lightening,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1101,Blue Teal,,#367C85,GPT指定の個別上書き（ec8e23a）
+C-1103,Blue Viod,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1105,Blue Void,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1107,Blush Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1115,Bright Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1117,Bright Mango Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1118,Bright Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1121,Brilliant Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1127,Brown Storm,,#795548,候補CSV値（明示色語「brown」1件）
+C-1129,Buck Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1135,Burnt Olive,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1137,C;loud White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1140,Campfire Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1142,Canyon Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1143,Canyon Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1148,Carrier Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1149,Cashew Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1153,Cedar Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1155,Celestine Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1159,Challenge Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1163,Charcoal Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1164,Charm Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1165,Charms Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1172,Chlorine Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1186,Cloud Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1189,Club Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1194,Cobalt Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1202,Collegiate Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1204,Collegiate Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1205,Collegiate Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1206,Collegiate Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1207,Collegiate Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1208,Comet Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1209,Comet Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1212,Cool Dark Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-1214,Cool Light Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1217,Coral Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1223,Court Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1226,Cpre Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1232,Crew Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1233,Crew Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1236,Current Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1237,Cyber Cool Grey,,#999CA1,候補CSV値（承認済み複合名「cool grey」を含む）
+C-1238,Daring Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1240,Dark Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1250,Dark Gum,,#B98753,候補CSV値（明示色語「gum」1件）
+C-1252,Dark Pink,,#B94C79,GPT指定の明暗区別上書き（ec8e23a）
+C-1257,Dark Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1263,Dawn Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1277,Desert Khaki,,#B4A482,候補CSV値（明示色語「khaki」1件）
+C-1283,Dodger Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1285,Dove Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1291,Dusky Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1293,Earth Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1294,Easy Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1304,Energy Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1307,Espresso Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1309,Faded Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1320,Fierce Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1321,Fiery Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1331,Flight Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1335,Foam Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1336,Foam White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1337,Focus Olive,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1341,For All Time Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1342,Forest Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1344,Fountain Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1345,Fox Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1350,Fusion Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1353,Gamma Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1356,Ghost Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1359,Glacier Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1361,Global Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1362,Glory Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1364,Glow Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1369,Gold Leaf,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1370,Gold Mat,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1373,Golden Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1377,Grand Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1382,Gray Taupe,,#999999,候補CSV値（明示色語「gray」1件）
+C-1389,Green Milieu,,#40734C,候補CSV値（明示色語「green」1件）
+C-1390,Green Noise,,#40734C,候補CSV値（明示色語「green」1件）
+C-1395,Grey Alumina,,#999999,候補CSV値（明示色語「grey」1件）
+C-1402,Grey Platinum Tint,,#999999,候補CSV値（明示色語「grey」1件）
+C-1404,Grey Stonewar,,#999999,候補CSV値（明示色語「grey」1件）
+C-1405,Grey Strata,,#999999,候補CSV値（明示色語「grey」1件）
+C-1406,Grey Taupe,,#999999,候補CSV値（明示色語「grey」1件）
+C-1409,Gridiron Sail,,#EEE9DF,候補CSV値（明示色語「sail」1件）
+C-1413,Gum 5,,#B98753,候補CSV値（明示色語「gum」1件）
+C-1414,Gum Dark,,#B98753,候補CSV値（明示色語「gum」1件）
+C-1416,Gum Four,,#B98753,候補CSV値（明示色語「gum」1件）
+C-1421,Gym Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1422,Gym Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1429,Hazy Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1431,Heather Dark Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1433,Heritage Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1434,Hi-Res Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1435,Hi-Res Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1439,Honey Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1454,Ice Gold Metallic,,#C6A34A,候補CSV値（承認済み複合名「gold metallic」を含む）
+C-1457,Ice White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1462,Impact Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1465,Indigo Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1467,Industrial Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1469,International Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1477,Jasper Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1478,Jet Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1484,Khaki Six,,#B4A482,候補CSV値（明示色語「khaki」1件）
+C-1486,Khaki Twine,,#B4A482,候補CSV値（明示色語「khaki」1件）
+C-1489,KPop Demon Hunters Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1490,Lake Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1493,Laser Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1500,Legend Light Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1503,Legion Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1505,Light Amory Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1507,Light Armoury Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1508,Light Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1511,Light Blue Mel,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1514,Light Brown,,#B58B65,GPT指定の明暗区別上書き（ec8e23a）
+C-1519,Light Green,,#A1C68B,GPT指定の明暗区別上書き（ec8e23a）
+C-1522,Light Grey Heather,,#999999,候補CSV値（明示色語「grey」1件）
+C-1532,Light Sand,,#CDBB9C,候補CSV値（明示色語「sand」1件）
+C-1535,Light Silver Metallic,,#BFC2C5,候補CSV値（承認済み複合名「silver metallic」を含む）
+C-1559,Marine Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1565,Matte Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1568,Max Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1577,Medtallic Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1578,Medusa Green Anora,,#40734C,候補CSV値（明示色語「green」1件）
+C-1583,Metallic Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1585,Metallic Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1589,Metallic Rose Gold,,#B76E79,GPT指定の個別上書き（ec8e23a）
+C-1591,Metallic Summit White,,#F1F0ED,候補CSV値（承認済み複合名「summit white」を含む）
+C-1593,Metasllic Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1594,Mica Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1611,Misty Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1612,Mod Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1615,Monochrome Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1619,Mosaic Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1621,Mosswood Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1627,Mushroom Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1631,Mystic Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1639,Neo Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1641,Neptune Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1646,New Balance White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1648,Night Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1649,Night Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1652,Night Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1653,Nike True Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1656,Nuetral Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1663,Of White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1667,Oil Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1672,Olive Aura,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1673,Olive Flak,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1679,Opti Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1680,Optical White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1683,Orange Tint,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1689,Oxford Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1693,Oyster White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1699,Parisian Night Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1715,Pearlized Marshmallow White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1717,Pearlized Yacht Club Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1721,Photo Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1724,Piedmont Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1729,Pink clay,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1732,Pink Diamond,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1741,Pink Ice,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1747,Pink Rose,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1755,Pink Velvet,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1757,Pink Yarrow,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1760,Pitch Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-1769,Powder Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1771,Practicle Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1775,Preloved Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1777,Premium Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1792,Purple Burst,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1794,Purple Rush,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1795,Purple Smoke,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1796,Purple Stardust,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1799,Racer Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1803,Raspberry Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1806,Red Clay,,#C62828,候補CSV値（明示色語「red」1件）
+C-1809,Red Flash,,#C62828,候補CSV値（明示色語「red」1件）
+C-1810,Red Metallic,,#C62828,候補CSV値（明示色語「red」1件）
+C-1812,Red Plum,,#C62828,候補CSV値（明示色語「red」1件）
+C-1824,River Rock Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1833,Ruby Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1836,Rush Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1837,Rush Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1839,Saddle Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1845,Salsa Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1849,Sanded Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1855,Screaming Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1857,Sea Salt Pink,,#E8C5CB,GPT指定の個別上書き（ec8e23a）
+C-1860,Semi Blue Burst,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1861,Semi Court Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1863,Semi Impact Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1864,Semi Lucid Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1865,Semi Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1867,Semi Screaming Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1868,Semi Solar Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1869,Semi Solar Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1872,Shadow Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1874,Shadow Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-1877,Shadow Olive,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1882,Shown: Dark Grey Heather,,#55575A,候補CSV値（承認済み複合名「dark grey heather」を含む）
+C-1885,Silt Red Tattoo,,#C62828,候補CSV値（明示色語「red」1件）
+C-1887,Silver Cloud,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1890,Silver Metalic,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1893,Silver Pebble,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1894,Silver Sage,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1895,Simple Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1896,Siren Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1897,Sky Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1904,Soft Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1906,Soft Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1908,Solar Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1909,Solar Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1913,sonic Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1931,Steel Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1932,Steeple Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1934,Still Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1936,Stone Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1938,Stone Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1949,SZA Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1950,Tai Chi Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1952,Taro Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1958,Team Anthracite,,#383B3F,候補CSV値（明示色語「anthracite」1件）
+C-1960,Team Collegiate Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1968,Tech Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1975,TNF Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1979,Tought Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1981,Trace Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1984,Triple White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1988,True White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1990,Truffle Salt Pink Salt,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1992,Turbo Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1994,Turquoise Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1998,Univertsity Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-2661,Urban Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-2007,Varisty Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-2012,Varsity Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-2022,Vintage Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-2037,Voltage Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-2038,Wakame Black,,#171717,候補CSV値（明示色語「black」1件）
+C-2043,Washed Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-2047,Washed Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-2049,Whisp Of Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-2050,White Cloud,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-2056,Wings Jordan Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-2057,Wolf Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-2061,Wonder Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-2065,Worn Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-2071,Yellow Zest,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-2594,Aurora Ivory,,#F3EBDD,候補CSV値（明示色語「ivory」1件）
+C-2613,Crystal Sand,,#CDBB9C,候補CSV値（明示色語「sand」1件）
+C-2168,Chalk Sapphire,,#E9E4DA,候補CSV値（明示色語「chalk」1件）
+C-2234,Washed Sand,,#CDBB9C,候補CSV値（明示色語「sand」1件）
+C-1003,Hyper Blue,#2E6FDB,#2E6FDB,GPT指定の個別上書き（ec8e23a）
+C-1010,Airy Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1016,Alpine Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1018,Aluminum Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1024,Aquarius Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1037,Aster Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1040,Atmosphere Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1046,Aurora Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1059,Beyond Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1071,Black Hemp,,#171717,候補CSV値（明示色語「black」1件）
+C-1072,Black Hyper Jade,,#171717,候補CSV値（明示色語「black」1件）
+C-1076,Black Nubuck,,#171717,候補CSV値（明示色語「black」1件）
+C-1077,Black Raspberry,,#171717,候補CSV値（明示色語「black」1件）
+C-1080,Black Taxi,,#171717,候補CSV値（明示色語「black」1件）
+C-1082,Black Varsity,,#171717,候補CSV値（明示色語「black」1件）
+C-1083,Black Virginia,,#171717,候補CSV値（明示色語「black」1件）
+C-1088,Blue Beyond,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1094,Blue Fade,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1095,Blue Fusion,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1096,Blue Gaze,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1098,Blue Hero,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1104,Blue Violet,,#6952A3,GPT指定の個別上書き（ec8e23a）
+C-1109,Bold Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1111,Bold Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1119,Bright Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1120,Brighton Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1128,Brown Sugar,,#795548,候補CSV値（明示色語「brown」1件）
+C-1134,Burgundy Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1154,Celestial Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1161,Champion Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1166,Charred Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1169,Cherry Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1180,Clay Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1190,Club Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1191,Coal Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1197,Coffee Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1198,College Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1211,Cool Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1215,Cool Mid Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-1216,Cool Mid Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1219,Core Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1222,Cosmic Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1228,Cream Clay,,#F1E8D4,候補CSV値（明示色語「cream」1件）
+C-1230,Cream Kumquat,,#F1E8D4,候補CSV値（明示色語「cream」1件）
+C-1239,Dark Alpine Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1256,Dark Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1258,Dark Silver Metallic,,#BFC2C5,候補CSV値（承認済み複合名「silver metallic」を含む）
+C-1260,Dark Teal Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1262,Dawn Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1265,Deep Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1267,Deep Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1281,Diffused Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1282,Difused Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1286,Dragon Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1289,Drizzle Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1290,Dune Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1295,Echo Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1299,Egret White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1301,Electro Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1310,Faded Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1311,Faded Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1314,Feather Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-1318,Fierce Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1326,Flat Dark Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-1327,Flat Mid Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-1355,Ghost Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1357,Glacial Gray,,#999999,候補CSV値（明示色語「gray」1件）
+C-1360,Global Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1363,Glory Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1365,Glowing Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1368,Gold Grain,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1372,Gold Row,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1378,Granite Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1385,Green Gecko,,#40734C,候補CSV値（明示色語「green」1件）
+C-1387,Green Haze,,#40734C,候補CSV値（明示色語「green」1件）
+C-1388,Green Lux,,#40734C,候補CSV値（明示色語「green」1件）
+C-1391,Green Shock,,#40734C,候補CSV値（明示色語「green」1件）
+C-1392,Green Spark,,#40734C,候補CSV値（明示色語「green」1件）
+C-1403,Grey Six,,#999999,候補CSV値（明示色語「grey」1件）
+C-1418,Gum Medium,,#B98753,候補CSV値（明示色語「gum」1件）
+C-1425,Halo Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1428,Hazy Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1437,Hibiscus Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1452,Hyperlink Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1459,Icy Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1474,Italy Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1491,Laser Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1494,Latte Cream,,#F1E8D4,候補CSV値（明示色語「cream」1件）
+C-1498,Legend Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1499,Legend Dark Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1501,Legend Medium Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1506,Light Arctic Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1520,Light Green Spark,,#40734C,候補CSV値（明示色語「green」1件）
+C-1531,Light Sail,,#EEE9DF,候補CSV値（明示色語「sail」1件）
+C-1537,Light Soft Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1540,Light Zen Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1544,Lime Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1545,Lined Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1547,Lotus Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1548,LT Armory Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1555,Luminous Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1560,Maritime Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1563,Masi Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1564,Matallic Silver,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1569,Med Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1572,Medium Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1575,Medium Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1584,Metallic Navy,,#172B4D,候補CSV値（明示色語「navy」1件）
+C-1586,Metallic Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1587,Metallic Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1592,Metallic Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1596,Midnight Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1597,Midwest Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1601,Mineral Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1609,Mint Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1613,Mojave Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1629,Mustard Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1630,Mystic Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1632,Mystic Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1635,Natural White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1647,New Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1657,Nuetral Olive,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1659,Oat Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1676,Olive Night,,#73784B,候補CSV値（明示色語「olive」1件）
+C-1678,Opal Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1682,Orange Glo,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1684,Orb Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1685,Orbit Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1687,Orewood Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1688,Outdoor Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1700,Particle Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1705,Particloe Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1706,Peaceful Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1708,Peach Cream,,#F1E8D4,候補CSV値（明示色語「cream」1件）
+C-1714,Pearlized Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1716,Pearlized Racing Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1718,Pelé Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1719,Pewter Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1731,Pink Crush,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1734,Pink Fire,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1737,Pink Glaze,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1739,Pink Granite,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1740,Pink Haze,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1742,Pink Mesa,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1745,Pink Oxford,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1753,Pink Taffy,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1754,Pink Tint,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1756,Pink Wash,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1759,Pitch Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1761,Pitch Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1763,Platinum Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1766,Polar Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1767,Port Royale Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1768,Powder Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1773,Preloved Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1776,Preloved Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1779,Pro Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1780,Pro Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1789,Pure Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1793,Purple Dynasty,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1800,Racing Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1807,Red Crush,,#C62828,候補CSV値（明示色語「red」1件）
+C-1814,Red Sepia,,#C62828,候補CSV値（明示色語「red」1件）
+C-1816,Red Tattoo,,#C62828,候補CSV値（明示色語「red」1件）
+C-1819,Regal Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1821,Regal Purple,,#80559C,候補CSV値（明示色語「purple」1件）
+C-1823,Rickie Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1829,Rough Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1834,Rugged Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1841,Safety Yellow,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-1843,Sage Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1847,Sand Drift,,#CDBB9C,候補CSV値（明示色語「sand」1件）
+C-1852,Satellite Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1853,Saturn Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1859,Seal Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1862,Semi Green Spark,,#40734C,候補CSV値（明示色語「green」1件）
+C-1875,Shadow Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1881,Shocking Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1892,Silver Mist,,#BFC2C5,候補CSV値（明示色語「silver」1件）
+C-1900,Slime Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1901,Slitt Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-1905,Soft Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-1914,Souvenir Faded Black,,#171717,候補CSV値（明示色語「black」1件）
+C-1916,Souvenir Oatmeal Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-1920,Sport Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1921,Sport Gold,,#C6A34A,候補CSV値（明示色語「gold」1件）
+C-1925,Star Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1928,Stealth White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1939,Storm Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1940,Stucco White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1941,Suadron Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1942,Summit Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1945,Sunblush Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1954,Taupe Brown,,#795548,候補CSV値（明示色語「brown」1件）
+C-1955,Taupe Grey,,#999999,候補CSV値（明示色語「grey」1件）
+C-1963,Team Orange,,#D97732,候補CSV値（明示色語「orange」1件）
+C-1974,Tint Oil Green,,#40734C,候補CSV値（明示色語「green」1件）
+C-1991,Tumbled Rigid Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-1995,Undyed White,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-1999,Univetrsity Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-2002,Urgent Red,,#C62828,候補CSV値（明示色語「red」1件）
+C-2009,Varsity Gum,,#B98753,候補CSV値（明示色語「gum」1件）
+C-2018,Venetian Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-2019,Venom Pink,,#E5A0B5,候補CSV値（明示色語「pink」1件）
+C-2040,Warm Beige,,#D8C6A6,候補CSV値（明示色語「beige」1件）
+C-2042,Washed Black,,#171717,候補CSV値（明示色語「black」1件）
+C-2052,White Glow,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-2053,White Onyx,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-2055,White Swan,,#FFFFFF,候補CSV値（明示色語「white」1件）
+C-2060,Wonder Blue,,#2864A0,候補CSV値（明示色語「blue」1件）
+C-2069,Yellow Sizzle,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-2070,Yellow Strike,,#E6C53B,候補CSV値（明示色語「yellow」1件）
+C-2606,Chalk Pearl,,#E9E4DA,候補CSV値（明示色語「chalk」1件）
+C-2122,Natural Ivory,,#F3EBDD,候補CSV値（明示色語「ivory」1件）
+C-2197,Legend Sand,,#CDBB9C,候補CSV値（明示色語「sand」1件）
+C-2331,Desert Sand,,#CDBB9C,候補CSV値（明示色語「sand」1件）
+C-2400,Obsidian Cyber,,#252B42,候補CSV値（明示色語「obsidian」1件）
+C-2401,Obsidian Pale,,#252B42,候補CSV値（明示色語「obsidian」1件）
+C-2433,Volt Glow,,#C8ED36,候補CSV値（明示色語「volt」1件）
+C-2560,Lemon Chrome,,#E6C53B,GPT指定の個別上書き（ec8e23a）
