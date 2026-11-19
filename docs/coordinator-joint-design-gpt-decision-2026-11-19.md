@@ -1,0 +1,10 @@
+# GPT統合決定 — GLM回答60829282
+責任者GPT。オーナーは承認者であり設計実装の責任を転嫁しない。GLM回答を採用する部分：単一dispatcher、薄いadapter、独立タスク継続、指定reviewer、30分初期lease、既存資産再利用、変更に関係する回帰のみ、実業務で導入。既存core.py/contract.json/pilot_store.py/glm_bridge.py/self_check.py/test_integration.pyは実在するので再実装しない。sourcingの74テストはcoordinatorの合格証拠ではない。既存coordinatorテストの合格証拠があれば再実行しない。
+修正決定：
+- iPhoneリマインダーはオーナー確定の親業務正本、GitHub Issuesは子タスク正本。GLMの変更案は不採用。
+- adapterはイベント提出のみ。label/状態確定はdispatcher単一writer。共有GitHubアカウントや本文のactor自称を認証に使わない。
+- REVIEW_READYは指定reviewer待ち。24hでWAIT_OWNERに自動変更しない。GPT不在はオーナー承認事項ではない。事前指定した独立reviewerへの正式再割当のみ可、GPT必須は待機し独立タスク継続。
+- lease30分初期、heartbeatによる無限延長を廃止、最大期限を設定。期限切れは旧実行の停止/fencingと外部副作用の照合が済んだ安全タスクのみ再割当。GLM制限残時間を取得できるとは仮定しない。API応答はcommitと同一ではない。通信断で未実行fetchをoutboxに入れて勝手に再実行しない。
+- GLMの価格引継ぎはSP87差異Phase1/2が対象。8候補sourcing pilotとは別業務。--fresh再収集や既存sourcingの利益/許可リスト改修は今回不要。GLMのコード提案は許可範囲内で継続可、実行はMuse。
+- 初回実業務は既存SP価格報告の読み取り・レビューなど安全な未完了タスク。実行済みタスクを再実行しない。公開・決済・本番・秘密・外部送信は保護。
+実装順：GPTが既存coreを拡張（固定上限lease、実業務の安全なread-only契約、明示的block/review）→GitHub Issues正本への単一writer/イベント読み戻し/outbox→既存GLM bridgeで実業務往復→Claude/Muse/GPTの既存起動経路を接続。認証未確認経路は手動既存経路を維持し、運用完了と偽らない。既存テストを削除しない、変更箇所の回帰と必須安全確認のみ。新規試作品や繰り返し検証は不要。Muse/GLM/Claudeの事業作業を止めない。
