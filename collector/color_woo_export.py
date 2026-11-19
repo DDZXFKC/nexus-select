@@ -1,6 +1,9 @@
 """Sheet (カラーマスター + 商品カラー) -> CSV for tools/ahc_color_components_to_woo.php.
 
-One output row per color component. display_hex is filled only when the component
+One output row per color component. Every sheet product is exported (CONFIRMED or not), so no product keeps the old
+photo/name-based swatch: non-confirmed products get null hex = neutral circle, and
+products without components get one position-0 marker row (= empty list).
+display_hex is filled only when the component
 master row is APPROVED_APPROX *and* the product's recomputed swatch status is not
 HOLD/UNKNOWN (so a HOLD product never shows a partly-approved stripe).
 The product's swatch status is recomputed here with color_fullrun.swatch() and
@@ -35,7 +38,16 @@ def export(master_rows, product_rows):
             stats["skipped_multi_color_key"] += 1
             continue
         brand, pkey = row.get("brand_id", ""), cf.product_key(row)
-        for c in json.loads(row.get("components_json") or "[]"):
+        comps = json.loads(row.get("components_json") or "[]")
+        if not comps:
+            # Marker row (position 0): the writer stores an empty list so the theme shows the
+            # neutral circle instead of keeping the old photo/name-based swatch.
+            out.append({"shop_code": row.get("shop_code"), "supplier_product_id": row.get("supplier_product_id"),
+                        "supplier_color_key": row.get("supplier_color_key"), "position": 0,
+                        "token_original": "", "display_hex": "", "hex_status": "NO_COMPONENTS",
+                        "swatch_status": status})
+            stats["exported_no_components"] += 1
+        for c in comps:
             m = master.by_id.get(c.get("color_id"))
             ok = (status in ("CONFIRMED", "DRAFT") and m is not None
                   and cf.ref_problem(c, master, brand, pkey) is None

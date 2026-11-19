@@ -19,6 +19,9 @@
  *
  * CSV columns (header required):
  *   shop_code,supplier_product_id,supplier_color_key,position,token_original,display_hex,hex_status
+ * position 0 = marker row for a product without components (stored as an empty list -> neutral).
+ * Default (no --only-confirmed) writes every sheet product, so no product keeps the old
+ * photo/name-based swatch (non-confirmed -> neutral circle). Owner/GPT 69013b6.
  * Make this CSV from the sheet with collector/color_woo_export.py (it blanks hex for HOLD/UNKNOWN
  * products and stops if the sheet's swatch_status differs from the recompute).
  *
@@ -53,7 +56,15 @@ while (($row = fgetcsv($fh)) !== false) {
     $pid = trim($row[$idx['supplier_product_id']]);
     $key = trim($row[$idx['supplier_color_key']]);
     $pos = (int) $row[$idx['position']];
-    if ($pid === '' || $pos < 1) { $errors++; WP_CLI::warning('skip row without product id / position'); continue; }
+    if ($pid === '' || $pos < 0) { $errors++; WP_CLI::warning('skip row without product id / position'); continue; }
+    if ($pos === 0) {
+        // Marker: product has no color components -> store an empty list (neutral circle).
+        if (!empty($groups[$pid]) && empty($groups[$pid]['__empty'])) { $errors++; WP_CLI::warning("$pid: marker row mixed with components"); $groups[$pid]['__bad'] = true; continue; }
+        if ($key !== 'single') { $errors++; WP_CLI::warning("skip $pid: supplier_color_key '$key'"); continue; }
+        $groups[$pid] = ['__empty' => true];
+        continue;
+    }
+    if (!empty($groups[$pid]['__empty'])) { $errors++; WP_CLI::warning("$pid: components mixed with marker row"); $groups[$pid]['__bad'] = true; continue; }
     if ($key !== 'single') { $errors++; WP_CLI::warning("skip $pid: supplier_color_key '$key' (multi-color products are not in scope yet)"); continue; }
     if (isset($groups[$pid][$pos])) { $errors++; WP_CLI::warning("duplicate position $pos for $pid"); $groups[$pid]['__bad'] = true; continue; }
     $hex = trim($row[$idx['display_hex']]);
@@ -66,8 +77,10 @@ $stats = ['written' => 0, 'unchanged' => 0, 'would_write' => 0, 'not_found' => 0
 $only_confirmed = in_array('--only-confirmed', $args, true);
 foreach ($groups as $pid => $comps) {
     if (!empty($comps['__bad'])) { $stats['bad_group']++; continue; }
+    $empty = !empty($comps['__empty']);
+    if ($empty) $comps = [];
     ksort($comps);
-    if (array_keys($comps) !== range(1, count($comps))) { $stats['bad_group']++; WP_CLI::warning("$pid: positions are not 1..n"); continue; }
+    if (!$empty && array_keys($comps) !== range(1, count($comps))) { $stats['bad_group']++; WP_CLI::warning("$pid: positions are not 1..n"); continue; }
     $post_id = wc_get_product_id_by_sku('SP-' . $pid);
     $product = $post_id ? wc_get_product($post_id) : null;
     if (!$product || !$product->is_type('variable')) { $stats['not_found']++; WP_CLI::log("NOT FOUND  SP-$pid"); continue; }

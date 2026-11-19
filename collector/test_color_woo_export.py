@@ -28,6 +28,10 @@ class Export(unittest.TestCase):
         rows, _ = run(prod("p3", ["Black", "Volt"], ["C-1", "C-8"]), "HOLD")
         self.assertEqual([r["display_hex"] for r in rows], ["", ""])
 
+    def test_no_components_marker(self):
+        rows, _ = run(prod("p5", [], []), "UNKNOWN")
+        self.assertEqual([(r["position"], r["hex_status"]) for r in rows], [(0, "NO_COMPONENTS")])
+
     def test_mismatch_reported(self):
         _, mism = run(prod("p4", ["Black"], ["C-1"]), "DRAFT")
         self.assertEqual(len(mism), 1)

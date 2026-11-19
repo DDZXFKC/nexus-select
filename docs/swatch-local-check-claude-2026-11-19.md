@@ -5,7 +5,7 @@ Claudeは現在オーナーPCに接続できない（ブリッジ未接続）。
 
 ## 前提
 d9ded97 の手順で書き込み（color_woo_export.py → ahc_color_components_to_woo.php --only-confirmed、dry-run → --apply、Localのみ）。
-ただし未確定・HOLDの中立表示を確認するため、確認用の数商品だけは --only-confirmed なしで書く必要がある（--only-confirmed では未確定商品は書かれず、従来の丸窓のまま）。
+12:45更新：--only-confirmed は付けない（全商品を書く。未確定・HOLD・構成なしは中立表示になる）。
 
 ## 確認用商品（シートのスナップショットから抽出、SKUは SP-<ID>）
 | 観点 | ID | 色名 | 期待される丸窓 |
@@ -18,7 +18,7 @@ d9ded97 の手順で書き込み（color_woo_export.py → ahc_color_components_
 | 未確定 | 7521224491214 | Red/Ecru Tint/Collegiate Orange | 白地＋灰色点線の中立表示（架空の色を出さない） |
 | 特殊色 | 7660871418062 | Multi Color | 中立表示 |
 | HOLD | 7236286218446 | Yellow/Red | 中立表示（承認済みの色でも出さない） |
-| 構成色なし | 7215700082894 | （空） | 書き込み対象外。従来の丸窓のまま |
+| 構成色なし | 7215700082894 | （空） | 中立表示（空リストを保存） |
 
 ## 各商品で共通に見る点
 - 色を選ぶと、ラベル横に色名の原文が全部出る（例：「Midnight Navy/Metallic Gold/Black」）。4色以上でも全色名。

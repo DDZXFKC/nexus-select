@@ -20,3 +20,11 @@
 1. python3 collector/color_woo_export.py --master <マスターCSV> --products <商品CSV part1..3> --output <出力先>
 2. wp eval-file tools/ahc_color_components_to_woo.php <出力先>/woo_components.csv --only-confirmed --path="<Local>/app/public"（dry-run。not_found と color_value_unclear の件数を確認）
 3. 問題なければ同じコマンドに --apply。本番には使わない。
+
+## 追記（12:45、69013b6 の「旧表示残存を防ぐ」に対応）
+- 「確定のみ」で書くと、未確定・HOLD・構成なしの商品は旧来の丸窓（写真切り抜き／色名推定）が残る。→ 既定では全商品を書く方式に変更。
+  - 未確定・HOLD：HEXなし → 中立表示（白地・点線）。
+  - 構成色なし：変換で position 0 の目印行を出し、書き込みツールが空リストを保存 → 中立表示。
+- 書き込みツールのオフライン検証 qa/php-tests/woo_writer_stub_test.php（WordPressなしの差し替え関数で実行）：確定=縦縞、未確定=HEXなし、構成なし=空リスト、未登録SKU=NOT FOUND、すべて合格。
+- 手順の変更：手順2・3は --only-confirmed を付けない。スナップショットは最新のシート（確定10,621の版）から取り直す（9:09登録の版は古い）。
+- dry-run で見る数字：not_found（シートにあるがLocalに無い商品）、color_value_unclear（色が複数・不明）、shown_unconfirmed（中立表示になる件数＝未確定＋HOLD＋構成なしの合計と一致するはず）。
