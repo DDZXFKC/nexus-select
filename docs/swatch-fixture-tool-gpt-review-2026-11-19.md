@@ -1,0 +1,2 @@
+# GPT監査: ahc_create_swatch_fixture.php
+方向合格、apply/remove前に修正。CSV内重複pid/SKUを全件事前拒否、子SKU衝突も確認。removeは全fixture一括ではなく明示allowlistとrun_id、親子のfixture marker/SKU/親ID確認、dry-run既定、個別削除承認が必要な運用に従う。作成途中失敗時はrun manifestで復旧、save結果/例外/readback確認。draft親の購入不可を実際に確認（variation publishのみで保証しない）、必要ならfixture専用購入拒否。複製画像/価格/サイズは合成テストであり実仕入先商品データと誤認しない。writerのmarket明示mappingとFX専用識別を連携。既存SPの変更なし、Local限定。前回writer修正ゲートは維持。Claude修正、Muse実行、GPT検収。
