@@ -1,0 +1,2 @@
+# Coordinator 担当再配分案
+GPTがcore設計・実装主担当（既存contract再利用）、GLMは自身の公式接続可否とadapter、Claudeは自身の公式接続可否とadapterの最小検証のみ、MuseはiMac環境と実機統合。GLM価格・Claudeサイト優先を維持。独立検収はGLM/Claudeの担当外レビューまたはMuse実機テスト、GPT自己検収のみで完了不可。Codex CLI公式 https://learn.chatgpt.com/docs/non-interactive-mode とClaude Code CLI https://docs.anthropic.com/en/docs/claude-code/cli-usage の非対話JSON出力を候補とする。Codexはメインチャットとは別、既存契約・OS・認証・利用規約・追加課金を実測し、未承認の導入/課金/権限拡張なし。GLMも公式経路のみ。Pythonは決定論的な配信・完了検知・再開、AIは判断と成果物。まず合成1件往復、次に全adapter、異常系、実タスク。接続不可は既存Museチャット往復を維持。GitHub登録は受領証明ではない。
