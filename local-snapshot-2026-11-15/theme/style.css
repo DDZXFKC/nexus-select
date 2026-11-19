@@ -1750,3 +1750,26 @@ body.single-product .nexus-swatch__color--unconfirmed {
   background: #fff;
   border: 1px dashed #9a9a9a;
 }
+
+/* Single-colorway product (GPT 84e54b3): non-interactive circle + original colorway text */
+body.single-product .nexus-single-color {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #111;
+}
+
+body.single-product .nexus-single-color__label {
+  font-weight: 700;
+}
+
+body.single-product .nexus-single-color__label:empty {
+  display: none;
+}
+
+body.single-product .nexus-single-color__name {
+  overflow-wrap: anywhere;
+}

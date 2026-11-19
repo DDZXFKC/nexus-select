@@ -111,21 +111,40 @@ add_action('wp_footer', function () {
     if ($product && $product->is_type('variable')) {
         $craw = get_post_meta($product->get_id(), '_ahc_color_components', true);
         $cdec = $craw ? json_decode((string) $craw, true) : null;
+        $ctx = json_decode((string) get_post_meta($product->get_id(), '_ahc_color_components_context', true), true);
         $kattr = null;
         foreach ($product->get_variation_attributes() as $ak => $av) {
             if (stripos($ak, 'color') !== false) { $kattr = $ak; break; }
         }
-        if ($kattr && is_array($cdec) && $cdec) {
+        $clean_list = function ($list) {
+            $items = [];
+            foreach ((array) $list as $c) {
+                if (!is_array($c)) continue;
+                $hex = isset($c['hex']) && is_string($c['hex']) && preg_match('/^#[0-9A-Fa-f]{6}$/', $c['hex']) ? strtoupper($c['hex']) : null;
+                $items[] = ['name' => isset($c['name']) ? (string) $c['name'] : '', 'hex' => $hex];
+            }
+            return $items;
+        };
+        if (is_array($cdec) && array_key_exists('__single__', $cdec) && is_array($cdec['__single__']) && !$kattr) {
+            /*
+             * Single-colorway product without a color variation (GPT 84e54b3): reserved key
+             * __single__. Colored only when the context status is CONFIRMED; otherwise neutral.
+             * An explicit empty list (no components) is neutral too; no meta = nothing shown.
+             */
+            $status = is_array($ctx) && isset($ctx['swatch_status']) ? (string) $ctx['swatch_status'] : '';
+            $items = $clean_list($cdec['__single__']);
+            if ($status !== 'CONFIRMED') foreach ($items as &$it) { $it['hex'] = null; } unset($it);
+            $components = ['single' => [
+                'label' => wc_attribute_label('pa_color'),
+                'colorway' => is_array($ctx) && isset($ctx['colorway_original']) ? (string) $ctx['colorway_original'] : implode('/', array_column($items, 'name')),
+                'status' => $status,
+                'items' => $items,
+            ]];
+        } elseif ($kattr && is_array($cdec) && $cdec) {
             $clean = [];
             foreach ($cdec as $val => $list) {
-                if (!is_array($list)) continue;
-                $items = [];
-                foreach ($list as $c) {
-                    if (!is_array($c)) continue;
-                    $hex = isset($c['hex']) && is_string($c['hex']) && preg_match('/^#[0-9A-Fa-f]{6}$/', $c['hex']) ? $c['hex'] : null;
-                    $items[] = ['name' => isset($c['name']) ? (string) $c['name'] : '', 'hex' => $hex];
-                }
-                $clean[(string) $val] = $items;
+                if ($val === '__single__' || !is_array($list)) continue;
+                $clean[(string) $val] = $clean_list($list);
             }
             if ($clean) $components = ['attr' => 'attribute_' . $kattr, 'colors' => $clean];
         }
@@ -148,7 +167,7 @@ add_action('wp_footer', function () {
 window.NEXUS_VAR_MAP = <?php echo $map ? wp_json_encode($map) : 'null'; ?>;
 window.NEXUS_COLOR_MAP = <?php echo $colormap ? wp_json_encode($colormap) : 'null'; ?>;
 window.NEXUS_COLOR_THUMBS = <?php echo $thumbs ? wp_json_encode($thumbs) : 'null'; ?>;
-window.NEXUS_COLOR_COMPONENTS = <?php echo $components ? wp_json_encode($components) : 'null'; ?>;
+window.NEXUS_COLOR_COMPONENTS = <?php echo $components ? wp_json_encode($components, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) : 'null'; ?>;
 window.NEXUS_COLOR_DETAILS = <?php echo $details ? wp_json_encode($details) : 'null'; ?>;
 window.NEXUS_COLOR_ATTR = <?php echo $cattr2 ? wp_json_encode($cattr2) : 'null'; ?>;
 (function () {

@@ -22,7 +22,7 @@ class Export(unittest.TestCase):
 
     def test_draft_component_blank(self):
         rows, _ = run(prod("p2", ["Black", "Brown"], ["C-1", "C-4"]), "DRAFT")
-        self.assertEqual([r["display_hex"] for r in rows], ["#171717", ""])
+        self.assertEqual([r["display_hex"] for r in rows], ["", ""])
 
     def test_hold_blanks_approved_too(self):
         rows, _ = run(prod("p3", ["Black", "Volt"], ["C-1", "C-8"]), "HOLD")
@@ -31,6 +31,15 @@ class Export(unittest.TestCase):
     def test_no_components_marker(self):
         rows, _ = run(prod("p5", [], []), "UNKNOWN")
         self.assertEqual([(r["position"], r["hex_status"]) for r in rows], [(0, "NO_COMPONENTS")])
+
+    def test_context_columns(self):
+        rows, _ = run(prod("p6", ["Black"], ["C-1"]), "CONFIRMED")
+        self.assertEqual((rows[0]["market"], rows[0]["colorway_original"], rows[0]["swatch_status"]),
+                         ("US", "Black", "CONFIRMED"))
+
+    def test_bad_status_raises(self):
+        with self.assertRaises(we.cf.DataError):
+            run(prod("p7", ["Black"], ["C-1"]), "OK")
 
     def test_mismatch_reported(self):
         _, mism = run(prod("p4", ["Black"], ["C-1"]), "DRAFT")

@@ -3,9 +3,9 @@
 One output row per color component. Every sheet product is exported (CONFIRMED or not), so no product keeps the old
 photo/name-based swatch: non-confirmed products get null hex = neutral circle, and
 products without components get one position-0 marker row (= empty list).
-display_hex is filled only when the component
-master row is APPROVED_APPROX *and* the product's recomputed swatch status is not
-HOLD/UNKNOWN (so a HOLD product never shows a partly-approved stripe).
+display_hex is filled only when the product's recomputed swatch status is CONFIRMED
+and the component master row is APPROVED_APPROX (GPT 84e54b3: DRAFT/UNKNOWN/HOLD ->
+every HEX empty = neutral circle).
 The product's swatch status is recomputed here with color_fullrun.swatch() and
 compared with the sheet's swatch_status; any mismatch stops the export.
 
@@ -22,42 +22,45 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import color_fullrun as cf  # noqa: E402
 
-FIELDS = ["shop_code", "supplier_product_id", "supplier_color_key", "position",
-          "token_original", "display_hex", "hex_status", "swatch_status"]
+FIELDS = ["shop_code", "market", "supplier_product_id", "supplier_color_key", "colorway_original",
+          "swatch_status", "position", "token_original", "display_hex", "hex_status"]
+STATUSES = {"CONFIRMED", "DRAFT", "UNKNOWN", "HOLD"}
 
 
 def export(master_rows, product_rows):
+    """GPT 84e54b3: HEX only for CONFIRMED products (all other statuses -> every HEX empty)."""
     master = cf.Master(master_rows)
     out, stats, mismatches = [], Counter(), []
     for row in product_rows:
         status, _, _, _ = cf.swatch(row, master)
-        if status != (row.get("swatch_status") or "").strip():
-            mismatches.append((row.get("supplier_product_id"), row.get("swatch_status"), status))
+        sheet_status = (row.get("swatch_status") or "").strip()
+        if sheet_status not in STATUSES:
+            raise cf.DataError(f"bad swatch_status {sheet_status!r}: {row.get('supplier_product_id')}")
+        if status != sheet_status:
+            mismatches.append((row.get("supplier_product_id"), sheet_status, status))
         stats[f"status_{status}"] += 1
         if row.get("supplier_color_key") != "single":
             stats["skipped_multi_color_key"] += 1
             continue
+        base = {"shop_code": row.get("shop_code"), "market": row.get("market"),
+                "supplier_product_id": row.get("supplier_product_id"),
+                "supplier_color_key": row.get("supplier_color_key"),
+                "colorway_original": row.get("colorway_original") or "", "swatch_status": status}
         brand, pkey = row.get("brand_id", ""), cf.product_key(row)
         comps = json.loads(row.get("components_json") or "[]")
         if not comps:
-            # Marker row (position 0): the writer stores an empty list so the theme shows the
-            # neutral circle instead of keeping the old photo/name-based swatch.
-            out.append({"shop_code": row.get("shop_code"), "supplier_product_id": row.get("supplier_product_id"),
-                        "supplier_color_key": row.get("supplier_color_key"), "position": 0,
-                        "token_original": "", "display_hex": "", "hex_status": "NO_COMPONENTS",
-                        "swatch_status": status})
+            # Marker row (position 0): the writer stores an explicit empty list (neutral circle).
+            out.append(dict(base, position=0, token_original="", display_hex="", hex_status="NO_COMPONENTS"))
             stats["exported_no_components"] += 1
         for c in comps:
             m = master.by_id.get(c.get("color_id"))
-            ok = (status in ("CONFIRMED", "DRAFT") and m is not None
+            ok = (status == "CONFIRMED" and m is not None
                   and cf.ref_problem(c, master, brand, pkey) is None
                   and (m.get("hex_status") or "").strip() == cf.APPROVED
                   and cf.HEX.fullmatch((m.get("display_hex") or "").strip()))
-            out.append({"shop_code": row.get("shop_code"), "supplier_product_id": row.get("supplier_product_id"),
-                        "supplier_color_key": row.get("supplier_color_key"), "position": c.get("position"),
-                        "token_original": c.get("token_original"),
-                        "display_hex": m["display_hex"].strip().upper() if ok else "",
-                        "hex_status": cf.APPROVED if ok else "NOT_SHOWN", "swatch_status": status})
+            out.append(dict(base, position=c.get("position"), token_original=c.get("token_original"),
+                            display_hex=m["display_hex"].strip().upper() if ok else "",
+                            hex_status=cf.APPROVED if ok else "NOT_SHOWN"))
         stats["exported_products"] += 1
     return out, stats, mismatches
 

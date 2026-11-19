@@ -649,6 +649,55 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /*
+   * Single-colorway product without a color variation (GPT 84e54b3):
+   * a non-interactive circle + the original colorway text above the size
+   * row. It never touches the selects, so size selection, price and stock
+   * behave exactly as before. Colored only for CONFIRMED with all of the
+   * first min(3, n) colors approved; otherwise the neutral circle.
+   */
+  const singleData = window.NEXUS_COLOR_COMPONENTS &&
+    window.NEXUS_COLOR_COMPONENTS.single;
+
+  if (singleData && forms.length) {
+    const table = forms[0].querySelector('table.variations');
+    const items = Array.isArray(singleData.items) ? singleData.items : [];
+    const shown = items.slice(0, 3);
+    const hexes = shown.map(c =>
+      c && /^#[0-9A-Fa-f]{6}$/.test(c.hex || '') ? c.hex : null);
+    const colored = singleData.status === 'CONFIRMED' &&
+      shown.length > 0 && hexes.every(Boolean);
+
+    const block = document.createElement('div');
+    block.className = 'nexus-single-color';
+
+    const label = document.createElement('span');
+    label.className = 'nexus-single-color__label';
+    label.textContent = singleData.label || '';
+
+    const visual = document.createElement('span');
+    visual.className = 'nexus-swatch__color nexus-single-color__swatch';
+    visual.setAttribute('aria-hidden', 'true');
+    if (colored) {
+      visual.style.background = stripeBackground(hexes);
+    } else {
+      visual.classList.add('nexus-swatch__color--unconfirmed');
+    }
+
+    const name = document.createElement('span');
+    name.className = 'nexus-single-color__name';
+    name.textContent = singleData.colorway ||
+      items.map(c => c && c.name).filter(Boolean).join('/');
+
+    block.append(label, visual, name);
+
+    if (table) {
+      table.insertAdjacentElement('beforebegin', block);
+    } else {
+      forms[0].insertAdjacentElement('afterbegin', block);
+    }
+  }
+
+  /*
    * Developer audit:
    * Use NEXUSStage2.getUnresolvedColors()
    * in the browser console after visiting product pages.
