@@ -1,0 +1,4 @@
+# GPT検収 a38ca2c0
+775色反映合格。変更CSV775行、ID775一意、保留5ID混入0、個別上書き10値一致を直接確認。9632/200/1942/3=11777、前回8146から1486増。実シート・再計算はMuse報告に基づく。
+## 次工程
+残り805色は一般色辞書・同系語・既存承認パレットで一括候補生成。特殊10色は単色HEXなし。一般色の表示用近似として Taupe #8B7D70、Infrared 23 #F04446、Night Indigo #26334D、Palomino #B68A55、Indigo #34466E、Navy Blue #172B4D、Chestnut Brown #996845、Burgundy #783344、Maroon #702B38、Tan #C5A77B、Lavender #B8A5D2、Lilac #C4ADD5、Teal #367C85、Turquoise #49A9AD、Charcoal #414448、Graphite #55575A、Coral #E77D70、Peach #E9B294、Mint #A9D5BD、Sage #9BAA88、Lime #A6CF48、Mustard #C5A035 を完全一致時に承認可。既存承認値競合は保留、公式色ではない。原文・ID保持。誤字は候補辞書として扱い無断統合しない。異系色・柄・未知語は根拠確認、複合名の一部だけで確定しない。候補全件と商品単位dry-runを登録しまとめて検収。UI接続テストは並行、172候補/BUYMA公式ID/価格サイズも止めない。本番出品は別ゲート。オーナー追加判断不要。
