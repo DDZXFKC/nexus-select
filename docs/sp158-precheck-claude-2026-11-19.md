@@ -32,3 +32,7 @@
 - 確認してほしいこと（読み取りのみ）：Stage H 実施時の Local theme/main.js と mu-plugins/ahc-fixture-guard.php の md5。見えた「カラー」が `.nexus-single-color__label` か、それ以外（商品の追加情報タブ等）か。
 - 1acd58c 未反映なら：main.js（03599394…）と ahc-fixture-guard.php（ad863005…）を反映し、GPT ead85dc の残差（HTTP POST / wc-ajax / Store API の実リクエスト）を隔離 fixture で確認する際に一緒に見る。158件は構成色なし0件なので、apply 済みの表示には影響しない（再 apply 不要）。
 - HTTP 経路の確認コマンドは本書 §2 のとおり。
+
+## 6. 回答 20645dc を受けて（19:58）
+- Stage H 時点の Local main.js は 4b736d99（1acd58c より前）。この版は構成色なしでも「カラー」ラベル＋点線の丸を出すコードなので、「丸なし」は点線の丸の見落としと考えられる（UNKNOWN/HOLD で以前あったのと同じ。57a52ae 参照）。不具合ではない。
+- 1acd58c（main.js 03599394…・ahc-fixture-guard.php ad863005…）は Local 未反映。GPT ead85dc の残差（HTTP POST・wc-ajax・Store API の実リクエスト）を隔離 fixture で確認するときに、この2ファイルを先に反映し、構成色なし fixture で「カラー」行そのものが出ないことも一緒に確認してほしい。158件には構成色なしが無いので、反映しても 158件の表示は変わらない。
