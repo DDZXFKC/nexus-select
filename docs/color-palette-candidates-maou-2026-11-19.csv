@@ -1,0 +1,1591 @@
+color_id,token,token_normalized,old_hex,old_hex_status,family_internal,family_status,candidate_hex,rule,ambiguity,group,product_count,in_stock_count
+C-1581,Metallic Dark Grey,metallic dark grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,15,15
+C-1203,Collegiate Green,collegiate green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,23,14
+C-1840,Safety Orange,safety orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,21,14
+C-1987,True Red,true red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,21,14
+C-1199,College Grey,college grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,19,13
+C-1248,Dark Grey,dark grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,25,13
+C-1997,University Gold,university gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,18,13
+C-2062,Wonder White,wonder white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,22,13
+C-1055,Baroque Brown,baroque brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,20,12
+C-1510,Light Blue,light blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,19,12
+C-1576,Medium Soft Pink,medium soft pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,24,12
+C-1200,College Navy,college navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,16,11
+C-1340,Footwear White,footwear white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,12,11
+C-1556,Magic Beige,magic beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,11,11
+C-1765,Playful Pink,playful pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,16,11
+C-1986,True Blue,true blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,12,11
+C-1831,Royal Blue,royal blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,16,10
+C-1269,Deep Royal Blue,deep royal blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,21,9
+C-1521,Light Grey,light grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,11,9
+C-1566,Matte Silver,matte silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,12,9
+C-1924,Stadium Green,stadium green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,10,9
+C-1980,Tour Yellow,tour yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,13,9
+C-1054,Barely Volt,barely volt,,UNKNOWN,,UNKNOWN,#C8ED36,明示色語「volt」1件,,明確,10,8
+C-1147,Cargo Khaki,cargo khaki,,UNKNOWN,khaki,DRAFT,#B4A482,明示色語「khaki」1件,,明確,8,8
+C-1243,Dark Brown,dark brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,12,8
+C-1401,Grey One,grey one,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,10,8
+C-1444,Hydrogen Blue,hydrogen blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,11,8
+C-1551,Lucid Pink,lucid pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,10,8
+C-1247,Dark Green,dark green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,16,7
+C-1333,Flint Grey,flint grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,9,7
+C-1374,Gorge Green,gorge green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,9,7
+C-1393,Green Strike,green strike,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,13,7
+C-1407,Grey Three,grey three,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,8,7
+C-1408,Grey Two,grey two,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,7,7
+C-1427,Harbor Grey,harbor grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,7,7
+C-1523,Light Khaki,light khaki,,UNKNOWN,khaki,DRAFT,#B4A482,明示色語「khaki」1件,,明確,9,7
+C-1728,Pink Bloom,pink bloom,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,7,7
+C-1736,Pink Gaze,pink gaze,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,7,7
+C-1738,Pink Glow,pink glow,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,12,7
+C-1873,Shadow Brown,shadow brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,7,7
+C-2024,Vintage White,vintage white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,7,7
+C-1091,Blue Chill,blue chill,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,9,6
+C-1225,Court Purple,court purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,10,6
+C-1229,Cream II,cream ii,,UNKNOWN,cream,DRAFT,#F1E8D4,明示色語「cream」1件,,明確,6,6
+C-1338,Football Grey,football grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,12,6
+C-1358,Glacier Blue,glacier blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,15,6
+C-1461,Illusion Green,illusion green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,6,6
+C-1573,Medium Grey,medium grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,14,6
+C-1640,Neon Yellow,neon yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,8,6
+C-1713,Pearl White,pearl white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,9,6
+C-1723,Picante Red,picante red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,11,6
+C-1725,Pine Green,pine green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,15,6
+C-1781,Psychic Blue,psychic blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,12,6
+C-1817,Reflect Silver,reflect silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,10,6
+C-1884,Silt Red,silt red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,12,6
+C-1899,Slate Grey,slate grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,11,6
+C-1919,Speed Yellow,speed yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,7,6
+C-1961,Team Gold,team gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,10,6
+C-1978,Tough Red,tough red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,6,6
+C-2017,Velvet Brown,velvet brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,8,6
+C-2064,Work Blue,work blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,6,6
+C-2067,Yellow Ochre,yellow ochre,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,16,6
+C-1300,Electric Green,electric green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,12,5
+C-1302,Elemental Pink,elemental pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,11,5
+C-1312,Fauna Brown,fauna brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,5,5
+C-1339,Footwear Silver,footwear silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,12,5
+C-1380,Graphite Grey,graphite grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,6,5
+C-1398,Grey Heather,grey heather,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,5,5
+C-1400,Grey Mist,grey mist,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,5,5
+C-1424,Half Blue,half blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,7,5
+C-1529,Light Pink,light pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,12,5
+C-1550,Lucid Orange,lucid orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,6,5
+C-1645,Neutral Olive,neutral olive,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,7,5
+C-1727,Pink Blast,pink blast,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,6,5
+C-1730,Pink Cloud,pink cloud,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,5,5
+C-1838,Rust Pink,rust pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,7,5
+C-1851,Sandy Pink,sandy pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,6,5
+C-1854,Scream Green,scream green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,5,5
+C-1911,Solar Red,solar red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,7,5
+C-1969,Tech Grey,tech grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,8,5
+C-1982,Track Red,track red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,6,5
+C-1983,Triple Black,triple black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,6,5
+C-2036,Voltage Green,voltage green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,5,5
+C-2068,Yellow Pulse,yellow pulse,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,5,5
+C-1066,Black Coffee,black coffee,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,5,4
+C-1102,Blue Tint,blue tint,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,8,4
+C-1241,Dark Blue,dark blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,5,4
+C-1303,Emerald Green,emerald green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,4,4
+C-1323,Fire Pink,fire pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,8,4
+C-1384,Green Abyss,green abyss,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,4,4
+C-1447,Hyper Orange,hyper orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,4,4
+C-1453,Ice Blue,ice blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,4,4
+C-1458,Icey Blue,icey blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,4,4
+C-1463,Imperial Purple,imperial purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,4,4
+C-1497,Legend Blue,legend blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,17,4
+C-1528,Light Photo Blue,light photo blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,7,4
+C-1534,Light Silver,light silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,9,4
+C-1553,Lucid Red,lucid red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,6,4
+C-1554,Lucky Green,lucky green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,4,4
+C-1602,Mink Brown,mink brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,4,4
+C-1642,Neptune Grey,neptune grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,4,4
+C-1668,Oil Grey,oil grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,7,4
+C-1701,Particle Grey,particle grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,6,4
+C-1711,Pearl Grey,pearl grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,14,4
+C-1784,Puma Silver,puma silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,8,4
+C-1785,Puma White,puma white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,11,4
+C-1828,Rose Gold,rose gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,6,4
+C-1876,Shadow Grey,shadow grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,6,4
+C-1878,Shadow Red,shadow red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,6,4
+C-1889,Silver Lilac,silver lilac,,UNKNOWN,purple,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,5,4
+C-1922,Sport Red,sport red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,5,4
+C-1937,Stone Khaki,stone khaki,,UNKNOWN,khaki,DRAFT,#B4A482,明示色語「khaki」1件,,明確,4,4
+C-1947,Surf Blue,surf blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,4,4
+C-1972,Thunder Blue,thunder blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,6,4
+C-1976,Total Black,total black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,4,4
+C-2046,Washed Grey,washed grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,4,4
+C-2059,Wonder Beige,wonder beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,4,4
+C-2434,Volt Ice,volt ice,,UNKNOWN,,UNKNOWN,#C8ED36,明示色語「volt」1件,,明確,4,4
+C-1027,Arctic Green,arctic green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,3,3
+C-1089,Blue Bird,blue bird,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,4,3
+C-1100,Blue Oyster,blue oyster,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,3,3
+C-1171,Chile Red,chile red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,13,3
+C-1224,Court Green,court green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,4,3
+C-1235,Crystal White,crystal white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,4,3
+C-1254,Dark Powder Blue,dark powder blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,6,3
+C-1280,Desert Pink,desert pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,3
+C-1308,Faded Black,faded black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,3,3
+C-1317,Field Silver,field silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,3,3
+C-1329,Flat Silver,flat silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,5,3
+C-1346,French Blue,french blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,7,3
+C-1399,Grey Matter,grey matter,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,6,3
+C-1412,Gum 3,gum 3,,UNKNOWN,gum,DRAFT,#B98753,明示色語「gum」1件,,明確,3,3
+C-1456,Ice Silver,ice silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,3,3
+C-1479,Kelly Green,kelly green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,4,3
+C-1509,Light Black,light black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,3,3
+C-1517,light Current Blue,light current blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,3,3
+C-1549,Lucid Blue,lucid blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,3,3
+C-1582,Metallic Gold Grain,metallic gold grain,,UNKNOWN,gold,DRAFT,#C6A34A,承認済み複合名「metallic gold」を含む,,明確,3,3
+C-1588,Metallic Red Bronze,metallic red bronze,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,4,3
+C-1698,Parachute Beige,parachute beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,5,3
+C-1743,Pink Milk,pink milk,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,3
+C-1749,Pink Smoke,pink smoke,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,3
+C-1751,Pink Spell,pink spell,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,5,3
+C-1770,Power Red,power red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,3
+C-1774,Preloved Brown,preloved brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,5,3
+C-1783,Puma Red,puma red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,7,3
+C-1797,Putty Grey,putty grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,5,3
+C-1827,Rose Cream,rose cream,,UNKNOWN,cream,DRAFT,#F1E8D4,明示色語「cream」1件,,明確,4,3
+C-1880,Shock Yellow,shock yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,3,3
+C-1883,Sierra Red,sierra red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,3
+C-1903,Smokey Blue,smokey blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,3,3
+C-1910,Solar Orange,solar orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,7,3
+C-1930,Steel Green,steel green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,3,3
+C-1970,Tech Grey Metallic,tech grey metallic,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,3,3
+C-1977,Total Orange,total orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,10,3
+C-2033,Vivid Red,vivid red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,3
+C-2041,Warm White,warm white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,5,3
+C-2647,Sand Strata,sand strata,,UNKNOWN,,UNKNOWN,#CDBB9C,明示色語「sand」1件,,明確,3,3
+C-1004,Light Armory Blue,light armory blue,#A8C3E0,DRAFT,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,7,2
+C-1005,Acid Orange,acid orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,3,2
+C-1008,Active Pink,active pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,2
+C-1028,Arctic Orange,arctic orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,2
+C-1030,Armory Blue,armory blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,4,2
+C-1031,Armory Navy,armory navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,6,2
+C-1035,Asics Blue,asics blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,3,2
+C-1041,Atomic Orange,atomic orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,2
+C-1043,Atomic Red,atomic red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,2
+C-1049,Baltic Blue,baltic blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,6,2
+C-1073,Black Metallic,black metallic,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,2,2
+C-1074,Black Muslin,black muslin,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,3,2
+C-1110,Bold Gold,bold gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,2,2
+C-1122,Brilliant Orange,brilliant orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,4,2
+C-1125,Brown Desert,brown desert,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,2
+C-1126,Brown Kelp,brown kelp,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,2
+C-1130,Buff Gold,buff gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,2,2
+C-1146,Cardboard Brown,cardboard brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,2
+C-1167,Checkerboard Black,checkerboard black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,3,2
+C-1173,Chocolate Brown,chocolate brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,2
+C-1178,Classic Green,classic green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,4,2
+C-1181,Clay Orange,clay orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,2
+C-1187,Cloud Grey,cloud grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,3,2
+C-1192,Coastal Blue,coastal blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,2
+C-1251,Dark Obsidian,dark obsidian,,UNKNOWN,,UNKNOWN,#252B42,明示色語「obsidian」1件,,明確,5,2
+C-1261,Dark Team Red,dark team red,,UNKNOWN,red,DRAFT,#922B38,承認済み複合名「team red」を含む,,明確,6,2
+C-1270,Demitasse Brown,demitasse brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,2
+C-1279,Desert Orange,desert orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,2
+C-1284,Dodgers Classic Blue,dodgers classic blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,2
+C-1287,Dried Leaf Green,dried leaf green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,3,2
+C-1306,Equipment Green,equipment green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,2
+C-1315,Feather Grey,feather grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,2
+C-1316,Field Purple,field purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,3,2
+C-1319,Fierce Purple,fierce purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,4,2
+C-1351,Galactic Grey,galactic grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,3,2
+C-1386,Green Glow,green glow,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,12,2
+C-1397,Grey Four,grey four,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,2
+C-1436,Hi-Res Yellow,hi-res yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,2,2
+C-1441,Hot Pink,hot pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,6,2
+C-1449,Hyper Purple,hyper purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,2,2
+C-1485,Khaki Three,khaki three,,UNKNOWN,khaki,DRAFT,#B4A482,明示色語「khaki」1件,,明確,2,2
+C-1487,Kinetic Green,kinetic green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,3,2
+C-1488,Kona Brown,kona brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,2
+C-1502,Legend Pink,legend pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,9,2
+C-1525,Light Lucid Green,light lucid green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,2
+C-1526,Light Olive,light olive,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,4,2
+C-1530,Light Purple,light purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,2,2
+C-1552,Lucid Ray Blue,lucid ray blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,2
+C-1562,Marshmallow White,marshmallow white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,3,2
+C-1579,Mesa Orange,mesa orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,2
+C-1598,Military Blue,military blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,3,2
+C-1638,NB Navy,nb navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,2,2
+C-1651,Night Navy,night navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,2,2
+C-1655,Noble Red,noble red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,2
+C-1677,Olive Strata,olive strata,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,2,2
+C-1686,Orbit Grey,orbit grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,2
+C-1691,Oxidized Green,oxidized green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,5,2
+C-1692,Oyster Grey,oyster grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,2
+C-1695,Pale Pink,pale pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,2
+C-1697,Papaya Orange,papaya orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,2
+C-1703,Particle Pink,particle pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,9,2
+C-1733,Pink Eraser,pink eraser,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,2
+C-1744,Pink Opal,pink opal,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,2
+C-1748,Pink Salt,pink salt,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,2
+C-1750,Pink Spark,pink spark,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,2
+C-1752,Pink Sugar,pink sugar,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,2
+C-1778,Prime Red,prime red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,2
+C-1786,Pure Gold,pure gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,2,2
+C-1787,Pure Orange,pure orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,2
+C-1798,Racer Blue,racer blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,6,2
+C-1801,Racing Red,racing red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,2
+C-1805,Real Green,real green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,2
+C-1808,Red Dahlia,red dahlia,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,2
+C-1815,Red Stardust,red stardust,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,5,2
+C-1818,Reflective Silver,reflective silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,3,2
+C-1820,Regal Pink,regal pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,2
+C-1822,Regency Purple,regency purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,2,2
+C-1835,Rush Blue,rush blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,2
+C-1866,Semi Pink Spark,semi pink spark,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,4,2
+C-1898,Slate Blue,slate blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,4,2
+C-1907,Solar Blue,solar blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,2
+C-1912,Solar Yellow,solar yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,2,2
+C-1918,Speed Red,speed red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,2
+C-1923,Squadron Blue,squadron blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,2
+C-1933,Stellar Grey,stellar grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,3,2
+C-1948,Sweet Pink,sweet pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,2
+C-1966,Team Victory Red,team victory red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,2
+C-1971,Theory Oil Green,theory oil green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,2
+C-1973,Thunder Brown,thunder brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,2
+C-2005,Vapor Gray,vapor gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,3,2
+C-2006,Vapor Green,vapor green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,8,2
+C-2008,Varsity Blue,varsity blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,2
+C-2011,Varsity Navy,varsity navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,2,2
+C-2015,Vasity Red,vasity red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,4,2
+C-2032,Vivid Purple,vivid purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,4,2
+C-2035,Volt Tint,volt tint,,UNKNOWN,,UNKNOWN,#C8ED36,明示色語「volt」1件,,明確,7,2
+C-2051,White Dune,white dune,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,2,2
+C-2403,Off-White,off-white,,UNKNOWN,,UNKNOWN,#FFFFFF,明示色語「white」1件,,明確,2,2
+C-2503,Frosted Ivory,frosted ivory,,UNKNOWN,,UNKNOWN,#F3EBDD,明示色語「ivory」1件,,明確,4,2
+C-2574,Sand Heather,sand heather,,UNKNOWN,,UNKNOWN,#CDBB9C,明示色語「sand」1件,,明確,2,2
+C-1006,Acid Red,acid red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,1
+C-1007,Action Green,action green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1009,Aero Pink,aero pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1012,Ale Brown,ale brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1013,All Black,all black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,4,1
+C-1014,All White,all white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,2,1
+C-1015,Almost Yellow,almost yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,2,1
+C-1021,Antique Silver,antique silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-1022,Apple Green,apple green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1023,Aqua Blue,aqua blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,5,1
+C-1025,Archaeo Brown,archaeo brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,6,1
+C-1026,Archive Green,archive green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1029,Arctic Pink,arctic pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1032,Armoury Navy,armoury navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,2,1
+C-1033,Army Olive,army olive,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,4,1
+C-1034,Ash Grey,ash grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,1
+C-1036,Asphalt Grey,asphalt grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1038,Atiba Black,atiba black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1042,Atomic Pink,atomic pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,1
+C-1044,Aurora Black,aurora black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1045,Aurora Blue,aurora blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1047,Baby Blue,baby blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1050,Barely Blue,barely blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,1
+C-1052,Barely Green,barely green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,4,1
+C-1056,Base Grey,base grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1057,Basic Grey,basic grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1058,Best Grey,best grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1063,Black 2.0,black 2.0,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1065,Black Cement,black cement,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,3,1
+C-1067,Black Core,black core,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1069,Black Dragon,black dragon,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1070,Black Heather,black heather,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1075,Black Night,black night,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1078,Black Reflection,black reflection,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1079,Black Spruce,black spruce,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1081,Black Twine,black twine,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1084,Black Wolf,black wolf,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1087,Bliss Pink,bliss pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1090,Blue Burst,blue burst,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1092,Blue Crystal,blue crystal,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1099,Blue Lightening,blue lightening,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1101,Blue Teal,blue teal,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1103,Blue Viod,blue viod,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1105,Blue Void,blue void,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,6,1
+C-1107,Blush Pink,blush pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1115,Bright Green,bright green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1117,Bright Mango Yellow,bright mango yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,2,1
+C-1118,Bright Orange,bright orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-1121,Brilliant Blue,brilliant blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1127,Brown Storm,brown storm,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1129,Buck Brown,buck brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,1
+C-1135,Burnt Olive,burnt olive,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,1,1
+C-1137,C;loud White,c;loud white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1140,Campfire Orange,campfire orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-1142,Canyon Gold,canyon gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,1
+C-1143,Canyon Purple,canyon purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-1148,Carrier Grey,carrier grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1149,Cashew Brown,cashew brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1153,Cedar Brown,cedar brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1155,Celestine Blue,celestine blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1159,Challenge Red,challenge red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,1
+C-1163,Charcoal Grey,charcoal grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,1
+C-1164,Charm Black,charm black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,2,1
+C-1165,Charms Black,charms black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1168,Checkerboard Red,checkerboard red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1172,Chlorine Blue,chlorine blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,1
+C-1186,Cloud Black,cloud black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1189,Club Gold,club gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,1
+C-1194,Cobalt Blue,cobalt blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1202,Collegiate Gold,collegiate gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,1
+C-1204,Collegiate Navy,collegiate navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,2,1
+C-1205,Collegiate Orange,collegiate orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,3,1
+C-1206,Collegiate Purple,collegiate purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-1207,Collegiate Red,collegiate red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1208,Comet Blue,comet blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1209,Comet Red,comet red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,1
+C-1212,Cool Dark Gray,cool dark gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,1
+C-1214,Cool Light Grey,cool light grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1217,Coral Pink,coral pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,1
+C-1223,Court Blue,court blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,1
+C-1226,Cpre Black,cpre black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1232,Crew Orange,crew orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-1233,Crew Yellow,crew yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,1
+C-1236,Current Blue,current blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1237,Cyber Cool Grey,cyber cool grey,,UNKNOWN,grey,DRAFT,#999CA1,承認済み複合名「cool grey」を含む,,明確,1,1
+C-1238,Daring Red,daring red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,1
+C-1240,Dark Beige,dark beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,1,1
+C-1250,Dark Gum,dark gum,,UNKNOWN,gum,DRAFT,#B98753,明示色語「gum」1件,,明確,1,1
+C-1252,Dark Pink,dark pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1257,Dark Silver,dark silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-1263,Dawn Pink,dawn pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1277,Desert Khaki,desert khaki,,UNKNOWN,khaki,DRAFT,#B4A482,明示色語「khaki」1件,,明確,1,1
+C-1283,Dodger Blue,dodger blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,1
+C-1285,Dove Grey,dove grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1291,Dusky Brown,dusky brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1293,Earth Brown,earth brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1294,Easy Pink,easy pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,1
+C-1304,Energy Green,energy green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1307,Espresso Brown,espresso brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,1
+C-1309,Faded Navy,faded navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,1,1
+C-1320,Fierce Red,fierce red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1321,Fiery Red,fiery red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1331,Flight Silver,flight silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-1335,Foam Green,foam green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1336,Foam White,foam white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1337,Focus Olive,focus olive,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,2,1
+C-1341,For All Time Red,for all time red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1342,Forest Green,forest green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1344,Fountain Blue,fountain blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,1
+C-1345,Fox Brown,fox brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1350,Fusion Red,fusion red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,1
+C-1353,Gamma Blue,gamma blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,10,1
+C-1356,Ghost Grey,ghost grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1359,Glacier Grey,glacier grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1361,Global Red,global red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1362,Glory Grey,glory grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1364,Glow Green,glow green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1369,Gold Leaf,gold leaf,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,1
+C-1370,Gold Mat,gold mat,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,1
+C-1373,Golden Beige,golden beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,1,1
+C-1377,Grand Purple,grand purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,2,1
+C-1382,Gray Taupe,gray taupe,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,1
+C-1389,Green Milieu,green milieu,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1390,Green Noise,green noise,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1395,Grey Alumina,grey alumina,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1402,Grey Platinum Tint,grey platinum tint,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1404,Grey Stonewar,grey stonewar,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1405,Grey Strata,grey strata,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1406,Grey Taupe,grey taupe,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1409,Gridiron Sail,gridiron sail,,UNKNOWN,sail,DRAFT,#EEE9DF,明示色語「sail」1件,,明確,1,1
+C-1413,Gum 5,gum 5,,UNKNOWN,gum,DRAFT,#B98753,明示色語「gum」1件,,明確,1,1
+C-1414,Gum Dark,gum dark,,UNKNOWN,gum,DRAFT,#B98753,明示色語「gum」1件,,明確,1,1
+C-1416,Gum Four,gum four,,UNKNOWN,gum,DRAFT,#B98753,明示色語「gum」1件,,明確,1,1
+C-1421,Gym Blue,gym blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1422,Gym Green,gym green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1429,Hazy Orange,hazy orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-1431,Heather Dark Grey,heather dark grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1433,Heritage Red,heritage red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1434,Hi-Res Blue,hi-res blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1435,Hi-Res Red,hi-res red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1439,Honey Beige,honey beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,1,1
+C-1454,Ice Gold Metallic,ice gold metallic,,UNKNOWN,gold,DRAFT,#C6A34A,承認済み複合名「gold metallic」を含む,,明確,1,1
+C-1457,Ice White,ice white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1462,Impact Yellow,impact yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,1
+C-1465,Indigo Blue,indigo blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1467,Industrial Blue,industrial blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,14,1
+C-1469,International Blue,international blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1477,Jasper Green,jasper green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1478,Jet Black,jet black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1484,Khaki Six,khaki six,,UNKNOWN,khaki,DRAFT,#B4A482,明示色語「khaki」1件,,明確,1,1
+C-1486,Khaki Twine,khaki twine,,UNKNOWN,khaki,DRAFT,#B4A482,明示色語「khaki」1件,,明確,1,1
+C-1489,KPop Demon Hunters Blue,kpop demon hunters blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1490,Lake Blue,lake blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1493,Laser Orange,laser orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,3,1
+C-1500,Legend Light Brown,legend light brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,9,1
+C-1503,Legion Green,legion green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1505,Light Amory Blue,light amory blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1507,Light Armoury Blue,light armoury blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1508,Light Beige,light beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,1,1
+C-1511,Light Blue Mel,light blue mel,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1514,Light Brown,light brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,3,1
+C-1519,Light Green,light green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1522,Light Grey Heather,light grey heather,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1532,Light Sand,light sand,,UNKNOWN,,UNKNOWN,#CDBB9C,明示色語「sand」1件,,明確,2,1
+C-1535,Light Silver Metallic,light silver metallic,,UNKNOWN,silver,DRAFT,#BFC2C5,承認済み複合名「silver metallic」を含む,,明確,3,1
+C-1559,Marine Blue,marine blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1565,Matte Gold,matte gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,1
+C-1568,Max Orange,max orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-1577,Medtallic Gold,medtallic gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,1
+C-1578,Medusa Green Anora,medusa green anora,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1583,Metallic Grey,metallic grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1585,Metallic Pink,metallic pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1589,Metallic Rose Gold,metallic rose gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,2,1
+C-1591,Metallic Summit White,metallic summit white,,UNKNOWN,white,DRAFT,#F1F0ED,承認済み複合名「summit white」を含む,,明確,1,1
+C-1593,Metasllic Silver,metasllic silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-1594,Mica Blue,mica blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1611,Misty Pink,misty pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1612,Mod Grey,mod grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1615,Monochrome Black,monochrome black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1619,Mosaic Green,mosaic green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1621,Mosswood Brown,mosswood brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1627,Mushroom Brown,mushroom brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1631,Mystic Navy,mystic navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,5,1
+C-1639,Neo Pink,neo pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1641,Neptune Green,neptune green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1646,New Balance White,new balance white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1648,Night Brown,night brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1649,Night Grey,night grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1652,Night Red,night red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1653,Nike True Blue,nike true blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1656,Nuetral Grey,nuetral grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,1
+C-1663,Of White,of white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1667,Oil Green,oil green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1672,Olive Aura,olive aura,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,3,1
+C-1673,Olive Flak,olive flak,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,1,1
+C-1679,Opti Yellow,opti yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,1
+C-1680,Optical White,optical white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1683,Orange Tint,orange tint,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-1689,Oxford Blue,oxford blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1693,Oyster White,oyster white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1699,Parisian Night Blue,parisian night blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1702,Particle Grey-White-Gym Red,particle grey-white-gym red,,UNKNOWN,red,DRAFT,#B91E2D,承認済み複合名「gym red」を含む,,明確,1,1
+C-1715,Pearlized Marshmallow White,pearlized marshmallow white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1717,Pearlized Yacht Club Green,pearlized yacht club green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1721,Photo Blue,photo blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,6,1
+C-1724,Piedmont Grey,piedmont grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,1
+C-1729,Pink clay,pink clay,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1732,Pink Diamond,pink diamond,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1741,Pink Ice,pink ice,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1747,Pink Rose,pink rose,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1755,Pink Velvet,pink velvet,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1757,Pink Yarrow,pink yarrow,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1760,Pitch Gray,pitch gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,1
+C-1769,Powder Purple,powder purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-1771,Practicle Grey,practicle grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1775,Preloved Green,preloved green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1777,Premium Brown,premium brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1792,Purple Burst,purple burst,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-1794,Purple Rush,purple rush,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-1795,Purple Smoke,purple smoke,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,2,1
+C-1796,Purple Stardust,purple stardust,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-1799,Racer Pink,racer pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,1
+C-1803,Raspberry Red,raspberry red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1806,Red Clay,red clay,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1809,Red Flash,red flash,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1810,Red Metallic,red metallic,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1812,Red Plum,red plum,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1824,River Rock Grey,river rock grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1833,Ruby Red,ruby red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1836,Rush Pink,rush pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1837,Rush Red,rush red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,1
+C-1839,Saddle Brown,saddle brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1845,Salsa Red,salsa red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1849,Sanded Purple,sanded purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-1855,Screaming Green,screaming green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1857,Sea Salt Pink,sea salt pink,,UNKNOWN,pink,DRAFT,#EEEAE0,承認済み複合名「sea salt」を含む,,明確,1,1
+C-1860,Semi Blue Burst,semi blue burst,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1861,Semi Court Green,semi court green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1863,Semi Impact Orange,semi impact orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-1864,Semi Lucid Blue,semi lucid blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,1
+C-1865,Semi Pink,semi pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1867,Semi Screaming Green,semi screaming green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1868,Semi Solar Green,semi solar green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1869,Semi Solar Orange,semi solar orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-1872,Shadow Blue,shadow blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1874,Shadow Gray,shadow gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,1
+C-1877,Shadow Olive,shadow olive,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,2,1
+C-1882,Shown: Dark Grey Heather,shown: dark grey heather,,UNKNOWN,grey,DRAFT,#55575A,承認済み複合名「dark grey heather」を含む,,明確,1,1
+C-1885,Silt Red Tattoo,silt red tattoo,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1887,Silver Cloud,silver cloud,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-1890,Silver Metalic,silver metalic,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-1893,Silver Pebble,silver pebble,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-1894,Silver Sage,silver sage,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-1895,Simple Brown,simple brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,1
+C-1896,Siren Red,siren red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,1
+C-1897,Sky Blue,sky blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,1
+C-1904,Soft Blue,soft blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1906,Soft Yellow,soft yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,2,1
+C-1908,Solar Gold,solar gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,1
+C-1909,Solar Green,solar green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,1
+C-1913,sonic Yellow,sonic yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,2,1
+C-1931,Steel Grey,steel grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,1
+C-1932,Steeple Grey,steeple grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,1
+C-1934,Still Blue,still blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1936,Stone Grey,stone grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,1
+C-1938,Stone Pink,stone pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1944,Summit White-Wolf Grey,summit white-wolf grey,,UNKNOWN,grey,DRAFT,#F1F0ED,承認済み複合名「summit white」を含む,,明確,1,1
+C-1949,SZA Black,sza black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-1950,Tai Chi Yellow,tai chi yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,1
+C-1952,Taro Purple,taro purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-1958,Team Anthracite,team anthracite,,UNKNOWN,anthracite,DRAFT,#383B3F,明示色語「anthracite」1件,,明確,1,1
+C-1960,Team Collegiate Red,team collegiate red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1968,Tech Green,tech green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1975,TNF Black,tnf black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,2,1
+C-1979,Tought Red,tought red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-1981,Trace Brown,trace brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,1
+C-1984,Triple White,triple white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1988,True White,true white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-1990,Truffle Salt Pink Salt,truffle salt pink salt,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-1992,Turbo Green,turbo green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,1
+C-1994,Turquoise Blue,turquoise blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-1998,Univertsity Red,univertsity red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-2661,Urban Orange,urban orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,1
+C-2007,Varisty Red,varisty red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,1
+C-2012,Varsity Purple,varsity purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,1
+C-2022,Vintage Green,vintage green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,12,1
+C-2037,Voltage Yellow,voltage yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,1
+C-2038,Wakame Black,wakame black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,1
+C-2043,Washed Blue,washed blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,1
+C-2047,Washed Pink,washed pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-2049,Whisp Of Pink,whisp of pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,1
+C-2050,White Cloud,white cloud,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-2056,Wings Jordan Red,wings jordan red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,1
+C-2057,Wolf Gray,wolf gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,1
+C-2061,Wonder Silver,wonder silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,1
+C-2065,Worn Blue,worn blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,5,1
+C-2071,Yellow Zest,yellow zest,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,1
+C-2072,Zebra Marmallow White,zebra marmallow white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,1
+C-2594,Aurora Ivory,aurora ivory,,UNKNOWN,,UNKNOWN,#F3EBDD,明示色語「ivory」1件,,明確,1,1
+C-2613,Crystal Sand,crystal sand,,UNKNOWN,,UNKNOWN,#CDBB9C,明示色語「sand」1件,,明確,1,1
+C-2168,Chalk Sapphire,chalk sapphire,,UNKNOWN,,UNKNOWN,#E9E4DA,明示色語「chalk」1件,,明確,1,1
+C-2234,Washed Sand,washed sand,,UNKNOWN,,UNKNOWN,#CDBB9C,明示色語「sand」1件,,明確,1,1
+C-1003,Hyper Blue,hyper blue,#2E6FDB,DRAFT,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,0
+C-1010,Airy Blue,airy blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1016,Alpine Green,alpine green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1018,Aluminum Blue,aluminum blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,0
+C-1024,Aquarius Blue,aquarius blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1037,Aster Pink,aster pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,0
+C-1040,Atmosphere Grey,atmosphere grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1046,Aurora Green,aurora green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1059,Beyond Pink,beyond pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1071,Black Hemp,black hemp,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,2,0
+C-1072,Black Hyper Jade,black hyper jade,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,0
+C-1076,Black Nubuck,black nubuck,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,2,0
+C-1077,Black Raspberry,black raspberry,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,4,0
+C-1080,Black Taxi,black taxi,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,0
+C-1082,Black Varsity,black varsity,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,0
+C-1083,Black Virginia,black virginia,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,0
+C-1088,Blue Beyond,blue beyond,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,3,0
+C-1094,Blue Fade,blue fade,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1095,Blue Fusion,blue fusion,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1096,Blue Gaze,blue gaze,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1098,Blue Hero,blue hero,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1104,Blue Violet,blue violet,,UNKNOWN,purple,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1109,Bold Blue,bold blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1111,Bold Green,bold green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1119,Bright Pink,bright pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1120,Brighton Grey,brighton grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1128,Brown Sugar,brown sugar,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1134,Burgundy Red,burgundy red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1154,Celestial Gold,celestial gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,0
+C-1161,Champion Red,champion red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1166,Charred Grey,charred grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1169,Cherry Red,cherry red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1180,Clay Grey,clay grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,0
+C-1190,Club Purple,club purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,0
+C-1191,Coal Brown,coal brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1197,Coffee Brown,coffee brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1198,College Blue,college blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1211,Cool Blue,cool blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1215,Cool Mid Gray,cool mid gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,0
+C-1216,Cool Mid Grey,cool mid grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1219,Core Grey,core grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1222,Cosmic Grey,cosmic grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,0
+C-1228,Cream Clay,cream clay,,UNKNOWN,cream,DRAFT,#F1E8D4,明示色語「cream」1件,,明確,1,0
+C-1230,Cream Kumquat,cream kumquat,,UNKNOWN,cream,DRAFT,#F1E8D4,明示色語「cream」1件,,明確,1,0
+C-1239,Dark Alpine Green,dark alpine green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1256,Dark Red,dark red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,0
+C-1258,Dark Silver Metallic,dark silver metallic,,UNKNOWN,silver,DRAFT,#BFC2C5,承認済み複合名「silver metallic」を含む,,明確,1,0
+C-1260,Dark Teal Blue,dark teal blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1262,Dawn Blue,dawn blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1265,Deep Brown,deep brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1267,Deep Navy,deep navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,1,0
+C-1281,Diffused Blue,diffused blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,4,0
+C-1282,Difused Blue,difused blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1286,Dragon Red,dragon red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,0
+C-1289,Drizzle Grey,drizzle grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,0
+C-1290,Dune Red,dune red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,3,0
+C-1295,Echo Pink,echo pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1299,Egret White,egret white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,0
+C-1301,Electro Orange,electro orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,0
+C-1310,Faded Purple,faded purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,0
+C-1311,Faded Yellow,faded yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,0
+C-1314,Feather Gray,feather gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,0
+C-1318,Fierce Pink,fierce pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,0
+C-1326,Flat Dark Gray,flat dark gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,0
+C-1327,Flat Mid Gray,flat mid gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,1,0
+C-1355,Ghost Green,ghost green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1357,Glacial Gray,glacial gray,,UNKNOWN,grey,DRAFT,#999999,明示色語「gray」1件,,明確,2,0
+C-1360,Global Blue,global blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,0
+C-1363,Glory Pink,glory pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1365,Glowing Pink,glowing pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1368,Gold Grain,gold grain,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,0
+C-1372,Gold Row,gold row,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,2,0
+C-1378,Granite Grey,granite grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1385,Green Gecko,green gecko,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1387,Green Haze,green haze,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1388,Green Lux,green lux,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,5,0
+C-1391,Green Shock,green shock,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1392,Green Spark,green spark,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1403,Grey Six,grey six,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1418,Gum Medium,gum medium,,UNKNOWN,gum,DRAFT,#B98753,明示色語「gum」1件,,明確,1,0
+C-1425,Halo Blue,halo blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1428,Hazy Green,hazy green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1437,Hibiscus Pink,hibiscus pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1452,Hyperlink Blue,hyperlink blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1459,Icy Pink,icy pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1474,Italy Blue,italy blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1491,Laser Blue,laser blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1494,Latte Cream,latte cream,,UNKNOWN,cream,DRAFT,#F1E8D4,明示色語「cream」1件,,明確,1,0
+C-1498,Legend Brown,legend brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,3,0
+C-1499,Legend Dark Brown,legend dark brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1501,Legend Medium Brown,legend medium brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,3,0
+C-1506,Light Arctic Grey,light arctic grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1520,Light Green Spark,light green spark,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1531,Light Sail,light sail,,UNKNOWN,sail,DRAFT,#EEE9DF,明示色語「sail」1件,,明確,1,0
+C-1537,Light Soft Pink,light soft pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,4,0
+C-1540,Light Zen Grey,light zen grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1544,Lime Green,lime green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1545,Lined Brown,lined brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1547,Lotus Pink,lotus pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1548,LT Armory Blue,lt armory blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1555,Luminous Green,luminous green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1560,Maritime Blue,maritime blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1563,Masi Blue,masi blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,0
+C-1564,Matallic Silver,matallic silver,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,1,0
+C-1569,Med Brown,med brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1572,Medium Brown,medium brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,0
+C-1575,Medium Pink,medium pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1584,Metallic Navy,metallic navy,,UNKNOWN,blue,DRAFT,#172B4D,明示色語「navy」1件,,明確,1,0
+C-1586,Metallic Purple,metallic purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,0
+C-1587,Metallic Red,metallic red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1592,Metallic Yellow,metallic yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,0
+C-1596,Midnight Blue,midnight blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1597,Midwest Gold,midwest gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,2,0
+C-1601,Mineral Green,mineral green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1609,Mint Green,mint green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1613,Mojave Brown,mojave brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,2,0
+C-1629,Mustard Yellow,mustard yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,0
+C-1630,Mystic Green,mystic green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1632,Mystic Red,mystic red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1635,Natural White,natural white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,0
+C-1647,New Green,new green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1657,Nuetral Olive,nuetral olive,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,1,0
+C-1659,Oat Beige,oat beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,1,0
+C-1676,Olive Night,olive night,,UNKNOWN,olive,DRAFT,#73784B,明示色語「olive」1件,,明確,1,0
+C-1678,Opal Blue,opal blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1682,Orange Glo,orange glo,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,0
+C-1684,Orb Pink,orb pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1685,Orbit Green,orbit green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1687,Orewood Brown,orewood brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,4,0
+C-1688,Outdoor Green,outdoor green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1700,Particle Beige,particle beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,1,0
+C-1705,Particloe Pink,particloe pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1706,Peaceful Blue,peaceful blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,0
+C-1708,Peach Cream,peach cream,,UNKNOWN,cream,DRAFT,#F1E8D4,明示色語「cream」1件,,明確,1,0
+C-1714,Pearlized Black,pearlized black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,0
+C-1716,Pearlized Racing Red,pearlized racing red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,0
+C-1718,Pelé Yellow,pelé yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,0
+C-1719,Pewter Grey,pewter grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1731,Pink Crush,pink crush,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,0
+C-1734,Pink Fire,pink fire,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1737,Pink Glaze,pink glaze,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,0
+C-1739,Pink Granite,pink granite,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1740,Pink Haze,pink haze,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1742,Pink Mesa,pink mesa,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1745,Pink Oxford,pink oxford,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,0
+C-1753,Pink Taffy,pink taffy,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,2,0
+C-1754,Pink Tint,pink tint,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-1756,Pink Wash,pink wash,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,0
+C-1759,Pitch Blue,pitch blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1761,Pitch Green,pitch green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1763,Platinum Grey,platinum grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1766,Polar Blue,polar blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1767,Port Royale Red,port royale red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1768,Powder Blue,powder blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,3,0
+C-1773,Preloved Blue,preloved blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1776,Preloved Red,preloved red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,2,0
+C-1779,Pro Green,pro green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,3,0
+C-1780,Pro Purple,pro purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,0
+C-1789,Pure Purple,pure purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,0
+C-1793,Purple Dynasty,purple dynasty,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,1,0
+C-1800,Racing Blue,racing blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1807,Red Crush,red crush,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1814,Red Sepia,red sepia,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1816,Red Tattoo,red tattoo,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1819,Regal Blue,regal blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,0
+C-1821,Regal Purple,regal purple,,UNKNOWN,purple,DRAFT,#80559C,明示色語「purple」1件,,明確,2,0
+C-1823,Rickie Orange,rickie orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,2,0
+C-1829,Rough Green,rough green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,3,0
+C-1834,Rugged Orange,rugged orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,3,0
+C-1841,Safety Yellow,safety yellow,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,2,0
+C-1843,Sage Green,sage green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1847,Sand Drift,sand drift,,UNKNOWN,,UNKNOWN,#CDBB9C,明示色語「sand」1件,,明確,2,0
+C-1852,Satellite Grey,satellite grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1853,Saturn Gold,saturn gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,0
+C-1859,Seal Brown,seal brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1862,Semi Green Spark,semi green spark,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1875,Shadow Green,shadow green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1881,Shocking Orange,shocking orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,0
+C-1892,Silver Mist,silver mist,,UNKNOWN,silver,DRAFT,#BFC2C5,明示色語「silver」1件,,明確,2,0
+C-1900,Slime Green,slime green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,1,0
+C-1901,Slitt Red,slitt red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-1905,Soft Pink,soft pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,3,0
+C-1914,Souvenir Faded Black,souvenir faded black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,1,0
+C-1916,Souvenir Oatmeal Beige,souvenir oatmeal beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,1,0
+C-1920,Sport Blue,sport blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,2,0
+C-1921,Sport Gold,sport gold,,UNKNOWN,gold,DRAFT,#C6A34A,明示色語「gold」1件,,明確,1,0
+C-1925,Star Blue,star blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1928,Stealth White,stealth white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,0
+C-1939,Storm Blue,storm blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1940,Stucco White,stucco white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,0
+C-1941,Suadron Blue,suadron blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1942,Summit Grey,summit grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,1,0
+C-1945,Sunblush Orange,sunblush orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,0
+C-1954,Taupe Brown,taupe brown,,UNKNOWN,brown,DRAFT,#795548,明示色語「brown」1件,,明確,1,0
+C-1955,Taupe Grey,taupe grey,,UNKNOWN,grey,DRAFT,#999999,明示色語「grey」1件,,明確,2,0
+C-1963,Team Orange,team orange,,UNKNOWN,orange,DRAFT,#D97732,明示色語「orange」1件,,明確,1,0
+C-1974,Tint Oil Green,tint oil green,,UNKNOWN,green,DRAFT,#40734C,明示色語「green」1件,,明確,2,0
+C-1991,Tumbled Rigid Blue,tumbled rigid blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-1995,Undyed White,undyed white,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,4,0
+C-1999,Univetrsity Red,univetrsity red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-2002,Urgent Red,urgent red,,UNKNOWN,red,DRAFT,#C62828,明示色語「red」1件,,明確,1,0
+C-2009,Varsity Gum,varsity gum,,UNKNOWN,gum,DRAFT,#B98753,明示色語「gum」1件,,明確,1,0
+C-2018,Venetian Blue,venetian blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-2019,Venom Pink,venom pink,,UNKNOWN,pink,DRAFT,#E5A0B5,明示色語「pink」1件,,明確,1,0
+C-2040,Warm Beige,warm beige,,UNKNOWN,beige,DRAFT,#D8C6A6,明示色語「beige」1件,,明確,1,0
+C-2042,Washed Black,washed black,,UNKNOWN,black,DRAFT,#171717,明示色語「black」1件,,明確,6,0
+C-2052,White Glow,white glow,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,0
+C-2053,White Onyx,white onyx,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,0
+C-2055,White Swan,white swan,,UNKNOWN,white,DRAFT,#FFFFFF,明示色語「white」1件,,明確,1,0
+C-2060,Wonder Blue,wonder blue,,UNKNOWN,blue,DRAFT,#2864A0,明示色語「blue」1件,,明確,1,0
+C-2069,Yellow Sizzle,yellow sizzle,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,0
+C-2070,Yellow Strike,yellow strike,,UNKNOWN,yellow,DRAFT,#E6C53B,明示色語「yellow」1件,,明確,1,0
+C-2606,Chalk Pearl,chalk pearl,,UNKNOWN,,UNKNOWN,#E9E4DA,明示色語「chalk」1件,,明確,1,0
+C-2122,Natural Ivory,natural ivory,,UNKNOWN,,UNKNOWN,#F3EBDD,明示色語「ivory」1件,,明確,1,0
+C-2197,Legend Sand,legend sand,,UNKNOWN,,UNKNOWN,#CDBB9C,明示色語「sand」1件,,明確,2,0
+C-2331,Desert Sand,desert sand,,UNKNOWN,,UNKNOWN,#CDBB9C,明示色語「sand」1件,,明確,1,0
+C-2400,Obsidian Cyber,obsidian cyber,,UNKNOWN,,UNKNOWN,#252B42,明示色語「obsidian」1件,,明確,1,0
+C-2401,Obsidian Pale,obsidian pale,,UNKNOWN,,UNKNOWN,#252B42,明示色語「obsidian」1件,,明確,1,0
+C-2433,Volt Glow,volt glow,,UNKNOWN,,UNKNOWN,#C8ED36,明示色語「volt」1件,,明確,1,0
+C-2560,Lemon Chrome,lemon chrome,,UNKNOWN,,UNKNOWN,#E3DFD0,明示色語「chrome」1件,,明確,1,0
+C-1625,Multicolor,multicolor,,UNKNOWN,,UNKNOWN,,,特殊色（単色HEXを付けない）,特殊,58,53
+C-1622,Multi,multi,,UNKNOWN,,UNKNOWN,,,特殊色（単色HEXを付けない）,特殊,66,23
+C-1624,Multi-Color,multi-color,,UNKNOWN,,UNKNOWN,,,特殊色（単色HEXを付けない）,特殊,15,12
+C-1185,Clear Pink,clear pink,,UNKNOWN,pink,DRAFT,,,透明系（不透明単色にしない）,特殊,10,9
+C-1182,Clear,clear,,UNKNOWN,,UNKNOWN,,,透明系（不透明単色にしない）,特殊,7,5
+C-2608,Clear Granite,clear granite,,UNKNOWN,,UNKNOWN,,,透明系（不透明単色にしない）,特殊,4,3
+C-2609,Clear Sky,clear sky,,UNKNOWN,,UNKNOWN,,,透明系（不透明単色にしない）,特殊,4,2
+C-1183,Clear Blue,clear blue,,UNKNOWN,blue,DRAFT,,,透明系（不透明単色にしない）,特殊,1,1
+C-2391,Multi-Color-Sail-Game Royal,multi-color-sail-game royal,,UNKNOWN,,UNKNOWN,,,特殊色（単色HEXを付けない）,特殊,1,1
+C-1184,Clear Mint,clear mint,,UNKNOWN,green,DRAFT,,,透明系（不透明単色にしない）,特殊,1,0
+C-1953,Taupe,taupe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,30,15
+C-1468,Infrared 23,infrared 23,#EF354B,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,17,14
+C-2634,Night Indigo,night indigo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,19,14
+C-1675,Olive Grey,olive grey,,UNKNOWN,grey,DRAFT,,,"明示色語が複数競合: grey,olive",要確認,13,13
+C-1696,Palomino,palomino,#A67C52,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,15,13
+C-2618,Earth Strata,earth strata,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,15,13
+C-1114,Bright Crimson,bright crimson,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,31,12
+C-1512,Light Bone,light bone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,31,12
+C-1513,Light British Tan,light british tan,,UNKNOWN,tan,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,15,12
+C-1546,Linen,linen,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,15,12
+C-1561,Maroon,maroon,#713642,DRAFT,maroon,CONFIRMED,,,明示色語なし（パレットに対応語なし）,要確認,23,12
+C-1145,Carbon,carbon,#35393B,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,12,11
+C-1623,Multi Color,multi color,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,34,11
+C-1710,Pearl,pearl,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,15,11
+C-1871,Sesame,sesame,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,25,11
+C-1951,Tan,tan,#C49A6C,DRAFT,tan,CONFIRMED,,,明示色語なし（パレットに対応語なし）,要確認,22,11
+C-1957,Teal,teal,#287F82,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,26,11
+C-2280,Raincloud,raincloud,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,11,11
+C-1305,Enigma Stone,enigma stone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,12,10
+C-1443,Hydrangeas,hydrangeas,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,13,10
+C-1848,Sanddrift,sanddrift,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,23,10
+C-2048,Wheat,wheat,#D4B17A,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,18,10
+C-1011,Alabaster,alabaster,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,12,9
+C-1330,Flax,flax,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,15,9
+C-1419,Gum Medium Brown,gum medium brown,,UNKNOWN,brown,DRAFT,,,"明示色語が複数競合: brown,gum",要確認,12,9
+C-1595,Midnight,midnight,#20283D,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,9
+C-2592,Aurora Coffee,aurora coffee,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,9
+C-2656,Warm Vanilla,warm vanilla,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,9
+C-2161,Aura,aura,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,10,9
+C-2354,Gridiron,gridiron,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,11,9
+C-1492,Laser Fuchsia,laser fuchsia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,14,8
+C-1628,Muslin,muslin,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,18,8
+C-1670,Old Royal,old royal,#31549A,DRAFT,,UNKNOWN,,,誤字候補の語を含む: old,要確認,9,8
+C-1704,Particle Rose,particle rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,12,8
+C-1758,Pinksicle,pinksicle,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,11,8
+C-2644,Pure Ruby,pure ruby,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,8
+C-2171,China Rose,china rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,8
+C-2427,Tattoo,tattoo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,8
+C-2458,Glacier,glacier,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,10,8
+C-1133,Burgundy Crush,burgundy crush,,UNKNOWN,burgundy,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,9,7
+C-1138,Cacao Wow,cacao wow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,13,7
+C-1298,Egret,egret,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,7
+C-1417,Gum Light Brown,gum light brown,,UNKNOWN,brown,DRAFT,,,"明示色語が複数競合: brown,gum",要確認,18,7
+C-1626,Mushroom,mushroom,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,7
+C-1870,Sequoia,sequoia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,10,7
+C-2010,Varsity Maize,varsity maize,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,13,7
+C-2652,Supplier Colour,supplier colour,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,7
+C-2659,Wonder Mauve,wonder mauve,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,7
+C-2408,Platinum Tint,platinum tint,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: tint,要確認,15,7
+C-2451,Cinder,cinder,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,7
+C-2453,Dew,dew,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,7
+C-2464,Ice,ice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,13,7
+C-1151,Castlerock,castlerock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,6
+C-1296,Eclipse,eclipse,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,13,6
+C-1432,Hemp,hemp,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,17,6
+C-2014,Varsity Royal,varsity royal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,6
+C-2025,Violet,violet,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,9,6
+C-2595,Aurora Ivy,aurora ivy,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,6
+C-2163,Bright Mango,bright mango,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,6
+C-1085,Bleached Lilac,bleached lilac,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,6,5
+C-1322,Fir,fir,#365747,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,5
+C-1430,Heather,heather,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,5
+C-1450,Hyper Royal,hyper royal,#2458BC,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,11,5
+C-1476,Jade Horizon,jade horizon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,5
+C-1558,Malachite,malachite,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,11,5
+C-1571,Medium Ash,medium ash,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,11,5
+C-1580,Metallic,metallic,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,5
+C-1643,Neutral,neutral,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,15,5
+C-1856,Sea Glass,sea glass,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,5
+C-1927,Stealth,stealth,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,5
+C-1989,Truffle Salt,truffle salt,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,5
+C-1993,Turquoise,turquoise,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,5
+C-2590,Alumina,alumina,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,5
+C-2192,Jade Aura,jade aura,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,5
+C-2245,Arid Stone,arid stone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,5
+C-2365,Light Army,light army,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,5
+C-2371,Light Iron Ore,light iron ore,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,5
+C-1061,Birch,birch,#D8C7A8,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,4
+C-1108,Bold Berry,bold berry,#842C55,DRAFT,,UNKNOWN,,,誤字候補の語を含む: bold,要確認,4,4
+C-1113,Bright Concord,bright concord,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,4
+C-1193,Cobalt Bliss,cobalt bliss,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,13,4
+C-1242,Dark Blue Grey,dark blue grey,,UNKNOWN,grey,DRAFT,,,"明示色語が複数競合: blue,grey",要確認,4,4
+C-1275,Desert Camo,desert camo,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,4,4
+C-1376,Grain,grain,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,4
+C-1446,Hyper Jade,hyper jade,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,4
+C-1637,Navy Blue,navy blue,,UNKNOWN,blue,DRAFT,,,"明示色語が複数競合: blue,navy",要確認,14,4
+C-1660,Oatmeal,oatmeal,#D9CCB4,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,4
+C-1858,Seafoam,seafoam,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,9,4
+C-1935,Stone,stone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,4
+C-2626,Iron Metallic,iron metallic,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,4
+C-2660,Wonder Quartz,wonder quartz,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,4
+C-2187,Glow N The Dark,glow n the dark,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,4
+C-2189,Iced Carmine,iced carmine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,4
+C-2191,Iris Whisper,iris whisper,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,4
+C-2220,Starfish,starfish,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,16,4
+C-2281,Reflection,reflection,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,4
+C-2283,Rosewood,rosewood,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,4
+C-2292,Timberwolf,timberwolf,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,4
+C-2373,Light Magenta,light magenta,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,4
+C-2386,Metallic Platinum,metallic platinum,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,4
+C-2442,Alloy,alloy,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,4
+C-2456,Fog,fog,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,4
+C-2476,Salt,salt,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,4
+C-2553,Vanilla Ice,vanilla ice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,10,4
+C-1051,Barely Grape,barely grape,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,3
+C-1112,Bone,bone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,3
+C-1144,Canyon Rust,canyon rust,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,3
+C-1160,Champagne,champagne,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1162,Charcoal,charcoal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,3
+C-1170,Chestnut Brown,chestnut brown,,UNKNOWN,brown,DRAFT,,,"明示色語が複数競合: brown,chestnut",要確認,4,3
+C-1179,Clay Canyon,clay canyon,#B66E51,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1195,Cocoa Powder,cocoa powder,#705042,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1201,Collegiate Burgundy,collegiate burgundy,,UNKNOWN,burgundy,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,6,3
+C-1246,Dark Concord,dark concord,#44316C,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1264,Daybreak,daybreak,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,3
+C-1271,Denim,denim,#476A8C,DRAFT,,UNKNOWN,,,柄・パターン系の語を含む,要確認,5,3
+C-1272,Denim Turquoise,denim turquoise,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,4,3
+C-1276,Desert Dust,desert dust,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: dust,要確認,4,3
+C-1297,Eggshell,eggshell,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1328,Flat Pewter,flat pewter,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,3
+C-1332,Flint,flint,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1343,Fossil,fossil,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,3
+C-1348,Frost,frost,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,11,3
+C-1354,Ghost,ghost,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1410,Guava Ice,guava ice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,3
+C-1440,Hot Lava,hot lava,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,3
+C-1455,Ice Lavender,ice lavender,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1466,Indigo Denim,indigo denim,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,5,3
+C-1567,Mauve,mauve,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,10,3
+C-1603,Mint,mint,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,13,3
+C-1617,Moonlight,moonlight,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-1830,Royal,royal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,3
+C-1946,Sundial,sundial,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,3
+C-2021,Vintage Coral,vintage coral,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,3
+C-2030,Violet Mist,violet mist,,UNKNOWN,purple,DRAFT,,,誤字候補の語を含む: mist,要確認,3,3
+C-2636,None,none,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: none,要確認,3,3
+C-2125,Bubble Ice,bubble ice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2144,Oat Milk,oat milk,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,3
+C-2172,Cinnabar,cinnabar,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2175,Dark Cinder,dark cinder,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2178,Dark Shadow,dark shadow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,3
+C-2179,Dark Sulfur,dark sulfur,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,3
+C-2185,Fierce Pruple,fierce pruple,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2204,Lime Blast,lime blast,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2223,Sweet Beet,sweet beet,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2307,Birch Heather,birch heather,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,3
+C-2312,Bright Citrus,bright citrus,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2325,Dark Hazel,dark hazel,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2376,Lightening,lightening,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2406,Peony,peony,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2419,Soft Pearl,soft pearl,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,3
+C-2429,Taupe Haze,taupe haze,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2430,Team Crimson,team crimson,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: team,要確認,3,3
+C-2513,Papaya,papaya,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,8,3
+C-2547,Rainy Day,rainy day,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2565,Rose Quartz,rose quartz,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,3
+C-2569,Burnt Cedar,burnt cedar,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,3
+C-2582,KPop Demon Hunters Rumi,kpop demon hunters rumi,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: demon,要確認,3,3
+C-1048,Back,back,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: back,要確認,2,2
+C-1060,Biege,biege,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-1062,Bisque,bisque,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-1132,Burgundy Ash,burgundy ash,,UNKNOWN,burgundy,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,5,2
+C-1139,Camo Green,camo green,,UNKNOWN,green,DRAFT,,,柄・パターン系の語を含む,要確認,5,2
+C-1175,Chrome Grey,chrome grey,,UNKNOWN,grey,DRAFT,,,"明示色語が複数競合: chrome,grey",要確認,6,2
+C-1177,Cinnamon,cinnamon,#A96543,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-1210,Concrete,concrete,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-1245,Dark Cherry,dark cherry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,11,2
+C-1255,Dark Raisin,dark raisin,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,2
+C-1268,Deep royal,deep royal,#214BA0,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,2
+C-1273,Desert,desert,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,2
+C-1274,Desert Berry,desert berry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-1278,Desert Ochre,desert ochre,#B47738,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-1288,Driftwood,driftwood,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-1379,Grape Ice,grape ice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,2
+C-1415,Gum Dark Brown,gum dark brown,,UNKNOWN,brown,DRAFT,,,"明示色語が複数競合: brown,gum",要確認,3,2
+C-1420,Gum Yellow,gum yellow,,UNKNOWN,yellow,DRAFT,,,"明示色語が複数競合: gum,yellow",要確認,3,2
+C-1445,Hyper Crimson,hyper crimson,#D51C45,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-1471,Iron,iron,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-1496,Lavender Glow,lavender glow,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-1524,Light Lemon Twist,light lemon twist,#F2EF9D,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,2
+C-1533,Light Sapphire,light sapphire,#80A7D8,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-1538,Light Violet,light violet,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-1557,Magnet,magnet,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,2
+C-1633,Natural,natural,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,2
+C-1666,Off-Noir,off-noir,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-1707,Peach,peach,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-1764,Platinum Violet,platinum violet,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,9,2
+C-1842,Sage,sage,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,2
+C-1929,Steel,steel,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-1985,True Black Denim,true black denim,,UNKNOWN,black,DRAFT,,,柄・パターン系の語を含む,要確認,2,2
+C-2004,Vanilla,vanilla,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,2
+C-2023,Vintage Lilac,vintage lilac,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2063,Woodland Camo Green,woodland camo green,,UNKNOWN,green,DRAFT,,,柄・パターン系の語を含む,要確認,2,2
+C-2604,Cardboard,cardboard,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2620,Flash Aqua,flash aqua,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2627,Light Denim,light denim,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,2,2
+C-2631,Medium Vintage Denim,medium vintage denim,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,2,2
+C-2638,Onix,onix,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2640,Powder Plum,powder plum,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2642,Preloved Ink,preloved ink,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2650,Solar Turbo,solar turbo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2073,Wonder Sage,wonder sage,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2084,Dragon Fruit,dragon fruit,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2113,Cheetah,cheetah,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2117,Fossilized,fossilized,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2128,Milk Chocolate,milk chocolate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2134,Carnation,carnation,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2135,Classic Mauve,classic mauve,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2152,Stardust,stardust,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,2
+C-2194,Laser Fushia,laser fushia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2199,Light Aqua,light aqua,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2203,Light Wild Mango,light wild mango,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2209,New Emerald,new emerald,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,2
+C-2211,Night Stadium,night stadium,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2222,Swan,swan,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2225,Total Crimson,total crimson,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-2230,Liquorice,liquorice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2244,Angora,angora,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,2
+C-2251,Castle Rock,castle rock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,2
+C-2252,Cortado,cortado,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2257,Dark Olivine,dark olivine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,2
+C-2278,Pumpernickel,pumpernickel,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2291,Timber Wolf,timber wolf,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-2294,Turtledove,turtledove,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2296,Vintage Indigo,vintage indigo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2299,Amarillo,amarillo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-2303,Ashen Slate,ashen slate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-2308,Bleached Turquoise,bleached turquoise,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2339,Filbert,filbert,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2342,Fire,fire,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2345,Fresh Water,fresh water,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-2348,Fuchsia Glow,fuchsia glow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2394,Mystic Dates,mystic dates,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2399,Oasis Teal,oasis teal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2410,Polar,polar,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-2426,Tatto Silt,tatto silt,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2439,Nolita,nolita,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2447,Biscuit,biscuit,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2463,Heron,heron,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2465,Iceberg,iceberg,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2466,Lily,lily,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2470,Oyster,oyster,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2471,Quiet Shade,quiet shade,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2473,Rock,rock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,2
+C-2480,Sphinx,sphinx,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2481,Suft The Web,suft the web,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2484,Thorn,thorn,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2488,Wolf,wolf,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2524,Almond Milk,almond milk,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,2
+C-2529,Cosmic Sky,cosmic sky,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2541,Lunar Rock,lunar rock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2575,Sierra Taupe,sierra taupe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2577,Timberwolf Taupe,timberwolf taupe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,2
+C-2580,KPop Demon Hunters Derpy,kpop demon hunters derpy,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: demon,要確認,2,2
+C-2581,KPop Demon Hunters Mira,kpop demon hunters mira,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: demon,要確認,2,2
+C-2583,KPop Demon Hunters Zoey,kpop demon hunters zoey,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: demon,要確認,2,2
+C-1017,Aluminum,aluminum,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-1039,Atmosphere,atmosphere,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-1086,Bliss Lilac,bliss lilac,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1093,Blue Denim,blue denim,,UNKNOWN,blue,DRAFT,,,柄・パターン系の語を含む,要確認,1,1
+C-1097,Blue Grey,blue grey,,UNKNOWN,grey,DRAFT,,,"明示色語が複数競合: blue,grey",要確認,12,1
+C-1116,Bright Lavender,bright lavender,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1141,Cannon,cannon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1176,Chrome Yellow,chrome yellow,,UNKNOWN,yellow,DRAFT,,,"明示色語が複数競合: chrome,yellow",要確認,1,1
+C-1221,Cosmic Clay,cosmic clay,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,1
+C-1234,Crimson Tint,crimson tint,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: tint,要確認,3,1
+C-1244,Dark Charcoal,dark charcoal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,1
+C-1253,Dark Pony,dark pony,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,7,1
+C-1266,Deep Maroon,deep maroon,,UNKNOWN,maroon,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1292,Dusty Amethyst,dusty amethyst,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,1
+C-1325,Flash Crimson,flash crimson,#D91F3D,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1334,Floral Rivets Black,floral rivets black,,UNKNOWN,black,DRAFT,,,柄・パターン系の語を含む,要確認,1,1
+C-1347,Fresh Mint,fresh mint,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1349,Fuchsia,fuchsia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1367,Gold Chrome,gold chrome,,UNKNOWN,gold,DRAFT,,,"明示色語が複数競合: chrome,gold",要確認,1,1
+C-1375,Gradient Blue,gradient blue,,UNKNOWN,blue,DRAFT,,,柄・パターン系の語を含む,要確認,1,1
+C-1426,Halo Mint,halo mint,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1438,Honey,honey,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1442,Hot Punch,hot punch,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,1
+C-1460,Igloo,igloo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,1
+C-1464,Indigo,indigo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-1470,Iridescent,iridescent,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1482,Khaki Green,khaki green,,UNKNOWN,green,DRAFT,,,"明示色語が複数競合: green,khaki",要確認,2,1
+C-1495,Lavender,lavender,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1504,Lemon Spark,lemon spark,#F4E45B,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1515,Light Chocolate,light chocolate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-1539,Light Violet Ore,light violet ore,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1541,Lilac,lilac,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1542,Lilac Ash,lilac ash,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1570,Medium,medium,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1605,Mint Faom,mint faom,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1606,Mint Flash,mint flash,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1608,Mint Foam,mint foam,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,7,1
+C-1620,Moss,moss,#667A4A,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1654,Noble Maroon,noble maroon,,UNKNOWN,maroon,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1658,Oat,oat,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-1662,Obsidian Grey,obsidian grey,,UNKNOWN,grey,DRAFT,,,"明示色語が複数競合: grey,obsidian",要確認,2,1
+C-1669,Old Rose,old rose,#B9828B,DRAFT,,UNKNOWN,,,誤字候補の語を含む: old,要確認,1,1
+C-1674,Olive Green,olive green,,UNKNOWN,green,DRAFT,,,"明示色語が複数競合: green,olive",要確認,2,1
+C-1709,Pear,pear,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: pear,要確認,4,1
+C-1720,Phantom Sail,phantom sail,,UNKNOWN,sail,DRAFT,,,"明示色語が複数競合: phantom,sail",要確認,1,1
+C-1762,Platinum,platinum,#D3D3CF,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1772,Prairie Tan,prairie tan,,UNKNOWN,tan,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1802,Rainy Lake,rainy lake,#6E9CB2,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-1826,Rose,rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-1832,Ruby,ruby,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-1879,Sharkskin,sharkskin,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-1956,Taxi,taxi,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,1
+C-1962,Team Navy Blue 2,team navy blue 2,,UNKNOWN,blue,DRAFT,,,"明示色語が複数競合: blue,navy",要確認,1,1
+C-1967,Team Violet,team violet,,UNKNOWN,purple,DRAFT,,,誤字候補の語を含む: team,要確認,1,1
+C-2000,Urban Lilac,urban lilac,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2020,Vintage Blue Denim,vintage blue denim,,UNKNOWN,blue,DRAFT,,,柄・パターン系の語を含む,要確認,1,1
+C-2026,Violet Crush,violet crush,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2027,Violet Dust,violet dust,,UNKNOWN,purple,DRAFT,,,誤字候補の語を含む: dust,要確認,1,1
+C-2029,Violet Fusion,violet fusion,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2031,Viotech,viotech,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,1
+C-2039,Walnut,walnut,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2044,Washed Burgundy,washed burgundy,,UNKNOWN,burgundy,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2045,Washed Coral,washed coral,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-2054,White Reflective Silver,white reflective silver,,UNKNOWN,silver,DRAFT,,,"明示色語が複数競合: silver,white",要確認,1,1
+C-2066,Worn Blue Denim,worn blue denim,,UNKNOWN,blue,DRAFT,,,柄・パターン系の語を含む,要確認,1,1
+C-2593,Aurora Ink,aurora ink,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2596,Aurora Plum,aurora plum,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2597,Aurura Ivy,aurura ivy,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2598,Better Sarlet,better sarlet,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: sarlet,要確認,1,1
+C-2600,Blanch Cargo,blanch cargo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2601,Bliss,bliss,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2602,Bright Royal,bright royal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2605,Cardon,cardon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2607,Charcoal Night,charcoal night,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2610,Collegiate Gren,collegiate gren,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: gren,要確認,1,1
+C-2611,Core Balck,core balck,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2612,Crystal Linen,crystal linen,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2614,Crystal Sky,crystal sky,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2615,Dark Marine,dark marine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2616,Dusty Ink,dusty ink,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2617,Earth Strat,earth strat,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2621,Flash Lime,flash lime,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2622,Frozen Lemon,frozen lemon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2623,Frozen Turbo,frozen turbo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2624,Ice Lavendor,ice lavendor,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: lavendor,要確認,1,1
+C-2625,Ice Tangerine,ice tangerine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2628,Lime Burst,lime burst,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2629,Lucid Aquamarine,lucid aquamarine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2630,Lucid Lemon,lucid lemon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2632,Mesa,mesa,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2633,Mystery Petrol,mystery petrol,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2639,Orchid Fusion,orchid fusion,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2641,Preloved Fig,preloved fig,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2645,Pure Sulfur,pure sulfur,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2649,Solar Lemon,solar lemon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2651,St Tropic Bloom,st tropic bloom,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2653,Talc,talc,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2654,Tech Emerald,tech emerald,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2657,Wondeer Mauve,wondeer mauve,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2658,Wonder Clay,wonder clay,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2076,Zero Metallic,zero metallic,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2082,Concrete Barely Rose,concrete barely rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2083,Coneflower,coneflower,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2085,Forest Night,forest night,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2088,Metropolis,metropolis,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2090,Peppermint,peppermint,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2091,Pond,pond,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2092,Port Royal,port royal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2093,Putty,putty,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2094,Raspberry,raspberry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2095,Restful Teal,restful teal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2096,Rusted Rock,rusted rock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2099,Storm Cloud,storm cloud,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2100,Sun Coral,sun coral,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2101,Terracotta,terracotta,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2102,Umeboshi,umeboshi,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2103,Verdigris,verdigris,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2105,Light Rose,light rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2106,Mocha,mocha,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2108,Camo,camo,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,1,1
+C-2109,Berry,berry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2110,Berry Shady,berry shady,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2111,Camouflage,camouflage,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,1,1
+C-2112,Canyon Dusk,canyon dusk,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2114,Clean Slate,clean slate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2116,Flamingo Fade,flamingo fade,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: fade,要確認,1,1
+C-2119,Hail Clay,hail clay,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: hail,要確認,2,1
+C-2120,Hot Tea,hot tea,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: tea,要確認,1,1
+C-2121,Ink,ink,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2123,Open Sky,open sky,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2127,Espresso,espresso,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2129,Moon Burst,moon burst,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2130,Sepia,sepia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2132,Shade,shade,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2136,Crabapple,crabapple,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2137,Date Sugar,date sugar,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2138,Date Syrup,date syrup,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2139,Deep Mauve,deep mauve,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2141,Electric Aqua,electric aqua,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2142,Kiwi,kiwi,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2143,Neon Dragonfruit,neon dragonfruit,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2146,Pepper,pepper,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2147,Quartzite,quartzite,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2148,Rose Latte,rose latte,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2150,Sour Lemon,sour lemon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2151,Squid Ink,squid ink,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2154,Stucco,stucco,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2157,Animal Illusion,animal illusion,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,1,1
+C-2159,Aquatone,aquatone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2165,Canvas,canvas,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2169,Chambray,chambray,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2174,Copa,copa,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2180,Dark Sulphur,dark sulphur,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2181,Dusty Cactus,dusty cactus,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2184,Fiberglass,fiberglass,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2190,Infrared,infrared,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2198,Lemonade,lemonade,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2201,Light Grape,light grape,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2210,Newsprint,newsprint,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2213,Pin,pin,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: pin,要確認,1,1
+C-2214,Pinik Foam,pinik foam,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: pinik,要確認,1,1
+C-2216,Rush Coral,rush coral,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: rush,要確認,1,1
+C-2217,Rust,rust,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2218,Spruce Fog,spruce fog,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2219,Squadron,squadron,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2228,Wild Grape,wild grape,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2231,Mutlicolor,mutlicolor,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2232,Camoflauge,camoflauge,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2233,Magenta,magenta,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2236,Whte,whte,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: whte,要確認,2,1
+C-2239,Carolina,carolina,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2243,Torquoise,torquoise,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: torquoise,要確認,1,1
+C-2247,Bayberry,bayberry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2250,Casterock,casterock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2253,Cyber Jade,cyber jade,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2254,Dark Camo,dark camo,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,1,1
+C-2256,Dark Night,dark night,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2260,Electric Indigo,electric indigo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2261,Frosted Glass,frosted glass,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-2262,Garter Snake,garter snake,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,1,1
+C-2263,Ice Wine,ice wine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2264,Incense,incense,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-2265,Licorice,licorice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2267,Lone Star,lone star,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: lone,要確認,1,1
+C-2268,Magnet Fade,magnet fade,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: fade,要確認,1,1
+C-2270,Mono Cortado,mono cortado,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2271,Moonbeam,moonbeam,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,1
+C-2273,New Balance 103,new balance 103,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2275,Nimbus Cloud,nimbus cloud,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2282,Rose Sugar,rose sugar,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2285,Shipyard,shipyard,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2287,Stoneare,stoneare,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2288,Stoneware,stoneware,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2290,Taro,taro,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2293,Tornado,tornado,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2297,Wakame,wakame,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2302,Artisan Teal,artisan teal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2309,Blur,blur,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: blur,要確認,1,1
+C-2310,Bordeaux,bordeaux,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2311,Bright Ceramic,bright ceramic,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,1
+C-2316,Butler Jimmy,butler jimmy,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2322,Cucumber Calm,cucumber calm,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2324,Dark Driftwood,dark driftwood,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2326,Dark Pewter,dark pewter,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2330,Deer Forest,deer forest,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2333,Diffused Taupe,diffused taupe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2335,Doncic Luka,doncic luka,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2336,Dusted Clay,dusted clay,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2337,Emerald Rise,emerald rise,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2338,Energy,energy,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2340,Fir Alabaster,fir alabaster,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2346,Freshwater,freshwater,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2347,Fuchsia Blast,fuchsia blast,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2351,Golden Hops,golden hops,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2353,Granite,granite,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2355,Hot Curry,hot curry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2356,Hot Fuchsia,hot fuchsia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2357,Hot Punck,hot punck,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2358,Hyper Turquoise,hyper turquoise,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2360,James Lebron 23,james lebron 23,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2361,Lapis,lapis,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2363,Lemon Venom,lemon venom,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2364,Light,light,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2366,Light Bordeaux,light bordeaux,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2367,Light Boulder,light boulder,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2369,Light Carnation,light carnation,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2370,Light Charcoal,light charcoal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2374,Light Pumice,light pumice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2375,Light Stone,light stone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2377,Lightning,lightning,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2380,Magic Ember,magic ember,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: ember,要確認,3,1
+C-2382,Metallic Copper,metallic copper,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,1
+C-2383,Metallic Hematite,metallic hematite,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2384,Metallic Pewter,metallic pewter,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2385,Metallic PLatinm,metallic platinm,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: platinm,要確認,1,1
+C-2387,Metallic Platinum Tattoo,metallic platinum tattoo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2388,Metallic Summit,metallic summit,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2390,Moon Particle,moon particle,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2392,Multi-Colour,multi-colour,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2393,Muticolor,muticolor,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2398,Nurgundy Crush,nurgundy crush,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: nurgundy,要確認,1,1
+C-2402,Ochre,ochre,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2405,Pencil Point,pencil point,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2414,Ridgerock,ridgerock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2417,Sapphire,sapphire,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2418,Smokey Mauve,smokey mauve,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: smokey,要確認,5,1
+C-2421,Steam,steam,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2423,Sundown,sundown,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2424,Sunset,sunset,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2428,Tattoo Silt,tattoo silt,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2431,Thunderstorm,thunderstorm,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2436,Zest,zest,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2438,New York,new york,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2440,Pristine,pristine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2445,Ash,ash,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2446,Bark,bark,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2448,Blonde,blonde,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2449,Bloom,bloom,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2450,Bubblegum,bubblegum,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2457,Foxglove,foxglove,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2459,Gobi,gobi,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2462,Grove,grove,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2467,Marsh,marsh,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2472,Robin,robin,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2475,Sakura,sakura,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2478,Shell,shell,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2479,Soba,soba,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2485,Truffle,truffle,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2486,Tundra,tundra,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2489,Zodiac,zodiac,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2490,Bown,bown,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: bown,要確認,1,1
+C-2491,All Over Print,all over print,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,1,1
+C-2492,Alpine Snow,alpine snow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2493,AOP,aop,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,3,1
+C-2496,Chocolate,chocolate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2498,Chocolate Fondue,chocolate fondue,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2505,Grape,grape,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2506,Haute Coffee,haute coffee,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,1
+C-2509,Jasmine Flower,jasmine flower,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2511,Mauved Out,mauved out,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: mauved,要確認,1,1
+C-2512,Nasturtium,nasturtium,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2516,Ravish,ravish,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2518,Ruby Shimmer,ruby shimmer,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2519,Sugared Almond,sugared almond,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2520,Sun Struck,sun struck,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-2521,Totally Taupe,totally taupe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2523,Wine,wine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2526,Bitter Chocolate,bitter chocolate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2527,Burro,burro,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2528,Cloudburst,cloudburst,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2532,Eucalyptus,eucalyptus,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2533,Excalibur,excalibur,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2536,French Roast,french roast,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2538,Hollyhock,hollyhock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2544,Nine Iron,nine iron,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: nine,要確認,1,1
+C-2545,Paloma,paloma,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2546,Plum Perfect,plum perfect,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,1
+C-2548,Safari,safari,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2552,Tawny Port,tawny port,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2555,Canary,canary,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2558,Fair Aqua,fair aqua,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2559,Fern,fern,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2563,Vizigold,vizigold,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2564,Peach Rose,peach rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2572,Mustard Seed,mustard seed,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2576,Stream,stream,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2578,Archive Marshmallow,archive marshmallow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2579,Cow Marshmallow,cow marshmallow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2584,Marshmallow,marshmallow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,1
+C-2586,Sepia Rose,sepia rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2587,SZA Fish Print,sza fish print,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,1,1
+C-2588,Kaki,kaki,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: kaki,要確認,1,1
+C-2589,Sable,sable,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,1
+C-2001,Concord,concord,#44316C,DRAFT,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-1020,Anthracite Volt,anthracite volt,,UNKNOWN,anthracite,DRAFT,,,"明示色語が複数競合: anthracite,volt",要確認,1,0
+C-1053,Barely Rose,barely rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-1064,Black Anthracite,black anthracite,,UNKNOWN,anthracite,DRAFT,,,"明示色語が複数競合: anthracite,black",要確認,1,0
+C-1068,Black Denim,black denim,,UNKNOWN,black,DRAFT,,,柄・パターン系の語を含む,要確認,1,0
+C-1106,Blush,blush,#E8B8B4,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1123,British Tan,british tan,,UNKNOWN,tan,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,5,0
+C-1131,Burgundy,burgundy,#6B2535,DRAFT,burgundy,CONFIRMED,,,明示色語なし（パレットに対応語なし）,要確認,9,0
+C-1136,Burnt Sunrise,burnt sunrise,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-1150,Cashmere,cashmere,#C9B79D,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1313,Fawn,fawn,#BDA17D,DRAFT,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1451,Hyper Violet,hyper violet,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-1473,Ironstone,ironstone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-1481,Khaki Brown,khaki brown,,UNKNOWN,brown,DRAFT,,,"明示色語が複数競合: brown,khaki",要確認,1,0
+C-1483,Khaki Phantom,khaki phantom,,UNKNOWN,khaki,DRAFT,,,"明示色語が複数競合: khaki,phantom",要確認,1,0
+C-1543,Lilac Glow,lilac glow,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-1599,Milk Violet,milk violet,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1600,Mineral,mineral,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-1604,Mint Candy,mint candy,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1607,Mint Fluorite,mint fluorite,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1610,Mint Tint,mint tint,,UNKNOWN,green,DRAFT,,,誤字候補の語を含む: tint,要確認,1,0
+C-1614,Monarch Burgundy,monarch burgundy,,UNKNOWN,burgundy,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1616,Moon,moon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-1618,Moonrock,moonrock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-1634,Natural Mint,natural mint,,UNKNOWN,green,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1650,Night Maroon,night maroon,,UNKNOWN,maroon,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1690,Oxford Tan,oxford tan,,UNKNOWN,tan,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1804,Rattan,rattan,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-1811,Red Orange,red orange,,UNKNOWN,orange,DRAFT,,,"明示色語が複数競合: orange,red",要確認,1,0
+C-1813,Red Sail,red sail,,UNKNOWN,sail,DRAFT,,,"明示色語が複数競合: red,sail",要確認,1,0
+C-1825,Rocky Tan,rocky tan,,UNKNOWN,tan,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1850,Sandstone,sandstone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,0
+C-1888,Silver Green,silver green,,UNKNOWN,green,DRAFT,,,"明示色語が複数競合: green,silver",要確認,2,0
+C-1915,Souvenir Navy Blue,souvenir navy blue,,UNKNOWN,blue,DRAFT,,,"明示色語が複数競合: blue,navy",要確認,1,0
+C-1917,Space Purple,space purple,,UNKNOWN,purple,DRAFT,,,柄・パターン系の語を含む,要確認,1,0
+C-1926,Stardust Lilac,stardust lilac,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-1959,Team Coll Burgundy 2,team coll burgundy 2,,UNKNOWN,burgundy,DRAFT,,,"誤字候補の語を含む: team,coll",要確認,2,0
+C-1965,Team Royal,team royal,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: team,要確認,3,0
+C-2028,Violet Frost,violet frost,,UNKNOWN,purple,DRAFT,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-2591,Arctic Night,arctic night,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2603,Bronze Strata,bronze strata,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2619,Ecru Tint,ecru tint,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: tint,要確認,1,0
+C-2635,Noble Ink,noble ink,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2637,Off,off,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2643,Preloved Lime,preloved lime,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2646,Pure Teal,pure teal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2648,Shadow Fig,shadow fig,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2655,Warm Sandstone,warm sandstone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2074,Wonder Taupe,wonder taupe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2075,Zero Metalic,zero metalic,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2077,Kai Mentality,kai mentality,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2078,Ocean Eye,ocean eye,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2079,Yang,yang,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2080,Arctic Sky,arctic sky,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2081,Bluebell,bluebell,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2086,Kale,kale,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2087,Menthol,menthol,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2089,Pale Oak,pale oak,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2097,Simply Taupe,simply taupe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2098,Stone Wash,stone wash,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2104,Corduroy Stone Coin,corduroy stone coin,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2107,Narrow,narrow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2115,Deep Bordeaux,deep bordeaux,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2118,Grape Fizz,grape fizz,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2124,Banana,banana,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2126,Dreamscape,dreamscape,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2131,Copper,copper,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2133,Beech Wood,beech wood,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2140,Dried Rose,dried rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2145,Outer Orbit,outer orbit,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2149,Snow Melt,snow melt,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2153,Starlight Glow,starlight glow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2155,Tomato,tomato,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2156,Vermillion,vermillion,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2158,Aegean Storm,aegean storm,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2160,Arctic Punch,arctic punch,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2162,Bleached Coral,bleached coral,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2164,Camellia,camellia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2166,Carbon Heather,carbon heather,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2167,Cardinal,cardinal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2170,Cherry,cherry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2173,Coast,coast,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2176,Dark Mocha,dark mocha,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2177,Dark Powder,dark powder,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2182,Dusty Peach,dusty peach,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2183,Earth,earth,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2186,Geode Teal,geode teal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2188,Golden Harvest,golden harvest,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2193,Jade Smoke,jade smoke,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,0
+C-2195,Lava Glow,lava glow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-2196,Legend Coffee,legend coffee,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2200,Light Dew,light dew,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2202,Light Madder Root,light madder root,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-2205,Lobster,lobster,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2206,Lobster Dune,lobster dune,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2207,Maize,maize,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2208,Mutli Color,mutli color,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2212,Noir,noir,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2215,Redstone,redstone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2221,Sunset Pulse,sunset pulse,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2224,Terra Blush,terra blush,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2226,True,true,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2227,Vapor,vapor,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2229,Crystal,crystal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2235,Aqua,aqua,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2237,Bronze,bronze,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2238,Camel,camel,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2240,Pine,pine,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: pine,要確認,15,0
+C-2241,Stone Neutral,stone neutral,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2242,Toasted Peanut,toasted peanut,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2246,Astro Dust,astro dust,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: dust,要確認,1,0
+C-2248,Calcium,calcium,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2249,Calm Taupe,calm taupe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2255,Dark Mushroom,dark mushroom,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2258,Dusk Shower,dusk shower,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2259,Earth Shadow,earth shadow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2266,Lime Leaf,lime leaf,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2269,Melon Water,melon water,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2272,Natural Indigo,natural indigo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2274,New Spruce,new spruce,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2276,Olivine,olivine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2277,Parchment,parchment,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2279,Rain Cloud,rain cloud,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2286,Steel Lead,steel lead,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2289,Summer Fog,summer fog,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2295,Vachetta,vachetta,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2298,Adobe,adobe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2300,Amethyst Tint,amethyst tint,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: tint,要確認,1,0
+C-2301,Apricot Agate,apricot agate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2304,Atomic Teal,atomic teal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2305,Beach,beach,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: beach,要確認,3,0
+C-2306,Bicoastal,bicoastal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,5,0
+C-2313,Bright Mandarin,bright mandarin,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2314,Bronzine,bronzine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2315,Bryant Kobe 8,bryant kobe 8,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2317,Caocao Wow,caocao wow,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2318,Citron Tint,citron tint,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: tint,要確認,2,0
+C-2319,Cobalt Tint,cobalt tint,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: tint,要確認,1,0
+C-2320,Cobblestone,cobblestone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2321,Copper Moon,copper moon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2323,Dark Beetroot,dark beetroot,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2327,Dark Russet,dark russet,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2328,Dark Team,dark team,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: team,要確認,1,0
+C-2329,Deep Jungle,deep jungle,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2332,Dessert Ochre,dessert ochre,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2334,Doll,doll,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2341,Fir Light,fir light,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2343,Flamingo,flamingo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2344,Fossil Stone,fossil stone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2349,Gauva Ice,gauva ice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2350,Glacier Ice,glacier ice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2352,Golden Tussah,golden tussah,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2359,Iron Ore,iron ore,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2362,Lemon Twist,lemon twist,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,0
+C-2368,Light Carbon,light carbon,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2372,Light Liquid Lime,light liquid lime,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2378,Lime Ice,lime ice,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2379,Limestone,limestone,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2381,Medium Curry,medium curry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2389,Mink,mink,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: mink,要確認,1,0
+C-2395,Mystic Teal,mystic teal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2396,Neon Royal,neon royal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2397,Neutral Indigo,neutral indigo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2404,Pacific Moss,pacific moss,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2407,Pimento,pimento,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2409,Plum Eclipse,plum eclipse,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2411,Pomegranate,pomegranate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2412,Pure Platnium,pure platnium,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2413,Redwood,redwood,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2415,Rose Whisper,rose whisper,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2416,Saill,saill,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: saill,要確認,1,0
+C-2420,Sport Fuchsia,sport fuchsia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2422,Stone Mauve,stone mauve,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2425,Tart,tart,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2432,Turbo,turbo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2435,World Indigo,world indigo,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2437,Pollen,pollen,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2441,Acacia,acacia,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2443,Almond,almond,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2444,Artic,artic,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2452,Clove,clove,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2454,Fade,fade,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: fade,要確認,2,0
+C-2455,Flame,flame,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2460,Grenadine,grenadine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2461,Grizzly,grizzly,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2468,Mulberry,mulberry,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2469,Orchid,orchid,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2474,Rosebrown,rosebrown,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2477,Seashell,seashell,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2482,Surf,surf,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2483,Tangerine,tangerine,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2487,Undyed,undyed,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2494,Aquatic,aquatic,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2495,Caramel Latte,caramel latte,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2497,Chocolate Chip,chocolate chip,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2499,Dark Amethyst,dark amethyst,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2500,Dark Chocolate,dark chocolate,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2501,Dark Myrtle,dark myrtle,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2502,Flat Bronze,flat bronze,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2504,Gradient,gradient,,UNKNOWN,,UNKNOWN,,,柄・パターン系の語を含む,要確認,1,0
+C-2507,Ice Coffee,ice coffee,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2508,Iris,iris,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2510,Magic Rose,magic rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2514,Pumpkin Pie,pumpkin pie,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2515,Pure Magenta,pure magenta,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2517,Rosso Corsa,rosso corsa,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,6,0
+C-2522,Vine,vine,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: vine,要確認,1,0
+C-2525,Asphalt,asphalt,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,4,0
+C-2530,Ebony,ebony,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2531,Eden,eden,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2534,Fairy Tale,fairy tale,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2535,Flame Scarlet,flame scarlet,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2537,Hazelnut,hazelnut,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2539,Iced Aqua,iced aqua,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2540,Lunar Eock,lunar eock,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2542,Mahogany Rose,mahogany rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2543,Metal,metal,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,3,0
+C-2549,Sedona Sage,sedona sage,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2550,Shortbread,shortbread,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2551,Tapioca,tapioca,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2554,Warm Apricot,warm apricot,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2556,Coral,coral,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2557,Doe,doe,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2561,Microchip,microchip,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2562,Mud,mud,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2566,Almond Butter,almond butter,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,2,0
+C-2567,Nubuck,nubuck,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2568,Rust Nubuck,rust nubuck,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2570,Chesnut,chesnut,,UNKNOWN,,UNKNOWN,,,誤字候補の語を含む: chesnut,要確認,2,0
+C-2573,Rock Rose,rock rose,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
+C-2585,Mulit,mulit,,UNKNOWN,,UNKNOWN,,,明示色語なし（パレットに対応語なし）,要確認,1,0
