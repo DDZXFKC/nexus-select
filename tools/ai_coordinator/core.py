@@ -1,4 +1,4 @@
-"""Synthetic-only coordinator reducer. No external actions or credentials."""
+"""Coordinator reducer: synthetic and explicitly enabled read-only review tasks."""
 import copy
 import hashlib
 import json
@@ -12,10 +12,11 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 class Coordinator:
-    def __init__(self, contract, snapshot=None, clock=time.time):
+    def __init__(self, contract, snapshot=None, clock=time.time, enable_readonly=False):
         self.contract = contract
         self.state = copy.deepcopy(snapshot if snapshot is not None else {'tasks': {}, 'events': {}})
         self.clock = clock
+        self.enable_readonly = enable_readonly
 
     def add(self, task):
         t = copy.deepcopy(task)
@@ -33,8 +34,15 @@ class Coordinator:
             raise Rejected('acceptance/action')
         if any(d not in self.state['tasks'] for d in t['depends_on']):
             raise Rejected('dependency must exist')
-        if t['allowed_paths'] or set(t['allowed_actions']) != {'synthetic'}:
-            raise Rejected('pilot only')
+        actions = set(t['allowed_actions'])
+        if actions == {'synthetic'} and not t['allowed_paths']:
+            pass
+        elif self.enable_readonly and actions == {'read_public_review'} and not t['allowed_paths']:
+            import re
+            if not t['input_refs'] or any(not isinstance(ref, str) or not re.fullmatch(r'[0-9a-f]{40}:(?:docs|collector)/[A-Za-z0-9_./-]+', ref) or '..' in ref.split('/') for ref in t['input_refs']):
+                raise Rejected('immutable public input refs required')
+        else:
+            raise Rejected('pilot only or prohibited action')
         t.update(lease_id=None, lease_until=None, result=None)
         self.state['tasks'][k] = t
 
@@ -47,12 +55,12 @@ class Coordinator:
 
     def claim(self, task_id, actor, seconds=1800):
         t = self.state['tasks'][task_id]
-        if actor != t['to_agent'] or t['status'] != 'READY' or not 1 <= seconds <= 3600:
+        if actor != t['to_agent'] or t['status'] != 'READY' or not 1 <= seconds <= 3600 or (t['allowed_actions'] != ['synthetic'] and not self.enable_readonly):
             raise Rejected('claim')
         for other in self.state['tasks'].values():
             if other['status'] in ('CLAIMED','RUNNING','REVIEW_READY') and set(other['resource_locks']) & set(t['resource_locks']):
                 raise Rejected('resource locked')
-        t.update(status='CLAIMED', lease_id=uuid.uuid4().hex, lease_until=self.clock()+seconds)
+        t.update(status='CLAIMED', lease_id=uuid.uuid4().hex, lease_until=self.clock()+seconds, lease_max=self.clock()+min(seconds*2,3600))
         return copy.deepcopy(t)
 
     def event(self, actor, event, payload):
@@ -70,13 +78,15 @@ class Coordinator:
             raise Rejected('stale lease')
         kind = payload.get('kind')
         status = t['status']
-        if kind in ('start','heartbeat','result'):
+        if kind in ('start','heartbeat','result','block'):
             if actor != t['to_agent'] or self.clock() >= t['lease_until']:
                 raise Rejected('executor/expiry')
             if kind == 'start' and status == 'CLAIMED':
                 t['status'] = 'RUNNING'
             elif kind == 'heartbeat' and status == 'RUNNING':
-                t['lease_until'] = self.clock()+1800
+                t['lease_until'] = min(self.clock()+1800, t.get('lease_max', t['lease_until']))
+            elif kind == 'block' and status in ('CLAIMED','RUNNING') and isinstance(payload.get('reason'), str) and payload['reason'].strip():
+                t.update(status='BLOCKED', blocker=payload['reason'], lease_id=None, lease_until=None)
             elif kind == 'result' and status == 'RUNNING' and isinstance(payload.get('result'), str) and payload['result'].strip():
                 t.update(status='REVIEW_READY', result=payload['result'])
             else:
@@ -93,10 +103,13 @@ class Coordinator:
         return t['status']
 
     def recover(self):
-        # Only synthetic tasks can be retried here; no side-effecting tasks admitted.
+        # Real tasks require reconciliation before retry.
         for t in self.state['tasks'].values():
             if t['status'] in ('CLAIMED','RUNNING') and self.clock() >= t['lease_until']:
-                t.update(status='READY', lease_id=None, lease_until=None)
+                if t['allowed_actions'] == ['synthetic']:
+                    t.update(status='READY', lease_id=None, lease_until=None)
+                else:
+                    t.update(status='BLOCKED', blocker='Expired lease: reconcile prior execution before reassignment', lease_id=None, lease_until=None)
             elif t['status'] == 'CHANGES_REQUESTED':
                 t.update(status='READY', revision=t['revision']+1, lease_id=None, lease_until=None, result=None)
         return self.ready()
