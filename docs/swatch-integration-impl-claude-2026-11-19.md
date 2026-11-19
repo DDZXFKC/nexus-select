@@ -37,18 +37,27 @@
 - fixture：`tools/pick_swatch_fixtures.py` は下書きのSP商品だけから選び、足りない観点はシートからLocalに無い商品を選んで `fixtures.csv` に出す。`tools/ahc_create_swatch_fixture.php` が既存SP商品を型に隔離下書き（SKU `FX-SP-<id>`、非表示、`_ahc_fixture=1`）を作る。書き込みツールは `FX-SP-<id>` を、下書きかつ `_ahc_fixture=1` のときだけ受け付ける。`remove` で fixture だけ削除。
 - テスト：書き込みツール 43件（停止系30件）すべて合格。
 
+## GPT監査 c7e70d6（fixtureツール）への修正（15:30）
+- create：CSV内の重複ID、親SKU・子SKU（FX-SP-<id>-<n>）・実SKU SP-<id> の衝突を全件事前に拒否。既定 dry-run。
+- 実行ごとに run_id と manifest（新規ファイル）を作り、投稿を1件保存するたびに manifest を更新。保存結果・例外・読み戻しを確認し、失敗時は manifest で片付ける。
+- remove：manifest に載った投稿だけ。親子それぞれの `_ahc_fixture`・run_id・FX-SP- SKU・親ID・下書き状態がすべて一致しなければ1件も消さない。既定 dry-run、`apply` で削除。
+- 購入不可：mu-plugins/ahc-fixture-guard.php で `_ahc_fixture=1` の商品・バリエーションを購入不可・カート投入拒否（管理者が下書きを見られる場合も）。
+- 複製した画像・価格・サイズは合成テスト値であることを `_ahc_fixture_note` とタイトル `[FIXTURE]` で明示。
+- 書き込みツールは FX-SP-<id> を mapping で明示した場合のみ、下書きかつ `_ahc_fixture=1` を条件に受け付ける（39ffb24 のまま）。
+- テスト：qa/php-tests/fixture_tool_stub_test.php 13件合格（重複・衝突・dry-run・remove の不一致拒否・購入拒否）。
+
 ## 魔王ちゃんの手順（Localのみ・5dc4c1b修正後）
-1. local-snapshot-2026-11-15 の theme/main.js・theme/style.css・mu-plugins/nexus-variation-gallery.php を Local に反映（メタが無い間は見た目不変）。商品ページ（MERGED 1点・SP 1点）で今までどおりか確認。
+1. local-snapshot-2026-11-15 の theme/main.js・theme/style.css・mu-plugins/nexus-variation-gallery.php・mu-plugins/ahc-fixture-guard.php（fixtureの購入拒否）を Local に反映（メタが無い間は見た目不変）。商品ページ（MERGED 1点・SP 1点）で今までどおりか確認。
 2. LocalのSP商品を書き出す（ID,状態）：`wp eval 'foreach (wc_get_products(["limit"=>-1,"type"=>"variable","status"=>["publish","draft"]]) as $p) { if (strpos($p->get_sku(),"SP-")===0) echo substr($p->get_sku(),3),",",$p->get_status(),"\n"; }' --path=… > sp_local.txt`
 3. 最新シートから変換：`python3 collector/color_woo_export.py --master … --products … --output out`
 4. 確認商品を選ぶ：`python3 tools/pick_swatch_fixtures.py --components out/woo_components.csv --local-ids sp_local.txt --out allow.txt --fixtures-out fixtures.csv`
-5. 足りない観点の fixture を作る（fixtures.csv が空でなければ）：`wp eval-file tools/ahc_create_swatch_fixture.php fixtures=fixtures.csv template=SP-<下書きのSP商品> site=<host> --path=…`（dry-run）→ 同じコマンドに `apply`。
+5. 足りない観点の fixture を作る（fixtures.csv が空でなければ）：`wp eval-file tools/ahc_create_swatch_fixture.php create fixtures=fixtures.csv template=SP-<下書きのSP商品> manifest=<新しいファイル> site=<host> --path=…`（dry-run）→ 同じコマンドに `apply`。途中で失敗したら表示される remove コマンドで片付ける。作成後、fixture の商品ページでカートに入らないこと（購入不可）を確認。
 6. mapping.csv を作る（読み取り専用の確認）：allow.txt の各IDについて `supplier_product_id,market,parent_sku`。market は Local 側の根拠（商品の仕入れ元URL等）で確認した値。fixture は parent_sku を `FX-SP-<id>`。
 7. dry-run：`wp eval-file tools/ahc_color_components_to_woo.php out/woo_components.csv site=<host> allowlist=allow.txt mapping=mapping.csv --path=…`
 8. apply：上に `apply backup=<新しいファイル>`。APPLIED の readback_mismatch=0・other_fields_changed=0 を確認。もう一度 apply（別のbackup名）して unchanged だけになること（差分0）を確認。
 9. 画面確認：各商品で丸窓（縦縞／中立）・原文・サイズ選択・価格・在庫・画像、PC幅とスマホ幅、コンソールエラーなし。スクショを証拠に。
 10. rollback の確認：`wp eval-file tools/ahc_color_components_to_woo.php rollback=<backup> site=<host> --path=…` で元に戻り、もう一度同じコマンドが OK（冪等）。確認後に再度 apply。
-11. 158点（公開含む）は dry-run のみ（`allow_published=1` を付けた dry-run）。結果をGPT検収へ。一括 apply は検収後。fixture は検証後 `remove` で削除。
+11. 158点（公開含む）は dry-run のみ（`allow_published=1` を付けた dry-run）。結果をGPT検収へ。一括 apply は検収後。fixture は検証後 `remove manifest=<作成時のファイル> site=<host>`（dry-run）→ `apply` で削除。
 
 ## 未対応（GPT判断待ち・範囲外）
 - HOLD と構成なしは、Local の158点に該当商品が無い可能性がある（手順4で判明）。無ければ 84e54b3 §4 の下書き fixture 取り込みが要る（実SKU重複禁止）。その取り込みは別途。
