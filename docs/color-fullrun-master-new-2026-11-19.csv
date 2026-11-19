@@ -1655,3 +1655,6 @@ C-2586,BRAND,VANS,sepia rose,Sepia Rose,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件�
 C-2587,BRAND,VANS,sza fish print,SZA Fish Print,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド VANS のみ）,TRUE
 C-2588,BRAND,VEJA,kaki,Kaki,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド VEJA のみ）,TRUE
 C-2589,BRAND,VEJA,sable,Sable,,,,UNKNOWN,UNKNOWN,,,,UNRESOLVED,全件自動分解 2026-11-19,2026-11-19,全件処理で自動生成した候補。確定はGPT検収後（出現ブランド VEJA のみ）,TRUE
+C-2662,BRAND,NEWBALANCE,phantom,Phantom,,,,UNKNOWN,UNKNOWN,,,,GPT_INSTRUCTION,GPT再検収 0bb3ab5b,2026-11-19,GPT再検収（0bb3ab5b）指示で新規作成。NEW BALANCE範囲のPhantom。色系統・HEXは未確認のためUNKNOWN。NIKEのC-0007とは分けて管理する,TRUE
+C-2663,BRAND,JORDAN,phantom,Phantom,,,,UNKNOWN,UNKNOWN,,,,GPT_INSTRUCTION,GPT再検収 0bb3ab5b,2026-11-19,GPT再検収（0bb3ab5b）のPhantom分離管理ルールをJORDANにも適用し新規作成。色系統・HEXは未確認のためUNKNOWN。NIKEのC-0007とは分けて管理する,TRUE
+C-2664,BRAND,SALOMON,phantom,Phantom,,,,UNKNOWN,UNKNOWN,,,,GPT_INSTRUCTION,GPT再検収 0bb3ab5b,2026-11-19,GPT再検収（0bb3ab5b）のPhantom分離管理ルールをSALOMONにも適用し新規作成。色系統・HEXは未確認のためUNKNOWN。NIKEのC-0007とは分けて管理する,TRUE
