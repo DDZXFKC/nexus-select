@@ -5,7 +5,7 @@ d1bad5a（オーナー承認：旧商品ページの隔離復元）の補助。L
 ## 1. 「海外から買い付ける商品は、在庫・価格・配送予定が変わる場合があります。ご注文前に各商品条件をご確認ください。」
 - 初出：91486af（2026-11-14 01:05 JST）のリポジトリ直下 `functions.php` 11行目。
 - 9173fdb（2026-11-15 05:55 JST）で `local-snapshot-2026-11-15/theme/functions.php` 11行目に同文。現在も両ファイルに残っている。
-- 出し方：`woocommerce_single_product_summary` の優先度35、`<p class="nexus-notice">…</p>`（価格・抜粋の下、カートボタンの上あたり。Woo標準の並びでは 30=カートボタンなので、実際はカートボタンの後になる点に注意：title 5／rating 10／price 10／excerpt 20／add_to_cart 30／meta 40）。
+- 出し方：`woocommerce_single_product_summary` の優先度35、`<p class="nexus-notice">…</p>`（Woo標準の並び title 5／rating 10／price 10／excerpt 20／add_to_cart 30／meta 40 に従えば、カートボタンの下・商品メタの上。テーマが並びを変えていれば位置は実画面で確認）。
 
 ## 2. 「海外お取り寄せ」完全一致
 - テーマ・プラグイン・PHP/JS/CSS のどの版にも無い（全履歴で一度も実装されていない）。
