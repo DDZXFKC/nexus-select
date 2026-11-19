@@ -1,0 +1,41 @@
+{
+  "selection_sku": "sku",
+  "woo": "/home/hatch/workspace/fl-scrape/shoepalace-woo-import-prep.csv",
+  "size_table": "/home/hatch/workspace/g1-verify/g1-audit-full-g1fix.csv",
+  "brands": {
+    "Vans": {
+      "brand_id": 793,
+      "brand_name": "VANS",
+      "categories": {
+        "Men": 3321,
+        "Women": 3081,
+        "Kids": 4531
+      },
+      "source": "/home/hatch/workspace/fl-scrape/shoepalace-vans-premium-old-skool-36-all.csv",
+      "approved_buyma_prices": {
+        "SP-7706357956814": 28900,
+        "SP-7716199235790": 32100,
+        "SP-7716200317134": 32100,
+        "SP-8796638675150": 32100,
+        "SP-7721487892686": 30000,
+        "SP-8798793826510": 31100,
+        "SP-8835257958606": 37500,
+        "SP-8842168074446": 25600,
+        "SP-8845462929614": 30000,
+        "SP-8855517855950": 27800
+      },
+      "color_ids": {
+        "Charcoal Grey": 3,
+        "Souvenir Oatmeal Beige": 5,
+        "Souvenir Faded Black": 2,
+        "Souvenir Navy Blue": 16,
+        "Woodland Camo Green": 6,
+        "Black": 2,
+        "Mushroom Brown": 4,
+        "Triple Black": 2,
+        "Archive Marshmallow": 1,
+        "Black/Red": 2
+      }
+    }
+  }
+}

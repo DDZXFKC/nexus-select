@@ -1,0 +1,18 @@
+{
+  "category_master_sha256": "ff7e9ee73475df7389c9fad6e8e071b0d2689c1f8b217dc5f8bd814dd57c6bf9",
+  "dictionary_version": "buyma-category-dict-v1-2026-11-20",
+  "hold_count": 0,
+  "pass_count": 10,
+  "pool_count": 163,
+  "pool_sellable_count": 163,
+  "pool_sha256": "a70e2db9b32641d702f732f82ebbea65f7887f0229c60af53a0825d859327a49",
+  "preflight_csv_sha256": "6fff4c3ab10720ff9786a0b65da237d92571e75cf44f90f6bacb65b00e49258c",
+  "preflight_version": "batch3-e1-preflight-v1",
+  "rules_sha256": "225db4b4f5d78df53f86bc8bd296f757b6d04de0d4fbcf0154349aea1d09f236",
+  "rules_version": "e1-rules-v1-2026-11-20",
+  "selected_count": 10,
+  "selection_sha256": "2913660776a10b33ef7aa02ff9ee3f3e73fa01e14fcdddd39e0200358bc4385c",
+  "unreferenced_overrides": [
+    "SP-7061016871118"
+  ]
+}
