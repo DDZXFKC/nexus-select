@@ -43,7 +43,18 @@ def unique(rows, key):
 
 
 def source_type(row):
-    return row.get("source_product_type", "").strip() or row.get("Name", "").strip()
+    return (row.get("source_product_type", "").strip()
+            or row.get("name", "").strip() or row.get("Name", "").strip())
+
+
+def unique_sku(rows):
+    items = {}
+    for row in rows:
+        sku = (row.get("SKU", "") or row.get("sku", "")).strip()
+        if not sku or sku in items:
+            raise ValueError("empty or duplicate SKU " + sku)
+        items[sku] = row
+    return items
 
 
 def canonical_category(value, known):
@@ -60,9 +71,9 @@ def run(pool_path, selection_path, categories_path, rules_path, expected_hash):
     pool_rows = read(pool_path)
     if len(pool_rows) != 163:
         raise ValueError("expected exactly 163 pool rows, got " + str(len(pool_rows)))
-    pool = unique(pool_rows, "SKU")
+    pool = unique_sku(pool_rows)
     selected_rows = read(selection_path)
-    selected = unique(selected_rows, "SKU")
+    selected = unique_sku(selected_rows)
     if len(selected) != 10:
         raise ValueError("expected ten distinct selected SKUs")
     master_rows = read(categories_path)
@@ -73,10 +84,11 @@ def run(pool_path, selection_path, categories_path, rules_path, expected_hash):
     version = cfg.get("version", "")
     if not version or not cfg.get("dictionary_version"):
         raise ValueError("category rules/dictionary versions required")
+    metadata = cfg.get("product_metadata_by_sku", {})
     overrides = cfg.get("category_overrides_by_sku", {})
     dictionary = cfg.get("category_dictionary", [])
     defaults = cfg.get("brand_dept_defaults", [])
-    if not isinstance(overrides, dict) or not isinstance(dictionary, list) or not isinstance(defaults, list):
+    if not isinstance(metadata, dict) or not isinstance(overrides, dict) or not isinstance(dictionary, list) or not isinstance(defaults, list):
         raise ValueError("invalid rules structure")
     for obj in list(overrides.values()) + dictionary + defaults:
         if not isinstance(obj, dict):
@@ -94,8 +106,13 @@ def run(pool_path, selection_path, categories_path, rules_path, expected_hash):
             raise ValueError("duplicate default: " + str(key))
         by_default[key] = entry
 
-    counts = Counter((r.get("brand", "").strip(), r.get("department", "").strip())
-                     for r in pool_rows)
+    counts = Counter()
+    for r in pool_rows:
+        key = (r.get("SKU", "") or r.get("sku", "")).strip()
+        meta = metadata.get(key, {})
+        dep = (r.get("department", "") or meta.get("department", "")).strip()
+        if dep:
+            counts[(r.get("brand", "").strip(), dep)] += 1
     audit = []
     for sku, s in selected.items():
         row = pool.get(sku)
@@ -106,8 +123,9 @@ def run(pool_path, selection_path, categories_path, rules_path, expected_hash):
             audit.append(result)
             continue
         brand = row.get("brand", "").strip()
-        dept = row.get("department", "").strip()
-        ptype = source_type(row)
+        meta = metadata.get(sku, {})
+        dept = (row.get("department", "") or meta.get("department", "")).strip()
+        ptype = (meta.get("source_product_type", "") or source_type(row)).strip()
         result.update(brand=brand, department=dept, source_product_type=ptype)
         override = overrides.get(sku)
         exact = by_dictionary.get((brand, dept, ptype.casefold()))
@@ -130,6 +148,13 @@ def run(pool_path, selection_path, categories_path, rules_path, expected_hash):
         result.update(selected_category_id=cat, category_source=label,
                       evidence_ref=str(chosen.get("evidence_ref", "")))
         reasons = []
+        if row.get("verdict", "販売可能") != "販売可能":
+            reasons.append("pool_not_sellable")
+        if dept not in ("Men", "Women", "Kids") or (
+            not row.get("department", "").strip() and
+            (not meta.get("department_evidence_ref") or not meta.get("verified_on"))
+        ):
+            reasons.append("department_unverified")
         if not cat:
             reasons.append("unknown_category_id")
         if not chosen.get("evidence_ref") or not chosen.get("verified_on"):
@@ -165,6 +190,7 @@ def run(pool_path, selection_path, categories_path, rules_path, expected_hash):
     return audit, {"preflight_version": VERSION, "rules_version": version,
                    "dictionary_version": cfg["dictionary_version"],
                    "pool_sha256": actual, "pool_count": len(pool_rows),
+                   "pool_sellable_count": sum(r.get("verdict", "販売可能") == "販売可能" for r in pool_rows),
                    "selection_sha256": digest(selection_path),
                    "category_master_sha256": digest(categories_path),
                    "rules_sha256": digest(rules_path),
