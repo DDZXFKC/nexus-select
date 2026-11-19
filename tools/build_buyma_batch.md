@@ -1,17 +1,10 @@
-# BUYMA batch generator — local execution
+# Exact batch1 two-file generator
 
-`python3 tools/build_buyma_batch.py --input selected.csv --output batch2 --config local.json`
+Run with Python 3.9+:
+```
+python3 tools/build_buyma_batch.py --input selected.csv --output new_batch1 --prefix batch1 --config local.json --reproduce-batch1
+python3 tools/compare_buyma_batch.py --actual new_batch1 --expected tools --prefix batch1
+```
+Local config JSON: selection_sku (default SKU), woo (original Woo prep CSV), size_table (original Google values JSON export or CSV brand,department,size_original,cm), brands (object keyed by actual Woo Brand). Each brand has source (original brand SP CSV productId,description_en,url), brand_id, brand_name, categories (Men/Women/Kids IDs). HOKA historical ID 6906, name HOKA ONE ONE, Men 3321 Women 3081. UGG ID 89; category IDs must come from approved BUYMA master. Normal mode also requires approved_buyma_prices (SKU→JPY), color_ids (exact color name→approved BUYMA ID), verified_kids_sizes (SKU→list of exact normalized verified US C/Y sizes). Use verified A2 joined brand chart for normal mode, not Woo old cm. No guessed IDs or price. Historical mode preserves old price, color rule, missing search sizes solely for reproduction, never for listing. All stock rows preserved as in original. Output exact headers, BOM, CRLF, two files.
 
-Wrapper generator argv: `["python3","tools/build_buyma_batch.py","--input","{input}","--output","{output}","--config","local.json"]`.
-
-The original build_batch1.py and its output schema are not in GitHub. The generator therefore uses explicit local mappings rather than inventing BUYMA category IDs, search-size codes, price formulas or column names. The following is the configuration contract, not a ready-to-run config. Muse must copy actual mappings from the local batch1 output and approved BUYMA masters. No secrets in GitHub.
-
-- selection_sku: actual selected CSV SKU header (default sku).
-- brands: object keyed by brand name, e.g. UGG or HOKA.
-- Each brand config: source (local variant CSV path), brand_id (UGG 89), columns (canonical keys sku, product_id, variant_id, department, size, stock, category_key, price mapped to actual CSV headers), stock_values (actual source strings mapped to JSON true/false), categories (actual category_key mapped to approved BUYMA category ID), search_sizes (Men/Women/Kids objects mapping exact normalized cm string to actual BUYMA search-size value; use category-specific source if codes differ and do not guess), size_chart (non-UGG verified CSV with brand, department, size_original, cm, source_url, optional product_id).
-- price must be approved BUYMA JPY selling price, not AHC price or supplier USD. Source must be final approved variant-level data with stock and listing fields.
-- output_columns: ordered object keyed by actual batch1 CSV headers. Each value is one of {"derived":"sku"}, {"source":"actual_source_header"}, {"literal":"approved fixed value"}. Derived keys: sku, brand, brand_id, category_id, size_original, size_cm, search_size, size_source, price_jpy, product_id, variant_id.
-- Output listing.csv has one row per in-stock variant. size_evidence.csv preserves original normalized US size, official cm and evidence URL. If batch1 requires a different layout (one row per product, multiple files, images, JSON, etc.), this version does NOT reproduce it; send actual build_batch1.py and sample output for exact adaptation before use.
-- UGG uses repository official adult chart and official kids PDF-derived v8 chart, with product-specific age evidence and quarantined infant variants blocked. Missing or ambiguous size stops generation; no rounding to a search bucket without approved mapping.
-- No publication or network calls. New output directory only. All source files read-only.
-- Local execution and exact batch1 format compatibility not verified by GPT.
+Original local inputs named by build_batch1.py: /tmp/size_table.csv, /home/hatch/workspace/fl-scrape/shoepalace-hoka-all.csv, /home/hatch/workspace/fl-scrape/shoepalace-woo-import-prep.csv. None was registered in ca3f7bdd. The reference colorsizes has 156 data rows, 17 blank search cells, 139 filled. A separate final 56-cell correction artifact or before/after evidence is required to verify that correction; do not infer from output. No G-1 or batch2 until actual reproduction and correction verification pass. 
