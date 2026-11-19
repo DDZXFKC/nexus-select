@@ -69,7 +69,8 @@ def division(name):
     if re.search(r'\bMens\b',name,re.I): return 'Men'
     raise ValueError('unknown department '+name)
 
-def generate(selected,woo,config,book,allow_missing=False):
+def generate(selected,woo,config,book,allow_missing=False,approved_categories=None):
+    approved_categories = approved_categories or {}
     parents=unique([r for r in woo if r['Type']=='variable'],'SKU')
     variations=defaultdict(list)
     for r in woo:
@@ -94,7 +95,7 @@ def generate(selected,woo,config,book,allow_missing=False):
             if price<=0: raise ValueError('invalid approved price')
         vs=variations[sku]
         if not any(v['In stock?']=='1' for v in vs): raise ValueError('no stock '+sku)
-        items.append(dict(zip(cols,[sku,'下書き',name,str(cfg['brand_id']),cfg['brand_name'],str(cfg['categories'][div]),'51','0',str(price),'1','','0','',(src['description_en'] or '')[:900],'1103985','2001001','0','Shoe Palace','','','1',*(imgs+['','',''])[:3],'追加画像：'+' '.join(imgs[3:]) if len(imgs)>3 else '',src['url']])))
+        items.append(dict(zip(cols,[sku,'下書き',name,str(cfg['brand_id']),cfg['brand_name'],str(approved_categories.get(sku, cfg['categories'][div])),'51','0',str(price),'1','','0','',(src['description_en'] or '')[:900],'1103985','2001001','0','Shoe Palace','','','1',*(imgs+['','',''])[:3],'追加画像：'+' '.join(imgs[3:]) if len(imgs)>3 else '',src['url']])))
         def sortkey(v):
             s=norm(v['Attribute 1 value'])
             return (1 if s.endswith('Y') else 0,Decimal(s.rstrip('CY')))
@@ -119,6 +120,7 @@ def main():
     p.add_argument('--output',required=True,type=Path)
     p.add_argument('--config',required=True,type=Path)
     p.add_argument('--prefix',default='batch2')
+    p.add_argument('--preflight-dir',type=Path,help='mandatory for batch3: passed E-1 preflight audit')
     p.add_argument('--reproduce-batch1',action='store_true',help='historical reproduction only; not for listing')
     a=p.parse_args()
     cfg=json.loads(a.config.read_text(encoding='utf-8'))
@@ -126,7 +128,34 @@ def main():
     if len(selected)!=10 or len(set(selected))!=10 or not all(selected): raise ValueError('expected 10 distinct SKUs')
     if not re.fullmatch(r'[A-Za-z0-9_-]+',a.prefix): raise ValueError('invalid prefix')
     if a.reproduce_batch1 and a.prefix!='batch1': raise ValueError('historical mode requires batch1 prefix')
-    items,cs=generate(selected,read(cfg['woo']),cfg,sizebook(cfg['size_table']),a.reproduce_batch1)
+    approved_categories = {}
+    if a.prefix == 'batch3':
+        if a.reproduce_batch1 or a.preflight_dir is None:
+            raise ValueError('batch3 requires a passing --preflight-dir; historical mode forbidden')
+        import hashlib
+        def sha(path):
+            return hashlib.sha256(path.read_bytes()).hexdigest()
+        manifest_path = a.preflight_dir / 'preflight_manifest.json'
+        csv_path = a.preflight_dir / 'preflight.csv'
+        receipt = json.loads(manifest_path.read_text(encoding='utf-8'))
+        if receipt.get('preflight_version') != 'batch3-e1-preflight-v1':
+            raise ValueError('wrong preflight version')
+        if receipt.get('selection_sha256') != sha(a.input):
+            raise ValueError('selection differs from preflight snapshot')
+        if receipt.get('preflight_csv_sha256') != sha(csv_path):
+            raise ValueError('preflight CSV differs from audited snapshot')
+        if receipt.get('pool_count') != 163 or receipt.get('pass_count') != 10 or receipt.get('hold_count') != 0:
+            raise ValueError('batch3 requires 163-row pool and all 10 PASS')
+        audited = unique(read(csv_path), 'sku')
+        if set(audited) != set(selected) or any(r['preflight_status'] != 'PASS' for r in audited.values()):
+            raise ValueError('preflight SKUs or status mismatch')
+        approved_categories = {sku: audited[sku]['selected_category_id'] for sku in selected}
+        if any(not x.isdecimal() for x in approved_categories.values()):
+            raise ValueError('invalid approved category')
+    elif a.preflight_dir is not None:
+        raise ValueError('preflight-dir only supported for batch3')
+    items,cs=generate(selected,read(cfg['woo']),cfg,sizebook(cfg['size_table']),
+                      a.reproduce_batch1,approved_categories)
     if a.output.exists(): raise ValueError('output exists')
     with tempfile.TemporaryDirectory(dir=a.output.parent) as t:
         d=Path(t)/'out';d.mkdir()
