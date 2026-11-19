@@ -1,31 +1,32 @@
 <?php
 /**
- * Sheet -> Woo link for the data-driven color swatch (GPT designs 70ee059, 84e54b3).
+ * Sheet -> Woo link for the data-driven color swatch (GPT designs 70ee059, 84e54b3; review 5dc4c1b).
  *
- * Input: the CSV made by collector/color_woo_export.py (one row per color component;
- * position 0 = marker row for a product without components).
- * Columns (exact header):
+ * Input CSV (collector/color_woo_export.py), exact header:
  *   shop_code,market,supplier_product_id,supplier_color_key,colorway_original,
  *   swatch_status,position,token_original,display_hex,hex_status
+ * One row per color component; position 0 = marker row for a product without components.
  *
  * Writes, per allowlisted Shoe Palace product (parent SKU SP-<supplier_product_id>):
  *   _ahc_color_components          {"__single__": [{"name": "...", "hex": "#RRGGBB"|null}, ...]}
  *   _ahc_color_components_context  {"schema_version":2,"shop_code","market","supplier_product_id",
  *                                   "supplier_color_key","colorway_original","swatch_status"}
- * Nothing else is touched (price, stock, images, variations, attributes are snapshotted before
- * and after and must be identical).
+ * Nothing else is touched; a guard snapshot (parent + variations: SKU, name, status, prices incl.
+ * effective price, stock, images, gallery, attributes) must be identical after the write.
  *
- * Safety
- * - Local only (host .local/.localhost/.test/localhost) and --site=<host> must equal the site host.
- * - --allowlist=<file> (one supplier_product_id per line) is required; only those products are processed.
- * - Every check runs before any write. Any error -> nothing is written (no partial apply).
- * - Dry run by default. --apply writes, after saving a backup JSON (--backup=<file>, required with --apply),
- *   then reads back every written value. --rollback=<backup file> restores a backup.
- * - Only products WITHOUT a color variation are in scope (SP single colorway). MERGED/PROTO/FL/CV: refused.
+ * Required arguments (WP-CLI 2.12 does not pass --options to eval-file, so plain key=value):
+ *   site=<host>        must equal this site's host (Local hosts only)
+ *   allowlist=<file>   supplier_product_ids to process (one per line)
+ *   mapping=<file>     verified CSV "supplier_product_id,market,parent_sku" from Local evidence
+ *                      (read-only check by Muse). The CSV market must equal the mapping market.
+ *                      parent_sku is SP-<id> (real product) or FX-SP-<id> (isolated draft fixture
+ *                      made by tools/ahc_create_swatch_fixture.php; must be draft with _ahc_fixture=1).
+ * Options:
+ *   apply backup=<new file>   write (default is dry run). The backup is created exclusively.
+ *   allow_published=1         allow writing to published posts (default: drafts only)
+ *   rollback=<backup file>    restore a backup (all posts pre-checked first, compare-and-swap)
  *
- * Run (WP-CLI 2.12 does not pass --options to eval-file, so pass them as plain args after the CSV):
- *   wp eval-file tools/ahc_color_components_to_woo.php <csv> site=<host> allowlist=<file> [apply backup=<file>] --path=...
- *   wp eval-file tools/ahc_color_components_to_woo.php rollback=<backup file> site=<host> --path=...
+ * Every check runs before any write. Any error -> nothing is written (no partial apply).
  */
 if (!defined('ABSPATH')) exit(1);
 
@@ -39,73 +40,114 @@ $host = (string) wp_parse_url(home_url(), PHP_URL_HOST);
 if (!preg_match('/(\.local|\.localhost|\.test)$|^localhost$/', $host)) {
     WP_CLI::error("Refusing to run on $host: Local environment only.");
 }
-$opt = ['csv' => null, 'site' => null, 'allowlist' => null, 'apply' => false, 'backup' => null, 'rollback' => null];
+$opt = ['csv' => null, 'site' => null, 'allowlist' => null, 'mapping' => null, 'apply' => false, 'backup' => null,
+    'rollback' => null, 'allow_published' => false];
 foreach ((isset($args) && is_array($args) ? $args : []) as $a) {
     $a = preg_replace('/^--/', '', (string) $a);
     if ($a === 'apply') $opt['apply'] = true;
-    elseif (preg_match('/^(site|allowlist|backup|rollback)=(.+)$/', $a, $m)) $opt[$m[1]] = $m[2];
+    elseif ($a === 'allow_published=1') $opt['allow_published'] = true;
+    elseif (preg_match('/^(site|allowlist|mapping|backup|rollback)=(.+)$/', $a, $m)) $opt[$m[1]] = $m[2];
     elseif ($opt['csv'] === null && strpos($a, '=') === false) $opt['csv'] = $a;
     else WP_CLI::error("Unknown argument: $a");
 }
 if ($opt['site'] !== $host) WP_CLI::error("site=<host> must equal this site's host ($host).");
+$site_id = ['host' => $host, 'home' => home_url(), 'blog_id' => function_exists('get_current_blog_id') ? get_current_blog_id() : 1];
 
-/** Snapshot of everything this tool must NOT change. */
-if (!function_exists('ahc_guard_snapshot')) { function ahc_guard_snapshot($pid) {
-    $p = wc_get_product($pid);
-    $kids = [];
-    foreach ($p->get_children() as $vid) {
-        $v = wc_get_product($vid);
-        $kids[$vid] = [$v->get_sku(), $v->get_regular_price('edit'), $v->get_sale_price('edit'), $v->get_stock_status('edit'),
-            $v->get_stock_quantity('edit'), $v->get_image_id('edit'), $v->get_attributes('edit')];
+if (!function_exists('ahc_guard_snapshot')) {
+    /** Snapshot of everything this tool must NOT change. */
+    function ahc_guard_snapshot($pid) {
+        $p = wc_get_product($pid);
+        $kids = [];
+        foreach ($p->get_children() as $vid) {
+            $v = wc_get_product($vid);
+            $kids[$vid] = [$v->get_sku(), $v->get_price('edit'), $v->get_regular_price('edit'), $v->get_sale_price('edit'),
+                $v->get_stock_status('edit'), $v->get_stock_quantity('edit'), $v->get_image_id('edit'), $v->get_attributes('edit')];
+        }
+        $attrs = [];
+        foreach ($p->get_attributes('edit') as $k => $at) $attrs[$k] = is_object($at) ? $at->get_data() : $at;
+        return md5(serialize([$p->get_sku(), $p->get_name(), $p->get_status(), $p->get_price('edit'), $p->get_regular_price('edit'),
+            $p->get_sale_price('edit'), $p->get_stock_status('edit'), $p->get_stock_quantity('edit'), $p->get_image_id('edit'),
+            $p->get_gallery_image_ids('edit'), $attrs, $kids]));
     }
-    $attrs = [];
-    foreach ($p->get_attributes('edit') as $k => $at) $attrs[$k] = is_object($at) ? $at->get_data() : $at;
-    return md5(serialize([$p->get_sku(), $p->get_name(), $p->get_status(), $p->get_image_id('edit'),
-        $p->get_gallery_image_ids('edit'), $attrs, $kids]));
-} }
-
-// ------------------------------------------------------------------ rollback
-if ($opt['rollback'] !== null) {
-    $bk = json_decode((string) file_get_contents($opt['rollback']), true);
-    if (!is_array($bk) || ($bk['site'] ?? '') !== $host || !isset($bk['posts'])) WP_CLI::error('Backup file invalid or for another site.');
-    foreach ($bk['posts'] as $pid => $old) {
+    function ahc_current($post_id) {
+        $cur = [];
+        foreach ([AHC_META, AHC_CTX] as $k) $cur[$k] = metadata_exists('post', $post_id, $k) ? (string) get_post_meta($post_id, $k, true) : null;
+        return $cur;
+    }
+    function ahc_set($post_id, $vals) {
         foreach ([AHC_META, AHC_CTX] as $k) {
-            if ($old[$k] === null) delete_post_meta((int) $pid, $k);
-            else update_post_meta((int) $pid, $k, wp_slash($old[$k]));
+            if ($vals[$k] === null) delete_post_meta($post_id, $k);
+            else update_post_meta($post_id, $k, wp_slash($vals[$k]));
         }
     }
-    $bad = 0;
-    foreach ($bk['posts'] as $pid => $old) foreach ([AHC_META, AHC_CTX] as $k) {
-        $now = metadata_exists('post', (int) $pid, $k) ? (string) get_post_meta((int) $pid, $k, true) : null;
-        if ($now !== $old[$k]) $bad++;
+    function ahc_norm($t) {
+        if (class_exists('Normalizer')) $t = Normalizer::normalize((string) $t, Normalizer::FORM_KC);
+        return trim(preg_replace('/\s+/u', ' ', mb_strtolower((string) $t)));
     }
-    WP_CLI::log('ROLLBACK ' . wp_json_encode(['posts' => count($bk['posts']), 'readback_mismatch' => $bad]));
-    if ($bad) WP_CLI::error('Rollback readback mismatch.');
+}
+
+// ------------------------------------------------------------------ rollback (all checks first, CAS)
+if ($opt['rollback'] !== null) {
+    $raw = @file_get_contents($opt['rollback']);
+    $bk = $raw === false ? null : json_decode($raw, true);
+    $bad = [];
+    if (!is_array($bk) || ($bk['format'] ?? '') !== 'ahc-swatch-backup-v2' || ($bk['site'] ?? null) !== $site_id || !is_array($bk['posts'] ?? null)) {
+        WP_CLI::error('Backup file invalid, wrong format, or for another site.');
+    }
+    $is_val = function ($v) { return is_array($v) && array_keys($v) === [AHC_META, AHC_CTX]
+        && (is_string($v[AHC_META]) || $v[AHC_META] === null) && (is_string($v[AHC_CTX]) || $v[AHC_CTX] === null); };
+    foreach ($bk['posts'] as $post_id => $e) {
+        if (!preg_match('/^\d+$/', (string) $post_id) || !is_array($e) || !isset($e['sku'], $e['old'], $e['new']) || !$is_val($e['old']) || !$is_val($e['new'])) {
+            $bad[] = "$post_id: malformed entry"; continue;
+        }
+        $p = wc_get_product((int) $post_id);
+        if (!$p || $p->get_sku() !== $e['sku']) { $bad[] = "$post_id: SKU differs from backup ({$e['sku']})"; continue; }
+        $cur = ahc_current((int) $post_id);
+        // CAS: current must be what this tool wrote, or already the old value (not written / already restored).
+        if ($cur !== $e['new'] && $cur !== $e['old']) $bad[] = "$post_id {$e['sku']}: changed since the write; not restoring";
+    }
+    if ($bad) { foreach ($bad as $b) WP_CLI::warning($b); WP_CLI::error(count($bad) . ' rollback check error(s). Nothing was restored.'); }
+    $restored = 0; $mismatch = 0;
+    foreach ($bk['posts'] as $post_id => $e) {
+        if (ahc_current((int) $post_id) === $e['old']) continue;
+        ahc_set((int) $post_id, $e['old']);
+        $restored++;
+    }
+    foreach ($bk['posts'] as $post_id => $e) if (ahc_current((int) $post_id) !== $e['old']) $mismatch++;
+    WP_CLI::log('ROLLBACK ' . wp_json_encode(['posts' => count($bk['posts']), 'restored' => $restored, 'readback_mismatch' => $mismatch]));
+    if ($mismatch) WP_CLI::error('Rollback readback mismatch; re-run the same rollback (it is idempotent).');
     return;
 }
 
 // ------------------------------------------------------------------ read + validate (no writes)
-if (!$opt['csv'] || !is_readable($opt['csv'])) WP_CLI::error('CSV path required and must be readable.');
-if (!$opt['allowlist'] || !is_readable($opt['allowlist'])) WP_CLI::error('allowlist=<file> is required.');
-if ($opt['apply'] && !$opt['backup']) WP_CLI::error('apply requires backup=<file>.');
-if ($opt['backup'] && file_exists($opt['backup'])) WP_CLI::error('Backup file already exists; choose a new path.');
+foreach (['csv', 'allowlist', 'mapping'] as $k) if (!$opt[$k] || !is_readable($opt[$k])) WP_CLI::error("$k file is required and must be readable.");
+if ($opt['apply'] && !$opt['backup']) WP_CLI::error('apply requires backup=<new file>.');
 $allow = array_values(array_filter(array_map('trim', file($opt['allowlist'])), 'strlen'));
 if (!$allow || count($allow) !== count(array_unique($allow))) WP_CLI::error('Allowlist is empty or has duplicates.');
 foreach ($allow as $x) if (!preg_match('/^\d+$/', $x)) WP_CLI::error("Allowlist id is not numeric: $x");
 $allow = array_flip($allow);
 
+$mapping = [];
+$mh = fopen($opt['mapping'], 'r');
+if (fgetcsv($mh) !== ['supplier_product_id', 'market', 'parent_sku']) WP_CLI::error('mapping header must be exactly: supplier_product_id,market,parent_sku');
+while (($m = fgetcsv($mh)) !== false) {
+    if (count($m) === 1 && trim((string) $m[0]) === '') continue;
+    if (count($m) !== 3 || isset($mapping[$m[0]])) WP_CLI::error('mapping: malformed or duplicate row for ' . ($m[0] ?? '?'));
+    $mapping[$m[0]] = ['market' => $m[1], 'sku' => $m[2]];
+}
+fclose($mh);
+
 $errors = [];
 $err = function ($m) use (&$errors) { $errors[] = $m; };
 $fh = fopen($opt['csv'], 'r');
-$header = fgetcsv($fh);
-if ($header !== AHC_FIELDS) WP_CLI::error('CSV header must be exactly: ' . implode(',', AHC_FIELDS));
+if (fgetcsv($fh) !== AHC_FIELDS) WP_CLI::error('CSV header must be exactly: ' . implode(',', AHC_FIELDS));
 $groups = [];
 $line = 1;
 while (($row = fgetcsv($fh)) !== false) {
     $line++;
     if (count($row) === 1 && trim((string) $row[0]) === '') continue;
     if (count($row) !== count(AHC_FIELDS)) { $err("line $line: column count " . count($row)); continue; }
-    $r = array_combine(AHC_FIELDS, array_map('trim', $row));
+    $r = array_combine(AHC_FIELDS, $row);   // values kept as-is (originals are not trimmed)
     if (!isset($allow[$r['supplier_product_id']])) continue;
     $pid = $r['supplier_product_id'];
     if ($r['shop_code'] !== 'SP') { $err("line $line: shop_code {$r['shop_code']} not in scope"); continue; }
@@ -118,7 +160,7 @@ while (($row = fgetcsv($fh)) !== false) {
     if ($hex !== '') {
         if (!preg_match('/^#[0-9A-Fa-f]{6}$/', $hex)) { $err("line $line: bad hex $hex"); continue; }
         if ($r['swatch_status'] !== 'CONFIRMED' || $r['hex_status'] !== 'APPROVED_APPROX') { $err("line $line: hex given for non-CONFIRMED/non-approved"); continue; }
-    }
+    } elseif ($r['hex_status'] === 'APPROVED_APPROX') { $err("line $line: APPROVED_APPROX without hex"); continue; }
     $g = &$groups[$pid];
     if (!isset($g)) $g = ['ctx' => [$r['market'], $r['colorway_original'], $r['swatch_status']], 'marker' => 0, 'comps' => []];
     if ($g['ctx'] !== [$r['market'], $r['colorway_original'], $r['swatch_status']]) $err("$pid: market/colorway/status differ between rows (or several markets for one SKU)");
@@ -139,20 +181,26 @@ global $wpdb;
 foreach ($allow as $pid => $_) {
     if (!isset($groups[$pid])) { $err("$pid: allowlisted but not in CSV"); continue; }
     $g = $groups[$pid];
+    [$market, $colorway, $status] = $g['ctx'];
+    if (!isset($mapping[$pid])) { $err("$pid: no verified market mapping"); continue; }
+    // Real product SP-<pid>, or an isolated draft fixture FX-SP-<pid> (tools/ahc_create_swatch_fixture.php).
+    $sku = $mapping[$pid]['sku'];
+    $is_fixture = $sku === 'FX-SP-' . $pid;
+    if ($sku !== 'SP-' . $pid && !$is_fixture) { $err("$pid: mapping parent_sku $sku must be SP-$pid or FX-SP-$pid"); continue; }
+    if ($mapping[$pid]['market'] !== $market) $err("$pid: CSV market $market != verified Local market {$mapping[$pid]['market']}");
     if ($g['marker'] > 1) $err("$pid: duplicate marker row");
     if ($g['marker'] && $g['comps']) $err("$pid: marker row mixed with components");
     ksort($g['comps']);
     if ($g['comps'] && array_keys($g['comps']) !== range(1, count($g['comps']))) $err("$pid: positions are not 1..n");
-    [$market, $colorway, $status] = $g['ctx'];
-    if ($g['comps'] && $status !== 'HOLD') {
-        $orig = array_values(array_filter(array_map('trim', explode('/', $colorway)), 'strlen'));
-        $names = array_map(function ($c) { return $c['name']; }, array_values($g['comps']));
-        // Same normalization as color_fullrun.norm(): NFKC, casefold, collapse whitespace.
-        $nz = function ($t) { if (class_exists('Normalizer')) $t = Normalizer::normalize($t, Normalizer::FORM_KC);
-            return trim(preg_replace('/\s+/u', ' ', mb_strtolower((string) $t))); };
-        if (array_map($nz, $orig) !== array_map($nz, $names)) $err("$pid: colorway_original does not match the components");
+    if ($status === 'CONFIRMED') {
+        if (!$g['comps']) $err("$pid: CONFIRMED without components");
+        foreach (array_slice(array_values($g['comps']), 0, 3) as $i => $c) if ($c['hex'] === null) $err("$pid: CONFIRMED but color " . ($i + 1) . ' has no hex');
     }
-    $sku = 'SP-' . $pid;
+    if ($g['comps'] && $status !== 'HOLD') {
+        $orig = array_values(array_filter(explode('/', $colorway), function ($t) { return trim($t) !== ''; }));
+        $names = array_map(function ($c) { return $c['name']; }, array_values($g['comps']));
+        if (array_map('ahc_norm', $orig) !== array_map('ahc_norm', $names)) $err("$pid: colorway_original does not match the components");
+    }
     $ids = $wpdb->get_col($wpdb->prepare(
         "SELECT p.ID FROM {$wpdb->posts} p JOIN {$wpdb->postmeta} m ON m.post_id = p.ID
          WHERE m.meta_key = '_sku' AND m.meta_value = %s AND p.post_type IN ('product','product_variation') AND p.post_status <> 'trash'", $sku));
@@ -160,15 +208,19 @@ foreach ($allow as $pid => $_) {
     $post_id = (int) $ids[0];
     $product = wc_get_product($post_id);
     if (!$product || !$product->is_type('variable')) { $err("$sku: not a variable product"); continue; }
+    if ($is_fixture && (get_post_meta($post_id, '_ahc_fixture', true) !== '1' || $product->get_status() !== 'draft')) { $err("$sku: not a draft fixture"); continue; }
+    if (!$opt['allow_published'] && $product->get_status() !== 'draft') { $err("$sku: status {$product->get_status()} (only drafts without allow_published=1)"); continue; }
     if (isset($seen_post[$post_id])) { $err("$sku: parent already used by {$seen_post[$post_id]}"); continue; }
     $seen_post[$post_id] = $pid;
     foreach (array_keys($product->get_variation_attributes()) as $ak) {
         if (stripos($ak, 'color') !== false) { $err("$sku: has a color variation ($ak) - out of scope"); continue 2; }
     }
-    $meta = wp_json_encode(['__single__' => array_values($g['comps'])], JSON_UNESCAPED_UNICODE);
-    $ctx = wp_json_encode(['schema_version' => 2, 'shop_code' => 'SP', 'market' => $market, 'supplier_product_id' => $pid,
-        'supplier_color_key' => 'single', 'colorway_original' => $colorway, 'swatch_status' => $status], JSON_UNESCAPED_UNICODE);
-    $plan[$post_id] = ['sku' => $sku, 'meta' => $meta, 'ctx' => $ctx];
+    $new = [
+        AHC_META => wp_json_encode(['__single__' => array_values($g['comps'])], JSON_UNESCAPED_UNICODE),
+        AHC_CTX => wp_json_encode(['schema_version' => 2, 'shop_code' => 'SP', 'market' => $market, 'supplier_product_id' => $pid,
+            'supplier_color_key' => 'single', 'colorway_original' => $colorway, 'swatch_status' => $status], JSON_UNESCAPED_UNICODE),
+    ];
+    $plan[$post_id] = ['sku' => $sku, 'old' => ahc_current($post_id), 'new' => $new];
 }
 
 if ($errors) {
@@ -178,30 +230,36 @@ if ($errors) {
 
 // ------------------------------------------------------------------ dry run / apply
 $stats = ['planned' => count($plan), 'unchanged' => 0, 'would_write' => 0, 'written' => 0];
-$old = [];
 foreach ($plan as $post_id => $p) {
-    $cur = [];
-    foreach ([AHC_META, AHC_CTX] as $k) $cur[$k] = metadata_exists('post', $post_id, $k) ? (string) get_post_meta($post_id, $k, true) : null;
-    $old[$post_id] = $cur;
-    if ($cur[AHC_META] === $p['meta'] && $cur[AHC_CTX] === $p['ctx']) { $stats['unchanged']++; unset($plan[$post_id]); continue; }
+    if ($p['old'] === $p['new']) { $stats['unchanged']++; unset($plan[$post_id]); continue; }
     $stats['would_write']++;
-    WP_CLI::log("PLAN  {$p['sku']}  {$p['meta']}  {$p['ctx']}");
+    WP_CLI::log("PLAN  {$p['sku']}  {$p['new'][AHC_META]}  {$p['new'][AHC_CTX]}");
 }
 if (!$opt['apply']) { WP_CLI::log('DRY RUN ' . wp_json_encode($stats)); return; }
+if (!$plan) { WP_CLI::log('APPLIED ' . wp_json_encode($stats) . ' (nothing to write, no backup created)'); return; }
 
-$backup = ['site' => $host, 'created_at' => gmdate('c'), 'posts' => array_intersect_key($old, $plan)];
-if (file_put_contents($opt['backup'], wp_json_encode($backup, JSON_UNESCAPED_UNICODE)) === false) WP_CLI::error('Could not write backup.');
+// Backup: exclusive create, full write, then read back and compare before any write.
+$backup = ['format' => 'ahc-swatch-backup-v2', 'site' => $site_id, 'created_at' => gmdate('c'), 'posts' => []];
+foreach ($plan as $post_id => $p) $backup['posts'][(string) $post_id] = ['sku' => $p['sku'], 'old' => $p['old'], 'new' => $p['new']];
+$json = wp_json_encode($backup, JSON_UNESCAPED_UNICODE);
+$bh = @fopen($opt['backup'], 'x');
+if (!$bh) WP_CLI::error('Could not create backup exclusively (exists or not writable). Nothing was written.');
+$ok = fwrite($bh, $json) === strlen($json) && fflush($bh);
+fclose($bh);
+if (!$ok || file_get_contents($opt['backup']) !== $json) WP_CLI::error('Backup write could not be verified. Nothing was written.');
+
 $guard = [];
 foreach ($plan as $post_id => $p) $guard[$post_id] = ahc_guard_snapshot($post_id);
 foreach ($plan as $post_id => $p) {
-    update_post_meta($post_id, AHC_META, wp_slash($p['meta']));
-    update_post_meta($post_id, AHC_CTX, wp_slash($p['ctx']));
+    // CAS: nothing else may have changed the meta since validation.
+    if (ahc_current($post_id) !== $p['old']) WP_CLI::error("{$p['sku']} changed during the run. Stopped after {$stats['written']} write(s); run rollback=" . $opt['backup']);
+    ahc_set($post_id, $p['new']);
     $stats['written']++;
 }
-wc_delete_product_transients();
+if (function_exists('wc_delete_product_transients')) foreach ($plan as $post_id => $p) wc_delete_product_transients($post_id);
 $bad_read = 0; $bad_guard = 0;
 foreach ($plan as $post_id => $p) {
-    if ((string) get_post_meta($post_id, AHC_META, true) !== $p['meta'] || (string) get_post_meta($post_id, AHC_CTX, true) !== $p['ctx']) $bad_read++;
+    if (ahc_current($post_id) !== $p['new']) $bad_read++;
     if (ahc_guard_snapshot($post_id) !== $guard[$post_id]) $bad_guard++;
 }
 $stats['readback_mismatch'] = $bad_read;

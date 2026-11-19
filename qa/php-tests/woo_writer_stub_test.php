@@ -8,12 +8,14 @@ class WP_CLI {
     static function warning($m) { self::$log[] = "W:$m"; }
     static function log($m) { self::$log[] = $m; }
 }
-$META = []; $SKU = []; $COLORVAR = [];
+$META = []; $SKU = []; $COLORVAR = []; $STATUS = [];
 class P {
     function __construct($id) { $this->id = $id; }
     function is_type($t) { return $t === 'variable'; }
     function get_variation_attributes() { global $COLORVAR; return isset($COLORVAR[$this->id]) ? ['pa_color' => ['a', 'b'], 'pa_size' => ['9']] : ['pa_size' => ['9', '10']]; }
     function get_children() { return []; }
+    function get_status() { global $STATUS; return $STATUS[$this->id] ?? 'draft'; }
+    function get_sku() { global $SKU; return $SKU[$this->id] ?? ''; }
     function __call($n, $a) { return $n === 'get_attributes' ? [] : ($n === 'get_gallery_image_ids' ? [] : "v-$n"); }
 }
 class WPDB {
@@ -42,18 +44,20 @@ $GOOD = $H
     . "SP,US,9,single,Black,CONFIRMED,1,Black,#171717,APPROVED_APPROX\n";
 $tmp = sys_get_temp_dir() . '/ahcw_' . getmypid();
 @mkdir($tmp);
-function runw($csv, $allow, $extra = []) {
-    global $tmp;
+$MAP = "supplier_product_id,market,parent_sku\n1,US,SP-1\n2,US,SP-2\n3,US,SP-3\n9,US,SP-9\n";
+function runw($csv, $allow, $extra = [], $map = null) {
+    global $tmp, $MAP;
     file_put_contents("$tmp/in.csv", $csv);
     file_put_contents("$tmp/allow.txt", implode("\n", $allow) . "\n");
+    file_put_contents("$tmp/map.csv", $map ?? $MAP);
     WP_CLI::$log = [];
-    $args = array_merge(["$tmp/in.csv", 'site=ahc.local', "allowlist=$tmp/allow.txt"], $extra);
+    $args = array_merge(["$tmp/in.csv", 'site=ahc.local', "allowlist=$tmp/allow.txt", "mapping=$tmp/map.csv"], $extra);
     try { include __DIR__ . '/../../tools/ahc_color_components_to_woo.php'; return 'OK'; }
     catch (RuntimeException $e) { return 'ERR ' . $e->getMessage(); }
 }
 $fail = 0;
 function check($name, $ok) { global $fail; echo ($ok ? 'PASS ' : 'FAIL ') . "$name\n"; if (!$ok) $fail++; }
-function reset_site() { global $META, $SKU, $COLORVAR; $META = []; $SKU = [101 => 'SP-1', 102 => 'SP-2', 103 => 'SP-3']; $COLORVAR = []; }
+function reset_site() { global $META, $SKU, $COLORVAR, $STATUS; $META = []; $SKU = [101 => 'SP-1', 102 => 'SP-2', 103 => 'SP-3']; $COLORVAR = []; $STATUS = []; }
 
 reset_site();
 check('dry run writes nothing', runw($GOOD, [1, 2, 3]) === 'OK' && $META === [] && strpos(end(WP_CLI::$log), '"would_write":3') !== false);
@@ -68,6 +72,22 @@ check('readback 0, guard 0', strpos(end(WP_CLI::$log), '"readback_mismatch":0,"o
 @unlink("$tmp/b2.json");
 check('rerun is a no-op', runw($GOOD, [1, 2, 3], ['apply', "backup=$tmp/b2.json"]) === 'OK' && strpos(end(WP_CLI::$log), '"unchanged":3') !== false);
 check('rollback restores', runw('', [], ["rollback=$tmp/b1.json"]) !== null && !isset($META[101]['_ahc_color_components']) && !isset($META[103]['_ahc_color_components_context']));
+
+// Rollback safety
+reset_site(); @unlink("$tmp/b3.json");
+runw($GOOD, [1, 2, 3], ['apply', "backup=$tmp/b3.json"]);
+$META[101]['_ahc_color_components'] = '{"__single__":[]}';   // someone changed it after the write
+check('rollback refuses when changed since write (CAS), restores nothing', strpos(runw('', [], ["rollback=$tmp/b3.json"]), 'ERR') === 0 && isset($META[102]['_ahc_color_components']));
+reset_site(); @unlink("$tmp/b4.json");
+runw($GOOD, [1, 2, 3], ['apply', "backup=$tmp/b4.json"]);
+$SKU[102] = 'SP-77';
+check('rollback refuses on SKU mismatch', strpos(runw('', [], ["rollback=$tmp/b4.json"]), 'ERR') === 0 && isset($META[101]['_ahc_color_components']));
+$SKU[102] = 'SP-2';
+$bj = json_decode(file_get_contents("$tmp/b4.json"), true); $bj['site']['host'] = 'other.local'; file_put_contents("$tmp/b5.json", json_encode($bj));
+check('rollback refuses other site', strpos(runw('', [], ["rollback=$tmp/b5.json"]), 'ERR') === 0);
+check('rollback ok and idempotent', runw('', [], ["rollback=$tmp/b4.json"]) === 'OK' && runw('', [], ["rollback=$tmp/b4.json"]) === 'OK' && $META === [101 => [], 102 => [], 103 => []]);
+reset_site(); file_put_contents("$tmp/exists.json", 'x');
+check('backup must be new (exclusive)', strpos(runw($GOOD, [1], ['apply', "backup=$tmp/exists.json"]), 'ERR') === 0 && $META === []);
 
 // Negative cases: each must stop with nothing written.
 $neg = [
@@ -85,9 +105,28 @@ $neg = [
     'bad hex' => [$H . "SP,US,1,single,Black,CONFIRMED,1,Black,#17171,APPROVED_APPROX\n", [1]],
     'hex on DRAFT' => [$H . "SP,US,1,single,Black,DRAFT,1,Black,#171717,APPROVED_APPROX\n", [1]],
     'bad status' => [$H . "SP,US,1,single,Black,OK,1,Black,,NOT_SHOWN\n", [1]],
+    'CONFIRMED with missing hex' => [$H . "SP,US,1,single,Black/White,CONFIRMED,1,Black,#171717,APPROVED_APPROX\nSP,US,1,single,Black/White,CONFIRMED,2,White,,NOT_SHOWN\n", [1]],
+    'CONFIRMED marker' => [$H . "SP,US,3,single,,CONFIRMED,0,,,NO_COMPONENTS\n", [3]],
+    'approved without hex' => [$H . "SP,US,1,single,Black,UNKNOWN,1,Black,,APPROVED_APPROX\n", [1]],
     'gap in positions' => [$H . "SP,US,1,single,Black/White,UNKNOWN,1,Black,,NOT_SHOWN\nSP,US,1,single,Black/White,UNKNOWN,3,White,,NOT_SHOWN\n", [1]],
 ];
 foreach ($neg as $name => [$csv, $allow]) { reset_site(); $r = runw($csv, $allow); check("stop: $name", strpos($r, 'ERR') === 0 && $META === []); }
+reset_site();
+check('stop: market differs from verified mapping', strpos(runw($GOOD, [1], [], "supplier_product_id,market,parent_sku\n1,JP,SP-1\n"), 'ERR') === 0 && $META === []);
+reset_site();
+check('stop: no mapping row', strpos(runw($GOOD, [1], [], "supplier_product_id,market,parent_sku\n2,US,SP-2\n"), 'ERR') === 0 && $META === []);
+reset_site(); $STATUS[101] = 'publish';
+check('stop: published without allow_published', strpos(runw($GOOD, [1]), 'ERR') === 0 && $META === []);
+reset_site(); $STATUS[101] = 'publish'; @unlink("$tmp/b6.json");
+check('published allowed with allow_published=1', runw($GOOD, [1], ['apply', "backup=$tmp/b6.json", 'allow_published=1']) === 'OK' && isset($META[101]['_ahc_color_components']));
+$FX = $H . "SP,US,5,single,Red,HOLD,1,Red,,NOT_SHOWN\n";
+reset_site(); $SKU[105] = 'FX-SP-5'; $META[105]['_ahc_fixture'] = '1'; @unlink("$tmp/b7.json");
+check('fixture FX-SP-<id> draft accepted', runw($FX, [5], ['apply', "backup=$tmp/b7.json"], "supplier_product_id,market,parent_sku\n5,US,FX-SP-5\n") === 'OK'
+    && json_decode($META[105]['_ahc_color_components'], true) === ['__single__' => [['name' => 'Red', 'hex' => null]]]);
+reset_site(); $SKU[105] = 'FX-SP-5';
+check('stop: FX sku without fixture flag', strpos(runw($FX, [5], [], "supplier_product_id,market,parent_sku\n5,US,FX-SP-5\n"), 'ERR') === 0 && $META === []);
+reset_site(); $SKU[105] = 'XX-5';
+check('stop: other mapping sku', strpos(runw($FX, [5], [], "supplier_product_id,market,parent_sku\n5,US,XX-5\n"), 'ERR') === 0);
 reset_site(); $SKU[104] = 'SP-1';
 check('stop: duplicate SKU', strpos(runw($GOOD, [1]), 'ERR') === 0 && $META === []);
 reset_site(); $COLORVAR[101] = true;
