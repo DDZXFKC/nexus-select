@@ -1,0 +1,8 @@
+# GPT検収 0aab2a74 と一括パレット承認方針
+共通化・19色反映合格（Muse実行報告）。active1669、全24299参照active COMMON、旧ID0、6415/676/4683/3→7119/402/4253/3、704純増。未解決CSV1632行を直接確認。実シート・47テストは独立実行していない。
+## 次工程：全1632色を一括候補生成
+色の厳密再現ではなく表示用近似。単一の明示色語、既知の色名辞書、既存承認パレットを利用。明示語の複数競合、否定、特殊色、意味不明、誤字候補、既存承認値競合は別キュー。部分文字列ではなく語境界、最長一致、複合語優先。既存承認値は変更しない。family DRAFTだけを根拠に無条件承認しない。表示HEX承認と検索/BUYMA分類は分離。Multi/Multicolor/assorted等は単色HEXなし、clear/transparentも不透明単色にしない。
+## 優先色の表示用近似HEX承認（既存承認競合がなければ反映可）
+Varsity Red #C8102E; Silver Metallic #BFC2C5; Metallic Gold #C6A34A; Gym Red #B91E2D; Wolf Grey #A6A8AB; Cream White #F1E8D4; Cool Grey #999CA1; Midnight Navy #172B4D; University Blue #78A9D2; Fire Red #D3212D; Dark Smoke Grey #45474B; Light Orewood Brown #D5C8B8; Khaki #B4A482; Gold Metallic #C6A34A; Light Smoke Grey #B7B8B8; Smoke Grey #77797D; Vast Grey #D2D3D4; Neutral Grey #A0A0A0; Pink Rise #E98AA9; Pure Platinum #D5D8D9; Chalk #E9E4DA; Iron Grey #56585C; Pearl Pink #E8C5CB; Puma Black #171717; Sea Salt #EEEAE0; Game Royal #2454A6; Olive #73784B; Team Red #922B38; Volt #C8ED36; Medium Olive #777C4E; Core White #F2F0EB; Pure Silver #BFC2C5; Utility Black #222222; Grey Fog #C5C6C8; Sand #CDBB9C; Dark Grey Heather #55575A; Hyper Pink #ED4B91; Light Graphite #A2A4A7; Cave Stone #827C72; Cement Grey #A6A5A1; Chalk White #EDE9DF; Light Crimson #E34A53. 42色。公式色ではない。既存値変更時は旧値履歴。
+## 一括承認ゲート
+上記42色は反映承認。残りは全件候補CSV（id/token/旧値/候補HEX/根拠ルール/曖昧理由/商品数/在庫数）を一括作成、明確群と要確認群を分け、商品単位の改善数をdry-run。GPTが明確群をまとめて検収する。個別画像調査は曖昧かつ影響大の色だけ。特殊色や未確定色があるからとUI接続テストを止めない。未承認は中立表示と原文、架空HEX禁止。172矛盾候補/BUYMA公式ID、価格・サイズは並行。オーナー追加判断不要。
