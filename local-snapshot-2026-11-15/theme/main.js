@@ -514,6 +514,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /*
+   * SOLD OUT (owner decision 2026-11-20): a value is sold out when every
+   * variation that matches it (and the other selected values) is out of
+   * stock in WooCommerce's own variation data. Unknown data (AJAX-loaded
+   * forms with no inline variations) never asserts SOLD OUT.
+   */
+  function soldOut(select, value) {
+    const form = select.closest('form.variations_form');
+    let vars = null;
+    try {
+      vars = JSON.parse(form && form.getAttribute('data-product_variations') || 'null');
+    } catch (e) {
+      vars = null;
+    }
+    if (!Array.isArray(vars) || !vars.length) return false;
+    const others = Array.from(
+      form.querySelectorAll('select[name^="attribute_"]')
+    ).filter(other => other !== select && other.value);
+    const matching = vars.filter(v => {
+      const a = v && v.attributes || {};
+      if (a[select.name] && a[select.name] !== value) return false;
+      return others.every(o => !a[o.name] || a[o.name] === o.value);
+    });
+    return matching.length > 0 && matching.every(v => v.is_in_stock === false);
+  }
+
   function updateButtons(select) {
     const wrapper = select.nextElementSibling;
 
@@ -583,12 +609,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const selected = select.value === option.value;
 
+      const isSoldOut = soldOut(select, option.value);
       const unavailable =
         option.disabled ||
-        !allowedByMap(select, option.value);
+        !allowedByMap(select, option.value) ||
+        isSoldOut;
 
       button.disabled = unavailable;
       button.classList.toggle('is-disabled', unavailable);
+      button.classList.toggle('is-soldout', isSoldOut);
+      const baseLabel = option.textContent.trim();
+      const label = isSoldOut ? `${baseLabel} SOLD OUT` : baseLabel;
+      button.setAttribute('aria-label', label);
+      button.setAttribute('title', label);
       button.setAttribute('aria-pressed', String(selected));
       button.classList.toggle('is-selected', selected);
     });
