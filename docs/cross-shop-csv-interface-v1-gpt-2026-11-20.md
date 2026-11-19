@@ -112,3 +112,21 @@ Current `tools/build_buyma_batch.py` `main()` reads a selection CSV containing S
 - Tie-break: minimum Decimal cost, newest observed timestamp, cost flag, versioned shop priority, stable row ID. Distinct shops may win different sizes; no unsupported mixed-shipping discount.
 - Batch3 category preflight passes before generation; output category automatically matches approved exception.
 - Muse real-input test, GLM final verdict before production. **Do not hold batch3 solely for future cross-shop layer.**
+
+## GLM conditional acceptance resolution addendum (2026-11-20)
+Supersedes any contrary per-size winner statement above. **Cross-shop winner is exactly one colorway-level source offer per normalized brand + complete color-coded model key**. Different shops MUST NOT win different sizes of the same colorway. SP and FL current margin datasets contain one price per colorway. Cost basis is therefore the **verified one-colorway / one-unit procurement total**, not a basket of sizes, and not a per-variant order cost. No size-dependent total may be collapsed without evidence; if a size materially changes landed cost mark `size_price_divergent=1` and preserve its observed amount without changing winner. At actual purchase, verify chosen shop stock and realized price for the ordered size, and reassess manually if that size's cost/stock differs; no periodic automatic recheck.
+
+### Additional output evidence columns (binding v1 amendment)
+- `size_price_divergent` = 0/1; signals known observed differences between source shops' size-level prices, no effect on ranking.
+- `size_price_observations_json` = JSON list of shop_code, source_variant_id, size_original, source_price_local, currency, stock_observed, observed_at_utc, observation_source_ref. **All observed variants from the chosen shop** must be retained, even unavailable ones. These are observational fields, never assertions of order-time availability.
+- `stock_observation_source_ref` = URL/document snapshot + acquisition timestamp, making `stock_observed` auditable.
+- `procurement_unit` = `COLORWAY_ONE_UNIT` constant; excludes bundling/quantity discounts.
+- `cost_verified` = 1 only when all total components audited. Eligibility is strictly `cost_calculated=1 AND cost_verified=1`. Both mandatory. Cost flag tie-break (third) is a redundant defensive check on eligible rows.
+- `hold_reason_codes` = pipe-delimited, source-level rejection e.g. `cost_uncalculated`, `total_unverified`, `missing_model_full`, `missing_brand_alias`; audit outputs include this for **each** candidate.
+
+### Reproducibility, normalization, converter acceptance
+- Comparable accepted rows sort by Decimal `procurement_total_jpy` ascending, observation UTC descending, cost-calculated flag descending (defensive/no-op), fixed configured shop rank ascending, then stable source row ID ascending.
+- Stable source row ID from `shop_code|source_product_id|source_variant_id-or-COLORWAY` with delimiter-safe serialization; reject duplicate IDs under same pinned source snapshot.
+- Fixtures MUST cover approved brand aliases, NFKC fullwidth/halfwidth, trademark-symbol treatment, leading zero in color code, original separators and case; no unconditional stripping of distinguishing model characters. Unknown/ambiguous normalization = HOLD.
+- FL six-point verification result must feed converter fixture tests before cross-shop implementation. For both FL and SP raw CSV→offers converters, require round-trip losslessness of source identity, original model and color, currency, source price, source URL and observed stock + collision/key uniqueness audit.
+- This amendment is **design only**, not a claim of cross-shop implementation or FL cost completion. Versioned change against GLM decision: `docs/decision-log-cross-shop-interface-v1-2026-11-20.md`.
