@@ -8,7 +8,7 @@ from core import Coordinator, make_event
 from github_store import IssueStore
 from glm_bridge import review, BridgeError
 
-def cycle(store, contract, manifest, sources, invoke=review):
+def cycle(store, contract, manifest, sources, invoke=review, reviews=()):
     previous=store.read()
     c=Coordinator(contract,previous['state'],enable_readonly=True)
     def persist():
@@ -18,6 +18,16 @@ def cycle(store, contract, manifest, sources, invoke=review):
     for task in manifest:
         if task['task_id'] not in c.state['tasks']:
             c.add(task)
+    # Review receipts come only from the trusted local admission channel.
+    # Muse must independently authenticate the reviewer before placing a receipt.
+    for receipt in reviews:
+        t=c.state['tasks'].get(receipt['task_id'])
+        if not t or t['status']!='REVIEW_READY':
+            continue
+        if receipt['reviewer']!=t['reviewer'] or receipt['revision']!=t['revision'] or receipt['lease_id']!=t['lease_id']:
+            continue
+        payload={'kind':'review','result_hash':receipt['result_hash'],'verdict':receipt['verdict'],'evidence':receipt['evidence']}
+        c.event(t['reviewer'],make_event(t,t['reviewer'],payload,receipt['event_id']),payload)
     c.recover()
     persist()
     approved={t['task_id']:t for t in manifest}
@@ -61,7 +71,7 @@ def main():
         store=IssueStore(args.repo,args.issue)
         while True:
             admission=json.loads(args.admission.read_text())
-            print(json.dumps(cycle(store,contract,admission['tasks'],admission['sources'])),flush=True)
+            print(json.dumps(cycle(store,contract,admission['tasks'],admission['sources'],reviews=admission.get('verified_reviews',[]))),flush=True)
             if not args.loop:
                 break
             time.sleep(60)
