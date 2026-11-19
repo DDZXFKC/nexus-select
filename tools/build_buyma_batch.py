@@ -69,7 +69,7 @@ def division(name):
     if re.search(r'\bMens\b',name,re.I): return 'Men'
     raise ValueError('unknown department '+name)
 
-def generate(selected,woo,config,book,allow_missing=False,approved_categories=None):
+def generate(selected,woo,config,book,allow_missing=False,approved_categories=None,allow_zero_stock=False):
     approved_categories = approved_categories or {}
     parents=unique([r for r in woo if r['Type']=='variable'],'SKU')
     variations=defaultdict(list)
@@ -94,7 +94,8 @@ def generate(selected,woo,config,book,allow_missing=False,approved_categories=No
             price=int(cfg['approved_buyma_prices'][sku])
             if price<=0: raise ValueError('invalid approved price')
         vs=variations[sku]
-        if not any(v['In stock?']=='1' for v in vs): raise ValueError('no stock '+sku)
+        if not vs: raise ValueError('no variations '+sku)
+        if not allow_zero_stock and not any(v['In stock?']=='1' for v in vs): raise ValueError('no stock '+sku)
         items.append(dict(zip(cols,[sku,'下書き',name,str(cfg['brand_id']),cfg['brand_name'],str(approved_categories.get(sku, cfg['categories'][div])),'51','0',str(price),'1','','0','',(src['description_en'] or '')[:900],'1103985','2001001','0','Shoe Palace','','','1',*(imgs+['','',''])[:3],'追加画像：'+' '.join(imgs[3:]) if len(imgs)>3 else '',src['url']])))
         def sortkey(v):
             s=norm(v['Attribute 1 value'])
@@ -155,7 +156,7 @@ def main():
     elif a.preflight_dir is not None:
         raise ValueError('preflight-dir only supported for batch3')
     items,cs=generate(selected,read(cfg['woo']),cfg,sizebook(cfg['size_table']),
-                      a.reproduce_batch1,approved_categories)
+                      a.reproduce_batch1,approved_categories,allow_zero_stock=(a.prefix == 'batch3'))
     if a.output.exists(): raise ValueError('output exists')
     with tempfile.TemporaryDirectory(dir=a.output.parent) as t:
         d=Path(t)/'out';d.mkdir()
