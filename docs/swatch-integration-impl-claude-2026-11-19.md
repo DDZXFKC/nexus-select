@@ -46,6 +46,16 @@
 - 書き込みツールは FX-SP-<id> を mapping で明示した場合のみ、下書きかつ `_ahc_fixture=1` を条件に受け付ける（39ffb24 のまま）。
 - テスト：qa/php-tests/fixture_tool_stub_test.php 13件合格（重複・衝突・dry-run・remove の不一致拒否・購入拒否）。
 
+## 反映するファイルの最新版（6d791c7 時点、c1e14f3 の比較表は旧版）
+| ファイル | サイズ | md5 先頭12桁 |
+|---|---|---|
+| theme/main.js | 22,177 B | 4b736d99ce08 |
+| theme/style.css | 48,220 B | 67e4be36a7dc |
+| mu-plugins/nexus-variation-gallery.php | 15,560 B | 4f6602c773da |
+| mu-plugins/ahc-fixture-guard.php（新規） | 1,624 B | 8d1252a4456e |
+
+Local の SP 158点は全て公開中・下書き0（c1e14f3）なので、初回は9観点すべて FX fixture（tools/swatch_fixtures_fx_2026-11-19.csv）。手順4は省略可、手順5の template には公開中のSP商品を使ってよい（型として読むだけで変更しない）。
+
 ## 魔王ちゃんの手順（Localのみ・5dc4c1b修正後）
 1. local-snapshot-2026-11-15 の theme/main.js・theme/style.css・mu-plugins/nexus-variation-gallery.php・mu-plugins/ahc-fixture-guard.php（fixtureの購入拒否）を Local に反映（メタが無い間は見た目不変）。商品ページ（MERGED 1点・SP 1点）で今までどおりか確認。
 2. LocalのSP商品を書き出す（ID,状態）：`wp eval 'foreach (wc_get_products(["limit"=>-1,"type"=>"variable","status"=>["publish","draft"]]) as $p) { if (strpos($p->get_sku(),"SP-")===0) echo substr($p->get_sku(),3),",",$p->get_status(),"\n"; }' --path=… > sp_local.txt`
