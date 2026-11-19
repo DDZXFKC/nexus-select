@@ -6,7 +6,7 @@ class WP_CLI { static $log = []; static function error($m) { throw new RuntimeEx
   static function warning($m) { self::$log[] = "W:$m"; } static function log($m) { self::$log[] = $m; } }
 $SKUS = ['SP-1' => 10, 'FX-SP-7-2' => 99]; $META = []; $POSTS = [];
 class P { function __construct($id) { $this->id = $id; }
-  function is_type($t) { return $t === 'variable'; } function get_variation_attributes() { return ['pa_size' => ['9', '10']]; }
+  function is_type($t) { global $POSTS; $var = !empty($POSTS[$this->id]['parent']) || !empty($POSTS[$this->id]['variation']); return $t === ($var ? 'variation' : 'variable'); } function get_variation_attributes() { return ['pa_size' => ['9', '10']]; }
   function get_children() { global $POSTS; return $POSTS[$this->id]['kids'] ?? [11, 12]; }
   function get_sku() { global $POSTS; return $POSTS[$this->id]['sku'] ?? 'SP-1'; }
   function get_status() { global $POSTS; return $POSTS[$this->id]['status'] ?? 'publish'; }
@@ -36,7 +36,8 @@ check('stop: child SKU collision', strpos(runf(['create', "fixtures=$tmp/col.csv
 file_put_contents("$tmp/real.csv", $H . "1,A\n");
 check('stop: real SP SKU exists', strpos(runf(['create', "fixtures=$tmp/real.csv", 'template=SP-1', "manifest=$tmp/m3.json", 'site=ahc.local']), 'ERR') === 0);
 check('stop: wrong site', strpos(runf(['create', "fixtures=$tmp/ok.csv", 'template=SP-1', "manifest=$tmp/m4.json", 'site=prod.com']), 'ERR') === 0);
-// remove (v2: discover by run id; GPT 7f00676)
+// remove (v2: discover by run id; GPT 7f00676 / 7bf74dd)
+function get_post_stati() { return ['publish' => 1, 'draft' => 1, 'private' => 1, 'pending' => 1, 'future' => 1]; }
 function get_posts($q) { global $META; $run = $q['meta_query'][0]['value'];
   return array_keys(array_filter($META, function ($m) use ($run) { return ($m['_ahc_fixture_run'] ?? '') === $run; })); }
 $RUN = 'fx-20261119070000-abc123';
@@ -59,6 +60,14 @@ $reset(); $POSTS[300]['kids'] = [301, 999]; $POSTS[999] = ['sku' => 'SP-3-1', 'p
 check('remove refuses parent with a foreign child', strpos($rm(true), 'ERR') === 0 && $DELETED === []);
 $reset(); unset($POSTS[200], $POSTS[201], $META[200], $META[201]);
 check('remove resumes after partial delete', $rm(true) === 'OK' && $DELETED === [301, 300]);
+$reset(); $POSTS[301]['parent'] = 200; $POSTS[200]['kids'] = [201, 301]; $POSTS[300]['kids'] = [];
+check('remove refuses child under a different parent than planned', strpos($rm(true), 'ERR') === 0 && $DELETED === []);
+$reset(); $POSTS[301]['sku'] = '';
+check('remove refuses empty SKU (no auto-delete)', strpos($rm(true), 'ERR') === 0 && $DELETED === []);
+$reset(); $POSTS[301] = ['sku' => 'FX-SP-6-1', 'variation' => true, 'parent' => 0];
+check('remove refuses top-level child (parent 0)', strpos($rm(true), 'ERR') === 0 && $DELETED === []);
+$reset(); $POSTS[300]['variation'] = true;
+check('remove refuses parent that is not a variable product', strpos($rm(true), 'ERR') === 0 && $DELETED === []);
 $bad = $man; $bad['run_id'] = ''; file_put_contents("$tmp/man.json", json_encode($bad));
 check('remove refuses empty run id', strpos($rm(), 'ERR') === 0);
 $bad = $man; $bad['planned'][1]['sku'] = 'FX-SP-5'; file_put_contents("$tmp/man.json", json_encode($bad));

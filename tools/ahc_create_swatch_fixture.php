@@ -11,10 +11,14 @@
  *   Every planned SKU (parent and children) is checked for collisions and CSV duplicates first.
  *   The run manifest (manifest=<new file>, created exclusively) lists the run id and every PLANNED
  *   SKU before anything is saved; markers (_ahc_fixture, _ahc_fixture_run) are set on each object
- *   BEFORE save(), so an interrupted run never leaves an unmarked post.
- * remove: finds every post carrying this run's marker, checks each one (fixture marker, run id,
- *   planned FX-SP- SKU, parent id, parent draft) and deletes children then parents, verifying each
- *   deletion. Idempotent: an interrupted remove can simply be run again. Dry run unless "apply".
+ *   before save(). NOTE: a Woo save is not a DB transaction (post insert and meta writes are separate),
+ *   so an interruption between them CAN leave an unmarked post. That case is not auto-deleted: take a
+ *   full DB snapshot before create and restore it if the run is interrupted (GPT 7bf74dd).
+ * remove: finds every post of any status (trash included) carrying this run's marker, checks each one
+ *   (type, fixture marker, run id, planned FX-SP- SKU, child's actual parent = its planned parent,
+ *   parent draft) and deletes children then parents, verifying each deletion. Any empty SKU, unplanned
+ *   SKU, top-level child or type mismatch stops the whole remove (restore the DB snapshot instead).
+ *   Idempotent: an interrupted remove can simply be run again. Dry run unless "apply".
  *
  * Run (plain key=value args; WP-CLI 2.12 does not pass --options to eval-file):
  *   wp eval-file tools/ahc_create_swatch_fixture.php create fixtures=<csv> template=SP-<id> manifest=<new file> site=<host> [apply] --path=...
@@ -58,31 +62,39 @@ if ($o['cmd'] === 'remove') {
             $child_skus[$cs] = $ps;
         }
     }
-    $found = get_posts(['post_type' => ['product', 'product_variation'], 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids',
-        'meta_query' => [['key' => '_ahc_fixture_run', 'value' => $run]]]);
-    $bad = []; $parents = []; $children = [];
+    $all_status = array_merge(array_keys(get_post_stati()), ['trash', 'auto-draft', 'inherit']);
+    $found = get_posts(['post_type' => ['product', 'product_variation'], 'post_status' => array_values(array_unique($all_status)),
+        'numberposts' => -1, 'fields' => 'ids', 'meta_query' => [['key' => '_ahc_fixture_run', 'value' => $run]]]);
+    $bad = []; $parents = []; $children = []; $parent_id_by_sku = [];
     foreach ($found as $id) {
         $p = wc_get_product($id);
         if (!$p) { $bad[] = "$id: not a product"; continue; }
         if (get_post_meta($id, '_ahc_fixture', true) !== '1') { $bad[] = "$id: missing fixture marker"; continue; }
         $sku = $p->get_sku();
+        if ($sku === '') { $bad[] = "$id: empty SKU (not auto-deleted; restore the DB snapshot)"; continue; }
         if (isset($parent_skus[$sku])) {
-            if ($p->get_parent_id() !== 0 || $p->get_status() !== 'draft') { $bad[] = "$id $sku: parent not a draft top-level product"; continue; }
+            if (!$p->is_type('variable') || $p->get_parent_id() !== 0 || $p->get_status() !== 'draft') { $bad[] = "$id $sku: parent is not a draft top-level variable product"; continue; }
             foreach ($p->get_children() as $vid) {
                 if (get_post_meta($vid, '_ahc_fixture_run', true) !== $run) $bad[] = "$id $sku: has a child $vid that is not from this run";
             }
             $parents[$id] = $sku;
+            $parent_id_by_sku[$sku] = $id;
         } elseif (isset($child_skus[$sku])) {
+            if (!$p->is_type('variation') || $p->get_parent_id() === 0) { $bad[] = "$id $sku: child is not a variation with a parent"; continue; }
             $children[$id] = $sku;
-        } elseif ($sku === '') {
-            $children[$id] = '(no SKU: interrupted save)';   // marked with this run before save, so it is ours
         } else {
             $bad[] = "$id: SKU $sku is not planned in this manifest";
         }
     }
     foreach ($children as $id => $sku) {
         $par = wc_get_product($id)->get_parent_id();
-        if ($par && !isset($parents[$par]) && get_post($par)) $bad[] = "child $id: parent $par is not a fixture of this run";
+        $want = $child_skus[$sku];
+        if (!isset($parent_id_by_sku[$want])) {
+            // planned parent already deleted (resumed remove): the actual parent must be gone too
+            if (get_post($par)) $bad[] = "child $id $sku: parent $par is not its planned parent $want";
+        } elseif ($par !== $parent_id_by_sku[$want]) {
+            $bad[] = "child $id $sku: actual parent $par != planned parent $want ({$parent_id_by_sku[$want]})";
+        }
     }
     if ($bad) { foreach ($bad as $x) WP_CLI::warning($x); WP_CLI::error(count($bad) . ' check error(s). Nothing was removed.'); }
     foreach ($children as $id => $sku) WP_CLI::log(($o['apply'] ? 'REMOVE ' : 'WOULD REMOVE ') . "child $id $sku");
