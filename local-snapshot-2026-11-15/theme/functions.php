@@ -8,7 +8,6 @@ add_action('wp_enqueue_scripts', function(){wp_enqueue_style('nexus-style',get_s
 add_filter('woocommerce_show_page_title','__return_false');
 add_action('woocommerce_before_single_product',function(){if(function_exists('woocommerce_breadcrumb')) woocommerce_breadcrumb(['delimiter'=>' / ','wrap_before'=>'<nav class="nexus-breadcrumb">','wrap_after'=>'</nav>']);},5);
 remove_action('woocommerce_before_main_content','woocommerce_breadcrumb',20);
-add_action('woocommerce_single_product_summary',function(){echo '<p class="nexus-notice">海外から買い付ける商品は、在庫・価格・配送予定が変わる場合があります。ご注文前に各商品条件をご確認ください。</p>';},35);
 // A guide is only shown when a verified, product-specific guide has been entered by the store operator.
 add_action('woocommerce_single_product_summary',function(){
  $id=get_the_ID();$guide=get_post_meta($id,'_nexus_size_guide_html',true);

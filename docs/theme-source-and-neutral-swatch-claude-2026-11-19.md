@@ -31,3 +31,7 @@ GPT 0833d0f・ea2ae9a・b9557ce の Claude 担当分。新機能なし（エラ�
 
 ## 3. fixture remove の異常系（b9557ce）
 - 空SKU・親不一致・trash・型違いは 0e57d34 で修正済み（今回の実機は ab86a89 版で実行）。次回 fixture を使うときは 0e57d34 以降の版を使う。
+
+## 4. 結果（18:50）
+- 魔王ちゃん確認：Local の functions.php md5 = 031be6cccc0af38a154d17d7161cfbf7（期待値と一致）。→ 正本は `local-snapshot-2026-11-15/theme/`。snapshot 版から注意文言1行だけを削除し、md5 が Local と一致（031be6cc…）。helper `nexus_term_has_products` は残した。php -l OK。Local への反映は不要（既に同じ）。
+- 中立丸窓：保存スクショで UNKNOWN/HOLD の点線の丸を確認（57a52ae で報告訂正）。仕様どおり、不具合なし。21437（構成色なし）はスクショ無しで未確認。必要になれば次回 fixture で確認（成功済みの手順は繰り返さない）。
