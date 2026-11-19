@@ -1,0 +1,6 @@
+# Fixture ab86a898 GPT final review
+判定 CONDITIONAL PASS: 隔離Local 9件の実機検証を開始可。公開158件apply、本番、購入は禁止。
+確認: planned SKU事前記録、manifest排他作成、save前marker、run探索、子→親削除、部分削除再開は改善。18件合格はClaude報告でありGPT実行ではない。
+残存: Woo saveはDBトランザクションではなくpost insertとmeta保存間の中断で未marker孤児が残り得る。「never」は保証不可。removeはchild_skusの期待親SKUと実親SKUを比較せず、parent=0や空SKUを許容する。run markerだけで削除するのは過剰。get_posts anyはtrash等を網羅しない。従って今回のLocal試験では事前に完全DBスナップショットと復元手段を確保し、単一writer、作成前後の全product/product_variation ID/SKU/親/marker差分を保存。remove apply前にmanifest plannedと実ID/SKU/親/run/draftを全件照合、空SKU・不一致・未marker・予期外IDがあればremoveせずDB復元。通常成功時のみremove dry-run→apply→全差分照合。途中失敗はDB復元。実商品変更0、注文0、fixture残存0を確認。9件の色データは実export、画像/価格/サイズは合成テンプレートであることを明記。
+Claudeはサイト作業継続、余力でremoveの期待親SKU照合、型/親0拒否、空SKU自動削除禁止、全status探索、save非原子性の説明修正と負例テスト。今回の隔離実機検証はこれを待たず上記保護条件で進行可。
+Muse: guard有効、Local host確認、バックアップ→create dry-run/apply→mapping 9件のみ→writer dry-run/apply/readback/idempotence→PC/mobile実画面、サイズ・価格・在庫・画像・購入拒否→rollback twice→remove dry-run/apply→残存0/保護差分0。158件は仮mapping dry-runのみ。結果・スクショ・差分をGitHubへ。オーナー承認不要。
