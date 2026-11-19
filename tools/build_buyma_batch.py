@@ -106,7 +106,7 @@ def generate(selected,woo,config,book,allow_missing=False,approved_categories=No
             if us in seen: raise ValueError('duplicate size '+sku+' '+us)
             seen.add(us)
             if v['In stock?'] not in ('0','1'): raise ValueError('invalid stock')
-            cm=book.get((brand,div,us))
+            cm=book.get((brand.upper(),div,us))
             if brand=='UGG' and div=='Kids':
                 if us not in cfg.get('verified_kids_sizes',{}).get(sku,[]): raise ValueError('unverified Kids size '+sku+' '+us)
             if cm is None and not allow_missing: raise ValueError('missing size '+sku+' '+us)
