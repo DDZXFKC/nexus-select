@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "agents": [
+    "gpt",
+    "claude",
+    "glm",
+    "muse"
+  ],
+  "states": [
+    "QUEUED",
+    "READY",
+    "CLAIMED",
+    "RUNNING",
+    "REVIEW_READY",
+    "DONE",
+    "CHANGES_REQUESTED",
+    "BLOCKED",
+    "WAIT_OWNER",
+    "CANCELLED"
+  ],
+  "transitions": {
+    "QUEUED": [
+      "READY",
+      "BLOCKED"
+    ],
+    "READY": [
+      "CLAIMED",
+      "BLOCKED",
+      "WAIT_OWNER"
+    ],
+    "CLAIMED": [
+      "RUNNING",
+      "BLOCKED"
+    ],
+    "RUNNING": [
+      "REVIEW_READY",
+      "BLOCKED",
+      "WAIT_OWNER"
+    ],
+    "REVIEW_READY": [
+      "DONE",
+      "CHANGES_REQUESTED"
+    ],
+    "CHANGES_REQUESTED": [
+      "READY"
+    ],
+    "BLOCKED": [
+      "READY"
+    ],
+    "WAIT_OWNER": [
+      "READY",
+      "CANCELLED"
+    ],
+    "DONE": [],
+    "CANCELLED": []
+  },
+  "required": [
+    "task_id",
+    "revision",
+    "from_agent",
+    "to_agent",
+    "reviewer",
+    "priority",
+    "depends_on",
+    "input_refs",
+    "action",
+    "acceptance",
+    "allowed_paths",
+    "allowed_actions",
+    "resource_locks",
+    "status"
+  ],
+  "event_required": [
+    "event_id",
+    "task_id",
+    "revision",
+    "lease_id",
+    "actor",
+    "timestamp",
+    "payload_hash"
+  ],
+  "invariants": [
+    "authenticated_actor_not_body_claim",
+    "reviewer_not_executor",
+    "dependencies_done_before_ready",
+    "single_dispatcher",
+    "stale_lease_rejected",
+    "no_external_side_effect_retry",
+    "owner_approval_for_protected_actions",
+    "muse_only_sheet_local_writer",
+    "no_secrets_in_public_repo"
+  ],
+  "pilot_only": true
+}
