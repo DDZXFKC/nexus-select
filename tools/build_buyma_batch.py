@@ -1,183 +1,139 @@
 #!/usr/bin/env python3
-"""Offline BUYMA batch generator. Explicit local schema mapping; never publishes.
-Usage: python3 build_buyma_batch.py --input selected.csv --output new_dir --config local.json
-See build_buyma_batch.md for configuration. No third-party dependencies.
-"""
-import argparse
-import csv
-import json
-import re
-import sys
-import tempfile
+"""Generate exact batch1 BUYMA CSV layout from selected SKUs and original inputs."""
+import argparse,csv,json,re,math,tempfile
 from pathlib import Path
+from collections import defaultdict
 from decimal import Decimal
 
-ROOT=Path(__file__).resolve().parents[1]
-CM=ROOT/'collector/cm-v8'
+COLORSYS={'black':2,'white':1,'grey':3,'gray':3,'brown':4,'chestnut':4,'beige':5,'alabaster':1,
+'green':6,'blue':7,'purple':8,'yellow':9,'pink':10,'red':11,'orange':12,'silver':13,'gold':14,
+'navy':16,'cream':5,'tan':4,'olive':6,'maroon':11,'charcoal':3,'stucco':5,'rose':10,'carnation':10,
+'mauve':8,'stellar':3,'galactic':3,'squid':2,'truffle':4,'salt':1,'sea':6,'oatmeal':5,'faded':2}
+
+def color_of(name):
+    m=re.search(r'\(([^)]*)\)\s*$', name)
+    return m.group(1) if m else ''
+def sys_of(color):
+    main=color.split('/')[0].strip().lower()
+    for k,v in COLORSYS.items():
+        if main.startswith(k) or k in main: return v
+    return 99
+
+
+cols=['商品管理番号','コントロール','商品名','ブランド','ブランド名','カテゴリ','シーズン','テーマ','単価','買付可数量','購入期限','参考価格/通常出品価格','参考価格','商品コメント','配送方法','買付エリア','買付都市','買付ショップ','発送エリア','発送都市','関税込み','商品イメージ1','商品イメージ2','商品イメージ3','出品メモ','買付先メモ']
+
+ccols=['商品管理番号','並び順','サイズ名称','検索用サイズ','色名称','色系統','在庫ステータス','手元に在庫あり数量']
 
 def read(path):
-    with Path(path).open(encoding='utf-8-sig',newline='') as f:
+    with open(path,encoding='utf-8-sig',newline='') as f:
         r=csv.DictReader(f)
         if not r.fieldnames or len(set(r.fieldnames))!=len(r.fieldnames):
-            raise ValueError('invalid header: '+str(path))
+            raise ValueError('invalid CSV header')
         rows=list(r)
         if any(None in x or None in x.values() for x in rows):
-            raise ValueError('malformed CSV: '+str(path))
-        return r.fieldnames,rows
-
-def required(row,key):
-    value=row.get(key,'').strip()
-    if not value:
-        raise ValueError('missing '+key)
-    return value
+            raise ValueError('malformed CSV')
+        return rows
 
 def norm(s):
-    s=re.sub(r'^US\s*','',s.strip().upper())
-    m=re.fullmatch(r'(\d+(?:\.\d+)?)([CY]?)',s)
-    if not m:
-        raise ValueError('unsupported US size: '+s)
+    m=re.fullmatch(r'(?:US\s*)?(\d+(?:\.\d+)?)([CY]?)',str(s).strip().upper())
+    if not m: raise ValueError('unsupported size '+str(s))
     return format(Decimal(m[1]).normalize(),'f')+m[2]
 
-def dept(s):
-    v={'men':'Men','women':'Women','kids':'Kids'}.get(s.strip().lower())
-    if not v:
-        raise ValueError('unknown department: '+s)
-    return v
+def unique(rows,key):
+    out={}
+    for r in rows:
+        k=r[key]
+        if not k or k in out: raise ValueError('duplicate or empty '+key+': '+k)
+        out[k]=r
+    return out
 
-def chart_add(index,key,row):
-    cm=Decimal(required(row,'cm'))
-    if not cm.is_finite() or cm<=0:
-        raise ValueError('invalid cm')
-    source=required(row,'source_url')
-    if not source.startswith('https://'):
-        raise ValueError('invalid size source')
-    val=(format(cm.normalize(),'f'),source)
-    if key in index and index[key][0]!=val[0]:
-        raise ValueError('conflicting size chart: '+str(key))
-    index[key]=val
-
-def charts(brand,cfg):
-    generic={}
-    scoped={}
-    age={}
-    quarantine=set()
-    if brand=='UGG':
-        for r in read(CM/'ugg-adults-official-chart-v8.csv')[1]:
-            chart_add(generic,(dept(r['department']),norm(r['size_original'])),r)
-        for r in read(CM/'cm-generic-combined-v8.csv')[1]:
-            if r['brand']=='UGG' and r['department']=='Kids':
-                chart_add(generic,('Kids',norm(r['size_original'])),r)
-        for r in read(CM/'ugg-kids-age-evidence-v8.csv')[1]:
-            if r['verdict']=='CONSISTENT':
-                age[r['product_id']]=set(r['matched_sizes'].split())
-        for r in read(CM/'ugg-kids-quarantine-v8.csv')[1]:
-            quarantine.add(required(r,'variant_id'))
+def sizebook(path):
+    raw=Path(path).read_text(encoding='utf-8-sig')
+    if '{' in raw and 'values' in raw:
+        rows=json.loads(raw[raw.index('{'):])['values'][1:]
     else:
-        for r in read(cfg['size_chart'])[1]:
-            if r['brand'].upper()!=brand:
-                continue
-            key=(dept(r['department']),norm(r['size_original']))
-            if r.get('product_id','').strip():
-                chart_add(scoped,(r['product_id'],)+key,r)
-            else:
-                chart_add(generic,key,r)
-    return generic,scoped,age,quarantine
+        rows=[[r['brand'],r['department'],r['size_original'],r['cm']] for r in read(path)]
+    out={}
+    for row in rows:
+        if len(row)<4 or not row[3]: continue
+        key=(row[0].upper(),row[1],norm(row[2]))
+        cm=Decimal(str(row[3]))
+        if not cm.is_finite() or cm<=0: raise ValueError('invalid cm')
+        if key in out and out[key]!=cm: raise ValueError('conflicting chart '+str(key))
+        out[key]=cm
+    return out
+
+def division(name):
+    if re.search(r'\b(?:Grade School|Little Kids|Big Kids|Toddler|Infant|Preschool|Kids)\b',name,re.I): return 'Kids'
+    if re.search(r'\bWomens\b',name,re.I): return 'Women'
+    if re.search(r'\bMens\b',name,re.I): return 'Men'
+    raise ValueError('unknown department '+name)
+
+def generate(selected,woo,config,book,allow_missing=False):
+    parents=unique([r for r in woo if r['Type']=='variable'],'SKU')
+    variations=defaultdict(list)
+    for r in woo:
+        if r['Type']=='variation': variations[r['Parent']].append(r)
+    sources={b:unique(read(c['source']),'productId') for b,c in config['brands'].items()}
+    items=[]; cs=[]
+    for sku in selected:
+        p=parents[sku]; brand=p['Brand']; cfg=config['brands'][brand]
+        if brand=='CONVERSE': raise ValueError('BUYMA Converse disabled')
+        if brand=='UGG' and str(cfg['brand_id'])!='89': raise ValueError('UGG ID must be 89')
+        src=sources[brand][sku.removeprefix('SP-')]
+        name=p['Name']; div=division(name); color=color_of(name)
+        if not color: raise ValueError('missing color '+sku)
+        sysid=sys_of(color)
+        if not allow_missing:
+            sysid=cfg['color_ids'][color]
+        imgs=[u.strip() for u in p['Images'].split(',') if u.strip()]
+        price=int(p['Regular price'])
+        if price<=0: raise ValueError('invalid price')
+        if not allow_missing:
+            price=int(cfg['approved_buyma_prices'][sku])
+            if price<=0: raise ValueError('invalid approved price')
+        vs=variations[sku]
+        if not any(v['In stock?']=='1' for v in vs): raise ValueError('no stock '+sku)
+        items.append(dict(zip(cols,[sku,'下書き',name,str(cfg['brand_id']),cfg['brand_name'],str(cfg['categories'][div]),'51','0',str(price),'1','','0','',(src['description_en'] or '')[:900],'1103985','2001001','0','Shoe Palace','','','1',*(imgs+['','',''])[:3],'追加画像：'+' '.join(imgs[3:]) if len(imgs)>3 else '',src['url']])))
+        def sortkey(v):
+            s=norm(v['Attribute 1 value'])
+            return (1 if s.endswith('Y') else 0,Decimal(s.rstrip('CY')))
+        seen=set()
+        for n,v in enumerate(sorted(vs,key=sortkey),1):
+            us=norm(v['Attribute 1 value'])
+            if us in seen: raise ValueError('duplicate size '+sku+' '+us)
+            seen.add(us)
+            if v['In stock?'] not in ('0','1'): raise ValueError('invalid stock')
+            cm=book.get((brand,div,us))
+            if brand=='UGG' and div=='Kids':
+                if us not in cfg.get('verified_kids_sizes',{}).get(sku,[]): raise ValueError('unverified Kids size '+sku+' '+us)
+            if cm is None and not allow_missing: raise ValueError('missing size '+sku+' '+us)
+            label='US '+(us if us.endswith(('C','Y')) else f'{Decimal(us):.1f}')
+            search=str(int(cm*10)) if cm is not None else ''
+            cs.append(dict(zip(ccols,[sku,str(n),label,search,color,str(sysid),v['In stock?'],''])))
+    return items,cs
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__)
+    p=argparse.ArgumentParser()
     p.add_argument('--input',required=True,type=Path)
     p.add_argument('--output',required=True,type=Path)
     p.add_argument('--config',required=True,type=Path)
+    p.add_argument('--prefix',default='batch2')
+    p.add_argument('--reproduce-batch1',action='store_true',help='historical reproduction only; not for listing')
     a=p.parse_args()
-    config=json.loads(a.config.read_text(encoding='utf-8'))
-    selected=read(a.input)[1]
-    skus=[required(r,config.get('selection_sku','sku')) for r in selected]
-    if not skus or len(set(skus))!=len(skus):
-        raise ValueError('empty or duplicate selection')
-    products={}
-    for brand,cfg in config['brands'].items():
-        brand=brand.upper()
-        if brand=='CONVERSE':
-            raise ValueError('CONVERSE BUYMA disabled')
-        if brand=='UGG' and str(cfg['brand_id'])!='89':
-            raise ValueError('UGG brand ID must be 89')
-        if not str(cfg['brand_id']).isdigit():
-            raise ValueError('invalid brand ID')
-        fields,rows=read(cfg['source'])
-        mapping=cfg['columns']
-        needed=('sku','product_id','variant_id','department','size','stock','category_key','price')
-        if any(k not in mapping or mapping[k] not in fields for k in needed):
-            raise ValueError('missing source column mapping: '+brand)
-        g,s,age,q=charts(brand,cfg)
-        for row in rows:
-            sku=required(row,mapping['sku'])
-            if sku not in skus:
-                continue
-            d=dept(required(row,mapping['department']))
-            pid=required(row,mapping['product_id'])
-            vid=required(row,mapping['variant_id'])
-            size=norm(required(row,mapping['size']))
-            stock=required(row,mapping['stock'])
-            if stock not in cfg['stock_values']:
-                raise ValueError('unknown stock value: '+stock)
-            if not cfg['stock_values'][stock]:
-                continue
-            if vid in q:
-                raise ValueError('quarantined variant: '+vid)
-            if brand=='UGG' and d=='Kids' and size not in age.get(pid,set()):
-                raise ValueError('UGG Kids age/size not verified: '+pid+' '+size)
-            cm,source=s.get((pid,d,size),g.get((d,size),(None,None)))
-            if cm is None:
-                raise ValueError('missing official size: '+sku+' '+size)
-            category=str(cfg['categories'][required(row,mapping['category_key'])])
-            if not category.isdigit():
-                raise ValueError('invalid category ID')
-            price=Decimal(required(row,mapping['price']))
-            if not price.is_finite() or price<=0 or price!=price.to_integral_value():
-                raise ValueError('invalid approved JPY price: '+sku)
-            search=cfg['search_sizes'].get(d,{}).get(cm)
-            if search is None or not str(search).strip():
-                raise ValueError('missing BUYMA search-size mapping: '+d+' '+cm)
-            derived={'sku':sku,'brand':brand,'brand_id':str(cfg['brand_id']),
-                     'category_id':category,'size_original':size,'size_cm':cm,
-                     'search_size':str(search),'size_source':source,'price_jpy':str(int(price)),
-                     'product_id':pid,'variant_id':vid}
-            output={}
-            for field,spec in config['output_columns'].items():
-                if 'derived' in spec:
-                    output[field]=derived[spec['derived']]
-                elif 'source' in spec:
-                    output[field]=required(row,spec['source'])
-                elif 'literal' in spec:
-                    output[field]=str(spec['literal'])
-                else:
-                    raise ValueError('invalid output mapping: '+field)
-            products.setdefault(sku,[]).append((derived,output))
-    if set(products)!=set(skus):
-        raise ValueError('missing sellable SKU: '+str(set(skus)-set(products)))
-    ordered=[pair for sku in skus for pair in products[sku]]
-    keys=[(d['sku'],d['variant_id']) for d,_ in ordered]
-    if len(keys)!=len(set(keys)):
-        raise ValueError('duplicate variant')
-    for sku in skus:
-        if len({(d['brand'],d['product_id'],d['category_id'],d['price_jpy']) for d,_ in products[sku]})!=1:
-            raise ValueError('inconsistent product identity/category/price: '+sku)
-    if a.output.exists():
-        raise ValueError('output already exists')
-    with tempfile.TemporaryDirectory(dir=a.output.parent) as tmp:
-        folder=Path(tmp)/'result'
-        folder.mkdir()
-        for name,fields,rows in [('listing.csv',list(config['output_columns']),[o for _,o in ordered]),
-                                  ('size_evidence.csv',list(ordered[0][0]),[d for d,_ in ordered])]:
-            with (folder/name).open('w',encoding='utf-8-sig',newline='') as f:
-                w=csv.DictWriter(f,fieldnames=fields)
-                w.writeheader()
-                w.writerows(rows)
-        folder.rename(a.output)
-    print(json.dumps({'products':len(skus),'variants':len(ordered),'output':str(a.output)},ensure_ascii=False))
+    cfg=json.loads(a.config.read_text(encoding='utf-8'))
+    selected=[r[cfg.get('selection_sku','SKU')] for r in read(a.input)]
+    if len(selected)!=10 or len(set(selected))!=10 or not all(selected): raise ValueError('expected 10 distinct SKUs')
+    if not re.fullmatch(r'[A-Za-z0-9_-]+',a.prefix): raise ValueError('invalid prefix')
+    if a.reproduce_batch1 and a.prefix!='batch1': raise ValueError('historical mode requires batch1 prefix')
+    items,cs=generate(selected,read(cfg['woo']),cfg,sizebook(cfg['size_table']),a.reproduce_batch1)
+    if a.output.exists(): raise ValueError('output exists')
+    with tempfile.TemporaryDirectory(dir=a.output.parent) as t:
+        d=Path(t)/'out';d.mkdir()
+        for suffix,fields,rows in [('items',cols,items),('colorsizes',ccols,cs)]:
+            with (d/(a.prefix+'_'+suffix+'.csv')).open('w',encoding='utf-8-sig',newline='') as f:
+                w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
+        d.rename(a.output)
+    print(json.dumps({'items':len(items),'colorsizes':len(cs),'missing_search':sum(not r['検索用サイズ'] for r in cs)}))
 
-if __name__=='__main__':
-    try:
-        main()
-    except (ValueError,KeyError,OSError,ArithmeticError) as e:
-        sys.exit(str(e))
+if __name__=='__main__': main()
