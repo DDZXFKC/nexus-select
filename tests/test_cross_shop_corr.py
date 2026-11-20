@@ -146,6 +146,29 @@ class CorrContractTests(unittest.TestCase):
         output = corr.join_adoption(matches, flrows, sprows)
         self.assertEqual(output[0]["adoption"], "HOLD")
 
+    def test_Nike_K1_collision_report(self):
+        rows = [sp("NIKE", "IB0018-004", sid="one"),
+                sp("NIKE", "XB0018-004", sid="two", sellable="0")]
+        self.assertEqual(corr.k1_collision_report(rows),
+                         {"B0018004": ["one", "two"]})
+
+    def test_Nike_official_price_tripwire_blocks_selection(self):
+        flrow = fl("NIKE", "B0018004", cost_calculated="1",
+                   cost_verified="1", procurement_unit="COLORWAY_ONE_UNIT",
+                   procurement_total_jpy="12000", official_price_current="1",
+                   official_price_usd="100")
+        sprow = sp("NIKE", "IB0018-004", cost_calculated="1",
+                   cost_verified="1", procurement_unit="COLORWAY_ONE_UNIT",
+                   procurement_total_jpy="10000", official_price_current="1",
+                   official_price_usd="80")
+        linked = corr.correlate([flrow], [sprow], ())
+        outcome = corr.join_adoption(linked, [flrow], [sprow])[0]
+        self.assertEqual(outcome["adoption_reason"], "HOLD_PRICE_TRIPWIRE")
+        self.assertEqual(outcome["winner_shop"], "")
+        # If current official pricing cannot be established, skip comparison.
+        sprow["official_price_current"] = "0"
+        outcome = corr.join_adoption(linked, [flrow], [sprow])[0]
+        self.assertEqual(outcome["adoption"], "SELECTED")
     def test_full_corpus_required_and_duplicates_rejected(self):
         with self.assertRaises(ValueError):
             run([fl("UGG", "130BBLC")], [])
