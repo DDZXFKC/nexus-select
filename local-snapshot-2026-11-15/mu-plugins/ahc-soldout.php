@@ -15,6 +15,11 @@ if (!defined('ABSPATH')) exit;
 // Keep out-of-stock products listed (the shop setting cannot hide them).
 add_filter('pre_option_woocommerce_hide_out_of_stock_items', function () { return 'no'; });
 
+// Size buttons need WooCommerce's inline variation data (with stock) to mark SOLD OUT sizes.
+// Above 30 variations WooCommerce switches to AJAX loading and the data is not on the page
+// (e.g. colour x size products with 44 variations, 5dbf5a0). Keep it inline up to 200.
+add_filter('woocommerce_ajax_variation_threshold', function ($n) { return max((int) $n, 200); }, 20);
+
 // Product page and selected variation: "在庫切れ" -> "SOLD OUT".
 add_filter('woocommerce_get_availability_text', function ($text, $product) {
     return ($product && !$product->is_in_stock()) ? 'SOLD OUT' : $text;

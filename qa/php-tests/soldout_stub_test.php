@@ -16,4 +16,5 @@ $product = new P(false); ob_start(); $A['woocommerce_before_shop_loop_item_title
 check('card badge for OOS', strpos($o, 'SOLD OUT') !== false);
 $product = new P(true); ob_start(); $A['woocommerce_before_shop_loop_item_title'](); $o = ob_get_clean();
 check('no badge in stock', $o === '');
+check('inline variation data up to 200', $F['woocommerce_ajax_variation_threshold'](30) === 200);
 exit($fail ? 1 : 0);
