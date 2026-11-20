@@ -1,0 +1,32 @@
+name: corr-P0 identity and adapter regressions
+
+on:
+  push:
+    branches:
+      - integration/grok-review
+    paths:
+      - "tools/cross_shop_corr.py"
+      - "tools/cross_shop_corr_adapter.py"
+      - "tools/cross_shop_offer_contract.py"
+      - "tests/test_cross_shop_corr.py"
+      - "tests/test_cross_shop_corr_p0.py"
+      - "tests/test_cross_shop_offer_contract.py"
+      - ".github/workflows/corr-p0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  corr-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python version
+        run: python3 --version
+      - name: Existing identity contract suite
+        run: python3 -m unittest discover -s tests -p 'test_cross_shop_offer_contract.py' -v
+      - name: Existing corr contract suite
+        run: python3 -m unittest discover -s tests -p 'test_cross_shop_corr.py' -v
+      - name: GLM P0 guard and adapter suite
+        run: python3 -m unittest discover -s tests -p 'test_cross_shop_corr_p0.py' -v
