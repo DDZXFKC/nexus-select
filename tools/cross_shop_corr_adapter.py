@@ -160,7 +160,8 @@ def _manifest_product_keys(entries, shop_code):
             variants = {tuple(str(row.get(k, "")) for k in style_field) for row in raw_rows}
             if len(variants) != 1:
                 raise ValueError("manifest style/code disagreement")
-            parts = (shop_code, product) + next(iter(variants))
+            parts = ((shop_code, product) + next(iter(variants)) + ("",)
+                     if shop_code == "FL" else (shop_code, product) + next(iter(variants)))
             if sid != _stable(parts):
                 raise ValueError("source_id not reproducible from manifest")
             if sid in keys:
