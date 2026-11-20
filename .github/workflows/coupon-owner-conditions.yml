@@ -1,0 +1,25 @@
+name: coupon owner conditional pricing
+on:
+  push:
+    branches:
+      - integration/grok-review
+    paths:
+      - "collector/coupon_bridge.py"
+      - "collector/test_coupon_owner_conditions_2026_11_21.py"
+      - "collector/test_coupon_bridge.py"
+      - "collector/test_coupon_acceptance_owner.py"
+      - ".github/workflows/coupon-owner-conditions.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  owner-coupon:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Existing bridge tests
+        working-directory: collector
+        run: python3 -m unittest -v test_coupon_bridge.py test_coupon_acceptance_owner.py
+      - name: Owner condition-based estimated price tests
+        working-directory: collector
+        run: python3 -m unittest -v test_coupon_owner_conditions_2026_11_21.py
