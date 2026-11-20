@@ -15,6 +15,8 @@ on:
       - "tests/test_cross_shop_name_aid_refine.py"
       - "tools/cross_shop_name_aid_owner_report.py"
       - "tests/test_cross_shop_name_aid_owner_report.py"
+      - "tools/cross_shop_sku_core_v2.py"
+      - "tests/test_cross_shop_sku_core_v2.py"
       - "tests/test_cross_shop_name_note_diagnostic.py"
       - "tools/cross_shop_name_aid_refine.py"
       - "tools/cross_shop_name_note_diagnostic.py"
@@ -49,3 +51,5 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_cross_shop_name_note_diagnostic.py' -v
       - name: P1 owner shortlist coverage and no-auto regression
         run: python3 -m unittest discover -s tests -p 'test_cross_shop_name_aid_owner_report.py' -v
+      - name: GLM SKU core exact matching v2 contract
+        run: python3 -m unittest discover -s tests -p 'test_cross_shop_sku_core_v2.py' -v
