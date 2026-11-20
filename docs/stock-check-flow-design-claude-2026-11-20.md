@@ -48,7 +48,7 @@ GLM の修正・明確化はすべて取り込んだ。段階1は実装済み（
 `php qa/php-tests/stock_check_stub_test.php` → 24/24 PASS（非公開設定・権限・nonce・ハニーポット・入力検証・SOLD OUT 拒否・受付ID・メール2通・連投拒否・重複防止・完了後の再依頼・期限切れ・保持期間削除・パラメータ化・カート拒否）。
 
 ### 魔王ちゃんへ（Local 反映と実機確認）
-1. `ahc-stock-check.php` を Local の mu-plugins に追加（新規。md5 は下のコミットに記載）。
+1. `ahc-stock-check.php` を Local の mu-plugins に追加（新規。md5 99bd26119550858896a5953e8c60bc34）。
 2. 実機で確認：
    - 商品ページで「在庫を確認する」に置き換わり、未選択・SOLD OUT では押せず理由が出る。
    - 送信 → 画面に受付ID → 依頼者メールと運営通知（Local のメール確認ツールで可）→ 管理画面「在庫確認依頼」に1件。
