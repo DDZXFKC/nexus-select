@@ -303,8 +303,11 @@ window.NEXUS_COLOR_ATTR = <?php echo $cattr2 ? wp_json_encode($cattr2) : 'null';
           allowed !== null &&
           allowed.indexOf(value) === -1;
 
+        // Keep sizes that theme/main.js marked SOLD OUT disabled (owner decision 2026-11-20);
+        // without this, this 60 ms re-sync re-enabled them on colour x size products.
         var disabled =
-          option.disabled || disabledByCombination;
+          option.disabled || disabledByCombination ||
+          button.classList.contains('is-soldout');
 
         button.disabled = disabled;
         button.classList.toggle('is-disabled', disabled);
