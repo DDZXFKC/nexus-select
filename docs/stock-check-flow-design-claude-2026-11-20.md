@@ -1,5 +1,7 @@
 # 在庫確認フロー（購入可能化計画 項目A）設計案 v1（Claude、2026-11-20 11:40）
 
+> **superseded（2026-11-20、GLM 91c8ad4）**：手動確認フローは廃止。現行は docs/stock-check-auto-flow-design-v2-claude-2026-11-20.md。
+
 根拠：購入可能化計画 3985946（オーナー決定「カテゴリ追加より購入可能な状態」、サイト実装＝Claude）、確定仕様 docs/owner-mandatory-storefront-purchase-flow-2026-11-19.md。GLM 検収前提。決済（KOMOJU、未申込）と注文追跡（NEXUS ORDER TRACKER）は別項目。既存デザイン・カラー/サイズ/画像/価格UIは変えない。
 
 ## 段階分け（Local で順に実装 → 魔王ちゃん実機確認 → GLM 検収）
