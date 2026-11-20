@@ -140,14 +140,36 @@ def evaluate(fl_rows, sp_rows):
     return output
 
 
-def old_sixty_and_auto(old_rows, current, old_holds=("HOLD_NO_COLOR", "HOLD_LEGACY_NUMERIC")):
+def old_sixty_and_auto(old_rows, current, fl_rows, old_holds=("HOLD_NO_COLOR", "HOLD_LEGACY_NUMERIC")):
     """Old 60 rows are addressed via exact FL source identity, no fuzzy joins."""
+    # v1 corr CSV stores brand+fl_code without source_id; map ONLY by exact
+    # brand+original FL listing code. Never substitute manufacturer SKU or name.
+    fl_code_to_id = {}
+    for fl in fl_rows:
+        brand = brand_norm(fl["brand"])
+        raw_code = canonical(fl.get("code", ""))
+        if not raw_code:
+            raise ValueError("FL code required for old-v1 join: " + fl["source_id"])
+        key = (brand, raw_code)
+        if key in fl_code_to_id:
+            raise ValueError("duplicate FL legacy code " + repr(key))
+        fl_code_to_id[key] = fl["source_id"]
     old_index = {}
+    unresolved_old = []
     for r in old_rows:
-        sid = str(r.get("source_id", r.get("fl_source_id", "")))
-        if not sid or sid in old_index:
-            raise ValueError("old corr missing or duplicate FL source ID")
+        if r.get("source_id", r.get("fl_source_id", "")):
+            sid = str(r.get("source_id", r.get("fl_source_id")))
+        else:
+            key = (brand_norm(r["brand"]), canonical(r["fl_code"]))
+            sid = fl_code_to_id.get(key, "")
+        if not sid:
+            unresolved_old.append((r.get("brand", ""), r.get("fl_code", "")))
+            continue
+        if sid in old_index:
+            raise ValueError("duplicate v1 mapping for FL source " + sid)
         old_index[sid] = r
+    if unresolved_old:
+        raise ValueError("v1 rows unresolved by exact FL code: " + repr(unresolved_old))
     current_ids = {r["fl_source_id"] for r in current}
     missing = sorted(s for s, r in old_index.items()
                      if r.get("status", r.get("old_status")) in old_holds and s not in current_ids)
@@ -199,7 +221,7 @@ def main():
     paths = (args.fl, args.sp, args.v1)
     fl, sp, old = (read_csv(x) for x in paths)
     results = evaluate(fl, sp)
-    old_sixty, new_auto = old_sixty_and_auto(old, results)
+    old_sixty, new_auto = old_sixty_and_auto(old, results, fl)
     if len(old_sixty) != args.expected_old_holds:
         raise ValueError("old HOLD coverage mismatch: " + str(len(old_sixty)))
     folder = Path(args.out_dir)
