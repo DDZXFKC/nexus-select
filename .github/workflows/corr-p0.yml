@@ -10,6 +10,8 @@ on:
       - "tools/cross_shop_offer_contract.py"
       - "tests/test_cross_shop_corr.py"
       - "tests/test_cross_shop_corr_p0.py"
+      - "tests/test_cross_shop_name_aid.py"
+      - "tools/cross_shop_name_aid.py"
       - "tests/test_cross_shop_offer_contract.py"
       - ".github/workflows/corr-p0.yml"
   workflow_dispatch:
@@ -30,3 +32,5 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_cross_shop_corr.py' -v
       - name: GLM P0 guard and adapter suite
         run: python3 -m unittest discover -s tests -p 'test_cross_shop_corr_p0.py' -v
+      - name: P1 read-only name assistance
+        run: python3 -m unittest discover -s tests -p 'test_cross_shop_name_aid.py' -v
