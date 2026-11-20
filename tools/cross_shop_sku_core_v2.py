@@ -76,7 +76,7 @@ def name_conflict(fl, sp):
     if brand_norm(fl["brand"]) != brand_norm(sp["brand"]):
         return "BRAND_CONFLICT"
     a, b = tokens(fl.get("name")), tokens(sp.get("name"))
-    if a and b and not (a & b):
+    # Model-generation contradiction is stronger than shared family tokens.\n    generations_a = {(x, y) for x, y in zip(canonical(fl.get("name", "")).split(),\n                                                canonical(fl.get("name", "")).split()[1:])\n                     if y.isdigit() and len(y) <= 2}\n    generations_b = {(x, y) for x, y in zip(canonical(sp.get("name", "")).split(),\n                                                canonical(sp.get("name", "")).split()[1:])\n                     if y.isdigit() and len(y) <= 2}\n    for family in {x for x, _ in generations_a} & {x for x, _ in generations_b}:\n        if {y for x, y in generations_a if x == family}.isdisjoint(\n                {y for x, y in generations_b if x == family}):\n            return "NAME_MODEL_GENERATION_CONFLICT"\n    if a and b and not (a & b):
         return "NAME_MODEL_CONFLICT"
     return ""
 
@@ -106,11 +106,11 @@ def evaluate(fl_rows, sp_rows):
     validate(sp_rows, "SP")
     index = defaultdict(list)
     for sp in sp_rows:
-        index[(brand_norm(sp["brand"]), sku_core(sp["sku"]))].append(sp)
+        index[sku_core(sp["sku"])].append(sp)
     output = []
     for fl in fl_rows:
         brand, core = brand_norm(fl["brand"]), sku_core(fl["sku"])
-        candidates = index.get((brand, core), [])
+        candidates = index.get(core, [])
         record = {
             "fl_source_id": fl["source_id"], "fl_sku": fl["sku"],
             "fl_name": fl["name"], "fl_name_raw": fl["name"],
