@@ -133,24 +133,107 @@ def restore(manifest):
     return rows
 
 
-def compare_reference(adapted, reference, fields):
-    """Exact semantic row-set parity with pinned independent verification adapter.
+def _manifest_product_keys(entries, shop_code):
+    """Strict manifest-backed normalization to shop+product semantic identity.
 
-    No missing reference file is treated as PASS. Sort by stable source_id.
+    Any ambiguous, unparseable or duplicate mapping is explicit FAIL evidence.
+    This is NOT a fuzzy parser and never changes the corr source_id.
+    """
+    keys, failures = {}, []
+    for entry in entries:
+        sid = str(entry.get("source_id", ""))
+        if entry.get("shop_code") != shop_code:
+            continue
+        try:
+            raw_rows = restore([entry])
+            if not raw_rows:
+                raise ValueError("manifest has no rows")
+            products = {str(row["source_product_id"]) for row in raw_rows}
+            shops = {str(row["shop_code"]).strip().upper() for row in raw_rows}
+            if len(products) != 1 or shops != {shop_code}:
+                raise ValueError("manifest product or shop inconsistent")
+            product = next(iter(products))
+            if not product:
+                raise ValueError("empty product identity")
+            # Reconstruct strictly from manifest source metadata.
+            style_field = ("corr_style", "corr_color") if shop_code == "SP" else ("corr_code",)
+            variants = {tuple(str(row.get(k, "")) for k in style_field) for row in raw_rows}
+            if len(variants) != 1:
+                raise ValueError("manifest style/code disagreement")
+            parts = (shop_code, product) + next(iter(variants))
+            if sid != _stable(parts):
+                raise ValueError("source_id not reproducible from manifest")
+            if sid in keys:
+                raise ValueError("duplicate manifest source_id")
+            keys[sid] = _stable((shop_code, product))
+        except (ValueError, KeyError, TypeError) as exc:
+            failures.append({"source_id": sid, "reason": str(exc)})
+    # Never silently collapse colorways with the same product ID.
+    reverse = defaultdict(list)
+    for sid, key in keys.items():
+        reverse[key].append(sid)
+    for key, ids in reverse.items():
+        if len(ids) > 1:
+            failures.append({"source_id": "|".join(sorted(ids)),
+                             "reason": "many-to-one product identity: " + key})
+    return keys, failures
+
+
+def compare_reference(adapted, reference, fields, manifest=None, shop_code=None):
+    """Exact full-field semantic parity, with optional manifest-backed ID mapping.
+
+    In strict mode, the production interface source_id remains a length-prefixed
+    4-component ID; verification's raw product ID is mapped ONLY via manifest.
+    Unmapped/duplicate IDs are enumerated; no partial PASS is possible.
     """
     if reference is None:
         raise ValueError("reference adapter output required for parity gate")
-    index = lambda rows: {r["source_id"]: tuple(r.get(k, "") for k in fields)
-                          for r in rows}
-    actual, expected = index(adapted), index(reference)
-    if len(actual) != len(adapted) or len(expected) != len(reference):
-        raise ValueError("duplicate IDs in parity input")
+    use_manifest = manifest is not None or shop_code is not None
+    if use_manifest and (manifest is None or shop_code not in ("SP", "FL")):
+        raise ValueError("manifest and explicit SP/FL shop_code both required")
+    mapping, invalid = ({}, [])
+    method = "EXACT_SOURCE_ID"
+    if use_manifest:
+        mapping, invalid = _manifest_product_keys(manifest, shop_code)
+        method = "MANIFEST_SHOP_PRODUCT_V1"
+
+    def key_for(row, side):
+        sid = str(row.get("source_id", ""))
+        if not sid:
+            invalid.append({"side": side, "source_id": sid, "reason": "missing source_id"})
+            return None
+        if not use_manifest:
+            return sid
+        if side == "production":
+            if sid not in mapping:
+                invalid.append({"side": side, "source_id": sid,
+                                "reason": "no unique manifest mapping"})
+                return None
+            return mapping[sid]
+        # Verifier emits RAW source_product_id by spec. Never parse or guess.
+        return _stable((shop_code, sid))
+
+    def make_index(rows, side):
+        indexed = {}
+        for row in rows:
+            key = key_for(row, side)
+            if key is None:
+                continue
+            if key in indexed:
+                invalid.append({"side": side, "source_id": str(row.get("source_id", "")),
+                                "reason": "normalized key collision " + key})
+            else:
+                indexed[key] = tuple(row.get(k, "") for k in fields if k != "source_id")
+        return indexed
+
+    actual, expected = make_index(adapted, "production"), make_index(reference, "reference")
     missing = sorted(set(expected) - set(actual))
     extra = sorted(set(actual) - set(expected))
-    differing = sorted(k for k in (set(actual) & set(expected))
-                       if actual[k] != expected[k])
-    return {"pass": not (missing or extra or differing),
-            "missing": missing, "extra": extra, "differing": differing}
+    differing = sorted(key for key in set(actual) & set(expected)
+                       if actual[key] != expected[key])
+    return {"pass": not (missing or extra or differing or invalid),
+            "normalization": method, "missing": missing, "extra": extra,
+            "differing": differing, "invalid_ids": invalid}
 
 
 def write_csv(path, rows, fields):
@@ -185,8 +268,10 @@ def main():
         def load(path):
             with Path(path).open(encoding="utf-8-sig", newline="") as file:
                 return list(csv.DictReader(file))
-        parity = {"SP": compare_reference(sp, load(a.reference_sp), SP_HEADER),
-                  "FL": compare_reference(fl, load(a.reference_fl), FL_HEADER)}
+        parity = {"SP": compare_reference(sp, load(a.reference_sp), SP_HEADER,
+                                             manifest, "SP"),
+                  "FL": compare_reference(fl, load(a.reference_fl), FL_HEADER,
+                                             manifest, "FL")}
         if not parity["SP"]["pass"] or not parity["FL"]["pass"]:
             raise ValueError("real reference parity mismatch: " +
                              json.dumps(parity, ensure_ascii=False))
