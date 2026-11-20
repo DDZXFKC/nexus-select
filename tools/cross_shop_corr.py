@@ -33,7 +33,8 @@ CORR_FIELDS = ("brand", "fl_code", "status", "sp_style", "sp_color",
                "tags", "hold_reason_codes", "evidence_tier", "notes")
 HOLD = {"HOLD_AMBIG", "HOLD_SHORT_KEY", "HOLD_COLLISION", "HOLD_NO_COLOR",
         "HOLD_LEGACY_NUMERIC", "HOLD_TRUNCATED", "HOLD_MANUAL_INVALID",
-        "HOLD_NOT_SELLABLE", "HOLD_UNVERIFIED_FORMAT", "HOLD_RULE_SUSPENDED"}
+        "HOLD_NOT_SELLABLE", "HOLD_UNVERIFIED_FORMAT", "HOLD_RULE_SUSPENDED",
+        "HOLD_PRICE_TRIPWIRE"}
 SEPARATOR_CHARS = "-‐–−ー"
 
 
@@ -157,6 +158,30 @@ def build_index(rows):
     return idx
 
 
+def k1_collision_report(sp_rows):
+    """Structural Nike collisions over full corpus, not just sellable."""
+    buckets = defaultdict(set)
+    for r in canonical_sp(sp_rows):
+        if r["_brand"] == "NIKE" and r["_k1"]:
+            buckets[r["_k1"]].add(r["source_id"])
+    return {key: sorted(ids) for key, ids in sorted(buckets.items())
+            if len(ids) > 1}
+
+
+def official_price_tripwire(fl_offer, sp_offer, delta_usd=Decimal("5")):
+    """Compare ONLY verified current official USD amounts, never resale prices."""
+    if (str(fl_offer.get("official_price_current", "")) != "1" or
+            str(sp_offer.get("official_price_current", "")) != "1"):
+        return False
+    try:
+        fl_price = Decimal(str(fl_offer["official_price_usd"]))
+        sp_price = Decimal(str(sp_offer["official_price_usd"]))
+        if not fl_price.is_finite() or not sp_price.is_finite():
+            return False
+        return abs(fl_price - sp_price) > delta_usd
+    except (KeyError, ValueError, InvalidOperation):
+        return False
+
 def base_result(fl):
     brand = brand_norm(fl["brand"])
     code = plain_code(fl["code"])
@@ -277,6 +302,8 @@ def join_adoption(corr_rows, fl_rows, sp_rows):
     """Stage 3: pair eligible colorway offers; do not publish or infer missing costs."""
     fl_map = {str(r["source_id"]): r for r in fl_rows}
     sp_map = {str(r["source_id"]): r for r in sp_rows}
+    if len(corr_rows) != len(fl_rows):
+        raise ValueError("corr and FL row count mismatch")
     output = []
     for corr, fl in zip(corr_rows, fl_rows):
         if corr["status"] != "AUTO":
@@ -287,6 +314,11 @@ def join_adoption(corr_rows, fl_rows, sp_rows):
         sp = sp_map.get(corr["sp_source_id"])
         if not sp:
             raise ValueError("corr SP source not found")
+        if corr["rule"] == "nike_fl_v1" and official_price_tripwire(fl, sp):
+            output.append({**corr, "adoption": "HOLD",
+                           "adoption_reason": "HOLD_PRICE_TRIPWIRE",
+                           "winner_shop": "", "winner_source_id": ""})
+            continue
         offers = [("FL", fl), ("SP", sp)]
         accepted, problems = [], []
         for shop, offer in offers:
@@ -354,6 +386,7 @@ def main():
         write_csv(a.adoption_out, rows, CORR_FIELDS + ("adoption", "adoption_reason",
                                                    "winner_shop", "winner_source_id"))
     print(json.dumps({"version": VERSION, "SP_FULL_CORPUS": len(sp), "FL": len(fl),
+                      "nike_k1_collisions": k1_collision_report(sp),
                       "statuses": {status: sum(r["status"] == status for r in corr)
                                    for status in sorted({r["status"] for r in corr})}},
                      ensure_ascii=False, sort_keys=True))
