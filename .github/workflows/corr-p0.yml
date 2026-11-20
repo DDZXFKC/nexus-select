@@ -11,6 +11,11 @@ on:
       - "tests/test_cross_shop_corr.py"
       - "tests/test_cross_shop_corr_p0.py"
       - "tests/test_cross_shop_name_aid.py"
+      - "tests/test_cross_shop_parity_manifest.py"
+      - "tests/test_cross_shop_name_aid_refine.py"
+      - "tests/test_cross_shop_name_note_diagnostic.py"
+      - "tools/cross_shop_name_aid_refine.py"
+      - "tools/cross_shop_name_note_diagnostic.py"
       - "tools/cross_shop_name_aid.py"
       - "tests/test_cross_shop_offer_contract.py"
       - ".github/workflows/corr-p0.yml"
@@ -34,3 +39,9 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_cross_shop_corr_p0.py' -v
       - name: P1 read-only name assistance
         run: python3 -m unittest discover -s tests -p 'test_cross_shop_name_aid.py' -v
+      - name: Manifest source ID normalization gate (§6.1)
+        run: python3 -m unittest discover -s tests -p 'test_cross_shop_parity_manifest.py' -v
+      - name: Human name candidate narrowing
+        run: python3 -m unittest discover -s tests -p 'test_cross_shop_name_aid_refine.py' -v
+      - name: P2 diagnostic-only ADV_NAME_NOTE
+        run: python3 -m unittest discover -s tests -p 'test_cross_shop_name_note_diagnostic.py' -v
