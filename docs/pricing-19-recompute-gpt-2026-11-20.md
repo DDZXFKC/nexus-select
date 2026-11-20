@@ -58,3 +58,19 @@ The second command must report 4,821 total, 4,781 repriced, 40 explicitly unmapp
 
 ## Evidence status
 The GitHub-connected JS pass generated and committed seven outputs and recorded old-formula 100% matches. Python script and synthetic tests are committed but **their actual Python execution on local environment is not yet verified**. No claim of website price application or net profit verification.
+
+
+## GitHub remote roundtrip audit (GPT follow-up)
+All seven new output files were **fetched again from GitHub**, decoded as UTF-8 BOM CSV and compared row/cell-by-cell to their frozen originals. Header and row counts identical in all seven. Unexpected changed cells: **zero**.
+
+| New file | Rows | Permitted changed cells | Unexpected changed cells |
+|---|---:|---:|---:|
+| FL margin 19 | 4,781 | 19,124 (4 price-derived columns × 4,781) | 0 |
+| SP margin 19 | 163 | 652 (4 price-derived columns × 163) | 0 |
+| SP sellable list 19 | 163 | 163 (price_jpy) | 0 |
+| SP batch3 pool 19 | 163 | 163 (price_jpy) | 0 |
+| Batch1 items 19 | 10 | 10 (単価) | 0 |
+| Batch2 items 19 | 10 | 10 (単価) | 0 |
+| Batch3 items 19 | 10 | 10 (単価) | 0 |
+
+This is a verified **remote file differential audit**, not evidence of WooCommerce/BUYMA application or fresh underlying cost validity. Synthetic Python unit tests have not been executed by this remote audit.
