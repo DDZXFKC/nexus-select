@@ -470,6 +470,67 @@ def rank_candidates(assessed, evaluated, checks, discoveries, *, scope, now, max
 
 
 
+
+_COUPON_PRICE_KEYS = frozenset(("discount_type", "discount_value", "discount_currency", "max_discount_minor"))
+_COUPON_RULE_KEYS = frozenset(("excluded_brands", "eligible_brands", "eligible_categories", "sale_exclusion", "first_order_only", "ship_region", "min_spend_major", "min_spend_currency", "min_spend_minor", "valid_from", "valid_until"))
+
+
+def indicative_discount(scope, campaign, product_facts, conditions, *, now):
+    """Calculate a conditional ESTIMATE, never a verified cart price or sale approval."""
+    scope = context(**scope)
+    now = _time(now)
+    base = scope["base_minor"]
+    result = dict(campaign=campaign, status="UNKNOWN", discount_minor=None,
+                  normal_minor=base, effective_minor=None, verification="NOT_CHECKED",
+                  sale_approved=False, reasons=[])
+    if not isinstance(conditions, dict):
+        result["reasons"] = ["NO_CONDITIONS"]
+        return result
+    unsupported = sorted(set(conditions) - _COUPON_PRICE_KEYS - _COUPON_RULE_KEYS)
+    if unsupported:
+        result["reasons"] = ["UNSUPPORTED:" + x for x in unsupported]
+        return result
+    terms = {k: v for k, v in conditions.items() if k not in _COUPON_PRICE_KEYS}
+    e = evaluate_eligibility(campaign, scope, product_facts, terms, now=now)
+    result["reasons"] = list(e["reasons"])
+    if e["eligibility"] == "EXCLUDED":
+        result.update(status="EXCLUDED", discount_minor=0, effective_minor=base)
+        return result
+    if e["eligibility"] != "MATCH":
+        return result
+    try:
+        if conditions.get("discount_value") is None:
+            raise ValueError("DISCOUNT_NOT_SPECIFIED")
+        amount = Decimal(str(conditions["discount_value"]))
+        if not amount.is_finite() or amount <= 0:
+            raise ValueError("INVALID_DISCOUNT")
+        kind = conditions.get("discount_type")
+        if kind in ("percent", "PERCENT"):
+            if amount > 100:
+                raise ValueError("INVALID_DISCOUNT")
+            discount = int((Decimal(base) * amount / Decimal(100)).quantize(
+                Decimal("1"), rounding=ROUND_HALF_UP))
+        elif kind in ("fixed", "FIXED"):
+            if conditions.get("discount_currency") != scope["currency"]:
+                raise ValueError("DISCOUNT_CURRENCY_MISMATCH")
+            discount = int(amount.quantize(Decimal("1"), rounding=ROUND_HALF_UP))
+        else:
+            raise ValueError("UNSUPPORTED_DISCOUNT_TYPE")
+        cap = conditions.get("max_discount_minor")
+        if cap is not None:
+            if type(cap) is not int or cap <= 0:
+                raise ValueError("INVALID_DISCOUNT_CAP")
+            discount = min(discount, cap)
+        if not 0 < discount <= base:
+            raise ValueError("INVALID_DISCOUNT_AMOUNT")
+    except (ValueError, TypeError, ArithmeticError) as exc:
+        result["reasons"] = [str(exc) or "INVALID_DISCOUNT"]
+        return result
+    result.update(status="CONDITION_MATCH_ESTIMATE", discount_minor=discount,
+                  effective_minor=base-discount, reasons=["ALL_RULES_MATCHED"])
+    return result
+
+
 class CouponBridge:
     def __init__(self, db_path, allowed_shops=None):
         """allowed_shops: iterable of shop_code. Empty/None = reject all (no allow-all fallback)."""
@@ -647,6 +708,54 @@ class CouponBridge:
         return dict(status="APPLICABLE", normal_minor=base, effective_minor=amount,
                     campaign=campaign, check_id=key, checked_at=check["checked_at"],
                     expires_at=check["expires_at"], sale_approved=False)
+
+
+    def estimate_from_conditions(self, scope, *, now, product_facts):
+        """Owner rules-based coupon estimates, independently of cart-proof selection."""
+        scope = context(**scope)
+        if scope["shop_code"] not in self._allowed_shops:
+            return []
+        now = _time(now)
+        with self._connection() as db:
+            rows = db.execute(
+                "SELECT payload FROM ahc_coupon_observations_v1 WHERE shop_code=? AND observed_at<=?",
+                (scope["shop_code"], now)).fetchall()
+            checks = db.execute(
+                "SELECT payload FROM ahc_coupon_checks_v1 WHERE context_id=?",
+                (_id(scope),)).fetchall()
+        observations = [json.loads(r["payload"]) for r in rows]
+        assessed = assess_campaigns(observations, now=now)
+        latest_checks = {}
+        for row in checks:
+            item = json.loads(row["payload"])
+            if item["checked_at"] > now:
+                continue
+            campaign = item["campaign"]
+            prev = latest_checks.get(campaign)
+            if prev is None or item["checked_at"] >= prev["checked_at"]:
+                latest_checks[campaign] = item
+        out = []
+        for a in assessed:
+            campaign = a["campaign"]
+            source = max((r for r in observations if r["campaign"] == campaign),
+                         key=lambda r: r["observed_at"])
+            if a["campaign_confidence"] in {"EXPIRED", "RETIRED", "CONFLICT", "LIKELY_INVALID"}:
+                estimate = dict(campaign=campaign, status="UNKNOWN", normal_minor=scope["base_minor"],
+                                effective_minor=None, discount_minor=None, verification="NOT_CHECKED",
+                                sale_approved=False, reasons=["CAMPAIGN_NOT_CONFIRMED"])
+            else:
+                estimate = indicative_discount(scope, campaign, product_facts,
+                                               a.get("conditions", {}), now=now)
+            checked = latest_checks.get(campaign)
+            if checked and checked.get("status") == "NOT_APPLICABLE":
+                estimate.update(status="UNKNOWN", effective_minor=None,
+                                discount_minor=None, reasons=["CART_NEGATIVE_EVIDENCE"])
+            out.append(dict(estimate, source_url=source["source_url"],
+                            observed_at=source["observed_at"],
+                            campaign_confidence=a["campaign_confidence"]))
+        return sorted(out, key=lambda r: (r["status"] != "CONDITION_MATCH_ESTIMATE",
+                    r["effective_minor"] if r["effective_minor"] is not None else float("inf"),
+                    r["campaign"]))
 
     def list_candidates(self, scope, *, now, max_age_seconds, product_facts):
         """Return ranked coupon candidates for a scope, recomputed from saved observations."""
