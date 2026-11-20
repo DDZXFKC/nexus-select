@@ -76,7 +76,16 @@ def name_conflict(fl, sp):
     if brand_norm(fl["brand"]) != brand_norm(sp["brand"]):
         return "BRAND_CONFLICT"
     a, b = tokens(fl.get("name")), tokens(sp.get("name"))
-    # Model-generation contradiction is stronger than shared family tokens.\n    generations_a = {(x, y) for x, y in zip(canonical(fl.get("name", "")).split(),\n                                                canonical(fl.get("name", "")).split()[1:])\n                     if y.isdigit() and len(y) <= 2}\n    generations_b = {(x, y) for x, y in zip(canonical(sp.get("name", "")).split(),\n                                                canonical(sp.get("name", "")).split()[1:])\n                     if y.isdigit() and len(y) <= 2}\n    for family in {x for x, _ in generations_a} & {x for x, _ in generations_b}:\n        if {y for x, y in generations_a if x == family}.isdisjoint(\n                {y for x, y in generations_b if x == family}):\n            return "NAME_MODEL_GENERATION_CONFLICT"\n    if a and b and not (a & b):
+    # Model-generation contradiction overrides shared family tokens.
+    fa = canonical(fl.get("name", "")).split()
+    sa = canonical(sp.get("name", "")).split()
+    ga = {(x, y) for x, y in zip(fa, fa[1:]) if y.isdigit() and len(y) <= 2}
+    gb = {(x, y) for x, y in zip(sa, sa[1:]) if y.isdigit() and len(y) <= 2}
+    for family in {x for x, _ in ga} & {x for x, _ in gb}:
+        if {y for x, y in ga if x == family}.isdisjoint(
+                {y for x, y in gb if x == family}):
+            return "NAME_MODEL_GENERATION_CONFLICT"
+    if a and b and not (a & b):
         return "NAME_MODEL_CONFLICT"
     return ""
 
