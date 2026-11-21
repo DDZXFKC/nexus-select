@@ -1,0 +1,40 @@
+name: Foot Locker Cow Print original-image read-only check
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - .github/workflows/fl-cow-print-source-probe.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fetch original image candidates without modifying image data
+        run: |
+          python - <<'PY'
+          import urllib.request, urllib.error, hashlib
+          from urllib.parse import urlsplit
+          # Source image IDs specified by the owner. No substitute style/color.
+          for image_id in ["O0442200_01", "O0442200_03", "O0442200_04"]:
+              url="https://images.footlocker.com/is/image/EBFL2/"+image_id
+              req=urllib.request.Request(url,headers={"User-Agent":"AHC-asset-provenance-check/1.0","Accept":"image/png,image/jpeg,image/webp"})
+              try:
+                  with urllib.request.urlopen(req,timeout=12) as response:
+                      payload=response.read(8000001)
+                      mime=response.headers.get("Content-Type","")
+                      code=response.status
+                      final=response.url
+              except (urllib.error.HTTPError,urllib.error.URLError,TimeoutError) as exc:
+                  print(f"{image_id} UNREACHABLE {type(exc).__name__} {getattr(exc,'code','')}")
+                  continue
+              if len(payload)>8000000 or code!=200 or urlsplit(final).hostname!="images.footlocker.com":
+                  print(f"{image_id} INVALID status={code} bytes={len(payload)} final_host={urlsplit(final).hostname}")
+                  continue
+              kind=("PNG" if payload.startswith(b'\\x89PNG\\r\\n\\x1a\\n') else
+                    "JPEG" if payload.startswith(b'\\xff\\xd8') else
+                    "WEBP" if payload[:4]==b'RIFF' and payload[8:12]==b'WEBP' else "OTHER")
+              print(f"{image_id} HTTP_{code} mime={mime} detected={kind} bytes={len(payload)} sha256={hashlib.sha256(payload).hexdigest()}")
+          PY
