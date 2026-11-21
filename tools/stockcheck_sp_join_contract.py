@@ -35,6 +35,17 @@ def _us_size_key(value):
         return None
     return str(number.normalize())
 
+def _gs_size_key(value):
+    """Only explicitly observed SP grade-school Y-sizes; cm is annotation.
+
+    The cm value is NOT used to calculate or infer a shoe size, and the
+    merchant variant ID + Woo variation ID must still agree.
+    """
+    match = re.fullmatch(
+        r"US\\s+([1-9][0-9]?Y)\\s*\\(([0-9]+(?:\\.[0-9]+)?)cm\\)",
+        _norm(value), re.I)
+    return match.group(1).upper() if match else None
+
 def link_sp_variation(product, variation, supplier_records):
     """Return a single verified candidate or HOLD with explicit reason.
 
@@ -88,9 +99,12 @@ def link_sp_variation(product, variation, supplier_records):
         # record ONLY when size format and exact Woo variation evidence exist.
         merchant_size = _norm(row.get("merchant_size", evidence_size))
         if merchant_size != evidence_size:
-            if evidence_vid is None or _us_size_key(evidence_size) is None:
+            if evidence_vid is None:
                 continue
-            if merchant_size != _us_size_key(evidence_size):
+            allowed_size = _us_size_key(evidence_size)
+            if allowed_size is None:
+                allowed_size = _gs_size_key(evidence_size)
+            if allowed_size is None or merchant_size != allowed_size:
                 continue
         candidates.append(row)
     if len(candidates)!=1:
