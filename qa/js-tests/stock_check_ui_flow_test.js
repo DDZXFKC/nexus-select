@@ -28,10 +28,21 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   // 3 out of stock
   v = mkView(); a = api([{ ok: true, state: 'done', result: 'out_of_stock' }]); f = createFlow(a, v, fast(t));
   check('out_of_stock result', (await f.run({})) === 'out_of_stock');
-  // 4 marked_oos at start behaves like out_of_stock, no steps
+  // 4 stale legacy mark must not masquerade as a fresh live stock result.
   v = mkView(); a = api([], { ok: false, code: 'marked_oos' }); f = createFlow(a, v, fast(t));
   r = await f.run({});
-  check('marked_oos at start -> out_of_stock, no step call', r === 'out_of_stock' && a.calls.step === 0);
+  check('legacy marked_oos cannot claim a live sold-out result',
+    r === 'error:marked_oos' && a.calls.step === 0 &&
+    v.log.at(-1)[0] === 'error');
+  // Separate user-initiated checks can immediately move OOS -> available.
+  v = mkView(); a = api([{ ok: true, state: 'done', result: 'out_of_stock' }]);
+  f = createFlow(a, v, fast(t));
+  check('fresh OOS inquiry displays sold-out promptly', (await f.run({})) === 'out_of_stock');
+  v = mkView(); a = api([{ ok: true, state: 'done', result: 'in_stock', price_case: 'listed', permit:'NEW' }]);
+  f = createFlow(a, v, fast(t));
+  check('fresh in-stock inquiry immediately exposes buyable permit',
+    (await f.run({})) === 'in_stock' &&
+    v.log.at(-1)[1].permit === 'NEW' && a.calls.step === 1);
   // 5 unconfirmed
   v = mkView(); a = api([{ ok: true, state: 'done', result: 'unconfirmed', reason: 'unreachable' }]); f = createFlow(a, v, fast(t));
   check('unconfirmed result', (await f.run({})) === 'unconfirmed');
@@ -133,9 +144,20 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   // 11e buttons: cart label + cancel under it
   const js = require('fs').readFileSync(__dirname + '/../../local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.js', 'utf8');
   check('cart button label and cancel present', (js.match(/この商品をカートに入れる/g) || []).length === 2 && (js.match(/'キャンセル'/g) || []).length === 2 && !/location\.href/.test(js));
+  check('live UI can change in both directions without modifying Woo variation cache',
+    /showLiveAvailability\('in_stock'\)/.test(js) &&
+    /showLiveAvailability\('out_of_stock'\)/.test(js) &&
+    !/function markSoldOut\(/.test(js) &&
+    !/v\.is_in_stock\s*=\s*false/.test(js) &&
+    /もう一度在庫確認できます/.test(js));
+
   // 12 no email/name fields in UI markup (owner 12:40)
   const php = require('fs').readFileSync(__dirname + '/../../local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.php', 'utf8');
   check('popup has no input/textarea fields', !/<input|<textarea/.test(php.slice(php.indexOf('<dialog'), php.indexOf('</dialog>'))));
+  check('stock UI server markup does not install shared 24h OOS filter',
+    !php.includes('_ahc_inline_oos_until') &&
+    !php.includes("add_filter('woocommerce_available_variation'"));
+
   check('in-stock wording', MSG.inStock === '在庫確認できました。カートに入れられます。');
   process.exit(fail ? 1 : 0);
 })();
