@@ -24,14 +24,14 @@ def _us_size_key(value):
     This is a syntactic comparison, NOT authorization to match a new product:
     the matching evidence must explicitly identify Woo variation_id.
     """
-    match = re.fullmatch(r"US\\s+([0-9]+(?:\\.[0-9]+)?)", _norm(value), re.I)
+    match = re.fullmatch(r"US\s+([0-9]+(?:\.[0-9]+)?)", _norm(value), re.I)
     if not match:
         return None
     try:
         number = Decimal(match.group(1))
     except InvalidOperation:
         return None
-    if number <= 0 or number != number.quantize(Decimal("0.5")):
+    if number <= 0 or (number * 2) != (number * 2).to_integral_value():
         return None
     return str(number.normalize())
 
