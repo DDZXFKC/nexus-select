@@ -147,7 +147,8 @@ function ahc_sc_handle_submit() {
     $msg    = trim(sanitize_textarea_field((string) ($p['message'] ?? '')));
     if ($name === '' || mb_strlen($name) > 100) wp_send_json_error(['message' => 'お名前を入力してください。', 'code' => 'name'], 400);
     if (!is_email($email)) wp_send_json_error(['message' => 'メールアドレスを正しく入力してください。', 'code' => 'email'], 400);
-    if ($email !== $email2) wp_send_json_error(['message' => '確認用のメールアドレスが一致しません。', 'code' => 'email_confirm'], 400);
+    // 確認用メール欄はオーナー決定（2026-11-21：必須は名前とメールのみ）で廃止。送られてきた場合だけ照合する。
+    if ($email2 !== '' && $email !== $email2) wp_send_json_error(['message' => '確認用のメールアドレスが一致しません。', 'code' => 'email_confirm'], 400);
     if (mb_strlen($msg) > (int) ahc_sc_param('message_max')) {
         wp_send_json_error(['message' => 'メッセージは' . (int) ahc_sc_param('message_max') . '文字以内で入力してください。', 'code' => 'message'], 400);
     }
@@ -333,18 +334,31 @@ function ahc_sc_render_block($variable, $return = false) {
     <li><?php echo $icons['check']; ?>検品後にお届け</li>
     <li><?php echo $icons['ship']; ?>国内送料無料・配送状況の確認が可能</li>
   </ul>
-  <div class="ahc-sc-form" hidden>
-    <p class="ahc-sc-item"></p>
-    <label>お名前<input type="text" class="ahc-sc-name" maxlength="100" autocomplete="name" required></label>
-    <label>メールアドレス<input type="email" class="ahc-sc-email" autocomplete="email" required></label>
-    <label>メールアドレス（確認）<input type="email" class="ahc-sc-email2" autocomplete="off" required></label>
-    <label>メッセージ（任意）<textarea class="ahc-sc-message" rows="3" maxlength="<?php echo (int) ahc_sc_param('message_max'); ?>" placeholder="ほかのサイズもご希望の場合などはこちらへ"></textarea></label>
-    <div class="ahc-sc-hp" aria-hidden="true"><label>Website<input type="text" class="ahc-sc-website" tabindex="-1" autocomplete="off"></label></div>
-    <p class="ahc-sc-note">通常<?php echo (int) ahc_sc_param('reply_business_days'); ?>営業日以内にメールでご返信します。在庫確認は商品の確保を保証するものではありません。
-      <?php if ($privacy) : ?>入力内容は在庫確認のご連絡のために利用します（<a href="<?php echo esc_url($privacy); ?>" target="_blank" rel="noopener">プライバシーポリシー</a>）。<?php endif; ?></p>
-    <button type="button" class="button alt ahc-sc-send">送信する</button>
-    <p class="ahc-sc-result" role="status" aria-live="polite"></p>
-  </div>
+  <dialog class="ahc-sc-dialog" aria-labelledby="ahc-sc-title-<?php echo (int) $product->get_id(); ?>">
+    <div class="ahc-sc-form">
+      <p class="ahc-sc-title" id="ahc-sc-title-<?php echo (int) $product->get_id(); ?>">在庫を確認する</p>
+      <p class="ahc-sc-item"></p>
+      <div class="ahc-sc-terms">
+        <p>海外ショップからの買い付けのため、次の場合は販売価格が掲載価格と変わることがあります。</p>
+        <ul>
+          <li>掲載時の買い付け先に在庫がなく、別の買い付け先で買う場合</li>
+          <li>前提にしていたクーポンが失効・条件変更した場合</li>
+          <li>買い付け先のセールが終了した場合</li>
+          <li>為替が大きく円安に動いた場合</li>
+          <li>買い付け先が値上げした場合</li>
+        </ul>
+      </div>
+      <label>お名前（必須）<input type="text" class="ahc-sc-name" maxlength="100" autocomplete="name" required></label>
+      <label>メールアドレス（必須）<input type="email" class="ahc-sc-email" autocomplete="email" required></label>
+      <label>メッセージ（任意）<textarea class="ahc-sc-message" rows="3" maxlength="<?php echo (int) ahc_sc_param('message_max'); ?>"></textarea></label>
+      <div class="ahc-sc-hp" aria-hidden="true"><label>Website<input type="text" class="ahc-sc-website" tabindex="-1" autocomplete="off"></label></div>
+      <p class="ahc-sc-note">確認結果はメールでお知らせします。在庫確認は商品の確保を保証するものではありません。
+        <?php if ($privacy) : ?>入力内容は在庫確認のご連絡のために利用します（<a href="<?php echo esc_url($privacy); ?>" target="_blank" rel="noopener">プライバシーポリシー</a>）。<?php endif; ?></p>
+      <button type="button" class="button alt ahc-sc-send">送信する</button>
+      <p class="ahc-sc-result" role="status" aria-live="polite"></p>
+      <button type="button" class="ahc-sc-close">閉じる</button>
+    </div>
+  </dialog>
 </div>
 <?php
     $html = ob_get_clean();
@@ -364,7 +378,15 @@ add_action('wp_head', function () {
 .ahc-sc-guide{list-style:none;margin:0 0 16px;padding:0;font-size:12px}
 .ahc-sc-guide li{display:flex;align-items:center;gap:8px;padding:4px 0}
 .ahc-sc-guide svg{width:18px;height:18px;flex:none}
-.ahc-sc-form{border-top:1px solid #ddd;padding-top:14px}
+.ahc-sc-dialog{border:0;padding:0;width:min(520px,92vw);max-height:90vh;overflow:auto;background:#fff}
+.ahc-sc-dialog::backdrop{background:rgba(0,0,0,.45)}
+.ahc-sc-form{padding:22px 20px}
+.ahc-sc-title{font-size:14px;letter-spacing:.08em;font-weight:600;margin:0 0 6px}
+.ahc-sc-item{font-size:13px;margin:0 0 12px}
+.ahc-sc-terms{font-size:12px;background:#f6f6f6;padding:10px 12px;margin:0 0 14px}
+.ahc-sc-terms p{margin:0 0 4px}
+.ahc-sc-terms ul{margin:0;padding-left:1.2em}
+.ahc-sc-close{display:block;margin:12px auto 0;background:none;border:0;text-decoration:underline;font-size:12px;cursor:pointer}
 .ahc-sc-form label{display:block;font-size:12px;margin-bottom:10px}
 .ahc-sc-form input,.ahc-sc-form textarea{display:block;width:100%;margin-top:4px;padding:10px;border:1px solid #aaa;border-radius:0;font-size:16px}
 .ahc-sc-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
@@ -383,7 +405,11 @@ add_action('wp_footer', function () {
   var ajax = <?php echo wp_json_encode(admin_url('admin-ajax.php')); ?>;
   var form = box.closest('form') || document;
   var openBtn = box.querySelector('.ahc-sc-open'), reason = box.querySelector('.ahc-sc-reason');
-  var panel = box.querySelector('.ahc-sc-form'), result = box.querySelector('.ahc-sc-result');
+  var dialog = box.querySelector('.ahc-sc-dialog'), panel = box.querySelector('.ahc-sc-form'), result = box.querySelector('.ahc-sc-result');
+  function openDialog() { if (dialog.showModal) { if (!dialog.open) dialog.showModal(); } else { dialog.setAttribute('open', ''); } }
+  function closeDialog() { if (dialog.close) { if (dialog.open) dialog.close(); } else { dialog.removeAttribute('open'); } }
+  q('.ahc-sc-close').addEventListener('click', closeDialog);
+  dialog.addEventListener('click', function (e) { if (e.target === dialog) closeDialog(); });
   var variable = box.dataset.variable === '1', current = null, nonce = '';
   function q(s) { return box.querySelector(s); }
   function selects() { return Array.prototype.slice.call(form.querySelectorAll ? form.querySelectorAll('select[name^="attribute_"]') : []); }
@@ -394,7 +420,7 @@ add_action('wp_footer', function () {
   }
   function setState(ok, why) {
     openBtn.disabled = !ok; reason.textContent = ok ? '' : why;
-    if (!ok) { panel.hidden = true; }
+    if (!ok) { closeDialog(); }
   }
   if (variable && window.jQuery) {
     var $f = jQuery(box).closest('form.variations_form');
@@ -408,7 +434,10 @@ add_action('wp_footer', function () {
   openBtn.addEventListener('click', function () {
     if (openBtn.disabled) return;
     q('.ahc-sc-item').textContent = itemText();
-    panel.hidden = false; result.textContent = ''; result.classList.remove('is-error');
+    result.textContent = ''; result.classList.remove('is-error');
+    q('.ahc-sc-send').disabled = false;
+    Array.prototype.forEach.call(panel.querySelectorAll('input,textarea'), function (el) { el.disabled = false; });
+    openDialog();
     fetch(ajax + '?action=ahc_sc_nonce', { credentials: 'same-origin' }).then(function (r) { return r.json(); })
       .then(function (j) { if (j && j.success) nonce = j.data.nonce; }).catch(function () {});
     q('.ahc-sc-name').focus();
@@ -420,7 +449,7 @@ add_action('wp_footer', function () {
     fd.append('variation_id', current ? current.variation_id : 0);
     selects().forEach(function (s) { fd.append(s.name, s.value); });
     fd.append('name', q('.ahc-sc-name').value); fd.append('email', q('.ahc-sc-email').value);
-    fd.append('email_confirm', q('.ahc-sc-email2').value); fd.append('message', q('.ahc-sc-message').value);
+    fd.append('message', q('.ahc-sc-message').value);
     fd.append('website', q('.ahc-sc-website').value);
     send.disabled = true; result.classList.remove('is-error'); result.textContent = '送信しています…';
     fetch(ajax, { method: 'POST', body: fd, credentials: 'same-origin' }).then(function (r) { return r.json(); })

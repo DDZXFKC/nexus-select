@@ -123,4 +123,6 @@ ahc_sc_run_daily($now); check('expire days is a parameter (1 day for testing)', 
 // cart blocked in stage 1
 $ok = true; foreach ($H['woocommerce_add_to_cart_validation'] as $f) $ok = $f(true);
 check('add to cart refused with notice', $ok === false && $NOTICES);
+$OPT['ahc_sc_params'] = [];
+clear_rate(); $n0 = count($POSTS); $r = submit(['email' => 'noconf@example.com', 'email_confirm' => '']); check('owner 2026-11-21: email confirm field not required', $r->ok && count($POSTS) === $n0 + 1); clear_rate();
 exit($fail ? 1 : 0);
