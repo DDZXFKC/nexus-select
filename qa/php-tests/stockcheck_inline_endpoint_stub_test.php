@@ -160,6 +160,16 @@ $add=req('ahc_inline_add_to_cart',['permit'=>$step2->data['permit']]);
 t('selected cheaper supplier persists on cart line',
   $add->ok && end($W->cart->lines)['ahc_inline_shop']==='fixture-low');
 
+fresh_session();$SIM='multi';
+$s=start();$id=$s->data['check_id'];
+$first=req('ahc_inline_step',['check_id'=>$id]);
+$record_key='ahc_inline_check_'.$id;
+$TR[$record_key]['started']=time()-46;
+$expired=req('ahc_inline_step',['check_id'=>$id]);
+t('supplier comparison timeout never returns partial price permit',
+  $first->data['state']==='running' && $expired->data['result']==='unconfirmed' &&
+  $expired->data['reason']==='timeout' && !isset($expired->data['permit']));
+
 fresh_session();$SIM='empty';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
 t('no offers fails closed as no_candidate',$step->ok && $step->data['result']==='unconfirmed' && $step->data['reason']==='no_candidate');
