@@ -76,8 +76,6 @@ function ahc_inline_start() {
     $session = ahc_inline_session_id();
     if ($session === '') ahc_inline_error('session', 'カートを利用できません。', 503);
     [$parent, $variation, $attrs] = ahc_inline_selected_variant();
-    $mark = (int) get_post_meta($variation->get_id(), '_ahc_inline_oos_until', true);
-    if ($mark > time()) ahc_inline_error('marked_oos', 'このサイズは現在在庫がありません。', 409);
     $key = 'ahc_inline_rate_' . hash('sha256', $session);
     if (get_transient($key)) ahc_inline_error('rate_limited', '少し時間をおいて再度お試しください。', 429);
     set_transient($key, 1, 20);
@@ -165,25 +163,14 @@ function ahc_inline_step() {
             }
         }
     }
-    if ($r['cursor'] < count($r['offers']) && time() - $r['started'] < 45
-        && ($r['best'] === null || $r['best']['price'] > $r['listed'])) {
+    // Finish checking every eligible supplier before selecting the minimum.
+    if ($r['cursor'] < count($r['offers']) && time() - $r['started'] < 45) {
         set_transient($k,$r,120);
         wp_send_json_success(['ok'=>true,'state'=>'running']);
     }
     if ($r['best'] !== null && $r['listed'] > 0) {
-        // A verified minimum safe price must never be silently replaced by a
-        // lower listed price. The 400-yen change rule is not permission to
-        // sell below the newly verified cost-plus-margin floor.
-        if ($r['best']['price'] > $r['listed'] &&
-            $r['best']['price'] - $r['listed'] < 400) {
-            $result = ['ok'=>true,'state'=>'done','result'=>'unconfirmed',
-                       'reason'=>'price_difference_below_quote_threshold'];
-            $r['public_result'] = $result;
-            $r['state'] = 'done';
-            set_transient($k, $r, 120);
-            wp_send_json_success($result);
-            return;
-        }
+        // Owner-approved 400-yen rule: increases under 400, including
+        // reductions, keep the listed price. Other safety gates remain.
         $quoted = $r['best']['price'] - $r['listed'] >= 400;
         $permit = bin2hex(random_bytes(24));
         set_transient('ahc_inline_permit_' . $permit, [
@@ -202,7 +189,8 @@ function ahc_inline_step() {
                    return $x['stock']==='OUT_OF_STOCK';
               })) === count($r['offers'])) {
         $result = ['ok'=>true,'state'=>'done','result'=>'out_of_stock'];
-        update_post_meta($r['variation_id'] ?: $r['product_id'],'_ahc_inline_oos_until',time()+24*3600);
+        // Out-of-stock is this inquiry's live observation, not a
+        // 24-hour lock. The next customer may check again.
     } else {
         $result = ['ok'=>true,'state'=>'done','result'=>'unconfirmed','reason'=>'unreadable'];
     }
