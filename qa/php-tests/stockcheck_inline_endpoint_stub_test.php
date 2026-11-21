@@ -60,7 +60,7 @@ class FakeProduct {
 class FakeCart {
   public $lines=[];
   function add_to_cart($pid,$qty,$vid,$attrs) {
-    if (!apply_filters('woocommerce_add_to_cart_validation',true,$pid,$qty,$vid))return false;
+    if (!apply_filters('woocommerce_add_to_cart_validation',true,$pid,$qty,$vid,$attrs))return false;
     $extra=apply_filters('woocommerce_add_cart_item_data',[],$pid,$vid,$qty);
     if (!isset($extra['ahc_inline_sig']))return false;
     $this->lines[]=array_merge(['product_id'=>$pid,'variation_id'=>$vid,
@@ -106,6 +106,17 @@ function start($pid=10,$vid=11,$attrs=['attribute_pa_size'=>'9','attribute_pa_co
 function fresh_session() { global $W,$TR; $W->session=new FakeSession();$TR=[]; }
 
 t('ordinary Woo add-to-cart blocked',!apply_filters('woocommerce_add_to_cart_validation',true));
+$GLOBALS['ahc_inline_authorized_cart_add']=['product_id'=>10,'variation_id'=>11,
+  'attrs'=>['attribute_pa_size'=>'9','attribute_pa_color'=>'black'],'price'=>25000,'shop'=>'fixture'];
+t('authorized context cannot add another product',
+  !apply_filters('woocommerce_add_to_cart_validation',true,20,1,0,[]));
+t('authorized context cannot add a different size',
+  !apply_filters('woocommerce_add_to_cart_validation',true,10,1,11,
+    ['attribute_pa_size'=>'10','attribute_pa_color'=>'black']));
+t('authorized context cannot add extra quantity',
+  !apply_filters('woocommerce_add_to_cart_validation',true,10,2,11,
+    ['attribute_pa_size'=>'9','attribute_pa_color'=>'black']));
+unset($GLOBALS['ahc_inline_authorized_cart_add']);
 $start=start();
 t('guest start sets session cookie and returns ID',$start->ok && $W->session->cookie &&
   preg_match('/^[a-f0-9]{40}$/',$start->data['check_id']));
