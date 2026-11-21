@@ -23,6 +23,7 @@ on:
       - "tools/ahc-stock-sp-live-adapter-staging.php"
       - "tools/ahc-stock-sp-pricing-staging.php"
       - "local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.js"
+      - "local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.php"
       - "qa/js-tests/stock_check_ui_flow_test.js"
       - "tools/ahc-stock-sp158-owner-bridge-staging.php"
       - "tools/ahc-sp158-staging-loader.php"
@@ -60,6 +61,12 @@ jobs:
       - name: Ensure no customer email or direct cart activation in staging module
         run: |
           ! grep -E 'wp_mail\(|ahc_stock_check_allow_cart\s*,\s*true' tools/ahc-stock-inline-endpoints-staging.php
+      - name: Reject superseded 24-hour shared OOS marker in active modules
+        run: |
+          ! grep -nE '_ahc_inline_oos_until|ahc_inline_shared_oos_variation|marked_oos' \
+            tools/ahc-stock-inline-endpoints-staging.php \
+            local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.php \
+            local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.js
       - name: Anonymous guest and Woo cart mock integration
         run: php qa/php-tests/stockcheck_inline_endpoint_stub_test.php
       - name: Stock popup cancel, add and non-navigation JS integration
