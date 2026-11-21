@@ -1,0 +1,49 @@
+{
+  "style": "IO0442-200",
+  "sku": "FL-O0442200",
+  "source_is_original": true,
+  "cutout": false,
+  "resize": false,
+  "crop": false,
+  "images": [
+    {
+      "image_id": "O0442200_01",
+      "maker_style": "IO0442-200",
+      "source_url": "https://images.footlocker.com/is/image/EBFL2/O0442200_01",
+      "original_sha256": "fe885340165c579753676bbea0adbf577e7438a33321f15fc727eca179075dfd",
+      "output_file": "O0442200_01-white-square.png",
+      "source_width": 2000,
+      "source_height": 947,
+      "square_size": 2000,
+      "offset_x": 0,
+      "offset_y": 526,
+      "output_sha256": "5e71bbd25b84e123708e537b41aedd9403aff1cc09d0660f3dfa1b6a794a7ba4"
+    },
+    {
+      "image_id": "O0442200_03",
+      "maker_style": "IO0442-200",
+      "source_url": "https://images.footlocker.com/is/image/EBFL2/O0442200_03",
+      "original_sha256": "aeb5cf783e43c8b21f15e9db62fcc41c9e4b14a73f79720238e08cf45ac14b50",
+      "output_file": "O0442200_03-white-square.png",
+      "source_width": 2000,
+      "source_height": 962,
+      "square_size": 2000,
+      "offset_x": 0,
+      "offset_y": 519,
+      "output_sha256": "db096d01e1d94f2a78f5c22906c626cb90dcbca8520789d51a61e84031a838c5"
+    },
+    {
+      "image_id": "O0442200_04",
+      "maker_style": "IO0442-200",
+      "source_url": "https://images.footlocker.com/is/image/EBFL2/O0442200_04",
+      "original_sha256": "d0bfdf7f44c3a1b6ef3abf1e98628160ccb40c45574109b4bffc0b701e703273",
+      "output_file": "O0442200_04-white-square.png",
+      "source_width": 2000,
+      "source_height": 1339,
+      "square_size": 2000,
+      "offset_x": 0,
+      "offset_y": 330,
+      "output_sha256": "eb2304bbe0321e23cebbb4a6fab02d530b52ae945acc5dd1d5529c31e7e2b814"
+    }
+  ]
+}
