@@ -80,6 +80,10 @@ require __DIR__.'/../../tools/ahc-stock-inline-endpoints-staging.php';
 add_filter('ahc_inline_verified_offers',function($offers,$pid,$vid,$attrs) {
   global $SIM;
   if ($SIM==='empty')return [];
+  if ($SIM==='multi') return [
+    ['shop'=>'fixture-high','url'=>'https://example.test/sku-high','estimated_total_jpy'=>14000],
+    ['shop'=>'fixture-low','url'=>'https://example.test/sku-low','estimated_total_jpy'=>16000]
+  ];
   return [['shop'=>'fixture','url'=>'https://example.test/sku',
           'estimated_total_jpy'=>15000]];
 },10,4);
@@ -89,7 +93,9 @@ add_filter('ahc_inline_check_one_offer',function($prev,$offer,$pid,$vid,$attrs) 
   return ['stock'=>'IN_STOCK','reason'=>'OK','current_price'=>['amount'=>100,'currency'=>'USD']];
 },10,5);
 add_filter('ahc_inline_recomputed_sale_price',function($old,$current,$offer,$pid,$vid) {
-  global $SIM;return $SIM==='quote'?25400:($SIM==='smallincrease'?25300:25000);
+  global $SIM;
+  if ($SIM==='multi') return $offer['shop']==='fixture-high'?26000:24400;
+  return $SIM==='quote'?25400:($SIM==='smallincrease'?25300:25000);
 },10,5);
 $FAIL=0;$PASS=0;
 function t($label,$condition){global $FAIL,$PASS;if($condition){$PASS++;echo 'PASS '.$label."\n";}else{$FAIL++;echo 'FAIL '.$label."\n";}}
@@ -128,6 +134,19 @@ $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
 t('300 yen increase keeps listed price per owner rule',
   $step->ok && $step->data['result']==='in_stock' &&
   $step->data['price_case']==='listed' && isset($step->data['permit']));
+
+fresh_session();$SIM='multi';
+$s=start();$id=$s->data['check_id'];
+$step1=req('ahc_inline_step',['check_id'=>$id]);
+t('supplier list stays running after first expensive offer',
+  $step1->ok && $step1->data['state']==='running');
+$step2=req('ahc_inline_step',['check_id'=>$id]);
+t('all suppliers checked before accepting cheapest offer',
+  $step2->ok && $step2->data['result']==='in_stock' &&
+  $step2->data['price_case']==='listed' && isset($step2->data['permit']));
+$add=req('ahc_inline_add_to_cart',['permit'=>$step2->data['permit']]);
+t('selected cheaper supplier persists on cart line',
+  $add->ok && end($W->cart->lines)['ahc_inline_shop']==='fixture-low');
 
 fresh_session();$SIM='empty';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
