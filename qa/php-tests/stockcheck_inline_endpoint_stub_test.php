@@ -4,7 +4,7 @@ define('ABSPATH', '/');
 define('DAY_IN_SECONDS', 86400);
 define('HOUR_IN_SECONDS', 3600);
 define('MINUTE_IN_SECONDS', 60);
-$HOOKS=[]; $TR=[]; $META=[]; $OPTIONS=[]; $PRODUCTS=[]; $NOTICES=[]; $CALLS=[]; $SIM='ok';
+$HOOKS=[]; $TR=[]; $TTLS=[]; $META=[]; $OPTIONS=[]; $PRODUCTS=[]; $NOTICES=[]; $CALLS=[]; $SIM='ok';
 function add_filter($h,$fn,$priority=10,$args=1) { global $HOOKS; $HOOKS[$h][]=['fn'=>$fn,'priority'=>$priority]; }
 function add_action($h,$fn,$priority=10,$args=1) { add_filter($h,$fn,$priority,$args); }
 function apply_filters($h,$value,...$args) {
@@ -29,7 +29,7 @@ function absint($v) { return abs((int)$v); }
 function get_post_meta($id,$k,$single=true) { global $META; return $META[$id][$k]??''; }
 function update_post_meta($id,$k,$v) { global $META; $META[$id][$k]=$v; }
 function get_transient($k) { global $TR; return $TR[$k]??false; }
-function set_transient($k,$v,$ttl) { global $TR; $TR[$k]=$v; }
+function set_transient($k,$v,$ttl) { global $TR,$TTLS; $TR[$k]=$v; $TTLS[$k]=$ttl; }
 function delete_transient($k) { global $TR; unset($TR[$k]); }
 function add_option($key,$v,$deprecated='',$autol=false) { global $OPTIONS; if(array_key_exists($key,$OPTIONS))return false; $OPTIONS[$key]=$v;return true; }
 function delete_option($key) { global $OPTIONS; unset($OPTIONS[$key]); }
@@ -125,9 +125,17 @@ $id=$start->data['check_id'];
 $step=req('ahc_inline_step',['check_id'=>$id]);
 t('step session preserved and stock confirmed',$step->ok && $step->data['result']==='in_stock');
 $permit=$step->data['permit'];
+t('buyer permit has no automatic TTL',($TTLS['ahc_inline_permit_'.$permit]??-1)===0);
 $add=req('ahc_inline_add_to_cart',['permit'=>$permit,'accept_quote'=>'0']);
 t('authorized item added; cart redirect returned',$add->ok && $add->data['cart_url']==='https://example.test/cart/' && count($W->cart->lines)===1);
 t('cart line signed and price fixed',ahc_inline_cart_line_valid($W->cart->lines[0]) && $W->cart->lines[0]['ahc_inline_price']===25000);
+$old=$W->cart->lines[0];
+$old['ahc_inline_time']=time()-86400*30;
+$old['ahc_inline_sig']=hash_hmac('sha256',implode('|',[
+  $old['ahc_inline_price'],$old['ahc_inline_time'],
+  $old['product_id'],$old['variation_id'],$old['ahc_inline_unique']]),wp_salt('auth'));
+t('HMAC-valid cart line is not arbitrarily expired by elapsed time',
+  ahc_inline_cart_line_valid($old));
 do_action('woocommerce_before_calculate_totals',$W->cart);
 t('Woo price recalculation uses permit price',$W->cart->lines[0]['data']->get_price()==='25000');
 $again=req('ahc_inline_add_to_cart',['permit'=>$permit]);
@@ -170,6 +178,22 @@ t('supplier comparison timeout never returns partial price permit',
   $first->data['state']==='running' && $expired->data['result']==='unconfirmed' &&
   $expired->data['reason']==='timeout' && !isset($expired->data['permit']));
 
+fresh_session();$SIM='quote';
+$s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+$permit=$step->data['permit'];
+$SIM='ok';
+$changed=req('ahc_inline_add_to_cart',['permit'=>$permit,'accept_quote'=>'1']);
+t('supplier price changed before add triggers new confirmation',
+  !$changed->ok && $changed->data['code']==='price_changed' &&
+  (bool)get_transient('ahc_inline_permit_'.$permit));
+fresh_session();$SIM='ok';
+$s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+$permit=$step->data['permit'];
+$SIM='oos';
+$changed=req('ahc_inline_add_to_cart',['permit'=>$permit,'accept_quote'=>'0']);
+t('supplier sold out after verification prevents stale permit use',
+  !$changed->ok && $changed->data['code']==='stock_changed' &&
+  (bool)get_transient('ahc_inline_permit_'.$permit));
 fresh_session();$SIM='empty';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
 t('no offers fails closed as no_candidate',$step->ok && $step->data['result']==='unconfirmed' && $step->data['reason']==='no_candidate');
