@@ -3,10 +3,11 @@ const { createFlow, messageFor, MSG, sizeLabel } = require('../../local-snapshot
 let fail = 0; const check = (n, ok) => { console.log((ok ? 'PASS ' : 'FAIL ') + n); if (!ok) fail++; };
 function mkView() { const log = []; return { log, running: () => log.push(['running']), result: r => log.push(['result', r]), error: (c, m) => log.push(['error', c, m]), added: r => log.push(['added', r]) }; }
 function api(steps, startRes = { ok: true, check_id: 'c1' }, cart = { ok: true, cart_url: '/cart/' }) {
-  const calls = { start: 0, step: 0, cart: [] };
+  const calls = { start: 0, step: 0, cart: [], cancel: [] };
   return { calls, start: () => { calls.start++; return Promise.resolve(startRes); },
     step: () => { const s = steps[Math.min(calls.step, steps.length - 1)]; calls.step++; return s instanceof Error ? Promise.reject(s) : Promise.resolve(s); },
-    addToCart: (p, a) => { calls.cart.push([p, a]); return Promise.resolve(cart); } };
+    addToCart: (p, a) => { calls.cart.push([p, a]); return Promise.resolve(cart); },
+    cancel: (id, permit) => { calls.cancel.push([id, permit]); return Promise.resolve({ok:true}); } };
 }
 const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 45000 });
 (async () => {
@@ -46,7 +47,7 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   // 8 rate limited / nonce messages
   v = mkView(); a = api([], { ok: false, code: 'rate_limited' }); f = createFlow(a, v, fast({ v: 0 }));
   check('rate_limited start -> error', (await f.run({})) === 'error:rate_limited');
-  check('messages for codes', messageFor('rate_limited') === MSG.rateLimited && messageFor('nonce') === MSG.nonce && messageFor('permit_expired') === MSG.permitExpired && messageFor('x', 'srv') === 'srv');
+  check('messages for codes', messageFor('rate_limited') === MSG.rateLimited && messageFor('nonce') === MSG.nonce && messageFor('permit_invalid') === MSG.permitExpired && messageFor('x', 'srv') === 'srv');
   // 9 cancel during running -> no result shown
   let resolveStep; v = mkView();
   a = { start: () => Promise.resolve({ ok: true, check_id: 'c' }), step: () => new Promise(res => { resolveStep = res; }), addToCart: () => Promise.resolve({}) };
@@ -54,10 +55,38 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   const p = f.run({}); await new Promise(r => setTimeout(r, 0)); f.cancel();
   resolveStep({ ok: true, state: 'done', result: 'in_stock', permit: 'X' });
   check('cancelled run shows nothing after cancel', (await p) === 'cancelled' && v.log.length === 1);
+  // 9b cancelled popup explicitly invalidates its non-expiring server permit
+  v = mkView(); a = api([{ok: true, state: 'done', result: 'in_stock', permit: 'CANCELME'}]);
+  f = createFlow(a, v, fast({v:0}));
+  await f.run({}); f.cancel(); await new Promise(res => setTimeout(res, 0));
+  check('cancelled stock popup explicitly revokes selected permit',
+    a.calls.cancel.length === 1 && a.calls.cancel[0][0] === 'c1' &&
+    a.calls.cancel[0][1] === 'CANCELME' && !f.isBusy());
+
+  // 9c successful cart add consumes permit without sending cancel
+  v = mkView(); a = api([{ok: true, state: 'done', result: 'in_stock', permit: 'SOLD'}]);
+  f = createFlow(a, v, fast({v:0}));
+  await f.run({}); await f.addToCart('SOLD', false); f.cancel();
+  await new Promise(res => setTimeout(res, 0));
+  check('cart success does not revoke already-used permit',
+    a.calls.cancel.length === 0);
+
   // 10 double click while busy -> second run ignored
   v = mkView(); let rs; a = { start: () => new Promise(res => { rs = res; }), step: () => Promise.resolve({ ok: true, state: 'done', result: 'out_of_stock' }), addToCart: () => Promise.resolve({}) };
   f = createFlow(a, v, fast({ v: 0 })); const p1 = f.run({}); const second = await f.run({}); rs({ ok: true, check_id: 'c' }); await p1;
   check('second run while busy ignored', second === 'busy' && v.log.filter(x => x[0] === 'running').length === 1);
+  // 10b duplicate add clicks cannot issue duplicate AJAX requests
+  let finishAdd, addCount = 0;
+  v = mkView(); a = {
+    addToCart: () => { addCount++; return new Promise(resolve => { finishAdd=resolve; }); }
+  };
+  f = createFlow(a, v, fast({v:0}));
+  const pending = f.addToCart('P',false);
+  const duplicate = await f.addToCart('P',false);
+  check('double add-to-cart while request is pending is ignored',
+    duplicate === 'busy' && f.isAdding() && addCount === 1);
+  finishAdd({ok: true}); await pending;
+
   // 11 add to cart failure -> error, no redirect
   v = mkView(); a = api([], undefined, { ok: false, code: 'permit_expired' }); f = createFlow(a, v, fast({ v: 0 }));
   await f.addToCart('P', false);
