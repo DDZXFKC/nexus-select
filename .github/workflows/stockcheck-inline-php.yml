@@ -5,6 +5,9 @@ on:
     paths:
       - "tools/ahc-stock-inline-endpoints-staging.php"
       - "tools/stockcheck_sp_join_contract.py"
+      - "tools/stockcheck_sp_evidence_adapter.py"
+      - "tests/test_stockcheck_sp_evidence_adapter.py"
+      - "data/xserver-export/supplier-url-evidence-sample-2026-11-21.csv"
       - "tools/stockcheck_owner_price.py"
       - "tests/test_stockcheck_owner_price.py"
       - "tests/test_stockcheck_sp_join_contract.py"
@@ -32,3 +35,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_stockcheck_sp_join_contract.py' -v
       - name: Owner-approved price formula regression tests
         run: python -m unittest discover -s tests -p 'test_stockcheck_owner_price.py' -v
+      - name: Verify all 33 SP supplier variant evidence matches
+        run: python -m unittest discover -s tests -p 'test_stockcheck_sp_evidence_adapter.py' -v
