@@ -165,10 +165,15 @@ t('no offers fails closed as no_candidate',$step->ok && $step->data['result']===
 
 fresh_session();$SIM='oos';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
-t('confirmed OOS returns sold-out without persistent variant lock',
-  $step->data['result']==='out_of_stock' && !get_post_meta(11,'_ahc_inline_oos_until'));
-$SIM='ok'; fresh_session(); $s=start(); $again=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
-t('later inventory recheck not blocked by prior sold-out result',
+t('confirmed OOS marks variation for 24 hours',
+  $step->data['result']==='out_of_stock' &&
+  get_post_meta(11,'_ahc_inline_oos_until')>=time()+DAY_IN_SECONDS-5);
+$SIM='ok'; fresh_session(); $blocked=start();
+t('other customer blocked by shared 24-hour OOS mark',
+  !$blocked->ok && $blocked->data['code']==='marked_oos');
+$META[11]['_ahc_inline_oos_until']=time()-1;
+fresh_session(); $s=start(); $again=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+t('expired OOS mark allows fresh verification',
   $s->ok && $again->ok && $again->data['result']==='in_stock');
 
 fresh_session();$SIM='ok';
