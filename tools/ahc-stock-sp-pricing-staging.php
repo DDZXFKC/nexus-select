@@ -6,7 +6,8 @@
  */
 defined('ABSPATH') || exit;
 
-function ahc_sp_pricing_jpy($current_price, $offer, $product_id, $variation_id) {
+function ahc_sp_pricing_jpy($previous, $current_price, $offer, $product_id, $variation_id) {
+    if ($previous !== null || !is_array($offer) || ($offer['shop'] ?? '') !== 'SP') return $previous;
     if (!is_array($current_price) || !is_array($offer) ||
         ($offer['shop'] ?? '') !== 'SP' ||
         ($current_price['currency'] ?? '') !== 'USD' ||
