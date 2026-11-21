@@ -108,7 +108,7 @@ def reconcile(live, woo=None, urls=None, legacy=None):
             raise ValueError("Invalid Woo supplier parent SKU: " + parent_sku)
         supplier_id = parent_sku[3:]
         parents.add((product_id, supplier_id))
-        mapped = url_map.get(supplier_id)
+        mapped = url_map.get((supplier_id,))
         if mapped is None:
             raise ValueError("Source URL missing for " + supplier_id)
         url = mapped["source_url"]
