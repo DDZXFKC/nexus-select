@@ -1,0 +1,76 @@
+name: Shoe Palace one-shot real HTTP validation
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - ".github/workflows/sp-live-connectivity-one-shot.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  one-shot-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exactly one non-retried official Shopify .js request
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, sys, urllib.request, urllib.error, urllib.parse
+          from pathlib import Path
+
+          rows = list(csv.DictReader(Path("data/xserver-export/sp158-live-sku-match-2026-11-22.csv").open(encoding="utf-8", newline="")))
+          assert len(rows) == 1713, "FAIL: evidence CSV incomplete"
+          r = rows[0]
+          url = r["source_url"]
+          p = urllib.parse.urlsplit(url)
+          assert p.scheme == "https" and p.hostname == "www.shoepalace.com" and not p.query and not p.fragment
+          assert p.path.startswith("/products/") and r["status"] == "PASS"
+          endpoint = url.rstrip("/") + ".js"
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, headers, newurl):
+                  return None
+          opener = urllib.request.build_opener(NoRedirect())
+          req = urllib.request.Request(endpoint, headers={"Accept": "application/json", "User-Agent":"AHC-stockcheck-readonly-validation/1.0"})
+          try:
+              response = opener.open(req, timeout=12)
+              with response:
+                  code = response.status
+                  raw = response.read(1000001)
+                  ctype = response.headers.get("Content-Type", "")
+          except urllib.error.HTTPError as err:
+              print("LIVE_HTTP_RESULT=HTTP_" + str(err.code))
+              print("Decision: STOP. Do not bypass restrictions or retry.")
+              sys.exit(1)
+          except Exception as err:
+              print("LIVE_HTTP_RESULT=NETWORK_ERROR type=" + type(err).__name__)
+              print("Decision: STOP. Do not guess availability.")
+              sys.exit(1)
+          print("LIVE_HTTP_STATUS=", code)
+          print("LIVE_CONTENT_TYPE=", ctype)
+          print("LIVE_RESPONSE_BYTES=", len(raw))
+          if code != 200 or len(raw)>1000000:
+              print("FAIL: non-200 or oversized")
+              sys.exit(1)
+          try:
+              data=json.loads(raw)
+          except Exception:
+              print("FAIL: response not JSON")
+              sys.exit(1)
+          product_id=str(data.get("id",""))
+          candidates=[v for v in data.get("variants",[]) if str(v.get("id",""))==r["shopify_variant_id_live"] and str(v.get("sku",""))==r["woo_variation_sku"]]
+          print("LIVE_PRODUCT_ID_MATCH=", product_id==r["supplier_product_id"])
+          print("LIVE_EXACT_VARIANT_MATCHES=", len(candidates))
+          print("LIVE_VARIANT_COUNT=",len(data.get("variants",[])))
+          print("LIVE_SHA256=", hashlib.sha256(raw).hexdigest())
+          if product_id!=r["supplier_product_id"] or len(candidates)!=1:
+              print("FAIL: current supplier identity mismatch")
+              sys.exit(1)
+          variant=candidates[0]
+          if not isinstance(variant.get("available"),bool) or type(variant.get("price")) is not int or variant["price"]<=0:
+              print("FAIL: live variant stock/price cannot be determined")
+              sys.exit(1)
+          print("LIVE_STOCK=", "IN_STOCK" if variant["available"] else "OUT_OF_STOCK")
+          print("LIVE_PRICE_CENTS=", variant["price"])
+          print("LIVE_IDENTITY_STOCK_PRICE_CHECK=PASS")
+          PY
