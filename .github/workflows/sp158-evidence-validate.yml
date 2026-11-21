@@ -1,0 +1,38 @@
+name: Shoe Palace 158 evidence immutable validation
+
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - "data/xserver-export/sp158-variation-match-result-2026-11-22.csv"
+      - "data/xserver-export/sp158-product-match-summary-2026-11-22.csv"
+      - ".github/workflows/sp158-evidence-validate.yml"
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate current exact join and duplicate supplier ID handling
+        run: python -m unittest discover -s tests -p 'test_sp158_merge_supplier_evidence.py' -v
+      - name: Download original recorded live Shopify identity evidence
+        run: |
+          mkdir -p input
+          gh run download 44932356916 --repo DDZXFKC/nexus-select \
+            --name sp158-shopify-variant-evidence --dir input
+      - name: Regenerate 158-product immutable result and byte-compare
+        run: |
+          python -m tools.sp158_merge_supplier_evidence \
+            --live input/sp158-shopify-variant-evidence.csv \
+            --variations /tmp/sp158-variation-check.csv \
+            --products /tmp/sp158-products-check.csv
+          cmp /tmp/sp158-variation-check.csv data/xserver-export/sp158-variation-match-result-2026-11-22.csv
+          cmp /tmp/sp158-products-check.csv data/xserver-export/sp158-product-match-summary-2026-11-22.csv
+          echo "PASS: source evidence and canonical 1713-row mapping identical"
