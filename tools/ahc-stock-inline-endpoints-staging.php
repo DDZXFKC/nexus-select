@@ -117,7 +117,7 @@ function ahc_inline_start() {
         'listed' => (int) round((float)$variation->get_price()),
         'state' => 'running'
     ];
-    set_transient('ahc_inline_check_' . $check, $record, 120);
+    set_transient('ahc_inline_check_' . $check, $record, 0);
     wp_send_json_success(['ok'=>true, 'state'=>'running', 'check_id'=>$check]);
 }
 add_action('wp_ajax_ahc_sc_start', 'ahc_inline_start');
@@ -158,7 +158,7 @@ function ahc_inline_step() {
         $r['state'] = 'done';
         $r['public_result'] = ['ok'=>true, 'state'=>'done',
             'result'=>'unconfirmed', 'reason'=>$why];
-        set_transient($k,$r,120);
+        set_transient($k, $r, 0);
         wp_send_json_success($r['public_result']);
     }
     if ($r['cursor'] < count($r['offers'])) {
@@ -188,7 +188,7 @@ function ahc_inline_step() {
     }
     // Finish checking every eligible supplier before selecting the minimum.
     if ($r['cursor'] < count($r['offers']) && time() - $r['started'] < 45) {
-        set_transient($k,$r,120);
+        set_transient($k, $r, 0);
         wp_send_json_success(['ok'=>true,'state'=>'running']);
     }
     // A quoted price must reflect every eligible candidate in this inquiry.
@@ -198,7 +198,7 @@ function ahc_inline_step() {
         $r['state'] = 'done';
         $r['public_result'] = ['ok'=>true,'state'=>'done',
             'result'=>'unconfirmed','reason'=>'timeout'];
-        set_transient($k,$r,120);
+        set_transient($k, $r, 0);
         wp_send_json_success($r['public_result']);
     }
     if ($r['best'] !== null && $r['listed'] > 0) {
@@ -233,7 +233,7 @@ function ahc_inline_step() {
     }
     $r['public_result'] = $result;
     $r['state'] = 'done';
-    set_transient($k,$r,120);
+    set_transient($k, $r, 0);
     wp_send_json_success($result);
 }
 add_action('wp_ajax_ahc_sc_step', 'ahc_inline_step');
