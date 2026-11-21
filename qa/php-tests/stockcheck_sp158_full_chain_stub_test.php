@@ -149,7 +149,8 @@ expect('current stage server enforces recorded sold-out hold',
     !$blocked->ok && $blocked->payload['code']==='marked_oos');
 $GLOBALS['META'][$vid]['_ahc_inline_oos_until']=time()-1;
 $GLOBALS['TRANSIENTS']=[];$GLOBALS['WCENV']->session=new Session();$GLOBALS['HTTP']=[];
-merchant(true,10000);
+// USD 99.00 yields an owner-formula increase below JPY 400; listed price stays.
+merchant(true,9900);
 $started=start_check();
 $step=request('ahc_inline_step',['check_id'=>$started->payload['check_id']]);
 expect('supplier restock can be checked again and owner rule applied',
