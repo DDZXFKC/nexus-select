@@ -44,7 +44,7 @@ class FakeSession {
   function get_customer_id() { return $this->id; }
 }
 class FakeProduct {
-  public $id,$type,$parent,$status='publish',$price='25000',$attrs=[];
+  public $id,$type,$parent,$status='publish',$price='25000',$attrs=[],$canBuy=true;
   function __construct($id,$type,$parent=0,$attrs=[]) {$this->id=$id;$this->type=$type;$this->parent=$parent;$this->attrs=$attrs;}
   function get_id(){return $this->id;}
   function get_status(){return $this->status;}
@@ -53,7 +53,7 @@ class FakeProduct {
   function get_parent_id(){return $this->parent;}
   function get_variation_attributes(){return $this->attrs;}
   function get_price(){return $this->price;}
-  function is_purchasable(){return true;}
+  function is_purchasable(){return $this->canBuy;}
   function is_in_stock(){return true;}
   function set_price($p){$this->price=(string)$p;}
 }
@@ -221,6 +221,18 @@ req('ahc_inline_cancel',['permit'=>$permit]);
 fresh_session();$SIM='empty';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
 t('no offers fails closed as no_candidate',$step->ok && $step->data['result']==='unconfirmed' && $step->data['reason']==='no_candidate');
+
+fresh_session();$SIM='ok';
+$PRODUCTS[11]->canBuy=false;
+$s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+t('supplier available but Woo cart unavailable does not claim buyable stock',
+  $s->ok && $step->ok && $step->data['result']==='unconfirmed' &&
+  $step->data['reason']==='cart_unavailable' && !isset($step->data['permit']));
+$PRODUCTS[11]->canBuy=true;
+fresh_session();$SIM='ok';
+$s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+t('once Woo product is cart-ready, fresh live check restores buyable result',
+  $s->ok && $step->data['result']==='in_stock' && isset($step->data['permit']));
 
 fresh_session();$SIM='oos';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
