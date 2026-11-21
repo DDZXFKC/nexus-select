@@ -48,6 +48,9 @@ def verified_sp_rows(path=SOURCE):
                 "requested_size":row["requested_size"],
                 "requested_color":row["requested_color"],
                 "merchant_size":merchant_size,
+                # CSV currently lacks independently witnessed Shopify variant SKU.
+                # Do not manufacture it from Woo SKU or Shopify variant ID.
+                "merchant_variant_sku":row.get("merchant_variant_sku","").strip(),
                 "verified":True,
                 "evidence_ref":f"{Path(path).name}:{index}",
             })
