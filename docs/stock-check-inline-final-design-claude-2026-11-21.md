@@ -130,7 +130,7 @@
 - ポップアップを閉じる、カラーを変える、ページを再読み込みしたときの戻り方
 
 ## 10. 画面とサーバーの約束（API。GPT と Claude の境界）
-WordPress の admin-ajax を使う。どれも nonce を必須にする。入力値はすべてサーバー側で確かめる。
+WordPress の admin-ajax を使う。どれも nonce（action 名 `ahc_sc_inline`、画面側は ahc-stock-check-ui.php が発行）を必須にする。入力値はすべてサーバー側で確かめる。
 ```text
 POST action=ahc_sc_start
   入力: product_id, variation_id, attribute_*（選んだカラー・サイズ）, nonce
@@ -139,8 +139,8 @@ POST action=ahc_sc_start
 POST action=ahc_sc_step
   入力: check_id, nonce
   返す: { ok, state: "running" }                         # まだ続く（画面は約1秒あけて再び呼ぶ）
-        | { ok, state: "done", result: "in_stock", price_case: "listed", price_html, permit }
-        | { ok, state: "done", result: "in_stock", price_case: "quote", quote_price_html, listed_price_html, permit }
+        | { ok, state: "done", result: "in_stock", price_case: "listed", price_text, permit }
+        | { ok, state: "done", result: "in_stock", price_case: "quote", quote_price_text, listed_price_text, permit }
         | { ok, state: "done", result: "out_of_stock" }  # 全店で品切れ確定。サーバーが品切れの印を付けた後
         | { ok, state: "done", result: "unconfirmed", reason: "unreachable" | "unreadable" | "price_unknown" | "timeout" | "no_candidate" }
 POST action=ahc_sc_add_to_cart
@@ -148,5 +148,23 @@ POST action=ahc_sc_add_to_cart
   返す: { ok, cart_url } | { ok:false, code: "permit_expired" | "permit_invalid" | "quote_not_accepted", message }
 ```
 - permit はサーバー側に保存した購入許可のキー。ブラウザには金額の元データ・店・URLを渡さない。
-- 表示する価格は、サーバーが整形した文字列（price_html）をそのまま使う。画面では計算しない。
+- 表示する価格は、サーバーが整形した文字（price_text 例「¥31,100」。HTML は含めない）をそのまま使う。画面では計算しない。
+- 返し方は wp_send_json_success({...}) / wp_send_json_error({code, message}) でも、素の {ok,...} でもよい（画面側は両方受ける）。
+- 画面側の実装：mu-plugins/ahc-stock-check-ui.php と ahc-stock-check-ui.js（Claude）。流れのテスト：qa/js-tests/stock_check_ui_flow_test.js。
 - 商品ページの「在庫を確認する」→ ポップアップ → スピナー → 結果 → ［カートへ進む］は Claude が作る。上の3つの処理の中身は GPT が作る。
+
+## 11. 画面側の実装状況（Claude、2026-11-21 13:3x）
+- 正本に入れたファイル
+  - local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.php（商品ページのボタン・ポップアップ・スタイル）
+  - ahc-stock-check-ui.js（スピナー・照会の繰り返し・4通りの結果・カートへ進む・SOLD OUT 表示）
+- ahc-stock-check.php からは商品ページの表示部分を外した（サーバー側専用にした）。12da5a6 の入力欄付きポップアップは使わない。
+- テスト：`node qa/js-tests/stock_check_ui_flow_test.js` 18/18。対象は流れの部分。
+  - 確かめた内容：スピナー→結果、価格案内の同意、品切れ、確認できず、時間切れ、通信失敗、二重押し、途中で閉じる、許可切れ、入力欄なし。
+  - 実際の画面（DOM）での動きはまだ確かめていない。
+- **サーバーには未反映。**
+  - 画面側だけ反映すると、サーバー側（ahc_sc_start / step / add_to_cart）が無いため、「通信に失敗しました」と出て在庫確認ができない。
+  - **GPT のサーバー側と同時に反映する。** 反映後、§9 の実画面確認を PC と iPhone で行う。
+- 判断したこと（オーナーの言葉が両方に取れるため）
+  - ポップアップを開いたら、すぐ判定を始める（もう一度ボタンを押させない）。
+  - 判定中も、価格が変わりうる5つの事案の説明を同じポップアップに出しておく。
+  - 違う場合は言ってほしい。
