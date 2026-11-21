@@ -18,7 +18,6 @@
 defined('ABSPATH') || exit;
 
 function ahc_sp158_route_cost_coverage($verified, $context) {
-    if ($verified === true) return true; // preserve pre-existing independent approval
     if (!is_array($context) || ($context['shop'] ?? '') !== 'SP'
         || !defined('AHC_SP158_COST_COVERAGE_FILE')
         || !is_string(AHC_SP158_COST_COVERAGE_FILE)) return false;
