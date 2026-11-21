@@ -61,7 +61,13 @@
         if (my !== token) return Promise.resolve('cancelled');
         if (now() - t0 > budgetMs) { view.result({ result: 'unconfirmed', reason: 'timeout' }); return Promise.resolve('unconfirmed'); }
         return api.step(checkId).then(function (s) {
-          if (my !== token) return 'cancelled';
+          if (my !== token) {
+            if (s && s.ok && s.permit && api.cancel) {
+              Promise.resolve().then(function () { return api.cancel(checkId, s.permit); })
+                .catch(function () {});
+            }
+            return 'cancelled';
+          }
           if (!s || !s.ok) return handle(errorFrom(s));
           if (s.state === 'done') {
             activePermit = s.result === 'in_stock' ? (s.permit || null) : null;
@@ -71,7 +77,13 @@
         });
       }
       return api.start(selection).then(function (r) {
-        if (my !== token) return 'cancelled';
+        if (my !== token) {
+          if (r && r.ok && r.check_id && api.cancel) {
+            Promise.resolve().then(function () { return api.cancel(r.check_id, ''); })
+              .catch(function () {});
+          }
+          return 'cancelled';
+        }
         if (!r || !r.ok) return handle(errorFrom(r));
         activeCheckId = r.check_id;
         return loop(r.check_id);
@@ -143,7 +155,8 @@
     fd.append('action', action);
     fd.append('nonce', CFG.nonce || '');
     Object.keys(data).forEach(function (k) { fd.append(k, data[k]); });
-    return fetch(CFG.ajaxUrl, { method: 'POST', body: fd, credentials: 'same-origin' })
+    return fetch(CFG.ajaxUrl, { method: 'POST', body: fd, credentials: 'same-origin',
+      keepalive: action === 'ahc_sc_cancel' })
       .then(function (res) { return res.json(); })
       .then(function (j) {
         // wp_send_json_success/error の形 {success, data} と、素の {ok,...} の両方を受ける
