@@ -66,4 +66,4 @@ $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['payment_fee_bps']=1
 expectEq(price(),null,'invalid card fee');
 $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['round_up_jpy']=0;
 expectEq(price(),null,'rounding unset');
-echo "19 cases PASS\n";
+echo "18 cases PASS\n";
