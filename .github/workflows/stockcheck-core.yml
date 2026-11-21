@@ -7,6 +7,8 @@ on:
       - "tests/test_stockcheck_core.py"
       - "tools/stockcheck_inquiry_contract.py"
       - "tests/test_stockcheck_inquiry_contract.py"
+      - "tools/stockcheck_inline_price_policy.py"
+      - "tests/test_stockcheck_inline_price_policy.py"
       - ".github/workflows/stockcheck-core.yml"
   workflow_dispatch:
 permissions:
@@ -20,3 +22,5 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_stockcheck_core.py' -v
       - name: Verify owner popup input contract
         run: python3 -m unittest discover -s tests -p 'test_stockcheck_inquiry_contract.py' -v
+      - name: Owner inline cart pricing policy
+        run: python3 -m unittest discover -s tests -p 'test_stockcheck_inline_price_policy.py' -v
