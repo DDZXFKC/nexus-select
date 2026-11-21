@@ -1,0 +1,72 @@
+"""Fail-closed identity contract for Woo variation -> supplier Shopify variant.
+
+This is an offline candidate linker. It does not fetch live stock or prices,
+grant checkout, infer unknown variant IDs, or write to WordPress.
+"""
+from __future__ import annotations
+import re
+import unicodedata
+from collections import defaultdict
+
+SP_SKU = re.compile(r"^SP-([0-9]+)$")
+UNSUPPORTED = {"", "N/A", "UNKNOWN", "NONE", "-"}
+def _norm(value):
+    return unicodedata.normalize("NFKC",str(value or "")).strip()
+def _custom_attrs(attrs):
+    if not isinstance(attrs,dict):
+        return {}
+    return { _norm(k).lower().removeprefix("attribute_"): _norm(v) for k,v in attrs.items() }
+
+def link_sp_variation(product, variation, supplier_records):
+    """Return a single verified candidate or HOLD with explicit reason.
+
+    supplier_records must originate from a reviewed SP product+variant export:
+    {shop_code, supplier_product_id, merchant_variant_id, size, color,
+     source_url, verified}. No fuzzy matching or guessed URL generation.
+    """
+    pid=product.get("product_id")
+    vid=variation.get("variation_id",0)
+    if variation.get("product_id")!=pid:
+        return {"status":"HOLD","reason":"WOO_PRODUCT_VARIATION_MISMATCH"}
+    sku=_norm(product.get("sku"))
+    match=SP_SKU.fullmatch(sku)
+    shop=_norm(product.get("shop_code")).upper()
+    supplier=_norm(product.get("supplier_product_id"))
+    if not match or shop!="SP" or supplier != match.group(1):
+        return {"status":"HOLD","reason":"SP_PARENT_ID_MISMATCH"}
+    if not isinstance(vid,int) or vid<0:
+        return {"status":"HOLD","reason":"INVALID_WOO_VARIATION_ID"}
+    typ=_norm(product.get("product_type")).lower()
+    if typ=="variable" and vid==0:
+        return {"status":"HOLD","reason":"MISSING_VARIATION"}
+    if typ=="simple" and vid!=0:
+        return {"status":"HOLD","reason":"SIMPLE_VARIATION_MISMATCH"}
+    if typ not in ("simple","variable"):
+        return {"status":"HOLD","reason":"UNSUPPORTED_TYPE"}
+    attrs=_custom_attrs(variation.get("attributes",{}))
+    size=attrs.get("サイズ","") or attrs.get("size","")
+    color=attrs.get("カラー","") or attrs.get("color","")
+    # Never assume English size/US9/EU42 equivalence without a verified map.
+    if typ=="variable" and (not size or not color):
+        return {"status":"HOLD","reason":"MISSING_SIZE_OR_COLOR"}
+    candidates=[]
+    for row in supplier_records:
+        if _norm(row.get("shop_code")).upper()!="SP" or _norm(row.get("supplier_product_id"))!=supplier:
+            continue
+        if row.get("verified") is not True:
+            continue
+        if not _norm(row.get("merchant_variant_id")) or not _norm(row.get("source_url")).startswith("https://"):
+            continue
+        # Strict NFKC and exact; alias and region conversion must be separately authorized.
+        if _norm(row.get("size"))!=size or _norm(row.get("color"))!=color:
+            continue
+        candidates.append(row)
+    if len(candidates)!=1:
+        return {"status":"HOLD","reason":"NO_VERIFIED_SIZE_COLOR_MATCH" if not candidates else "AMBIGUOUS_SUPPLIER_VARIANT"}
+    chosen=candidates[0]
+    return {"status":"CANDIDATE_ONLY","woo_product_id":pid,"woo_variation_id":vid,
+            "shop_code":"SP","supplier_product_id":supplier,
+            "merchant_variant_id":_norm(chosen["merchant_variant_id"]),
+            "source_url":_norm(chosen["source_url"]),
+            "size":size,"color":color,
+            "reason":"EXACT_PRODUCT_AND_VARIANT_MATCH_LIVE_STOCK_PENDING"}
