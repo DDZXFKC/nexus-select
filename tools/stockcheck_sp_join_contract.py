@@ -52,7 +52,7 @@ def _remove_display_us_prefix(value):
     Examples: US 8.5 -> 8.5, US 3Y (23cm) -> 3Y (23cm).
     Never strip a manufacturer size unit from the middle of a value.
     """
-    return re.sub(r"^US\\s+", "", _norm(value), count=1, flags=re.I)
+    return re.sub(r"^US\s+", "", _norm(value), count=1, flags=re.I)
 
 def link_sp_variation(product, variation, supplier_records):
     """Return a single verified candidate or HOLD with explicit reason.
