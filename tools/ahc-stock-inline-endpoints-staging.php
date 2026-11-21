@@ -178,7 +178,7 @@ function ahc_inline_step() {
                  $checked['current_price'], $offer, $r['product_id'], $r['variation_id']);
             if (is_int($new) && $new > 0) {
                 if ($r['best'] === null || $new < $r['best']['price']) {
-                    $r['best'] = ['shop'=>$offer['shop'],'price'=>$new];
+                    $r['best'] = ['shop'=>$offer['shop'],'price'=>$new,'offer'=>$offer];
                 }
             } else {
                 $r['checks'][count($r['checks'])-1]['stock'] = 'UNCONFIRMED';
@@ -210,8 +210,10 @@ function ahc_inline_step() {
             'session'=>$r['session'], 'product_id'=>$r['product_id'],
             'variation_id'=>$r['variation_id'], 'attrs'=>$r['attrs'],
             'price'=>$quoted ? $r['best']['price'] : $r['listed'],
-            'shop'=>$r['best']['shop'], 'quote'=>$quoted
-        ], 300);
+            'shop'=>$r['best']['shop'], 'quote'=>$quoted,
+            'listed'=>$r['listed'], 'offer'=>$r['best']['offer'],
+            'verified_recomputed_price'=>$r['best']['price']
+        ], 0);
         $result = ['ok'=>true,'state'=>'done','result'=>'in_stock',
                    'price_case'=>$quoted?'quote':'listed',
                    'permit'=>$permit,
@@ -327,8 +329,8 @@ function ahc_inline_cart_line_valid($line) {
     }
     if (!is_numeric($line['ahc_inline_price']) || (int)$line['ahc_inline_price'] <= 0) return false;
     if (!is_numeric($line['ahc_inline_time'])) return false;
-    if (time() - (int)$line['ahc_inline_time'] > 60 * MINUTE_IN_SECONDS
-        || (int)$line['ahc_inline_time'] > time() + 30) return false;
+    // The timestamp is for audit and signature binding, NOT automatic
+    // expiration. Owner disallows time-based cart cancellation.
     $expected = hash_hmac('sha256', implode('|', [
         (int)$line['ahc_inline_price'], (int)$line['ahc_inline_time'],
         (int)$line['product_id'], (int)$line['variation_id'], (string)$line['ahc_inline_unique']
@@ -348,7 +350,7 @@ add_action('woocommerce_check_cart_items', function () {
     if (!function_exists('WC') || !WC() || !WC()->cart) return;
     foreach (WC()->cart->get_cart() as $line) {
         if (!ahc_inline_cart_line_valid($line)) {
-            wc_add_notice('カート内の商品は在庫確認の期限が切れました。商品ページから再確認してください。', 'error');
+            wc_add_notice('カート内の在庫確認情報を検証できませんでした。商品ページから再確認してください。', 'error');
             break;
         }
     }
@@ -364,7 +366,7 @@ function ahc_inline_add_to_cart() {
     $key = 'ahc_inline_permit_' . $token;
     $ctx = get_transient($key);
     if (!is_array($ctx) || !ahc_inline_session_check($ctx)) {
-        ahc_inline_error('permit_expired', '在庫確認の期限が切れました。', 403);
+        ahc_inline_error('permit_invalid', '在庫確認情報を確認できません。もう一度在庫を確認してください。', 403);
     }
     if (!empty($ctx['quote']) && ahc_inline_request('accept_quote') !== '1') {
         ahc_inline_error('quote_not_accepted', '新しい価格への同意が必要です。', 400);
@@ -378,6 +380,31 @@ function ahc_inline_add_to_cart() {
     if (!$product || !$product->is_purchasable() || !$product->is_in_stock()
         || (int)get_post_meta($variation_id ?: $product_id, '_ahc_inline_oos_until', true) > time()) {
         ahc_inline_error('permit_invalid', '選択商品の在庫を確認できません。', 409);
+    }
+    // No time-based permit expiry. A later click must nevertheless prove
+    // that this exact supplier variant is still available at the agreed
+    // price; the old success result cannot be relied upon indefinitely.
+    $offer = $ctx['offer'] ?? null;
+    if (!is_array($offer) || (string)($offer['shop'] ?? '') !== (string)$ctx['shop']
+        || !isset($ctx['verified_recomputed_price'], $ctx['listed'])
+        || (int)round((float)$product->get_price()) !== (int)$ctx['listed']) {
+        ahc_inline_error('price_changed', '商品価格を再確認してください。', 409);
+    }
+    $rechecked = apply_filters('ahc_inline_check_one_offer', null, $offer,
+        $product_id, $variation_id, (array)($ctx['attrs'] ?? []));
+    if (!is_array($rechecked) || ($rechecked['stock'] ?? '') !== 'IN_STOCK'
+        || !isset($rechecked['current_price'])) {
+        ahc_inline_error('stock_changed', '現在の在庫を再確認できませんでした。もう一度在庫を確認してください。', 409);
+    }
+    $fresh_price = apply_filters('ahc_inline_recomputed_sale_price', null,
+        $rechecked['current_price'], $offer, $product_id, $variation_id);
+    if (!is_int($fresh_price) || $fresh_price <= 0) {
+        ahc_inline_error('price_changed', '現在の販売価格を確認できませんでした。もう一度在庫を確認してください。', 409);
+    }
+    $fresh_quote = $fresh_price - (int)$ctx['listed'] >= 400;
+    $expected_price = $fresh_quote ? $fresh_price : (int)$ctx['listed'];
+    if ($fresh_quote !== !empty($ctx['quote']) || $expected_price !== (int)$ctx['price']) {
+        ahc_inline_error('price_changed', '現在の販売価格が変わりました。もう一度在庫を確認してください。', 409);
     }
     if (!ahc_inline_claim_permit($token)) {
         ahc_inline_error('permit_invalid', 'この在庫確認は既に使用されています。', 409);
