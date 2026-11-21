@@ -184,6 +184,18 @@ function ahc_inline_step() {
         wp_send_json_success($r['public_result']);
     }
     if ($r['best'] !== null && $r['listed'] > 0) {
+        // Stock is buyable only when this exact Woo selection can enter cart.
+        // A supplier's 'available' flag alone is not a cart permit.
+        $buyable = function_exists('wc_get_product')
+            ? wc_get_product($r['variation_id'] ?: $r['product_id']) : null;
+        if (!$buyable || !$buyable->is_purchasable() || !$buyable->is_in_stock()) {
+            $r['state'] = 'done';
+            $r['public_result'] = ['ok'=>true, 'state'=>'done',
+                'result'=>'unconfirmed','reason'=>'cart_unavailable'];
+            set_transient($k, $r, 0);
+            wp_send_json_success($r['public_result']);
+            return;
+        }
         // Owner-approved 400-yen rule: increases under 400, including
         // reductions, keep the listed price. Other safety gates remain.
         $quoted = $r['best']['price'] - $r['listed'] >= 400;
