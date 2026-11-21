@@ -224,25 +224,17 @@ t('no offers fails closed as no_candidate',$step->ok && $step->data['result']===
 
 fresh_session();$SIM='oos';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
-t('confirmed OOS marks variation for 24 hours',
+t('confirmed OOS is reported without time-based lock',
   $step->data['result']==='out_of_stock' &&
-  get_post_meta(11,'_ahc_inline_oos_until')>=time()+DAY_IN_SECONDS-5);
+  !get_post_meta(11,'_ahc_inline_oos_until'));
 $visible=apply_filters('woocommerce_available_variation',
   ['is_in_stock'=>true,'is_purchasable'=>true],$PRODUCTS[10],$PRODUCTS[11]);
-t('shared OOS mark appears in Woo variation data for other visitors',
-  $visible['is_in_stock']===false && $visible['is_purchasable']===false &&
-  strpos($visible['availability_html'],'SOLD OUT')!==false);
-$SIM='ok'; fresh_session(); $blocked=start();
-t('other customer blocked by shared 24-hour OOS mark',
-  !$blocked->ok && $blocked->data['code']==='marked_oos');
-$META[11]['_ahc_inline_oos_until']=time()-1;
-$visible=apply_filters('woocommerce_available_variation',
-  ['is_in_stock'=>true,'is_purchasable'=>true],$PRODUCTS[10],$PRODUCTS[11]);
-t('expired shared OOS mark restores normal Woo variation payload',
+t('OOS inquiry does not rewrite or lock Woo variation availability',
   $visible['is_in_stock']===true && $visible['is_purchasable']===true);
-fresh_session(); $s=start(); $again=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
-t('expired OOS mark allows fresh verification',
-  $s->ok && $again->ok && $again->data['result']==='in_stock');
+$SIM='ok'; fresh_session(); $next=start();
+$recheck=req('ahc_inline_step',['check_id'=>$next->data['check_id']]);
+t('later customer can explicitly recheck stock without waiting for timer',
+  $next->ok && $recheck->ok && $recheck->data['result']==='in_stock');
 
 fresh_session();$SIM='ok';
 $s=start(20,0,[]);
