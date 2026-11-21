@@ -153,6 +153,23 @@ def reconcile(live, woo=None, urls=None, legacy=None):
     if len(parents) != 158:
         raise ValueError(f"Expected 158 Woo parents, got {len(parents)}")
 
+    # An individual merchant variant may back exactly one Woo variation.
+    # Even if independent SKU fields appear to match, duplicate supplier
+    # IDs for different Woo variation keys are ambiguous and must HOLD.
+    merchant_ids = defaultdict(list)
+    for item in result:
+        if item["match_status"] == "PASS":
+            merchant_ids[(item["supplier_product_id"], item["supplier_variant_id"])].append(item)
+    for candidates in merchant_ids.values():
+        if len(candidates) > 1:
+            for item in candidates:
+                item["match_status"] = "HOLD"
+                item["reason_codes"] = "DUPLICATE_SUPPLIER_VARIANT_ID"
+                item["supplier_variant_id"] = ""
+                item["supplier_variant_sku"] = ""
+                item["evidence_timestamp_utc"] = ""
+                item["evidence_source"] = ""
+
     grouped = defaultdict(list)
     for r in result:
         grouped[(r["product_id"], r["parent_sku"], r["supplier_product_id"], r["source_url"])].append(r)
