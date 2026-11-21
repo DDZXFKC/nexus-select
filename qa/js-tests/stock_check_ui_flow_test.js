@@ -144,6 +144,10 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   // 11e buttons: cart label + cancel under it
   const js = require('fs').readFileSync(__dirname + '/../../local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.js', 'utf8');
   check('cart button label and cancel present', (js.match(/この商品をカートに入れる/g) || []).length === 2 && (js.match(/'キャンセル'/g) || []).length === 2 && !/location\.href/.test(js));
+  check('saved Woo out-of-stock flags cannot suppress a new live stock check',
+    !/v\.is_in_stock\s*&&/.test(js) &&
+    /if \(v && v\.variation_id\) setOpenable\(true/.test(js) &&
+    /if \(!result \|\| \(variable && !current\)\) return/.test(js));
   check('live UI can change in both directions without modifying Woo variation cache',
     /showLiveAvailability\('in_stock'\)/.test(js) &&
     /showLiveAvailability\('out_of_stock'\)/.test(js) &&
@@ -154,6 +158,8 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   // 12 no email/name fields in UI markup (owner 12:40)
   const php = require('fs').readFileSync(__dirname + '/../../local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.php', 'utf8');
   check('popup has no input/textarea fields', !/<input|<textarea/.test(php.slice(php.indexOf('<dialog'), php.indexOf('</dialog>'))));
+  check('simple products may request a live check even when cached Woo stock is OOS',
+    !/\$product->is_in_stock\(\)\) echo '<div class="cart">'/.test(php));
   check('stock UI server markup does not install shared 24h OOS filter',
     !php.includes('_ahc_inline_oos_until') &&
     !php.includes("add_filter('woocommerce_available_variation'"));
