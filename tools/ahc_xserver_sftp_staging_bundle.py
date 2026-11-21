@@ -21,6 +21,7 @@ FILES = [
     "tools/ahc-stock-sp158-cost-coverage-provider.php",
     "tools/ahc-stock-sp-live-adapter-staging.php",
     "tools/ahc-sp158-staging-loader.php",
+    "tools/ahc_fl_cowprint_wpcli.php",
     "local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.php",
     "local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.js",
     "data/xserver-export/sp158-live-sku-match-2026-11-22.csv",
