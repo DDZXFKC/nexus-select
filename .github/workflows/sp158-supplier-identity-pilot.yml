@@ -1,0 +1,32 @@
+name: Shoe Palace 158 SKU identity pilot (read-only)
+
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - "tools/sp158_supplier_variant_probe.py"
+      - "tests/test_sp158_supplier_variant_probe.py"
+      - ".github/workflows/sp158-supplier-identity-pilot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  identity-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify offline identity matching and robots fail-closed tests
+        run: python -m unittest discover -s tests -p 'test_sp158_supplier_variant_probe.py' -v
+      - name: Probe one documented supplier URL, only if robots permits
+        run: python -m tools.sp158_supplier_variant_probe --max-products 1 --output out/sp158-identity-pilot.csv
+      - name: Save evidence snapshot (not stock or purchase permission)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sp158-identity-pilot
+          path: out/sp158-identity-pilot.csv
+          if-no-files-found: warn
+          retention-days: 3
