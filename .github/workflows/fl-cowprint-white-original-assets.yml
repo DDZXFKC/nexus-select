@@ -1,0 +1,59 @@
+name: Cow Print original assets (unmodified on white square)
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - .github/workflows/fl-cowprint-white-original-assets.yml
+      - tools/prepare_fl_cowprint_originals.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deterministic image tool
+        run: python -m pip install "Pillow==11.2.1"
+      - name: Download exact original source IDs, one request each
+        run: |
+          mkdir -p /tmp/ahc-cowprint-raw
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          import hashlib
+          ids={
+            'O0442200_01':'fe885340165c579753676bbea0adbf577e7438a33321f15fc727eca179075dfd',
+            'O0442200_03':'aeb5cf783e43c8b21f15e9db62fcc41c9e4b14a73f79720238e08cf45ac14b50',
+            'O0442200_04':'d0bfdf7f44c3a1b6ef3abf1e98628160ccb40c45574109b4bffc0b701e703273',
+          }
+          from urllib.error import URLError,HTTPError
+          for image_id, digest in ids.items():
+            url='https://images.footlocker.com/is/image/EBFL2/'+image_id
+            req=Request(url,headers={'Accept':'image/webp,image/png,image/jpeg','User-Agent':'AHC-original-product-photo-check/1.0'})
+            with urlopen(req, timeout=20) as resp:
+              content=resp.read(8000001)
+              assert resp.status==200 and resp.url.split('/')[2]=='images.footlocker.com'
+              assert len(content)<=8000000
+            observed=hashlib.sha256(content).hexdigest()
+            assert observed==digest, f'Source asset changed: {image_id} {observed}'
+            (Path('/tmp/ahc-cowprint-raw')/(image_id+'.webp')).write_bytes(content)
+            print(image_id,'SHA256 MATCH', len(content),'bytes')
+          PY
+      - name: Create pixel-faithful white-square assets
+        run: |
+          python tools/prepare_fl_cowprint_originals.py \
+            --original-dir /tmp/ahc-cowprint-raw \
+            --output-dir /tmp/ahc-cowprint-publish
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fl-cowprint-io0442-200-original-white-square
+          path: |
+            /tmp/ahc-cowprint-raw/*.webp
+            /tmp/ahc-cowprint-publish/*.png
+            /tmp/ahc-cowprint-publish/provenance.json
+          retention-days: 14
