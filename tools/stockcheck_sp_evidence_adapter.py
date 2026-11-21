@@ -12,7 +12,8 @@ from tools.stockcheck_sp_join_contract import link_sp_variation
 SOURCE = Path(__file__).resolve().parents[1] / "data/xserver-export/supplier-url-evidence-sample-2026-11-21.csv"
 REQUIRED = ("product_id","variation_id","shop_code","supplier_product_id",
             "source_url","merchant_variant_id","requested_size","requested_color",
-            "match_evidence","verified_at_jst","status")
+            "match_evidence","verified_at_jst","status",
+            "merchant_variant_sku","woo_variation_sku","sku_evidence","sku_verified_at_utc")
 ALLOWED_HOST = "www.shoepalace.com"
 
 def verified_sp_rows(path=SOURCE):
@@ -32,6 +33,12 @@ def verified_sp_rows(path=SOURCE):
                 raise ValueError(f"invalid official SP URL line {index}")
             if not row["match_evidence"].strip() or not row["verified_at_jst"].strip():
                 raise ValueError(f"missing evidence line {index}")
+            merchant_sku=(row["merchant_variant_sku"] or "").strip()
+            woo_sku=(row["woo_variation_sku"] or "").strip()
+            if not merchant_sku or not woo_sku or merchant_sku!=woo_sku:
+                raise ValueError(f"SKU evidence missing or mismatched line {index}")
+            if not row["sku_evidence"].strip() or not row["sku_verified_at_utc"].strip():
+                raise ValueError(f"SKU provenance missing line {index}")
             # Do not deduce supplier size from Woo. Read the explicitly
             # witnessed Shopify option1 value in the review evidence.
             option = re.search(r"\boption1\s*=\s*([0-9]+(?:\.[0-9]+)?Y?)\b",
@@ -48,15 +55,19 @@ def verified_sp_rows(path=SOURCE):
                 "requested_size":row["requested_size"],
                 "requested_color":row["requested_color"],
                 "merchant_size":merchant_size,
-                # CSV currently lacks independently witnessed Shopify variant SKU.
-                # Do not manufacture it from Woo SKU or Shopify variant ID.
-                "merchant_variant_sku":row.get("merchant_variant_sku","").strip(),
+                "merchant_variant_sku":merchant_sku,
+                "woo_variation_sku":woo_sku,
+                "sku_evidence":row["sku_evidence"],
+                "sku_verified_at_utc":row["sku_verified_at_utc"],
                 "verified":True,
                 "evidence_ref":f"{Path(path).name}:{index}",
             })
     keys=[(r["woo_product_id"],r["variation_id"]) for r in out]
     if len(keys)!=len(set(keys)):
         raise ValueError("duplicate Woo variation in evidence")
+    sku_keys=[(r["supplier_product_id"],r["merchant_variant_sku"]) for r in out]
+    if len(sku_keys)!=len(set(sku_keys)):
+        raise ValueError("duplicate supplier product + variation SKU in evidence")
     return out
 
 def match_snapshot(product,variation,rows):
