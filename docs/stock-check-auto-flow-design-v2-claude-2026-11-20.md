@@ -1,5 +1,7 @@
 # 在庫確認フロー設計 v2（自動確認）— Claude、2026-11-20
 
+> **superseded（2026-11-21、オーナー決定3）**：遅延再試行・確認中保持・期限切れを含むため廃止。現行は docs/stock-check-auto-flow-design-final-claude-2026-11-21.md。
+
 根拠：オーナー決定 2026-11-20 20:22（docs/owner-decisions-2026-11-20-stockcheck-matching.md）、GLM判断 91c8ad4（docs/glm-decisions-stockcheck-matching-v2-2026-11-20.md §1）。
 旧設計（docs/stock-check-flow-design-claude-2026-11-20.md、手動確認フロー）は superseded。
 範囲は GLM §1-1〜1-4 のとおり。追加の機能提案はしない。実装は GPT が担当する。
