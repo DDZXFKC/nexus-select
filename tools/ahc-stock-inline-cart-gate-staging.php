@@ -73,8 +73,17 @@ function ahc_inline_gate_permit($permit, $accept_quote) {
  */
 function ahc_inline_gate_claim($permit) {
     $name = 'ahc_sc_claim_' . hash('sha256', $permit);
-    return add_option($name, (string) time(), '', false);
+    if (!add_option($name, (string) time(), '', false)) return false;
+    // Release the non-secret replay marker after its token can no longer exist.
+    wp_schedule_single_event(time() + 3600, 'ahc_inline_gate_cleanup_claim', [$name]);
+    return true;
 }
+function ahc_inline_gate_cleanup_claim($name) {
+    if (is_string($name) && preg_match('/^ahc_sc_claim_[a-f0-9]{64}$/D', $name)) {
+        delete_option($name);
+    }
+}
+add_action('ahc_inline_gate_cleanup_claim', 'ahc_inline_gate_cleanup_claim');
 
 function ahc_inline_gate_add_to_cart() {
     if (!check_ajax_referer('ahc_sc_inline', 'nonce', false)) {
