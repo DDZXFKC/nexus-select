@@ -122,6 +122,8 @@ $start=start();
 t('guest start sets session cookie and returns ID',$start->ok && $W->session->cookie &&
   preg_match('/^[a-f0-9]{40}$/',$start->data['check_id']));
 $id=$start->data['check_id'];
+t('stock-check result record has no arbitrary transient TTL',
+  ($TTLS['ahc_inline_check_'.$id]??-1)===0);
 $step=req('ahc_inline_step',['check_id'=>$id]);
 t('step session preserved and stock confirmed',$step->ok && $step->data['result']==='in_stock');
 $permit=$step->data['permit'];
@@ -194,6 +196,28 @@ $changed=req('ahc_inline_add_to_cart',['permit'=>$permit,'accept_quote'=>'0']);
 t('supplier sold out after verification prevents stale permit use',
   !$changed->ok && $changed->data['code']==='stock_changed' &&
   (bool)get_transient('ahc_inline_permit_'.$permit));
+fresh_session();$SIM='ok';
+$s=start();$id=$s->data['check_id'];
+$step=req('ahc_inline_step',['check_id'=>$id]);
+$permit=$step->data['permit'];
+$cart_before=count($W->cart->lines);
+$canceled=req('ahc_inline_cancel',['check_id'=>$id,'permit'=>$permit]);
+$replay=req('ahc_inline_add_to_cart',['permit'=>$permit]);
+t('explicit cancel revokes permit without cart, order or checkout',
+  $canceled->ok && !$replay->ok &&
+  get_transient('ahc_inline_permit_'.$permit)===false &&
+  count($W->cart->lines)===$cart_before);
+fresh_session();$SIM='ok';
+$s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+$permit=$step->data['permit'];
+$original=$W->session->id;
+$W->session->id='another-session';
+$cancel_other=req('ahc_inline_cancel',['permit'=>$permit]);
+$W->session->id=$original;
+t('different customer session cannot cancel another permit',
+  $cancel_other->ok && (bool)get_transient('ahc_inline_permit_'.$permit));
+req('ahc_inline_cancel',['permit'=>$permit]);
+
 fresh_session();$SIM='empty';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
 t('no offers fails closed as no_candidate',$step->ok && $step->data['result']==='unconfirmed' && $step->data['reason']==='no_candidate');
