@@ -210,7 +210,7 @@
     // page immediately. Never rewrite Woo's variation records or cache:
     // a fresh check can move SOLD OUT -> available without a reload.
     function showLiveAvailability(result) {
-      if (!result || !variable || !current) return;
+      if (!result || (variable && !current)) return;
       if (result === 'out_of_stock') {
         box.dataset.liveAvailability = 'out_of_stock';
         setOpenable(true, 'このサイズは SOLD OUT です。もう一度在庫確認できます。');
@@ -286,8 +286,10 @@
       $f.on('found_variation', function (e, v) {
         current = v;
         delete box.dataset.liveAvailability;
-        if (v && v.is_in_stock && v.is_purchasable !== false) setOpenable(true, '');
-        else setOpenable(false, 'このサイズは SOLD OUT です');
+        // Woo's saved stock flag is not a live supplier observation.
+        // Permit a fresh check for any valid selected variation.
+        if (v && v.variation_id) setOpenable(true, '');
+        else setOpenable(false, 'カラー・サイズを選択してください');
       });
       $f.on('reset_data hide_variation', function () { current = null; delete box.dataset.liveAvailability; setOpenable(false, 'カラー・サイズを選択してください'); });
       // 選び直したら、開いているポップアップと途中の確認は捨てる
