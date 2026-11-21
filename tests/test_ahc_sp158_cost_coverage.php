@@ -100,7 +100,9 @@ try{
     ok('any unapproved manifest edit is rejected',verified($context)===false);
     ok('changed manifest prevents even an old exact live price permit',
         ahc_sp158_owner_price(null,$live,$offer,(int)$pid,(int)$vid)===null);
-    echo "15 scoped cost coverage cases PASS\n";
+    ok('prior unreviewed SP price cannot bypass missing cost coverage',
+        ahc_sp158_owner_price(33333,$live,$offer,(int)$pid,(int)$vid)===null);
+    echo "16 scoped cost coverage cases PASS\n";
 } finally {
     unlink($file);
 }
