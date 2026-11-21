@@ -5,6 +5,8 @@ on:
     paths:
       - "tools/stockcheck_core.py"
       - "tests/test_stockcheck_core.py"
+      - "tools/stockcheck_inquiry_contract.py"
+      - "tests/test_stockcheck_inquiry_contract.py"
       - ".github/workflows/stockcheck-core.yml"
   workflow_dispatch:
 permissions:
@@ -16,3 +18,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run simulated-merchant unit tests
         run: python3 -m unittest discover -s tests -p 'test_stockcheck_core.py' -v
+      - name: Verify owner popup input contract
+        run: python3 -m unittest discover -s tests -p 'test_stockcheck_inquiry_contract.py' -v
