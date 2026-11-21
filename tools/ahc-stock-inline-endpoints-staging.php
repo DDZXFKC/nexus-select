@@ -76,6 +76,8 @@ function ahc_inline_start() {
     $session = ahc_inline_session_id();
     if ($session === '') ahc_inline_error('session', 'カートを利用できません。', 503);
     [$parent, $variation, $attrs] = ahc_inline_selected_variant();
+    $mark = (int)get_post_meta($variation->get_id(), '_ahc_inline_oos_until', true);
+    if ($mark > time()) ahc_inline_error('marked_oos', 'このサイズは現在在庫がありません。', 409);
     $key = 'ahc_inline_rate_' . hash('sha256', $session);
     if (get_transient($key)) ahc_inline_error('rate_limited', '少し時間をおいて再度お試しください。', 429);
     set_transient($key, 1, 20);
@@ -189,8 +191,10 @@ function ahc_inline_step() {
                    return $x['stock']==='OUT_OF_STOCK';
               })) === count($r['offers'])) {
         $result = ['ok'=>true,'state'=>'done','result'=>'out_of_stock'];
-        // Out-of-stock is this inquiry's live observation, not a
-        // 24-hour lock. The next customer may check again.
+        // A verified all-suppliers sold-out observation marks this
+        // variation for 24 hours without rewriting Woo stock metadata.
+        update_post_meta($r['variation_id'] ?: $r['product_id'],
+            '_ahc_inline_oos_until', time() + DAY_IN_SECONDS);
     } else {
         $result = ['ok'=>true,'state'=>'done','result'=>'unconfirmed','reason'=>'unreadable'];
     }
