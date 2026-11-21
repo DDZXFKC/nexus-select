@@ -75,6 +75,7 @@ function WC(){global $W;return $W;}
 function wc_get_product($id){global $PRODUCTS;return $PRODUCTS[$id]??null;}
 $PRODUCTS[10]=new FakeProduct(10,'variable');
 $PRODUCTS[11]=new FakeProduct(11,'variation',10,['attribute_pa_size'=>'9','attribute_pa_color'=>'black']);
+$PRODUCTS[12]=new FakeProduct(12,'variation',10,['attribute_pa_size'=>'','attribute_pa_color'=>'black']);
 $PRODUCTS[20]=new FakeProduct(20,'simple');
 require __DIR__.'/../../tools/ahc-stock-inline-endpoints-staging.php';
 add_filter('ahc_inline_verified_offers',function($offers,$pid,$vid,$attrs) {
@@ -187,5 +188,19 @@ t('simple item cart addition succeeds',$add->ok && end($W->cart->lines)['variati
 fresh_session();$bad=start(10,11,['attribute_pa_size'=>'10','attribute_pa_color'=>'black']);
 t('mismatched size rejected server-side',!$bad->ok && $bad->data['code']==='invalid_selection');
 
+fresh_session(); $SIM='ok';
+$s=start(10,12,['attribute_pa_size'=>'9','attribute_pa_color'=>'black']);
+t('any-attribute variation accepted with explicit selected size',$s->ok);
+if ($s->ok) {
+  $id=$s->data['check_id'];
+  $step=req('ahc_inline_step',['check_id'=>$id]);
+  $token=$step->data['permit']??'';
+  $add=req('ahc_inline_add_to_cart',['permit'=>$token]);
+  t('any-attribute size preserved in cart add',
+    $add->ok && ($W->cart->lines[count($W->cart->lines)-1]['variation_id']??0)===12);
+  $permit=get_transient('ahc_inline_permit_'.$token);
+  t('any-attribute permit consumed after successful cart add',
+    $permit===false);
+}
 echo "TOTAL $PASS PASS; $FAIL FAIL\n";
 exit($FAIL?1:0);
