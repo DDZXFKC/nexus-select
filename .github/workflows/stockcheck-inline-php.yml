@@ -29,6 +29,8 @@ on:
       - "local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.php"
       - "qa/js-tests/stock_check_ui_flow_test.js"
       - "tools/ahc-stock-sp158-owner-bridge-staging.php"
+      - "tools/ahc-stock-sp158-cost-coverage-provider.php"
+      - "tests/test_ahc_sp158_cost_coverage.php"
       - "tools/ahc-sp158-staging-loader.php"
       - "tools/ahc-sp-clear-legacy-oos-meta.php"
       - "tests/test_ahc_sp158_owner_bridge.php"
@@ -55,6 +57,8 @@ jobs:
           php -l tools/ahc-stock-sp-live-adapter-staging.php
           php -l tools/ahc-stock-sp-pricing-staging.php
           php -l tools/ahc-stock-sp158-owner-bridge-staging.php
+          php -l tools/ahc-stock-sp158-cost-coverage-provider.php
+          php -l tests/test_ahc_sp158_cost_coverage.php
           php -l tools/ahc-sp158-staging-loader.php
           php -l tools/ahc-sp-clear-legacy-oos-meta.php
           php -l tests/test_ahc_sp158_owner_bridge.php
@@ -82,6 +86,7 @@ jobs:
           php tests/test_ahc_stock_sp_live_adapter.php
           php tests/test_ahc_stock_sp_pricing.php
           php tests/test_ahc_sp158_owner_bridge.php
+          php tests/test_ahc_sp158_cost_coverage.php
           php qa/php-tests/stockcheck_sp158_full_chain_stub_test.php
           php qa/php-tests/stockcheck_sp_chain_stub_test.php
       - name: SP Woo-to-supplier exact join unit tests
