@@ -42,7 +42,7 @@ def _gs_size_key(value):
     merchant variant ID + Woo variation ID must still agree.
     """
     match = re.fullmatch(
-        r"US\\s+([1-9][0-9]?Y)\\s*\\(([0-9]+(?:\\.[0-9]+)?)cm\\)",
+        r"US\s+([1-9][0-9]?Y)\s*\(([0-9]+(?:\.[0-9]+)?)cm\)",
         _norm(value), re.I)
     return match.group(1).upper() if match else None
 
