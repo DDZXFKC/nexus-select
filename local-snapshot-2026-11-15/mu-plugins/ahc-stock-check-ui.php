@@ -18,7 +18,7 @@ add_action('wp', function () {
     remove_action('woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30);
     add_action('woocommerce_simple_add_to_cart', function () {
         global $product;
-        if ($product && $product->is_in_stock()) echo '<div class="cart">', ahc_scui_block(false), '</div>';
+        if ($product) echo '<div class="cart">', ahc_scui_block(false), '</div>';
     }, 30);
     add_action('woocommerce_single_product_summary', function () {
         echo '<p class="ahc-sc-origin">海外お取り寄せ / 国内送料無料</p>';
