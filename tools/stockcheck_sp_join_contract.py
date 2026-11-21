@@ -46,6 +46,14 @@ def _gs_size_key(value):
         _norm(value), re.I)
     return match.group(1).upper() if match else None
 
+def _remove_display_us_prefix(value):
+    """Remove only an explicit leading US label, without changing size meaning.
+
+    Examples: US 8.5 -> 8.5, US 3Y (23cm) -> 3Y (23cm).
+    Never strip a manufacturer size unit from the middle of a value.
+    """
+    return re.sub(r"^US\\s+", "", _norm(value), count=1, flags=re.I)
+
 def link_sp_variation(product, variation, supplier_records):
     """Return a single verified candidate or HOLD with explicit reason.
 
@@ -102,17 +110,30 @@ def link_sp_variation(product, variation, supplier_records):
             continue
         evidence_size = _norm(row.get("requested_size", row.get("size")))
         # requested_color is a supplier product label, not a Woo attribute.
+        # Owner-directed display cleanup: US prefix is redundant for the SP
+        # store's known US-sized products. Keep cm and Y suffix unchanged.
+        # A prefix-only mismatch is permitted ONLY with verified Woo variation ID.
         if evidence_size != size:
-            continue
+            if evidence_vid is None or _remove_display_us_prefix(evidence_size) != _remove_display_us_prefix(size):
+                continue
         # Shopify option1=8.5 is accepted for the owner-reviewed US 8.5
         # record ONLY when size format and exact Woo variation evidence exist.
         merchant_size = _norm(row.get("merchant_size", evidence_size))
-        if merchant_size != evidence_size:
+        if merchant_size != evidence_size and merchant_size != size:
             if evidence_vid is None:
                 continue
-            allowed_size = _us_size_key(evidence_size)
+            allowed_size = _us_size_key(evidence_size) or _us_size_key(size)
             if allowed_size is None:
-                allowed_size = _gs_size_key(evidence_size)
+                allowed_size = _gs_size_key(evidence_size) or _gs_size_key(size)
+            if allowed_size is None:
+                # Bare numeric / Y matching is permitted only against an
+                # evidence row whose original Woo value had an explicit US
+                # prefix and bound Woo variation ID.
+                bare = _remove_display_us_prefix(evidence_size)
+                if bare != evidence_size:
+                    m = re.fullmatch(r"([0-9]+(?:\\.[0-9]+)?|[1-9][0-9]?Y)(?:\\s*\\([0-9]+(?:\\.[0-9]+)?cm\\))?", bare, re.I)
+                    if m:
+                        allowed_size = m.group(1)
             if allowed_size is None or merchant_size != allowed_size:
                 continue
         candidates.append(row)
