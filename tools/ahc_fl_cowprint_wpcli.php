@@ -147,3 +147,53 @@ WP_CLI::add_command('ahc images cowprint', function ($positional, $assoc) {
     WP_CLI::success('Image replacement complete. IDs: '.implode(',',$new_ids).
         '. Keep private rollback backup: '.$backup_file);
 });
+
+/**
+ * Only roll back a product whose currently installed image set matches
+ * the exact IDs recorded by this installer. Never remove attachment files.
+ *
+ * wp --require=tools/ahc_fl_cowprint_wpcli.php ahc images cowprint-rollback \
+ *    --backup=/private/ahc-fl-cowprint-<pid>-<time>.json [--execute]
+ */
+WP_CLI::add_command('ahc images cowprint-rollback', function($args,$assoc) {
+    $file = isset($assoc['backup']) ? realpath($assoc['backup']) : false;
+    if (!$file || !is_file($file) || !is_readable($file)) {
+        WP_CLI::error('Private backup file not found'); return;
+    }
+    $data = json_decode(file_get_contents($file),true);
+    if (!is_array($data) || ($data['product_sku'] ?? '') !== 'FL-O0442200'
+        || ($data['manufacturer_style'] ?? '') !== 'IO0442-200'
+        || count($data['new_attachment_ids'] ?? []) !== 3) {
+        WP_CLI::error('Backup identity or new attachment list invalid'); return;
+    }
+    $pid = (int)$data['product_id'];
+    $prod = wc_get_product($pid);
+    $expected = array_map('intval',$data['new_attachment_ids']);
+    if (!$prod || $prod->get_sku() !== $data['product_sku']
+        || (int)$prod->get_image_id() !== $expected[0]
+        || array_map('intval',$prod->get_gallery_image_ids()) !== array_slice($expected,1)
+        || (string)get_post_meta($pid,'_ahc_cowprint_20261122_repaired',true)
+            !== implode(',',$expected)) {
+        WP_CLI::error('Images changed since repair; rollback requires individual review'); return;
+    }
+    WP_CLI::log('Backup verified. Existing media will not be deleted.');
+    if (!isset($assoc['execute'])) {
+        WP_CLI::log('DRY RUN: no WordPress data changed'); return;
+    }
+    $prod->set_image_id((int)$data['previous_featured_id']);
+    $prod->set_gallery_image_ids(array_map('intval',$data['previous_gallery_ids']));
+    $prod->save();
+    foreach (($data['updated_variation_ids'] ?? []) as $vid) {
+        $var=wc_get_product((int)$vid);
+        if (!$var || !$var->is_type('variation') || (int)$var->get_parent_id()!==$pid) {
+            WP_CLI::warning('Variation ownership changed, skip '.$vid); continue;
+        }
+        if ((int)$var->get_image_id()!==$expected[0]) {
+            WP_CLI::warning('Variation image changed, skip '.$vid); continue;
+        }
+        $var->set_image_id((int)($data['previous_variation_image_ids'][(string)$vid] ?? 0));
+        $var->save();
+    }
+    delete_post_meta($pid,'_ahc_cowprint_20261122_repaired');
+    WP_CLI::success('Cow Print image IDs restored from reviewed backup. New media retained.');
+});
