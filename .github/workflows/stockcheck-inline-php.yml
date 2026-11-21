@@ -23,6 +23,7 @@ on:
       - "tests/test_ahc_stock_sp_evidence_offers.php"
       - "tests/test_ahc_stock_sp_live_adapter.php"
       - "tests/test_ahc_stock_sp_pricing.php"
+      - "qa/php-tests/stockcheck_sp_chain_stub_test.php"
       - ".github/workflows/stockcheck-inline-php.yml"
   workflow_dispatch:
 permissions:
@@ -42,6 +43,7 @@ jobs:
           php -l tests/test_ahc_stock_sp_evidence_offers.php
           php -l tests/test_ahc_stock_sp_live_adapter.php
           php -l tests/test_ahc_stock_sp_pricing.php
+          php -l qa/php-tests/stockcheck_sp_chain_stub_test.php
       - name: Ensure no customer email or direct cart activation in staging module
         run: |
           ! grep -E 'wp_mail\(|ahc_stock_check_allow_cart\s*,\s*true' tools/ahc-stock-inline-endpoints-staging.php
@@ -52,6 +54,7 @@ jobs:
           php tests/test_ahc_stock_sp_evidence_offers.php
           php tests/test_ahc_stock_sp_live_adapter.php
           php tests/test_ahc_stock_sp_pricing.php
+          php qa/php-tests/stockcheck_sp_chain_stub_test.php
       - name: SP Woo-to-supplier exact join unit tests
         run: python -m unittest discover -s tests -p 'test_stockcheck_sp_join_contract.py' -v
       - name: Owner-approved price formula regression tests
