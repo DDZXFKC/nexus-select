@@ -178,7 +178,8 @@
           button('この価格でカートへ進む', 'button alt ahc-sc-cart', function () { this.disabled = true; flow.addToCart(r.permit, true); });
           button('やめる', 'ahc-sc-link', closeDialog);
         } else if (r.result === 'in_stock') {
-          setStatus(MSG.inStock + (r.price_text ? '　販売価格：' + r.price_text : ''), false);
+          var priceText = r.price_text || r.listed_price_text; // GPT のステージング版は listed_price_text だけを返す
+          setStatus(MSG.inStock + (priceText ? '　販売価格：' + priceText : ''), false);
           button('カートへ進む', 'button alt ahc-sc-cart', function () { this.disabled = true; flow.addToCart(r.permit, false); });
         } else if (r.result === 'out_of_stock') {
           setStatus(MSG.outOfStock, false);
