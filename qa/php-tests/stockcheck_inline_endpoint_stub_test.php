@@ -89,7 +89,7 @@ add_filter('ahc_inline_check_one_offer',function($prev,$offer,$pid,$vid,$attrs) 
   return ['stock'=>'IN_STOCK','reason'=>'OK','current_price'=>['amount'=>100,'currency'=>'USD']];
 },10,5);
 add_filter('ahc_inline_recomputed_sale_price',function($old,$current,$offer,$pid,$vid) {
-  global $SIM;return $SIM==='quote'?25400:25000;
+  global $SIM;return $SIM==='quote'?25400:($SIM==='smallincrease'?25300:25000);
 },10,5);
 $FAIL=0;$PASS=0;
 function t($label,$condition){global $FAIL,$PASS;if($condition){$PASS++;echo 'PASS '.$label."\n";}else{$FAIL++;echo 'FAIL '.$label."\n";}}
@@ -122,6 +122,13 @@ $deny=req('ahc_inline_add_to_cart',['permit'=>$token,'accept_quote'=>'0']);
 t('quote requires explicit consent',!$deny->ok && $deny->data['code']==='quote_not_accepted');
 $yes=req('ahc_inline_add_to_cart',['permit'=>$token,'accept_quote'=>'1']);
 t('accepted quote applied to cart line',$yes->ok && end($W->cart->lines)['ahc_inline_price']===25400);
+
+fresh_session();$SIM='smallincrease';
+$s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+t('300 yen increase fails closed instead of selling below verified floor',
+  $step->ok && $step->data['result']==='unconfirmed' &&
+  $step->data['reason']==='price_difference_below_quote_threshold' &&
+  !isset($step->data['permit']));
 
 fresh_session();$SIM='empty';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
