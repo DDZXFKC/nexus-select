@@ -125,10 +125,9 @@ t('accepted quote applied to cart line',$yes->ok && end($W->cart->lines)['ahc_in
 
 fresh_session();$SIM='smallincrease';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
-t('300 yen increase fails closed instead of selling below verified floor',
-  $step->ok && $step->data['result']==='unconfirmed' &&
-  $step->data['reason']==='price_difference_below_quote_threshold' &&
-  !isset($step->data['permit']));
+t('300 yen increase keeps listed price per owner rule',
+  $step->ok && $step->data['result']==='in_stock' &&
+  $step->data['price_case']==='listed' && isset($step->data['permit']));
 
 fresh_session();$SIM='empty';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
@@ -136,7 +135,11 @@ t('no offers fails closed as no_candidate',$step->ok && $step->data['result']===
 
 fresh_session();$SIM='oos';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
-t('confirmed OOS marks variant only',$step->data['result']==='out_of_stock' && get_post_meta(11,'_ahc_inline_oos_until')>time());
+t('confirmed OOS returns sold-out without persistent variant lock',
+  $step->data['result']==='out_of_stock' && !get_post_meta(11,'_ahc_inline_oos_until'));
+$SIM='ok'; fresh_session(); $s=start(); $again=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+t('later inventory recheck not blocked by prior sold-out result',
+  $s->ok && $again->ok && $again->data['result']==='in_stock');
 
 fresh_session();$SIM='ok';
 $s=start(20,0,[]);
