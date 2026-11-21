@@ -7,6 +7,7 @@ from __future__ import annotations
 import re
 import unicodedata
 from collections import defaultdict
+from decimal import Decimal, InvalidOperation
 
 SP_SKU = re.compile(r"^SP-([0-9]+)$")
 UNSUPPORTED = {"", "N/A", "UNKNOWN", "NONE", "-"}
@@ -16,6 +17,23 @@ def _custom_attrs(attrs):
     if not isinstance(attrs,dict):
         return {}
     return { _norm(k).lower().removeprefix("attribute_"): _norm(v) for k,v in attrs.items() }
+
+def _us_size_key(value):
+    """US numeric format only; never infer UK/EU or gender conversion.
+
+    This is a syntactic comparison, NOT authorization to match a new product:
+    the matching evidence must explicitly identify Woo variation_id.
+    """
+    match = re.fullmatch(r"US\\s+([0-9]+(?:\\.[0-9]+)?)", _norm(value), re.I)
+    if not match:
+        return None
+    try:
+        number = Decimal(match.group(1))
+    except InvalidOperation:
+        return None
+    if number <= 0 or number != number.quantize(Decimal("0.5")):
+        return None
+    return str(number.normalize())
 
 def link_sp_variation(product, variation, supplier_records):
     """Return a single verified candidate or HOLD with explicit reason.
@@ -57,9 +75,23 @@ def link_sp_variation(product, variation, supplier_records):
             continue
         if not _norm(row.get("merchant_variant_id")) or not _norm(row.get("source_url")).startswith("https://"):
             continue
-        # Strict NFKC and exact; alias and region conversion must be separately authorized.
-        if _norm(row.get("size"))!=size or _norm(row.get("color"))!=color:
+        # If source row has an explicit Woo variation identity, it MUST match.
+        # Existing archived fixtures lacking identity retain strict-text matching.
+        evidence_vid = row.get("variation_id", row.get("woo_variation_id"))
+        if evidence_vid is not None and str(evidence_vid) != str(vid):
             continue
+        evidence_size = _norm(row.get("requested_size", row.get("size")))
+        evidence_color = _norm(row.get("requested_color", row.get("color")))
+        if evidence_size != size or evidence_color != color:
+            continue
+        # Shopify option1=8.5 is accepted for the owner-reviewed US 8.5
+        # record ONLY when size format and exact Woo variation evidence exist.
+        merchant_size = _norm(row.get("merchant_size", evidence_size))
+        if merchant_size != evidence_size:
+            if evidence_vid is None or _us_size_key(evidence_size) is None:
+                continue
+            if merchant_size != _us_size_key(evidence_size):
+                continue
         candidates.append(row)
     if len(candidates)!=1:
         return {"status":"HOLD","reason":"NO_VERIFIED_SIZE_COLOR_MATCH" if not candidates else "AMBIGUOUS_SUPPLIER_VARIANT"}
