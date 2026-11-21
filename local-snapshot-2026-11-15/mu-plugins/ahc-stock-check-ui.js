@@ -9,10 +9,11 @@
 
   var MSG = {
     running: '在庫を確認しています…',
-    inStock: '在庫確認できました。カートへ移動できます。',
+    inStock: '在庫確認できました。カートに入れられます。',
     quote: function (q, l) { return '在庫確認できました。現在の販売価格は ' + q + ' です（掲載価格 ' + l + '）。'; },
     outOfStock: 'このサイズは現在在庫がありません。',
-    unconfirmed: '現在、買い付け先の在庫を確認できませんでした。時間をおいてもう一度お試しください。',
+    unconfirmed: '買い付け先のサイトにつながらず、在庫を確認できませんでした。お手数ですが、時間をおいてもう一度在庫を確認してください。',
+    added: 'カートに追加しました。',
     network: '通信に失敗しました。時間をおいてもう一度お試しください。',
     rateLimited: '短時間に続けて確認されました。少し待ってからもう一度お試しください。',
     nonce: '画面の有効期限が切れました。ページを再読み込みしてから、もう一度お試しください。',
@@ -22,7 +23,9 @@
 
   /**
    * 流れ。api: {start(sel), step(checkId), addToCart(permit, acceptQuote)} はすべて Promise を返す。
-   * view: {running(), result(r), error(code, message), go(url)}。
+   * view: {running(), result(r), error(code, message), added(r)}。
+   * カート追加が成功したら added を呼ぶ（ポップアップを閉じて商品ページに留まる。オーナー確定 2026-11-21 20:15）。
+   * 失敗したら error を呼ぶ（ポップアップは開いたまま）。自動の再試行はしない。
    */
   function createFlow(api, view, opts) {
     opts = opts || {};
@@ -74,7 +77,7 @@
 
     function addToCart(permit, acceptQuote) {
       return api.addToCart(permit, acceptQuote ? 1 : 0).then(function (r) {
-        if (r && r.ok && r.cart_url) { view.go(r.cart_url); return 'go'; }
+        if (r && r.ok) { view.added(r); return 'added'; }
         var e = errorFrom(r); view.error(e.code, e.message); return 'error:' + e.code;
       }).catch(function () { view.error('network', ''); return 'error:network'; });
     }
@@ -91,7 +94,15 @@
     return serverMessage || MSG.unconfirmed;
   }
 
-  var exported = { createFlow: createFlow, MSG: MSG, messageFor: messageFor };
+  /* サイズの表示：Woo のサイズに cm の対応が書いてある場合だけ「US 9 / 27cm」形式にする。推測で cm を足さない。
+   * 元のサイズの値（結合・カートに使う値）は変えない。表示用の文字だけ。 */
+  function sizeLabel(text) {
+    var t = String(text == null ? '' : text).trim();
+    var m = t.match(/^(.*?)\s*\(\s*(\d+(?:\.\d+)?)\s*cm\s*\)$/i);
+    return m ? m[1] + ' / ' + m[2] + 'cm' : t;
+  }
+
+  var exported = { createFlow: createFlow, MSG: MSG, messageFor: messageFor, sizeLabel: sizeLabel };
   if (typeof module !== 'undefined' && module.exports) module.exports = exported;
   root.AHC_SC_UI = exported;
 
@@ -131,7 +142,7 @@
     function itemText() {
       return selects().map(function (s) {
         var o = s.options[s.selectedIndex];
-        return o && s.value ? o.text.replace(/\s*SOLD OUT\s*$/, '') : '';
+        return o && s.value ? sizeLabel(o.text.replace(/\s*SOLD OUT\s*$/, '')) : '';
       }).filter(Boolean).join(' / ');
     }
     function selection() {
@@ -141,6 +152,7 @@
     }
     function setOpenable(ok, why) { openBtn.disabled = !ok; reason.textContent = ok ? '' : why; }
     function openDialog() { if (dialog.showModal) { if (!dialog.open) dialog.showModal(); } else dialog.setAttribute('open', ''); }
+    // 閉じる・キャンセル：カートには入れずに閉じる。サイズの選択はそのまま残す（フォームには触らない）。
     function closeDialog() { flow.cancel(); if (dialog.close) { if (dialog.open) dialog.close(); } else dialog.removeAttribute('open'); }
     function button(label, cls, onClick) {
       var b = document.createElement('button'); b.type = 'button'; b.className = cls; b.textContent = label;
@@ -175,12 +187,13 @@
         spinner.hidden = true; clearActions();
         if (r.result === 'in_stock' && r.price_case === 'quote') {
           setStatus(MSG.quote(r.quote_price_text, r.listed_price_text), false);
-          button('この価格でカートへ進む', 'button alt ahc-sc-cart', function () { this.disabled = true; flow.addToCart(r.permit, true); });
-          button('やめる', 'ahc-sc-link', closeDialog);
+          button('この商品をカートに入れる', 'button alt ahc-sc-cart', function () { this.disabled = true; flow.addToCart(r.permit, true); });
+          button('キャンセル', 'ahc-sc-link ahc-sc-cancel', closeDialog);
         } else if (r.result === 'in_stock') {
           var priceText = r.price_text || r.listed_price_text; // GPT のステージング版は listed_price_text だけを返す
           setStatus(MSG.inStock + (priceText ? '　販売価格：' + priceText : ''), false);
-          button('カートへ進む', 'button alt ahc-sc-cart', function () { this.disabled = true; flow.addToCart(r.permit, false); });
+          button('この商品をカートに入れる', 'button alt ahc-sc-cart', function () { this.disabled = true; flow.addToCart(r.permit, false); });
+          button('キャンセル', 'ahc-sc-link ahc-sc-cancel', closeDialog);
         } else if (r.result === 'out_of_stock') {
           setStatus(MSG.outOfStock, false);
           markSoldOut();
@@ -195,7 +208,13 @@
         setStatus(messageFor(code, message), true);
         button('閉じる', 'ahc-sc-link', closeDialog);
       },
-      go: function (url) { root.location.href = url; }
+      // カート追加成功：ポップアップを閉じて商品ページに留まる。ミニカートの数字を更新し、ボタンの下に一言出す。
+      added: function () {
+        spinner.hidden = true; clearActions(); setStatus('', false);
+        closeDialog();
+        reason.textContent = MSG.added;
+        if (root.jQuery) root.jQuery(document.body).trigger('wc_fragment_refresh');
+      }
     };
     var flow = createFlow({
       start: function (sel) { return post('ahc_sc_start', sel); },

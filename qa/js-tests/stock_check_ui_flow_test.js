@@ -1,7 +1,7 @@
 // node qa/js-tests/stock_check_ui_flow_test.js
-const { createFlow, messageFor, MSG } = require('../../local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.js');
+const { createFlow, messageFor, MSG, sizeLabel } = require('../../local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.js');
 let fail = 0; const check = (n, ok) => { console.log((ok ? 'PASS ' : 'FAIL ') + n); if (!ok) fail++; };
-function mkView() { const log = []; return { log, running: () => log.push(['running']), result: r => log.push(['result', r]), error: (c, m) => log.push(['error', c, m]), go: u => log.push(['go', u]) }; }
+function mkView() { const log = []; return { log, running: () => log.push(['running']), result: r => log.push(['result', r]), error: (c, m) => log.push(['error', c, m]), added: r => log.push(['added', r]) }; }
 function api(steps, startRes = { ok: true, check_id: 'c1' }, cart = { ok: true, cart_url: '/cart/' }) {
   const calls = { start: 0, step: 0, cart: [] };
   return { calls, start: () => { calls.start++; return Promise.resolve(startRes); },
@@ -18,7 +18,7 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   check('in_stock: polled 3 steps', a.calls.step === 3);
   check('not busy after done', !f.isBusy());
   await f.addToCart('P1', false);
-  check('cart: permit sent, quote not accepted, redirected', a.calls.cart[0][0] === 'P1' && a.calls.cart[0][1] === 0 && v.log.at(-1)[0] === 'go' && v.log.at(-1)[1] === '/cart/');
+  check('cart: permit sent, quote not accepted, added (stay on product page, no redirect)', a.calls.cart[0][0] === 'P1' && a.calls.cart[0][1] === 0 && v.log.at(-1)[0] === 'added' && !v.log.some(x => x[0] === 'go'));
   // 2 quote: accept flag passes 1
   v = mkView(); a = api([{ ok: true, state: 'done', result: 'in_stock', price_case: 'quote', quote_price_text: '¥32,000', listed_price_text: '¥31,100', permit: 'P2' }]);
   f = createFlow(a, v, fast(t)); await f.run({}); await f.addToCart('P2', true);
@@ -61,10 +61,25 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   // 11 add to cart failure -> error, no redirect
   v = mkView(); a = api([], undefined, { ok: false, code: 'permit_expired' }); f = createFlow(a, v, fast({ v: 0 }));
   await f.addToCart('P', false);
-  check('permit expired -> error, no go', v.log.at(-1)[0] === 'error' && v.log.at(-1)[1] === 'permit_expired' && !v.log.some(x => x[0] === 'go'));
+  check('add failure -> error shown (popup stays open), not added', v.log.at(-1)[0] === 'error' && v.log.at(-1)[1] === 'permit_expired' && !v.log.some(x => x[0] === 'added'));
+  // 11b add network failure -> error network, no automatic retry
+  v = mkView(); let n = 0; a = { start: () => Promise.resolve({}), step: () => Promise.resolve({}), addToCart: () => { n++; return Promise.reject(new Error('x')); } };
+  f = createFlow(a, v, fast({ v: 0 })); await f.addToCart('P', false);
+  check('add network failure -> error, called once (no auto retry)', v.log.at(-1)[1] === 'network' && n === 1);
+  // 11c unconfirmed -> no further step calls after the result (no auto retry / no holding)
+  v = mkView(); a = api([{ ok: true, state: 'done', result: 'unconfirmed', reason: 'unreachable' }]); f = createFlow(a, v, fast({ v: 0 }));
+  await f.run({}); await new Promise(r => setTimeout(r, 5));
+  check('unconfirmed -> stops, one step only, not busy', a.calls.step === 1 && !f.isBusy());
+  check('unconfirmed message tells it could not connect and asks to retry later', /つながらず/.test(MSG.unconfirmed) && /時間をおいて/.test(MSG.unconfirmed));
+  // 11d size label: cm shown only when Woo label has it
+  check('size label US 3Y (23cm) -> US 3Y / 23cm', sizeLabel('US 3Y (23cm)') === 'US 3Y / 23cm');
+  check('size label US 9 unchanged (no guessed cm)', sizeLabel('US 9') === 'US 9' && sizeLabel('US 14.0') === 'US 14.0');
+  // 11e buttons: cart label + cancel under it
+  const js = require('fs').readFileSync(__dirname + '/../../local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.js', 'utf8');
+  check('cart button label and cancel present', (js.match(/この商品をカートに入れる/g) || []).length === 2 && (js.match(/'キャンセル'/g) || []).length === 2 && !/location\.href/.test(js));
   // 12 no email/name fields in UI markup (owner 12:40)
   const php = require('fs').readFileSync(__dirname + '/../../local-snapshot-2026-11-15/mu-plugins/ahc-stock-check-ui.php', 'utf8');
   check('popup has no input/textarea fields', !/<input|<textarea/.test(php.slice(php.indexOf('<dialog'), php.indexOf('</dialog>'))));
-  check('owner wording present', MSG.inStock === '在庫確認できました。カートへ移動できます。');
+  check('in-stock wording', MSG.inStock === '在庫確認できました。カートに入れられます。');
   process.exit(fail ? 1 : 0);
 })();
