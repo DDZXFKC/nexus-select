@@ -126,7 +126,9 @@ function ahc_sp158_owner_offers($offers, $product_id, $variation_id, $attrs) {
 add_filter('ahc_inline_verified_offers', 'ahc_sp158_owner_offers', 25, 4);
 
 function ahc_sp158_owner_price($previous, $current_price, $offer, $product_id, $variation_id) {
-    if ($previous !== null || !is_array($offer) || ($offer['shop'] ?? '') !== 'SP') return $previous;
+    // Do not inherit a price computed by an older SP filter: it could
+    // bypass the private per-variation fee review. Non-SP keeps its result.
+    if (!is_array($offer) || ($offer['shop'] ?? '') !== 'SP') return $previous;
     if (!is_array($current_price) || ($current_price['currency'] ?? '') !== 'USD'
         || !is_string($current_price['amount'] ?? null)
         || !preg_match('/^[0-9]{1,6}\.[0-9]{2}$/D', $current_price['amount'])
