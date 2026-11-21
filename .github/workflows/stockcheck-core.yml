@@ -1,0 +1,18 @@
+name: StockCheck Python core
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - "tools/stockcheck_core.py"
+      - "tests/test_stockcheck_core.py"
+      - ".github/workflows/stockcheck-core.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run simulated-merchant unit tests
+        run: python3 -m unittest discover -s tests -p 'test_stockcheck_core.py' -v
