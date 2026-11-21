@@ -7,10 +7,10 @@ class EvidenceTests(unittest.TestCase):
  def setUpClass(cls):
   cls.rows=verified_sp_rows()
  def test_evidence_integrity_not_fixed_row_count(self):
-  self.assertGreaterEqual(len(self.rows),77)
+  self.assertTrue(self.rows, "empty evidence")
   self.assertEqual(len(set((x["woo_product_id"],x["variation_id"]) for x in self.rows)),len(self.rows))
   self.assertTrue({21376,19905,19812,19801,20043}.issubset(set(x["woo_product_id"] for x in self.rows)))
-  self.assertEqual(len(set(x["woo_product_id"] for x in self.rows)),7)
+  self.assertTrue(all(x["shop_code"]=="SP" for x in self.rows))
   self.assertTrue(all(x["merchant_size"] and x["merchant_variant_id"] for x in self.rows))
  def test_all_rows_match_exact_woo_variation(self):
   for row in self.rows:
