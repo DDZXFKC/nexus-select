@@ -356,6 +356,35 @@ add_action('woocommerce_check_cart_items', function () {
     }
 });
 
+/**
+ * Explicit customer cancellation revokes any unused permit without adding
+ * to the cart. This is essential with owner-approved non-expiring permits.
+ */
+function ahc_inline_cancel() {
+    ahc_inline_nonce();
+    $check_id = ahc_inline_request('check_id');
+    if (preg_match('/^[a-f0-9]{40}$/D', $check_id)) {
+        $key = 'ahc_inline_check_' . $check_id;
+        $record = get_transient($key);
+        if (is_array($record) && ahc_inline_session_check($record)) {
+            delete_transient($key);
+        }
+    }
+    $token = ahc_inline_request('permit');
+    if (preg_match('/^[a-f0-9]{48}$/D', $token)) {
+        $key = 'ahc_inline_permit_' . $token;
+        $permit = get_transient($key);
+        if (is_array($permit) && ahc_inline_session_check($permit)) {
+            // Same one-use claim as add-to-cart. Whichever wins is final.
+            ahc_inline_claim_permit($token);
+            delete_transient($key);
+        }
+    }
+    wp_send_json_success(['ok'=>true, 'cancelled'=>true]);
+}
+add_action('wp_ajax_ahc_sc_cancel', 'ahc_inline_cancel');
+add_action('wp_ajax_nopriv_ahc_sc_cancel', 'ahc_inline_cancel');
+
 /** Same API response wrapper the Claude JS accepts. */
 function ahc_inline_add_to_cart() {
     ahc_inline_nonce();
