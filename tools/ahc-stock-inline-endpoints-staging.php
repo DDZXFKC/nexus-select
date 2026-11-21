@@ -175,6 +175,16 @@ function ahc_inline_step() {
         set_transient($k,$r,120);
         wp_send_json_success(['ok'=>true,'state'=>'running']);
     }
+    // A quoted price must reflect every eligible candidate in this inquiry.
+    // If the budget ran out after the last merchant callback, do not
+    // grant a permit for an incomplete best-price comparison.
+    if ($r['cursor'] < count($r['offers']) || time() - $r['started'] >= 45) {
+        $r['state'] = 'done';
+        $r['public_result'] = ['ok'=>true,'state'=>'done',
+            'result'=>'unconfirmed','reason'=>'timeout'];
+        set_transient($k,$r,120);
+        wp_send_json_success($r['public_result']);
+    }
     if ($r['best'] !== null && $r['listed'] > 0) {
         // Owner-approved 400-yen rule: increases under 400, including
         // reductions, keep the listed price. Other safety gates remain.
