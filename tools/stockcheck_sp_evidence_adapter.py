@@ -32,6 +32,13 @@ def verified_sp_rows(path=SOURCE):
                 raise ValueError(f"invalid official SP URL line {index}")
             if not row["match_evidence"].strip() or not row["verified_at_jst"].strip():
                 raise ValueError(f"missing evidence line {index}")
+            # Do not deduce supplier size from Woo. Read the explicitly
+            # witnessed Shopify option1 value in the review evidence.
+            option = re.search(r"\boption1\s*=\s*([0-9]+(?:\.[0-9]+)?Y?)\b",
+                               row["match_evidence"], flags=re.IGNORECASE)
+            if option is None:
+                raise ValueError(f"missing witnessed merchant option1 line {index}")
+            merchant_size = option.group(1).upper()
             out.append({
                 "woo_product_id":int(row["product_id"]),
                 "variation_id":int(row["variation_id"]),
@@ -40,6 +47,7 @@ def verified_sp_rows(path=SOURCE):
                 "source_url":row["source_url"],
                 "requested_size":row["requested_size"],
                 "requested_color":row["requested_color"],
+                "merchant_size":merchant_size,
                 "verified":True,
                 "evidence_ref":f"{Path(path).name}:{index}",
             })
