@@ -5,6 +5,11 @@ define('AHC_SP158_VERIFIED_CSV', dirname(__DIR__) .
     '/data/xserver-export/sp158-live-sku-match-2026-11-22.csv');
 $GLOBALS['hooks'] = [];
 function add_filter($name,$fn,$priority=10,$args=1) { $GLOBALS['hooks'][$name][]=$fn; }
+// Fixture simulates separate, already-reviewed route-cost coverage.
+// No production filter returns true without a private approval manifest.
+function apply_filters($name,$prev,...$args) {
+    return $name === 'ahc_sp158_live_cost_coverage_verified' ? true : $prev;
+}
 function wp_parse_url($url) { return parse_url($url); }
 class SP158FakeProduct {
     private $type; private $sku; private $parent;
