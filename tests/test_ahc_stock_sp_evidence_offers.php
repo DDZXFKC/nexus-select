@@ -2,6 +2,7 @@
 /** CLI isolated tests for Shoe Palace verified-offer source. No WordPress required. */
 define('ABSPATH', '/');
 $GLOBALS['pricing_estimate'] = null;
+$GLOBALS['verified_currency'] = null;
 class ProductMock {
     private $type; private $sku; private $parent;
     function __construct($type,$sku,$parent=0){$this->type=$type;$this->sku=$sku;$this->parent=$parent;}
@@ -17,8 +18,9 @@ function wc_get_product($id) {
 function wp_parse_url($s){return parse_url($s);}
 function add_filter(...$args){}
 function apply_filters($name,$default,$meta) {
-    if ($name!=='ahc_sp_verified_landed_estimate_jpy') throw new RuntimeException('unexpected filter');
-    return $GLOBALS['pricing_estimate'];
+    if ($name==='ahc_sp_verified_landed_estimate_jpy') return $GLOBALS['pricing_estimate'];
+    if ($name==='ahc_sp_verified_store_currency') return $GLOBALS['verified_currency'];
+    throw new RuntimeException('unexpected filter');
 }
 require __DIR__.'/../tools/ahc-stock-sp-evidence-offers-staging.php';
 function same($a,$b,$msg){if($a!==$b)throw new RuntimeException($msg.' '.var_export($a,true));}
@@ -43,6 +45,8 @@ define('AHC_SP_EVIDENCE_CSV',$path);
 try {
     same(runOffers(),[],'default deny with missing costs');
     $GLOBALS['pricing_estimate']=13000;
+    same(runOffers(),[],'currency missing denies offer');
+    $GLOBALS['verified_currency']='USD';
     $a=runOffers();same(count($a),1,'verified offer created');
     same($a[0]['merchant_variant_id'],'900','variant ID retained');
     same($a[0]['estimated_total_jpy'],13000,'estimated price kept');
@@ -60,5 +64,5 @@ try {
     file_put_contents($path,file_get_contents(writeFixture([$bad])));same(runOffers(),[],'missing variant ID blocked');
     file_put_contents($path,file_get_contents(writeFixture([witness()])));
     same(ahc_sp_offers_from_evidence([],100,999,[]),[],'wrong woo variation blocked');
-    echo "9 scenarios PASS\n";
+    echo "10 scenarios PASS\n";
 } finally {unlink($path);}
