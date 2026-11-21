@@ -131,7 +131,7 @@ t('cart line signed and price fixed',ahc_inline_cart_line_valid($W->cart->lines[
 do_action('woocommerce_before_calculate_totals',$W->cart);
 t('Woo price recalculation uses permit price',$W->cart->lines[0]['data']->get_price()==='25000');
 $again=req('ahc_inline_add_to_cart',['permit'=>$permit]);
-t('replay rejected',!$again->ok && $again->data['code']==='permit_expired');
+t('replay rejected',!$again->ok && $again->data['code']==='permit_invalid');
 
 fresh_session();global $SIM;$SIM='quote';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);$token=$step->data['permit'];
