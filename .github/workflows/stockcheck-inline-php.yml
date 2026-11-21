@@ -9,6 +9,8 @@ on:
       - "tests/test_stockcheck_sp_evidence_adapter.py"
       - "tests/test_stockcheck_sp_url_coverage.py"
       - "tools/stockcheck_sp_reconcile.py"
+      - "tools/sp158_merge_supplier_evidence.py"
+      - "tests/test_sp158_merge_supplier_evidence.py"
       - "tests/test_stockcheck_sp_reconcile.py"
       - "data/xserver-export/sp-30-source-url-coverage-2026-11-21.csv"
       - "data/xserver-export/supplier-url-evidence-sample-2026-11-21.csv"
@@ -71,3 +73,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_stockcheck_sp_url_coverage.py' -v
       - name: Test full SP parent export reconciliation and HOLD statuses
         run: python -m unittest discover -s tests -p 'test_stockcheck_sp_reconcile.py' -v
+      - name: Verify full SP live evidence and legacy snapshot merge
+        run: python -m unittest discover -s tests -p 'test_sp158_merge_supplier_evidence.py' -v
