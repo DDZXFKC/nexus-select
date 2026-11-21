@@ -19,3 +19,10 @@ YES/NO、重大な欠落、実画面の証拠、今すぐ着手できる修正�
 
 ## 現状
 このGitHub登録時点でClaudeのACK・Chrome実画面レビューは未受領。コピペ要員としてオーナーを使わない。
+
+## 追加：GPTの実コードがGitHubへ反映済み（Claudeはこの版をレビュー）
+- `tools/stockcheck_offer_resolver.py`（コミット b89990f）
+- `tests/test_stockcheck_offer_resolver.py`（コミット 0d62891）
+- 完成したのは買付先別の判定部品。ローカルで同等ロジック・17ケースを確認。GitHubの同一コミット版のXServer実機テストではない。
+- **Claudeへの必須確認**：既存 `ahc_sc_start / ahc_sc_step / ahc_sc_add_to_cart` と入出力が一致するか、価格差400円・すべての店がOOSでのみSOLD OUTという挙動に問題がないか、現在の現行XServer実装との接続に不足がないか。結論をYES/NOと具体的な差分で記録する。
+- **並列**：ClaudeがChromeで画像表示・商品ページUIを修正しながらGPTがカートゲート側を進めることに問題ないかもレビュー対象。
