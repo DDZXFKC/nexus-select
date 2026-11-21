@@ -89,6 +89,12 @@ function wp_remote_retrieve_body($r){return $r['body'];}
 require __DIR__.'/../../tools/ahc-stock-inline-endpoints-staging.php';
 require __DIR__.'/../../tools/ahc-stock-sp158-owner-bridge-staging.php';
 require __DIR__.'/../../tools/ahc-stock-sp-live-adapter-staging.php';
+// Only this isolated mock test attests the fixture purchase route. Production
+// requires a SHA-pinned private review (see cost coverage provider).
+$GLOBALS['FIXTURE_ROUTE_COVERED']=true;
+add_filter('ahc_sp158_live_cost_coverage_verified', function($prev,$ctx) {
+    return $GLOBALS['FIXTURE_ROUTE_COVERED'] === true;
+}, 20, 2);
 
 function expect($what,$truth){if(!$truth)throw new RuntimeException($what);echo 'PASS '.$what."\n";}
 function request($function,$data=[]){
@@ -113,6 +119,15 @@ function start_check(){
     global $pid,$vid,$attrs;
     return request('ahc_inline_start',array_merge(['product_id'=>$pid,'variation_id'=>$vid],$attrs));
 }
+merchant(true);
+$GLOBALS['FIXTURE_ROUTE_COVERED']=false;
+$missing=start_check();
+$unpriced=request('ahc_inline_step',['check_id'=>$missing->payload['check_id']]);
+expect('no approved total cost evidence means no purchase permit',
+    $missing->ok && $unpriced->ok && $unpriced->payload['result']==='unconfirmed' &&
+    !isset($unpriced->payload['permit']));
+$GLOBALS['FIXTURE_ROUTE_COVERED']=true;
+$GLOBALS['TRANSIENTS']=[];$GLOBALS['WCENV']->session=new Session();
 merchant(true);
 expect('direct cart blocked',
     !apply_filters('woocommerce_add_to_cart_validation',true,$pid,1,$vid,$attrs));
@@ -153,4 +168,4 @@ $step=request('ahc_inline_step',['check_id'=>$started->payload['check_id']]);
 expect('restock immediately overrides even leftover legacy 24h mark',
     $started->ok && $step->ok && $step->payload['result']==='in_stock' &&
     $step->payload['price_case']==='listed');
-echo "9 full-chain scenarios PASS\n";
+echo "10 full-chain scenarios PASS\n";
