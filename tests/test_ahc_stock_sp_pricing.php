@@ -26,9 +26,10 @@ function baseInput() {
         'fx_jpy_per_usd_x10000'=>1500000,'fx_observed_at'=>time(),
         'costs_jpy'=>$costs,
         'verified_zero_reasons'=>['other_fees'=>'reviewed explicitly zero for this route'],
-        'required_profit_jpy'=>3000,'payment_fee_bps'=>325,
-        'payment_fixed_jpy'=>0,'round_up_jpy'=>100,
-        'pricing_policy_ref'=>'owner-approved-test-fixture-only'
+        'channel'=>'AHC','channel_fee_verified'=>true,
+        'source_card_uplift_bps'=>200,'channel_price_divisor_million'=>785000,
+        'round_up_jpy'=>100,
+        'pricing_policy_ref'=>'verified-channel-policy-test-fixture-only'
     ];
 }
 function price() {
@@ -39,8 +40,8 @@ function price() {
     ],100,101);
 }
 $GLOBALS['cost_inputs']=baseInput();
-// Purchase 18,899 + costs 5,800 + profit 3,000 => 27,699 / .9675 -> round 28,700
-expectEq(price(),28700,'exact conversion and rounding');
+// (125.99 x 150 x 1.02 + 5,800) / 0.785 = 31,944.55 => 32,000
+expectEq(price(),32000,'owner formula and 100-yen ceiling');
 foreach (['local_sales_tax','international_shipping','customs_duty','import_consumption_tax','partner_fee','domestic_shipping','other_fees'] as $field) {
     $GLOBALS['cost_inputs']=baseInput();
     unset($GLOBALS['cost_inputs']['costs_jpy'][$field]);
@@ -48,8 +49,8 @@ foreach (['local_sales_tax','international_shipping','customs_duty','import_cons
 }
 $GLOBALS['cost_inputs']=baseInput();unset($GLOBALS['cost_inputs']['verified_zero_reasons']['other_fees']);
 expectEq(price(),null,'unjustified zero');
-$GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['payment_fee_bps']=null;
-expectEq(price(),null,'unknown payment fee');
+$GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['channel_fee_verified']=false;
+expectEq(price(),null,'unverified channel divisor');
 $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['approved']=false;
 expectEq(price(),null,'unapproved input');
 $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['merchant_variant_id']='901';
@@ -62,8 +63,12 @@ $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['fx_observed_at']=ti
 expectEq(price(),null,'stale exchange rate');
 $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['costs_jpy']['local_sales_tax']='0';
 expectEq(price(),null,'string cost');
-$GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['payment_fee_bps']=10000;
-expectEq(price(),null,'invalid card fee');
+$GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['channel_price_divisor_million']=null;
+expectEq(price(),null,'missing channel divisor');
 $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['round_up_jpy']=0;
 expectEq(price(),null,'rounding unset');
-echo "19 cases PASS\n";
+$GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['channel']='BUYMA';
+expectEq(price(),null,'no BUYMA formula on AHC');
+$GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['source_card_uplift_bps']=null;
+expectEq(price(),null,'unknown source card uplift');
+echo "21 cases PASS\n";
