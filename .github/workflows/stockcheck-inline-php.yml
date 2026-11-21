@@ -4,6 +4,7 @@ on:
     branches: [integration/grok-review]
     paths:
       - "tools/ahc-stock-inline-endpoints-staging.php"
+      - "qa/php-tests/stockcheck_inline_endpoint_stub_test.php"
       - "tools/ahc-stock-inline-cart-gate-staging.php"
       - ".github/workflows/stockcheck-inline-php.yml"
   workflow_dispatch:
@@ -21,3 +22,5 @@ jobs:
       - name: Ensure no customer email or direct cart activation in staging module
         run: |
           ! grep -E 'wp_mail\(|ahc_stock_check_allow_cart\s*,\s*true' tools/ahc-stock-inline-endpoints-staging.php
+      - name: Anonymous guest and Woo cart mock integration
+        run: php qa/php-tests/stockcheck_inline_endpoint_stub_test.php
