@@ -33,7 +33,7 @@ def _us_size_key(value):
         return None
     if number <= 0 or (number * 2) != (number * 2).to_integral_value():
         return None
-    return str(number.normalize())
+    return format(number.normalize(), "f")
 
 def _gs_size_key(value):
     """Only explicitly observed SP grade-school Y-sizes; cm is annotation.
