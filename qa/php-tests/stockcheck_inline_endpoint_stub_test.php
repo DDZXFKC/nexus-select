@@ -224,17 +224,27 @@ t('no offers fails closed as no_candidate',$step->ok && $step->data['result']===
 
 fresh_session();$SIM='oos';
 $s=start();$step=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
-t('confirmed OOS is reported without time-based lock',
-  $step->data['result']==='out_of_stock' &&
-  !get_post_meta(11,'_ahc_inline_oos_until'));
+t('live OOS result is returned without persistent Woo metadata',
+  $step->ok && $step->data['result']==='out_of_stock' &&
+  !isset($step->data['permit']) &&
+  !array_key_exists('_ahc_inline_oos_until', $META[11] ?? []));
 $visible=apply_filters('woocommerce_available_variation',
   ['is_in_stock'=>true,'is_purchasable'=>true],$PRODUCTS[10],$PRODUCTS[11]);
-t('OOS inquiry does not rewrite or lock Woo variation availability',
+t('sold-out result does not change other customers Woo variation data',
   $visible['is_in_stock']===true && $visible['is_purchasable']===true);
-$SIM='ok'; fresh_session(); $next=start();
-$recheck=req('ahc_inline_step',['check_id'=>$next->data['check_id']]);
-t('later customer can explicitly recheck stock without waiting for timer',
-  $next->ok && $recheck->ok && $recheck->data['result']==='in_stock');
+$SIM='ok';fresh_session();$s=start();$again=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+t('different customer can immediately check restocked size',
+  $s->ok && $again->ok && $again->data['result']==='in_stock');
+t('restocked result has a cart permit immediately',
+  isset($again->data['permit']) && $again->data['price_case']==='listed');
+$META[11]['_ahc_inline_oos_until']=time()+DAY_IN_SECONDS;
+fresh_session();$s=start();$legacy=req('ahc_inline_step',['check_id'=>$s->data['check_id']]);
+t('legacy shared 24h marker is ignored; live availability decides',
+  $s->ok && $legacy->ok && $legacy->data['result']==='in_stock');
+$cart=req('ahc_inline_add_to_cart',['permit'=>$legacy->data['permit']]);
+t('legacy shared marker does not block a freshly verified live cart',
+  $cart->ok);
+unset($META[11]['_ahc_inline_oos_until']);
 
 fresh_session();$SIM='ok';
 $s=start(20,0,[]);
