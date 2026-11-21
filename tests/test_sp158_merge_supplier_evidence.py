@@ -60,6 +60,19 @@ class MergeEvidenceTests(unittest.TestCase):
         merged, _ = reconcile([live], self.woo, self.urls, self.legacy)
         self.assertEqual(sum(r["match_status"]=="PASS" for r in merged), 77)
 
+    def test_duplicate_merchant_variant_id_for_two_woo_rows_is_hold(self):
+        a, b = self.woo[0], self.woo[1]
+        self.assertEqual(a["product_id"], b["product_id"])
+        first = self.make_live(a, "123456789")
+        second = self.make_live(b, "123456789")
+        merged, _ = reconcile([first, second], self.woo, self.urls, self.legacy)
+        conflicts = [r for r in merged if r["product_id"] == a["product_id"]
+                     and r["variation_id"] in (a["variation_id"], b["variation_id"])]
+        self.assertEqual(len(conflicts), 2)
+        self.assertTrue(all(r["match_status"] == "HOLD" and
+                            r["reason_codes"] == "DUPLICATE_SUPPLIER_VARIANT_ID"
+                            for r in conflicts))
+
     def test_unknown_woo_variation_rejected(self):
         row = self.make_live()
         row["variation_id"] = "9999999999999"
