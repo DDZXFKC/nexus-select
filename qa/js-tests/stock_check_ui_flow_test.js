@@ -71,6 +71,33 @@ const fast = t => ({ sleep: () => Promise.resolve(), now: () => t.v, budgetMs: 4
   check('cart success does not revoke already-used permit',
     a.calls.cancel.length === 0);
 
+  // 9d start response arrived after cancel: revoke late server check ID
+  let resolveStart, lateRevokes=[];
+  v=mkView();a={start:()=>new Promise(resolve=>{resolveStart=resolve;}),
+    step:()=>Promise.resolve({ok:true,state:'done',result:'out_of_stock'}),
+    cancel:(id,permit)=>{lateRevokes.push([id,permit]);return Promise.resolve({ok:true});}};
+  f=createFlow(a,v,fast({v:0}));
+  let pendingStart=f.run({});f.cancel();
+  resolveStart({ok:true,check_id:'LATESTART'});
+  await pendingStart;await new Promise(res=>setTimeout(res,0));
+  check('cancel before start response revokes orphan check record',
+    lateRevokes.length===1 && lateRevokes[0][0]==='LATESTART');
+
+  // 9e step completes after cancellation: revoke the just-issued permit
+  let resolveLateStep;lateRevokes=[];
+  v=mkView();a={start:()=>Promise.resolve({ok:true,check_id:'LATESTEP'}),
+    step:()=>new Promise(resolve=>{resolveLateStep=resolve;}),
+    cancel:(id,permit)=>{lateRevokes.push([id,permit]);return Promise.resolve({ok:true});}};
+  f=createFlow(a,v,fast({v:0}));
+  let pendingStep=f.run({});
+  await new Promise(res=>setTimeout(res,0));
+  f.cancel();
+  resolveLateStep({ok:true,state:'done',result:'in_stock',permit:'LATETOKEN'});
+  await pendingStep;await new Promise(res=>setTimeout(res,0));
+  check('cancelled late stock success revokes its newly-issued permit',
+    lateRevokes.some(p=>p[0]==='LATESTEP' && p[1]==='LATETOKEN') &&
+    !v.log.some(item=>item[0]==='result'));
+
   // 10 double click while busy -> second run ignored
   v = mkView(); let rs; a = { start: () => new Promise(res => { rs = res; }), step: () => Promise.resolve({ ok: true, state: 'done', result: 'out_of_stock' }), addToCart: () => Promise.resolve({}) };
   f = createFlow(a, v, fast({ v: 0 })); const p1 = f.run({}); const second = await f.run({}); rs({ ok: true, check_id: 'c' }); await p1;
