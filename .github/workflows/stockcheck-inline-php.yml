@@ -5,6 +5,8 @@ on:
     paths:
       - "tools/ahc-stock-inline-endpoints-staging.php"
       - "tools/stockcheck_sp_join_contract.py"
+      - "tools/stockcheck_owner_price.py"
+      - "tests/test_stockcheck_owner_price.py"
       - "tests/test_stockcheck_sp_join_contract.py"
       - "qa/php-tests/stockcheck_inline_endpoint_stub_test.php"
       - "tools/ahc-stock-inline-cart-gate-staging.php"
@@ -28,3 +30,5 @@ jobs:
         run: php qa/php-tests/stockcheck_inline_endpoint_stub_test.php
       - name: SP Woo-to-supplier exact join unit tests
         run: python -m unittest discover -s tests -p 'test_stockcheck_sp_join_contract.py' -v
+      - name: Owner-approved price formula regression tests
+        run: python -m unittest discover -s tests -p 'test_stockcheck_owner_price.py' -v
