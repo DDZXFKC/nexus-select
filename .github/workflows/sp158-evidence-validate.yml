@@ -22,6 +22,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate current exact join and duplicate supplier ID handling
         run: python -m unittest discover -s tests -p 'test_sp158_merge_supplier_evidence.py' -v
+      - name: Cross-check 1713 Shopify variant IDs against the independent existing snapshot
+        run: python -m unittest discover -s tests -p 'test_sp158_two_snapshots_consistent.py' -v
       - name: Download original recorded live Shopify identity evidence
         run: |
           mkdir -p input
