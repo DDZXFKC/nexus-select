@@ -32,7 +32,7 @@ function baseInput() {
     ];
 }
 function price() {
-    return ahc_sp_pricing_jpy(['amount'=>'125.99','currency'=>'USD'],[
+    return ahc_sp_pricing_jpy(null, ['amount'=>'125.99','currency'=>'USD'],[
         'shop'=>'SP','identity_verified'=>true,
         'supplier_product_id'=>'123','merchant_variant_id'=>'900',
         'merchant_variant_sku'=>'SKU5'
@@ -66,4 +66,4 @@ $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['payment_fee_bps']=1
 expectEq(price(),null,'invalid card fee');
 $GLOBALS['cost_inputs']=baseInput();$GLOBALS['cost_inputs']['round_up_jpy']=0;
 expectEq(price(),null,'rounding unset');
-echo "18 cases PASS\n";
+echo "19 cases PASS\n";
