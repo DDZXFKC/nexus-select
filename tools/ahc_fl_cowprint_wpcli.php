@@ -34,6 +34,10 @@ WP_CLI::add_command('ahc images cowprint', function ($positional, $assoc) {
         WP_CLI::error('Exact product identity not confirmed. No changes made.'); return;
     }
 
+    if (get_post_meta($product_id,'_ahc_cowprint_20261122_repaired',true)) {
+        WP_CLI::error('Already repaired; do not import duplicate media or overwrite the prior rollback record');
+        return;
+    }
     $source_dir = isset($assoc['source-dir']) ? realpath($assoc['source-dir']) : false;
     if (!$source_dir || !is_dir($source_dir)) {
         WP_CLI::error('Missing non-public input folder. No changes.'); return;
@@ -122,10 +126,6 @@ WP_CLI::add_command('ahc images cowprint', function ($positional, $assoc) {
         $new_ids[]=(int)$attachment;
     }
     // Change Woo gallery only when all three new attachments are present.
-    if (get_post_meta($product_id,'_ahc_cowprint_20261122_repaired',true)) {
-        WP_CLI::error('Already repaired; do not import duplicate media or overwrite the prior rollback record');
-        return;
-    }
     $product->set_image_id($new_ids[0]);
     $product->set_gallery_image_ids(array_slice($new_ids,1));
     $product->save();
