@@ -5,27 +5,40 @@ from tools.stockcheck_sp_join_contract import link_sp_variation
 class EvidenceTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls): cls.rows=verified_sp_rows()
- def test_77_identity_evidence_rows_remain_intact(self):
-  self.assertEqual(len(self.rows),77)
-  self.assertEqual(len({(r["woo_product_id"],r["variation_id"]) for r in self.rows}),77)
-  self.assertEqual(len({r["woo_product_id"] for r in self.rows}),7)
-  self.assertTrue(all(r["merchant_variant_id"].isdigit() and r["source_url"].startswith("https://www.shoepalace.com/products/") for r in self.rows))
- def test_no_supplier_sku_data_never_grants_match(self):
+ def test_evidence_integrity(self):
+  self.assertTrue(self.rows)
+  self.assertEqual(len({(r["woo_product_id"],r["variation_id"]) for r in self.rows}),len(self.rows))
+  self.assertEqual(len({(r["supplier_product_id"],r["merchant_variant_sku"]) for r in self.rows}),len(self.rows))
+  self.assertTrue({21376,19905,19812,19801,20043}.issubset({r["woo_product_id"] for r in self.rows}))
   for r in self.rows:
-   self.assertFalse(r["merchant_variant_sku"])
-   p={"product_id":r["woo_product_id"],"product_type":"variable",
-      "shop_code":"SP","supplier_product_id":r["supplier_product_id"],
-      "sku":"SP-"+r["supplier_product_id"]}
+   self.assertEqual(r["merchant_variant_sku"],r["woo_variation_sku"])
+   self.assertTrue(r["sku_evidence"])
+   self.assertTrue(r["sku_verified_at_utc"])
+ def test_each_row_matches_exact_woo_sku_and_wrong_sku_is_held(self):
+  for r in self.rows:
+   p={"product_id":r["woo_product_id"],"product_type":"variable","sku":"SP-"+r["supplier_product_id"],
+      "shop_code":"SP","supplier_product_id":r["supplier_product_id"]}
    v={"product_id":r["woo_product_id"],"variation_id":r["variation_id"],
-      "variation_sku":"some-woo-sku","attributes":{"サイズ":r["requested_size"]}}
-   self.assertEqual(match_snapshot(p,v,self.rows)["reason"],"NO_VERIFIED_VARIATION_SKU_MATCH")
- def test_documented_one_real_variant_sku_sample(self):
-  row=next(r for r in self.rows if r["woo_product_id"]==21376 and r["requested_size"]=="US 5")
-  p={"product_id":21376,"product_type":"variable","sku":"SP-8798793826510",
-     "shop_code":"SP","supplier_product_id":"8798793826510"}
-  v={"product_id":21376,"variation_id":row["variation_id"],"variation_sku":"21141139",
-     "attributes":{"サイズ":"US 5"}}
-  checked=dict(row,merchant_variant_sku="21141139")
-  self.assertEqual(link_sp_variation(p,v,[checked])["status"],"CANDIDATE_ONLY")
-  self.assertEqual(link_sp_variation(p,dict(v,variation_sku="21141138"),[checked])["status"],"HOLD")
+      "variation_sku":r["woo_variation_sku"],"attributes":{"サイズ":r["requested_size"]}}
+   got=match_snapshot(p,v,self.rows)
+   self.assertEqual(got["status"],"CANDIDATE_ONLY",{"row":r,"got":got})
+   self.assertEqual(got["merchant_variant_id"],r["merchant_variant_id"])
+   self.assertEqual(got["woo_variation_sku"],r["woo_variation_sku"])
+   self.assertEqual(match_snapshot(p,dict(v,variation_sku="DELIBERATELY-MISMATCHED"),self.rows)["status"],"HOLD")
+   self.assertEqual(match_snapshot(p,dict(v,variation_sku=""),self.rows)["status"],"HOLD")
+   self.assertEqual(match_snapshot(p,dict(v,variation_id=99999999),self.rows)["status"],"HOLD")
+ def test_size_text_irrelevant_to_identity(self):
+  r=self.rows[0]
+  p={"product_id":r["woo_product_id"],"product_type":"variable","sku":"SP-"+r["supplier_product_id"],
+      "shop_code":"SP","supplier_product_id":r["supplier_product_id"]}
+  v={"product_id":r["woo_product_id"],"variation_id":r["variation_id"],
+     "variation_sku":r["woo_variation_sku"],"attributes":{"サイズ":"display text is irrelevant"}}
+  self.assertEqual(match_snapshot(p,v,self.rows)["status"],"CANDIDATE_ONLY")
+ def test_bad_supplier_sku_fails_closed(self):
+  r=self.rows[0]
+  p={"product_id":r["woo_product_id"],"product_type":"variable","sku":"SP-"+r["supplier_product_id"],
+      "shop_code":"SP","supplier_product_id":r["supplier_product_id"]}
+  v={"product_id":r["woo_product_id"],"variation_id":r["variation_id"],
+     "variation_sku":r["woo_variation_sku"]}
+  self.assertEqual(link_sp_variation(p,v,[dict(r,merchant_variant_sku="DIFFERENT")])["status"],"HOLD")
 if __name__=="__main__":unittest.main()
