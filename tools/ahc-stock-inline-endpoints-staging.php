@@ -123,6 +123,22 @@ function ahc_inline_start() {
 add_action('wp_ajax_ahc_sc_start', 'ahc_inline_start');
 add_action('wp_ajax_nopriv_ahc_sc_start', 'ahc_inline_start');
 
+/**
+ * Reflect a verified 24-hour OOS mark in Woo's variation payload.
+ * This makes SOLD OUT visible to other visitors without changing Woo stock,
+ * variation IDs, SKU, attributes, or the data importer source of truth.
+ */
+function ahc_inline_shared_oos_variation($data, $parent, $variation) {
+    if (!is_array($data) || !$variation || !method_exists($variation, 'get_id')) return $data;
+    $until = (int)get_post_meta($variation->get_id(), '_ahc_inline_oos_until', true);
+    if ($until <= time()) return $data;
+    $data['is_in_stock'] = false;
+    $data['is_purchasable'] = false;
+    $data['availability_html'] = '<p class="stock out-of-stock">SOLD OUT</p>';
+    return $data;
+}
+add_filter('woocommerce_available_variation', 'ahc_inline_shared_oos_variation', 99, 3);
+
 function ahc_inline_step() {
     ahc_inline_nonce();
     $id = ahc_inline_request('check_id');
