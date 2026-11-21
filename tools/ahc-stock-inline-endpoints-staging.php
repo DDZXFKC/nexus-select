@@ -81,8 +81,6 @@ function ahc_inline_start() {
     $session = ahc_inline_session_id();
     if ($session === '') ahc_inline_error('session', 'カートを利用できません。', 503);
     [$parent, $variation, $attrs] = ahc_inline_selected_variant();
-    $mark = (int)get_post_meta($variation->get_id(), '_ahc_inline_oos_until', true);
-    if ($mark > time()) ahc_inline_error('marked_oos', 'このサイズは現在在庫がありません。', 409);
     $key = 'ahc_inline_rate_' . hash('sha256', $session);
     if (get_transient($key)) ahc_inline_error('rate_limited', '少し時間をおいて再度お試しください。', 429);
     set_transient($key, 1, 20);
@@ -122,22 +120,6 @@ function ahc_inline_start() {
 }
 add_action('wp_ajax_ahc_sc_start', 'ahc_inline_start');
 add_action('wp_ajax_nopriv_ahc_sc_start', 'ahc_inline_start');
-
-/**
- * Reflect a verified 24-hour OOS mark in Woo's variation payload.
- * This makes SOLD OUT visible to other visitors without changing Woo stock,
- * variation IDs, SKU, attributes, or the data importer source of truth.
- */
-function ahc_inline_shared_oos_variation($data, $parent, $variation) {
-    if (!is_array($data) || !$variation || !method_exists($variation, 'get_id')) return $data;
-    $until = (int)get_post_meta($variation->get_id(), '_ahc_inline_oos_until', true);
-    if ($until <= time()) return $data;
-    $data['is_in_stock'] = false;
-    $data['is_purchasable'] = false;
-    $data['availability_html'] = '<p class="stock out-of-stock">SOLD OUT</p>';
-    return $data;
-}
-add_filter('woocommerce_available_variation', 'ahc_inline_shared_oos_variation', 99, 3);
 
 function ahc_inline_step() {
     ahc_inline_nonce();
@@ -224,10 +206,6 @@ function ahc_inline_step() {
                    return $x['stock']==='OUT_OF_STOCK';
               })) === count($r['offers'])) {
         $result = ['ok'=>true,'state'=>'done','result'=>'out_of_stock'];
-        // A verified all-suppliers sold-out observation marks this
-        // variation for 24 hours without rewriting Woo stock metadata.
-        update_post_meta($r['variation_id'] ?: $r['product_id'],
-            '_ahc_inline_oos_until', time() + DAY_IN_SECONDS);
     } else {
         $result = ['ok'=>true,'state'=>'done','result'=>'unconfirmed','reason'=>'unreadable'];
     }
@@ -406,8 +384,7 @@ function ahc_inline_add_to_cart() {
     $product_id = (int) $ctx['product_id'];
     $variation_id = (int) $ctx['variation_id'];
     $product = wc_get_product($variation_id ?: $product_id);
-    if (!$product || !$product->is_purchasable() || !$product->is_in_stock()
-        || (int)get_post_meta($variation_id ?: $product_id, '_ahc_inline_oos_until', true) > time()) {
+    if (!$product || !$product->is_purchasable() || !$product->is_in_stock()) {
         ahc_inline_error('permit_invalid', '選択商品の在庫を確認できません。', 409);
     }
     // No time-based permit expiry. A later click must nevertheless prove
