@@ -173,9 +173,18 @@ try {
     $W->cart->lines[0]['ahc_inline_shop']==='SP');
   resetCase();$SCENARIO='oos';$start=begin();
   $step=req2('ahc_inline_step',['check_id'=>$start->data['check_id']]);
-  t2('live out-of-stock has no permit and shared marker',
+  t2('live out-of-stock returns no permit and writes no shared marker',
     $step->data['result']==='out_of_stock' && !isset($step->data['permit']) &&
-    get_post_meta(11,'_ahc_inline_oos_until')>time());
+    !array_key_exists('_ahc_inline_oos_until',$META[11]??[]));
+  // An old persisted marker from the superseded implementation must never
+  // prevent a new live inquiry, even in another Woo guest session.
+  resetCase();$META[11]['_ahc_inline_oos_until']=time()+86400;
+  $SCENARIO='success';$start=begin();
+  $step=req2('ahc_inline_step',['check_id'=>$start->data['check_id']]);
+  t2('immediate supplier restock can authorize a new live purchase',
+    $start->ok && $step->data['result']==='in_stock' &&
+    isset($step->data['permit']));
+  resetCase();
   resetCase();$SCENARIO='wrongsku';$start=begin();
   $step=req2('ahc_inline_step',['check_id'=>$start->data['check_id']]);
   t2('live supplier sku discrepancy prevents checkout',
