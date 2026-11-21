@@ -168,8 +168,8 @@ function ahc_inline_step() {
         $result = ['ok'=>true,'state'=>'done','result'=>'in_stock',
                    'price_case'=>$quoted?'quote':'listed',
                    'permit'=>$permit,
-                   'listed_price_text'=>wc_price($r['listed']),
-                   'quote_price_text'=>$quoted?wc_price($r['best']['price']):null];
+                   'listed_price_text'=>'¥' . number_format($r['listed']),
+                   'quote_price_text'=>$quoted?'¥' . number_format($r['best']['price']):null];
     } elseif ($r['cursor'] >= count($r['offers']) && $r['checks']
               && count(array_filter($r['checks'], function($x){
                    return $x['stock']==='OUT_OF_STOCK';
