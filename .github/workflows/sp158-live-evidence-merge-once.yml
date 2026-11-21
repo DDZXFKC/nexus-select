@@ -1,0 +1,69 @@
+name: Shoe Palace 158 SKU evidence one-shot verified merge
+
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - ".github/workflows/sp158-live-evidence-merge-once.yml"
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integration/grok-review
+          persist-credentials: true
+      - name: Wait for the already-running polite read-only supplier evidence task
+        run: |
+          for i in $(seq 1 48); do
+            status=$(gh run view 44932356916 --repo DDZXFKC/nexus-select --json status --jq '.status')
+            if [ "$status" = "completed" ]; then
+              result=$(gh run view 44932356916 --repo DDZXFKC/nexus-select --json conclusion --jq '.conclusion')
+              test "$result" = "success"
+              exit 0
+            fi
+            sleep 30
+          done
+          echo "Supplier evidence job timed out; no file changes."
+          exit 1
+      - name: Download recorded official variant evidence
+        run: |
+          mkdir -p input
+          gh run download 44932356916 --repo DDZXFKC/nexus-select \
+            --name sp158-shopify-variant-evidence --dir input
+          test -s input/sp158-shopify-variant-evidence.csv
+      - name: Reconcile all 1713 Woo variations without altering originals
+        run: |
+          python -m unittest discover -s tests -p 'test_sp158_merge_supplier_evidence.py' -v
+          python -m tools.sp158_merge_supplier_evidence \
+            --live input/sp158-shopify-variant-evidence.csv \
+            --variations data/xserver-export/sp158-variation-match-result-2026-11-22.csv \
+            --products data/xserver-export/sp158-product-match-summary-2026-11-22.csv
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          p=Path('data/xserver-export/sp158-variation-match-result-2026-11-22.csv')
+          with p.open(newline='',encoding='utf-8') as f: rows=list(csv.DictReader(f))
+          assert len(rows)==1713
+          assert all(r['match_status'] in ('PASS','HOLD') for r in rows)
+          assert len({(r['product_id'],r['variation_id']) for r in rows})==1713
+          print('Verified immutable 1713-row Woo coverage')
+          PY
+      - name: Commit evidence snapshot only (no prices or stock authorization)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/xserver-export/sp158-variation-match-result-2026-11-22.csv \
+                  data/xserver-export/sp158-product-match-summary-2026-11-22.csv
+          git commit -m "Record read-only 158-product Shopify variant identity evidence and HOLD status"
+          git fetch origin integration/grok-review
+          git rebase origin/integration/grok-review
+          git push origin HEAD:integration/grok-review
