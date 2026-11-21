@@ -7,7 +7,7 @@ on:
       - tools/prepare_fl_cowprint_originals.py
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -49,6 +49,18 @@ jobs:
           python tools/prepare_fl_cowprint_originals.py \
             --original-dir /tmp/ahc-cowprint-raw \
             --output-dir /tmp/ahc-cowprint-publish
+      - name: Store approved-source pixel-faithful assets in GitHub repository
+        run: |
+          mkdir -p data/images/footlocker/IO0442-200
+          cp /tmp/ahc-cowprint-publish/*.png /tmp/ahc-cowprint-publish/provenance.json data/images/footlocker/IO0442-200/
+          git config user.name "ahc-image-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/images/footlocker/IO0442-200/
+          if ! git diff --cached --quiet; then
+            git commit -m "images: preserve three verified IO0442-200 originals on white squares"
+            git pull --rebase origin integration/grok-review
+            git push origin HEAD:integration/grok-review
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: fl-cowprint-io0442-200-original-white-square
