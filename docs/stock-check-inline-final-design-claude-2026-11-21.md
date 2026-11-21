@@ -16,6 +16,7 @@
 4. 在庫確認をしないと買えない（既定）。
 5. 買い付け先ページから現在価格を読む（決定1）。価格差400円ルールは残す（決定2）。返信メールが無くなったので、案内先はポップアップになる。
 6. 価格が変わりうる5つの事案は、サイトの常設ページとポップアップで説明する（addendum §1）。
+7. ポップアップに入力項目（名前・メールアドレス・メッセージ）は置かない。ポップアップは判定と結果表示だけ。名前・メールなどは購入の画面で初めて入力する（2026-11-21 12:40 オーナー決定）。
 
 ## 2. お客様の操作と画面（サイト側、Claude）
 1. 商品ページでカラーとサイズを選ぶ。
@@ -102,10 +103,7 @@
 | 400円ルールの境界（0／399／400） | 同意。400は案内、399は掲載価格 |
 
 ## 7. オーナーに確認する点
-1. **ポップアップの名前・メール入力は、まだ要るか。**
-   - 12:23 の決定では必須だったが、結果をメールで返さなくなったので、使い道が無くなる。
-   - 不要なら、入力欄なし（説明と実行ボタンだけ）にして、個人情報を受け取らない。90日保存の対象も無くなる。
-   - 要るなら、何に使うか（例：再入荷の連絡は以前の決定で範囲外）を決めてほしい。
+1. ~~ポップアップの名前・メール入力は要るか~~ → **不要と決定**（12:40、§1-7）。在庫確認では個人情報を受け取らない。90日保存の対象も無くなる。照会の記録は、個人情報を含まない形で残す（商品・サイズ・店・判定・時刻・IPの一方向ハッシュ）。
 2. 設定値の初期値（変えたいときだけ）
    - 全体の上限：45秒
    - 品切れの印：24時間
@@ -117,7 +115,7 @@
 - 5分以内の送信監視
 - 照会を後で処理する仕組み（cron の1分ワーカー、WP-CLI の pending/result）
 - 受付IDの発行
-- 依頼データの非公開保存と90日削除（§7-1 で入力不要なら、保存するものが無くなる）
+- 依頼データ（名前・メール）の保存と90日削除（12:40 決定で入力が無くなったため）
 - 運営への通知は、**読めない店があったとき**だけ残す（決定3の「取得方法の問題として別に対処」）
 
 ## 9. 実画面での確認（反映後、XServer で。Claude）
@@ -130,3 +128,25 @@
 - 「確認できず」→ SOLD OUT にならない
 - 許可なしでカートに入れようとすると拒否される（URL直打ち・ブロックカート）
 - ポップアップを閉じる、カラーを変える、ページを再読み込みしたときの戻り方
+
+## 10. 画面とサーバーの約束（API。GPT と Claude の境界）
+WordPress の admin-ajax を使う。どれも nonce を必須にする。入力値はすべてサーバー側で確かめる。
+```text
+POST action=ahc_sc_start
+  入力: product_id, variation_id, attribute_*（選んだカラー・サイズ）, nonce
+  返す: { ok, check_id, state: "running" }
+        | { ok:false, code: "invalid_selection" | "rate_limited" | "marked_oos" | "nonce", message }
+POST action=ahc_sc_step
+  入力: check_id, nonce
+  返す: { ok, state: "running" }                         # まだ続く（画面は約1秒あけて再び呼ぶ）
+        | { ok, state: "done", result: "in_stock", price_case: "listed", price_html, permit }
+        | { ok, state: "done", result: "in_stock", price_case: "quote", quote_price_html, listed_price_html, permit }
+        | { ok, state: "done", result: "out_of_stock" }  # 全店で品切れ確定。サーバーが品切れの印を付けた後
+        | { ok, state: "done", result: "unconfirmed", reason: "unreachable" | "unreadable" | "price_unknown" | "timeout" | "no_candidate" }
+POST action=ahc_sc_add_to_cart
+  入力: permit, accept_quote（価格案内のときだけ 1）, nonce
+  返す: { ok, cart_url } | { ok:false, code: "permit_expired" | "permit_invalid" | "quote_not_accepted", message }
+```
+- permit はサーバー側に保存した購入許可のキー。ブラウザには金額の元データ・店・URLを渡さない。
+- 表示する価格は、サーバーが整形した文字列（price_html）をそのまま使う。画面では計算しない。
+- 商品ページの「在庫を確認する」→ ポップアップ → スピナー → 結果 → ［カートへ進む］は Claude が作る。上の3つの処理の中身は GPT が作る。
