@@ -10,6 +10,9 @@ on:
       - "tests/test_stockcheck_sp_url_coverage.py"
       - "tools/stockcheck_sp_reconcile.py"
       - "tools/sp158_merge_supplier_evidence.py"
+      - "tests/test_sp158_two_snapshots_consistent.py"
+      - "data/xserver-export/sp158-variation-match-result-2026-11-22.csv"
+      - "data/xserver-export/sp158-live-sku-match-2026-11-22.csv"
       - "tests/test_sp158_merge_supplier_evidence.py"
       - "tests/test_stockcheck_sp_reconcile.py"
       - "data/xserver-export/sp-30-source-url-coverage-2026-11-21.csv"
@@ -91,3 +94,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_stockcheck_sp_reconcile.py' -v
       - name: Verify full SP live evidence and legacy snapshot merge
         run: python -m unittest discover -s tests -p 'test_sp158_merge_supplier_evidence.py' -v
+      - name: Independently compare all 1713 official Shopify variant IDs across two evidence snapshots
+        run: python -m unittest discover -s tests -p 'test_sp158_two_snapshots_consistent.py' -v
