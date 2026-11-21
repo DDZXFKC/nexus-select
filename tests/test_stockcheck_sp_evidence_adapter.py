@@ -37,6 +37,26 @@ class EvidenceTests(unittest.TestCase):
    self.assertEqual(link_sp_variation(p,v,[bad])["status"],"HOLD")
    self.assertEqual(link_sp_variation(p,dict(v,variation_id=999999),[row])["status"],"HOLD")
    self.assertEqual(link_sp_variation(p,dict(v,attributes={"サイズ":"EU 36","カラー":row["requested_color"]}),[row])["status"],"HOLD")
+ def test_owner_removes_us_prefix_without_losing_variant_identity(self):
+  for row in self.rows:
+   pid=row["woo_product_id"]
+   p={"product_id":pid,"product_type":"variable","sku":"SP-"+row["supplier_product_id"],
+      "shop_code":"SP","supplier_product_id":row["supplier_product_id"]}
+   cleaned=row["requested_size"].removeprefix("US ")
+   v={"product_id":pid,"variation_id":row["variation_id"],"attributes":{"サイズ":cleaned}}
+   got=match_snapshot(p,v,self.rows)
+   self.assertEqual(got["status"],"CANDIDATE_ONLY",{"row":row,"decision":got})
+   self.assertEqual(got["merchant_variant_id"],row["merchant_variant_id"])
+   if "cm)" in row["requested_size"]:
+    self.assertIn("cm)",cleaned)
+ def test_prefix_removal_cannot_cross_variation_boundary(self):
+  row=self.rows[0]
+  p={"product_id":row["woo_product_id"],"product_type":"variable",
+     "sku":"SP-"+row["supplier_product_id"],"shop_code":"SP",
+     "supplier_product_id":row["supplier_product_id"]}
+  v={"product_id":row["woo_product_id"],"variation_id":999999,
+     "attributes":{"サイズ":row["requested_size"].removeprefix("US ")}}
+  self.assertEqual(match_snapshot(p,v,self.rows)["status"],"HOLD")
  def test_not_alternative_variation(self):
   row=self.rows[0];p={"product_id":21376,"product_type":"variable","sku":"SP-8798793826510","shop_code":"SP","supplier_product_id":"8798793826510"}
   v={"product_id":21376,"variation_id":999999,"attributes":{"サイズ":row["requested_size"]}}
