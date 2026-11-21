@@ -50,16 +50,21 @@ function ahc_inline_selected_variant() {
         ahc_inline_error('invalid_selection', '選択された商品を確認できません。');
     }
     $actual = $variation->get_variation_attributes();
+    $selected = [];
     foreach ($actual as $name => $value) {
         $posted = ahc_inline_request($name);
         if ($value !== '' && $posted !== $value) {
             ahc_inline_error('invalid_selection', '選択されたサイズ・カラーが一致しません。');
         }
-        if ($value === '' && !$posted) {
+        if ($value === '' && $posted === '') {
             ahc_inline_error('invalid_selection', 'サイズまたはカラーを選択してください。');
         }
+        // For Woo "Any <attribute>" variations, the actual meta is empty,
+        // but the customer's selected value must survive into the permit,
+        // the cart line and the purchase record.
+        $selected[$name] = $posted;
     }
-    return [$parent, $variation, $actual];
+    return [$parent, $variation, $selected];
 }
 function ahc_inline_session_check($record) {
     $id = ahc_inline_session_id();
