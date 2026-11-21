@@ -41,7 +41,6 @@
 
     function errorFrom(r) {
       var code = (r && r.code) || 'network';
-      if (code === 'marked_oos') return { kind: 'result', r: { result: 'out_of_stock' } };
       return { kind: 'error', code: code, message: (r && r.message) || '' };
     }
 
@@ -207,24 +206,22 @@
     function clearActions() { actions.innerHTML = ''; }
     function setStatus(text, isError) { statusEl.textContent = text; statusEl.classList.toggle('is-error', !!isError); }
 
-    // 品切れ確定：このページでもそのサイズを SOLD OUT にする（他のお客様向けの表示はサーバーの品切れの印で行う）
-    function markSoldOut() {
-      if (!variable || !current || !form) { setOpenable(false, 'SOLD OUT'); return; }
-      var vid = current.variation_id;
-      try {
-        var list = JSON.parse(form.getAttribute('data-product_variations') || '[]');
-        list.forEach(function (v) { if (v.variation_id === vid) { v.is_in_stock = false; v.is_purchasable = false; } });
-        form.setAttribute('data-product_variations', JSON.stringify(list));
-      } catch (e) { /* 一覧が無い（AJAX 読み込み）場合は下の jQuery 側だけ */ }
-      if (root.jQuery) {
-        var cached = root.jQuery(form).data('product_variations');
-        if (Array.isArray(cached)) cached.forEach(function (v) { if (v.variation_id === vid) { v.is_in_stock = false; v.is_purchasable = false; } });
-        var size = selects().filter(function (s) { return /size/i.test(s.name); })[0] || selects()[selects().length - 1];
-        if (size) root.jQuery(size).trigger('change');
+    // Only the response for the currently selected variant affects this
+    // page immediately. Never rewrite Woo's variation records or cache:
+    // a fresh check can move SOLD OUT -> available without a reload.
+    function showLiveAvailability(result) {
+      if (!result || !variable || !current) return;
+      if (result === 'out_of_stock') {
+        box.dataset.liveAvailability = 'out_of_stock';
+        setOpenable(true, 'このサイズは SOLD OUT です。もう一度在庫確認できます。');
+      } else if (result === 'in_stock') {
+        box.dataset.liveAvailability = 'in_stock';
+        setOpenable(true, '在庫確認できました。カートに入れられます。');
+      } else {
+        delete box.dataset.liveAvailability;
+        setOpenable(true, '在庫を確認できませんでした。時間をおいて再確認してください。');
       }
-      setOpenable(false, 'このサイズは SOLD OUT です');
     }
-
     var view = {
       running: function () {
         clearActions(); spinner.hidden = false; setStatus(MSG.running, false);
@@ -232,6 +229,7 @@
       result: function (r) {
         spinner.hidden = true; clearActions();
         if (r.result === 'in_stock' && r.price_case === 'quote') {
+          showLiveAvailability('in_stock');
           setStatus(MSG.quote(r.quote_price_text, r.listed_price_text), false);
           button('この商品をカートに入れる', 'button alt ahc-sc-cart', function () {
             this.disabled = true;
@@ -241,6 +239,7 @@
           });
           button('キャンセル', 'ahc-sc-link ahc-sc-cancel', closeDialog);
         } else if (r.result === 'in_stock') {
+          showLiveAvailability('in_stock');
           var priceText = r.price_text || r.listed_price_text; // GPT のステージング版は listed_price_text だけを返す
           setStatus(MSG.inStock + (priceText ? '　販売価格：' + priceText : ''), false);
           button('この商品をカートに入れる', 'button alt ahc-sc-cart', function () {
@@ -252,15 +251,17 @@
           button('キャンセル', 'ahc-sc-link ahc-sc-cancel', closeDialog);
         } else if (r.result === 'out_of_stock') {
           setStatus(MSG.outOfStock, false);
-          markSoldOut();
+          showLiveAvailability('out_of_stock');
           button('閉じる', 'ahc-sc-link', closeDialog);
         } else {
+          showLiveAvailability('unconfirmed');
           setStatus(MSG.unconfirmed, true);
           button('閉じる', 'ahc-sc-link', closeDialog);
         }
       },
       error: function (code, message) {
         spinner.hidden = true; clearActions();
+        showLiveAvailability('unconfirmed');
         setStatus(messageFor(code, message), true);
         button('閉じる', 'ahc-sc-link', closeDialog);
       },
@@ -284,10 +285,11 @@
       var $f = root.jQuery(form);
       $f.on('found_variation', function (e, v) {
         current = v;
+        delete box.dataset.liveAvailability;
         if (v && v.is_in_stock && v.is_purchasable !== false) setOpenable(true, '');
         else setOpenable(false, 'このサイズは SOLD OUT です');
       });
-      $f.on('reset_data hide_variation', function () { current = null; setOpenable(false, 'カラー・サイズを選択してください'); });
+      $f.on('reset_data hide_variation', function () { current = null; delete box.dataset.liveAvailability; setOpenable(false, 'カラー・サイズを選択してください'); });
       // 選び直したら、開いているポップアップと途中の確認は捨てる
       $f.on('woocommerce_variation_select_change', function () { if (dialog.open) closeDialog(); });
     }
