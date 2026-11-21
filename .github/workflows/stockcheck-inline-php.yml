@@ -20,6 +20,9 @@ on:
       - "tools/ahc-stock-sp-evidence-offers-staging.php"
       - "tools/ahc-stock-sp-live-adapter-staging.php"
       - "tools/ahc-stock-sp-pricing-staging.php"
+      - "tools/ahc-stock-sp158-owner-bridge-staging.php"
+      - "tests/test_ahc_sp158_owner_bridge.php"
+      - "data/xserver-export/sp158-live-sku-match-2026-11-22.csv"
       - "tests/test_ahc_stock_sp_evidence_offers.php"
       - "tests/test_ahc_stock_sp_live_adapter.php"
       - "tests/test_ahc_stock_sp_pricing.php"
@@ -40,6 +43,8 @@ jobs:
           php -l tools/ahc-stock-sp-evidence-offers-staging.php
           php -l tools/ahc-stock-sp-live-adapter-staging.php
           php -l tools/ahc-stock-sp-pricing-staging.php
+          php -l tools/ahc-stock-sp158-owner-bridge-staging.php
+          php -l tests/test_ahc_sp158_owner_bridge.php
           php -l tests/test_ahc_stock_sp_evidence_offers.php
           php -l tests/test_ahc_stock_sp_live_adapter.php
           php -l tests/test_ahc_stock_sp_pricing.php
@@ -54,6 +59,7 @@ jobs:
           php tests/test_ahc_stock_sp_evidence_offers.php
           php tests/test_ahc_stock_sp_live_adapter.php
           php tests/test_ahc_stock_sp_pricing.php
+          php tests/test_ahc_sp158_owner_bridge.php
           php qa/php-tests/stockcheck_sp_chain_stub_test.php
       - name: SP Woo-to-supplier exact join unit tests
         run: python -m unittest discover -s tests -p 'test_stockcheck_sp_join_contract.py' -v
