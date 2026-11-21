@@ -1,0 +1,20 @@
+name: Inline stock server PHP draft validation
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - "tools/ahc-stock-inline-endpoints-staging.php"
+      - ".github/workflows/stockcheck-inline-php.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP syntax validation
+        run: php -l tools/ahc-stock-inline-endpoints-staging.php
+      - name: Ensure no customer email or direct cart activation in staging module
+        run: |
+          ! grep -E 'wp_mail\(|ahc_stock_check_allow_cart\s*,\s*true' tools/ahc-stock-inline-endpoints-staging.php
