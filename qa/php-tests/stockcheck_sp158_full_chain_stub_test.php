@@ -145,9 +145,8 @@ expect('real supplier sold-out result never authorizes purchase',
     $step->ok && $step->payload['result']==='out_of_stock' &&
     empty($step->payload['permit']));
 $blocked=start_check();
-expect('current stage server enforces recorded sold-out hold',
-    !$blocked->ok && $blocked->payload['code']==='marked_oos');
-$GLOBALS['META'][$vid]['_ahc_inline_oos_until']=time()-1;
+expect('explicit repeat stock check is allowed without automatic expiry or persistent lock',
+    $blocked->ok && empty($GLOBALS['META'][$vid]['_ahc_inline_oos_until']));
 $GLOBALS['TRANSIENTS']=[];$GLOBALS['WCENV']->session=new Session();$GLOBALS['HTTP']=[];
 // USD 99.00 yields an owner-formula increase below JPY 400; listed price stays.
 merchant(true,9900);
