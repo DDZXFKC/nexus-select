@@ -213,14 +213,23 @@ add_filter('ahc_stock_check_allow_cart', 'ahc_inline_allow_internal_cart', 99, 1
 
 // The gate is also enforced if the legacy stage-1 blocker is deactivated.
 // Never permit generic add-to-cart URLs or Store API calls without a checked permit.
-function ahc_inline_only_authorized_add($valid) {
-    if (!empty($GLOBALS['ahc_inline_authorized_cart_add'])) return $valid;
+function ahc_inline_only_authorized_add($valid, $product_id = 0, $quantity = 0,
+                                        $variation_id = 0, $variations = []) {
+    $ctx = $GLOBALS['ahc_inline_authorized_cart_add'] ?? null;
+    // The short-lived global flag is not general cart authorization. A nested
+    // add_to_cart call for a different item/variant cannot inherit this permit.
+    if (is_array($ctx) && $valid
+        && (int)$product_id === (int)$ctx['product_id']
+        && (int)$variation_id === (int)$ctx['variation_id']
+        && (int)$quantity === 1
+        && is_array($variations)
+        && $variations === (array)($ctx['attrs'] ?? [])) return $valid;
     if (function_exists('wc_add_notice')) {
         wc_add_notice('購入前に商品の在庫を確認してください。', 'error');
     }
     return false;
 }
-add_filter('woocommerce_add_to_cart_validation', 'ahc_inline_only_authorized_add', 999, 1);
+add_filter('woocommerce_add_to_cart_validation', 'ahc_inline_only_authorized_add', 999, 5);
 
 function ahc_inline_only_authorized_store_api() {
     if (!empty($GLOBALS['ahc_inline_authorized_cart_add'])) return;
