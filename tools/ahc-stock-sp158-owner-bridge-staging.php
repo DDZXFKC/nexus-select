@@ -140,6 +140,23 @@ function ahc_sp158_owner_price($previous, $current_price, $offer, $product_id, $
         || (string)($offer['merchant_variant_id'] ?? '') !== $row['shopify_variant_id_live']
         || ($offer['merchant_variant_sku'] ?? '') !== $row['shopify_variant_sku_live']
         || ($offer['url'] ?? '') !== $row['source_url']) return null;
+    // The .js product endpoint has no checkout destination, sales tax,
+    // domestic-shipping charge or import-fee evidence. The owner's exact
+    // formula is authoritative, but it must not be treated as proof that
+    // those costs are already covered for this particular purchase route.
+    $cost_context = [
+        'shop'=>'SP',
+        'product_id'=>$product_id,
+        'variation_id'=>$variation_id,
+        'supplier_product_id'=>$row['supplier_product_id'],
+        'merchant_variant_id'=>$row['shopify_variant_id_live'],
+        'merchant_variant_sku'=>$row['shopify_variant_sku_live'],
+        'source_url'=>$row['source_url'],
+        'source_price_usd'=>$current_price['amount'],
+        'currency'=>'USD',
+    ];
+    if (apply_filters('ahc_sp158_live_cost_coverage_verified', false,
+            $cost_context) !== true) return null;
     $cents = (int)str_replace('.', '', $current_price['amount']);
     return ahc_sp158_sale_price_from_cents($cents);
 }
