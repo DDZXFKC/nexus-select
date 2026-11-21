@@ -32,11 +32,20 @@ function ahc_inline_selected_variant() {
     }
     $pid = absint(ahc_inline_request('product_id'));
     $vid = absint(ahc_inline_request('variation_id'));
-    if (!$pid || !$vid) ahc_inline_error('invalid_selection', 'サイズを選択してください。');
+    if (!$pid) ahc_inline_error('invalid_selection', '商品を選択してください。');
     $parent = wc_get_product($pid);
+    if (!$parent || !$parent->is_visible() || $parent->get_status() !== 'publish') {
+        ahc_inline_error('invalid_selection', '選択された商品を確認できません。');
+    }
+    // Simple products have no variation ID; stock-check the product itself.
+    if ($parent->is_type('simple') && $vid === 0) {
+        return [$parent, $parent, []];
+    }
+    if (!$parent->is_type('variable') || !$vid) {
+        ahc_inline_error('invalid_selection', 'サイズを選択してください。');
+    }
     $variation = wc_get_product($vid);
-    if (!$parent || !$parent->is_visible() || !$parent->is_type('variable')
-        || !$variation || !$variation->is_type('variation')
+    if (!$variation || !$variation->is_type('variation')
         || (int) $variation->get_parent_id() !== $pid) {
         ahc_inline_error('invalid_selection', '選択された商品を確認できません。');
     }
@@ -59,6 +68,11 @@ function ahc_inline_session_check($record) {
 }
 function ahc_inline_start() {
     ahc_inline_nonce();
+    // Force persistence for first-time anonymous visitors with an empty cart.
+    if (function_exists('WC') && WC() && WC()->session
+        && method_exists(WC()->session, 'set_customer_session_cookie')) {
+        WC()->session->set_customer_session_cookie(true);
+    }
     $session = ahc_inline_session_id();
     if ($session === '') ahc_inline_error('session', 'カートを利用できません。', 503);
     [$parent, $variation, $attrs] = ahc_inline_selected_variant();
@@ -88,7 +102,7 @@ function ahc_inline_start() {
     $record = [
         'session' => hash('sha256', $session),
         'product_id' => $parent->get_id(),
-        'variation_id' => $variation->get_id(),
+        'variation_id' => $parent->is_type('simple') ? 0 : $variation->get_id(),
         'attrs' => $attrs,
         'started' => time(),
         'offers' => $offers,
@@ -175,7 +189,7 @@ function ahc_inline_step() {
                    return $x['stock']==='OUT_OF_STOCK';
               })) === count($r['offers'])) {
         $result = ['ok'=>true,'state'=>'done','result'=>'out_of_stock'];
-        update_post_meta($r['variation_id'],'_ahc_inline_oos_until',time()+24*3600);
+        update_post_meta($r['variation_id'] ?: $r['product_id'],'_ahc_inline_oos_until',time()+24*3600);
     } else {
         $result = ['ok'=>true,'state'=>'done','result'=>'unconfirmed','reason'=>'unreadable'];
     }
@@ -187,9 +201,156 @@ function ahc_inline_step() {
 add_action('wp_ajax_ahc_sc_step', 'ahc_inline_step');
 add_action('wp_ajax_nopriv_ahc_sc_step', 'ahc_inline_step');
 
-/*
- * ahc_sc_add_to_cart is intentionally NOT exposed until the Woo standard and
- * Store API cart gates, session-bound single-use permits, quoted price
- * persistence, and checkout validation have been tested together. Installing
- * this file alone does NOT unlock purchasing.
+/**
+ * A narrow gate: stage-1 plugin denies ordinary Woo and Store API cart adds.
+ * Only our verified short-lived permit can open the gate INSIDE this request.
  */
+function ahc_inline_allow_internal_cart($allowed) {
+    return !empty($GLOBALS['ahc_inline_authorized_cart_add']);
+}
+add_filter('ahc_stock_check_allow_cart', 'ahc_inline_allow_internal_cart', 99, 1);
+
+// The gate is also enforced if the legacy stage-1 blocker is deactivated.
+// Never permit generic add-to-cart URLs or Store API calls without a checked permit.
+function ahc_inline_only_authorized_add($valid) {
+    if (!empty($GLOBALS['ahc_inline_authorized_cart_add'])) return $valid;
+    if (function_exists('wc_add_notice')) {
+        wc_add_notice('購入前に商品の在庫を確認してください。', 'error');
+    }
+    return false;
+}
+add_filter('woocommerce_add_to_cart_validation', 'ahc_inline_only_authorized_add', 999, 1);
+
+function ahc_inline_only_authorized_store_api() {
+    if (!empty($GLOBALS['ahc_inline_authorized_cart_add'])) return;
+    $ex = '\\Automattic\\WooCommerce\\StoreApi\\Exceptions\\RouteException';
+    if (class_exists($ex)) {
+        throw new $ex('ahc_stock_check_only', '購入前に商品の在庫を確認してください。', 400);
+    }
+    throw new Exception('購入前に商品の在庫を確認してください。');
+}
+add_action('woocommerce_store_api_validate_add_to_cart', 'ahc_inline_only_authorized_store_api', 999, 0);
+
+/**
+ * A server-side one-use claim protects permits from concurrent replay.
+ * Claim is recorded via unique option key and reclaimed after one day.
+ */
+function ahc_inline_claim_permit($token) {
+    return add_option('ahc_inline_claim_' . hash('sha256', $token), time(), '', false);
+}
+function ahc_inline_gc_claims() {
+    global $wpdb;
+    $prefix = $wpdb->esc_like('ahc_inline_claim_') . '%';
+    $before = time() - DAY_IN_SECONDS;
+    $rows = $wpdb->get_results($wpdb->prepare(
+        "SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE %s", $prefix
+    ));
+    foreach ((array) $rows as $row) {
+        if (ctype_digit((string) $row->option_value) && (int) $row->option_value < $before) {
+            delete_option($row->option_name);
+        }
+    }
+}
+add_action('ahc_inline_gc_claims', 'ahc_inline_gc_claims');
+add_action('init', function () {
+    if (!wp_next_scheduled('ahc_inline_gc_claims')) {
+        wp_schedule_event(time() + HOUR_IN_SECONDS, 'daily', 'ahc_inline_gc_claims');
+    }
+});
+
+/** Attach a server-only signed quote to this exact cart line. */
+function ahc_inline_cart_item_data($data, $product_id, $variation_id) {
+    $ctx = $GLOBALS['ahc_inline_authorized_cart_add'] ?? null;
+    if (!is_array($ctx)) return $data;
+    if ((int) $ctx['product_id'] !== (int) $product_id
+        || (int) $ctx['variation_id'] !== (int) $variation_id) return $data;
+    $data['ahc_inline_price'] = (int) $ctx['price'];
+    $data['ahc_inline_time'] = time();
+    $data['ahc_inline_shop'] = (string) $ctx['shop'];
+    $data['ahc_inline_unique'] = bin2hex(random_bytes(16));
+    $data['ahc_inline_sig'] = hash_hmac('sha256',
+        implode('|', [$data['ahc_inline_price'], $data['ahc_inline_time'],
+                       $product_id, $variation_id, $data['ahc_inline_unique']]), wp_salt('auth'));
+    return $data;
+}
+add_filter('woocommerce_add_cart_item_data', 'ahc_inline_cart_item_data', 50, 3);
+
+function ahc_inline_cart_line_valid($line) {
+    foreach (['product_id','variation_id','ahc_inline_price','ahc_inline_time',
+              'ahc_inline_unique','ahc_inline_sig'] as $key) {
+        if (!isset($line[$key])) return false;
+    }
+    if (!is_numeric($line['ahc_inline_price']) || (int)$line['ahc_inline_price'] <= 0) return false;
+    if (!is_numeric($line['ahc_inline_time'])) return false;
+    if (time() - (int)$line['ahc_inline_time'] > 60 * MINUTE_IN_SECONDS
+        || (int)$line['ahc_inline_time'] > time() + 30) return false;
+    $expected = hash_hmac('sha256', implode('|', [
+        (int)$line['ahc_inline_price'], (int)$line['ahc_inline_time'],
+        (int)$line['product_id'], (int)$line['variation_id'], (string)$line['ahc_inline_unique']
+    ]), wp_salt('auth'));
+    return hash_equals($expected, (string)$line['ahc_inline_sig']);
+}
+add_action('woocommerce_before_calculate_totals', function ($cart) {
+    if (!$cart || !is_object($cart)) return;
+    foreach ($cart->get_cart() as $line) {
+        if (!ahc_inline_cart_line_valid($line)) continue;
+        if (isset($line['data']) && is_object($line['data'])) {
+            $line['data']->set_price((int)$line['ahc_inline_price']);
+        }
+    }
+}, 999);
+add_action('woocommerce_check_cart_items', function () {
+    if (!function_exists('WC') || !WC() || !WC()->cart) return;
+    foreach (WC()->cart->get_cart() as $line) {
+        if (!ahc_inline_cart_line_valid($line)) {
+            wc_add_notice('カート内の商品は在庫確認の期限が切れました。商品ページから再確認してください。', 'error');
+            break;
+        }
+    }
+});
+
+/** Same API response wrapper the Claude JS accepts. */
+function ahc_inline_add_to_cart() {
+    ahc_inline_nonce();
+    $token = ahc_inline_request('permit');
+    if (!preg_match('/^[a-f0-9]{48}$/', $token)) {
+        ahc_inline_error('permit_invalid', '再度在庫を確認してください。', 403);
+    }
+    $key = 'ahc_inline_permit_' . $token;
+    $ctx = get_transient($key);
+    if (!is_array($ctx) || !ahc_inline_session_check($ctx)) {
+        ahc_inline_error('permit_expired', '在庫確認の期限が切れました。', 403);
+    }
+    if (!empty($ctx['quote']) && ahc_inline_request('accept_quote') !== '1') {
+        ahc_inline_error('quote_not_accepted', '新しい価格への同意が必要です。', 400);
+    }
+    if (!function_exists('WC') || !WC() || !WC()->cart) {
+        ahc_inline_error('permit_invalid', 'カートを利用できません。', 503);
+    }
+    $product_id = (int) $ctx['product_id'];
+    $variation_id = (int) $ctx['variation_id'];
+    $product = wc_get_product($variation_id ?: $product_id);
+    if (!$product || !$product->is_purchasable() || !$product->is_in_stock()
+        || (int)get_post_meta($variation_id ?: $product_id, '_ahc_inline_oos_until', true) > time()) {
+        ahc_inline_error('permit_invalid', '選択商品の在庫を確認できません。', 409);
+    }
+    if (!ahc_inline_claim_permit($token)) {
+        ahc_inline_error('permit_invalid', 'この在庫確認は既に使用されています。', 409);
+    }
+    $GLOBALS['ahc_inline_authorized_cart_add'] = $ctx;
+    try {
+        $added = WC()->cart->add_to_cart($product_id, 1, $variation_id,
+                                        (array)($ctx['attrs'] ?? []));
+    } finally {
+        unset($GLOBALS['ahc_inline_authorized_cart_add']);
+    }
+    if (!$added) {
+        // Cart can fail validation for reasons unrelated to the permit.
+        delete_option('ahc_inline_claim_' . hash('sha256', $token));
+        ahc_inline_error('permit_invalid', 'カートへの追加に失敗しました。', 409);
+    }
+    delete_transient($key);
+    wp_send_json_success(['ok'=>true, 'cart_url'=>wc_get_cart_url()]);
+}
+add_action('wp_ajax_ahc_sc_add_to_cart', 'ahc_inline_add_to_cart');
+add_action('wp_ajax_nopriv_ahc_sc_add_to_cart', 'ahc_inline_add_to_cart');
