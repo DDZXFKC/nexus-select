@@ -4,6 +4,8 @@ on:
     branches: [integration/grok-review]
     paths:
       - "tools/ahc-stock-inline-endpoints-staging.php"
+      - "tools/stockcheck_sp_join_contract.py"
+      - "tests/test_stockcheck_sp_join_contract.py"
       - "qa/php-tests/stockcheck_inline_endpoint_stub_test.php"
       - "tools/ahc-stock-inline-cart-gate-staging.php"
       - ".github/workflows/stockcheck-inline-php.yml"
@@ -24,3 +26,5 @@ jobs:
           ! grep -E 'wp_mail\(|ahc_stock_check_allow_cart\s*,\s*true' tools/ahc-stock-inline-endpoints-staging.php
       - name: Anonymous guest and Woo cart mock integration
         run: php qa/php-tests/stockcheck_inline_endpoint_stub_test.php
+      - name: SP Woo-to-supplier exact join unit tests
+        run: python -m unittest discover -s tests -p 'test_stockcheck_sp_join_contract.py' -v
