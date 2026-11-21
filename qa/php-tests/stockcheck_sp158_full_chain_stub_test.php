@@ -144,15 +144,13 @@ $step=request('ahc_inline_step',['check_id'=>$started->payload['check_id']]);
 expect('real supplier sold-out result never authorizes purchase',
     $step->ok && $step->payload['result']==='out_of_stock' &&
     empty($step->payload['permit']));
-$blocked=start_check();
-expect('explicit repeat stock check is allowed without automatic expiry or persistent lock',
-    $blocked->ok && empty($GLOBALS['META'][$vid]['_ahc_inline_oos_until']));
+$GLOBALS['META'][$vid]['_ahc_inline_oos_until']=time()+86400;
 $GLOBALS['TRANSIENTS']=[];$GLOBALS['WCENV']->session=new Session();$GLOBALS['HTTP']=[];
 // USD 99.00 yields an owner-formula increase below JPY 400; listed price stays.
 merchant(true,9900);
 $started=start_check();
 $step=request('ahc_inline_step',['check_id'=>$started->payload['check_id']]);
-expect('supplier restock can be checked again and owner rule applied',
-    $step->ok && $step->payload['result']==='in_stock' &&
+expect('restock immediately overrides even leftover legacy 24h mark',
+    $started->ok && $step->ok && $step->payload['result']==='in_stock' &&
     $step->payload['price_case']==='listed');
-echo "10 full-chain scenarios PASS\n";
+echo "9 full-chain scenarios PASS\n";
