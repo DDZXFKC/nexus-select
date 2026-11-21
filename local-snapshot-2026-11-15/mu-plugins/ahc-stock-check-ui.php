@@ -71,17 +71,6 @@ function ahc_scui_block($variable) {
     return ob_get_clean();
 }
 
-/* 在庫確認で全店品切れが確定したサイズ（_ahc_inline_oos_until が未来）は、他のお客様にも SOLD OUT と見せる。
- * WooCommerce の在庫データは書き換えない（設計 §4）。印はサーバー側（GPT）の ahc_sc_step が付ける。 */
-add_filter('woocommerce_available_variation', function ($data, $product, $variation) {
-    if ($variation && (int) get_post_meta($variation->get_id(), '_ahc_inline_oos_until', true) > time()) {
-        $data['is_in_stock'] = false;
-        $data['is_purchasable'] = false;
-        $data['availability_html'] = '<p class="stock out-of-stock">SOLD OUT</p>';
-    }
-    return $data;
-}, 20, 3);
-
 add_action('wp_enqueue_scripts', function () {
     if (!ahc_scui_is_product_page()) return;
     $base = defined('WPMU_PLUGIN_URL') ? WPMU_PLUGIN_URL : content_url('mu-plugins');
