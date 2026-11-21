@@ -72,5 +72,25 @@ jobs:
               sys.exit(1)
           print("LIVE_STOCK=", "IN_STOCK" if variant["available"] else "OUT_OF_STOCK")
           print("LIVE_PRICE_CENTS=", variant["price"])
+          matching_rows=[x for x in rows if x["supplier_product_id"] == r["supplier_product_id"]]
+          live_variants={str(v.get("id","")):v for v in data["variants"]}
+          checked=0
+          in_stock=0
+          out_stock=0
+          for expected in matching_rows:
+              v=live_variants.get(expected["shopify_variant_id_live"])
+              if not isinstance(v,dict) or str(v.get("sku",""))!=expected["woo_variation_sku"]:
+                  print("FAIL: missing or mismatched SKU within first supplier product")
+                  sys.exit(1)
+              if not isinstance(v.get("available"),bool) or type(v.get("price")) is not int or v["price"]<=0:
+                  print("FAIL: variant stock or price invalid")
+                  sys.exit(1)
+              checked+=1
+              in_stock+=bool(v["available"])
+              out_stock+=not v["available"]
+          print("LIVE_WHOLE_PRODUCT_VARIANTS_CHECKED=", checked)
+          print("LIVE_VARIANTS_IN_STOCK=", in_stock)
+          print("LIVE_VARIANTS_OUT_OF_STOCK=", out_stock)
+          print("LIVE_PRODUCT_VARIANTS_IDENTITY_CHECK=PASS")
           print("LIVE_IDENTITY_STOCK_PRICE_CHECK=PASS")
           PY
