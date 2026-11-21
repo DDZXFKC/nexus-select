@@ -1,5 +1,7 @@
 # 在庫確認フロー 最終設計（Claude、2026-11-21）
 
+> **superseded（2026-11-21 12:32頃のオーナー決定：メール返信を廃止し、その場で判定してカートへ）**：現行は docs/stock-check-inline-final-design-claude-2026-11-21.md。
+
 **この文書が在庫確認フローの設計の正本。** 旧設計 v2／v2.1（docs/stock-check-auto-flow-design-v2-claude-2026-11-20.md）は superseded。
 
 根拠：
