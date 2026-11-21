@@ -1,0 +1,30 @@
+name: Shoe Palace 158 supplier SKU evidence (one-shot)
+
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - ".github/workflows/sp158-supplier-identity-full-once.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify strict SKU and robots rules
+        run: python -m unittest discover -s tests -p 'test_sp158_supplier_variant_probe.py' -v
+      - name: Read 158 documented products at max one request each, five seconds apart
+        run: python -m tools.sp158_supplier_variant_probe --max-products 158 --output out/sp158-shopify-variant-evidence.csv
+      - name: Preserve non-authorizing identity snapshot for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sp158-shopify-variant-evidence
+          path: out/sp158-shopify-variant-evidence.csv
+          if-no-files-found: warn
+          retention-days: 7
