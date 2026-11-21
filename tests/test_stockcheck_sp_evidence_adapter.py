@@ -6,21 +6,36 @@ class EvidenceTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
   cls.rows=verified_sp_rows()
- def test_33_evidence_rows(self):
-  self.assertEqual(len(self.rows),33)
-  self.assertEqual(len(set(x["variation_id"] for x in self.rows)),33)
-  self.assertEqual(set(x["woo_product_id"] for x in self.rows),{21376,19905})
+ def test_evidence_integrity_not_fixed_row_count(self):
+  self.assertGreaterEqual(len(self.rows),77)
+  self.assertEqual(len(set((x["woo_product_id"],x["variation_id"]) for x in self.rows)),len(self.rows))
+  self.assertTrue({21376,19905,19812,19801,20043}.issubset(set(x["woo_product_id"] for x in self.rows)))
+  self.assertEqual(len(set(x["woo_product_id"] for x in self.rows)),7)
+  self.assertTrue(all(x["merchant_size"] and x["merchant_variant_id"] for x in self.rows))
  def test_all_rows_match_exact_woo_variation(self):
-  ids={21376:"8798793826510",19905:"8813225803982"}
   for row in self.rows:
    pid=row["woo_product_id"]
-   p={"product_id":pid,"product_type":"variable","sku":"SP-"+ids[pid],
-      "shop_code":"SP","supplier_product_id":ids[pid]}
+   p={"product_id":pid,"product_type":"variable","sku":"SP-"+row["supplier_product_id"],
+      "shop_code":"SP","supplier_product_id":row["supplier_product_id"]}
    v={"product_id":pid,"variation_id":row["variation_id"],
       "attributes":{"サイズ":row["requested_size"],"カラー":row["requested_color"]}}
    got=match_snapshot(p,v,self.rows)
    self.assertEqual(got["status"],"CANDIDATE_ONLY",got)
    self.assertEqual(got["merchant_variant_id"],row["merchant_variant_id"])
+ def test_grade_school_sizes_are_strict_and_identity_bound(self):
+  gs=[x for x in self.rows if "Y (" in x["requested_size"]]
+  self.assertTrue(gs)
+  for row in gs:
+   p={"product_id":row["woo_product_id"],"product_type":"variable",
+      "sku":"SP-"+row["supplier_product_id"],"shop_code":"SP",
+      "supplier_product_id":row["supplier_product_id"]}
+   v={"product_id":row["woo_product_id"],"variation_id":row["variation_id"],
+      "attributes":{"サイズ":row["requested_size"],"カラー":row["requested_color"]}}
+   self.assertEqual(match_snapshot(p,v,self.rows)["status"],"CANDIDATE_ONLY")
+   bad=dict(row,merchant_size="4Y" if row["merchant_size"]!="4Y" else "3Y")
+   self.assertEqual(link_sp_variation(p,v,[bad])["status"],"HOLD")
+   self.assertEqual(link_sp_variation(p,dict(v,variation_id=999999),[row])["status"],"HOLD")
+   self.assertEqual(link_sp_variation(p,dict(v,attributes={"サイズ":"EU 36","カラー":row["requested_color"]}),[row])["status"],"HOLD")
  def test_not_alternative_variation(self):
   row=self.rows[0];p={"product_id":21376,"product_type":"variable","sku":"SP-8798793826510","shop_code":"SP","supplier_product_id":"8798793826510"}
   v={"product_id":21376,"variation_id":999999,"attributes":{"サイズ":row["requested_size"],"カラー":row["requested_color"]}}
