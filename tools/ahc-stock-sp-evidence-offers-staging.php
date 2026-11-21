@@ -74,12 +74,16 @@ function ahc_sp_offers_from_evidence($offers, $product_id, $variation_id, $attrs
         'merchant_variant_sku' => $sku, 'source_url' => $row['source_url']
     ]);
     if (!is_int($estimate) || $estimate <= 0) return $offers;
+    // Shopify .js does not carry a currency; do not assert USD from URL.
+    $currency = apply_filters('ahc_sp_verified_store_currency', null,
+        $row['source_url'], $supplier_product_id);
+    if ($currency !== 'USD') return $offers;
     $offers[] = [
         'shop'=>'SP', 'url'=>$row['source_url'],
         'supplier_product_id'=>$supplier_product_id,
         'merchant_variant_id'=>$row['merchant_variant_id'],
         'merchant_variant_sku'=>$sku, 'identity_verified'=>true,
-        'verified_currency'=>'USD', 'estimated_total_jpy'=>$estimate
+        'verified_currency'=>$currency, 'estimated_total_jpy'=>$estimate
     ];
     return $offers;
 }
