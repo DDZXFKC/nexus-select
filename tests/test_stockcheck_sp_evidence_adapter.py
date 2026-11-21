@@ -20,7 +20,7 @@ class EvidenceTests(unittest.TestCase):
    v={"product_id":pid,"variation_id":row["variation_id"],
       "attributes":{"サイズ":row["requested_size"],"カラー":row["requested_color"]}}
    got=match_snapshot(p,v,self.rows)
-   self.assertEqual(got["status"],"CANDIDATE_ONLY",got)
+   self.assertEqual(got["status"],"CANDIDATE_ONLY",{"row":row,"decision":got})
    self.assertEqual(got["merchant_variant_id"],row["merchant_variant_id"])
  def test_grade_school_sizes_are_strict_and_identity_bound(self):
   gs=[x for x in self.rows if "Y (" in x["requested_size"]]
