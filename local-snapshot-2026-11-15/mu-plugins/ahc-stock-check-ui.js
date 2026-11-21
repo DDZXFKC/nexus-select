@@ -17,7 +17,7 @@
     network: '通信に失敗しました。時間をおいてもう一度お試しください。',
     rateLimited: '短時間に続けて確認されました。少し待ってからもう一度お試しください。',
     nonce: '画面の有効期限が切れました。ページを再読み込みしてから、もう一度お試しください。',
-    permitExpired: '確認から時間がたちました。もう一度在庫を確認してください。',
+    permitExpired: '在庫確認情報を確認できませんでした。もう一度在庫を確認してください。',
     invalid: '選択内容を確認できませんでした。カラーとサイズを選び直してください。'
   };
 
@@ -35,6 +35,9 @@
     var intervalMs = opts.intervalMs || 1000;
     var token = 0;
     var busy = false;
+    var adding = false;
+    var activeCheckId = null;
+    var activePermit = null;
 
     function errorFrom(r) {
       var code = (r && r.code) || 'network';
@@ -60,35 +63,60 @@
         return api.step(checkId).then(function (s) {
           if (my !== token) return 'cancelled';
           if (!s || !s.ok) return handle(errorFrom(s));
-          if (s.state === 'done') { view.result(s); return s.result; }
+          if (s.state === 'done') {
+            activePermit = s.result === 'in_stock' ? (s.permit || null) : null;
+            view.result(s); return s.result;
+          }
           return sleep(intervalMs).then(function () { return loop(checkId); });
         });
       }
       return api.start(selection).then(function (r) {
         if (my !== token) return 'cancelled';
         if (!r || !r.ok) return handle(errorFrom(r));
+        activeCheckId = r.check_id;
         return loop(r.check_id);
       }).catch(function () {
         return handle({ kind: 'error', code: 'network', message: '' });
       }).then(finish, finish);
     }
 
-    function cancel() { token++; busy = false; }
-
-    function addToCart(permit, acceptQuote) {
-      return api.addToCart(permit, acceptQuote ? 1 : 0).then(function (r) {
-        if (r && r.ok) { view.added(r); return 'added'; }
-        var e = errorFrom(r); view.error(e.code, e.message); return 'error:' + e.code;
-      }).catch(function () { view.error('network', ''); return 'error:network'; });
+    function cancel() {
+      if (adding) return;
+      token++; busy = false;
+      var id = activeCheckId, permit = activePermit;
+      activeCheckId = null; activePermit = null;
+      if (api.cancel && (id || permit)) {
+        // Explicitly invalidate the server-side permit; no time-based expiry.
+        Promise.resolve().then(function () { return api.cancel(id || '', permit || ''); })
+          .catch(function () { /* Fail closed server-side if transport is lost. */ });
+      }
     }
 
-    return { run: run, cancel: cancel, addToCart: addToCart, isBusy: function () { return busy; } };
+    function addToCart(permit, acceptQuote) {
+      if (adding) return Promise.resolve('busy');
+      adding = true;
+      return api.addToCart(permit, acceptQuote ? 1 : 0).then(function (r) {
+        adding = false;
+        if (r && r.ok) {
+          activeCheckId = null; activePermit = null;
+          view.added(r); return 'added';
+        }
+        var e = errorFrom(r); view.error(e.code, e.message); return 'error:' + e.code;
+      }).catch(function () {
+        adding = false;
+        view.error('network', ''); return 'error:network';
+      });
+    }
+
+    return { run: run, cancel: cancel, addToCart: addToCart,
+      isBusy: function () { return busy; },
+      isAdding: function () { return adding; } };
   }
 
   function messageFor(code, serverMessage) {
     if (code === 'rate_limited') return MSG.rateLimited;
     if (code === 'nonce') return MSG.nonce;
-    if (code === 'permit_expired' || code === 'permit_invalid') return MSG.permitExpired;
+    if (code === 'permit_invalid') return MSG.permitExpired;
     if (code === 'invalid_selection') return MSG.invalid;
     if (code === 'network') return MSG.network;
     return serverMessage || MSG.unconfirmed;
@@ -153,7 +181,12 @@
     function setOpenable(ok, why) { openBtn.disabled = !ok; reason.textContent = ok ? '' : why; }
     function openDialog() { if (dialog.showModal) { if (!dialog.open) dialog.showModal(); } else dialog.setAttribute('open', ''); }
     // 閉じる・キャンセル：カートには入れずに閉じる。サイズの選択はそのまま残す（フォームには触らない）。
-    function closeDialog() { flow.cancel(); if (dialog.close) { if (dialog.open) dialog.close(); } else dialog.removeAttribute('open'); }
+    function closeDialog() {
+      if (flow.isAdding()) return;
+      flow.cancel();
+      if (dialog.close) { if (dialog.open) dialog.close(); }
+      else dialog.removeAttribute('open');
+    }
     function button(label, cls, onClick) {
       var b = document.createElement('button'); b.type = 'button'; b.className = cls; b.textContent = label;
       b.addEventListener('click', onClick); actions.appendChild(b); return b;
@@ -187,12 +220,22 @@
         spinner.hidden = true; clearActions();
         if (r.result === 'in_stock' && r.price_case === 'quote') {
           setStatus(MSG.quote(r.quote_price_text, r.listed_price_text), false);
-          button('この商品をカートに入れる', 'button alt ahc-sc-cart', function () { this.disabled = true; flow.addToCart(r.permit, true); });
+          button('この商品をカートに入れる', 'button alt ahc-sc-cart', function () {
+            this.disabled = true;
+            var cancel = actions.querySelector('.ahc-sc-cancel');
+            if (cancel) cancel.disabled = true;
+            flow.addToCart(r.permit, true);
+          });
           button('キャンセル', 'ahc-sc-link ahc-sc-cancel', closeDialog);
         } else if (r.result === 'in_stock') {
           var priceText = r.price_text || r.listed_price_text; // GPT のステージング版は listed_price_text だけを返す
           setStatus(MSG.inStock + (priceText ? '　販売価格：' + priceText : ''), false);
-          button('この商品をカートに入れる', 'button alt ahc-sc-cart', function () { this.disabled = true; flow.addToCart(r.permit, false); });
+          button('この商品をカートに入れる', 'button alt ahc-sc-cart', function () {
+            this.disabled = true;
+            var cancel = actions.querySelector('.ahc-sc-cancel');
+            if (cancel) cancel.disabled = true;
+            flow.addToCart(r.permit, false);
+          });
           button('キャンセル', 'ahc-sc-link ahc-sc-cancel', closeDialog);
         } else if (r.result === 'out_of_stock') {
           setStatus(MSG.outOfStock, false);
@@ -219,7 +262,9 @@
     var flow = createFlow({
       start: function (sel) { return post('ahc_sc_start', sel); },
       step: function (id) { return post('ahc_sc_step', { check_id: id }); },
-      addToCart: function (permit, accept) { return post('ahc_sc_add_to_cart', { permit: permit, accept_quote: accept }); }
+      addToCart: function (permit, accept) { return post('ahc_sc_add_to_cart', { permit: permit, accept_quote: accept }); },
+      cancel: function (checkId, permit) { return post('ahc_sc_cancel',
+        { check_id: checkId || '', permit: permit || '' }); }
     }, view, { budgetMs: (CFG.budgetSeconds || 45) * 1000 });
 
     if (variable && root.jQuery && form) {
@@ -240,7 +285,10 @@
       flow.run(selection());
     });
     dialog.addEventListener('click', function (e) { if (e.target === dialog) closeDialog(); });
-    dialog.addEventListener('cancel', function () { flow.cancel(); });
+    dialog.addEventListener('cancel', function (event) {
+      if (flow.isAdding()) { event.preventDefault(); return; }
+      flow.cancel();
+    });
     box.querySelector('.ahc-sc-close').addEventListener('click', closeDialog);
   }
 
