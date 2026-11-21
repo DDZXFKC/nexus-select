@@ -68,21 +68,33 @@ function ahc_sp_pricing_jpy($previous, $current_price, $offer, $product_id, $var
         $landed += $cost;
     }
 
-    $profit = $input['required_profit_jpy'] ?? null;
-    $payment_bps = $input['payment_fee_bps'] ?? null;
-    $payment_fixed = $input['payment_fixed_jpy'] ?? null;
+    // Owner's sheet uses a source-price card uplift (2% in the
+    // reviewed snapshot) and a revenue divisor, not a separately
+    // invented fixed-profit + payment-fee gross-up formula.
+    // Supply the channel-adjusted divisor from reviewed, current
+    // server-side settings. Never silently apply a BUYMA divisor to AHC.
+    $card_bps = $input['source_card_uplift_bps'] ?? null;
+    $divisor = $input['channel_price_divisor_million'] ?? null;
     $round_up = $input['round_up_jpy'] ?? null;
     $policy = $input['pricing_policy_ref'] ?? null;
-    if (!is_int($profit) || $profit < 0 || $profit > 10000000 ||
-        !is_int($payment_bps) || $payment_bps < 0 || $payment_bps >= 10000 ||
-        !is_int($payment_fixed) || $payment_fixed < 0 || $payment_fixed > 100000 ||
+    if (($input['channel'] ?? '') !== 'AHC' ||
+        ($input['channel_fee_verified'] ?? false) !== true ||
+        !is_int($card_bps) || $card_bps < 0 || $card_bps > 10000 ||
+        !is_int($divisor) || $divisor < 100000 || $divisor > 1000000 ||
         !is_int($round_up) || $round_up < 1 || $round_up > 10000 ||
         !is_string($policy) || $policy === '') return null;
-    $base = $landed + $payment_fixed + $profit;
-    $denominator = 10000 - $payment_bps;
-    if ($base <= 0 || $base > 100000000) return null;
-    $price = intdiv($base * 10000 + $denominator - 1, $denominator);
-    $price = intdiv($price + $round_up - 1, $round_up) * $round_up;
+    // Calculate the source price uplift at 1/10000 JPY precision,
+    // then divide by the verified channel divisor and round upwards.
+    // Arithmetic remains integer-only, with strict overflow guards.
+    $factor = 10000 + $card_bps;
+    if ($cents > intdiv(PHP_INT_MAX, $fx * $factor)) return null;
+    $purchase_x10000 = intdiv($cents * $fx * $factor + 999999, 1000000);
+    if ($landed < $purchase_jpy || $landed - $purchase_jpy > 100000000) return null;
+    $total_x10000 = $purchase_x10000 + ($landed - $purchase_jpy) * 10000;
+    if ($total_x10000 <= 0 || $total_x10000 > 9000000000000) return null;
+    $denom = $divisor * 10000 * $round_up;
+    if ($denom <= 0) return null;
+    $price = intdiv($total_x10000 * 1000000 + $denom - 1, $denom) * $round_up;
     return ($price > 0 && $price <= 100000000) ? $price : null;
 }
 add_filter('ahc_inline_recomputed_sale_price', 'ahc_sp_pricing_jpy', 20, 5);
