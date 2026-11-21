@@ -1,0 +1,50 @@
+name: GPT takeover staging and image asset preflight
+on:
+  push:
+    branches: [integration/grok-review]
+    paths:
+      - "tools/ahc_xserver_sftp_staging_bundle.py"
+      - "tools/ahc_fl_cowprint_wpcli.php"
+      - "data/images/footlocker/IO0442-200/**"
+      - ".github/workflows/ahc-takeover-preflight.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP lints
+        run: |
+          php -l tools/ahc_fl_cowprint_wpcli.php
+          php -l tools/ahc-stock-inline-endpoints-staging.php
+          php -l tools/ahc-stock-sp158-owner-bridge-staging.php
+          php -l tools/ahc-stock-sp158-cost-coverage-provider.php
+          php -l tools/ahc-sp158-staging-loader.php
+      - name: Build inert SFTP package and verify original-image checksums
+        run: |
+          python -m py_compile tools/ahc_xserver_sftp_staging_bundle.py tools/prepare_fl_cowprint_originals.py
+          python tools/ahc_xserver_sftp_staging_bundle.py --output /tmp/ahc-sftp-preflight
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          root=Path('/tmp/ahc-sftp-preflight')
+          manifest=json.loads((root/'manifest.json').read_text())
+          assert manifest['status']=='INERT_UPLOAD_ONLY'
+          assert manifest['port']==10022
+          assert len(manifest['files'])==13
+          assert len({x['staged_name'] for x in manifest['files']})==13
+          for f in manifest['files']:
+             p=root/f['staged_name']
+             assert p.is_file() and p.stat().st_size==f['size']
+             assert hashlib.sha256(p.read_bytes()).hexdigest()==f['sha256']
+          checks={
+            'O0442200_01-white-square.png':'5e71bbd25b84e123708e537b41aedd9403aff1cc09d0660f3dfa1b6a794a7ba4',
+            'O0442200_03-white-square.png':'db096d01e1d94f2a78f5c22906c626cb90dcbca8520789d51a61e84031a838c5',
+            'O0442200_04-white-square.png':'eb2304bbe0321e23cebbb4a6fab02d530b52ae945acc5dd1d5529c31e7e2b814',
+          }
+          for name,sha in checks.items():
+             assert hashlib.sha256((root/name).read_bytes()).hexdigest()==sha
+          print('INERT_SFTP_BUNDLE_AND_3_PIXEL_FAITHFUL_ASSETS_PASS')
+          PY
