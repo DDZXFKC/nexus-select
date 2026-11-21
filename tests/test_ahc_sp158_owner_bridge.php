@@ -76,8 +76,8 @@ check('price rejects supplier variant mismatch',
     ahc_sp158_owner_price(null,$live,$bad,$pid,$vid)===null);
 check('missing evidence rejects price',
     ahc_sp158_owner_price(null,$live,$offers[0],$pid,$vid+123456)===null);
-check('existing filter value preserved',
-    ahc_sp158_owner_price(33333,$live,$offers[0],$pid,$vid)===33333);
+check('prior SP price cannot override verified owner formula',
+    ahc_sp158_owner_price(33333,$live,$offers[0],$pid,$vid)===25400);
 check('merchant URL confined to official product handles',
     !ahc_sp158_valid_url('https://www.shoepalace.com.evil.test/products/foo') &&
     !ahc_sp158_valid_url('https://www.shoepalace.com/products/foo?redirect=evil'));
