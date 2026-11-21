@@ -47,3 +47,10 @@ Shoe Palace公式が説明している原価上の事実：
 - **合格**：ソース・原価式・価格再計算のPHP連携、監査がない場合のfail-closed、GitHub ActionsオフラインE2E。
 - **未実施**：XServerに直接デプロイ、注文時実送料・実売上税などの購入ルート照合、非公開JSONの作成・XServer上の配置・実取引確認。
 - **公開禁止**：全11公開要件・決済と買付運用が揃い、オーナー承認があるまで。
+
+## GitHub Actions最終検証と追加の安全修正
+- `Inline stock server PHP draft validation` [run 44935210764](https://github.com/DDZXFKC/nexus-select/actions/runs/44935210764) — **completed / success**。証拠1713件、価格式、民間原価承認の厳密照合、旧価格の迂回拒否、Wooカート模擬連携、JSポップアップ挙動を含むステップすべてPASS。
+- `tools/ahc-stock-sp158-owner-bridge-staging.php` で古いSP価格コールバックから引き継いだ `$previous` 値をそのまま採用しないよう修正。非SPだけ以前の結果を保持。古いSP計算経路でプライベート原価審査を迂回しない。
+- `tests/test_ahc_sp158_cost_coverage.php` の16検証項目のうち、承認ファイルの改変で結果が失効した際に以前の価格があっても購入許可しない試験を追加。
+
+本番環境への実導入を意味するものではない。XServerサーバーの更新権限や秘密設定がこのGitHub接続からは提供されないため、サーバー実反映は実行していない。
