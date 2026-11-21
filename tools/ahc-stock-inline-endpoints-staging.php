@@ -171,6 +171,19 @@ function ahc_inline_step() {
         wp_send_json_success(['ok'=>true,'state'=>'running']);
     }
     if ($r['best'] !== null && $r['listed'] > 0) {
+        // A verified minimum safe price must never be silently replaced by a
+        // lower listed price. The 400-yen change rule is not permission to
+        // sell below the newly verified cost-plus-margin floor.
+        if ($r['best']['price'] > $r['listed'] &&
+            $r['best']['price'] - $r['listed'] < 400) {
+            $result = ['ok'=>true,'state'=>'done','result'=>'unconfirmed',
+                       'reason'=>'price_difference_below_quote_threshold'];
+            $r['public_result'] = $result;
+            $r['state'] = 'done';
+            set_transient($k, $r, 120);
+            wp_send_json_success($result);
+            return;
+        }
         $quoted = $r['best']['price'] - $r['listed'] >= 400;
         $permit = bin2hex(random_bytes(24));
         set_transient('ahc_inline_permit_' . $permit, [
