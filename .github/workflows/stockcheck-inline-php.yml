@@ -23,6 +23,7 @@ on:
       - "tools/ahc-stock-sp-live-adapter-staging.php"
       - "tools/ahc-stock-sp-pricing-staging.php"
       - "tools/ahc-stock-sp158-owner-bridge-staging.php"
+      - "tools/ahc-sp158-staging-loader.php"
       - "tests/test_ahc_sp158_owner_bridge.php"
       - "qa/php-tests/stockcheck_sp158_full_chain_stub_test.php"
       - "data/xserver-export/sp158-live-sku-match-2026-11-22.csv"
@@ -47,6 +48,7 @@ jobs:
           php -l tools/ahc-stock-sp-live-adapter-staging.php
           php -l tools/ahc-stock-sp-pricing-staging.php
           php -l tools/ahc-stock-sp158-owner-bridge-staging.php
+          php -l tools/ahc-sp158-staging-loader.php
           php -l tests/test_ahc_sp158_owner_bridge.php
           php -l qa/php-tests/stockcheck_sp158_full_chain_stub_test.php
           php -l tests/test_ahc_stock_sp_evidence_offers.php
