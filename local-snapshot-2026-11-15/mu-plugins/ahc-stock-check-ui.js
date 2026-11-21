@@ -303,6 +303,11 @@
       flow.cancel();
     });
     box.querySelector('.ahc-sc-close').addEventListener('click', closeDialog);
+    root.addEventListener('pagehide', function () {
+      // Best effort explicit cleanup even when the browser leaves the page.
+      // Cancellation is not a time-based expiration.
+      flow.cancel();
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
