@@ -127,7 +127,7 @@ expect('no approved total cost evidence means no purchase permit',
     $missing->ok && $unpriced->ok && $unpriced->payload['result']==='unconfirmed' &&
     !isset($unpriced->payload['permit']));
 $GLOBALS['FIXTURE_ROUTE_COVERED']=true;
-$GLOBALS['TRANSIENTS']=[];$GLOBALS['WCENV']->session=new Session();
+$GLOBALS['TRANSIENTS']=[];$GLOBALS['WCENV']->session=new Session();$GLOBALS['HTTP']=[];
 merchant(true);
 expect('direct cart blocked',
     !apply_filters('woocommerce_add_to_cart_validation',true,$pid,1,$vid,$attrs));
