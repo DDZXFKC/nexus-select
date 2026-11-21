@@ -101,7 +101,10 @@ WP_CLI::add_command('ahc images cowprint', function ($positional, $assoc) {
             WP_CLI::error('Temporary media copy failed; original product unchanged'); return;
         }
         $file=[
-            'name'=>'ahc-'.$source['stem'].'-white-square.png',
+            // Keep the _01/_03/_04 suffix as the LAST part of each filename.
+            // The live color-gallery filter groups files by the common stem
+            // and a terminal _number; '-white-square' would break that logic.
+            'name'=>'ahccow-20261122-'.$source['stem'].'.png',
             'tmp_name'=>$temp,
             'type'=>'image/png',
             'size'=>filesize($temp),
@@ -119,6 +122,10 @@ WP_CLI::add_command('ahc images cowprint', function ($positional, $assoc) {
         $new_ids[]=(int)$attachment;
     }
     // Change Woo gallery only when all three new attachments are present.
+    if (get_post_meta($product_id,'_ahc_cowprint_20261122_repaired',true)) {
+        WP_CLI::error('Already repaired; do not import duplicate media or overwrite the prior rollback record');
+        return;
+    }
     $product->set_image_id($new_ids[0]);
     $product->set_gallery_image_ids(array_slice($new_ids,1));
     $product->save();
@@ -133,6 +140,7 @@ WP_CLI::add_command('ahc images cowprint', function ($positional, $assoc) {
             $modified[]=(int)$vid;
         }
     }
+    update_post_meta($product_id,'_ahc_cowprint_20261122_repaired',implode(',', $new_ids));
     $backup['new_attachment_ids']=$new_ids;
     $backup['updated_variation_ids']=$modified;
     file_put_contents($backup_file, wp_json_encode($backup,JSON_PRETTY_PRINT));
